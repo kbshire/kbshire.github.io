@@ -8,6 +8,7 @@
         <pubDate>Thu, 17 Feb 2022 13:38:45 +0800</pubDate>
         <lastBuildDate>Thu, 17 Feb 2022 13:38:45 +0800</lastBuildDate>
         <category>XSS</category>
+        <category>SQL injection</category>
         <item>
             <guid isPermalink="true">http://example.com/2022/02/17/xss/</guid>
             <title>XSS</title>
