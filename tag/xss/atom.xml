@@ -6,6 +6,7 @@
     <updated>2022-02-17T05:38:45.000Z</updated>
     <category term="XSS" />
     <category term="SQL injection" />
+    <category term="File upload" />
     <entry>
         <id>http://example.com/2022/02/17/xss/</id>
         <title>XSS</title>
