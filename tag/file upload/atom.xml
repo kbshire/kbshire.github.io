@@ -7,6 +7,7 @@
     <category term="XSS" />
     <category term="SQL injection" />
     <category term="File upload" />
+    <category term="汇编" />
     <entry>
         <id>http://example.com/2022/04/16/Upload/</id>
         <title>File upload</title>

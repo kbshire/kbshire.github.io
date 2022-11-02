@@ -10,6 +10,7 @@
         <category>XSS</category>
         <category>SQL injection</category>
         <category>File upload</category>
+        <category>汇编</category>
         <item>
             <guid isPermalink="true">http://example.com/2022/02/17/XSS/</guid>
             <title>XSS</title>
