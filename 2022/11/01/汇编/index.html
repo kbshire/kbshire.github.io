@@ -102,12 +102,12 @@ Yume Shoka = Hexo</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclip4jbpj20zk0m87cv.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
           <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicm07ih54j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
           <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclil3m4ej20zk0m8tn8.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
         </ul>
       </div>
     </header>
@@ -818,6 +818,69 @@ Yume Shoka = Hexo</title>
 <p>mov sp,0</p>
 <p>mov ax,10</p>
 <p>如果 ax=10 放在 sp 和 ss 中间，该指令不会被执行</p>
+<h2 id="int"><a class="markdownIt-Anchor" href="#int">#</a> int</h2>
+<p>int n  n 为中断类型码，引发中断过程</p>
+<p>1. 取得类型码 n</p>
+<p>2.IF=0,TF=0</p>
+<p>3.CS,IP 入栈</p>
+<p><code>4.IP=(n*4)  CS=(n*4+2)</code></p>
+<p>可以不做触发，通过 int 执行 0 号中断</p>
+<p>int 一般和 iret 指令配合使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">assume cs:code</span><br><span class="line">code segment</span><br><span class="line"></span><br><span class="line">start:</span><br><span class="line">		mov ax,cs</span><br><span class="line">		mov ds,ax</span><br><span class="line">		mov si,offset capital</span><br><span class="line">		mov ax,0</span><br><span class="line">		mov es,ax</span><br><span class="line">		mov di,200h</span><br><span class="line">		mov cx,offset capitalend - offset capital</span><br><span class="line">		cld</span><br><span class="line">		rep movsb</span><br><span class="line"></span><br><span class="line">		mov ax,0</span><br><span class="line">		mov es,ax</span><br><span class="line">		mov word ptr es:[7ch*4],200h</span><br><span class="line">		mov word ptr es:[7ch*4+2],0</span><br><span class="line"></span><br><span class="line">		mov ax,4c00h</span><br><span class="line">		int 21h</span><br><span class="line"></span><br><span class="line">capital:</span><br><span class="line">		push cx</span><br><span class="line">		push si</span><br><span class="line">		</span><br><span class="line">change: </span><br><span class="line">		mov cl,[si]</span><br><span class="line">		mov ch,0</span><br><span class="line">		jcxz ok</span><br><span class="line">		and byte ptr [si],11011111b</span><br><span class="line">		inc si</span><br><span class="line">		jmp short change</span><br><span class="line">ok:	</span><br><span class="line">		pop si</span><br><span class="line">		pop cx</span><br><span class="line">		iret</span><br><span class="line">		</span><br><span class="line">capitalend:nop</span><br><span class="line"></span><br><span class="line">code ends</span><br><span class="line"></span><br><span class="line">end start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>int 10h 是 bios 中断例程</p>
+<p>BIOS 和 DOS 中断例程用 ah 来传递子程序的编号</p>
+<p><code>(ah)=2表示调用第10h号中断例程的 2号子程序，功能为设置光标位置，可以提供光标所在的行号（80*25字符模式下:0~24 ),列号（80*25字符模式下: 0~79)，和页号作为参数。(bh)=6 , (dh)=5, (d1)=12，设置光标到第0页，第5行，第12列。</code></p>
+<p>内存地址中 B8000-BFFFFh 共 32kb，为显示缓冲区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">;编程：在屏幕的5行12列显示3个红底高亮闪烁绿色的‘a’。</span><br><span class="line"></span><br><span class="line">assume cs:code</span><br><span class="line">code segment</span><br><span class="line">	mov ah,2 	;置光标</span><br><span class="line">	mov bh,0	;第0页</span><br><span class="line">	mov dh,5	;dh中放行号</span><br><span class="line">	mov dl,12	;dl中放列号</span><br><span class="line">	int 10h	</span><br><span class="line">	</span><br><span class="line">	mov ah,9	;置光标</span><br><span class="line">	mov al,&#x27;a&#x27;	;字符</span><br><span class="line">	mov bl,11001010b;颜色属性</span><br><span class="line">	mov bh,0	;第0页</span><br><span class="line">	mov cx,3	;字符重复个数</span><br><span class="line">	int 10h</span><br><span class="line"></span><br><span class="line">	mov ax,4c00h</span><br><span class="line">	int 21h </span><br><span class="line"></span><br><span class="line">code ends</span><br><span class="line">end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>int 21H</p>
+<p>int 21h 中断例程是 DOS 提供的中断例程，其中包含了 DOS 提供给程序员在编程时调用为子程序</p>
+<p>我们从前一直使用的是 int 21 中断例程 4ch 号功能，即程序返回功能</p>
+<p>mov ah,4ch  ; 程序返回</p>
+<p>mov al,0        ; 返回值</p>
+<p>int 21h</p>
+<h2 id="端口"><a class="markdownIt-Anchor" href="#端口">#</a> 端口</h2>
+<p>端口读写指令 in 和 out 分别用于读取和写入数据</p>
+<p>in al,60h</p>
+<p>从 60h 号端口读入一个字节</p>
+<p>在 in out 指令中，只能使用 ax 或 al 来存放从端口中读入的数据或要发送到端口中的数据</p>
+<p>in al,20h</p>
+<p>out 20h,al</p>
+<p>CMOS RAM</p>
+<p>包含一个时钟和一个有 128 位存储单元的 RAM 存储区</p>
+<p>128 个字节中，内部时钟占用 0-0dh，其余大部分单元用于保存系统配置信息</p>
+<p>BIOS 中有两个端口，为 70h 和 71h，通过这两个端口读取 CMOS RAM</p>
+<p>70h 为地址，存放 CMOS RAM 单元地址，71 为数据端口，存放选定的 CMOS RAM 读取的数据</p>
+<p>shl 和 shr</p>
+<p>逻辑移位指令</p>
+<p>shl 逻辑左移指令</p>
+<p>将一个数据向左移位，最后移除的移位写入 cf，最低位 0 补充，数据可以来自寄存器或内存单元</p>
+<p>移位位数大于 1 时，必须将移动位数放入 cl</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov al,01010001b</span><br><span class="line">mov cl,3</span><br><span class="line">shl al,cl    ;从al拿出来在放回al去</span><br></pre></td></tr></table></figure>
+<p>shr</p>
+<p>和 shl 相反</p>
+<p>右移 = / 2</p>
+<p>CMOS RAM 中时间信息</p>
+<p>秒 00H</p>
+<p>分 02H</p>
+<p>时 04H</p>
+<p>日 07H</p>
+<p>月 08H</p>
+<p>年 09H</p>
+<p>他们都占一个字节，以 BCD 码存放</p>
+<h2 id="外中断"><a class="markdownIt-Anchor" href="#外中断">#</a> 外中断</h2>
+<p>CPU 通过端口和外部设备进行联系</p>
+<p>外中断源有两类</p>
+<p>1. 可屏蔽中断</p>
+<p>2. 不可屏蔽中断</p>
+<p>IF=1 响应中断过程</p>
+<p>IF=0 不响应中断过程</p>
+<p>sti 设置 IF=1</p>
+<p>cli 设置 IF=0</p>
+<p>PC 机键盘处理过程</p>
+<p>引发 9 号中断</p>
+<p>— 般将按下一个键时产生的扫描码称为通码，松开一个键产生的扫描码称为断码</p>
+<p>断码 = 通码 + 80H</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221108214017480.png" alt="image-20221108214017480" style="zoom:50%;" />
 
       <div class="tags">
           <a href="/tags/%E6%B1%87%E7%BC%96/" rel="tag"><i class="ic i-tag"></i> 汇编</a>
@@ -832,7 +895,7 @@ Yume Shoka = Hexo</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-11-02 22:35:04" itemprop="dateModified" datetime="2022-11-02T22:35:04+08:00">2022-11-02</time>
+    <time title="Modified: 2022-11-09 15:29:13" itemprop="dateModified" datetime="2022-11-09T15:29:13+08:00">2022-11-09</time>
   </span>
 </div>
 
@@ -887,10 +950,10 @@ Yume Shoka = Hexo</title>
     <div class="item left">
       
 
-  <a href="/2022/10/30/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclx6phq6j20zk0m8e36.jpg" title="about me">
+  <a href="/2022/11/01/reverse/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclxfdlttj20zk0m8npd.jpg" title="逆向">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>about me</h3>
+  <span class="category"><i class="ic i-flag"></i> 逆向</span>
+  <h3>逆向</h3>
   </a>
 
     </div>
@@ -911,11 +974,11 @@ Yume Shoka = Hexo</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B1%87%E7%BC%96"><span class="toc-number">1.</span> <span class="toc-text"> 汇编</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8cpu"><span class="toc-number">1.1.</span> <span class="toc-text"> 寄存器（CPU）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E5%86%85%E5%AD%98"><span class="toc-number">1.2.</span> <span class="toc-text"> 寄存器（内存）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">1.2.0.1.</span> <span class="toc-text"> 栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E9%A1%B6%E8%B6%8A%E7%95%8C"><span class="toc-number">1.2.0.2.</span> <span class="toc-text"> 栈顶越界</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-number">1.2.0.3.</span> <span class="toc-text"> 练习</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E7%BC%96%E5%86%99"><span class="toc-number">1.3.</span> <span class="toc-text"> 程序编写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bxloop"><span class="toc-number">1.4.</span> <span class="toc-text"> [bx]&amp;loop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA%E6%AE%B5%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.5.</span> <span class="toc-text"> 多个段的程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E7%81%B5%E6%B4%BB%E5%AE%9A%E4%BD%8D%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80"><span class="toc-number">1.6.</span> <span class="toc-text"> 更灵活定位内存地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.7.</span> <span class="toc-text"> 数据处理的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E7%A7%BB%E6%8C%87%E4%BB%A4"><span class="toc-number">1.8.</span> <span class="toc-text"> 转移指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#call%E5%92%8Cret"><span class="toc-number">1.9.</span> <span class="toc-text"> call 和 ret</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.10.</span> <span class="toc-text"> 标志寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD"><span class="toc-number">1.11.</span> <span class="toc-text"> 中断</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B1%87%E7%BC%96"><span class="toc-number">1.</span> <span class="toc-text"> 汇编</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8cpu"><span class="toc-number">1.1.</span> <span class="toc-text"> 寄存器（CPU）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E5%86%85%E5%AD%98"><span class="toc-number">1.2.</span> <span class="toc-text"> 寄存器（内存）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">1.2.0.1.</span> <span class="toc-text"> 栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E9%A1%B6%E8%B6%8A%E7%95%8C"><span class="toc-number">1.2.0.2.</span> <span class="toc-text"> 栈顶越界</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-number">1.2.0.3.</span> <span class="toc-text"> 练习</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E7%BC%96%E5%86%99"><span class="toc-number">1.3.</span> <span class="toc-text"> 程序编写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bxloop"><span class="toc-number">1.4.</span> <span class="toc-text"> [bx]&amp;loop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA%E6%AE%B5%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.5.</span> <span class="toc-text"> 多个段的程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E7%81%B5%E6%B4%BB%E5%AE%9A%E4%BD%8D%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80"><span class="toc-number">1.6.</span> <span class="toc-text"> 更灵活定位内存地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.7.</span> <span class="toc-text"> 数据处理的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E7%A7%BB%E6%8C%87%E4%BB%A4"><span class="toc-number">1.8.</span> <span class="toc-text"> 转移指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#call%E5%92%8Cret"><span class="toc-number">1.9.</span> <span class="toc-text"> call 和 ret</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.10.</span> <span class="toc-text"> 标志寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD"><span class="toc-number">1.11.</span> <span class="toc-text"> 中断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#int"><span class="toc-number">1.12.</span> <span class="toc-text"> int</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.13.</span> <span class="toc-text"> 端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E4%B8%AD%E6%96%AD"><span class="toc-number">1.14.</span> <span class="toc-text"> 外中断</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li class="active"><a href="/2022/11/01/%E6%B1%87%E7%BC%96/" rel="bookmark" title="汇编">汇编</a></li>
+          <li class="active"><a href="/2022/11/01/%E6%B1%87%E7%BC%96/" rel="bookmark" title="汇编">汇编</a></li><li><a href="/2022/11/01/reverse/" rel="bookmark" title="逆向">逆向</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -929,19 +992,19 @@ Yume Shoka = Hexo</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">10</span>
+        <span class="count">13</span>
         <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">3</span>
+        <span class="count">4</span>
         <span class="name">categories</span>
       </a>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">4</span>
+        <span class="count">5</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -991,36 +1054,6 @@ Yume Shoka = Hexo</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/05/27/CSRF/" title="CSRF">CSRF</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/05/17/include/" title="file include">file include</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
 </div>
 
@@ -1031,18 +1064,20 @@ Yume Shoka = Hexo</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
 </div>
 
-    <span><a href="/2022/10/30/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
+    <span><a href="/2022/11/01/reverse/" title="逆向">逆向</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/10/16/hello-world/" title="Hello World">Hello World</a></span>
+    <span><a href="/2022/05/17/include/" title="file include">file include</a></span>
   </li>
 
       
@@ -1069,6 +1104,16 @@ Yume Shoka = Hexo</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/04/16/Unserialize/" title="反序列化">反序列化</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
 </div>
 
@@ -1079,10 +1124,29 @@ Yume Shoka = Hexo</title>
   <li class="item">
     
 <div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/16/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" title="SQL injection">SQL injection</a></span>
+    <span><a href="/2022/05/27/CSRF/" title="CSRF">CSRF</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
   </li>
 
   </ul>

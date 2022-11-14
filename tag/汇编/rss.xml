@@ -11,6 +11,7 @@
         <category>SQL injection</category>
         <category>File upload</category>
         <category>汇编</category>
+        <category>逆向</category>
         <item>
             <guid isPermalink="true">http://example.com/2022/11/01/%E6%B1%87%E7%BC%96/</guid>
             <title>汇编</title>
@@ -682,6 +683,69 @@
 &lt;p&gt;mov sp,0&lt;/p&gt;
 &lt;p&gt;mov ax,10&lt;/p&gt;
 &lt;p&gt;如果 ax=10 放在 sp 和 ss 中间，该指令不会被执行&lt;/p&gt;
+&lt;h2 id=&#34;int&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#int&#34;&gt;#&lt;/a&gt; int&lt;/h2&gt;
+&lt;p&gt;int n  n 为中断类型码，引发中断过程&lt;/p&gt;
+&lt;p&gt;1. 取得类型码 n&lt;/p&gt;
+&lt;p&gt;2.IF=0,TF=0&lt;/p&gt;
+&lt;p&gt;3.CS,IP 入栈&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;4.IP=(n*4)  CS=(n*4+2)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;可以不做触发，通过 int 执行 0 号中断&lt;/p&gt;
+&lt;p&gt;int 一般和 iret 指令配合使用&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;44&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;assume cs:code&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;code segment&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;start:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		mov ax,cs&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		mov ds,ax&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		mov si,offset capital&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		mov ax,0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		mov es,ax&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		mov di,200h&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		mov cx,offset capitalend - offset capital&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		cld&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		rep movsb&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		mov ax,0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		mov es,ax&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		mov word ptr es:[7ch*4],200h&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		mov word ptr es:[7ch*4+2],0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		mov ax,4c00h&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		int 21h&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;capital:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		push cx&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		push si&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;change: &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		mov cl,[si]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		mov ch,0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		jcxz ok&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		and byte ptr [si],11011111b&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		inc si&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		jmp short change&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ok:	&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		pop si&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		pop cx&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		iret&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;capitalend:nop&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;code ends&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;end start&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;int 10h 是 bios 中断例程&lt;/p&gt;
+&lt;p&gt;BIOS 和 DOS 中断例程用 ah 来传递子程序的编号&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;(ah)=2表示调用第10h号中断例程的 2号子程序，功能为设置光标位置，可以提供光标所在的行号（80*25字符模式下:0~24 ),列号（80*25字符模式下: 0~79)，和页号作为参数。(bh)=6 , (dh)=5, (d1)=12，设置光标到第0页，第5行，第12列。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;内存地址中 B8000-BFFFFh 共 32kb，为显示缓冲区&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;;编程：在屏幕的5行12列显示3个红底高亮闪烁绿色的‘a’。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;assume cs:code&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;code segment&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	mov ah,2 	;置光标&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	mov bh,0	;第0页&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	mov dh,5	;dh中放行号&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	mov dl,12	;dl中放列号&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	int 10h	&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	mov ah,9	;置光标&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	mov al,&amp;#x27;a&amp;#x27;	;字符&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	mov bl,11001010b;颜色属性&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	mov bh,0	;第0页&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	mov cx,3	;字符重复个数&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	int 10h&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	mov ax,4c00h&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	int 21h &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;code ends&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;end&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;int 21H&lt;/p&gt;
+&lt;p&gt;int 21h 中断例程是 DOS 提供的中断例程，其中包含了 DOS 提供给程序员在编程时调用为子程序&lt;/p&gt;
+&lt;p&gt;我们从前一直使用的是 int 21 中断例程 4ch 号功能，即程序返回功能&lt;/p&gt;
+&lt;p&gt;mov ah,4ch  ; 程序返回&lt;/p&gt;
+&lt;p&gt;mov al,0        ; 返回值&lt;/p&gt;
+&lt;p&gt;int 21h&lt;/p&gt;
+&lt;h2 id=&#34;端口&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#端口&#34;&gt;#&lt;/a&gt; 端口&lt;/h2&gt;
+&lt;p&gt;端口读写指令 in 和 out 分别用于读取和写入数据&lt;/p&gt;
+&lt;p&gt;in al,60h&lt;/p&gt;
+&lt;p&gt;从 60h 号端口读入一个字节&lt;/p&gt;
+&lt;p&gt;在 in out 指令中，只能使用 ax 或 al 来存放从端口中读入的数据或要发送到端口中的数据&lt;/p&gt;
+&lt;p&gt;in al,20h&lt;/p&gt;
+&lt;p&gt;out 20h,al&lt;/p&gt;
+&lt;p&gt;CMOS RAM&lt;/p&gt;
+&lt;p&gt;包含一个时钟和一个有 128 位存储单元的 RAM 存储区&lt;/p&gt;
+&lt;p&gt;128 个字节中，内部时钟占用 0-0dh，其余大部分单元用于保存系统配置信息&lt;/p&gt;
+&lt;p&gt;BIOS 中有两个端口，为 70h 和 71h，通过这两个端口读取 CMOS RAM&lt;/p&gt;
+&lt;p&gt;70h 为地址，存放 CMOS RAM 单元地址，71 为数据端口，存放选定的 CMOS RAM 读取的数据&lt;/p&gt;
+&lt;p&gt;shl 和 shr&lt;/p&gt;
+&lt;p&gt;逻辑移位指令&lt;/p&gt;
+&lt;p&gt;shl 逻辑左移指令&lt;/p&gt;
+&lt;p&gt;将一个数据向左移位，最后移除的移位写入 cf，最低位 0 补充，数据可以来自寄存器或内存单元&lt;/p&gt;
+&lt;p&gt;移位位数大于 1 时，必须将移动位数放入 cl&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;mov al,01010001b&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;mov cl,3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;shl al,cl    ;从al拿出来在放回al去&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;shr&lt;/p&gt;
+&lt;p&gt;和 shl 相反&lt;/p&gt;
+&lt;p&gt;右移 = / 2&lt;/p&gt;
+&lt;p&gt;CMOS RAM 中时间信息&lt;/p&gt;
+&lt;p&gt;秒 00H&lt;/p&gt;
+&lt;p&gt;分 02H&lt;/p&gt;
+&lt;p&gt;时 04H&lt;/p&gt;
+&lt;p&gt;日 07H&lt;/p&gt;
+&lt;p&gt;月 08H&lt;/p&gt;
+&lt;p&gt;年 09H&lt;/p&gt;
+&lt;p&gt;他们都占一个字节，以 BCD 码存放&lt;/p&gt;
+&lt;h2 id=&#34;外中断&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#外中断&#34;&gt;#&lt;/a&gt; 外中断&lt;/h2&gt;
+&lt;p&gt;CPU 通过端口和外部设备进行联系&lt;/p&gt;
+&lt;p&gt;外中断源有两类&lt;/p&gt;
+&lt;p&gt;1. 可屏蔽中断&lt;/p&gt;
+&lt;p&gt;2. 不可屏蔽中断&lt;/p&gt;
+&lt;p&gt;IF=1 响应中断过程&lt;/p&gt;
+&lt;p&gt;IF=0 不响应中断过程&lt;/p&gt;
+&lt;p&gt;sti 设置 IF=1&lt;/p&gt;
+&lt;p&gt;cli 设置 IF=0&lt;/p&gt;
+&lt;p&gt;PC 机键盘处理过程&lt;/p&gt;
+&lt;p&gt;引发 9 号中断&lt;/p&gt;
+&lt;p&gt;— 般将按下一个键时产生的扫描码称为通码，松开一个键产生的扫描码称为断码&lt;/p&gt;
+&lt;p&gt;断码 = 通码 + 80H&lt;/p&gt;
+&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221108214017480.png&#34; alt=&#34;image-20221108214017480&#34; style=&#34;zoom:50%;&#34; /&gt;
  ]]></description>
         </item>
     </channel>

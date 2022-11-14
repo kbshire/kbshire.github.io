@@ -8,6 +8,7 @@
     <category term="SQL injection" />
     <category term="File upload" />
     <category term="汇编" />
+    <category term="逆向" />
     <entry>
         <id>http://example.com/2022/04/16/Upload/</id>
         <title>File upload</title>

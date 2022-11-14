@@ -11,6 +11,7 @@
         <category>SQL injection</category>
         <category>File upload</category>
         <category>汇编</category>
+        <category>逆向</category>
         <item>
             <guid isPermalink="true">http://example.com/2022/04/16/Upload/</guid>
             <title>File upload</title>
