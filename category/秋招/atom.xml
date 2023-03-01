@@ -7,8 +7,8 @@
     <category term="SQL injection" />
     <category term="File upload" />
     <category term="XSS" />
-    <category term="汇编" />
     <category term="逆向" />
+    <category term="汇编" />
     <entry>
         <id>http://example.com/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/</id>
         <title>秋招面试题</title>

@@ -7,8 +7,8 @@
     <category term="SQL injection" />
     <category term="File upload" />
     <category term="XSS" />
-    <category term="汇编" />
     <category term="逆向" />
+    <category term="汇编" />
     <entry>
         <id>http://example.com/2023/01/03/%E6%BB%B4%E6%B0%B4reverse/</id>
         <title>水滴rev</title>
