@@ -10,8 +10,8 @@
         <category>SQL injection</category>
         <category>File upload</category>
         <category>XSS</category>
-        <category>逆向</category>
         <category>汇编</category>
+        <category>逆向</category>
         <item>
             <guid isPermalink="true">http://example.com/2022/02/17/XSS/</guid>
             <title>XSS</title>

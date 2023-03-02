@@ -10,8 +10,8 @@
         <category>SQL injection</category>
         <category>File upload</category>
         <category>XSS</category>
-        <category>逆向</category>
         <category>汇编</category>
+        <category>逆向</category>
         <item>
             <guid isPermalink="true">http://example.com/2022/12/25/%E5%86%85%E7%BD%91/</guid>
             <title>内网渗透</title>
