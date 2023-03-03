@@ -6,9 +6,8 @@
     <updated>2022-12-25T05:38:45.000Z</updated>
     <category term="SQL injection" />
     <category term="File upload" />
-    <category term="XSS" />
-    <category term="汇编" />
     <category term="逆向" />
+    <category term="汇编" />
     <entry>
         <id>http://example.com/2022/12/25/%E5%86%85%E7%BD%91/</id>
         <title>内网渗透</title>
