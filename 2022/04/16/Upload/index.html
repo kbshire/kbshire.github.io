@@ -24,15 +24,13 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
-  <meta name="keywords" content="File upload" />
-
 
 <link rel="canonical" href="http://example.com/2022/04/16/Upload/">
 
 
 
   <title>
-File upload - web安全 |
+File upload |
 Yume Shoka = Hexo</title>
 <meta name="generator" content="Hexo 5.4.2"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -102,12 +100,12 @@ Yume Shoka = Hexo</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipetlbztpj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipetv6p75j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicm07ih54j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicivghyooj20zk0m8dir.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclxxcb6rj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
         </ul>
       </div>
     </header>
@@ -132,9 +130,7 @@ Yume Shoka = Hexo</title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
-<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="item" rel="index" title="In web安全"><span itemprop="name">web安全</span></a>
-<meta itemprop="position" content="1" /></span>
+<span><a href="/">Home</a></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
@@ -368,9 +364,6 @@ include demo.jpg
 <p>7. 附上最后一版的防御代码</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">upload</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 大众版头像上传处理 2014-6-15</span></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">isset</span>(<span class="variable">$GLOBALS</span>[<span class="string">&#x27;HTTP_RAW_POST_DATA&#x27;</span>])) &#123;</span><br><span class="line">            <span class="keyword">exit</span>(<span class="title function_ invoke__">function_exists</span>(<span class="string">&#x27;iconv&#x27;</span>) ? <span class="title function_ invoke__">iconv</span>(<span class="string">&#x27;UTF-8&#x27;</span>, <span class="string">&#x27;GBK&#x27;</span>, <span class="string">&#x27;环境不支持&#x27;</span>) : <span class="string">&#x27;The php does not support&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 创建图片存储文件夹</span></span><br><span class="line">        <span class="variable">$dir</span> = FCPATH.<span class="string">&#x27;member/uploadfile/member/&#x27;</span>.<span class="variable language_">$this</span>-&gt;uid.<span class="string">&#x27;/&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="title function_ invoke__">file_exists</span>(<span class="variable">$dir</span>)) &#123;</span><br><span class="line">            <span class="title function_ invoke__">mkdir</span>(<span class="variable">$dir</span>, <span class="number">0777</span>, <span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable">$filename</span> = <span class="variable">$dir</span>.<span class="string">&#x27;avatar.zip&#x27;</span>; <span class="comment">// 存储flashpost图片</span></span><br><span class="line">        <span class="title function_ invoke__">file_put_contents</span>(<span class="variable">$filename</span>, <span class="variable">$GLOBALS</span>[<span class="string">&#x27;HTTP_RAW_POST_DATA&#x27;</span>]);</span><br><span class="line">        <span class="comment">// 解压缩文件</span></span><br><span class="line">        <span class="variable language_">$this</span>-&gt;load-&gt;<span class="title function_ invoke__">library</span>(<span class="string">&#x27;Pclzip&#x27;</span>);</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;pclzip-&gt;<span class="title function_ invoke__">PclFile</span>(<span class="variable">$filename</span>);</span><br><span class="line">        <span class="variable">$content</span> = <span class="variable language_">$this</span>-&gt;pclzip-&gt;<span class="title function_ invoke__">listContent</span>();</span><br><span class="line">        <span class="keyword">if</span> (!<span class="variable">$content</span>) &#123;</span><br><span class="line">            @<span class="title function_ invoke__">unlink</span>(<span class="variable">$filename</span>);</span><br><span class="line">            <span class="keyword">exit</span>(<span class="title function_ invoke__">function_exists</span>(<span class="string">&#x27;iconv&#x27;</span>) ? <span class="title function_ invoke__">iconv</span>(<span class="string">&#x27;UTF-8&#x27;</span>, <span class="string">&#x27;GBK&#x27;</span>, <span class="string">&#x27;文件已损坏&#x27;</span>) : <span class="string">&#x27;The file has damaged&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 验证文件</span></span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable">$content</span> <span class="keyword">as</span> <span class="variable">$t</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="title function_ invoke__">strpos</span>(<span class="variable">$t</span>[<span class="string">&#x27;stored_filename&#x27;</span>], <span class="string">&#x27;..&#x27;</span>) !== <span class="literal">FALSE</span> ||</span><br><span class="line">                <span class="title function_ invoke__">strpos</span>(<span class="variable">$t</span>[<span class="string">&#x27;filename&#x27;</span>], <span class="string">&#x27;..&#x27;</span>) !== <span class="literal">FALSE</span> ||</span><br><span class="line">                <span class="title function_ invoke__">strpos</span>(<span class="variable">$t</span>[<span class="string">&#x27;filename&#x27;</span>], <span class="string">&#x27;/&#x27;</span>) !== <span class="literal">FALSE</span> ||</span><br><span class="line">                <span class="title function_ invoke__">strpos</span>(<span class="variable">$t</span>[<span class="string">&#x27;stored_filename&#x27;</span>], <span class="string">&#x27;/&#x27;</span>) !== <span class="literal">FALSE</span>) &#123;</span><br><span class="line">                @<span class="title function_ invoke__">unlink</span>(<span class="variable">$filename</span>);</span><br><span class="line">                <span class="keyword">exit</span>(<span class="title function_ invoke__">function_exists</span>(<span class="string">&#x27;iconv&#x27;</span>) ? <span class="title function_ invoke__">iconv</span>(<span class="string">&#x27;UTF-8&#x27;</span>, <span class="string">&#x27;GBK&#x27;</span>, <span class="string">&#x27;非法名称的文件&#x27;</span>) : <span class="string">&#x27;llegal name file&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (<span class="title function_ invoke__">substr</span>(<span class="title function_ invoke__">strrchr</span>(<span class="variable">$t</span>[<span class="string">&#x27;stored_filename&#x27;</span>], <span class="string">&#x27;.&#x27;</span>), <span class="number">1</span>) != <span class="string">&#x27;jpg&#x27;</span>) &#123;</span><br><span class="line">                @<span class="title function_ invoke__">unlink</span>(<span class="variable">$filename</span>);</span><br><span class="line">                <span class="keyword">exit</span>(<span class="title function_ invoke__">function_exists</span>(<span class="string">&#x27;iconv&#x27;</span>) ? <span class="title function_ invoke__">iconv</span>(<span class="string">&#x27;UTF-8&#x27;</span>, <span class="string">&#x27;GBK&#x27;</span>, <span class="string">&#x27;文件格式校验不正确&#x27;</span>) : <span class="string">&#x27;The document format verification is not correct&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 解压文件</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">$this</span>-&gt;pclzip-&gt;<span class="title function_ invoke__">extract</span>(PCLZIP_OPT_PATH, <span class="variable">$dir</span>, PCLZIP_OPT_REPLACE_NEWER) == <span class="number">0</span>) &#123;</span><br><span class="line">            @<span class="title function_ invoke__">dr_dir_delete</span>(<span class="variable">$dir</span>);</span><br><span class="line">            <span class="keyword">exit</span>(<span class="variable language_">$this</span>-&gt;pclzip-&gt;<span class="title function_ invoke__">zip</span>(<span class="literal">true</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        @<span class="title function_ invoke__">unlink</span>(<span class="variable">$filename</span>);</span><br><span class="line">        <span class="keyword">if</span> (!<span class="title function_ invoke__">is_file</span>(<span class="variable">$dir</span>.<span class="string">&#x27;45x45.jpg&#x27;</span>) || !<span class="title function_ invoke__">is_file</span>(<span class="variable">$dir</span>.<span class="string">&#x27;90x90.jpg&#x27;</span>)) &#123;</span><br><span class="line">            <span class="keyword">exit</span>(<span class="string">&#x27;文件创建失败&#x27;</span>);</span><br><span class="line">        &#125;  </span><br></pre></td></tr></table></figure>
 
-      <div class="tags">
-          <a href="/tags/File-upload/" rel="tag"><i class="ic i-tag"></i> File upload</a>
-      </div>
   </div>
 
    <footer>
@@ -436,9 +429,9 @@ include demo.jpg
     <div class="item left">
       
 
-  <a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclil3m4ej20zk0m8tn8.jpg" title="SQL injection">
+  <a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicli9lfebj20zk0m84qp.jpg" title="SQL injection">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> web安全</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
   <h3>SQL injection</h3>
   </a>
 
@@ -446,9 +439,9 @@ include demo.jpg
     <div class="item right">
       
 
-  <a href="/2022/05/17/include/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclh0m9pdj20zk0m8hdt.jpg" title="file include">
+  <a href="/2022/05/17/include/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicljgocqbj20zk0m8e81.jpg" title="file include">
   <span class="type">Next Post</span>
-  <span class="category"><i class="ic i-flag"></i> web安全</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
   <h3>file include</h3>
   </a>
 
@@ -471,9 +464,6 @@ include demo.jpg
           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#upload"><span class="toc-number">1.</span> <span class="toc-text"> Upload</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#upload-labs"><span class="toc-number">1.1.</span> <span class="toc-text"> upload-labs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E9%98%B2%E5%BE%A1%E4%B8%8E%E7%BB%95%E8%BF%87"><span class="toc-number">1.2.</span> <span class="toc-text"> 文件上传防御与绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phpiiswindows-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.3.</span> <span class="toc-text"> php+IIS+Windows 文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E8%A6%86%E7%9B%96%E7%94%9F%E6%88%90%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 利用：覆盖生成文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E9%BB%98%E8%AE%A4%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%8A%E4%BC%A0php%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 通过默认数据流上传 php 文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phpcms%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%9B%9B%E6%AC%A1%E7%BB%95%E8%BF%87"><span class="toc-number">1.4.</span> <span class="toc-text"> phpcms 文件上传四次绕过</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
-        <ul>
-          <li><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" rel="bookmark" title="SQL injection">SQL injection</a></li><li class="active"><a href="/2022/04/16/Upload/" rel="bookmark" title="File upload">File upload</a></li><li><a href="/2022/05/17/include/" rel="bookmark" title="file include">file include</a></li><li><a href="/2022/05/27/CSRF/" rel="bookmark" title="CSRF">CSRF</a></li><li><a href="/2022/06/27/SSRF/" rel="bookmark" title="SSRF">SSRF</a></li><li><a href="/2022/08/16/Unserialize/" rel="bookmark" title="unserialize">unserialize</a></li><li><a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" rel="bookmark" title="JWT">JWT</a></li><li><a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" rel="bookmark" title="docker逃逸&capabilities">docker逃逸&capabilities</a></li><li><a href="/2022/11/27/CDN/" rel="bookmark" title="CDN&DNS">CDN&DNS</a></li><li><a href="/2022/12/27/SSTI/" rel="bookmark" title="SSTI">SSTI</a></li><li><a href="/2022/12/31/webshell/" rel="bookmark" title="webshell">webshell</a></li>
-        </ul>
       </div>
       <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -488,18 +478,6 @@ include demo.jpg
       <a href="/archives/">
         <span class="count">24</span>
         <span class="name">posts</span>
-      </a>
-    </div>
-    <div class="item categories">
-      <a href="/categories/">
-        <span class="count">4</span>
-        <span class="name">categories</span>
-      </a>
-    </div>
-    <div class="item tags">
-      <a href="/tags/">
-        <span class="count">4</span>
-        <span class="name">tags</span>
       </a>
     </div>
 </nav>
@@ -550,27 +528,42 @@ include demo.jpg
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/08/16/Unserialize/" title="unserialize">unserialize</a></span>
+    <span><a href="/2022/12/28/mysql/" title="Mysql">Mysql</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/06/27/SSRF/" title="SSRF">SSRF</a></span>
+    <span><a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" title="docker逃逸&amp;capabilities">docker逃逸&capabilities</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
+</div>
+
+    <span><a href="/2022/11/11/reverse/" title="逆向">逆向</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/11/27/CDN/" title="CDN&amp;DNS">CDN&DNS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 </div>
 
     <span><a href="/2022/12/25/%E5%86%85%E7%BD%91/" title="内网渗透">内网渗透</a></span>
@@ -580,40 +573,9 @@ include demo.jpg
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
 </div>
 
-    <span><a href="/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" title="秋招面试题">秋招面试题</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
-</div>
-
-    <span><a href="/2022/05/27/emergency%20response/" title="应急响应">应急响应</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" title="JWT">JWT</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/12/31/webshell/" title="webshell">webshell</a></span>
+    <span><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" title="SQL injection">SQL injection</a></span>
   </li>
 
       
@@ -622,7 +584,7 @@ include demo.jpg
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/01/20/VXLAN/" title="VXLAN">VXLAN</a></span>
+    <span><a href="/2022/05/27/CSRF/" title="CSRF">CSRF</a></span>
   </li>
 
       
@@ -631,17 +593,25 @@ include demo.jpg
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/01/17/Segment%20Routing/" title="Segment Routing">Segment Routing</a></span>
+    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/05/17/include/" title="file include">file include</a></span>
+    <span><a href="/2022/12/27/SSTI/" title="SSTI">SSTI</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/01/03/%E6%BB%B4%E6%B0%B4reverse/" title="水滴rev">水滴rev</a></span>
   </li>
 
   </ul>
