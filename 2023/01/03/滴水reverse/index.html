@@ -24,13 +24,15 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
+  <meta name="keywords" content="逆向" />
+
 
 <link rel="canonical" href="http://example.com/2023/01/03/%E6%BB%B4%E6%B0%B4reverse/">
 
 
 
   <title>
-水滴rev |
+水滴rev - 逆向 |
 Yume Shoka = Hexo</title>
 <meta name="generator" content="Hexo 5.4.2"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -100,12 +102,12 @@ Yume Shoka = Hexo</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclip4jbpj20zk0m87cv.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeyonbf9j20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclh0m9pdj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
         </ul>
       </div>
     </header>
@@ -130,7 +132,9 @@ Yume Shoka = Hexo</title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">Home</a></span>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E9%80%86%E5%90%91/" itemprop="item" rel="index" title="In 逆向"><span itemprop="name">逆向</span></a>
+<meta itemprop="position" content="1" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
@@ -598,6 +602,9 @@ cmp eax, dword ptr [ebp+0Ch]</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//空结构体大小为1，如果没有成员变量只有成员函数，那么大小也是1</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Cal</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">Add</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">Sub</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">Mul</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">Div</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d \n&quot;</span>, <span class="built_in">sizeof</span>(Cal));   <span class="comment">//1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Cal</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">Add</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">Sub</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">Mul</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">Div</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d \n&quot;</span>, <span class="built_in">sizeof</span>(Cal));   <span class="comment">//1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//入栈顺序从右到左</span></span><br><span class="line"><span class="comment">//最后在把this使用ecx传参</span></span><br><span class="line"><span class="comment">//采用内平栈</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cal</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="type">int</span> x;</span><br><span class="line">	<span class="type">int</span> y;</span><br><span class="line">	<span class="type">int</span> z;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y, <span class="type">int</span> z)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>-&gt;x = x;</span><br><span class="line">		<span class="keyword">this</span>-&gt;y = y;		</span><br><span class="line">		<span class="keyword">this</span>-&gt;z = z;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Cal haha;</span><br><span class="line">	haha.<span class="built_in">init</span>(<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//printf(&quot;%d \n&quot;, a);</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">0040</span>D768 <span class="number">6</span>A <span class="number">05</span>                push        <span class="number">5</span></span><br><span class="line"><span class="number">0040</span>D76A <span class="number">6</span>A <span class="number">04</span>                push        <span class="number">4</span></span><br><span class="line"><span class="number">0040</span>D76C <span class="number">6</span>A <span class="number">03</span>                push        <span class="number">3</span></span><br><span class="line"><span class="number">0040</span>D76E <span class="number">8</span>D <span class="number">4</span>D F4             lea         ecx,[ebp<span class="number">-0</span>Ch]</span><br><span class="line"><span class="number">0040</span>D771 E8 C1 <span class="number">38</span> FF FF       call        @ILT+<span class="number">50</span>(Cal::init) (<span class="number">00401037</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">0040</span>D7C9 <span class="number">5B</span>                   pop         ebx</span><br><span class="line"><span class="number">0040</span>D7CA <span class="number">8B</span> E5                mov         esp,ebp</span><br><span class="line"><span class="number">0040</span>D7CC <span class="number">5</span>D                   pop         ebp</span><br><span class="line"><span class="number">0040</span>D7CD C2 <span class="number">0</span>C <span class="number">00</span>             ret         <span class="number">0</span>Ch</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+      <div class="tags">
+          <a href="/tags/%E9%80%86%E5%90%91/" rel="tag"><i class="ic i-tag"></i> 逆向</a>
+      </div>
   </div>
 
    <footer>
@@ -663,9 +670,9 @@ cmp eax, dword ptr [ebp+0Ch]</p>
     <div class="item left">
       
 
-  <a href="/2022/12/31/webshell/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicliwyw55j20zk0m8hdt.jpg" title="webshell">
+  <a href="/2022/12/31/webshell/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhfehz7j20zk0m8u0x.jpg" title="webshell">
   <span class="type">Previous Post</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
+  <span class="category"><i class="ic i-flag"></i> web安全</span>
   <h3>webshell</h3>
   </a>
 
@@ -673,7 +680,7 @@ cmp eax, dword ptr [ebp+0Ch]</p>
     <div class="item right">
       
 
-  <a href="/2023/01/17/Segment%20Routing/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciuv0socj20zk0m8qes.jpg" title="Segment Routing">
+  <a href="/2023/01/17/Segment%20Routing/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyhsblkj20zk0m81kx.jpg" title="Segment Routing">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Segment Routing</h3>
@@ -698,6 +705,9 @@ cmp eax, dword ptr [ebp+0Ch]</p>
           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BB%B4%E6%B0%B4reverse"><span class="toc-number">1.</span> <span class="toc-text"> 滴水 reverse</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E5%BC%80%E8%AF%BE"><span class="toc-number">1.1.</span> <span class="toc-text"> 公开课</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%88%B6"><span class="toc-number">1.2.</span> <span class="toc-text"> 进制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AE%BD%E5%BA%A6"><span class="toc-number">1.3.</span> <span class="toc-text"> 数据宽度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.4.</span> <span class="toc-text"> 寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98"><span class="toc-number">1.5.</span> <span class="toc-text"> 内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E6%A0%88"><span class="toc-number">1.6.</span> <span class="toc-text"> 堆栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jcc"><span class="toc-number">1.7.</span> <span class="toc-text"> JCC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jcc-2"><span class="toc-number">1.8.</span> <span class="toc-text"> JCC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E6%A0%88%E5%9B%BE"><span class="toc-number">1.9.</span> <span class="toc-text"> 堆栈图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">1.10.</span> <span class="toc-text"> 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E8%AF%AD%E8%A8%80"><span class="toc-number">1.11.</span> <span class="toc-text"> C 语言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vc60"><span class="toc-number">1.11.1.</span> <span class="toc-text"> VC6.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.11.2.</span> <span class="toc-text"> 数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A0%81"><span class="toc-number">1.11.3.</span> <span class="toc-text"> 编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98"><span class="toc-number">1.11.4.</span> <span class="toc-text"> 程序内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.11.5.</span> <span class="toc-text"> if 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.11.6.</span> <span class="toc-text"> 循环语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-number">1.11.7.</span> <span class="toc-text"> 结构体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#typedef"><span class="toc-number">1.11.8.</span> <span class="toc-text"> typedef</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#switch"><span class="toc-number">1.11.9.</span> <span class="toc-text"> Switch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90"><span class="toc-number">1.11.10.</span> <span class="toc-text"> 循环对比分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88"><span class="toc-number">1.11.11.</span> <span class="toc-text"> 指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="toc-number">1.11.12.</span> <span class="toc-text"> 位运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#define"><span class="toc-number">1.11.13.</span> <span class="toc-text"> define</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#malloc"><span class="toc-number">1.11.14.</span> <span class="toc-text"> malloc</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pe"><span class="toc-number">1.12.</span> <span class="toc-text"> PE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%82%E8%A1%A8"><span class="toc-number">1.12.1.</span> <span class="toc-text"> 节表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93"><span class="toc-number">1.12.2.</span> <span class="toc-text"> 静态链接库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93"><span class="toc-number">1.12.3.</span> <span class="toc-text"> 动态链接库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E8%A1%A8"><span class="toc-number">1.12.4.</span> <span class="toc-text"> 导出表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E4%BD%8D%E8%A1%A8"><span class="toc-number">1.12.5.</span> <span class="toc-text"> 重定位表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E5%AF%BC%E5%87%BA%E8%A1%A8"><span class="toc-number">1.12.6.</span> <span class="toc-text"> 移动导出表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E8%A1%A8"><span class="toc-number">1.12.7.</span> <span class="toc-text"> 导入表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E5%AF%BC%E5%85%A5%E8%A1%A8"><span class="toc-number">1.12.8.</span> <span class="toc-text"> 绑定导入表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c"><span class="toc-number">1.13.</span> <span class="toc-text"> C++</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2022/11/01/%E6%B1%87%E7%BC%96/" rel="bookmark" title="汇编">汇编</a></li><li><a href="/2022/11/11/reverse/" rel="bookmark" title="逆向">逆向</a></li><li class="active"><a href="/2023/01/03/%E6%BB%B4%E6%B0%B4reverse/" rel="bookmark" title="水滴rev">水滴rev</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -712,6 +722,18 @@ cmp eax, dword ptr [ebp+0Ch]</p>
       <a href="/archives/">
         <span class="count">24</span>
         <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">4</span>
+        <span class="name">tags</span>
       </a>
     </div>
 </nav>
@@ -762,42 +784,27 @@ cmp eax, dword ptr [ebp+0Ch]</p>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
 </div>
 
-    <span><a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" title="秋招总结">秋招总结</a></span>
+    <span><a href="/2022/11/01/%E6%B1%87%E7%BC%96/" title="汇编">汇编</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
 </div>
 
-    <span><a href="/2023/01/20/VXLAN/" title="VXLAN">VXLAN</a></span>
+    <span><a href="/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" title="秋招面试题">秋招面试题</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/01/03/%E6%BB%B4%E6%B0%B4reverse/" title="水滴rev">水滴rev</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" title="JWT">JWT</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
     <span><a href="/2022/05/27/CSRF/" title="CSRF">CSRF</a></span>
@@ -807,9 +814,10 @@ cmp eax, dword ptr [ebp+0Ch]</p>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
 </div>
 
-    <span><a href="/2022/11/11/reverse/" title="逆向">逆向</a></span>
+    <span><a href="/2023/01/03/%E6%BB%B4%E6%B0%B4reverse/" title="水滴rev">水滴rev</a></span>
   </li>
 
       
@@ -825,9 +833,20 @@ cmp eax, dword ptr [ebp+0Ch]</p>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
 </div>
 
-    <span><a href="/2022/06/27/SSRF/" title="SSRF">SSRF</a></span>
+    <span><a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" title="秋招总结">秋招总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
   </li>
 
       
@@ -836,16 +855,27 @@ cmp eax, dword ptr [ebp+0Ch]</p>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/10/30/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
+    <span><a href="/2023/01/20/VXLAN/" title="VXLAN">VXLAN</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
 </div>
 
-    <span><a href="/2023/02/21/https%E5%8E%9F%E7%90%86/" title="https+TLS">https+TLS</a></span>
+    <span><a href="/2022/12/25/%E5%86%85%E7%BD%91/" title="内网渗透">内网渗透</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/08/16/Unserialize/" title="unserialize">unserialize</a></span>
   </li>
 
   </ul>
