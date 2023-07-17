@@ -100,12 +100,12 @@ Yume Shoka = Hexo</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyvx1d4j20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipetlbztpj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipewf5l51j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicmnywqgpj20zk0m8dwx.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
         </ul>
       </div>
     </header>
@@ -593,6 +593,25 @@ Number）值被设置为 Client 的 SN+1；SYN+ACK 帧的 SYN 标志位被设置
 <p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/v2-9ceac05b4042f2b55deee28981ed803b_720w.webp" alt="img"></p>
 <p>发送端收到了三次同样的 ACK=30 的确认报文，于是就会触发快速重发机制，通过 SACK 信息发现只有 <code>30~39</code>  这段数据丢失，于是重发时就只选择了这个 <code>30~39</code>  的 TCP 报文段进行重发。</p>
 </blockquote>
+<h2 id="ack"><a class="markdownIt-Anchor" href="#ack">#</a> ACK</h2>
+<h3 id="dup-ack"><a class="markdownIt-Anchor" href="#dup-ack">#</a> dup ack</h3>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230717135315667.png" alt="image-20230717135315667"></p>
+<p>[TCP dup ack XXX#X] 表示第几次重新请求某一个包，</p>
+<p>XXX 表示第几个包（不是 Seq），X 表示第几次请求。</p>
+<p><strong>丢包</strong>或者<strong>乱序</strong>的情况下，会出现该标志。</p>
+<p>server 收到了 3 和 8 号包，但是没有收到中间的 4/5/6/7，那么 server 就会 ack 3，如果 client 还是继续发 8/9 号包，那么 server 会继续发 dup ack 3#1 ; dup ack 3#2 来向客户端说明只收到了 3 号包，不要着急发后面的大包，把 4/5/6/7 给我发过来</p>
+<h3 id="keep-alive-ack"><a class="markdownIt-Anchor" href="#keep-alive-ack">#</a> keep-alive ack</h3>
+<p>在 TCP 中有一个 Keep-alive 的机制可以检测死连接，原理很简单，TCP 会在空闲了一定时间后发送数据给对方：</p>
+<p>1. 如果主机可达，对方就会响应 ACK 应答，就认为是存活的。</p>
+<p>2. 如果可达，但应用程序退出，对方就发 RST 应答，发送 TCP 撤消连接。</p>
+<p>3. 如果可达，但应用程序崩溃，对方就发 FIN 消息。</p>
+<p>4. 如果对方主机不响应 ack, rst，继续发送直到超时，就撤消连接。这个时间就是默认的二个小时。</p>
+<h3 id="tcp-retransmission"><a class="markdownIt-Anchor" href="#tcp-retransmission">#</a> tcp retransmission</h3>
+<p>超时重传，如果一个包的丢了，又<strong>没有后续包</strong>可以在接收方触发 [Dup Ack]，或者 **[Dup Ack] 也丢失 ** 的情况下，TCP 会触发超时重传机制。</p>
+<h3 id="tcp-spurious-retransmission"><a class="markdownIt-Anchor" href="#tcp-spurious-retransmission">#</a> tcp spurious retransmission</h3>
+<h3 id="tcp-fast-retransmission"><a class="markdownIt-Anchor" href="#tcp-fast-retransmission">#</a> tcp fast retransmission</h3>
+<p>一般快速重传算法在收到<strong>三次冗余的 Ack</strong>，即三次 [TCP dup ack XXX#X] 后，<strong>发送端</strong>进行快速重传。<br>
+为什么是三次呢？因为<strong>两次 duplicated ACK</strong> 肯定是<strong>乱序</strong>造成的，<strong>丢包</strong>肯定会造成<strong>三次 duplicated ACK</strong>。</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vY3JhenltYWtlcmNpcmNsZS9wLzE2NTEyMDE1Lmh0bWwjYXV0b2lkLWgyLTAtMC0w">TCP 半连接队列和全连接队列（史上最全） - 疯狂创客圈 - 博客园 (cnblogs.com)</span></p>
 <p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vY3JhenltYWtlcmNpcmNsZS9wLzE0NDk5MjExLmh0bWw=">TCP/IP 协议 （图解 + 秒懂 + 史上最全） - 疯狂创客圈 - 博客园 (cnblogs.com)</span></p>
 <p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vamluZ3poaXNoZW4vcC81Mzk5MDQ4Lmh0bWw=">MSS 与 MTU 的关系 - 静之深 - 博客园 (cnblogs.com)</span></p>
@@ -606,6 +625,9 @@ Number）值被设置为 Client 的 SN+1；SYN+ACK 帧的 SYN 标志位被设置
 <p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V0aGVyaWNfc291bC9hcnRpY2xlL2RldGFpbHMvMTI2Nzg2NTMx">(63 条消息) IP 报文的结构 - CSDN 博客</span></p>
 <p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDA4MTM4NC9hcnRpY2xlL2RldGFpbHMvMTI2NjExMzQ3">(63 条消息) TCP/IP 协议专栏 —— 分片报文详解 —— 网络入门和工程维护必看_牛牛来了的博客 - CSDN 博客</span></p>
 <p><span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8xNzIxODAw">linux ss 命令详解 - 腾讯云开发者社区 - 腾讯云 (tencent.com)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3luY2h5b25nL2FydGljbGUvZGV0YWlscy8xMDkxMTAwMjg=">(95 条消息) TCP 报文（ tcp dup ack 、TCP Retransmission）_ynchyong 的博客 - CSDN 博客</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzE1NDM3NjI5L2FydGljbGUvZGV0YWlscy8xMTY1NjU2NzM=">(95 条消息) TCP DUP ACK 抓包分析_造夢先森的博客 - CSDN 博客</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82MjY5NjA1ODk=">（TCP keepalive）心跳包机制设计详解 - 知乎 (zhihu.com)</span></p>
 
   </div>
 
@@ -617,7 +639,7 @@ Number）值被设置为 Client 的 SN+1；SYN+ACK 帧的 SYN 标志位被设置
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2023-04-14 18:27:48" itemprop="dateModified" datetime="2023-04-14T18:27:48+08:00">2023-04-14</time>
+    <time title="Modified: 2023-07-17 14:17:58" itemprop="dateModified" datetime="2023-07-17T14:17:58+08:00">2023-07-17</time>
   </span>
 </div>
 
@@ -672,7 +694,7 @@ Number）值被设置为 Client 的 SN+1；SYN+ACK 帧的 SYN 标志位被设置
     <div class="item left">
       
 
-  <a href="/2023/04/05/Docker/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipex2cdtbj20zk0m8x6p.jpg" title="docker">
+  <a href="/2023/04/05/Docker/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevarprfj20zk0m8npd.jpg" title="docker">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>docker</h3>
@@ -682,7 +704,7 @@ Number）值被设置为 Client 的 SN+1；SYN+ACK 帧的 SYN 标志位被设置
     <div class="item right">
       
 
-  <a href="/2023/04/15/Nginx/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewkhf1zj20zk0m81kx.jpg" title="Nginx">
+  <a href="/2023/04/15/Nginx/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciszlczyj20zk0m816d.jpg" title="Nginx">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Nginx</h3>
@@ -704,7 +726,7 @@ Number）值被设置为 Client 的 SN+1；SYN+ACK 帧的 SYN 标志位被设置
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#tcpip"><span class="toc-number">1.</span> <span class="toc-text"> TCP&#x2F;IP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#tcp-%E5%8D%8F%E8%AE%AE%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text"> TCP 协议报文格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcp-%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text"> TCP 可靠性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcp-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">1.3.</span> <span class="toc-text"> TCP 三次握手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcp%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="toc-number">1.4.</span> <span class="toc-text"> TCP 四次挥手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%91%E6%BA%A2%E8%A1%80%E7%8E%AF%E8%8A%82"><span class="toc-number">1.5.</span> <span class="toc-text"> 脑溢血环节</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#backlog"><span class="toc-number">1.6.</span> <span class="toc-text"> backlog</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97"><span class="toc-number">1.6.1.</span> <span class="toc-text"> TCP 半连接队列和全连接队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%98%E5%9C%A8%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 为什么要存在半连接队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E9%98%9F%E5%88%97%E6%BA%A2%E5%87%BA"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 全队列溢出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1tcp-syn%E6%94%BB%E5%87%BB"><span class="toc-number">1.7.</span> <span class="toc-text"> 防御 TCP syn 攻击</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84"><span class="toc-number">1.8.</span> <span class="toc-text"> UDP 报文结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%AA%E9%A6%96%E9%83%A8"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 伪首部</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp-%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.9.</span> <span class="toc-text"> UDP 适用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp-flood"><span class="toc-number">1.10.</span> <span class="toc-text"> UDP flood</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp%E5%92%8Ctcp%E5%8C%BA%E5%88%AB"><span class="toc-number">1.11.</span> <span class="toc-text"> UDP 和 TCP 区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip-%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84"><span class="toc-number">1.12.</span> <span class="toc-text"> IP 报文结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%89%87"><span class="toc-number">1.13.</span> <span class="toc-text"> 分片</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mss"><span class="toc-number">1.13.1.</span> <span class="toc-text"> MSS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B2%98%E5%8C%85%E5%92%8C%E5%8D%8A%E5%8C%85"><span class="toc-number">1.14.</span> <span class="toc-text"> 粘包和半包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-number">1.14.1.</span> <span class="toc-text"> 滑动窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%8F%98%E5%8C%96"><span class="toc-number">1.14.2.</span> <span class="toc-text"> 窗口变化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nagle%E7%AE%97%E6%B3%95"><span class="toc-number">1.14.3.</span> <span class="toc-text"> Nagle 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82%E7%9A%84%E6%8E%A5%E6%94%B6%E7%BC%93%E5%86%B2%E5%8C%BA%E5%92%8C%E5%8F%91%E9%80%81%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-number">1.14.4.</span> <span class="toc-text"> 应用层的接收缓冲区和发送缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A7%E7%94%9F%E5%8E%9F%E5%9B%A0"><span class="toc-number">1.14.5.</span> <span class="toc-text"> 产生原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">1.14.6.</span> <span class="toc-text"> 解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="toc-number">1.15.</span> <span class="toc-text"> 拥塞控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B6%85%E6%97%B6%E9%87%8D%E4%BC%A0"><span class="toc-number">1.16.</span> <span class="toc-text"> 超时重传</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#tcpip"><span class="toc-number">1.</span> <span class="toc-text"> TCP&#x2F;IP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#tcp-%E5%8D%8F%E8%AE%AE%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text"> TCP 协议报文格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcp-%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text"> TCP 可靠性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcp-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">1.3.</span> <span class="toc-text"> TCP 三次握手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcp%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="toc-number">1.4.</span> <span class="toc-text"> TCP 四次挥手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%91%E6%BA%A2%E8%A1%80%E7%8E%AF%E8%8A%82"><span class="toc-number">1.5.</span> <span class="toc-text"> 脑溢血环节</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#backlog"><span class="toc-number">1.6.</span> <span class="toc-text"> backlog</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97%E5%92%8C%E5%85%A8%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97"><span class="toc-number">1.6.1.</span> <span class="toc-text"> TCP 半连接队列和全连接队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%98%E5%9C%A8%E5%8D%8A%E8%BF%9E%E6%8E%A5%E9%98%9F%E5%88%97"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 为什么要存在半连接队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E9%98%9F%E5%88%97%E6%BA%A2%E5%87%BA"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 全队列溢出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1tcp-syn%E6%94%BB%E5%87%BB"><span class="toc-number">1.7.</span> <span class="toc-text"> 防御 TCP syn 攻击</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84"><span class="toc-number">1.8.</span> <span class="toc-text"> UDP 报文结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%AA%E9%A6%96%E9%83%A8"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 伪首部</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp-%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.9.</span> <span class="toc-text"> UDP 适用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp-flood"><span class="toc-number">1.10.</span> <span class="toc-text"> UDP flood</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#udp%E5%92%8Ctcp%E5%8C%BA%E5%88%AB"><span class="toc-number">1.11.</span> <span class="toc-text"> UDP 和 TCP 区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ip-%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84"><span class="toc-number">1.12.</span> <span class="toc-text"> IP 报文结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%89%87"><span class="toc-number">1.13.</span> <span class="toc-text"> 分片</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mss"><span class="toc-number">1.13.1.</span> <span class="toc-text"> MSS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B2%98%E5%8C%85%E5%92%8C%E5%8D%8A%E5%8C%85"><span class="toc-number">1.14.</span> <span class="toc-text"> 粘包和半包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-number">1.14.1.</span> <span class="toc-text"> 滑动窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%8F%98%E5%8C%96"><span class="toc-number">1.14.2.</span> <span class="toc-text"> 窗口变化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nagle%E7%AE%97%E6%B3%95"><span class="toc-number">1.14.3.</span> <span class="toc-text"> Nagle 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82%E7%9A%84%E6%8E%A5%E6%94%B6%E7%BC%93%E5%86%B2%E5%8C%BA%E5%92%8C%E5%8F%91%E9%80%81%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-number">1.14.4.</span> <span class="toc-text"> 应用层的接收缓冲区和发送缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A7%E7%94%9F%E5%8E%9F%E5%9B%A0"><span class="toc-number">1.14.5.</span> <span class="toc-text"> 产生原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">1.14.6.</span> <span class="toc-text"> 解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="toc-number">1.15.</span> <span class="toc-text"> 拥塞控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B6%85%E6%97%B6%E9%87%8D%E4%BC%A0"><span class="toc-number">1.16.</span> <span class="toc-text"> 超时重传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ack"><span class="toc-number">1.17.</span> <span class="toc-text"> ACK</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dup-ack"><span class="toc-number">1.17.1.</span> <span class="toc-text"> dup ack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#keep-alive-ack"><span class="toc-number">1.17.2.</span> <span class="toc-text"> keep-alive ack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp-retransmission"><span class="toc-number">1.17.3.</span> <span class="toc-text"> tcp retransmission</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp-spurious-retransmission"><span class="toc-number">1.17.4.</span> <span class="toc-text"> tcp spurious retransmission</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp-fast-retransmission"><span class="toc-number">1.17.5.</span> <span class="toc-text"> tcp fast retransmission</span></a></li></ol></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
       </div>
@@ -719,7 +741,7 @@ Number）值被设置为 Client 的 SN+1；SYN+ACK 帧的 SYN 标志位被设置
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">31</span>
+        <span class="count">32</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -783,10 +805,10 @@ Number）值被设置为 Client 的 SN+1；SYN+ACK 帧的 SYN 标志位被设置
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/12/25/%E5%86%85%E7%BD%91/" title="内网渗透">内网渗透</a></span>
+    <span><a href="/2022/12/27/SSTI/" title="SSTI">SSTI</a></span>
   </li>
 
       
@@ -795,7 +817,44 @@ Number）值被设置为 Client 的 SN+1；SYN+ACK 帧的 SYN 标志位被设置
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/01/20/VXLAN/" title="VXLAN">VXLAN</a></span>
+    <span><a href="/2023/04/03/iptables2/" title="iptables">iptables</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/02/21/https%E5%8E%9F%E7%90%86/" title="https+TLS">https+TLS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" title="SQL injection">SQL injection</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/30/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/07/15/nginx%E6%BC%8F%E6%B4%9E/" title="Nginx漏洞">Nginx漏洞</a></span>
   </li>
 
       
@@ -812,30 +871,9 @@ Number）值被设置为 Client 的 SN+1；SYN+ACK 帧的 SYN 标志位被设置
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
 </div>
 
-    <span><a href="/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" title="秋招面试题">秋招面试题</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
-</div>
-
-    <span><a href="/2022/05/27/emergency%20response/" title="应急响应">应急响应</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" title="JWT">JWT</a></span>
+    <span><a href="/2023/04/15/Nginx/" title="Nginx">Nginx</a></span>
   </li>
 
       
@@ -844,27 +882,7 @@ Number）值被设置为 Client 的 SN+1；SYN+ACK 帧的 SYN 标志位被设置
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/04/03/iptables2/" title="iptables">iptables</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/06/27/SSRF/" title="SSRF">SSRF</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
-</div>
-
-    <span><a href="/2022/11/01/%E6%B1%87%E7%BC%96/" title="汇编">汇编</a></span>
+    <span><a href="/2023/06/02/k8s%E9%AB%98%E7%BA%A7/" title="k8s高级">k8s高级</a></span>
   </li>
 
       
@@ -873,7 +891,7 @@ Number）值被设置为 Client 的 SN+1；SYN+ACK 帧的 SYN 标志位被设置
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/04/07/TCPIP_new/" title="TCP&#x2F;IP">TCP/IP</a></span>
+    <span><a href="/2023/01/17/Segment%20Routing/" title="Segment Routing">Segment Routing</a></span>
   </li>
 
   </ul>
