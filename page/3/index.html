@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/1708e15cf2398f98ebe5f305d9d6074a.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/08e73cd8998a540ab698836447eeea91.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/4de3e9fa9eaa48a12935da513097cc96.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/666b3077b407f3c0ce9c10c00b861abe.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/d757e4c9c546cd7dba16ee5e23dc2d9d.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/2b0a8c81d91579602eee343aff82c4c9.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/a1371e98178f2c3ca0e479a8df77c486.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/31105e606c74614c7f8f7b1d08e1619a.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/5651daf17bf5de77514e658264d7cccc.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/540c862ad26922795ab222fbcb926ef9.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/c370ed4ee6c8ac92941a49e11209fc78.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/0a6be1d1fa7827fc28504c63a5a6d653.jpg"></li>
         </ul>
       </div>
     </header>
@@ -119,7 +119,119 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/27/CDN/" itemprop="url" title="CDN&amp;DNS"><img data-src="https://img.timelessq.com/images/2022/07/26/1e0e51b2eb4c4caf1702ce9c575fbb4d.jpg"></a>
+    <a href="/2022/12/28/mysql/" itemprop="url" title="Mysql"><img data-src="https://img.timelessq.com/images/2022/07/26/7b6444f4b5464a4670e99b60aca4dbbf.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2022-12-28 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2022-12-28T13:38:45+08:00">2022-12-28</time>
+  </span>
+</div>
+
+    <h3><a href="/2022/12/28/mysql/" itemprop="url" title="Mysql">Mysql</a></h3>
+    <div class="excerpt">
+        # MySQL
+公钥加密，私钥解密→加密
+私钥加密，公钥解密→签名
+mysql 常见错误
+
+1044：当前用户没有访问数据库的权限
+1045 密码错误
+1065 无效的 SQL 语句，SQL 语句为空
+1180 提交事务失败
+1181 回滚事务失败
+2002 数据库没有启动或者是端口被防火墙禁止
+2003 错误不开放外链
+
+innodb 行锁 &amp;gt;5.5
+MyISAM 表锁
+utf8mb4 四子节
+utf8 三子节 可能导致截断产生 xss
+模糊匹配变量名
+1show variables like “%character%”
+本地变量只在当前窗口生效
+1set session...
+    </div>
+    <a href="/2022/12/28/mysql/" itemprop="url" title="Mysql" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2022/12/27/SSTI/" itemprop="url" title="SSTI"><img data-src="https://img.timelessq.com/images/2022/07/26/7be8b3a111f54a504dd1d9f7e4099e46.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2022-12-27 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2022-12-27T13:38:45+08:00">2022-12-27</time>
+  </span>
+</div>
+
+    <h3><a href="/2022/12/27/SSTI/" itemprop="url" title="SSTI">SSTI</a></h3>
+    <div class="excerpt">
+        # SSTI
+SSTI 就是服务器端模板注入（Server-Side Template Injection）
+SSTI 是 CTF 的常客，在 PHP，java，python，甚至 go 中都存在 ssti，为了不再做爆零小笨蛋，本文准备结合 ctf+cms 深入了解一下 ssti
+# 模板引擎
+模板引擎（这里特指用于 Web 开发的模板引擎）是为了使用户界面与业务数据（内容）分离而产生的，它可以生成特定格式的文档，利用模板引擎来生成前端的 html 代码，模板引擎会提供一套生成 html 代码的程序，然后只需要获取用户的数据，然后放到渲染函数里，然后生成模板 + 用户数据的前端 html...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="url" title="web安全"><i class="ic i-flag"></i>web安全</a>
+      </span>
+    </div>
+    <a href="/2022/12/27/SSTI/" itemprop="url" title="SSTI" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2022/12/25/%E5%86%85%E7%BD%91/" itemprop="url" title="内网渗透"><img data-src="https://img.timelessq.com/images/2022/07/26/c998c9d93c62dc926bb9a011c9a1780a.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2022-12-25 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2022-12-25T13:38:45+08:00">2022-12-25</time>
+  </span>
+</div>
+
+    <h3><a href="/2022/12/25/%E5%86%85%E7%BD%91/" itemprop="url" title="内网渗透">内网渗透</a></h3>
+    <div class="excerpt">
+        # 内网
+域基础知识，信息收集，密码抓取，内网横向，域控安全，跨域攻击
+# 域基础知识
+# 活动目录
+活动目录 (Active Directory,AD) 是指域环境中提供目录服务的组件
+目录用于存储有关网络对象 (例如用户、组、计算机、共享资源、打印机和联系人等) 的信息。目录服务是指帮助用户快速、准确地从目录中找到其所需要的信息的服务。活动目录实现了 目录服务，为企业提供了网络环境的集中式管理机制
+活动目录的逻辑结构包括前面讲过的组织单元 (OU)、域、域树、域森林。域树内的所有域...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/%E5%86%85%E7%BD%91/" itemprop="url" title="内网"><i class="ic i-flag"></i>内网</a>
+      </span>
+    </div>
+    <a href="/2022/12/25/%E5%86%85%E7%BD%91/" itemprop="url" title="内网渗透" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2022/11/27/CDN/" itemprop="url" title="CDN&amp;DNS"><img data-src="https://img.timelessq.com/images/2022/07/26/515ee3ef8e5138cb721c6d28a9755a74.jpg"></a>
   </div>
   <div class="info">
     
@@ -154,7 +266,7 @@ CDN =...
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" itemprop="url" title="docker逃逸&amp;capabilities"><img data-src="https://img.timelessq.com/images/2022/07/26/4c481240fd5e6e7b076ca8fe50da6e52.jpg"></a>
+    <a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" itemprop="url" title="docker逃逸&amp;capabilities"><img data-src="https://img.timelessq.com/images/2022/07/26/15ab06b7fe711067fca78ee15eb32391.jpg"></a>
   </div>
   <div class="info">
     
@@ -191,7 +303,7 @@ change root directory (更改 root 目录)。在 linux 系统中，系统默认�
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" itemprop="url" title="JWT"><img data-src="https://img.timelessq.com/images/2022/07/26/08e73cd8998a540ab698836447eeea91.jpg"></a>
+    <a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" itemprop="url" title="JWT"><img data-src="https://img.timelessq.com/images/2022/07/26/3cff3fc776e129c36936b1cf83a34b68.jpg"></a>
   </div>
   <div class="info">
     
@@ -224,7 +336,7 @@ JWT 自身包含了身份验证所需要的所有信息，因此，我们的服�
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/11/reverse/" itemprop="url" title="逆向"><img data-src="https://img.timelessq.com/images/2022/07/26/08909482bc207d17564c06ef2496e12f.jpg"></a>
+    <a href="/2022/11/11/reverse/" itemprop="url" title="逆向"><img data-src="https://img.timelessq.com/images/2022/07/26/a8d0ac76b87f7593653e29559d61b32d.jpg"></a>
   </div>
   <div class="info">
     
@@ -276,7 +388,7 @@ VC6.0 SP6 IDE
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/01/%E6%B1%87%E7%BC%96/" itemprop="url" title="汇编"><img data-src="https://img.timelessq.com/images/2022/07/26/8bc89f9a0de13b6480bf8c2ace43f806.jpg"></a>
+    <a href="/2022/11/01/%E6%B1%87%E7%BC%96/" itemprop="url" title="汇编"><img data-src="https://img.timelessq.com/images/2022/07/26/9d41e0144387641f894a827002ea5c33.jpg"></a>
   </div>
   <div class="info">
     
@@ -318,7 +430,7 @@ AX,BX,CX,DX 为通用结存器，最大可以存储 2^16-1
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" title="秋招面试题"><img data-src="https://img.timelessq.com/images/2022/07/26/061b15e3e38d1bcb47c7b19d49034393.jpg"></a>
+    <a href="/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" title="秋招面试题"><img data-src="https://img.timelessq.com/images/2022/07/26/e4b3ac43a8014fcfa62690bfbb906743.jpg"></a>
   </div>
   <div class="info">
     
@@ -368,7 +480,7 @@ AX,BX,CX,DX 为通用结存器，最大可以存储 2^16-1
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" itemprop="url" title="秋招总结"><img data-src="https://img.timelessq.com/images/2022/07/26/5651daf17bf5de77514e658264d7cccc.jpg"></a>
+    <a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" itemprop="url" title="秋招总结"><img data-src="https://img.timelessq.com/images/2022/07/26/ebaf5d5dbf78e8c31831feb203aa81fb.jpg"></a>
   </div>
   <div class="info">
     
@@ -397,113 +509,6 @@ AX,BX,CX,DX 为通用结存器，最大可以存储 2^16-1
       </span>
     </div>
     <a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" itemprop="url" title="秋招总结" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2022/08/16/Unserialize/" itemprop="url" title="unserialize"><img data-src="https://img.timelessq.com/images/2022/07/26/c50475797549951523025a46bab169bb.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2022-08-16 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2022-08-16T13:38:45+08:00">2022-08-16</time>
-  </span>
-</div>
-
-    <h3><a href="/2022/08/16/Unserialize/" itemprop="url" title="unserialize">unserialize</a></h3>
-    <div class="excerpt">
-        # Unserialize
-# 1.php
-# 类与对象
-类是定义一系列属性和操作的模板，而对象，就是把属性进行实例化，完事交给类里面的方法，进行处理。
-12345678910111213&amp;lt;?phpclass people&amp;#123; //定义类属性（类似变量）,public 代表可见性（公有） public $name = &amp;#x27;joker&amp;#x27;; //定义类方法（类似函数） public function smile()&amp;#123; echo $this-&amp;gt;name.&amp;quot; is...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="url" title="web安全"><i class="ic i-flag"></i>web安全</a>
-      </span>
-    </div>
-    <a href="/2022/08/16/Unserialize/" itemprop="url" title="unserialize" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2022/06/27/SSRF/" itemprop="url" title="SSRF"><img data-src="https://img.timelessq.com/images/2022/07/26/b2eeb9bbef8e10749f97b0182647a32c.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2022-06-27 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2022-06-27T13:38:45+08:00">2022-06-27</time>
-  </span>
-</div>
-
-    <h3><a href="/2022/06/27/SSRF/" itemprop="url" title="SSRF">SSRF</a></h3>
-    <div class="excerpt">
-        # SSRF
-# 前置知识
-# 1.dict 协议
-
-dict 协议是一个在线网络字典协议，这个协议是用来架设一个字典服务的。可以看到用这个协议架设的服务可以用 telnet 来登陆，说明这个协议应该是基于 tcp 协议开发的。
-
-1telnet dict.org 2628
-
-我们输入 define [字典名] [单词] 这样的命令来获取一个单词的解释
-比如说 define english hello
-服务器就会返回对应的单词解释
-对弈一些 tcp 协议，用 dict 方法可以打开，在有 waf 的情况下可以获取一些开放的服务信息
-1234567891011&amp;lt;?php//...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="url" title="web安全"><i class="ic i-flag"></i>web安全</a>
-      </span>
-    </div>
-    <a href="/2022/06/27/SSRF/" itemprop="url" title="SSRF" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2022/05/27/CSRF/" itemprop="url" title="CSRF"><img data-src="https://img.timelessq.com/images/2022/07/26/132a88e4e5cfe7e3847ed93deae688d2.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2022-05-27 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2022-05-27T13:38:45+08:00">2022-05-27</time>
-  </span>
-</div>
-
-    <h3><a href="/2022/05/27/CSRF/" itemprop="url" title="CSRF">CSRF</a></h3>
-    <div class="excerpt">
-        # CSRF
-引用自 pikachu 的解释：
-
-CSRF (跨站请求伪造) 概述
-Cross-site request forgery 简称为 “CSRF”，在 CSRF 的攻击场景中攻击者会伪造一个请求（这个请求一般是一个链接），然后欺骗目标用户进行点击，用户一旦点击了这个请求，整个攻击就完成了。所以 CSRF 攻击也成为 &amp;quot;one click&amp;quot; 攻击。 很多人搞不清楚 CSRF 的概念，甚至有时候会将其和 XSS...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="url" title="web安全"><i class="ic i-flag"></i>web安全</a>
-      </span>
-    </div>
-    <a href="/2022/05/27/CSRF/" itemprop="url" title="CSRF" class="btn">more...</a>
   </div>
 </article>
 
@@ -542,7 +547,7 @@ Cross-site request forgery 简称为 “CSRF”，在 CSRF 的攻击场景中攻
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">35</span>
+        <span class="count">38</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -605,10 +610,10 @@ Cross-site request forgery 简称为 “CSRF”，在 CSRF 的攻击场景中攻
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+<a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
 </div>
 
-    <span><a href="/2022/11/01/%E6%B1%87%E7%BC%96/" title="汇编">汇编</a></span>
+    <span><a href="/2022/12/25/%E5%86%85%E7%BD%91/" title="内网渗透">内网渗透</a></span>
   </li>
 
       
@@ -617,7 +622,27 @@ Cross-site request forgery 简称为 “CSRF”，在 CSRF 的攻击场景中攻
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/12/28/mysql/" title="Mysql">Mysql</a></span>
+    <span><a href="/2023/05/20/Kubernetes/" title="Kubernetes">Kubernetes</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/06/27/SSRF/" title="SSRF">SSRF</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
+</div>
+
+    <span><a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" title="秋招总结">秋招总结</a></span>
   </li>
 
       
@@ -637,7 +662,7 @@ Cross-site request forgery 简称为 “CSRF”，在 CSRF 的攻击场景中攻
 <a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/12/31/webshell/" title="webshell">webshell</a></span>
+    <span><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" title="SQL injection">SQL injection</a></span>
   </li>
 
       
@@ -646,36 +671,7 @@ Cross-site request forgery 简称为 “CSRF”，在 CSRF 的攻击场景中攻
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/08/02/Capabilities/" title="docker底层原理+capability">docker底层原理+capability</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/08/15/%E7%A0%B4%E8%A7%A3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B9%8B%E8%AE%A4%E8%AF%86%E5%A3%B3%E4%B8%8E%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%89%B9%E5%BE%81/" title="破解基础知识之认识壳与程序的特征">破解基础知识之认识壳与程序的特征</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" title="docker逃逸&amp;capabilities">docker逃逸&capabilities</a></span>
+    <span><a href="/2023/06/02/k8s%E9%AB%98%E7%BA%A7/" title="k8s高级">k8s高级</a></span>
   </li>
 
       
@@ -694,7 +690,16 @@ Cross-site request forgery 简称为 “CSRF”，在 CSRF 的攻击场景中攻
 <a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/05/27/CSRF/" title="CSRF">CSRF</a></span>
+    <span><a href="/2022/05/17/include/" title="file include">file include</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/01/01/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
   </li>
 
   </ul>

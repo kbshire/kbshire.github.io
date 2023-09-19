@@ -1,0 +1,760 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2026/05/30/jenkins/">
+
+
+
+  <title>
+Jenkins |
+Yume Shoka = Hexo</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Jenkins
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2026-05-30 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-05-30T13:38:45+08:00">2026-05-30</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/662d37b8a580b466da309ec795b7ae55.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/5ec5e6a577b47f3d9b70654073f8b881.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/ade7d346ca6d48abc5474c3e1c02f68c.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/dcb8f9f223a5db821d797261469b6a17.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/06c037c72fad3d5b41a9bd40457b8744.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/515ee3ef8e5138cb721c6d28a9755a74.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2026/05/30/jenkins/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="jenkins"><a class="markdownIt-Anchor" href="#jenkins">#</a> jenkins</h1>
+<p><strong>注意，这篇需要结合 kubernetes 和一些其他的运维相关知识，不适合单独使用，仅作为 backup</strong></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9wYW4uYmFpZHUuY29tL3MvMXlIZDVmc0tRSVFxSXFYMEUxaTB5Nnc/cHdkPTE5MDMjbGlzdC9wYXRoPSUyRnNoYXJlbGluazMyMzI1MDk1MDAtNjEzNTM3ODY5NzE5MTQ4JTJGSmVua2lucyVFNiU5NSU5OSVFNyVBOCU4QiZhbXA7cGFyZW50UGF0aD0lMkZzaGFyZWxpbmszMjMyNTA5NTAwLTYxMzUzNzg2OTcxOTE0OA==">Jenkins 教程_免费高速下载 | 百度网盘 - 分享无限制 (baidu.com)</span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">gitlab</span><br><span class="line">http://192.168.13.11/</span><br><span class="line">root kbshire1</span><br><span class="line"></span><br><span class="line">jenkins </span><br><span class="line">http://192.168.13.12:8080/</span><br><span class="line">admin kbshire1</span><br><span class="line"></span><br><span class="line">tomcat </span><br><span class="line">http://192.168.13.13:8080/</span><br><span class="line"></span><br><span class="line">harbor</span><br><span class="line">https://192.168.13.14/</span><br><span class="line">admin Harbor12345</span><br><span class="line">Eric123456</span><br><span class="line"></span><br><span class="line">maven </span><br><span class="line">192.168.13.12</span><br><span class="line"></span><br><span class="line">sonarqube</span><br><span class="line">192.168.13.12:9000</span><br><span class="line">admin</span><br><span class="line">admin</span><br><span class="line">token: 8bf0de8a91bef59c1afd4c942935f8fbc1f9db1f</span><br><span class="line"></span><br><span class="line">mysql</span><br><span class="line">192.168.13.12:3306</span><br><span class="line">root</span><br><span class="line">123456</span><br><span class="line"></span><br><span class="line">k8s-jenkins</span><br><span class="line">http://192.168.13.15:32688/</span><br><span class="line">kbshire1</span><br><span class="line"></span><br><span class="line">(*)</span><br><span class="line">http://47.100.66.171:30889/asynchPeople/</span><br><span class="line">http://106.14.71.168:30888/admin/users/</span><br><span class="line">http://192.168.13.132:8080/job/</span><br></pre></td></tr></table></figure>
+<h2 id="前置概念"><a class="markdownIt-Anchor" href="#前置概念">#</a> 前置概念</h2>
+<h3 id="软件开发声明周期"><a class="markdownIt-Anchor" href="#软件开发声明周期">#</a> 软件开发声明周期</h3>
+<p>软件开发生命周期又叫做<strong> SDLC</strong>（Software Development Life Cycle），它是集合了计划、开发、测试和部署过程的集合。</p>
+<p>需求分析</p>
+<p>这是生命周期的第一阶段，根据项目需求，团队执行一个可行性计划的分析。项目需求可能是公司内部或者客户提出的。这阶段主要是对信息的收集，也有可能是对现有项目的改善和重新做一个新的项目。还要分析项目的预算多长，可以从哪方面受益及布局，这也是项目创建的目标。</p>
+<p>设计</p>
+<p>第二阶段就是设计阶段，系统架构和满意状态（就是要做成什么样子，有什么功能），和创建一个项目计划。计划可以使用图表，布局设计或者文者的方式呈现。</p>
+<p>实现</p>
+<p>第三阶段就是实现阶段，项目经理创建和分配工作给开者，开发者根据任务和在设计阶段定义的目标进行开发代码。依据项目的大小和复杂程度，可以需要数月或更长时间才能完成。</p>
+<p>测试</p>
+<p>测试人员进行代码测试 ，包括功能测试、代码测试、压力测试等。</p>
+<p>进化</p>
+<p>最后进阶段就是对产品不断的进化改进和维护阶段，根据用户的使用情况，可能需要对某功能进行修改，bug 修复，功能增加等。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230417181513388.png" alt="image-20230417181513388"></p>
+<h3 id="瀑布模型"><a class="markdownIt-Anchor" href="#瀑布模型">#</a> 瀑布模型</h3>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230417181556355.png" alt="image-20230417181556355"></p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230417181855245.png" alt="image-20230417181855245" style="zoom: 67%;" /> 
+<h3 id="敏捷开发"><a class="markdownIt-Anchor" href="#敏捷开发">#</a> 敏捷开发</h3>
+<p>敏捷开发 (Agile Development) 的核心是迭代开发 (lterative Development) 与增量开发 (IncrementalDevelopment)。</p>
+<p>虽然敏捷开发将软件开发分成多个迭代，但是也要求，每次迭代都是一个完整的软件开发周期，必须按照软件工程的方法论，进行正规的流程管理。</p>
+<p>早期交付</p>
+<p>降低风险</p>
+<h3 id="持续继承"><a class="markdownIt-Anchor" href="#持续继承">#</a> 持续继承</h3>
+<p>持续集成（ Continuous integration ， 简称 CI ）指的是，频繁地（一天多次）将代码集成到主干。</p>
+<p>提交</p>
+<p>流程的第一步，是开发者向代码仓库提交代码。所有后面的步骤都始于本地代码的一次提交（commit）</p>
+<p>测试（第一轮）</p>
+<p>代码仓库对 commit 操作配置了钩子（hook），只要提交代码或者合并进主干，就会跑自动化测试。</p>
+<p>构建</p>
+<p>通过第一轮测试，代码就可以合并进主干，就算可以交付了。交付后，就先进行构建（build），再进入第二轮测试。所谓构建，指的是将源码转换为可以运行的实际代码，比如安装依赖，配置各种资源（样式表、JS 脚本、图片）等等。</p>
+<p>测试（第二轮）</p>
+<p>构建完成，就要进行第二轮测试。如果第一轮已经涵盖了所有测试内容，第二轮可以省略，当然，这时构建步骤也要移到第一轮测试前面。</p>
+<p>部署</p>
+<p>过了第二轮测试，当前代码就是一个可以直接部署的版本（artifact）。将这个版本的所有文件打包（tar fifilename.tar * ）存档，发到生产服务器。</p>
+<p>回滚</p>
+<p>一旦当前版本发生问题，就要回滚到上一个版本的构建结果。最简单的做法就是修改一下符号链接，指向上一个版本的目录。</p>
+<h3 id="jenkins-2"><a class="markdownIt-Anchor" href="#jenkins-2">#</a> Jenkins</h3>
+<p>Jenkins 是一款流行的开源持续集成（Continuous Integration）工具，广泛用于项目开发，具有自动化构建、测试和部署等功能。官网： <span class="exturl" data-url="aHR0cDovL2plbmtpbnMtY2kub3JnLyVFMyU4MCU4Mg==">http://jenkins-ci.org/。</span></p>
+<p>Jenkins 的特征：</p>
+<p>开源的 Java 语言开发持续集成工具，支持持续集成，持续部署。易于安装部署配置：</p>
+<p>可通过 yum 安装，或下载 war 包以及通过 docker 容器等快速实现安装部署，可方便 web 界面配置管理。</p>
+<p>消息通知及测试报告：集成 RSS/E-mail 通过 RSS 发布构建结果或当构建完成时通过 e-mail 通知，生成 JUnit/TestNG 测试报告。</p>
+<p>分布式构建：支持 Jenkins 能够让多台计算机一起构建 / 测试。</p>
+<p>文件识别：Jenkins 能够跟踪哪次构建生成哪些 jar，哪次构建使用哪个版本的 jar 等。</p>
+<p>丰富的插件支持：支持扩展插件，你可以开发适合自己团队使用的工具，如 git，svn，maven，docker 等。</p>
+<h2 id="持续集成流程环境搭建"><a class="markdownIt-Anchor" href="#持续集成流程环境搭建">#</a> 持续集成流程 &amp; 环境搭建</h2>
+<p>1）首先，开发人员每天进行代码提交，提交到 Git 仓库</p>
+<p>2）然后，Jenkins 作为持续集成工具，使用 Git 工具到 Git 仓库拉取代码到集成服务器，再配合 JDK，Maven 等软件完成代码编译，代码测试与审查，测试，打包等工作，在这个过程中每一步出错，都重新再执行一次整个流程。</p>
+<p>3）最后，Jenkins 把生成的 jar 或 war 包分发到测试服务器或者生产服务器，测试人员或用户就可以访问应用。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>IP</th>
+<th>安装的软件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>代码托管服务器</td>
+<td>192.168.13.132</td>
+<td>Gitlab</td>
+</tr>
+<tr>
+<td>持续集成服务器</td>
+<td>192.168.13.155</td>
+<td>Jenkins，JDK，Maven，Git，SonarQube</td>
+</tr>
+<tr>
+<td>应用测试服务器</td>
+<td>192.168.13.166</td>
+<td>JDK，tomcat</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gitlab"><a class="markdownIt-Anchor" href="#gitlab">#</a> gitlab</h3>
+<p>GitLab 是一个用于仓库管理系统的开源项目，使用 Git 作为代码管理工具，并在此基础上搭建起来的 web 服务。</p>
+<ol>
+<li>安装相关依赖</li>
+</ol>
+<p>yum -y install policycoreutils openssh-server openssh-clients postfifix</p>
+<ol start="2">
+<li>启动 ssh 服务 &amp; 设置为开机启动</li>
+</ol>
+<p>systemctl enable sshd &amp;&amp; sudo systemctl start sshd</p>
+<ol start="3">
+<li>设置 postfifix 开机自启，并启动，postfifix 支持 gitlab 发信功能</li>
+</ol>
+<p>systemctl enable postfix &amp;&amp; systemctl start postfix</p>
+<ol start="4">
+<li>开放 ssh 以及 http 服务，然后重新加载防火墙列表</li>
+</ol>
+<p>fifirewall-cmd --add-service=ssh --permanent</p>
+<p>fifirewall-cmd --add-service=http --permanent</p>
+<p>fifirewall-cmd --reload</p>
+<ol start="5">
+<li>下载 gitlab 包，并且安装</li>
+</ol>
+<p>在线下载安装包：</p>
+<p>wget <span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuL2dpdGxhYi1jZS95dW0vZWw2L2dpdGxhYi1jZS0xMi40LjItY2UuMC5lbDYueDg2XzY0LnJwbQ==">https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el6/gitlab-ce-12.4.2-ce.0.el6.x86_64.rpm</span></p>
+<p>安装：</p>
+<p>rpm -i gitlab-ce-12.4.2-ce.0.el6.x86_64.rpm</p>
+<p>centos8 ： <span class="exturl" data-url="aHR0cHM6Ly9wYWNrYWdlcy5naXRsYWIuY29tL2dpdGxhYi9naXRsYWItY2UvcGFja2FnZXMvZWwvOC9naXRsYWItY2UtMTUuMTAuMy1jZS4wLmVsOC54ODZfNjQucnBt">el/8/gitlab-ce-15.10.3-ce.0.el8.x86_64.rpm - gitlab/gitlab-ce · packages.gitlab.com</span></p>
+<ol start="6">
+<li>修改 gitlab 配置</li>
+</ol>
+<p>vi /etc/gitlab/gitlab.rb</p>
+<p>修改 gitlab 访问地址和端口，默认为 80，我们改为 82</p>
+<p>external_url ‘<span class="exturl" data-url="aHR0cDovLzE5Mi4xNjguNjYuMTAwOjgy">http://192.168.66.100:82</span>’</p>
+<p>nginx[‘listen_port’] = 82</p>
+<ol start="7">
+<li>重载配置及启动 gitlab</li>
+</ol>
+<p>gitlab-ctl reconfigure</p>
+<p>gitlab-ctl restart</p>
+<ol start="8">
+<li>把端口添加到防火墙</li>
+</ol>
+<p>fifirewall-cmd --zone=public --add-port=82/tcp --permanent</p>
+<p>fifirewall-cmd --reload</p>
+<h3 id="jenkins-3"><a class="markdownIt-Anchor" href="#jenkins-3">#</a> jenkins</h3>
+<p>1）安装 JDK</p>
+<p>Jenkins 需要依赖 JDK，所以先安装 JDK1.8</p>
+<p><code>yum install java-1.8.0-openjdk* -y</code></p>
+<p><strong>新版 Jenkins 要求必须 java 为 11 或 17，使用 1.8 会导致 Jenkins 无法启动</strong></p>
+<p><em><em>yum intall java-11</em> - y</em>*</p>
+<p>安装目录为：/usr/lib/jvm</p>
+<p>2）获取 jenkins 安装包</p>
+<p>下载页面：<span class="exturl" data-url="aHR0cHM6Ly9qZW5raW5zLmlvL3poL2Rvd25sb2FkLw==">https://jenkins.io/zh/download/</span></p>
+<p>安装文件：jenkins-2.190.3-1.1.noarch.rpm</p>
+<p>3）把安装包上传到 192.168.66.101 服务器，进行安装</p>
+<p>rpm -ivh jenkins-2.190.3-1.1.noarch.rpm</p>
+<p>4）修改 Jenkins 配置</p>
+<p>vi /etc/syscofifig/jenkins</p>
+<p>修改内容如下：</p>
+<p>JENKINS_USER=“root”</p>
+<p>JENKINS_PORT=“8888”</p>
+<p>5）启动 Jenkins</p>
+<p>systemctl start jenkins</p>
+<p>6）打开浏览器访问</p>
+<p><span class="exturl" data-url="aHR0cDovLzE5Mi4xNjguNjYuMTAxOjg4ODg=">http://192.168.66.101:8888</span></p>
+<p>先跳过插件，之后换源之后再自行安装</p>
+<p>安装插件前先替换源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;s/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g&#x27; default.json &amp;&amp; sed -i &#x27;s/http:\/\/www.google.com/https:\/\/www.baidu.com/g&#x27; default.json</span><br></pre></td></tr></table></figure>
+<p>再选择 advanced，改成如下网址</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuL2plbmtpbnMvdXBkYXRlcy91cGRhdGUtY2VudGVyLmpzb24=">https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json</span></p>
+<p>重启</p>
+<p>[Restart Jenkins <span class="exturl" data-url="aHR0cDovLzE5Mi4xNjguMTMuMTMyOjgwODAvcmVzdGFydA==">Jenkins]</span></p>
+<p>如果 Jenkins 启动失败：</p>
+<p>[(68 条消息) <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p3anpvbmUvYXJ0aWNsZS9kZXRhaWxzLzEyNTE3MDgyMA==">Jenkins] Failed to start Jenkins Continuous Integration Server_码里法的博客 - CSDN 博客</span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/init.d</span><br><span class="line"></span><br><span class="line"># 启动</span><br><span class="line">./jenkins start</span><br><span class="line"># 停止</span><br><span class="line">./jenkins stop</span><br><span class="line"># 状态</span><br><span class="line">./jenkins status</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">openssl req -sha512 -new -subj &quot;/C=CN/ST=JS/L=WX/O=zwx/OU=jhmy/CN=192.168.13.14&quot; -key harbor.key -out harbor.csr</span><br></pre></td></tr></table></figure>
+<h3 id="用户权限管理"><a class="markdownIt-Anchor" href="#用户权限管理">#</a> 用户权限管理：</h3>
+<p>安装插件 Role-base auth straegy</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230421185352254.png" alt="image-20230421185352254"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230421185421344.png" alt="image-20230421185421344"></p>
+<p>进入 Mange roles，根据需求创建 roles，分配给角色</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230421185512385.png" alt="image-20230421185512385"></p>
+<p>baseRole：该角色为全局角色。这个角色需要绑定 Overall 下面的 Read 权限，是为了给所有用户绑定最基本的 Jenkins 访问权限。注意：如果不给后续用户绑定这个角色，会报错误：用户名 is missing the Overall/Read permission</p>
+<p>role1：该角色为项目角色。使用正则表达式绑定 &quot;itcast.*&quot;，意思是只能操作 itcast 开头的项目。</p>
+<p>role2：该角色也为项目角色。绑定 &quot;itheima.*&quot;，意思是只能操作 itheima 开头的项目。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jenkins</span><br><span class="line">用户名 - kbshire </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="凭证管理"><a class="markdownIt-Anchor" href="#凭证管理">#</a> 凭证管理</h3>
+<p>凭据可以用来存储需要密文保护的数据库密码、Gitlab 密码信息、Docker 私有仓库密码等，以便 Jenkins 可以和这些第三方的应用进行交互。</p>
+<p>安装插件 Credentials Binding</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230421185601535.png" alt="image-20230421185601535"></p>
+<p>一共有五种凭证</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230421185750965.png" alt="image-20230421185750965"></p>
+<p>Username with password：用户名和密码</p>
+<p>SSH Username with private key： 使用 SSH 用户和密钥</p>
+<p>Secret fifile：需要保密的文本文件，使用时 Jenkins 会将文件复制到一个临时目录中，再将文件路径设置到一个变量中，等构建结束后，所复制的 Secret fifile 就会被删除。</p>
+<p>Secret text：需要保存的一个加密的文本串，如钉钉机器人或 Github 的 api token</p>
+<p>Certifificate：通过上传证书文件的方式</p>
+<p>添加凭证</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230421194819714.png" alt="image-20230421194819714"></p>
+<p>在 project 选择 git，选择凭证拉取</p>
+<h3 id="安装maven"><a class="markdownIt-Anchor" href="#安装maven">#</a> 安装 maven</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">tar -xzf apache-maven-3.6.2-bin.tar.gz 解压</span><br><span class="line">mkdir -p /opt/maven 创建目录</span><br><span class="line">mv apache-maven-3.6.2/* /opt/maven 移动文件</span><br><span class="line"></span><br><span class="line">或者yum install maven</span><br><span class="line"></span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-11-openjdk/</span><br><span class="line">export MAVEN_HOME=/usr/share/maven</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Global Tool Confifiguration</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230423193611132.png" alt="image-20230423193611132"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230423193631789.png" alt="image-20230423193631789"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230423193939924.png" alt="image-20230423193939924"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mkdir /root/repo 创建本地仓库目录</span><br><span class="line">vi /opt/maven/conf/settings.xml</span><br><span class="line"></span><br><span class="line">本地仓库改为：/root/repo/</span><br><span class="line">添加阿里云私服地址：</span><br><span class="line"></span><br><span class="line">&lt;mirror&gt;</span><br><span class="line">    &lt;id&gt;aliyunmaven&lt;/id&gt;</span><br><span class="line">    &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;</span><br><span class="line">    &lt;name&gt;阿里云公共仓库&lt;/name&gt;</span><br><span class="line">    &lt;url&gt;https://maven.aliyun.com/repository/public&lt;/url&gt;</span><br><span class="line">&lt;/mirror&gt;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="部署tomcat"><a class="markdownIt-Anchor" href="#部署tomcat">#</a> 部署 tomcat</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/tomcat/conf/tomcat-users.xml</span><br><span class="line">&lt;role rolename=<span class="string">&quot;tomcat&quot;</span>/&gt;</span><br><span class="line">&lt;role rolename=<span class="string">&quot;role1&quot;</span>/&gt;</span><br><span class="line">&lt;role rolename=<span class="string">&quot;manager-script&quot;</span>/&gt;</span><br><span class="line">&lt;role rolename=<span class="string">&quot;manager-gui&quot;</span>/&gt;</span><br><span class="line">&lt;role rolename=<span class="string">&quot;manager-status&quot;</span>/&gt;</span><br><span class="line">&lt;role rolename=<span class="string">&quot;admin-gui&quot;</span>/&gt;</span><br><span class="line">&lt;role rolename=<span class="string">&quot;admin-script&quot;</span>/&gt;</span><br><span class="line">&lt;user username=<span class="string">&quot;tomcat&quot;</span> password=<span class="string">&quot;tomcat&quot;</span> roles=<span class="string">&quot;manager-gui,managerscript,tomcat,admin-gui,admin-script&quot;</span>/&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@tomcat apache-tomcat-10.1.7]<span class="comment"># cd webapps/manager/META-INF/</span></span><br><span class="line">[root@tomcat META-INF]<span class="comment"># vim context.xml </span></span><br><span class="line"></span><br><span class="line"> &lt;!--</span><br><span class="line">  &lt;Valve className=<span class="string">&quot;org.apache.catalina.valves.RemoteAddrValve&quot;</span></span><br><span class="line">         allow=<span class="string">&quot;127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1&quot;</span> /&gt;</span><br><span class="line">  --&gt;</span><br><span class="line"></span><br><span class="line">登录：</span><br><span class="line">http://192.168.13.13:8080/manager/html</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230427195133505.png" alt="image-20230427195133505"></p>
+<h2 id="jenkins构建maven项目"><a class="markdownIt-Anchor" href="#jenkins构建maven项目">#</a> Jenkins 构建 maven 项目</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Jenkins中自动构建项目的类型有很多，常用的有以下三种：</span><br><span class="line">自由风格软件项目（FreeStyle Project）</span><br><span class="line">Maven项目（Maven Project）</span><br><span class="line">流水线项目（Pipeline Project）</span><br><span class="line">每种类型的构建其实都可以完成一样的构建过程与结果，只是在操作方式、灵活度等方面有所区别，在</span><br><span class="line">实际开发中可以根据自己的需求和习惯来选择。（个人推荐使用流水线类型，因为灵活度非常高）</span><br></pre></td></tr></table></figure>
+<h3 id="free_style"><a class="markdownIt-Anchor" href="#free_style">#</a> free_style</h3>
+<p>[root@jenkins repo]# cd /var/lib/jenkins/workspace/</p>
+<p>Jenkins 默认只有 free_style 的项目</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230427201046503.png" alt="image-20230427201046503"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230427201111874.png" alt="image-20230427201111874"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230427201101832.png" alt="image-20230427201101832"></p>
+<h3 id="maven项目"><a class="markdownIt-Anchor" href="#maven项目">#</a> maven 项目</h3>
+<p>安装 Deploy to container 插件</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230427203149978.png" alt="image-20230427203149978"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230427203158112.png" alt="image-20230427203158112"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230427203216179.png" alt="image-20230427203216179"></p>
+<h3 id="流水线"><a class="markdownIt-Anchor" href="#流水线">#</a> 流水线</h3>
+<p>1）概念</p>
+<p>Pipeline，简单来说，就是一套运行在 Jenkins 上的工作流框架，将原来独立运行于单个或者多个节点的任务连接起来，实现单个任务难以完成的复杂流程编排和可视化的工作。</p>
+<p>2）使用 Pipeline 有以下好处（来自翻译自官方文档）：代码：Pipeline 以代码的形式实现，通常被检入源代码控制，使团队能够编辑，审查和迭代其传送流程。 持久：无论是计划内的还是计划外的服务器重启，Pipeline 都是可恢复的。 可停止：Pipeline 可接收交互式输入，以确定是否继续执行 Pipeline。 多功能：Pipeline 支持现实世界中复杂的持续交付要求。它支持 fork/join、循环执行，并行执行任务的功能。 可扩展：Pipeline 插件支持其 DSL 的自定义扩展 ，以及与其他插件集成的多个选项。</p>
+<p>3）如何创建 Jenkins Pipeline 呢？</p>
+<p>Pipeline 脚本是由 <strong>Groovy</strong> 语言实现的，但是我们没必要单独去学习 GroovyPipeline 支持两种语法：<strong>Declarative</strong> (声明式) 和 <strong>Scripted Pipeline</strong> (脚本式) 语法</p>
+<p>Pipeline 也有两种创建方法：可以直接在 Jenkins 的 Web UI 界面中输入脚本；也可以通过创建一个 Jenkinsfifile 脚本文件放入项目源码库中（一般我们都推荐在 Jenkins 中直接从源代码控制 (SCM) 中直接载入 Jenkinsfifile Pipeline 这种方法）。</p>
+<h3 id="流水线-2"><a class="markdownIt-Anchor" href="#流水线-2">#</a> 流水线</h3>
+<h4 id="声明式"><a class="markdownIt-Anchor" href="#声明式">#</a> 声明式</h4>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any</span><br><span class="line"></span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(<span class="string">&#x27;Hello&#x27;</span>) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                <span class="built_in">echo</span> <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="脚本式"><a class="markdownIt-Anchor" href="#脚本式">#</a> 脚本式</h4>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">node &#123;</span><br><span class="line">    def mvnHome</span><br><span class="line">    stage(<span class="string">&#x27;pull code&#x27;</span>) &#123; // <span class="keyword">for</span> display purposes</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;1&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    stage(<span class="string">&#x27;Build project&#x27;</span>) &#123;</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;1&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    stage(<span class="string">&#x27;publish &#x27;</span>) &#123;</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;1&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="构建触发器"><a class="markdownIt-Anchor" href="#构建触发器">#</a> 构建触发器</h3>
+<p>Jenkins 内置 4 种构建触发器：</p>
+<p>触发远程构建</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230428194514430.png" alt="image-20230428194514430"></p>
+<p><span class="exturl" data-url="aHR0cDovLzE5Mi4xNjguMTMuMTI6ODA4MC9qb2IvcGlwNDQvYnVpbGQ/dG9rZW49OTk5OQ==">192.168.13.12:8080/job/pip44/build?token=9999</span></p>
+<p>其他工程构建后触发（Build after other projects are build）</p>
+<p>定时构建（Build periodically）</p>
+<p>定时字符串从左往右分别为：</p>
+<p>分 时 日 月 周一些定时表达式的例子：</p>
+<p>每 30 分钟构建一次：H 代表形参 H/30 * * * * 10:02 10:32</p>
+<p>每 2 个小时构建一次: H H/2 * * *</p>
+<p>每天的 8 点，12 点，22 点，一天构建 3 次： (多个时间点中间用逗号隔开) 0 8,12,22 * * *</p>
+<p>每天中午 12 点定时构建一次 H 12 * * *</p>
+<p>每天下午 18 点定时构建一次 H 18 * * *</p>
+<p>在每个小时的前半个小时内的每 10 分钟 H (0-29)/10 * * * *</p>
+<p>每两小时一次，每个工作日上午 9 点到下午 5 点 (也许是上午 10:38，下午 12:38，下午 2:38，下午</p>
+<p>4:38) H H(9-16)/2 * * 1-5</p>
+<p>轮询 SCM（Poll SCM）</p>
+<p>轮询 SCM，是指定时扫描本地代码仓库的代码是否有变更，如果代码有变更就触发项目构建。</p>
+<p>注意：这次构建触发器，Jenkins 会定时扫描本地整个项目的代码，增大系统的开销，不建议使用。</p>
+<h3 id="webhook"><a class="markdownIt-Anchor" href="#webhook">#</a> webhook</h3>
+<p>就是利用 Gitlab 的 webhook 实现代码 push 到仓库，立即触发项目自动构建。</p>
+<p>需要安装两个插件：</p>
+<p>Gitlab Hook 和 GitLab</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230428200812134.png" alt="image-20230428200812134"></p>
+<h3 id="参数化构建"><a class="markdownIt-Anchor" href="#参数化构建">#</a> 参数化构建</h3>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230428202004524.png" alt="image-20230428202004524"></p>
+<h3 id="sonarqube"><a class="markdownIt-Anchor" href="#sonarqube">#</a> sonarqube</h3>
+<p>systemctl set-environment MYSQLD_OPTS=&quot;–skip-grant-tables&quot;   慎用</p>
+<p>解压 sonar，并设置权限</p>
+<p>yum install unzip</p>
+<p>unzip sonarqube-6.7.4.zip 解压</p>
+<p>mkdir /opt/sonar 创建目录</p>
+<p>mv sonarqube-6.7.4/* /opt/sonar 移动文件</p>
+<p>useradd sonar 创建 sonar 用户，必须 sonar 用于启动，否则报错</p>
+<p>chown -R sonar. /opt/sonar 更改 sonar 目录及文件权限</p>
+<p>修改 sonar 配置文件</p>
+<p>vi /opt/sonarqube-6.7.4/conf/sonar.properties</p>
+<p>内容如下：</p>
+<p>sonar.jdbc.username=root sonar.jdbc.password=Root@123</p>
+<p>sonar.jdbc.url=jdbc:mysql://localhost:3306/sonar?</p>
+<p>useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true&amp;useConfifigs=</p>
+<p>maxPerformance&amp;useSSL=false</p>
+<p>注意：sonar 默认监听 9000 端口，如果 9000 端口被占用，需要更改。</p>
+<p>启动 sonar</p>
+<p>cd /opt/sonarqube-6.7.4</p>
+<p>su sonar ./bin/linux-x86-64/sonar.sh start 启动</p>
+<p>su sonar ./bin/linux-x86-64/sonar.sh status 查看状态</p>
+<p>su sonar ./bin/linux-x86-64/sonar.sh stop 停止</p>
+<p>tail -f logs/sonar.logs 查看日志</p>
+<p>访问 sonar</p>
+<p><span class="exturl" data-url="aHR0cDovLzE5Mi4xNjguNjYuMTAxOjkwMDA=">http://192.168.66.101:9000</span></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230430160853684.png" alt="image-20230430160853684"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># must be unique in a given SonarQube instance</span><br><span class="line">sonar.projectKey=free_style</span><br><span class="line"># this is the name and version displayed in the SonarQube UI. Was mandatory prior to SonarQube 6.1.</span><br><span class="line">sonar.projectName=free_style</span><br><span class="line">sonar.projectVersion=1.0</span><br><span class="line"># Path is relative to the sonar-project.properties file. Replace &quot;\&quot; by &quot;/&quot; on Windows.</span><br><span class="line"># This property is optional if sonar.modules is set.</span><br><span class="line">sonar.sources=.</span><br><span class="line">sonar.exclusions=**/test/**,**/target/**</span><br><span class="line"></span><br><span class="line">sonar.java.source=11</span><br><span class="line">sonar.java.target=11</span><br><span class="line"># Encoding of the source code. Default is default system encoding</span><br><span class="line">sonar.sourceEncoding=UTF-8</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any</span><br><span class="line"></span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(&#x27;pull images&#x27;) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                checkout scmGit(branches: [[name: &#x27;*/master&#x27;]], extensions: [], userRemoteConfigs: [[credentialsId: &#x27;5e7e7a6e-744e-498b-8790-924dfd4e42a8&#x27;, url: &#x27;http://192.168.13.11/root/test04.git&#x27;]])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stage(&#x27;pull images&#x27;) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                script &#123;</span><br><span class="line">                    scannerHome = tool &#x27;sonarqube-scanner&#x27;</span><br><span class="line">                &#125;</span><br><span class="line">                withSonarQubeEnv(&#x27;sonarqube6.7.4&#x27;) &#123;</span><br><span class="line">                sh &quot;$&#123;scannerHome&#125;/bin/sonar-scanner&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stage(&#x27;build project&#x27;) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                sh &#x27;mvn clean package&#x27;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stage(&#x27;deploy project&#x27;) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                deploy adapters: [tomcat9(credentialsId: &#x27;b3de0bd0-bcbe-4680-8b56-7e748ef40984&#x27;, path: &#x27;&#x27;, url: &#x27;http://192.168.13.13:8080/&#x27;)], contextPath: null, war: &#x27;target/untitled4_war exploded.war&#x27;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="jenkins微服务持续继承"><a class="markdownIt-Anchor" href="#jenkins微服务持续继承">#</a> Jenkins 微服务持续继承</h2>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230429204123621.png" alt="image-20230429204123621"></p>
+<h2 id="harbro"><a class="markdownIt-Anchor" href="#harbro">#</a> harbro</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">Harbor需要安装在192.168.66.102上面</span><br><span class="line">1）先安装Docker并启动Docker（已完成）</span><br><span class="line">参考之前的安装过程</span><br><span class="line">2）先安装docker-compose</span><br><span class="line">3）给docker-compose添加执行权限</span><br><span class="line">sudo chmod +x /usr/local/bin/docker-compose</span><br><span class="line">4）查看docker-compose是否安装成功</span><br><span class="line">docker-compose -version</span><br><span class="line">5）下载Harbor的压缩包（本课程版本为：v1.9.2）</span><br><span class="line">https://github.com/goharbor/harbor/releases</span><br><span class="line">6）上传压缩包到linux，并解压</span><br><span class="line">tar -xzf harbor-offline-installer-v1.9.2.tgz</span><br><span class="line">mkdir /opt/harbor</span><br><span class="line">mv harbor/* /opt/harbor</span><br><span class="line">cd /opt/harbor</span><br><span class="line">7）修改Harbor的配置</span><br><span class="line">sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker￾compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose</span><br><span class="line">sudo chmod +x /usr/local/bin/docker-compose</span><br><span class="line">vi harbor.yml</span><br><span class="line">修改hostname和port</span><br><span class="line">hostname: 192.168.66.102</span><br><span class="line">port: 85</span><br><span class="line">8）安装Harbor</span><br><span class="line">./prepare</span><br><span class="line">./install.sh</span><br><span class="line">9）启动Harbor</span><br><span class="line">docker-compose up -d 启动</span><br><span class="line">docker-compose stop 停止</span><br><span class="line">docker-compose restart 重新启动</span><br><span class="line"></span><br><span class="line">openssl req -x509 -new -nodes -sha512 -days 3650 \</span><br><span class="line"> -subj &quot;/C=CN/ST=Beijing/L=Beijing/O=example/OU=Personal/CN=192.168.13.14&quot; \</span><br><span class="line"> -key ca.key \</span><br><span class="line"> -out ca.crt</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> openssl req -sha512 -new \</span><br><span class="line">    -subj &quot;/C=CN/ST=Beijing/L=Beijing/O=example/OU=Personal/CN=192.168.13.14&quot; \</span><br><span class="line">    -key 192.168.13.14.key \</span><br><span class="line">    -out 192.168.13.14.csr</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">cat &gt; v3.ext &lt;&lt;-EOF</span><br><span class="line">authorityKeyIdentifier=keyid,issuer</span><br><span class="line">basicConstraints=CA:FALSE</span><br><span class="line">keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment</span><br><span class="line">extendedKeyUsage = serverAuth</span><br><span class="line">subjectAltName = @alt_names</span><br><span class="line"></span><br><span class="line">[alt_names]</span><br><span class="line">DNS.1=192.168.13.14</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">openssl x509 -req -sha512 -days 3650 \</span><br><span class="line">    -extfile v3.ext \</span><br><span class="line">    -CA ca.crt -CAkey ca.key -CAcreateserial \</span><br><span class="line">    -in 192.168.13.14.csr \</span><br><span class="line">    -out 192.168.13.14.crt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">//git凭证ID</span><br><span class="line">def git_auth = &quot;b632ed00-fc81-43c8-a746-5aa0673b2658&quot;</span><br><span class="line">//git的url地址</span><br><span class="line">def git_url = &quot;git@192.168.66.100:itheima_group/tensquare_back.git&quot;</span><br><span class="line">//镜像的版本号</span><br><span class="line">def tag = &quot;latest&quot;</span><br><span class="line">//Harbor的url地址</span><br><span class="line">def harbor_url = &quot;192.168.66.102:85&quot;</span><br><span class="line">//镜像库项目名称</span><br><span class="line">def harbor_project = &quot;tensquare&quot;</span><br><span class="line">//Harbor的登录凭证ID</span><br><span class="line">def harbor_auth = &quot;833d1a75-f3db-4aec-9cc4-75a77e423163&quot;</span><br><span class="line"></span><br><span class="line">node &#123;</span><br><span class="line">   //获取当前选择的项目名称</span><br><span class="line">   def selectedProjectNames = &quot;$&#123;project_name&#125;&quot;.split(&quot;,&quot;)</span><br><span class="line">   //获取当前选择的服务器名称</span><br><span class="line">   def selectedServers = &quot;$&#123;publish_server&#125;&quot;.split(&quot;,&quot;)</span><br><span class="line"></span><br><span class="line">   stage(&#x27;拉取代码&#x27;) &#123;</span><br><span class="line">      checkout([$class: &#x27;GitSCM&#x27;, branches: [[name: &quot;*/$&#123;branch&#125;&quot;]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: &quot;$&#123;git_auth&#125;&quot;, url: &quot;$&#123;git_url&#125;&quot;]]])</span><br><span class="line">   &#125;</span><br><span class="line">   stage(&#x27;代码审查&#x27;) &#123;</span><br><span class="line">        for(int i=0;i&lt;selectedProjectNames.length;i++)&#123;</span><br><span class="line">            //tensquare_eureka_server@10086</span><br><span class="line">            def projectInfo = selectedProjectNames[i];</span><br><span class="line">            //当前遍历的项目名称</span><br><span class="line">            def currentProjectName = &quot;$&#123;projectInfo&#125;&quot;.split(&quot;@&quot;)[0]</span><br><span class="line">            //当前遍历的项目端口</span><br><span class="line">            def currentProjectPort = &quot;$&#123;projectInfo&#125;&quot;.split(&quot;@&quot;)[1]</span><br><span class="line"></span><br><span class="line">            //定义当前Jenkins的SonarQubeScanner工具</span><br><span class="line">            def scannerHome = tool &#x27;sonar-scanner&#x27;</span><br><span class="line">            //引用当前JenkinsSonarQube环境</span><br><span class="line">            withSonarQubeEnv(&#x27;sonarqube&#x27;) &#123;</span><br><span class="line">                 sh &quot;&quot;&quot;</span><br><span class="line">                         cd $&#123;currentProjectName&#125;</span><br><span class="line">                         $&#123;scannerHome&#125;/bin/sonar-scanner</span><br><span class="line">                 &quot;&quot;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line">   stage(&#x27;编译，安装公共子工程&#x27;) &#123;</span><br><span class="line">      sh &quot;mvn -f tensquare_common clean install&quot;</span><br><span class="line">   &#125;</span><br><span class="line">   stage(&#x27;编译，打包微服务工程，上传镜像&#x27;) &#123;</span><br><span class="line">       for(int i=0;i&lt;selectedProjectNames.length;i++)&#123;</span><br><span class="line">                 //tensquare_eureka_server@10086</span><br><span class="line">                 def projectInfo = selectedProjectNames[i];</span><br><span class="line">                 //当前遍历的项目名称</span><br><span class="line">                 def currentProjectName = &quot;$&#123;projectInfo&#125;&quot;.split(&quot;@&quot;)[0]</span><br><span class="line">                 //当前遍历的项目端口</span><br><span class="line">                 def currentProjectPort = &quot;$&#123;projectInfo&#125;&quot;.split(&quot;@&quot;)[1]</span><br><span class="line"></span><br><span class="line">                 sh &quot;mvn -f $&#123;currentProjectName&#125; clean package dockerfile:build&quot;</span><br><span class="line"></span><br><span class="line">                 //定义镜像名称</span><br><span class="line">                 def imageName = &quot;$&#123;currentProjectName&#125;:$&#123;tag&#125;&quot;</span><br><span class="line"></span><br><span class="line">                 //对镜像打上标签</span><br><span class="line">                 sh &quot;docker tag $&#123;imageName&#125; $&#123;harbor_url&#125;/$&#123;harbor_project&#125;/$&#123;imageName&#125;&quot;</span><br><span class="line"></span><br><span class="line">                //把镜像推送到Harbor</span><br><span class="line">                withCredentials([usernamePassword(credentialsId: &quot;$&#123;harbor_auth&#125;&quot;, passwordVariable: &#x27;password&#x27;, usernameVariable: &#x27;username&#x27;)]) &#123;</span><br><span class="line"></span><br><span class="line">                    //登录到Harbor</span><br><span class="line">                    sh &quot;docker login -u $&#123;username&#125; -p $&#123;password&#125; $&#123;harbor_url&#125;&quot;</span><br><span class="line"></span><br><span class="line">                    //镜像上传</span><br><span class="line">                    sh &quot;docker push $&#123;harbor_url&#125;/$&#123;harbor_project&#125;/$&#123;imageName&#125;&quot;</span><br><span class="line"></span><br><span class="line">                    sh &quot;echo 镜像上传成功&quot;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                //遍历所有服务器，分别部署</span><br><span class="line">                for(int j=0;j&lt;selectedServers.length;j++)&#123;</span><br><span class="line">                       //获取当前遍历的服务器名称</span><br><span class="line">                       def currentServerName = selectedServers[j]</span><br><span class="line"></span><br><span class="line">                       //加上的参数格式：--spring.profiles.active=eureka-server1/eureka-server2</span><br><span class="line">                       def activeProfile = &quot;--spring.profiles.active=&quot;</span><br><span class="line"></span><br><span class="line">                       //根据不同的服务名称来读取不同的Eureka配置信息</span><br><span class="line">                       if(currentServerName==&quot;master_server&quot;)&#123;</span><br><span class="line">                          activeProfile = activeProfile+&quot;eureka-server1&quot;</span><br><span class="line">                       &#125;else if(currentServerName==&quot;slave_server&quot;)&#123;</span><br><span class="line">                          activeProfile = activeProfile+&quot;eureka-server2&quot;</span><br><span class="line">                       &#125;</span><br><span class="line"></span><br><span class="line">                       //部署应用</span><br><span class="line">                       sshPublisher(publishers: [sshPublisherDesc(configName: &quot;$&#123;currentServerName&#125;&quot;, transfers: [sshTransfer(cleanRemote: false, excludes: &#x27;&#x27;, execCommand: &quot;/opt/jenkins_shell/deployCluster.sh $harbor_url $harbor_project $currentProjectName $tag $currentProjectPort $activeProfile&quot;, execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: &#x27;[, ]+&#x27;, remoteDirectory: &#x27;&#x27;, remoteDirectorySDF: false, removePrefix: &#x27;&#x27;, sourceFiles: &#x27;&#x27;)], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vSmFja3BvdEhhbi9wLzEwNzc0MTkxLmh0bWw=">Spring Cloud 项目 MVN 编译 – Non-resolvable import POM - JackpotHan - 博客园 (cnblogs.com)</span></p>
+<p>[(74 条消息) Non-resolvable import POM: Failure to find org.springframework.cloud:spring-cloud-dependencies_Code 神之手的博客 - CSDN 博客](<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NldmVuNzExMTEvYXJ0aWNsZS9kZXRhaWxzLzEwMzAwMDE1MSM6fjp0ZXh0PQ==">https://blog.csdn.net/Seven71111/article/details/103000151#:~:text=</span>[ ERROR] Non-resolvable import POM%3A Failure to find,of alimaven has elapsed or updates are forced)</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMjIwOTQ5L2FydGljbGUvZGV0YWlscy8xMTI3MTc0ODc=">(74 条消息) 不能解决 org.springframework.cloud:spring-cloud-starter-netflix-turbine:unknown 不能解决 org.springframework._或许没看到的博客 - CSDN 博客</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaHVqaW56aG9uZy9wLzE0NTcxMDQxLmh0bWw=">Jenkins+Docker+SpringCloud 微服务持续集成 (单机版) - 运维人在路上 - 博客园 (cnblogs.com)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20vdGlhbmNpeGlvbmcvdGVuc3F1YXJl">tensquare: 黑马十次方微服务项目 (gitee.com)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9Bc3Rvbk1hcnRpbkYxL3N0YXR1cy8xNjUzMDI5MDAxNDYyNTM0MTQ1P3Q9Q0ZwNVBlWF91WVlSdlV0a0lYejlhQSZhbXA7cz0wNQ==">https://twitter.com/AstonMartinF1/status/1653029001462534145?t=CFp5PeX_uYYRvUtkIXz9aA&amp;s=05</span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 单机版</span><br><span class="line">#server:</span><br><span class="line">#  port: 10086</span><br><span class="line">#spring:</span><br><span class="line">#  application:</span><br><span class="line">#    admin:</span><br><span class="line">#      jmx-name: eureka-server</span><br><span class="line">#eureka:</span><br><span class="line">#  client:</span><br><span class="line">#    fetch-registry: false</span><br><span class="line">#    register-with-eureka: false</span><br><span class="line">#    service-url:</span><br><span class="line">#      defaultZone: http://192.168.13.13:$&#123;server.port&#125;/eureka</span><br><span class="line">#  server:</span><br><span class="line">#    enable-self-preservation: false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">spring:</span><br><span class="line">  application:</span><br><span class="line">    name: EUREKA-HA</span><br><span class="line">---</span><br><span class="line">server:</span><br><span class="line">  port: 10086</span><br><span class="line">spring:</span><br><span class="line">  profiles: eureka-server1</span><br><span class="line">eureka:</span><br><span class="line">  instance:</span><br><span class="line">    hostname: 192.168.13.13</span><br><span class="line">  client:</span><br><span class="line">    service-url:</span><br><span class="line">      defaultZone: http://192.168.13.13:10086/eureka/,http://192.168.13.15:10086/eureka/</span><br><span class="line">    register-with-eureka: false</span><br><span class="line">    fetch-registry: false</span><br><span class="line">---</span><br><span class="line">server:</span><br><span class="line">  port: 10086</span><br><span class="line">spring:</span><br><span class="line">  profiles: eureka-server2</span><br><span class="line">eureka:</span><br><span class="line">  instance:</span><br><span class="line">    hostname: 192.168.13.15</span><br><span class="line">  client:</span><br><span class="line">    service-url:</span><br><span class="line">      defaultZone: http://192.168.13.13:10086/eureka/,http://192.168.13.15:10086/eureka/</span><br><span class="line">    register-with-eureka: false</span><br><span class="line">    fetch-registry: false</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">server:</span><br><span class="line">  port: 10086</span><br><span class="line">spring:</span><br><span class="line">  application:</span><br><span class="line">    admin:</span><br><span class="line">      jmx-name: eureka-server</span><br><span class="line">eureka:</span><br><span class="line">  client:</span><br><span class="line">    fetch-registry: false</span><br><span class="line">    register-with-eureka: false</span><br><span class="line">    service-url:</span><br><span class="line">      defaultZone: http://192.168.13.13:$&#123;server.port&#125;/eureka</span><br><span class="line">  server:</span><br><span class="line">    enable-self-preservation: false</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20230502212659240.png" alt="image-20230502212659240"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">cat &gt;&gt;/etc/hosts&lt;&lt;EOF </span><br><span class="line">192.168.13.12 k8s-master </span><br><span class="line">192.168.13.13 k8s-node1</span><br><span class="line">192.168.13.15 k8s-node2 </span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">repo_gpgcheck=0</span><br><span class="line">gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg</span><br><span class="line">https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">kubeadm init --kubernetes-version=1.21.2 \</span><br><span class="line">--apiserver-advertise-address=192.168.13.12  \</span><br><span class="line">--image-repository registry.aliyuncs.com/google_containers \</span><br><span class="line">--service-cidr=10.1.0.0/16 \</span><br><span class="line">--pod-network-cidr=10.244.0.0/16</span><br><span class="line"></span><br><span class="line">kubeadm join 192.168.13.12:6443 --token l1x1ji.yonc002xc0vhf9vv \</span><br><span class="line">	--discovery-token-ca-cert-hash sha256:75a8c65d8521a2f275fae4e4c6ff40fbe2c518d54ed6348a408d20b8443d0eb2 </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def git_address = &quot;http://192.168.13.11/root/tensquare_back.git&quot;</span><br><span class="line">def git_auth = &quot;322ed148-5eda-40c0-9c47-eb89edf08c69&quot;</span><br><span class="line">//创建一个Pod的模板，label为jenkins-slave</span><br><span class="line">podTemplate(label: &#x27;jenkins-slave&#x27;, cloud: &#x27;kubernetes&#x27;, containers: [</span><br><span class="line">    containerTemplate(</span><br><span class="line">        name: &#x27;jnlp&#x27;,</span><br><span class="line">        image: &quot;192.168.13.14:85/library/jenkins-slave-maven:latest&quot;</span><br><span class="line">    )</span><br><span class="line">]</span><br><span class="line">)</span><br><span class="line">&#123;</span><br><span class="line">//引用jenkins-slave的pod模块来构建Jenkins-Slave的pod</span><br><span class="line">    node(&quot;jenkins-slave&quot;)&#123;</span><br><span class="line">    // 第一步</span><br><span class="line">        stage(&#x27;拉取代码&#x27;)&#123;</span><br><span class="line">            checkout([$class: &#x27;GitSCM&#x27;, branches: [[name: &#x27;*/master&#x27;]], extensions: [], userRemoteConfigs: [[credentialsId: &quot;$&#123;git_auth&#125;&quot;, url: &quot;$&#123;git_address&#125;&quot;]]])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vemhpaml5aXl1L3AvMTU5OTQ0NDQuaHRtbA==">基于 Kubernetes 平台微服务的部署 - 知己一语 - 博客园 (cnblogs.com)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYWxpeXVuLmNvbS9hcnRpY2xlLzkwMDQwNA==">基于 kubernetes 平台微服务的部署 - 阿里云开发者社区 (aliyun.com)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMzMzI5NzUvYXJ0aWNsZS9kZXRhaWxzLzEyMDU0MjEzMA==">(82 条消息) 基于 k8s 平台 jenkins 部署及动态 slave 节点制作和配置_jenkins 部署动态 salve 安装 nerdctl_— 逆渡默行 — 的博客 - CSDN 博客</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Byb2dyYW1lcl9iZWkvYXJ0aWNsZS9kZXRhaWxzLzEwMTI4OTgzNQ==">(82 条消息) Jenkins 集成 k8s 运行 Jenkins slave（Jenkins 弹性 slave）_jenkins podretention_programer_bei 的博客 - CSDN 博客</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vbGlnYW5nMDM1Ny9wLzEzNzI1ODYyLmh0bWw=">k8s 集群中部署 jenkins master slave - 李刚 - 天道酬勤 - 博客园 (cnblogs.com)</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9wbHVnaW5zLmplbmtpbnMuaW8va3ViZXJuZXRlcy8=">Kubernetes | Jenkins plugin</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vc2NhankvcC8xNjI5MjE4MC5odG1s">k8s-jenkins 在 kubernetes 中持续部署 - 七月流星雨 - 博客园 (cnblogs.com)</span></p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2023-09-19 21:23:43" itemprop="dateModified" datetime="2023-09-19T21:23:43+08:00">2023-09-19</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2026/05/30/jenkins/" title="Jenkins">http://example.com/2026/05/30/jenkins/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/09/15/%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;17cfb1570685a3f62652e085962fe2a9.jpg" title="缓存污染&#x2F;请求走私">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>缓存污染/请求走私</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jenkins"><span class="toc-number">1.</span> <span class="toc-text"> jenkins</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text"> 前置概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 软件开发声明周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 瀑布模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 敏捷开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E7%BB%AD%E7%BB%A7%E6%89%BF"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 持续继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jenkins-2"><span class="toc-number">1.1.5.</span> <span class="toc-text"> Jenkins</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E6%B5%81%E7%A8%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">1.2.</span> <span class="toc-text"> 持续集成流程 &amp; 环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gitlab"><span class="toc-number">1.2.1.</span> <span class="toc-text"> gitlab</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jenkins-3"><span class="toc-number">1.2.2.</span> <span class="toc-text"> jenkins</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 用户权限管理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%AD%E8%AF%81%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 凭证管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85maven"><span class="toc-number">1.2.5.</span> <span class="toc-text"> 安装 maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2tomcat"><span class="toc-number">1.2.6.</span> <span class="toc-text"> 部署 tomcat</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jenkins%E6%9E%84%E5%BB%BAmaven%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.3.</span> <span class="toc-text"> Jenkins 构建 maven 项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#free_style"><span class="toc-number">1.3.1.</span> <span class="toc-text"> free_style</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#maven%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.3.2.</span> <span class="toc-text"> maven 项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 流水线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF-2"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 流水线</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E5%BC%8F"><span class="toc-number">1.3.4.1.</span> <span class="toc-text"> 声明式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E5%BC%8F"><span class="toc-number">1.3.4.2.</span> <span class="toc-text"> 脚本式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-number">1.3.5.</span> <span class="toc-text"> 构建触发器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webhook"><span class="toc-number">1.3.6.</span> <span class="toc-text"> webhook</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E5%8C%96%E6%9E%84%E5%BB%BA"><span class="toc-number">1.3.7.</span> <span class="toc-text"> 参数化构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sonarqube"><span class="toc-number">1.3.8.</span> <span class="toc-text"> sonarqube</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jenkins%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%8C%81%E7%BB%AD%E7%BB%A7%E6%89%BF"><span class="toc-number">1.4.</span> <span class="toc-text"> Jenkins 微服务持续继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#harbro"><span class="toc-number">1.5.</span> <span class="toc-text"> harbro</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">38</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">4</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/04/03/iptables2/" title="iptables">iptables</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/09/15/%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93/" title="缓存污染&#x2F;请求走私">缓存污染/请求走私</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/08/02/Capabilities/" title="docker底层原理+capability">docker底层原理+capability</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" title="JWT">JWT</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/02/21/https%E5%8E%9F%E7%90%86/" title="https+TLS">https+TLS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/08/15/%E7%A0%B4%E8%A7%A3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B9%8B%E8%AE%A4%E8%AF%86%E5%A3%B3%E4%B8%8E%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%89%B9%E5%BE%81/" title="破解基础知识之认识壳与程序的特征">破解基础知识之认识壳与程序的特征</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/01/01/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/01/20/VXLAN/" title="VXLAN">VXLAN</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/12/27/SSTI/" title="SSTI">SSTI</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/05/30/jenkins/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
