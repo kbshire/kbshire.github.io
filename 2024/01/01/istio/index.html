@@ -1,0 +1,560 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2024/01/01/istio/">
+
+
+
+  <title>
+istio |
+Yume Shoka = Hexo</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">istio
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-01-01 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-01-01T13:38:45+08:00">2024-01-01</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/f534e931ecbd67c0161d82dabb45ca42.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/ab0127aa2427fa655db33a097d7e215e.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/67694352e9c5cbbcf5c1bb98312aab55.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/f87ba32daeb3d0858a5dc190fbeaf6d3.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/8491109c4ae2ac88bbf9659a4f6d5ed2.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/1eaf2713d4a30c9691c9eaf4f898e499.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/01/istio/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p><strong>更新中</strong></p>
+<h1 id="istio"><a class="markdownIt-Anchor" href="#istio">#</a> istio</h1>
+<h2 id="安装"><a class="markdownIt-Anchor" href="#安装">#</a> 安装</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">// 安装istio命令行工具</span><br><span class="line">curl -L https://istio.io/downloadIstio | sh -</span><br><span class="line"></span><br><span class="line">vim /etc/profile</span><br><span class="line">PATH=$PATH:/root/istio/bin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br><span class="line"></span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# cp tools/istioctl.bash ~/.istioctl.bash </span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# source ~/.istioctl.bash </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# ls </span><br><span class="line">bin  LICENSE  manifests  manifest.yaml  README.md  samples  tools</span><br><span class="line"></span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# istioctl version </span><br><span class="line">client version: 1.20.1</span><br><span class="line">control plane version: 1.20.1</span><br><span class="line">data plane version: 1.20.1 (8 proxies)</span><br><span class="line"></span><br><span class="line">// 安装istio</span><br><span class="line">istioctl manifest apply --set profile=demo</span><br><span class="line"></span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# istioctl profile list </span><br><span class="line">Istio configuration profiles:</span><br><span class="line">    ambient</span><br><span class="line">    default</span><br><span class="line">    demo</span><br><span class="line">    empty</span><br><span class="line">    external</span><br><span class="line">    minimal</span><br><span class="line">    openshift</span><br><span class="line">    preview</span><br><span class="line">    remote</span><br><span class="line">    </span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# kubectl get all -n istio-system </span><br><span class="line">NAME                                       READY   STATUS    RESTARTS   AGE</span><br><span class="line">pod/grafana-8cb9f8f79-9fr74                1/1     Running   0          28h</span><br><span class="line">pod/istio-egressgateway-8649fd8848-9hvp4   1/1     Running   0          2d6h</span><br><span class="line">pod/istio-ingressgateway-9b58f8c86-hk4fx   1/1     Running   0          2d6h</span><br><span class="line">pod/istiod-755784476f-lxnw2                1/1     Running   0          2d6h</span><br><span class="line">pod/jaeger-7cc9dd4499-hwsd9                1/1     Running   0          28h</span><br><span class="line">pod/kiali-6d5f569c67-s222f                 1/1     Running   0          28h</span><br><span class="line">pod/prometheus-85674d4cb8-rqnlc            2/2     Running   0          28h</span><br><span class="line"></span><br><span class="line">NAME                           TYPE           CLUSTER-IP        EXTERNAL-IP      PORT(S)                           AGE</span><br><span class="line">service/grafana                ClusterIP      192.168.57.247    &lt;none&gt;           3000/TCP                                                 </span><br><span class="line">service/istio-egressgateway    ClusterIP      192.168.74.170    &lt;none&gt;           80/TCP,443/TCP                                           </span><br><span class="line">service/istio-ingressgateway   LoadBalancer   192.168.126.220   101.132.74.102   15021:30190/TCP,80:30304/TCP,443:31928/TCP,31400:31218/TCP,15443:30438/TCP   2d6h</span><br><span class="line">service/istiod                 ClusterIP      192.168.72.13     &lt;none&gt;           15010/TCP,15012/TCP,443/TCP,15014/TCP                   </span><br><span class="line">service/jaeger-collector       ClusterIP      192.168.94.27     &lt;none&gt;           14268/TCP,14250/TCP,9411/TCP,4317/TCP,4318/TCP           </span><br><span class="line">service/kiali                  ClusterIP      192.168.80.120    &lt;none&gt;           20001/TCP,9090/TCP                                       </span><br><span class="line">service/loki-headless          ClusterIP      None              &lt;none&gt;           3100/TCP                                                 </span><br><span class="line">service/prometheus             ClusterIP      192.168.226.115   &lt;none&gt;           9090/TCP                                                 </span><br><span class="line">service/tracing                ClusterIP      192.168.218.160   &lt;none&gt;           80/TCP,16685/TCP                                         </span><br><span class="line">service/zipkin                 ClusterIP      192.168.16.18     &lt;none&gt;           9411/TCP                                                 </span><br><span class="line"></span><br><span class="line">NAME                                   READY   UP-TO-DATE   AVAILABLE   AGE</span><br><span class="line">deployment.apps/grafana                1/1     1            1           28h</span><br><span class="line">deployment.apps/istio-egressgateway    1/1     1            1           2d6h</span><br><span class="line">deployment.apps/istio-ingressgateway   1/1     1            1           2d6h</span><br><span class="line">deployment.apps/istiod                 1/1     1            1           2d6h</span><br><span class="line">deployment.apps/jaeger                 1/1     1            1           28h</span><br><span class="line">deployment.apps/kiali                  1/1     1            1           28h</span><br><span class="line">deployment.apps/prometheus             1/1     1            1           28h</span><br><span class="line"></span><br><span class="line">NAME                                             DESIRED   CURRENT   READY   AGE</span><br><span class="line">replicaset.apps/grafana-8cb9f8f79                1         1         1       28h</span><br><span class="line">replicaset.apps/istio-egressgateway-8649fd8848   1         1         1       2d6h</span><br><span class="line">replicaset.apps/istio-ingressgateway-9b58f8c86   1         1         1       2d6h</span><br><span class="line">replicaset.apps/istiod-755784476f                1         1         1       2d6h</span><br><span class="line">replicaset.apps/jaeger-7cc9dd4499                1         1         1       28h</span><br><span class="line">replicaset.apps/kiali-6d5f569c67                 1         1         1       28h</span><br><span class="line">replicaset.apps/prometheus-85674d4cb8            1         1         1       28h</span><br><span class="line"></span><br><span class="line">// 卸载demo</span><br><span class="line">istioctl manifest generate --set profile=demo | kubectl delete -f -</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# istioctl version </span><br><span class="line">client version: 1.20.1</span><br><span class="line">control plane version: 1.20.1</span><br><span class="line">data plane version: 1.20.1 (8 proxies)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# istioctl analyze -n default </span><br><span class="line">✔ No validation issues found when analyzing namespace: default.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 操作profile</span><br><span class="line">istioctl profile list</span><br><span class="line">istioctl profile dump demo &gt; 1.yaml </span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20231227225342706.png" alt="image-20231227225342706"></p>
+<p>kiali</p>
+<p>在部署 demo 这个 profile 之后，默认就会有这个 pod 和 svc，把 svc 改成 nodeport，访问 http://ip:Port</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20231227224013433.png" alt="image-20231227224013433"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20231227230645389.png" alt="image-20231227230645389"></p>
+<h2 id="inject"><a class="markdownIt-Anchor" href="#inject">#</a> inject</h2>
+<p>istio 注入</p>
+<p>注入后在 pod 内生成 Net 和 Window</p>
+<p>service，secret，configmap 被注入后不会多出容器</p>
+<p>注入时新生成一个被注入的资源，在杀掉原来的资源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 部署一个deployment，创建nginx</span><br><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-deployment</span><br><span class="line">spec:</span><br><span class="line">  replicas: 3</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      app: nginx</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: nginx</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: nginx</span><br><span class="line">        image: nginx:latest</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 80</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20231228170839584.png" alt="image-20231228170839584"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">istioctl kube-inject -f 111.yaml | kubectl apply -f - </span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20231228170907079.png" alt="image-20231228170907079"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20231228171034981.png" alt="image-20231228171034981"></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">root@iZuf60im9c63xjnpkubjq7Z</span> <span class="string">inject</span>]<span class="comment"># istioctl kube-inject -f inject.yaml  &gt; nginx.yaml </span></span><br><span class="line"></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">creationTimestamp:</span> <span class="literal">null</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx-deployment</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">  <span class="attr">strategy:</span> &#123;&#125;</span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">annotations:</span></span><br><span class="line">        <span class="attr">istio.io/rev:</span> <span class="string">default</span></span><br><span class="line">        <span class="attr">kubectl.kubernetes.io/default-container:</span> <span class="string">nginx</span></span><br><span class="line">        <span class="attr">kubectl.kubernetes.io/default-logs-container:</span> <span class="string">nginx</span></span><br><span class="line">        <span class="attr">prometheus.io/path:</span> <span class="string">/stats/prometheus</span></span><br><span class="line">        <span class="attr">prometheus.io/port:</span> <span class="string">&quot;15020&quot;</span></span><br><span class="line">        <span class="attr">prometheus.io/scrape:</span> <span class="string">&quot;true&quot;</span></span><br><span class="line">        <span class="attr">sidecar.istio.io/status:</span> <span class="string">&#x27;&#123;&quot;initContainers&quot;:[&quot;istio-init&quot;],&quot;containers&quot;:[&quot;istio-proxy&quot;],&quot;volumes&quot;:[&quot;workload-socket&quot;,&quot;credential-socket&quot;,&quot;workload-certs&quot;,&quot;istio-envoy&quot;,&quot;istio-data&quot;,&quot;istio-podinfo&quot;,&quot;istio-token&quot;,&quot;istiod-ca-cert&quot;],&quot;imagePullSecrets&quot;:null,&quot;revision&quot;:&quot;default&quot;&#125;&#x27;</span></span><br><span class="line">      <span class="attr">creationTimestamp:</span> <span class="literal">null</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">        <span class="attr">security.istio.io/tlsMode:</span> <span class="string">istio</span></span><br><span class="line">        <span class="attr">service.istio.io/canonical-name:</span> <span class="string">nginx</span></span><br><span class="line">        <span class="attr">service.istio.io/canonical-revision:</span> <span class="string">latest</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">nginx:latest</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br><span class="line">        <span class="attr">resources:</span> &#123;&#125;</span><br><span class="line">      <span class="bullet">-</span> <span class="attr">args:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">proxy</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">sidecar</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">--domain</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">$(POD_NAMESPACE).svc.cluster.local</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">--proxyLogLevel=warning</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">--proxyComponentLogLevel=misc:error</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">--log_output_level=default:info</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">JWT_POLICY</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">third-party-jwt</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">PILOT_CERT_PROVIDER</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">istiod</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">CA_ADDR</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">istiod.istio-system.svc:15012</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">POD_NAME</span></span><br><span class="line">          <span class="attr">valueFrom:</span></span><br><span class="line">            <span class="attr">fieldRef:</span></span><br><span class="line">              <span class="attr">fieldPath:</span> <span class="string">metadata.name</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">POD_NAMESPACE</span></span><br><span class="line">          <span class="attr">valueFrom:</span></span><br><span class="line">            <span class="attr">fieldRef:</span></span><br><span class="line">              <span class="attr">fieldPath:</span> <span class="string">metadata.namespace</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">INSTANCE_IP</span></span><br><span class="line">          <span class="attr">valueFrom:</span></span><br><span class="line">            <span class="attr">fieldRef:</span></span><br><span class="line">              <span class="attr">fieldPath:</span> <span class="string">status.podIP</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">SERVICE_ACCOUNT</span></span><br><span class="line">          <span class="attr">valueFrom:</span></span><br><span class="line">            <span class="attr">fieldRef:</span></span><br><span class="line">              <span class="attr">fieldPath:</span> <span class="string">spec.serviceAccountName</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">HOST_IP</span></span><br><span class="line">          <span class="attr">valueFrom:</span></span><br><span class="line">            <span class="attr">fieldRef:</span></span><br><span class="line">              <span class="attr">fieldPath:</span> <span class="string">status.hostIP</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ISTIO_CPU_LIMIT</span></span><br><span class="line">          <span class="attr">valueFrom:</span></span><br><span class="line">            <span class="attr">resourceFieldRef:</span></span><br><span class="line">              <span class="attr">divisor:</span> <span class="string">&quot;0&quot;</span></span><br><span class="line">              <span class="attr">resource:</span> <span class="string">limits.cpu</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">PROXY_CONFIG</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">|</span></span><br><span class="line"><span class="string">            &#123;&#125;</span></span><br><span class="line"><span class="string"></span>        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ISTIO_META_POD_PORTS</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">|-</span></span><br><span class="line"><span class="string">            [</span></span><br><span class="line"><span class="string">                &#123;&quot;containerPort&quot;:80&#125;</span></span><br><span class="line"><span class="string">            ]</span></span><br><span class="line"><span class="string"></span>        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ISTIO_META_APP_CONTAINERS</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">nginx</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">GOMEMLIMIT</span></span><br><span class="line">          <span class="attr">valueFrom:</span></span><br><span class="line">            <span class="attr">resourceFieldRef:</span></span><br><span class="line">              <span class="attr">divisor:</span> <span class="string">&quot;0&quot;</span></span><br><span class="line">              <span class="attr">resource:</span> <span class="string">limits.memory</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">GOMAXPROCS</span></span><br><span class="line">          <span class="attr">valueFrom:</span></span><br><span class="line">            <span class="attr">resourceFieldRef:</span></span><br><span class="line">              <span class="attr">divisor:</span> <span class="string">&quot;0&quot;</span></span><br><span class="line">              <span class="attr">resource:</span> <span class="string">limits.cpu</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ISTIO_META_CLUSTER_ID</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">Kubernetes</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ISTIO_META_NODE_NAME</span></span><br><span class="line">          <span class="attr">valueFrom:</span></span><br><span class="line">            <span class="attr">fieldRef:</span></span><br><span class="line">              <span class="attr">fieldPath:</span> <span class="string">spec.nodeName</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ISTIO_META_INTERCEPTION_MODE</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">REDIRECT</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ISTIO_META_MESH_ID</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">cluster.local</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">TRUST_DOMAIN</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">cluster.local</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">docker.io/istio/proxyv2:1.20.1</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">istio-proxy</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">15090</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">http-envoy-prom</span></span><br><span class="line">          <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">        <span class="attr">readinessProbe:</span></span><br><span class="line">          <span class="attr">failureThreshold:</span> <span class="number">4</span></span><br><span class="line">          <span class="attr">httpGet:</span></span><br><span class="line">            <span class="attr">path:</span> <span class="string">/healthz/ready</span></span><br><span class="line">            <span class="attr">port:</span> <span class="number">15021</span></span><br><span class="line">          <span class="attr">periodSeconds:</span> <span class="number">15</span></span><br><span class="line">          <span class="attr">timeoutSeconds:</span> <span class="number">3</span></span><br><span class="line">        <span class="attr">resources:</span></span><br><span class="line">          <span class="attr">limits:</span></span><br><span class="line">            <span class="attr">cpu:</span> <span class="string">&quot;2&quot;</span></span><br><span class="line">            <span class="attr">memory:</span> <span class="string">1Gi</span></span><br><span class="line">          <span class="attr">requests:</span></span><br><span class="line">            <span class="attr">cpu:</span> <span class="string">10m</span></span><br><span class="line">            <span class="attr">memory:</span> <span class="string">40Mi</span></span><br><span class="line">        <span class="attr">securityContext:</span></span><br><span class="line">          <span class="attr">allowPrivilegeEscalation:</span> <span class="literal">false</span></span><br><span class="line">          <span class="attr">capabilities:</span></span><br><span class="line">            <span class="attr">drop:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">ALL</span></span><br><span class="line">          <span class="attr">privileged:</span> <span class="literal">false</span></span><br><span class="line">          <span class="attr">readOnlyRootFilesystem:</span> <span class="literal">true</span></span><br><span class="line">          <span class="attr">runAsGroup:</span> <span class="number">1337</span></span><br><span class="line">          <span class="attr">runAsNonRoot:</span> <span class="literal">true</span></span><br><span class="line">          <span class="attr">runAsUser:</span> <span class="number">1337</span></span><br><span class="line">        <span class="attr">startupProbe:</span></span><br><span class="line">          <span class="attr">failureThreshold:</span> <span class="number">600</span></span><br><span class="line">          <span class="attr">httpGet:</span></span><br><span class="line">            <span class="attr">path:</span> <span class="string">/healthz/ready</span></span><br><span class="line">            <span class="attr">port:</span> <span class="number">15021</span></span><br><span class="line">          <span class="attr">periodSeconds:</span> <span class="number">1</span></span><br><span class="line">          <span class="attr">timeoutSeconds:</span> <span class="number">3</span></span><br><span class="line">        <span class="attr">volumeMounts:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/var/run/secrets/workload-spiffe-uds</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">workload-socket</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/var/run/secrets/credential-uds</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">credential-socket</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/var/run/secrets/workload-spiffe-credentials</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">workload-certs</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/var/run/secrets/istio</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">istiod-ca-cert</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/var/lib/istio/data</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">istio-data</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/etc/istio/proxy</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">istio-envoy</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/var/run/secrets/tokens</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">istio-token</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/etc/istio/pod</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">istio-podinfo</span></span><br><span class="line">      <span class="attr">initContainers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">args:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">istio-iptables</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">-p</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;15001&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">-z</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;15006&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">-u</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;1337&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">-m</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">REDIRECT</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">-i</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&#x27;*&#x27;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">-x</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">-b</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&#x27;*&#x27;</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">-d</span></span><br><span class="line">        <span class="bullet">-</span> <span class="number">15090</span><span class="string">,15021,15020</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">--log_output_level=default:info</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">docker.io/istio/proxyv2:1.20.1</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">istio-init</span></span><br><span class="line">        <span class="attr">resources:</span></span><br><span class="line">          <span class="attr">limits:</span></span><br><span class="line">            <span class="attr">cpu:</span> <span class="string">&quot;2&quot;</span></span><br><span class="line">            <span class="attr">memory:</span> <span class="string">1Gi</span></span><br><span class="line">          <span class="attr">requests:</span></span><br><span class="line">            <span class="attr">cpu:</span> <span class="string">10m</span></span><br><span class="line">            <span class="attr">memory:</span> <span class="string">40Mi</span></span><br><span class="line">        <span class="attr">securityContext:</span></span><br><span class="line">          <span class="attr">allowPrivilegeEscalation:</span> <span class="literal">false</span></span><br><span class="line">          <span class="attr">capabilities:</span></span><br><span class="line">            <span class="attr">add:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">NET_ADMIN</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">NET_RAW</span></span><br><span class="line">            <span class="attr">drop:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">ALL</span></span><br><span class="line">          <span class="attr">privileged:</span> <span class="literal">false</span></span><br><span class="line">          <span class="attr">readOnlyRootFilesystem:</span> <span class="literal">false</span></span><br><span class="line">          <span class="attr">runAsGroup:</span> <span class="number">0</span></span><br><span class="line">          <span class="attr">runAsNonRoot:</span> <span class="literal">false</span></span><br><span class="line">          <span class="attr">runAsUser:</span> <span class="number">0</span></span><br><span class="line">      <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">workload-socket</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">credential-socket</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">workload-certs</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">emptyDir:</span></span><br><span class="line">          <span class="attr">medium:</span> <span class="string">Memory</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">istio-envoy</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">emptyDir:</span> &#123;&#125;</span><br><span class="line">        <span class="attr">name:</span> <span class="string">istio-data</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">downwardAPI:</span></span><br><span class="line">          <span class="attr">items:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">fieldRef:</span></span><br><span class="line">              <span class="attr">fieldPath:</span> <span class="string">metadata.labels</span></span><br><span class="line">            <span class="attr">path:</span> <span class="string">labels</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">fieldRef:</span></span><br><span class="line">              <span class="attr">fieldPath:</span> <span class="string">metadata.annotations</span></span><br><span class="line">            <span class="attr">path:</span> <span class="string">annotations</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">istio-podinfo</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">istio-token</span></span><br><span class="line">        <span class="attr">projected:</span></span><br><span class="line">          <span class="attr">sources:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">serviceAccountToken:</span></span><br><span class="line">              <span class="attr">audience:</span> <span class="string">istio-ca</span></span><br><span class="line">              <span class="attr">expirationSeconds:</span> <span class="number">43200</span></span><br><span class="line">              <span class="attr">path:</span> <span class="string">istio-token</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">configMap:</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">istio-ca-root-cert</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">istiod-ca-cert</span></span><br><span class="line"><span class="attr">status:</span> &#123;&#125;</span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20231228171604818.png" alt="image-20231228171604818"></p>
+<p>istio-init 初始化网络命名空间</p>
+<p>注入后所有的容器都在同一个 ns 中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[root@iZuf60im9c63xjnpkubjq7Z inject]# kubectl exec -it nginx-deployment-846d79d-77zhs -c nginx -- bash </span><br><span class="line">root@nginx-deployment-846d79d-77zhs:/# hostname  -i </span><br><span class="line">2408:4002:1038:9800:dea9:b421:34bb:25a0 10.0.0.240</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z inject]# kubectl exec -it nginx-deployment-846d79d-77zhs -c istio-proxy -- bash </span><br><span class="line">istio-proxy@nginx-deployment-846d79d-77zhs:/$ hostname -i </span><br><span class="line">2408:4002:1038:9800:dea9:b421:34bb:25a0 10.0.0.240</span><br><span class="line"></span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z inject]# kubectl exec -it nginx-deployment-846d79d-77zhs -c istio-proxy -- bash  </span><br><span class="line">istio-proxy@nginx-deployment-846d79d-77zhs:/$ netstat -lntup </span><br><span class="line">Active Internet connections (only servers)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    </span><br><span class="line">tcp        0      0 0.0.0.0:15021           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 0.0.0.0:15021           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      -                   </span><br><span class="line">tcp        0      0 0.0.0.0:15090           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 0.0.0.0:15090           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 127.0.0.1:15000         0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 0.0.0.0:15001           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 0.0.0.0:15001           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 127.0.0.1:15004         0.0.0.0:*               LISTEN      1/pilot-agent       </span><br><span class="line">tcp        0      0 0.0.0.0:15006           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 0.0.0.0:15006           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp6       0      0 :::15020                :::*                    LISTEN      1/pilot-agent       </span><br><span class="line">tcp6       0      0 :::80                   :::*                    LISTEN      -      </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line">[root@iZuf60im9c63xjnpkubjq7Z inject]# kubectl logs -f nginx-deployment-846d79d-77zhs -c istio-init </span><br><span class="line">2023-12-28T09:08:49.813711Z     info    Istio iptables environment:</span><br><span class="line">ENVOY_PORT=</span><br><span class="line">INBOUND_CAPTURE_PORT=</span><br><span class="line">ISTIO_INBOUND_INTERCEPTION_MODE=</span><br><span class="line">ISTIO_INBOUND_TPROXY_ROUTE_TABLE=</span><br><span class="line">ISTIO_INBOUND_PORTS=</span><br><span class="line">ISTIO_OUTBOUND_PORTS=</span><br><span class="line">ISTIO_LOCAL_EXCLUDE_PORTS=</span><br><span class="line">ISTIO_EXCLUDE_INTERFACES=</span><br><span class="line">ISTIO_SERVICE_CIDR=</span><br><span class="line">ISTIO_SERVICE_EXCLUDE_CIDR=</span><br><span class="line">ISTIO_META_DNS_CAPTURE=</span><br><span class="line">INVALID_DROP=</span><br><span class="line"></span><br><span class="line">2023-12-28T09:08:49.813747Z     info    Istio iptables variables:</span><br><span class="line">IPTABLES_VERSION=</span><br><span class="line">PROXY_PORT=15001</span><br><span class="line">PROXY_INBOUND_CAPTURE_PORT=15006</span><br><span class="line">PROXY_TUNNEL_PORT=15008</span><br><span class="line">PROXY_UID=1337</span><br><span class="line">PROXY_GID=1337</span><br><span class="line">INBOUND_INTERCEPTION_MODE=REDIRECT</span><br><span class="line">INBOUND_TPROXY_MARK=1337</span><br><span class="line">INBOUND_TPROXY_ROUTE_TABLE=133</span><br><span class="line">INBOUND_PORTS_INCLUDE=*</span><br><span class="line">INBOUND_PORTS_EXCLUDE=15090,15021,15020</span><br><span class="line">OUTBOUND_OWNER_GROUPS_INCLUDE=*</span><br><span class="line">OUTBOUND_OWNER_GROUPS_EXCLUDE=</span><br><span class="line">OUTBOUND_IP_RANGES_INCLUDE=*</span><br><span class="line">OUTBOUND_IP_RANGES_EXCLUDE=</span><br><span class="line">OUTBOUND_PORTS_INCLUDE=</span><br><span class="line">OUTBOUND_PORTS_EXCLUDE=</span><br><span class="line">KUBE_VIRT_INTERFACES=</span><br><span class="line">ENABLE_INBOUND_IPV6=false</span><br><span class="line">DUAL_STACK=false</span><br><span class="line">DNS_CAPTURE=false</span><br><span class="line">DROP_INVALID=false</span><br><span class="line">CAPTURE_ALL_DNS=false</span><br><span class="line">DNS_SERVERS=[],[]</span><br><span class="line">NETWORK_NAMESPACE=</span><br><span class="line">CNI_MODE=false</span><br><span class="line">EXCLUDE_INTERFACES=</span><br><span class="line"></span><br><span class="line">2023-12-28T09:08:49.813791Z     info    Running iptables-restore with the following input:</span><br><span class="line">* nat</span><br><span class="line">-N ISTIO_INBOUND				// iptables增加链</span><br><span class="line">-N ISTIO_REDIRECT</span><br><span class="line">-N ISTIO_IN_REDIRECT</span><br><span class="line">-N ISTIO_OUTPUT</span><br><span class="line">-A ISTIO_INBOUND -p tcp --dport 15008 -j RETURN</span><br><span class="line">-A ISTIO_REDIRECT -p tcp -j REDIRECT --to-ports 15001</span><br><span class="line">-A ISTIO_IN_REDIRECT -p tcp -j REDIRECT --to-ports 15006</span><br><span class="line">-A PREROUTING -p tcp -j ISTIO_INBOUND</span><br><span class="line">-A ISTIO_INBOUND -p tcp --dport 15090 -j RETURN</span><br><span class="line">-A ISTIO_INBOUND -p tcp --dport 15021 -j RETURN</span><br><span class="line">-A ISTIO_INBOUND -p tcp --dport 15020 -j RETURN</span><br><span class="line">-A ISTIO_INBOUND -p tcp -j ISTIO_IN_REDIRECT</span><br><span class="line">-A OUTPUT -p tcp -j ISTIO_OUTPUT</span><br><span class="line">-A ISTIO_OUTPUT -o lo -s 127.0.0.6/32 -j RETURN</span><br><span class="line">-A ISTIO_OUTPUT -o lo ! -d 127.0.0.1/32 -p tcp ! --dport 15008 -m owner --uid-owner 1337 -j ISTIO_IN_REDIRECT</span><br><span class="line">-A ISTIO_OUTPUT -o lo -m owner ! --uid-owner 1337 -j RETURN</span><br><span class="line">-A ISTIO_OUTPUT -m owner --uid-owner 1337 -j RETURN</span><br><span class="line">-A ISTIO_OUTPUT -o lo ! -d 127.0.0.1/32 -p tcp ! --dport 15008 -m owner --gid-owner 1337 -j ISTIO_IN_REDIRECT</span><br><span class="line">-A ISTIO_OUTPUT -o lo -m owner ! --gid-owner 1337 -j RETURN</span><br><span class="line">-A ISTIO_OUTPUT -m owner --gid-owner 1337 -j RETURN</span><br><span class="line">-A ISTIO_OUTPUT -d 127.0.0.1/32 -j RETURN</span><br><span class="line">-A ISTIO_OUTPUT -j ISTIO_REDIRECT</span><br><span class="line">COMMIT</span><br><span class="line">2023-12-28T09:08:49.813839Z     info    Running command (with wait lock): iptables-restore --noflush --wait=30</span><br><span class="line">2023-12-28T09:08:49.815293Z     info    Running ip6tables-restore with the following input:</span><br><span class="line"></span><br><span class="line">2023-12-28T09:08:49.815329Z     info    Running command (with wait lock): ip6tables-restore --noflush --wait=30</span><br><span class="line">2023-12-28T09:08:49.816025Z     info    Running command (without lock): iptables-save </span><br><span class="line">2023-12-28T09:08:49.817187Z     info    Command output: </span><br><span class="line"># Generated by iptables-save v1.8.7 on Thu Dec 28 09:08:49 2023</span><br><span class="line">*raw</span><br><span class="line">:PREROUTING ACCEPT [0:0]</span><br><span class="line">:OUTPUT ACCEPT [0:0]</span><br><span class="line">COMMIT</span><br><span class="line"># Completed on Thu Dec 28 09:08:49 2023</span><br><span class="line"># Generated by iptables-save v1.8.7 on Thu Dec 28 09:08:49 2023</span><br><span class="line">*mangle</span><br><span class="line">:PREROUTING ACCEPT [0:0]</span><br><span class="line">:INPUT ACCEPT [0:0]</span><br><span class="line">:FORWARD ACCEPT [0:0]</span><br><span class="line">:OUTPUT ACCEPT [0:0]</span><br><span class="line">:POSTROUTING ACCEPT [0:0]</span><br><span class="line">COMMIT</span><br><span class="line"># Completed on Thu Dec 28 09:08:49 2023</span><br><span class="line"># Generated by iptables-save v1.8.7 on Thu Dec 28 09:08:49 2023</span><br><span class="line">*filter</span><br><span class="line">:INPUT ACCEPT [0:0]</span><br><span class="line">:FORWARD ACCEPT [0:0]</span><br><span class="line">:OUTPUT ACCEPT [0:0]</span><br><span class="line">COMMIT</span><br><span class="line"># Completed on Thu Dec 28 09:08:49 2023</span><br><span class="line"># Generated by iptables-save v1.8.7 on Thu Dec 28 09:08:49 2023</span><br><span class="line">*nat</span><br><span class="line">:PREROUTING ACCEPT [0:0]</span><br><span class="line">:INPUT ACCEPT [0:0]</span><br><span class="line">:OUTPUT ACCEPT [0:0]</span><br><span class="line">:POSTROUTING ACCEPT [0:0]</span><br><span class="line">:ISTIO_INBOUND - [0:0]</span><br><span class="line">:ISTIO_IN_REDIRECT - [0:0]</span><br><span class="line">:ISTIO_OUTPUT - [0:0]</span><br><span class="line">:ISTIO_REDIRECT - [0:0]</span><br><span class="line">-A PREROUTING -p tcp -j ISTIO_INBOUND</span><br><span class="line">-A OUTPUT -p tcp -j ISTIO_OUTPUT</span><br><span class="line">-A ISTIO_INBOUND -p tcp -m tcp --dport 15008 -j RETURN</span><br><span class="line">-A ISTIO_INBOUND -p tcp -m tcp --dport 15090 -j RETURN</span><br><span class="line">-A ISTIO_INBOUND -p tcp -m tcp --dport 15021 -j RETURN</span><br><span class="line">-A ISTIO_INBOUND -p tcp -m tcp --dport 15020 -j RETURN</span><br><span class="line">-A ISTIO_INBOUND -p tcp -j ISTIO_IN_REDIRECT</span><br><span class="line">-A ISTIO_IN_REDIRECT -p tcp -j REDIRECT --to-ports 15006</span><br><span class="line">-A ISTIO_OUTPUT -s 127.0.0.6/32 -o lo -j RETURN</span><br><span class="line">-A ISTIO_OUTPUT ! -d 127.0.0.1/32 -o lo -p tcp -m tcp ! --dport 15008 -m owner --uid-owner 1337 -j ISTIO_IN_REDIRECT</span><br><span class="line">-A ISTIO_OUTPUT -o lo -m owner ! --uid-owner 1337 -j RETURN</span><br><span class="line">-A ISTIO_OUTPUT -m owner --uid-owner 1337 -j RETURN</span><br><span class="line">-A ISTIO_OUTPUT ! -d 127.0.0.1/32 -o lo -p tcp -m tcp ! --dport 15008 -m owner --gid-owner 1337 -j ISTIO_IN_REDIRECT</span><br><span class="line">-A ISTIO_OUTPUT -o lo -m owner ! --gid-owner 1337 -j RETURN</span><br><span class="line">-A ISTIO_OUTPUT -m owner --gid-owner 1337 -j RETURN</span><br><span class="line">-A ISTIO_OUTPUT -d 127.0.0.1/32 -j RETURN</span><br><span class="line">-A ISTIO_OUTPUT -j ISTIO_REDIRECT</span><br><span class="line">-A ISTIO_REDIRECT -p tcp -j REDIRECT --to-ports 15001</span><br><span class="line">COMMIT</span><br><span class="line"># Completed on Thu Dec 28 09:08:49 2023</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">被注入后，会有istio-proxy中会有两个进程</span><br><span class="line"></span><br><span class="line">istio-proxy@nginx-deployment-846d79d-77zhs:/$ ps -ef </span><br><span class="line">UID          PID    PPID  C STIME TTY          TIME CMD</span><br><span class="line">istio-p+       1       0  0 Dec28 ?        00:00:35 /usr/local/bin/pilot-agent proxy sidecar --domain default.svc.cluster.local --proxyLogLevel=warning --proxyComponentLogLevel=misc:error --log_output_level=default:info</span><br><span class="line">istio-p+      14       1  0 Dec28 ?        00:02:19 /usr/local/bin/envoy -c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --allow-unknown-static-fields --log-</span><br><span class="line">istio-p+      58       0  0 05:45 pts/0    00:00:00 bash</span><br><span class="line">istio-p+      67      58  0 05:45 pts/0    00:00:00 ps -ef</span><br><span class="line"></span><br><span class="line">pilot-agent动作：</span><br><span class="line">1生成envoy,启动配置</span><br><span class="line">2启动envoy</span><br><span class="line">3监控并管理envoy 的运行情况，比如envoy出错时负责重启，envoy 配置变更后重新加载</span><br><span class="line"></span><br><span class="line">可以把envoy理解成一个轻量的ngx</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20231230135040352.png" alt="image-20231230135040352"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">istio-proxy@istiod-755784476f-lxnw2:/$ ps -ef </span><br><span class="line">UID          PID    PPID  C STIME TTY          TIME CMD</span><br><span class="line">istio-p+       1       0  0 Dec25 ?        00:10:28 /usr/local/bin/pilot-discovery discovery --monitoringAddr=:15014 --log_output_level=default:info --domain cluster.local --keepaliveMaxServerConnectionAge 30m</span><br><span class="line">istio-p+      20       0  0 11:30 pts/0    00:00:00 bash</span><br><span class="line">istio-p+      28      20  0 11:30 pts/0    00:00:00 ps -ef</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">istio-proxy@nginx-deployment-846d79d-77zhs:/$ netstat -lntup </span><br><span class="line">Active Internet connections (only servers)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    </span><br><span class="line">tcp        0      0 0.0.0.0:15021           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 0.0.0.0:15021           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      -                   </span><br><span class="line">tcp        0      0 0.0.0.0:15090           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 0.0.0.0:15090           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 127.0.0.1:15000         0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 0.0.0.0:15001           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 0.0.0.0:15001           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 127.0.0.1:15004         0.0.0.0:*               LISTEN      1/pilot-agent       </span><br><span class="line">tcp        0      0 0.0.0.0:15006           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp        0      0 0.0.0.0:15006           0.0.0.0:*               LISTEN      14/envoy            </span><br><span class="line">tcp6       0      0 :::15020                :::*                    LISTEN      1/pilot-agent       </span><br><span class="line">tcp6       0      0 :::80                   :::*                    LISTEN      -      </span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20231230142501664.png" alt="image-20231230142501664"></p>
+<p>15000 只能本 network ns 才能访问，不允许外部流量访问</p>
+<p>同样的镜像 proxyv2 产生了不同的行为</p>
+<p>当用户同时在 kubernetes 中的 yaml 文件中写了 command 和 args 的时候自然是可以覆盖 DockerFile 中 ENTRYPOINT 的命令行和参数，完整的情况分类如下:<br>
+ 如果 command 和 args 均没有写，那么用 Docker 默认的配置。<br>
+如果 command 写了，但 args 没有写，那么 Docker 默认的配置会被忽略而且仅仅执行.yam 文件的 command (不带任何参数的)。<br>
+如果 command 没写，但 args 写了，那么 Docker 默认配置的 ENTRYPOINT 的命令行会被执行，但是调用的参数是.vaml 中的 args。<br>
+如果如果 command 和 args 都写了，那么 Docker 默认的配置被忽略，使用.vaml 的配置</p>
+<p>自动注入</p>
+<p>本质是给 ns 打标签</p>
+<p>kubectl label ns istio-injection=enabled</p>
+<h2 id="upgrade"><a class="markdownIt-Anchor" href="#upgrade">#</a> upgrade</h2>
+<p>1. 升级被注入的资源</p>
+<p>2. 升级 istio</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.download istio </span><br><span class="line"></span><br><span class="line">2.tar xzvf istio.tar.gz</span><br><span class="line"></span><br><span class="line">3.source istio.bash </span><br><span class="line"></span><br><span class="line">4.保证升级前后profile相同</span><br><span class="line">istioctl profile dump demo &gt; 1.demo</span><br><span class="line"></span><br><span class="line">4.1修改jwt策略</span><br><span class="line"></span><br><span class="line">5.upgrade</span><br><span class="line">istioctl upgrade -f 1.demo</span><br></pre></td></tr></table></figure>
+<p><span class="exturl" data-url="aHR0cHM6Ly9pc3Rpby5pby9sYXRlc3QvemgvZG9jcy9zZXR1cC91cGdyYWRlL2luLXBsYWNlLw==">https://istio.io/latest/zh/docs/setup/upgrade/in-place/</span></p>
+<h2 id="virtual-service"><a class="markdownIt-Anchor" href="#virtual-service">#</a> virtual service</h2>
+<p>一种实现流量管理的方式</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/arch.svg" alt="The overall architecture of an Istio-based application." style="zoom: 50%;" /> 
+<p>service 可以简单理解为一个微服务</p>
+<p>注入后的微服务，就会形成一个网格</p>
+<p>网格之间的通信要通过网格的 proxy</p>
+<p>ingress -&gt; envoy -&gt; service -&gt; envoy -&gt;envoyB -&gt; serviceB -&gt; envoyB -&gt; engress</p>
+<p>Istio 架构由数据面 (data plane) 和控制面 (control plane) 构成，因此 lstio 流量也可以分为数据面流量和控制面流量。数据面流量是指微服务之间业务调用的流量，控制面流量是指 Istio 各组件之间配置和控制网格行为的流量。</p>
+<p>traffic management 指的是数据平面的流量</p>
+<p>lstio traffic management model 依赖于随服务一起部署的 Envoy 代理，网格发送和接收的所有流量 (数据平面流量) 都通过 Envoy 进行代理。基于此模型可以轻松引导和控制网格周围的流量，而无需对服务进行任何更改</p>
+<p>traffic management 实现方式</p>
+<p>Virtual services</p>
+<p>Destination rules</p>
+<p>Gateways</p>
+<p>Service entries</p>
+<p>Sidecars</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20231231182246917.png" alt="image-20231231182246917"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20231231185940467.png" alt="image-20231231185940467"></p>
+<p>client 也需要被 istio 注入才能实现上述功能，他们必须在一个 istio 网络内</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">networking.istio.io/</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">VirtualService</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">web-svc</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">hosts:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">web-svc.default.svc.cluster.local</span></span><br><span class="line">  <span class="attr">http:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">route:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">destination:</span></span><br><span class="line">        <span class="attr">host:</span> <span class="string">tomcat-svc.default.svc.cluster.local</span></span><br><span class="line">      <span class="attr">weight:</span> <span class="number">80</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">destination:</span></span><br><span class="line">        <span class="attr">host:</span> <span class="string">httpd-svc.default.svc.cluster.local</span></span><br><span class="line">      <span class="attr">weight:</span> <span class="number">20</span></span><br></pre></td></tr></table></figure>
+<p>istio 规则只在集群内生效，从外部访问无效</p>
+<p>kubectl get <span class="exturl" data-url="aHR0cDovL3ZpcnR1YWxzZXJ2aWNlcy5uZXR3b3JraW5nLmlzdGlvLmlv">virtualservices.networking.istio.io</span></p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240101201220715.png" alt="image-20240101201220715" style="zoom:50%;" /> 
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240101201229872.png" alt="image-20240101201229872" style="zoom:50%;" /> 
+<p>envoy 是个反代服务器</p>
+<p>virtualservice 指向一个 host，host 可以在 k8s 内寻址，host 路由规则依据 routing rules</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240101202339223.png" alt="image-20240101202339223" style="zoom:50%;" /> 
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240101202531446.png" alt="image-20240101202531446" style="zoom:50%;" /> 
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240101202550632.png" alt="image-20240101202550632" style="zoom:50%;" /> 
+<p>hosts field</p>
+<p>1 short name service(web-svc</p>
+<p>2 full qualified domain name service(web-svc.default.svc.clusterlocal</p>
+<p>3 gateway name( <span class="exturl" data-url="aHR0cDovL3d3dy53ZWItc3ZjLmNvbQ==">www.web-svc.com</span>)</p>
+<p>4 *</p>
+<p>rules</p>
+<p>1.match condition</p>
+<p>2.destination</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240101203438577.png" alt="image-20240101203438577" style="zoom:50%;" /> 
+<p>路由优先级：在 yaml 中越往上优先级越高</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240101204406434.png" alt="image-20240101204406434" style="zoom:50%;" /> 
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240101205143775.png" alt="image-20240101205143775"></p>
+<p>wget -q -O - <span class="exturl" data-url="aHR0cDovL3dldi1zdmMtdnM6ODA4MA==">http://wev-svc-vs:8080</span> --header ‘end-user: jiuxi’</p>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-01-02 22:22:07" itemprop="dateModified" datetime="2024-01-02T22:22:07+08:00">2024-01-02</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2024/01/01/istio/" title="istio">http://example.com/2024/01/01/istio/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/10/03/hg%20ker/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;d6ac20b715622e2d46f27dc717ab9484.jpg" title="hg内核">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> 逆向</span>
+  <h3>hg内核</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#istio"><span class="toc-number">1.</span> <span class="toc-text"> istio</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text"> 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#inject"><span class="toc-number">1.2.</span> <span class="toc-text"> inject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#upgrade"><span class="toc-number">1.3.</span> <span class="toc-text"> upgrade</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#virtual-service"><span class="toc-number">1.4.</span> <span class="toc-text"> virtual service</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">41</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">4</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">4</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/08/16/Unserialize/" title="unserialize">unserialize</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/05/30/jenkins/" title="Jenkins">Jenkins</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/09/01/border%20leaf/" title="从三层架构到spine leaf">从三层架构到spine leaf</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/11/27/CDN/" title="CDN&amp;DNS">CDN&DNS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
+</div>
+
+    <span><a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" title="秋招总结">秋招总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/04/03/iptables2/" title="iptables">iptables</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" title="docker逃逸&amp;capabilities">docker逃逸&capabilities</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/03/27/http/" title="http">http</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2023/01/03/%E6%BB%B4%E6%B0%B4reverse/" title="水滴rev">水滴rev</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/01/01/istio/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
