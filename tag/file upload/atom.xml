@@ -5,9 +5,9 @@
     <link href="http://example.com" />
     <updated>2022-04-16T05:38:45.000Z</updated>
     <category term="运维" />
+    <category term="SQL injection" />
     <category term="逆向" />
     <category term="网络" />
-    <category term="SQL injection" />
     <category term="File upload" />
     <category term="汇编" />
     <entry>
