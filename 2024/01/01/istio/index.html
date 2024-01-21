@@ -102,12 +102,12 @@ Yume Shoka = Hexo</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/140009170121c1a23f1a969d29c46fee.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/0a6be1d1fa7827fc28504c63a5a6d653.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/f899e541e1f9eff9287fd31354a2d7d3.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/c22bb7736559a7554506b05203018145.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/132a88e4e5cfe7e3847ed93deae688d2.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/8fe50780c15461b629c9aeab5a7f2acd.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/8d7796d053eb27e494dc1b848bda144c.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/daee0852e8584814639c1cdd5f5b1ed4.jpg"></li>
           <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/ecce74bba1d6312552d0156083825749.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/0a30d7eca259366c104d2fbfe515dc0e.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/9e00cb8944af8ad12fd6b7fd7eb24ebc.jpg"></li>
         </ul>
       </div>
     </header>
@@ -153,8 +153,7 @@ Yume Shoka = Hexo</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <p><strong>更新中</strong></p>
-<h1 id="istio"><a class="markdownIt-Anchor" href="#istio">#</a> istio</h1>
+    <h1 id="istio"><a class="markdownIt-Anchor" href="#istio">#</a> istio</h1>
 <h2 id="安装"><a class="markdownIt-Anchor" href="#安装">#</a> 安装</h2>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">// 安装istio命令行工具</span><br><span class="line">curl -L https://istio.io/downloadIstio | sh -</span><br><span class="line"></span><br><span class="line">vim /etc/profile</span><br><span class="line">PATH=$PATH:/root/istio/bin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br><span class="line"></span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# cp tools/istioctl.bash ~/.istioctl.bash </span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# source ~/.istioctl.bash </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# ls </span><br><span class="line">bin  LICENSE  manifests  manifest.yaml  README.md  samples  tools</span><br><span class="line"></span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# istioctl version </span><br><span class="line">client version: 1.20.1</span><br><span class="line">control plane version: 1.20.1</span><br><span class="line">data plane version: 1.20.1 (8 proxies)</span><br><span class="line"></span><br><span class="line">// 安装istio</span><br><span class="line">istioctl manifest apply --set profile=demo</span><br><span class="line"></span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# istioctl profile list </span><br><span class="line">Istio configuration profiles:</span><br><span class="line">    ambient</span><br><span class="line">    default</span><br><span class="line">    demo</span><br><span class="line">    empty</span><br><span class="line">    external</span><br><span class="line">    minimal</span><br><span class="line">    openshift</span><br><span class="line">    preview</span><br><span class="line">    remote</span><br><span class="line">    </span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# kubectl get all -n istio-system </span><br><span class="line">NAME                                       READY   STATUS    RESTARTS   AGE</span><br><span class="line">pod/grafana-8cb9f8f79-9fr74                1/1     Running   0          28h</span><br><span class="line">pod/istio-egressgateway-8649fd8848-9hvp4   1/1     Running   0          2d6h</span><br><span class="line">pod/istio-ingressgateway-9b58f8c86-hk4fx   1/1     Running   0          2d6h</span><br><span class="line">pod/istiod-755784476f-lxnw2                1/1     Running   0          2d6h</span><br><span class="line">pod/jaeger-7cc9dd4499-hwsd9                1/1     Running   0          28h</span><br><span class="line">pod/kiali-6d5f569c67-s222f                 1/1     Running   0          28h</span><br><span class="line">pod/prometheus-85674d4cb8-rqnlc            2/2     Running   0          28h</span><br><span class="line"></span><br><span class="line">NAME                           TYPE           CLUSTER-IP        EXTERNAL-IP      PORT(S)                           AGE</span><br><span class="line">service/grafana                ClusterIP      192.168.57.247    &lt;none&gt;           3000/TCP                                                 </span><br><span class="line">service/istio-egressgateway    ClusterIP      192.168.74.170    &lt;none&gt;           80/TCP,443/TCP                                           </span><br><span class="line">service/istio-ingressgateway   LoadBalancer   192.168.126.220   101.132.74.102   15021:30190/TCP,80:30304/TCP,443:31928/TCP,31400:31218/TCP,15443:30438/TCP   2d6h</span><br><span class="line">service/istiod                 ClusterIP      192.168.72.13     &lt;none&gt;           15010/TCP,15012/TCP,443/TCP,15014/TCP                   </span><br><span class="line">service/jaeger-collector       ClusterIP      192.168.94.27     &lt;none&gt;           14268/TCP,14250/TCP,9411/TCP,4317/TCP,4318/TCP           </span><br><span class="line">service/kiali                  ClusterIP      192.168.80.120    &lt;none&gt;           20001/TCP,9090/TCP                                       </span><br><span class="line">service/loki-headless          ClusterIP      None              &lt;none&gt;           3100/TCP                                                 </span><br><span class="line">service/prometheus             ClusterIP      192.168.226.115   &lt;none&gt;           9090/TCP                                                 </span><br><span class="line">service/tracing                ClusterIP      192.168.218.160   &lt;none&gt;           80/TCP,16685/TCP                                         </span><br><span class="line">service/zipkin                 ClusterIP      192.168.16.18     &lt;none&gt;           9411/TCP                                                 </span><br><span class="line"></span><br><span class="line">NAME                                   READY   UP-TO-DATE   AVAILABLE   AGE</span><br><span class="line">deployment.apps/grafana                1/1     1            1           28h</span><br><span class="line">deployment.apps/istio-egressgateway    1/1     1            1           2d6h</span><br><span class="line">deployment.apps/istio-ingressgateway   1/1     1            1           2d6h</span><br><span class="line">deployment.apps/istiod                 1/1     1            1           2d6h</span><br><span class="line">deployment.apps/jaeger                 1/1     1            1           28h</span><br><span class="line">deployment.apps/kiali                  1/1     1            1           28h</span><br><span class="line">deployment.apps/prometheus             1/1     1            1           28h</span><br><span class="line"></span><br><span class="line">NAME                                             DESIRED   CURRENT   READY   AGE</span><br><span class="line">replicaset.apps/grafana-8cb9f8f79                1         1         1       28h</span><br><span class="line">replicaset.apps/istio-egressgateway-8649fd8848   1         1         1       2d6h</span><br><span class="line">replicaset.apps/istio-ingressgateway-9b58f8c86   1         1         1       2d6h</span><br><span class="line">replicaset.apps/istiod-755784476f                1         1         1       2d6h</span><br><span class="line">replicaset.apps/jaeger-7cc9dd4499                1         1         1       28h</span><br><span class="line">replicaset.apps/kiali-6d5f569c67                 1         1         1       28h</span><br><span class="line">replicaset.apps/prometheus-85674d4cb8            1         1         1       28h</span><br><span class="line"></span><br><span class="line">// 卸载demo</span><br><span class="line">istioctl manifest generate --set profile=demo | kubectl delete -f -</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# istioctl version </span><br><span class="line">client version: 1.20.1</span><br><span class="line">control plane version: 1.20.1</span><br><span class="line">data plane version: 1.20.1 (8 proxies)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@iZuf60im9c63xjnpkubjq7Z istio-1.20.1]# istioctl analyze -n default </span><br><span class="line">✔ No validation issues found when analyzing namespace: default.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 操作profile</span><br><span class="line">istioctl profile list</span><br><span class="line">istioctl profile dump demo &gt; 1.yaml </span><br></pre></td></tr></table></figure>
@@ -241,6 +240,50 @@ Yume Shoka = Hexo</title>
 <img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240101204406434.png" alt="image-20240101204406434" style="zoom:50%;" /> 
 <p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240101205143775.png" alt="image-20240101205143775"></p>
 <p>wget -q -O - <span class="exturl" data-url="aHR0cDovL3dldi1zdmMtdnM6ODA4MA==">http://wev-svc-vs:8080</span> --header ‘end-user: jiuxi’</p>
+<h3 id="故障-注入"><a class="markdownIt-Anchor" href="#故障-注入">#</a> 故障 注入</h3>
+<p>为了测试微服务应用程序 Bookinfo 的弹性，我们将为用户  <code>jason</code>  在  <code>reviews:v2</code>  和  <code>ratings</code>  服务之间注入一个 7 秒的延迟。 这个测试将会发现一个故意引入 Bookinfo 应用程序中的 bug。</p>
+<p>注意  <code>reviews:v2</code>  服务对  <code>ratings</code>  服务的调用具有 10 秒的硬编码连接超时。 因此，尽管引入了 7 秒的延迟，我们仍然期望端到端的流程是没有任何错误的。</p>
+<p>创建故障注入规则以延迟来自测试用户  <code>jason</code>  的流量：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">networking.istio.io/v1beta1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">VirtualService</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">hosts:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">ratings</span></span><br><span class="line">  <span class="attr">http:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">fault:</span></span><br><span class="line">      <span class="attr">delay:</span></span><br><span class="line">        <span class="attr">fixedDelay:</span> <span class="string">7s</span></span><br><span class="line">        <span class="attr">percentage:</span></span><br><span class="line">          <span class="attr">value:</span> <span class="number">100</span></span><br><span class="line">    <span class="attr">match:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">headers:</span></span><br><span class="line">        <span class="attr">end-user:</span></span><br><span class="line">          <span class="attr">exact:</span> <span class="string">jason</span></span><br><span class="line">    <span class="attr">route:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">destination:</span></span><br><span class="line">        <span class="attr">host:</span> <span class="string">ratings</span></span><br><span class="line">        <span class="attr">subset:</span> <span class="string">v1</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">route:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">destination:</span></span><br><span class="line">        <span class="attr">host:</span> <span class="string">ratings</span></span><br><span class="line">        <span class="attr">subset:</span> <span class="string">v1</span></span><br></pre></td></tr></table></figure>
+<p>按照预期，我们引入的 7 秒延迟不会影响到  <code>reviews</code>  服务，因为  <code>reviews</code>  和  <code>ratings</code>  服务间的超时被硬编码为 10 秒。 但是，在  <code>productpage</code>  和  <code>reviews</code>  服务之间也有一个 3 秒的硬编码的超时，再加 1 次重试，一共 6 秒。 结果， <code>productpage</code>  对  <code>reviews</code>  的调用在 6 秒后提前超时并抛出错误了。</p>
+<p>测试微服务弹性的另一种方法是引入 HTTP abort 故障。 在这个任务中，针对测试用户  <code>jason</code>  ，将给  <code>ratings</code>  微服务引入一个 HTTP abort。</p>
+<p>在这种情况下，我们希望页面能够立即加载，同时显示  <code>Ratings service is currently unavailable</code>  这样的消息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: networking.istio.io/v1beta1</span><br><span class="line">kind: VirtualService</span><br><span class="line">spec:</span><br><span class="line">  hosts:</span><br><span class="line">  - ratings</span><br><span class="line">  http:</span><br><span class="line">  - fault:</span><br><span class="line">      abort:</span><br><span class="line">        httpStatus: 500</span><br><span class="line">        percentage:</span><br><span class="line">          value: 100</span><br><span class="line">    match:</span><br><span class="line">    - headers:</span><br><span class="line">        end-user:</span><br><span class="line">          exact: jason</span><br><span class="line">    route:</span><br><span class="line">    - destination:</span><br><span class="line">        host: ratings</span><br><span class="line">        subset: v1</span><br><span class="line">  - route:</span><br><span class="line">    - destination:</span><br><span class="line">        host: ratings</span><br><span class="line">        subset: v1</span><br></pre></td></tr></table></figure>
+<p>如果您注销用户  <code>jason</code>  或在匿名窗口（或其他浏览器）中打开 Bookinfo 应用程序， 您将看到  <code>/productpage</code>  为除  <code>jason</code>  以外的其他用户调用了  <code>reviews:v1</code> （完全不调用  <code>ratings</code> ）。 因此，您不会看到任何错误消息。</p>
+<h3 id="流量转移"><a class="markdownIt-Anchor" href="#流量转移">#</a> 流量转移</h3>
+<p>一个常见的用例是将 TCP 流量从微服务的旧版本逐步迁移到新版本。 在 Istio 中，您可以通过配置一系列路由规则来实现此目标，这些规则将一定比例的 TCP 流量从一个目的地重定向到另一个目的地。</p>
+<p>在此任务中，您将会把 100% 的 TCP 流量分配到  <code>tcp-echo:v1</code> 。 接着，再通过配置 Istio 路由权重把 20% 的 TCP 流量分配到  <code>tcp-echo:v2</code> 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: networking.istio.io/v1beta1</span><br><span class="line">kind: VirtualService</span><br><span class="line">  ...</span><br><span class="line">spec:</span><br><span class="line">  ...</span><br><span class="line">  tcp:</span><br><span class="line">  - match:</span><br><span class="line">    - port: 31400</span><br><span class="line">    route:</span><br><span class="line">    - destination:</span><br><span class="line">        host: tcp-echo</span><br><span class="line">        port:</span><br><span class="line">          number: 9000</span><br><span class="line">        subset: v1</span><br><span class="line">      weight: 80</span><br><span class="line">    - destination:</span><br><span class="line">        host: tcp-echo</span><br><span class="line">        port:</span><br><span class="line">          number: 9000</span><br><span class="line">        subset: v2</span><br><span class="line">      weight: 20</span><br></pre></td></tr></table></figure>
+<h3 id="请求超时"><a class="markdownIt-Anchor" href="#请求超时">#</a> 请求超时</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: networking.istio.io/v1alpha3</span><br><span class="line">kind: VirtualService</span><br><span class="line">metadata:</span><br><span class="line">  name: ratings</span><br><span class="line">spec:</span><br><span class="line">  hosts:</span><br><span class="line">  - ratings</span><br><span class="line">  http:</span><br><span class="line">  - fault:</span><br><span class="line">      delay:</span><br><span class="line">        percent: 100</span><br><span class="line">        fixedDelay: 2s</span><br><span class="line">    route:</span><br><span class="line">    - destination:</span><br><span class="line">        host: ratings</span><br><span class="line">        subset: v1</span><br></pre></td></tr></table></figure>
+<p>这时可以看到 Bookinfo 应用运行正常（显示了评级的星型符号），但是每次刷新页面， 都会有 2 秒的延迟。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: networking.istio.io/v1alpha3</span><br><span class="line">kind: VirtualService</span><br><span class="line">metadata:</span><br><span class="line">  name: reviews</span><br><span class="line">spec:</span><br><span class="line">  hosts:</span><br><span class="line">  - reviews</span><br><span class="line">  http:</span><br><span class="line">  - route:</span><br><span class="line">    - destination:</span><br><span class="line">        host: reviews</span><br><span class="line">        subset: v2</span><br><span class="line">    timeout: 0.5s</span><br></pre></td></tr></table></figure>
+<p>这时候应该看到 1 秒钟就会返回，而不是之前的 2 秒钟，但  <code>reviews</code>  是不可用的。</p>
+<p>即使超时配置为半秒，响应仍需要 1 秒，是因为  <code>productpage</code>  服务中存在硬编码重试， 因此它在返回之前调用  <code>reviews</code>  服务超时两次。</p>
+<h3 id="镜像流量"><a class="markdownIt-Anchor" href="#镜像流量">#</a> 镜像流量</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: networking.istio.io/v1alpha3</span><br><span class="line">kind: VirtualService</span><br><span class="line">metadata:</span><br><span class="line">  name: httpbin</span><br><span class="line">spec:</span><br><span class="line">  hosts:</span><br><span class="line">    - httpbin</span><br><span class="line">  http:</span><br><span class="line">  - route:</span><br><span class="line">    - destination:</span><br><span class="line">        host: httpbin</span><br><span class="line">        subset: v1</span><br><span class="line">      weight: 100</span><br><span class="line">---</span><br><span class="line">apiVersion: networking.istio.io/v1alpha3</span><br><span class="line">kind: DestinationRule</span><br><span class="line">metadata:</span><br><span class="line">  name: httpbin</span><br><span class="line">spec:</span><br><span class="line">  host: httpbin</span><br><span class="line">  subsets:</span><br><span class="line">  - name: v1</span><br><span class="line">    labels:</span><br><span class="line">      version: v1</span><br><span class="line">  - name: v2</span><br><span class="line">    labels:</span><br><span class="line">      version: v2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: networking.istio.io/v1alpha3</span><br><span class="line">kind: VirtualService</span><br><span class="line">metadata:</span><br><span class="line">  name: httpbin</span><br><span class="line">spec:</span><br><span class="line">  hosts:</span><br><span class="line">    - httpbin</span><br><span class="line">  http:</span><br><span class="line">  - route:</span><br><span class="line">    - destination:</span><br><span class="line">        host: httpbin</span><br><span class="line">        subset: v1</span><br><span class="line">      weight: 100</span><br><span class="line">    mirror:</span><br><span class="line">      host: httpbin</span><br><span class="line">      subset: v2</span><br><span class="line">    mirrorPercentage:</span><br><span class="line">      value: 100.0</span><br></pre></td></tr></table></figure>
+<h2 id="destinationrule"><a class="markdownIt-Anchor" href="#destinationrule">#</a> DestinationRule</h2>
+<h3 id="熔断"><a class="markdownIt-Anchor" href="#熔断">#</a> 熔断</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: networking.istio.io/v1alpha3</span><br><span class="line">kind: DestinationRule</span><br><span class="line">metadata:</span><br><span class="line">  name: httpbin</span><br><span class="line">spec:</span><br><span class="line">  host: httpbin</span><br><span class="line">  trafficPolicy:</span><br><span class="line">    connectionPool:</span><br><span class="line">      tcp:</span><br><span class="line">        maxConnections: 1</span><br><span class="line">      http:</span><br><span class="line">        http1MaxPendingRequests: 1</span><br><span class="line">        maxRequestsPerConnection: 1</span><br><span class="line">    outlierDetection:</span><br><span class="line">      consecutive5xxErrors: 1</span><br><span class="line">      interval: 1s</span><br><span class="line">      baseEjectionTime: 3m</span><br><span class="line">      maxEjectionPercent: 100</span><br></pre></td></tr></table></figure>
+<p>在  <code>DestinationRule</code>  配置中，您定义了  <code>maxConnections: 1</code>  和  <code>http1MaxPendingRequests: 1</code> 。 这些规则意味着，如果并发的连接和请求数超过一个，在  <code>istio-proxy</code>  进行进一步的请求和连接时，后续请求或连接将被阻止。</p>
+<h2 id="network-namespace"><a class="markdownIt-Anchor" href="#network-namespace">#</a> network namespace</h2>
+<p>一组网络接口，iptables，路由条目</p>
+<p>ip netns add networking-ns</p>
+<p>ip netns delete xxx</p>
+<p><code>ip netns exec xxx bash -rcfile &lt;(echo &quot;PS1=\&quot;shabi&gt; \&quot;&quot;)</code></p>
+<p>ip netns exec xxx  ip -c a</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">shabi&gt; ip link set lo up</span><br><span class="line">shabi&gt; ping 127.1.1.1</span><br><span class="line">PING 127.1.1.1 (127.1.1.1) 56(84) bytes of data.</span><br><span class="line">64 bytes from 127.1.1.1: icmp_seq=1 ttl=64 time=0.033 ms</span><br><span class="line">64 bytes from 127.1.1.1: icmp_seq=2 ttl=64 time=0.040 ms</span><br><span class="line">^C</span><br><span class="line">--- 127.1.1.1 ping statistics ---</span><br></pre></td></tr></table></figure>
+<p>类比：</p>
+<p>docker exec -it xxx bash</p>
+<p>ip link add xxx type veth peer name yyy</p>
+<p>ip link set xxx netns yyy</p>
+<p>ip link set yyy netns yyy</p>
+<p>ip netns exec xxx ip addr add dev xxx 1.1.1.1/24</p>
+<p>ip netns exec xxx ip link set yyy up</p>
+<p>ip link add haha type bridge</p>
+<p>网桥 mac 地址和端口    N:1</p>
+<p>交换机  mac 地址和端口   1:1</p>
 
       <div class="tags">
           <a href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag"><i class="ic i-tag"></i> 运维</a>
@@ -255,7 +298,7 @@ Yume Shoka = Hexo</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2024-01-02 22:54:10" itemprop="dateModified" datetime="2024-01-02T22:54:10+08:00">2024-01-02</time>
+    <time title="Modified: 2024-01-22 00:42:42" itemprop="dateModified" datetime="2024-01-22T00:42:42+08:00">2024-01-22</time>
   </span>
 </div>
 
@@ -310,7 +353,7 @@ Yume Shoka = Hexo</title>
     <div class="item left">
       
 
-  <a href="/2023/10/03/hg%20ker/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;626f157a4ff74c7984f4110e38031524.jpg" title="hg内核">
+  <a href="/2023/10/03/hg%20ker/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;488297bfd0233b6c6a444f1860e55d45.jpg" title="hg内核">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> 逆向</span>
   <h3>hg内核</h3>
@@ -320,7 +363,7 @@ Yume Shoka = Hexo</title>
     <div class="item right">
       
 
-  <a href="/2024/01/10/%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%AD%98%E5%82%A8/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;20179998b27b569ef4634293516e8d09.jpg" title="集群与存储">
+  <a href="/2024/01/10/%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%AD%98%E5%82%A8/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;d0ac01ff6ebfeb4159b53fff4ce860d0.jpg" title="集群与存储">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> 运维</span>
   <h3>集群与存储</h3>
@@ -342,7 +385,7 @@ Yume Shoka = Hexo</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#istio"><span class="toc-number">1.</span> <span class="toc-text"> istio</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text"> 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#inject"><span class="toc-number">1.2.</span> <span class="toc-text"> inject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#upgrade"><span class="toc-number">1.3.</span> <span class="toc-text"> upgrade</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#virtual-service"><span class="toc-number">1.4.</span> <span class="toc-text"> virtual service</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#istio"><span class="toc-number">1.</span> <span class="toc-text"> istio</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text"> 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#inject"><span class="toc-number">1.2.</span> <span class="toc-text"> inject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#upgrade"><span class="toc-number">1.3.</span> <span class="toc-text"> upgrade</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#virtual-service"><span class="toc-number">1.4.</span> <span class="toc-text"> virtual service</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%85%E9%9A%9C-%E6%B3%A8%E5%85%A5"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 故障 注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E9%87%8F%E8%BD%AC%E7%A7%BB"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 流量转移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E8%B6%85%E6%97%B6"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 请求超时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%9C%E5%83%8F%E6%B5%81%E9%87%8F"><span class="toc-number">1.4.4.</span> <span class="toc-text"> 镜像流量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#destinationrule"><span class="toc-number">1.5.</span> <span class="toc-text"> DestinationRule</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%86%94%E6%96%AD"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 熔断</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#network-namespace"><span class="toc-number">1.6.</span> <span class="toc-text"> network namespace</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
@@ -424,19 +467,20 @@ Yume Shoka = Hexo</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
 </div>
 
-    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
+    <span><a href="/2023/08/22/%E5%8E%BB%E5%BC%B9%E7%AA%97%E7%BB%BF%E5%8C%96/" title="破解相关">破解相关</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
 </div>
 
-    <span><a href="/2023/07/15/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E/" title="中间件漏洞">中间件漏洞</a></span>
+    <span><a href="/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" title="秋招面试题">秋招面试题</a></span>
   </li>
 
       
@@ -446,17 +490,7 @@ Yume Shoka = Hexo</title>
 <a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
 </div>
 
-    <span><a href="/2022/05/27/emergency%20response/" title="应急响应">应急响应</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E7%BD%91%E7%BB%9C/" title="In 网络">网络</a>
-</div>
-
-    <span><a href="/2023/01/20/VXLAN/" title="VXLAN">VXLAN</a></span>
+    <span><a href="/2022/12/25/%E5%86%85%E7%BD%91/" title="内网渗透">内网渗透</a></span>
   </li>
 
       
@@ -466,16 +500,17 @@ Yume Shoka = Hexo</title>
 <a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
 </div>
 
-    <span><a href="/2024/01/01/istio/" title="istio">istio</a></span>
+    <span><a href="/2023/05/30/jenkins/" title="Jenkins">Jenkins</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2023/02/21/https%E5%8E%9F%E7%90%86/" title="https+TLS">https+TLS</a></span>
+    <span><a href="/2022/05/27/CSRF/" title="CSRF">CSRF</a></span>
   </li>
 
       
@@ -485,37 +520,45 @@ Yume Shoka = Hexo</title>
 <a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
 </div>
 
-    <span><a href="/2023/04/03/iptables2/" title="iptables">iptables</a></span>
+    <span><a href="/2023/06/02/k8s%E9%AB%98%E7%BA%A7/" title="k8s高级">k8s高级</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
 </div>
 
-    <span><a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" title="JWT">JWT</a></span>
+    <span><a href="/2023/05/20/Kubernetes/" title="Kubernetes">Kubernetes</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
 </div>
 
-    <span><a href="/2023/10/01/1234567/" title="windows逆向进阶">windows逆向进阶</a></span>
+    <span><a href="/2023/04/07/TCPIP_new/" title="TCP&#x2F;IP">TCP/IP</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/06/27/SSRF/" title="SSRF">SSRF</a></span>
+    <span><a href="/2023/08/02/Capabilities/" title="docker底层原理+capability">docker底层原理+capability</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2022/11/27/CDN/" title="CDN&amp;DNS">CDN&DNS</a></span>
   </li>
 
   </ul>

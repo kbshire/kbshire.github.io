@@ -102,12 +102,12 @@ Yume Shoka = Hexo</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/23/6928788f3d68c2e7e3b92222301a30c2.png"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/1135e8eb0ca0a462aa1c2f6ecb6a5ae2.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/a05ebdd3b7f197e626fa1253c6521ef5.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/f99aff0036302f62ec222c046d3e953b.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/5651daf17bf5de77514e658264d7cccc.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/df90fbe0bf0d8c96355b06f9318f97e6.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/2642d17296be87c670c540b75c0562b3.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/a11995a8254fd4a4038ba59f6bcf5a89.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/4368c702fcf1129cac003f7c2f181875.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/50d682207f8e6513884d523e2e0895f7.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/0a8c679b59d7b4a6f86d891282323a50.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/fdfd6e7899b03b32390187931cea99ba.jpg"></li>
         </ul>
       </div>
     </header>
@@ -331,7 +331,12 @@ Yume Shoka = Hexo</title>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">// 用旧的快照克隆新的镜像</span><br><span class="line">root@ceph-node1:~# rbd snap  protect pool-name/demo --snap snap1  </span><br><span class="line"></span><br><span class="line">root@ceph-node1:~# rbd snap rm  pool-name/demo --snap snap1</span><br><span class="line">Removing snap: 0% complete...failed.2024-01-20T14:38:40.687+0800 7f788903be00 -1 librbd::Operations: snapshot is protected</span><br><span class="line">rbd: snapshot &#x27;snap1&#x27; is protected from removal.</span><br><span class="line"></span><br><span class="line">root@ceph-node1:~# rbd clone pool-name/demo@snap1  pool-name/snap2 </span><br><span class="line"></span><br><span class="line">root@ceph-node1:~# rbd list  pool-name </span><br><span class="line">demo</span><br><span class="line">images</span><br><span class="line">snap2</span><br><span class="line"></span><br><span class="line">root@ceph-node1:~# rbd info pool-name/snap2</span><br><span class="line">rbd image &#x27;snap2&#x27;:</span><br><span class="line">        size 17 GiB in 4352 objects</span><br><span class="line">        order 22 (4 MiB objects)</span><br><span class="line">        snapshot_count: 0</span><br><span class="line">        id: 39cf34833fff</span><br><span class="line">        block_name_prefix: rbd_data.39cf34833fff</span><br><span class="line">        format: 2</span><br><span class="line">        features: layering</span><br><span class="line">        op_features: </span><br><span class="line">        flags: </span><br><span class="line">        create_timestamp: Sat Jan 20 14:55:39 2024</span><br><span class="line">        access_timestamp: Sat Jan 20 14:55:39 2024</span><br><span class="line">        modify_timestamp: Sat Jan 20 14:55:39 2024</span><br><span class="line">        parent: pool-name/demo@snap1</span><br><span class="line">        overlap: 17 GiB</span><br><span class="line">        </span><br><span class="line"># 如果希望克隆的镜像独立工作，需要将父快照中的数据全局拷贝一份</span><br><span class="line">root@ceph-node1:~# rbd flatten pool-name/snap2</span><br><span class="line">Image flatten: 100% complete...done.</span><br><span class="line"></span><br><span class="line">root@ceph-node1:~# rbd info pool-name/snap2</span><br><span class="line">rbd image &#x27;snap2&#x27;:</span><br><span class="line">        size 17 GiB in 4352 objects</span><br><span class="line">        order 22 (4 MiB objects)</span><br><span class="line">        snapshot_count: 0</span><br><span class="line">        id: 39cf34833fff</span><br><span class="line">        block_name_prefix: rbd_data.39cf34833fff</span><br><span class="line">        format: 2</span><br><span class="line">        features: layering</span><br><span class="line">        op_features: </span><br><span class="line">        flags: </span><br><span class="line">        create_timestamp: Sat Jan 20 14:55:39 2024</span><br><span class="line">        access_timestamp: Sat Jan 20 14:55:39 2024</span><br><span class="line">        modify_timestamp: Sat Jan 20 14:55:39 2024</span><br><span class="line">        </span><br><span class="line">// 取消保护，删除snap</span><br><span class="line">root@ceph-node1:~# rbd snap unprotect pool-name/demo --snap snap1 </span><br><span class="line">root@ceph-node1:~# rbd snap rm pool-name/demo --snap snap1</span><br><span class="line">Removing snap: 100% complete...done.</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 客户段取消映射</span><br><span class="line">[root@node1 /]# umount /ppp </span><br><span class="line">[root@node1 /]# rbd unmap pool-name/demo </span><br><span class="line">[root@node1 /]# lsblk </span><br><span class="line">NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT</span><br><span class="line">vdd    253:48   0   40G  0 disk </span><br><span class="line">vdb    253:16   0   40G  0 disk </span><br><span class="line">vdc    253:32   0   40G  0 disk </span><br><span class="line">vda    253:0    0  140G  0 disk </span><br><span class="line">└─vda1 253:1    0  140G  0 part /</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240120154500944.png" alt="image-20240120154500944" style="zoom:50%;" /> 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 通过虚拟机访问ceph</span><br><span class="line"></span><br><span class="line">// node1</span><br><span class="line">[root@node1 /]# rbd create pool-name/vm1-image --image-feature layering --size 10G</span><br><span class="line"></span><br><span class="line">// client</span><br><span class="line">&lt;secret ephemeral=&#x27;no&#x27; private=&#x27;no&#x27;&gt;</span><br><span class="line">        &lt;usage type=&#x27;ceph&#x27;&gt;</span><br><span class="line">                &lt;name&gt;client.admin secret&lt;/name&gt;</span><br><span class="line">        &lt;/usage&gt;</span><br><span class="line">&lt;/secret&gt;</span><br><span class="line"></span><br><span class="line">virsh secret-define secret.xml</span><br><span class="line">virsh secret-list </span><br><span class="line"></span><br><span class="line">// 绑定密码</span><br><span class="line">virsh secret-set-value -secret xxx-xxx-xxx --base64 xxxxxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// 通过虚拟机访问ceph</span><br><span class="line"></span><br><span class="line">// node1</span><br><span class="line">[root@node1 /]# rbd create pool-name/vm1-image --image-feature layering --size 10G</span><br><span class="line"></span><br><span class="line">// client</span><br><span class="line">&lt;secret ephemeral=&#x27;no&#x27; private=&#x27;no&#x27;&gt;</span><br><span class="line">        &lt;usage type=&#x27;ceph&#x27;&gt;</span><br><span class="line">                &lt;name&gt;client.admin secret&lt;/name&gt;</span><br><span class="line">        &lt;/usage&gt;</span><br><span class="line">&lt;/secret&gt;</span><br><span class="line"></span><br><span class="line">virsh secret-define secret.xml</span><br><span class="line">virsh secret-list </span><br><span class="line"></span><br><span class="line">// 绑定密码</span><br><span class="line">virsh secret-set-value -secret xxx-xxx-xxx --base64 xxxxxx</span><br><span class="line"></span><br><span class="line">virsh edit  xxx.xml</span><br><span class="line"></span><br><span class="line">在kvm中 virtio 接口速率是最高的</span><br><span class="line"></span><br><span class="line">&lt;disk type=&#x27;network&#x27; device=&#x27;disk&#x27;&gt;</span><br><span class="line">	&lt;driver name=&#x27;qemu&#x27; type=&#x27;raw&#x27; /&gt;</span><br><span class="line">	&lt;auth username=&#x27;admin&#x27;&gt;</span><br><span class="line">	&lt;secret type=&#x27;ceph&#x27; uuid=&#x27;&#x27; /&gt;     # virsh secret list 获取刚刚创建的secret</span><br><span class="line">	&lt;/auth&gt;</span><br><span class="line">	&lt;source protocol=&#x27;rbd&#x27; name=&#x27;rbd/vm1&#x27;&gt;</span><br><span class="line">	&lt;host name=&#x27;1.1.1.1&#x27; port=&#x27;6789&#x27; /&gt;</span><br><span class="line">	&lt;/source&gt;</span><br><span class="line">	&lt;target dev=&#x27;vda&#x27; bus=&#x27;virtio&#x27; /&gt;</span><br><span class="line">&lt;/disk&gt;</span><br><span class="line"></span><br><span class="line">虚拟机reboot生效</span><br></pre></td></tr></table></figure>
+<h3 id="ceph文件系统"><a class="markdownIt-Anchor" href="#ceph文件系统">#</a> ceph 文件系统</h3>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240121144521974.png" alt="image-20240121144521974"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ ceph osd pool create cephfs_data</span><br><span class="line">$ ceph osd pool create cephfs_metadata</span><br><span class="line"></span><br><span class="line">ceph fs new cephfs cephfs_metadata cephfs_data  128    // metadata 存元数据，data存数据,128是pg数量，为2^x ，可以理解为目录数量，默认64</span><br><span class="line">ceph fs ls</span><br><span class="line"></span><br><span class="line">root@ceph-node1:~# ceph osd lspools </span><br><span class="line">1 .mgr</span><br><span class="line">2 pool-name</span><br><span class="line">3 cephfs_data</span><br><span class="line">4 cephfs_metadata</span><br><span class="line"></span><br><span class="line">root@ceph-node1:~# ceph fs ls </span><br><span class="line">name: cephfs, metadata pool: cephfs_metadata, data pools: [cephfs_data ]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@client ~]# mount -t ceph 10.0.0.4:6789:/ /000/ -o name=admin,secret=AQCerKZlXFkFBxAADiQXY27WFREVjjpPg8gikg==</span><br></pre></td></tr></table></figure>
+<h3 id="对象存储"><a class="markdownIt-Anchor" href="#对象存储">#</a> 对象存储</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">对象存储 ceph-radosgw</span><br><span class="line"></span><br><span class="line">启动ceph-radosgw 即可</span><br><span class="line"></span><br><span class="line">修改端口为8000</span><br><span class="line"></span><br><span class="line">[client.rgw.ceph-node1]</span><br><span class="line">host = ceph-node1</span><br><span class="line">rgw_frontends = &quot;civetweb port=8000&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s3tools.org 测试</span><br></pre></td></tr></table></figure>
 
       <div class="tags">
           <a href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag"><i class="ic i-tag"></i> 运维</a>
@@ -346,7 +351,7 @@ Yume Shoka = Hexo</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2024-01-21 00:42:37" itemprop="dateModified" datetime="2024-01-21T00:42:37+08:00">2024-01-21</time>
+    <time title="Modified: 2024-01-21 23:36:56" itemprop="dateModified" datetime="2024-01-21T23:36:56+08:00">2024-01-21</time>
   </span>
 </div>
 
@@ -401,7 +406,7 @@ Yume Shoka = Hexo</title>
     <div class="item left">
       
 
-  <a href="/2024/01/01/istio/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;cc1a734b8a0734243d5071644d60f360.jpg" title="istio">
+  <a href="/2024/01/01/istio/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;46d0371c19c0586fb0629e97bac23133.jpg" title="istio">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> 运维</span>
   <h3>istio</h3>
@@ -425,7 +430,7 @@ Yume Shoka = Hexo</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%AD%98%E5%82%A8"><span class="toc-number">1.</span> <span class="toc-text"> 集群与存储</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#lvs"><span class="toc-number">1.1.</span> <span class="toc-text"> LVS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lvs%E9%9B%86%E7%BE%A4%E7%BB%84%E6%88%90"><span class="toc-number">1.1.1.</span> <span class="toc-text"> lvs 集群组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lvs%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="toc-number">1.1.2.</span> <span class="toc-text"> lvs 名词解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lvs-%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.3.</span> <span class="toc-text"> lvs 工作模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lvs%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.4.</span> <span class="toc-text"> LVS 调度算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ipvsadm"><span class="toc-number">1.1.5.</span> <span class="toc-text"> ipvsadm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-nat%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 实验 nat 模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-lvs-dr"><span class="toc-number">1.1.7.</span> <span class="toc-text"> 实验 lvs-dr</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keepalived"><span class="toc-number">1.2.</span> <span class="toc-text"> keepalived</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-2"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 实验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#haproxy"><span class="toc-number">1.3.</span> <span class="toc-text"> haproxy</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ngx-lvs-haproxy-%E5%AF%B9%E6%AF%94"><span class="toc-number">1.3.1.</span> <span class="toc-text"> ngx - lvs - haproxy 对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-3"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 实验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8"><span class="toc-number">1.4.</span> <span class="toc-text"> 存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ceph%E7%BB%84%E4%BB%B6"><span class="toc-number">1.4.1.</span> <span class="toc-text"> ceph 组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-4"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 实验</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%AD%98%E5%82%A8"><span class="toc-number">1.</span> <span class="toc-text"> 集群与存储</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#lvs"><span class="toc-number">1.1.</span> <span class="toc-text"> LVS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lvs%E9%9B%86%E7%BE%A4%E7%BB%84%E6%88%90"><span class="toc-number">1.1.1.</span> <span class="toc-text"> lvs 集群组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lvs%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="toc-number">1.1.2.</span> <span class="toc-text"> lvs 名词解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lvs-%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.3.</span> <span class="toc-text"> lvs 工作模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lvs%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.4.</span> <span class="toc-text"> LVS 调度算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ipvsadm"><span class="toc-number">1.1.5.</span> <span class="toc-text"> ipvsadm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-nat%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 实验 nat 模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-lvs-dr"><span class="toc-number">1.1.7.</span> <span class="toc-text"> 实验 lvs-dr</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keepalived"><span class="toc-number">1.2.</span> <span class="toc-text"> keepalived</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-2"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 实验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#haproxy"><span class="toc-number">1.3.</span> <span class="toc-text"> haproxy</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ngx-lvs-haproxy-%E5%AF%B9%E6%AF%94"><span class="toc-number">1.3.1.</span> <span class="toc-text"> ngx - lvs - haproxy 对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-3"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 实验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8"><span class="toc-number">1.4.</span> <span class="toc-text"> 存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ceph%E7%BB%84%E4%BB%B6"><span class="toc-number">1.4.1.</span> <span class="toc-text"> ceph 组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-4"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ceph%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.4.3.</span> <span class="toc-text"> ceph 文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8"><span class="toc-number">1.4.4.</span> <span class="toc-text"> 对象存储</span></a></li></ol></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
@@ -505,10 +510,10 @@ Yume Shoka = Hexo</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
 </div>
 
-    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
+    <span><a href="/2023/05/30/jenkins/" title="Jenkins">Jenkins</a></span>
   </li>
 
       
@@ -518,26 +523,7 @@ Yume Shoka = Hexo</title>
 <a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/05/17/include/" title="file include">file include</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/12/28/mysql/" title="Mysql">Mysql</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
-</div>
-
-    <span><a href="/2023/01/03/%E6%BB%B4%E6%B0%B4reverse/" title="水滴rev">水滴rev</a></span>
+    <span><a href="/2022/12/27/SSTI/" title="SSTI">SSTI</a></span>
   </li>
 
       
@@ -547,7 +533,17 @@ Yume Shoka = Hexo</title>
 <a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
 </div>
 
-    <span><a href="/2023/05/20/Kubernetes/" title="Kubernetes">Kubernetes</a></span>
+    <span><a href="/2023/04/05/Docker/" title="docker">docker</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%BD%91%E7%BB%9C/" title="In 网络">网络</a>
+</div>
+
+    <span><a href="/2023/01/20/VXLAN/" title="VXLAN">VXLAN</a></span>
   </li>
 
       
@@ -556,27 +552,7 @@ Yume Shoka = Hexo</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/01/01/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/05/27/CSRF/" title="CSRF">CSRF</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
-</div>
-
-    <span><a href="/2022/12/25/%E5%86%85%E7%BD%91/" title="内网渗透">内网渗透</a></span>
+    <span><a href="/2023/07/15/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E/" title="中间件漏洞">中间件漏洞</a></span>
   </li>
 
       
@@ -593,10 +569,38 @@ Yume Shoka = Hexo</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E7%BD%91%E7%BB%9C/" title="In 网络">网络</a>
+<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
 </div>
 
-    <span><a href="/2023/01/17/Segment%20Routing/" title="Segment Routing">Segment Routing</a></span>
+    <span><a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" title="秋招总结">秋招总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/12/28/mysql/" title="Mysql">Mysql</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/08/02/Capabilities/" title="docker底层原理+capability">docker底层原理+capability</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/05/17/include/" title="file include">file include</a></span>
   </li>
 
   </ul>
