@@ -1,0 +1,649 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="运维" />
+
+
+<link rel="canonical" href="http://example.com/2024/01/25/%E8%99%9A%E6%8B%9F%E5%8C%96/">
+
+
+
+  <title>
+虚拟化 - 运维 |
+Yume Shoka = Hexo</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">虚拟化
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-01-25 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-01-25T13:38:45+08:00">2024-01-25</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/8bc89f9a0de13b6480bf8c2ace43f806.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/d757e4c9c546cd7dba16ee5e23dc2d9d.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/8cf4932745804d12b330608b12a53aca.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/11a6a57662360e218ec542ca527b4a53.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/b7dd27ac7273dd91b0085c941520d6f5.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/c42b981631c2a7ddaed6e13bd5847ebb.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E8%BF%90%E7%BB%B4/" itemprop="item" rel="index" title="In 运维"><span itemprop="name">运维</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/25/%E8%99%9A%E6%8B%9F%E5%8C%96/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="虚拟化"><a class="markdownIt-Anchor" href="#虚拟化">#</a> 虚拟化</h1>
+<h2 id="kvm"><a class="markdownIt-Anchor" href="#kvm">#</a> kvm</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 配置yum</span><br><span class="line">mount -t iso9660 -o ro,loop xxx    /www</span><br><span class="line">mount 只能mount块设备。mount文件的时候，会先做成块设备，再mount</span><br><span class="line"></span><br><span class="line">// 把文件做成块设备</span><br><span class="line">losetup /dev/loop1 xxx.iso</span><br><span class="line">losetup -a</span><br><span class="line">// mount -t iso9660 -o ro /dev/loop1  /www    -&gt;   mount -t iso9660 -o ro,loop xxx    /www</span><br><span class="line"></span><br><span class="line">简写</span><br><span class="line">mount xxx.iso /ppp</span><br><span class="line"></span><br><span class="line">mount -l</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 自定义yum</span><br><span class="line">createrepo xxx    // 生成repodata</span><br><span class="line"></span><br><span class="line">baseurl配置和 repodata 同一目录</span><br><span class="line">gpgcheck 需要配合私钥使用。 RPM-GPG-KEY</span><br></pre></td></tr></table></figure>
+<h3 id="虚拟化-2"><a class="markdownIt-Anchor" href="#虚拟化-2">#</a> 虚拟化</h3>
+<p>kvm / vcenter  /  xen  /  hyper-v</p>
+<h3 id="kvm-qemu-libvirtd"><a class="markdownIt-Anchor" href="#kvm-qemu-libvirtd">#</a> KVM /QEMU /LIBVIRTD</h3>
+<p>KVM 是 linux 内核的模块，他需要 CPU 的支持，采用硬件辅助虚拟化技术 Intel-VT，AMD-V，内存的相关如 Intel 的 EPT 和 AMD 的 RVI 技术</p>
+<p>QEMU 是一个虚拟化的仿真工具，通过 ioctl 与内核 kvm 交互完成对硬件的虚拟化支持</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240123230817999.png" alt="image-20240123230817999" style="zoom:50%;" /> 
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240123230901146.png" alt="image-20240123230901146" style="zoom: 25%;" /> 
+<p>Libvirt 是一个对虚拟化管理的接口和工具，提供用户端程序 virsh ,virt-install, virt-manager, virt-view 与用户交互</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost usr]# ps -efww | grep qemu </span><br><span class="line">qemu       4075      1 99 06:41 ?        00:13:46 /usr/libexec/qemu-kvm -name generic -S -machine pc-i440fx-rhel7.0.0,accel=tcg,usb=off,dump-guest-core=off -m 1024 -realtime mlock=off -smp 1,sockets=1,cores=1,threads=1 -uuid 7693d5c3-1153-43aa-a38e-4093f30292a0 -no-user-config -nodefaults -chardev socket,id=charmonitor,path=/var/lib/libvirt/qemu/domain-3-generic/monitor.sock,server,nowait -mon chardev=charmonitor,id=monitor,mode=control -rtc base=utc,driftfix=slew -global kvm-pit.lost_tick_policy=delay -no-hpet -no-reboot -global PIIX4_PM.disable_s3=1 -global PIIX4_PM.disable_s4=1 -boot strict=on -device ich9-usb-ehci1,id=usb,bus=pci.0,addr=0x5.0x7 -device ich9-usb-uhci1,masterbus=usb.0,firstport=0,bus=pci.0,multifunction=on,addr=0x5 -device ich9-usb-uhci2,masterbus=usb.0,firstport=2,bus=pci.0,addr=0x5.0x1 -device ich9-usb-uhci3,masterbus=usb.0,firstport=4,bus=pci.0,addr=0x5.0x2 -device virtio-serial-pci,id=virtio-serial0,bus=pci.0,addr=0x6 -drive file=/var/lib/libvirt/images/generic.qcow2,format=qcow2,if=none,id=drive-ide0-0-0 -device ide-hd,bus=ide.0,unit=0,drive=drive-ide0-0-0,id=ide0-0-0,bootindex=2 -drive file=/root/CentOS-7-x86_64-Minimal-2009.iso,format=raw,if=none,id=drive-ide0-0-1,readonly=on -device ide-cd,bus=ide.0,unit=1,drive=drive-ide0-0-1,id=ide0-0-1,bootindex=1 -netdev tap,fd=26,id=hostnet0 -device rtl8139,netdev=hostnet0,id=net0,mac=52:54:00:3d:35:10,bus=pci.0,addr=0x3 -chardev pty,id=charserial0 -device isa-serial,chardev=charserial0,id=serial0 -chardev spicevmc,id=charchannel0,name=vdagent -device virtserialport,bus=virtio-serial0.0,nr=1,chardev=charchannel0,id=channel0,name=com.redhat.spice.0 -spice port=5900,addr=127.0.0.1,disable-ticketing,image-compression=off,seamless-migration=on -vga qxl -global qxl-vga.ram_size=67108864 -global qxl-vga.vram_size=67108864 -global qxl-vga.vgamem_mb=16 -global qxl-vga.max_outputs=1 -device intel-hda,id=sound0,bus=pci.0,addr=0x4 -device hda-duplex,id=sound0-codec0,bus=sound0.0,cad=0 -chardev spicevmc,id=charredir0,name=usbredir -device usb-redir,chardev=charredir0,id=redir0,bus=usb.0,port=1 -chardev spicevmc,id=charredir1,name=usbredir -device usb-redir,chardev=charredir1,id=redir1,bus=usb.0,port=2 -device virtio-balloon-pci,id=balloon0,bus=pci.0,addr=0x7 -msg timestamp=on</span><br><span class="line">root       4863   2914  0 06:53 pts/0    00:00:00 grep --color=auto qemu</span><br><span class="line"></span><br><span class="line">// 必选组件</span><br><span class="line">yum install qemu-kvm libvirt-daemon libvirt-client libvirt-daemon-driver-qemu -y</span><br><span class="line">systemctl enable --now libvirtd</span><br><span class="line"></span><br><span class="line">// 可选组件</span><br><span class="line">virt-install 系统安装工具</span><br><span class="line">virt-manager 图形管理工具</span><br><span class="line">virt-v2v  虚拟机迁移工具</span><br><span class="line">virt-p2v  物理机迁移工具</span><br></pre></td></tr></table></figure>
+<p>虚拟机的组成<br>
+内核虚拟化模块 (KVM)</p>
+<p>系统设备仿真 (QEMU)</p>
+<p>虚拟机管理程序 (LIBVIRT)</p>
+<p>一个 XML 文件 (虚拟机配置声明文件)</p>
+<p>位置 /etc/libvirt/qemu/</p>
+<p>一个磁盘镜像文件 (虚拟机的硬盘)</p>
+<p>位置 /var/lib/libvirt/images/</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost usr]# cd /etc/libvirt/qemu/</span><br><span class="line">[root@localhost qemu]# ls </span><br><span class="line">generic.xml  networks</span><br><span class="line"></span><br><span class="line">[root@localhost qemu]# cat generic.xml </span><br><span class="line">&lt;!--</span><br><span class="line">WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE</span><br><span class="line">OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:</span><br><span class="line">  virsh edit generic</span><br><span class="line">or other application using the libvirt API.</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;domain type=&#x27;qemu&#x27;&gt;</span><br><span class="line">  &lt;name&gt;generic&lt;/name&gt;</span><br><span class="line">  &lt;uuid&gt;7693d5c3-1153-43aa-a38e-4093f30292a0&lt;/uuid&gt;</span><br><span class="line">  &lt;memory unit=&#x27;KiB&#x27;&gt;1048576&lt;/memory&gt;</span><br><span class="line">  &lt;currentMemory unit=&#x27;KiB&#x27;&gt;1048576&lt;/currentMemory&gt;</span><br><span class="line">  &lt;vcpu placement=&#x27;static&#x27;&gt;1&lt;/vcpu&gt;</span><br><span class="line">  &lt;os&gt;</span><br><span class="line">    &lt;type arch=&#x27;x86_64&#x27; machine=&#x27;pc-i440fx-rhel7.0.0&#x27;&gt;hvm&lt;/type&gt;</span><br><span class="line">    &lt;boot dev=&#x27;hd&#x27;/&gt;</span><br><span class="line">  &lt;/os&gt;</span><br><span class="line">  &lt;features&gt;</span><br><span class="line">    &lt;acpi/&gt;</span><br><span class="line">    &lt;apic/&gt;</span><br><span class="line">  &lt;/features&gt;</span><br><span class="line">  &lt;clock offset=&#x27;utc&#x27;&gt;</span><br><span class="line">    &lt;timer name=&#x27;rtc&#x27; tickpolicy=&#x27;catchup&#x27;/&gt;</span><br><span class="line">    &lt;timer name=&#x27;pit&#x27; tickpolicy=&#x27;delay&#x27;/&gt;</span><br><span class="line">    &lt;timer name=&#x27;hpet&#x27; present=&#x27;no&#x27;/&gt;</span><br><span class="line">  &lt;/clock&gt;</span><br><span class="line">  &lt;on_poweroff&gt;destroy&lt;/on_poweroff&gt;</span><br><span class="line">  &lt;on_reboot&gt;restart&lt;/on_reboot&gt;</span><br><span class="line">  &lt;on_crash&gt;destroy&lt;/on_crash&gt;</span><br><span class="line">  &lt;pm&gt;</span><br><span class="line">    &lt;suspend-to-mem enabled=&#x27;no&#x27;/&gt;</span><br><span class="line">    &lt;suspend-to-disk enabled=&#x27;no&#x27;/&gt;</span><br><span class="line">  &lt;/pm&gt;</span><br><span class="line">  &lt;devices&gt;</span><br><span class="line">    &lt;emulator&gt;/usr/libexec/qemu-kvm&lt;/emulator&gt;</span><br><span class="line">    &lt;disk type=&#x27;file&#x27; device=&#x27;disk&#x27;&gt;</span><br><span class="line">      &lt;driver name=&#x27;qemu&#x27; type=&#x27;qcow2&#x27;/&gt;</span><br><span class="line">      &lt;source file=&#x27;/var/lib/libvirt/images/generic.qcow2&#x27;/&gt;</span><br><span class="line">      &lt;target dev=&#x27;hda&#x27; bus=&#x27;ide&#x27;/&gt;</span><br><span class="line">      &lt;address type=&#x27;drive&#x27; controller=&#x27;0&#x27; bus=&#x27;0&#x27; target=&#x27;0&#x27; unit=&#x27;0&#x27;/&gt;</span><br><span class="line">    &lt;/disk&gt;</span><br><span class="line">    &lt;disk type=&#x27;file&#x27; device=&#x27;cdrom&#x27;&gt;</span><br><span class="line">      &lt;driver name=&#x27;qemu&#x27; type=&#x27;raw&#x27;/&gt;</span><br><span class="line">      &lt;target dev=&#x27;hdb&#x27; bus=&#x27;ide&#x27;/&gt;</span><br><span class="line">      &lt;readonly/&gt;</span><br><span class="line">      &lt;address type=&#x27;drive&#x27; controller=&#x27;0&#x27; bus=&#x27;0&#x27; target=&#x27;0&#x27; unit=&#x27;1&#x27;/&gt;</span><br><span class="line">    &lt;/disk&gt;</span><br><span class="line">    &lt;controller type=&#x27;usb&#x27; index=&#x27;0&#x27; model=&#x27;ich9-ehci1&#x27;&gt;</span><br><span class="line">      &lt;address type=&#x27;pci&#x27; domain=&#x27;0x0000&#x27; bus=&#x27;0x00&#x27; slot=&#x27;0x05&#x27; function=&#x27;0x7&#x27;/&gt;</span><br><span class="line">    &lt;/controller&gt;</span><br><span class="line">    &lt;controller type=&#x27;usb&#x27; index=&#x27;0&#x27; model=&#x27;ich9-uhci1&#x27;&gt;</span><br><span class="line">      &lt;master startport=&#x27;0&#x27;/&gt;</span><br><span class="line">      &lt;address type=&#x27;pci&#x27; domain=&#x27;0x0000&#x27; bus=&#x27;0x00&#x27; slot=&#x27;0x05&#x27; function=&#x27;0x0&#x27; multifunction=&#x27;on&#x27;/&gt;</span><br><span class="line">    &lt;/controller&gt;</span><br><span class="line">    &lt;controller type=&#x27;usb&#x27; index=&#x27;0&#x27; model=&#x27;ich9-uhci2&#x27;&gt;</span><br><span class="line">      &lt;master startport=&#x27;2&#x27;/&gt;</span><br><span class="line">      &lt;address type=&#x27;pci&#x27; domain=&#x27;0x0000&#x27; bus=&#x27;0x00&#x27; slot=&#x27;0x05&#x27; function=&#x27;0x1&#x27;/&gt;</span><br><span class="line">    &lt;/controller&gt;</span><br><span class="line">    &lt;controller type=&#x27;usb&#x27; index=&#x27;0&#x27; model=&#x27;ich9-uhci3&#x27;&gt;</span><br><span class="line">      &lt;master startport=&#x27;4&#x27;/&gt;</span><br><span class="line">      &lt;address type=&#x27;pci&#x27; domain=&#x27;0x0000&#x27; bus=&#x27;0x00&#x27; slot=&#x27;0x05&#x27; function=&#x27;0x2&#x27;/&gt;</span><br><span class="line">    &lt;/controller&gt;</span><br><span class="line">    &lt;controller type=&#x27;pci&#x27; index=&#x27;0&#x27; model=&#x27;pci-root&#x27;/&gt;</span><br><span class="line">    &lt;controller type=&#x27;ide&#x27; index=&#x27;0&#x27;&gt;</span><br><span class="line">      &lt;address type=&#x27;pci&#x27; domain=&#x27;0x0000&#x27; bus=&#x27;0x00&#x27; slot=&#x27;0x01&#x27; function=&#x27;0x1&#x27;/&gt;</span><br><span class="line">    &lt;/controller&gt;</span><br><span class="line">    &lt;controller type=&#x27;virtio-serial&#x27; index=&#x27;0&#x27;&gt;</span><br><span class="line">      &lt;address type=&#x27;pci&#x27; domain=&#x27;0x0000&#x27; bus=&#x27;0x00&#x27; slot=&#x27;0x06&#x27; function=&#x27;0x0&#x27;/&gt;</span><br><span class="line">    &lt;/controller&gt;</span><br><span class="line">    &lt;interface type=&#x27;network&#x27;&gt;</span><br><span class="line">      &lt;mac address=&#x27;52:54:00:3d:35:10&#x27;/&gt;</span><br><span class="line">      &lt;source network=&#x27;default&#x27;/&gt;</span><br><span class="line">      &lt;model type=&#x27;rtl8139&#x27;/&gt;</span><br><span class="line">      &lt;address type=&#x27;pci&#x27; domain=&#x27;0x0000&#x27; bus=&#x27;0x00&#x27; slot=&#x27;0x03&#x27; function=&#x27;0x0&#x27;/&gt;</span><br><span class="line">    &lt;/interface&gt;</span><br><span class="line">    &lt;serial type=&#x27;pty&#x27;&gt;</span><br><span class="line">      &lt;target type=&#x27;isa-serial&#x27; port=&#x27;0&#x27;&gt;</span><br><span class="line">        &lt;model name=&#x27;isa-serial&#x27;/&gt;</span><br><span class="line">      &lt;/target&gt;</span><br><span class="line">    &lt;/serial&gt;</span><br><span class="line">    &lt;console type=&#x27;pty&#x27;&gt;</span><br><span class="line">      &lt;target type=&#x27;serial&#x27; port=&#x27;0&#x27;/&gt;</span><br><span class="line">    &lt;/console&gt;</span><br><span class="line">    &lt;channel type=&#x27;spicevmc&#x27;&gt;</span><br><span class="line">      &lt;target type=&#x27;virtio&#x27; name=&#x27;com.redhat.spice.0&#x27;/&gt;</span><br><span class="line">      &lt;address type=&#x27;virtio-serial&#x27; controller=&#x27;0&#x27; bus=&#x27;0&#x27; port=&#x27;1&#x27;/&gt;</span><br><span class="line">    &lt;/channel&gt;</span><br><span class="line">    &lt;input type=&#x27;mouse&#x27; bus=&#x27;ps2&#x27;/&gt;</span><br><span class="line">    &lt;input type=&#x27;keyboard&#x27; bus=&#x27;ps2&#x27;/&gt;</span><br><span class="line">    &lt;graphics type=&#x27;spice&#x27; autoport=&#x27;yes&#x27;&gt;</span><br><span class="line">      &lt;listen type=&#x27;address&#x27;/&gt;</span><br><span class="line">      &lt;image compression=&#x27;off&#x27;/&gt;</span><br><span class="line">    &lt;/graphics&gt;</span><br><span class="line">    &lt;sound model=&#x27;ich6&#x27;&gt;</span><br><span class="line">      &lt;address type=&#x27;pci&#x27; domain=&#x27;0x0000&#x27; bus=&#x27;0x00&#x27; slot=&#x27;0x04&#x27; function=&#x27;0x0&#x27;/&gt;</span><br><span class="line">    &lt;/sound&gt;</span><br><span class="line">    &lt;video&gt;</span><br><span class="line">      &lt;model type=&#x27;qxl&#x27; ram=&#x27;65536&#x27; vram=&#x27;65536&#x27; vgamem=&#x27;16384&#x27; heads=&#x27;1&#x27; primary=&#x27;yes&#x27;/&gt;</span><br><span class="line">      &lt;address type=&#x27;pci&#x27; domain=&#x27;0x0000&#x27; bus=&#x27;0x00&#x27; slot=&#x27;0x02&#x27; function=&#x27;0x0&#x27;/&gt;</span><br><span class="line">    &lt;/video&gt;</span><br><span class="line">    &lt;redirdev bus=&#x27;usb&#x27; type=&#x27;spicevmc&#x27;&gt;</span><br><span class="line">      &lt;address type=&#x27;usb&#x27; bus=&#x27;0&#x27; port=&#x27;1&#x27;/&gt;</span><br><span class="line">    &lt;/redirdev&gt;</span><br><span class="line">    &lt;redirdev bus=&#x27;usb&#x27; type=&#x27;spicevmc&#x27;&gt;</span><br><span class="line">      &lt;address type=&#x27;usb&#x27; bus=&#x27;0&#x27; port=&#x27;2&#x27;/&gt;</span><br><span class="line">    &lt;/redirdev&gt;</span><br><span class="line">    &lt;memballoon model=&#x27;virtio&#x27;&gt;</span><br><span class="line">      &lt;address type=&#x27;pci&#x27; domain=&#x27;0x0000&#x27; bus=&#x27;0x00&#x27; slot=&#x27;0x07&#x27; function=&#x27;0x0&#x27;/&gt;</span><br><span class="line">    &lt;/memballoon&gt;</span><br><span class="line">  &lt;/devices&gt;</span><br><span class="line">&lt;/domain&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@localhost images]# ls </span><br><span class="line">generic.qcow2</span><br></pre></td></tr></table></figure>
+<h3 id="virsh-命令"><a class="markdownIt-Anchor" href="#virsh-命令">#</a> virsh 命令</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">// 两种方式</span><br><span class="line">[root@localhost images]# virsh </span><br><span class="line">Welcome to virsh, the virtualization interactive terminal.</span><br><span class="line"></span><br><span class="line">Type:  &#x27;help&#x27; for help with commands</span><br><span class="line">       &#x27;quit&#x27; to quit</span><br><span class="line"></span><br><span class="line">virsh # list </span><br><span class="line"> Id    Name                           State</span><br><span class="line">----------------------------------------------------</span><br><span class="line"> 3     generic                        running</span><br><span class="line"></span><br><span class="line">virsh # exit </span><br><span class="line"></span><br><span class="line">[root@localhost images]# virsh list   				// 列出启动的虚拟机</span><br><span class="line"> Id    Name                           State</span><br><span class="line">----------------------------------------------------</span><br><span class="line"> 3     generic                        running</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@localhost images]# virsh list  --all 				// 列出所有虚拟机</span><br><span class="line"> Id    Name                           State</span><br><span class="line">----------------------------------------------------</span><br><span class="line"> 3     generic                        running</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@localhost images]# virsh start/reboot/shutdown xxx 			// 启动虚拟机</span><br><span class="line"></span><br><span class="line">[root@localhost images]# virsh destroy xxx 			// 强制关闭虚拟机</span><br><span class="line"></span><br><span class="line">[root@localhost images]# virsh define/undefine  xxx 			// 根据xml创建删除虚拟机</span><br><span class="line"></span><br><span class="line">[root@localhost images]# virsh console  xxx 			// 链接虚拟机console</span><br><span class="line">ctrl + ]  退出console</span><br><span class="line"></span><br><span class="line">[root@localhost images]# virsh edit  xxx 				// 调整虚拟机参数</span><br><span class="line"></span><br><span class="line">[root@localhost images]# virsh autostart  xxx 			// 开机自启</span><br><span class="line"></span><br><span class="line">[root@localhost images]# virsh domiflist  xxx			// 设置虚拟机网卡 		</span><br><span class="line"></span><br><span class="line">[root@localhost images]# virsh domblklist  xxx			// 设置虚拟机硬盘 		</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 虚拟交换机命令</span><br><span class="line">[root@localhost images]# virsh net-list --all</span><br><span class="line"> Name                 State      Autostart     Persistent</span><br><span class="line">----------------------------------------------------------</span><br><span class="line"> default              active     yes           yes</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# virsh net-start </span><br><span class="line">[root@localhost ~]# virsh net-destroy</span><br><span class="line">[root@localhost ~]# virsh net-define</span><br><span class="line">[root@localhost ~]# virsh net-undefine</span><br><span class="line">[root@localhost ~]# virsh net-edit</span><br><span class="line">[root@localhost ~]# virsh net-autostart</span><br></pre></td></tr></table></figure>
+<h3 id="虚拟机磁盘管理"><a class="markdownIt-Anchor" href="#虚拟机磁盘管理">#</a> 虚拟机磁盘管理</h3>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240124212020114.png" alt="image-20240124212020114" style="zoom:50%;" /> 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">qemu-img 是虚拟机的磁盘管理命令，支持非常多的磁盘格式，例如raw、qcow2、vdi、vmdk等等</span><br><span class="line"></span><br><span class="line">qemu-img create -f qcow2 aa.img 50G</span><br><span class="line">qemu-img create -b haha.img -f qcow2 111.img    // -b使用后端模板文件</span><br><span class="line"></span><br><span class="line">qemu-img info aa.img</span><br><span class="line"></span><br><span class="line">qemu-img convert   // 转换磁盘格式</span><br><span class="line"></span><br><span class="line">qemu-img info</span><br><span class="line"></span><br><span class="line">qemu-img resize</span><br></pre></td></tr></table></figure>
+<p>qcow2 占用空间小，创建系统时不会把所有空间全部占用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cd /var/lib/libvirt/images/</span><br><span class="line">[root@localhost images]# qemu-img create -f qcow2 node_base  20G</span><br><span class="line">Formatting &#x27;node_base&#x27;, fmt=qcow2 size=21474836480 encryption=off cluster_size=65536 lazy_refcounts=off </span><br><span class="line">[root@localhost images]# qemu-img create -b node_base -f qcow2 node_node.img 20G</span><br><span class="line">Formatting &#x27;node_node.img&#x27;, fmt=qcow2 size=21474836480 backing_file=&#x27;node_base&#x27; encryption=off cluster_size=65536 lazy_refcounts=off </span><br><span class="line"></span><br><span class="line">[root@localhost images]# qemu-img  info node_base </span><br><span class="line">image: node_base</span><br><span class="line">file format: qcow2</span><br><span class="line">virtual size: 20G (21474836480 bytes)</span><br><span class="line">disk size: 196K</span><br><span class="line">cluster_size: 65536</span><br><span class="line">Format specific information:</span><br><span class="line">    compat: 1.1</span><br><span class="line">    lazy refcounts: false</span><br><span class="line">    </span><br><span class="line">[root@localhost images]# qemu-img  info node_node.img </span><br><span class="line">image: node_node.img</span><br><span class="line">file format: qcow2</span><br><span class="line">virtual size: 20G (21474836480 bytes)</span><br><span class="line">disk size: 196K</span><br><span class="line">cluster_size: 65536</span><br><span class="line">backing file: node_base</span><br><span class="line">Format specific information:</span><br><span class="line">    compat: 1.1</span><br><span class="line">    lazy refcounts: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>cow</p>
+<p>Copy On Write，写时复制</p>
+<p>直接映射原始盘的数据内容</p>
+<p>当数据有修改要求时，在修改之前自动将旧数据拷贝存入前端盘后，对前端盘进行修改</p>
+<p>原始盘始终是只读的</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240124215416657.png" alt="image-20240124215416657"></p>
+<h3 id="克隆虚拟机"><a class="markdownIt-Anchor" href="#克隆虚拟机">#</a> 克隆虚拟机</h3>
+<p>复制已经存在的 xml 为 zzz.xml</p>
+<p>修改 name，和 xml 名字一样</p>
+<p>修改 disk file</p>
+<p>执行：</p>
+<p>virsh define zzz.xml</p>
+<p>virsh start zzz</p>
+<p>virsh list</p>
+<p>virsh console zzz</p>
+<h3 id="扩容磁盘"><a class="markdownIt-Anchor" href="#扩容磁盘">#</a> 扩容磁盘</h3>
+<p>磁盘 -&gt;  分区  -&gt;  文件系统</p>
+<p>不能缩，只能扩</p>
+<p>1. 硬件扩容</p>
+<p>virsh blockresize --path /var/lib/libvirt/images/node1.img --size 50G  node1</p>
+<p>下面的命令在虚拟机上执行</p>
+<p>2. 磁盘空间扩容</p>
+<p>growpart /dev/vda 1</p>
+<p>3. 扩容文件系统</p>
+<p>xfs_growfs /dev/vda1</p>
+<h2 id="openstack"><a class="markdownIt-Anchor" href="#openstack">#</a> OpenStack</h2>
+<h3 id="openstack-组件"><a class="markdownIt-Anchor" href="#openstack-组件">#</a> openstack 组件</h3>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240126212642843.png" alt="image-20240126212642843"></p>
+<p>Keystone</p>
+<p>为其他服务提供认证和授权的集中身份管理服务</p>
+<p>也提供了集中的目录服务</p>
+<p>支持多种身份认证模式，如密码认证、令牌认证、以及 AWS 登陆</p>
+<p>为用户和其他服务提供了 SSO 认证服务</p>
+<p>Neutron</p>
+<p>一种软件定义网络服务</p>
+<p>用于创建网络、子网、路由器、管理浮动 IP 地址</p>
+<p>可以实现虚拟交换机、虚拟路由器</p>
+<p>可用于在项目中创建 VPN</p>
+<h3 id="部署"><a class="markdownIt-Anchor" href="#部署">#</a> 部署</h3>
+<p>三台 8C 16G 主机，一个 hostname openstack，另外两个 nova1 和  nova2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">// 以下操作在每台节点上执行</span><br><span class="line">vim /etc/resolve.conf</span><br><span class="line">8.8.8.8</span><br><span class="line"></span><br><span class="line">vim /etc/hosts</span><br><span class="line">192.168.13.201 openstack</span><br><span class="line">192.168.13.202 nova1</span><br><span class="line">192.168.13.202 nova2</span><br><span class="line"></span><br><span class="line">yum install chrony -y</span><br><span class="line">vim /etc/chrony.conf</span><br><span class="line">server ntp2.aliyun.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp.cloud.aliyuncs.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp.aliyun.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp1.aliyun.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp1.cloud.aliyuncs.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp10.cloud.aliyuncs.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp11.cloud.aliyuncs.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp12.cloud.aliyuncs.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp2.aliyun.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp2.cloud.aliyuncs.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp3.aliyun.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp3.cloud.aliyuncs.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp4.aliyun.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp4.cloud.aliyuncs.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp5.aliyun.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp5.cloud.aliyuncs.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp6.aliyun.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp6.cloud.aliyuncs.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp7.cloud.aliyuncs.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp8.cloud.aliyuncs.com minpoll 4 maxpoll 10 iburst</span><br><span class="line">server ntp9.cloud.aliyuncs.com minpoll 4 maxpoll 10 iburst</span><br><span class="line"></span><br><span class="line">systemctl restart chronyd</span><br><span class="line">chronyc sources -v</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">yum install qemu-kvm libvirt-daemon libvirt-daemon-driver-qemu libvirt-client python-setuptools -y</span><br><span class="line">yum remove NetworkManager* -y</span><br><span class="line">yum remove firewalld* -y </span><br><span class="line"></span><br><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-ens33 </span><br><span class="line">BOOTPROTO=static</span><br><span class="line">systemctl restart network</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// openstack节点</span><br><span class="line">bash &lt;(curl -sSL https://gitee.com/SuperManito/LinuxMirrors/raw/main/ChangeMirrors.sh)</span><br><span class="line">    选择中科大镜像源。</span><br><span class="line">    注意不要安装EPEL扩展源因为会导致稍后安装packstack失败，建议只更换基础源不要更换OpenStack相关的源避免后续在获取某些软件包时超时失败。</span><br><span class="line">    使用HTTP协议</span><br><span class="line">    更新软件包</span><br><span class="line">    清空已下载软件包缓存</span><br><span class="line"></span><br><span class="line">yum install centos-release-openstack-train</span><br><span class="line">yum install openstack-packstack</span><br><span class="line"></span><br><span class="line">packstack --gen-answer-file=answer.ini</span><br><span class="line">packstack --answer-file=answer.ini</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CONFIG_CONTROLLER_HOST=192.168.13.201</span><br><span class="line">CONFIG_COMPUTE_HOSTS=192.168.13.202</span><br><span class="line"></span><br><span class="line"># List of servers on which to install the network service such as</span><br><span class="line"># Compute networking (nova network) or OpenStack Networking (neutron).</span><br><span class="line">CONFIG_NETWORK_HOSTS=192.168.13.201,192.168.13.202</span><br></pre></td></tr></table></figure>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240127214826167.png" alt="image-20240127214826167" style="zoom:50%;" /> 
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240127222426338.png" alt="image-20240127222426338"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl show</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[root@openstack ~]# . keystonerc_admin </span><br><span class="line">[root@openstack ~(keystone_admin)]# openstack user list</span><br><span class="line">+----------------------------------+-----------+</span><br><span class="line">| ID                               | Name      |</span><br><span class="line">+----------------------------------+-----------+</span><br><span class="line">| b88c0404f054445ab8c099673ecdb0f9 | admin     |</span><br><span class="line">| 592cf7de5ffe4ec69bec764c6e6a3506 | glance    |</span><br><span class="line">| a62eaa55c4c44dbf9c559b471bde2394 | cinder    |</span><br><span class="line">| 7edbdc229b8f4286bde2aa477521b2ad | nova      |</span><br><span class="line">| 51b14b54bc124655b6bb29fb2b0b8458 | placement |</span><br><span class="line">| 4facc9243f4c471a91bc9a9d5b5c45d0 | neutron   |</span><br><span class="line">+----------------------------------+-----------+</span><br><span class="line"></span><br><span class="line">// 不退出终端</span><br><span class="line">[root@openstack ~]# bash</span><br><span class="line">[root@openstack ~]# . keystonerc_admin </span><br><span class="line">[root@openstack ~(keystone_admin)]# </span><br><span class="line">[root@openstack ~(keystone_admin)]# exit</span><br><span class="line">exit</span><br><span class="line"></span><br><span class="line">// 查看帮助</span><br><span class="line">[root@openstack ~]# openstack help user </span><br><span class="line">Command &quot;user&quot; matches:</span><br><span class="line">  user create</span><br><span class="line">  user delete</span><br><span class="line">  user list</span><br><span class="line">  user password set</span><br><span class="line">  user set</span><br><span class="line">  user show</span><br></pre></td></tr></table></figure>
+<h3 id="项目管理"><a class="markdownIt-Anchor" href="#项目管理">#</a> 项目管理</h3>
+<p>项目：一组隔离的资源和对象。由一组关联的用户进行管理</p>
+<p>在旧版本里，也用租户 (tenant) 来表示</p>
+<p>根据配置的需求，项目对应一个组织、一个公司或是一个使用客户等</p>
+<p>项目中可以有多个用户，项目中的用户可以在该项目创建、管理虚拟资</p>
+<p>源具有 admin 角色的用户可以创建项目</p>
+<p>项目相关信息保存到 MariaDB 中</p>
+<p>缺省情况下，packstack 安装的 openstack 中有两个独立的项目</p>
+<ul>
+<li>admin: 为 admin 账户创建的项目</li>
+<li>services: 与安装的各个服务相关联</li>
+</ul>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240128195410374.png" alt="image-20240128195410374"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">// 创建项目</span><br><span class="line">[root@openstack ~(keystone_admin)]# openstack project create myproject</span><br><span class="line"></span><br><span class="line">[root@openstack ~(keystone_admin)]# openstack project list</span><br><span class="line">+----------------------------------+-----------+</span><br><span class="line">| ID                               | Name      |</span><br><span class="line">+----------------------------------+-----------+</span><br><span class="line">| 54aa5d992e084017a2aef3282fdb1119 | admin     |</span><br><span class="line">| 735ea2227d2e4c509af906f8e519c95d | myproject |</span><br><span class="line">| c0e8ee283cca473d87676ff1a0f099ef | services  |</span><br><span class="line">+----------------------------------+-----------+</span><br><span class="line"></span><br><span class="line">[root@openstack ~(keystone_admin)]# openstack project show myproject </span><br><span class="line">+-------------+----------------------------------+</span><br><span class="line">| Field       | Value                            |</span><br><span class="line">+-------------+----------------------------------+</span><br><span class="line">| description |                                  |</span><br><span class="line">| domain_id   | default                          |</span><br><span class="line">| enabled     | True                             |</span><br><span class="line">| id          | 735ea2227d2e4c509af906f8e519c95d |</span><br><span class="line">| is_domain   | False                            |</span><br><span class="line">| name        | myproject                        |</span><br><span class="line">| options     | &#123;&#125;                               |</span><br><span class="line">| parent_id   | default                          |</span><br><span class="line">| tags        | []                               |</span><br><span class="line">+-------------+----------------------------------+</span><br><span class="line"></span><br><span class="line">[root@openstack ~(keystone_admin)]# openstack project set --disable 激活/禁用项目</span><br><span class="line"></span><br><span class="line">// 查看项目配额</span><br><span class="line">[root@openstack ~(keystone_admin)]# nova quota-show --tenant myproject </span><br><span class="line"></span><br><span class="line">// 更新vcpu数目</span><br><span class="line">[root@openstack ~(keystone_admin)]# nova quota-update --cores 30</span><br><span class="line"></span><br><span class="line">// 删除</span><br><span class="line">[root@openstack ~(keystone_admin)]# openstack project delete myproject</span><br></pre></td></tr></table></figure>
+<p>创建项目</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240128200815326.png" alt="image-20240128200815326"></p>
+<p>创建用户</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240128200738517.png" alt="image-20240128200738517"></p>
+<p>修改密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@openstack ~(keystone_admin)]# openstack user set --password 123456 kbshire		// 修改密码</span><br><span class="line">[root@openstack ~(keystone_admin)]# openstack role remove --project myproject --user kbshire _member_    // 删除用户</span><br><span class="line">[root@openstack ~(keystone_admin)]# openstack  user delete  kbshire </span><br></pre></td></tr></table></figure>
+<p>资源配额</p>
+<p>安全组规则：指定每个项目可用的规则数</p>
+<p>核心：指定每个项可用的 VCPU 核心数</p>
+<p>固定 IP 地址：指定每个项目可用的固定 IP 数</p>
+<p>浮动 IP 地址：指定每个项目可用的浮动 IP 数</p>
+<p>注入文件大小：指定每个项目内容大小</p>
+<p>注入文件路径：指定每个项目注入的文件路径长度</p>
+<p>注入文件：指定每个项目允许注入的文件数目</p>
+<p>实例：指定每个项目可创建的虚拟机实例数目</p>
+<p>密钥对：指定每个项可创建的密钥数</p>
+<p>元数据：指定每个项目可用的元数据数目</p>
+<p>内存：指定每个项目可用的最大内存</p>
+<p>安全组：指定每个项目可创建的安全组数目</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">列出项目的缺省配额</span><br><span class="line">[root@openstack~(keystone_admin)]# nova quota-defaults</span><br><span class="line">列出myproject的配额</span><br><span class="line">[root@openstack~(keystone admin)]# nova quota-show --tenant myproject</span><br><span class="line">修改浮动IP地址配额</span><br><span class="line">[root@openstack~(keystone admin)]# nova quota-update --floating-ips 20 myproject</span><br></pre></td></tr></table></figure>
+<p>云主机类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">云主机类型就是资源的模板</span><br><span class="line">它定义了一台云主机可以使用的资源，如内存大小磁盘容量和CPU核心数等</span><br><span class="line">Openstack提供了几个默认的云主机类型</span><br><span class="line">管理员还可以自定义云主机类型</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240128202210696.png" alt="image-20240128202210696"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">列出所有的云主机类型</span><br><span class="line">[root@openstack~(keystone admin)]# openstack flavor list</span><br><span class="line">创建一个云主机类型</span><br><span class="line">[root@openstack~(keystone admin)]# openstack flavor create --public demo.tiny--id auto --ram 512 --disk 10 --vcpus 1</span><br><span class="line">删除云主机类型</span><br><span class="line">[root@openstack~(keystone admin)]# openstack flavor delete demo.tiny</span><br></pre></td></tr></table></figure>
+<p>在红帽 Openstack 平台中，镜像指的是虚拟磁盘文件</p>
+<p>磁盘文件中应该已经安装了可启动的操作系统</p>
+<p>镜像管理功能由 Glance 服务提供</p>
+<p>它形成了创建虚拟机实例最底层的块结构</p>
+<p>镜像可以由用户上传，也可以通过红帽官方站点下载</p>
+<p>镜像容器格式</p>
+<p>raw: 非结构化磁盘镜像格式</p>
+<p>vhd:VMware、Xen、Microsoft、VirtualBox 等均支持的通用磁盘格式</p>
+<p>vmdk: 是 Vmware 的虚拟磁盘格式</p>
+<p>vdi:VirtualBox 虚拟机和 QEMU 支持磁盘格式</p>
+<p>iso: 光盘数据内容的归档格式</p>
+<p>qcow2:QEMU 支持的磁盘格式。空间自动扩展并支持写时复制 copy-on-write</p>
+<p>bare: 镜像中没有容器或元数据封装</p>
+<p>ovf: 一种开源的文件规范，描述了一个开源、安全、有效、可拓展的便携式虚拟打包以及软件分布格式</p>
+<p>ova:OVA 归档文件</p>
+<p>aki: 亚马逊内核镜像</p>
+<p>ami: 亚马逊主机镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">上传镜像</span><br><span class="line">[root@openstack~(keystone admin)]# openstack image create --disk-format qcow2 -min-disk 10 --min-ram 512 --file /root/small.img small_rhel6</span><br><span class="line">列出镜像</span><br><span class="line">[root@openstack~(keystone admin)]# openstack image list</span><br><span class="line">查看镜像详情</span><br><span class="line">[root@openstack~(keystone admin)]# openstack image show small_rhel6</span><br></pre></td></tr></table></figure>
+<h3 id="网络"><a class="markdownIt-Anchor" href="#网络">#</a> 网络</h3>
+<p>实例被分配到子网中，以实现网络连通性</p>
+<p>每个项目可以有一到多个子网</p>
+<p>在红帽的 Openstack 平台中，OpenStack 网络服务是缺省的网络选项，Nova 网络服务作为备用</p>
+<p>管理员能够配置丰富的网络，将其他 Openstack 服务连接到这些网络的接口上</p>
+<p>每个项目都能拥有多个私有网络，各个项目的私有网络互相不受干扰</p>
+<p>项目网络：由 Neutron 提供的项目内部网络，网络间可用 VLAN 隔离</p>
+<p>外部网络：可以让虚拟机接入外部网络，但需要配置浮动 IP 地址</p>
+<p>提供商网络：将实例连接到现有网络，实现虚拟机实例与外部系统共享同一二层网络</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240128210136299.png" alt="image-20240128210136299"></p>
+<p>创建内部网络子网</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240128212140879.png" alt="image-20240128212140879"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240128212159932.png" alt="image-20240128212159932"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240128212339442.png" alt="image-20240128212339442"></p>
+<p>创建外部网络子网</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240128212509791.png" alt="image-20240128212509791"></p>
+<p>新建路由打通内外网</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240128212721055.png" alt="image-20240128212721055"></p>
+<p>添加接口</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240128212830047.png" alt="image-20240128212830047"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240128212803249.png" alt="image-20240128212803249"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240128212851644.png" alt="image-20240128212851644"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@openstack ~]#  systemctl status openstack-nova-compute.service </span><br></pre></td></tr></table></figure>
+<p>创建浮动 IP 关联主机</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240129212317869.png" alt="image-20240129212317869"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240129212303012.png" alt="image-20240129212303012"></p>
+<p>扩容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">扩容 openstack 计算节点参考 nova01 配置过程</span><br><span class="line"></span><br><span class="line">配置静态 ip:192.168.1.12，及主机名</span><br><span class="line">保证与 openstack,和 nova01 能相互 ping 通</span><br><span class="line">配置/etc/resolv.conf ，删除 search 开头行</span><br><span class="line">配置时间同步 /etc/chrony.conf</span><br><span class="line">配置 yum 源，软仓库</span><br><span class="line">安装依赖软件包 qemu-kvm libvirt-client libvirt-daemon libvirt-daemon-driver-qemu pythonsetuptools</span><br><span class="line"></span><br><span class="line">  96 # List the servers on which to install the Compute service.</span><br><span class="line">  97 CONFIG_COMPUTE_HOSTS=192.168.13.202</span><br><span class="line">  98 </span><br><span class="line">  99 # List of servers on which to install the network service such as</span><br><span class="line"> 100 # Compute networking (nova network) or OpenStack Networking (neutron).</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240129221506929.png" alt="image-20240129221506929" style="zoom:50%;" /> 
+<p>迁移云主机</p>
+<p>有多个 nova 计算节点的时候，我们可以选择性的把某一个云主机从某台机器上迁移到另外一台机器上</p>
+<p>迁移条件</p>
+<p>nova 计算节点与 openstack 管理节点都能相互 ping 通，主机名称也要能 ping 通</p>
+<p>所有计算节点安装 qemu-img-rhev,qemu-kvm-rhev</p>
+<p>如未安装，在安装以后需要重启 libvirtd 服务</p>
+
+      <div class="tags">
+          <a href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag"><i class="ic i-tag"></i> 运维</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-01-30 23:14:31" itemprop="dateModified" datetime="2024-01-30T23:14:31+08:00">2024-01-30</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2024/01/25/%E8%99%9A%E6%8B%9F%E5%8C%96/" title="虚拟化">http://example.com/2024/01/25/虚拟化/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/01/10/%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%AD%98%E5%82%A8/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;8d7796d053eb27e494dc1b848bda144c.jpg" title="集群与存储">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> 运维</span>
+  <h3>集群与存储</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text"> 虚拟化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#kvm"><span class="toc-number">1.1.</span> <span class="toc-text"> kvm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%8C%96-2"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 虚拟化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kvm-qemu-libvirtd"><span class="toc-number">1.1.2.</span> <span class="toc-text"> KVM &#x2F;QEMU &#x2F;LIBVIRTD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#virsh-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.3.</span> <span class="toc-text"> virsh 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 虚拟机磁盘管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%8B%E9%9A%86%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 克隆虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%AE%B9%E7%A3%81%E7%9B%98"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 扩容磁盘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#openstack"><span class="toc-number">1.2.</span> <span class="toc-text"> OpenStack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#openstack-%E7%BB%84%E4%BB%B6"><span class="toc-number">1.2.1.</span> <span class="toc-text"> openstack 组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 项目管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 网络</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2022/11/27/CDN/" rel="bookmark" title="CDN&DNS">CDN&DNS</a></li><li><a href="/2023/04/03/iptables2/" rel="bookmark" title="iptables">iptables</a></li><li><a href="/2023/04/05/Docker/" rel="bookmark" title="docker">docker</a></li><li><a href="/2023/04/15/Nginx_new/" rel="bookmark" title="Nginx">Nginx</a></li><li><a href="/2023/05/20/Kubernetes/" rel="bookmark" title="Kubernetes">Kubernetes</a></li><li><a href="/2023/05/30/jenkins/" rel="bookmark" title="Jenkins">Jenkins</a></li><li><a href="/2023/06/02/k8s%E9%AB%98%E7%BA%A7/" rel="bookmark" title="k8s高级">k8s高级</a></li><li><a href="/2024/01/01/istio/" rel="bookmark" title="istio">istio</a></li><li><a href="/2024/01/10/%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%AD%98%E5%82%A8/" rel="bookmark" title="集群与存储">集群与存储</a></li><li class="active"><a href="/2024/01/25/%E8%99%9A%E6%8B%9F%E5%8C%96/" rel="bookmark" title="虚拟化">虚拟化</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">43</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">6</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">6</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/08/16/Unserialize/" title="unserialize">unserialize</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/06/27/SSRF/" title="SSRF">SSRF</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/02/21/https%E5%8E%9F%E7%90%86/" title="https+TLS">https+TLS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2023/08/22/%E5%8E%BB%E5%BC%B9%E7%AA%97%E7%BB%BF%E5%8C%96/" title="破解相关">破解相关</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/12/27/SSTI/" title="SSTI">SSTI</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2024/01/10/%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%AD%98%E5%82%A8/" title="集群与存储">集群与存储</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/09/15/%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93/" title="缓存污染&#x2F;请求走私">缓存污染/请求走私</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2023/04/15/Nginx_new/" title="Nginx">Nginx</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2023/06/02/k8s%E9%AB%98%E7%BA%A7/" title="k8s高级">k8s高级</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2023/08/15/%E7%A0%B4%E8%A7%A3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B9%8B%E8%AE%A4%E8%AF%86%E5%A3%B3%E4%B8%8E%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%89%B9%E5%BE%81/" title="破解基础知识之认识壳与程序的特征">破解基础知识之认识壳与程序的特征</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/01/25/虚拟化/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
