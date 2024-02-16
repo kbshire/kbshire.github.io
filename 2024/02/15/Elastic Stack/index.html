@@ -1,0 +1,620 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="运维" />
+
+
+<link rel="canonical" href="http://example.com/2024/02/15/Elastic%20Stack/">
+
+
+
+  <title>
+Elastic stack - 运维 |
+Yume Shoka = Hexo</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Elastic stack
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-02-15 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-02-15T13:38:45+08:00">2024-02-15</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/c97ba7c95fea6f32b4bfb028c8898607.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/767d892afd9db5bda9fd978ea0a7cb0b.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/46d0371c19c0586fb0629e97bac23133.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/11a6a57662360e218ec542ca527b4a53.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/fb083e70a3b8e24a3ce23b2c8e2fbc50.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/8fe50780c15461b629c9aeab5a7f2acd.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E8%BF%90%E7%BB%B4/" itemprop="item" rel="index" title="In 运维"><span itemprop="name">运维</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/15/Elastic%20Stack/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="elastic-stack"><a class="markdownIt-Anchor" href="#elastic-stack">#</a> Elastic Stack</h1>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240207173153219.png" alt="image-20240207173153219" style="zoom:50%;" /> 
+<p>The Elastic stack, 包括 Elasticsearch、Kibana、Beats 和 Logstash (也称为 ELK Stack)。<br>
+Elaticsearch:<br>
+ 简称为 ES， ES 是一个开源的高扩展的分布式全文搜索引擎，是整个 E1astic stack 技术栈的核心。它可以近乎实时的存储、检索数据；本身扩展性很好，可以扩展到上百台服务器，处理 PB 级别的数据<br>
+ Kibana:<br>
+ 是一个免费且开放的用户界面，能够让您对 Elasticsearch 数据进行可视化，并让您在 elastic stack 中进行导航。<br>
+您可以进行各种操作，从跟踪查询负载，到理解请求如何流经您的整个应用，都能轻松完成。<br>
+Beats:<br>
+ 是一个免费且开放的平台，集合了多种单一用途数据采集器。它们从成百上千或成千上万台机器和系统向 Logstash 或 Elasticsearch 发送数据<br>
+ Logstash:<br>
+ 是免费且开放的服务器端数据处理管道，能够从多个来源采集数据，转换数据，然后将数据发送到您最喜欢的 “存储库 &quot; 中。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240207173840701.png" alt="image-20240207173840701"></p>
+<p>数据流走向：源数据层 (nginx，tomcat)—&gt; 数据采集层 (filebeat)—&gt; 数据存储层 (Elasticsearch)</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240207174025791.png" alt="image-20240207174025791"></p>
+<p>数据流走向：源数据层 (nginx，tomcat)—&gt; 数据采集 / 转换层 (Logstash)—&gt; 数据存储层 (Elasticsearch)。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240207174116591.png" alt="image-20240207174116591"></p>
+<p>数据流走向：源数据层 (nginx,tomcat)—&gt; 数据采集 (filebeat)–&gt; 转换层 (Logstash)—&gt; 数据存储层 (ElasticSearch)。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240207174356843.png" alt="image-20240207174356843"></p>
+<p>数据流走向：源数据层 (nginx，tomcat)—&gt; 数据采集 (filebeat)—&gt; 数据缓存层 (kafka)—&gt; 转换层 (Logstash)—&gt; 数 据存储层 (ElasticSearch)。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240207174651850.png" alt="image-20240207174651850"></p>
+<h2 id="elasticsearch-和-solr的选择"><a class="markdownIt-Anchor" href="#elasticsearch-和-solr的选择">#</a> ElasticSearch 和 solr 的选择</h2>
+<p>Lucene 的优缺点:</p>
+<p>优点:</p>
+<p>可以被认为是迄今为止最先进，性能最好的，功能最全的搜索引整库 (框架)。</p>
+<p>缺点:</p>
+<p>(1) 只能在 Java 项目中使用，并且要以 jar 包的方式直接集成在项目中；<br>
+(2) 使用很复杂，你需要深入了解检索的相关知识来创建索引和搜索索引代码；<br>
+(3) 不支持集群环境，索引数据不同步 (不支持大型项目);<br>
+(4) 扩展性差，索引库和应用所在同一个服务器，当索引数据过大时，效率逐渐降低；<br>
+ 值得注意的是，上述的 Lucene 框架中的缺点，Elasticsearch 全部都能解决。</p>
+<p>Elasticsearch 是一个实时的分布式搜索和分析引擎。它可以帮助你用前所未有的速度去处理大规模数据<br>
+ ES 可以用于全文搜索，结构化搜索以及分析，当然你也可以将这三者进行组合，</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuZWxhc3RpYy5jby9jbi9jdXN0b21lcnMvc3VjY2Vzcy1zdG9yaWVz">https://www.elastic.co/cn/customers/success-stories</span></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240207195559794.png" alt="image-20240207195559794"></p>
+<p>Solr 是 Apache ucene 项目的开源企业搜索平台。其主要功能包括全文检索、命中标示、分面搜索、动态聚类、数据库集成，以及富文本 (如 Word、PDF) 的处理。<br>
+So1r 是高度可扩展的，并提供了分布式搜索和索引复制。So1r 是最流行的企业级搜索引擎，Solr4 还增加了 NoSQL 支持。<br>
+Elasticsearch (下面简称 &quot;ES&quot;) 与 Solr 的比较:<br>
+(1) So1r 利用 2ookeeper 进行分布式管理，而 ES 自身带有分布式协调管理功能；(2) Solr 支持更多格式 (JSON、XML、CSV) 的数据，而 ES 仅支持 JSON 文件格式；(3) Solr 官方提供的功能更多，而 ES 本身更注重于核心功能，高级功能多有第三方插件提供；(4) So1r 在 &quot; 传统搜索”(已有数据) 中表现好于 ES，但在处理 “实时搜索”(实时建立索引) 应用时效率明显低于 ES (5) Solr 是传统搜索应用的有力解决方案，但 Elasticsearch 更适用于新兴的实时搜索应用。</p>
+<h2 id="部署"><a class="markdownIt-Anchor" href="#部署">#</a> 部署</h2>
+<h3 id="单点部署es"><a class="markdownIt-Anchor" href="#单点部署es">#</a> 单点部署 es</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl set-hostname elk101</span><br><span class="line"></span><br><span class="line">cat &gt;&gt; /etc/hosts &lt;&lt; &quot;EOF&quot;</span><br><span class="line">&gt; 192.168.13.101 elk101</span><br><span class="line">&gt; 192.168.13.102 elk102</span><br><span class="line">&gt; 192.168.13.103 elk103</span><br><span class="line">&gt; EOF</span><br><span class="line"></span><br><span class="line">cat &lt;&lt; EOF &gt;&gt; ~/.bashrc </span><br><span class="line">PS1=&quot;\[\e[37;40m\][\[\e[32;40m\]\u\[\e[37;40m\]@\h \[\e[36;40m\]\w\[\e[0m\]]\\$ &quot;</span><br><span class="line">EOF</span><br><span class="line">source ~/.bashrc </span><br><span class="line"></span><br><span class="line">vim /etc/ssh/sshd_config </span><br><span class="line">GSSAPIAuthentication no</span><br><span class="line">UseDNS no</span><br><span class="line"></span><br><span class="line">sed -ri &#x27;s#^GSSAPIAuthentication yes#GSSAPIAuthentication no#g&#x27; /etc/ssh/sshd_config</span><br><span class="line">sed -ri &#x27;s@^#UseDNS yes@UseDNS no@g&#x27; /etc/ssh/sshd_config</span><br><span class="line">grep ^UseDNS /etc/ssh/sshd_config</span><br><span class="line">grep ^GSSAPIAuthentication /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">systemctl disable firewalld --now </span><br><span class="line">systemctl is-enabled firewalld </span><br><span class="line"></span><br><span class="line">getenforce </span><br><span class="line">setenforce 0 </span><br><span class="line">sed -ri &#x27;s#(SELINUX=)enforcing#1disabled#&#x27; /etc/selinux/config </span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -P &#x27;&#x27; -f ~/.ssh/id_rsa -q</span><br><span class="line">ssh-copy-id 192.168.13.102</span><br><span class="line">ssh-copy-id 192.168.13.103</span><br><span class="line">ssh-copy-id 192.168.13.101</span><br><span class="line"></span><br><span class="line">yum install rsync -y </span><br><span class="line"></span><br><span class="line">// 仅在101上</span><br><span class="line">vim /usr/local/sbin/data_rsync.sh</span><br><span class="line">#! /bin/bash</span><br><span class="line">if [ $# -ne 1 ];then</span><br><span class="line">    echo &quot;Usage: $0 /path/to/file&quot;</span><br><span class="line">    exit</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ ! -e $1 ];then</span><br><span class="line">    echo &quot;[ $1 ] dir or file not find&quot;</span><br><span class="line">    exit</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">fullpath=`dirname $1`</span><br><span class="line"></span><br><span class="line">basename=`basename $1`</span><br><span class="line"></span><br><span class="line">cd $fullpath</span><br><span class="line"></span><br><span class="line">for ((host_id=102;host_id&lt;=103;host_id++))</span><br><span class="line">    do</span><br><span class="line">        tput setaf 2</span><br><span class="line">        echo ===== rsyncing elk$&#123;host_id&#125;: $basename =====</span><br><span class="line">        tput setaf 7</span><br><span class="line">        rsync -az $basename `whoami`@elk$&#123;host_id&#125;:$fullpath</span><br><span class="line">        if [ $? -eq 0 ];then</span><br><span class="line">            echo &quot;命令执行成功&quot;</span><br><span class="line">        fi</span><br><span class="line"> done</span><br><span class="line"> chmod +x /usr/local/sbin/data_rsync.sh</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">[root@elk101 /tmp]$ data_rsync.sh /tmp/</span><br><span class="line">===== rsyncing elk102: tmp =====</span><br><span class="line">The authenticity of host &#x27;elk102 (192.168.13.102)&#x27; can&#x27;t be established.</span><br><span class="line">ECDSA key fingerprint is SHA256:Amhw1/IzdvDQ+eSUVh6rwPbGbuOoSsni4RkaYT5RYNA.</span><br><span class="line">ECDSA key fingerprint is MD5:00:b8:a1:41:cd:66:89:02:11:af:c7:64:fe:5d:25:b2.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br><span class="line">Warning: Permanently added &#x27;elk102&#x27; (ECDSA) to the list of known hosts.</span><br><span class="line">命令执行成功</span><br><span class="line">===== rsyncing elk103: tmp =====</span><br><span class="line">命令执行成功</span><br><span class="line"></span><br><span class="line">yum install vim net-tools.x86_64 ntpdate chrony.x86_64 -y</span><br><span class="line"></span><br><span class="line">vim /etc/chrony.conf </span><br><span class="line">server ntp.aliyun.com iburst</span><br><span class="line">server ntp1.aliyun.com iburst</span><br><span class="line"></span><br><span class="line">systemctl restart chronyd.service </span><br><span class="line"></span><br><span class="line">systemctl enable chronyd --now </span><br><span class="line"></span><br><span class="line">-------------------------------------------------------------------</span><br><span class="line">// 开始安装es</span><br><span class="line"></span><br><span class="line">yum install wget -y</span><br><span class="line">wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.3-linux-x86_64.tar.gz</span><br><span class="line">wget &quot;https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.3-x86_64.rpm&quot;</span><br><span class="line">yum install -y elasticsearch-7.17.3-x86_64.rpm</span><br><span class="line">systemctl start elasticsearch.service</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@elk101 /usr/share/elasticsearch/jdk/bin]$ netstat -lntup </span><br><span class="line">Active Internet connections (only servers)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name          </span><br><span class="line">tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN      11745/java          </span><br><span class="line">tcp6       0      0 ::1:9200                :::*                    LISTEN      11745/java          </span><br><span class="line">tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN      11745/java          </span><br><span class="line">tcp6       0      0 ::1:9300                :::*                    LISTEN      11745/java          </span><br><span class="line"></span><br><span class="line">9200 对集群外部提供服务，使用http协议</span><br><span class="line">9300 集群内通信，使用tcp协议</span><br><span class="line"></span><br><span class="line">[root@elk101 ~]$ curl http://127.0.0.1:9200</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot; : &quot;elk101&quot;,</span><br><span class="line">  &quot;cluster_name&quot; : &quot;elasticsearch&quot;,</span><br><span class="line">  &quot;cluster_uuid&quot; : &quot;qW8JEryoSeqktwv8L4VOGA&quot;,</span><br><span class="line">  &quot;version&quot; : &#123;</span><br><span class="line">    &quot;number&quot; : &quot;7.17.3&quot;,</span><br><span class="line">    &quot;build_flavor&quot; : &quot;default&quot;,</span><br><span class="line">    &quot;build_type&quot; : &quot;rpm&quot;,</span><br><span class="line">    &quot;build_hash&quot; : &quot;5ad023604c8d7416c9eb6c0eadb62b14e766caff&quot;,</span><br><span class="line">    &quot;build_date&quot; : &quot;2022-04-19T08:11:19.070913226Z&quot;,</span><br><span class="line">    &quot;build_snapshot&quot; : false,</span><br><span class="line">    &quot;lucene_version&quot; : &quot;8.11.1&quot;,</span><br><span class="line">    &quot;minimum_wire_compatibility_version&quot; : &quot;6.8.0&quot;,</span><br><span class="line">    &quot;minimum_index_compatibility_version&quot; : &quot;6.0.0-beta1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;tagline&quot; : &quot;You Know, for Search&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">vim /etc/elasticsearch/elasticsearch.yml</span><br><span class="line">cluster.name: elk</span><br><span class="line">node.name: elk101</span><br><span class="line">network.host: 0.0.0.0</span><br><span class="line">discovery.seed_hosts: [&quot;elk101&quot;]</span><br><span class="line"></span><br><span class="line">ll /var/log/elasticsearch</span><br><span class="line">-rw-r--r-- 1 elasticsearch elasticsearch     0 Feb  8 01:32 elk_index_indexing_slowlog.json</span><br><span class="line">-rw-r--r-- 1 elasticsearch elasticsearch     0 Feb  8 01:32 elk_index_indexing_slowlog.log</span><br><span class="line">-rw-r--r-- 1 elasticsearch elasticsearch     0 Feb  8 01:32 elk_index_search_slowlog.json</span><br><span class="line">-rw-r--r-- 1 elasticsearch elasticsearch     0 Feb  8 01:32 elk_index_search_slowlog.log</span><br><span class="line">-rw-r--r-- 1 elasticsearch elasticsearch 23194 Feb  8 01:32 elk.log</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@elk101 /var/log/elasticsearch]$ curl http://elk101:9200 </span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot; : &quot;elk101&quot;,</span><br><span class="line">  &quot;cluster_name&quot; : &quot;elk&quot;,</span><br><span class="line">  &quot;cluster_uuid&quot; : &quot;qW8JEryoSeqktwv8L4VOGA&quot;,</span><br><span class="line">  &quot;version&quot; : &#123;</span><br><span class="line">    &quot;number&quot; : &quot;7.17.3&quot;,</span><br><span class="line">    &quot;build_flavor&quot; : &quot;default&quot;,</span><br><span class="line">    &quot;build_type&quot; : &quot;rpm&quot;,</span><br><span class="line">    &quot;build_hash&quot; : &quot;5ad023604c8d7416c9eb6c0eadb62b14e766caff&quot;,</span><br><span class="line">    &quot;build_date&quot; : &quot;2022-04-19T08:11:19.070913226Z&quot;,</span><br><span class="line">    &quot;build_snapshot&quot; : false,</span><br><span class="line">    &quot;lucene_version&quot; : &quot;8.11.1&quot;,</span><br><span class="line">    &quot;minimum_wire_compatibility_version&quot; : &quot;6.8.0&quot;,</span><br><span class="line">    &quot;minimum_index_compatibility_version&quot; : &quot;6.0.0-beta1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;tagline&quot; : &quot;You Know, for Search&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="集群部署es"><a class="markdownIt-Anchor" href="#集群部署es">#</a> 集群部署 es</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">yum install elasticsearch-7.17.3-x86_64.rpm -y</span><br><span class="line">vim /etc/elasticsearch/elasticsearch.yml</span><br><span class="line">discovery.seed_hosts: [&quot;elk101&quot;,&quot;elk102&quot;,&quot;elk103&quot;]</span><br><span class="line">cluster.initial_master_nodes: [&quot;elk101&quot;,&quot;elk102&quot;,&quot;elk103&quot;]</span><br><span class="line"></span><br><span class="line">// 删除临时数据</span><br><span class="line">rm -rf /var/&#123;lib,log&#125;/elasticsearch/*</span><br><span class="line"></span><br><span class="line">data_rsync.sh /etc/elasticsearch/elasticsearch.yml</span><br><span class="line"></span><br><span class="line">systemctl restart elasticsearch </span><br><span class="line"></span><br><span class="line">[root@elk102 ~]# curl http://192.168.13.103:9200/_cat/nodes</span><br><span class="line">192.168.13.102 7 97 1 0.01 0.04 0.05 cdfhilmrstw - elk102</span><br><span class="line">192.168.13.103 6 97 2 0.02 0.08 0.07 cdfhilmrstw - elk103</span><br><span class="line">192.168.13.101 9 96 3 0.20 0.18 0.09 cdfhilmrstw * elk101</span><br></pre></td></tr></table></figure>
+<h3 id="安装kibana"><a class="markdownIt-Anchor" href="#安装kibana">#</a> 安装 kibana</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wget &quot;https://artifacts.elastic.co/downloads/kibana/kibana-7.17.3-x86_64.rpm&quot;</span><br><span class="line">wget https://artifacts.elastic.co/downloads/kibana/kibana-7.17.3-linux-x86_64.tar.gz</span><br><span class="line">yum install kibana-7.17.3-x86_64.rpm -y</span><br><span class="line"></span><br><span class="line">vim /etc/kibana/kibana.yml </span><br><span class="line">server.host: &quot;elk101&quot;</span><br><span class="line">server.name: &quot;elk&quot;</span><br><span class="line">elasticsearch.hosts: [&quot;http://elk101:9200&quot;, &quot;http://elk102:9200&quot;, &quot;http://elk103:9200&quot;]</span><br><span class="line">i18n.locale: &quot;zh-CN&quot;</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240210151604168.png" alt="image-20240210151604168"></p>
+<h3 id="安装filebeat"><a class="markdownIt-Anchor" href="#安装filebeat">#</a> 安装 filebeat</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">wget &quot;https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.17.3-x86_64.rpm&quot;</span><br><span class="line">wget &quot;https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.17.3-linux-x86_64.tar.gz&quot;</span><br><span class="line">yum install filebeat-7.17.3-x86_64.rpm -y</span><br><span class="line"></span><br><span class="line">vim  /etc/filebeat/filebeat.yml</span><br><span class="line">filebeat.inputs:</span><br><span class="line">- type: stdin</span><br><span class="line"></span><br><span class="line">output.console:</span><br><span class="line">  pretty: true</span><br><span class="line">  </span><br><span class="line">filebeat -e -c /etc/filebeat/filebeat.yml</span><br><span class="line">9999999999999999999999999999</span><br><span class="line">&#123;</span><br><span class="line">  &quot;@timestamp&quot;: &quot;2024-02-10T10:01:37.689Z&quot;,</span><br><span class="line">  &quot;@metadata&quot;: &#123;</span><br><span class="line">    &quot;beat&quot;: &quot;filebeat&quot;,</span><br><span class="line">    &quot;type&quot;: &quot;_doc&quot;,</span><br><span class="line">    &quot;version&quot;: &quot;7.17.3&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;host&quot;: &#123;</span><br><span class="line">    &quot;name&quot;: &quot;elk101&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;agent&quot;: &#123;</span><br><span class="line">    &quot;ephemeral_id&quot;: &quot;b92fbd99-5787-454b-a33b-8b3dc5a1bd88&quot;,</span><br><span class="line">    &quot;id&quot;: &quot;370ef800-c964-4c80-bef5-5f4b5756bdb2&quot;,</span><br><span class="line">    &quot;name&quot;: &quot;elk101&quot;,</span><br><span class="line">    &quot;type&quot;: &quot;filebeat&quot;,</span><br><span class="line">    &quot;version&quot;: &quot;7.17.3&quot;,</span><br><span class="line">    &quot;hostname&quot;: &quot;elk101&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;log&quot;: &#123;</span><br><span class="line">    &quot;offset&quot;: 0,</span><br><span class="line">    &quot;file&quot;: &#123;</span><br><span class="line">      &quot;path&quot;: &quot;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;message&quot;: &quot;9999999999999999999999999999&quot;,</span><br><span class="line">  &quot;input&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;stdin&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;ecs&quot;: &#123;</span><br><span class="line">    &quot;version&quot;: &quot;1.12.0&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240210175557765.png" alt="image-20240210175557765"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">[root@elk101 ~]$ ll /var/lib/filebeat/registry/filebeat/</span><br><span class="line">total 8</span><br><span class="line">-rw------- 1 root root 902 Feb 10 20:20 log.json 					记录了读取的时间戳与读取位置偏移，修改offset实现自定义读取位置</span><br><span class="line">-rw------- 1 root root  15 Feb 10 17:33 meta.json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 通过日志文件读取input数据</span><br><span class="line">vim  /etc/filebeat/filebeat-log.yml</span><br><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/*</span><br><span class="line"></span><br><span class="line">output.console:</span><br><span class="line">  pretty: true</span><br><span class="line">  </span><br><span class="line">删除了/var/lib/filebeat/*后，offset丢失，重新从文件开始读取</span><br><span class="line"></span><br><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  tags: [&quot;shabi&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/*</span><br><span class="line">    - /tmp/1.json</span><br><span class="line">  fields:							// 输出的字段增加fields字段，fields中是kv形式</span><br><span class="line">    haha: &quot;xixixi&quot;</span><br><span class="line"></span><br><span class="line">- type: log</span><br><span class="line">  tags: [&quot;haha&quot;]					// 在输出的字段中增加tag字段</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /data/safeline/*</span><br><span class="line">  fields_under_root: true								// 不在被fields字段包裹，直接自己变成一个kv</span><br><span class="line">output.elasticsearch:</span><br><span class="line">  host: [&quot;http://elk101:9200&quot;]</span><br></pre></td></tr></table></figure>
+<p>filebeat 对接 es</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  tags: [&quot;shabi&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/*</span><br><span class="line">    - /tmp/1.json</span><br><span class="line">  fields:                                                       </span><br><span class="line">    haha: &quot;xixixi&quot;</span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;http://elk101:9200&quot;, &quot;http://elk102:9200&quot;, &quot;http://elk103:9200&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  #index: &quot;%&#123;[fields.log_type]&#125;-%&#123;[agent.version]&#125;-%&#123;+yyy.MM.dd&#125;&quot;   // 默认索引名称filebeat-7.17.3-2024-02-12。不配置索引生命周期的时候才会生效</span><br><span class="line">  index: &quot;hahaha-xixi-%&#123;+yyy.MM.dd&#125;&quot;</span><br><span class="line">setup.template.name: &quot;hahaha&quot;</span><br><span class="line">setup.template.pattern: &quot;hahaha-xixi&quot;</span><br><span class="line">setup.ilm.enabled: false				// 禁用索引生命周期管理</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240211205042678.png" alt="image-20240211205042678"></p>
+<p>创建索引</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240211205405692.png" alt="image-20240211205405692"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240211205523452.png" alt="image-20240211205523452"></p>
+<p>筛选字段</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240211205716000.png" alt="image-20240211205716000"></p>
+<p>新建索引模板</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240211213108434.png" alt="image-20240211213108434"></p>
+<p>filebeat-indices</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  tags: [&quot;shabi&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/*</span><br><span class="line">  fields:                                                       </span><br><span class="line">    haha: &quot;xixixi&quot;</span><br><span class="line">- type: log</span><br><span class="line">  tags: [&quot;zhizhang&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /tmp/*</span><br><span class="line">  fields:                                                       </span><br><span class="line">    haha: &quot;lululu&quot;</span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;http://elk101:9200&quot;, &quot;http://elk102:9200&quot;, &quot;http://elk103:9200&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  indices:</span><br><span class="line">  - index: &quot;hahaha-xixi-uuu-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line">    when.contains:</span><br><span class="line">      tags: &quot;shabi&quot;</span><br><span class="line">  - index: &quot;hahaha-xixi-ppp-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line">    when.contains:</span><br><span class="line">      tags: &quot;zhizhang&quot;</span><br><span class="line">      </span><br><span class="line">setup.template.name: &quot;hahaha&quot;</span><br><span class="line">setup.template.pattern: &quot;hahaha-xixi*&quot;</span><br><span class="line">setup.ilm.enabled: false		</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240211214505454.png" alt="image-20240211214505454"></p>
+<p>egrep -v “<sup>#|</sup>$” /etc/kibana/kibana.yml</p>
+<p>分片：一个分片只能在一个节点。分片里面存放的是文档。多分片适用于集群情况</p>
+<p>每个文档通过 id 标识</p>
+<p>路由计算：hash (文档 id) % 主分片数 = 分片编号</p>
+<p>分片数量设置后不可以修改。副本数量可以修改</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240212192642807.png" alt="image-20240212192642807"></p>
+<p>机架感知：防止一个机柜故障导致副本无法访问</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240212193118761.png" alt="image-20240212193118761" style="zoom:50%;" /> 
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">filebeat.inputs:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">type:</span> <span class="string">log</span></span><br><span class="line">  <span class="attr">tags:</span> [<span class="string">&quot;shabi&quot;</span>]</span><br><span class="line">  <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">paths:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">/var/log/*</span></span><br><span class="line">  <span class="attr">fields:</span>                                                       </span><br><span class="line">    <span class="attr">haha:</span> <span class="string">&quot;xixixi&quot;</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">type:</span> <span class="string">log</span></span><br><span class="line">  <span class="attr">tags:</span> [<span class="string">&quot;zhizhang&quot;</span>]</span><br><span class="line">  <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">paths:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">/tmp/*</span></span><br><span class="line">  <span class="attr">fields:</span>                                                       </span><br><span class="line">    <span class="attr">haha:</span> <span class="string">&quot;lululu&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">output.elasticsearch:</span></span><br><span class="line">  <span class="attr">hosts:</span> [<span class="string">&quot;http://elk101:9200&quot;</span>, <span class="string">&quot;http://elk102:9200&quot;</span>, <span class="string">&quot;http://elk103:9200&quot;</span>]</span><br><span class="line">  <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">indices:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">index:</span> <span class="string">&quot;hahaha-xixi-uuu-<span class="template-variable">%&#123;+yyyy.MM.dd&#125;</span>&quot;</span></span><br><span class="line">    <span class="attr">when.contains:</span></span><br><span class="line">      <span class="attr">tags:</span> <span class="string">&quot;shabi&quot;</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">index:</span> <span class="string">&quot;hahaha-xixi-ppp-<span class="template-variable">%&#123;+yyyy.MM.dd&#125;</span>&quot;</span></span><br><span class="line">    <span class="attr">when.contains:</span></span><br><span class="line">      <span class="attr">tags:</span> <span class="string">&quot;zhizhang&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置索引模板的名称      </span></span><br><span class="line"><span class="attr">setup.template.name:</span> <span class="string">&quot;hahaha&quot;</span></span><br><span class="line"><span class="comment"># 设置索引模板的匹配模式</span></span><br><span class="line"><span class="attr">setup.template.pattern:</span> <span class="string">&quot;hahaha-xixi*&quot;</span></span><br><span class="line"><span class="comment"># 禁用索引生命周期管理</span></span><br><span class="line"><span class="attr">setup.ilm.enabled:</span> <span class="literal">false</span>        </span><br><span class="line"><span class="comment"># 覆盖已有的索引模板</span></span><br><span class="line"><span class="attr">setup.template.overwrite:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">setup.template.settings:</span></span><br><span class="line">  <span class="attr">index.number_of_shards:</span> <span class="number">3</span>				<span class="comment"># 分片</span></span><br><span class="line">  <span class="attr">index.number_of_replicas:</span> <span class="number">0</span>			<span class="comment"># 副本，副本数量一定要小于集群中主机数量</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240212194140225.png" alt="image-20240212194140225"></p>
+<p>集群有红黄绿三种颜色</p>
+<p>红色：集群的主分片未正常工作</p>
+<p>黄色：集群的部分副本分片未正常使用</p>
+<p>绿色：集群的主分片和副本分片可以访问</p>
+<p>主分片和副本分片的区别</p>
+<p>主分片可以读写</p>
+<p>副本分片只读</p>
+<p>推荐 10 分片 2 副本</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240212201413703.png" alt="image-20240212201413703"></p>
+<p>索引模式用于在 kibana.discover 中展示数据</p>
+<p>索引模板：用于按照模板创建一系列索引。删除索引模板不会删除索引</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240212204717096.png" alt="image-20240212204717096"></p>
+<p>filebeat 收集 nginx 日志</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx -y </span><br><span class="line"></span><br><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  tags: [&quot;access&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/nginx/access.log*</span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;http://elk101:9200&quot;, &quot;http://elk102:9200&quot;, &quot;http://elk103:9200&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  index: &quot;hahaha-xixi-nginx-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line"></span><br><span class="line"># 设置索引模板的名称      </span><br><span class="line">setup.template.name: &quot;hahaha&quot;</span><br><span class="line"># 设置索引模板的匹配模式</span><br><span class="line">setup.template.pattern: &quot;hahaha-xixi*&quot;</span><br><span class="line"># 禁用索引生命周期管理</span><br><span class="line">setup.ilm.enabled: false</span><br><span class="line"># 覆盖已有的索引模板</span><br><span class="line">setup.template.overwrite: true</span><br><span class="line">setup.template.settings:</span><br><span class="line">  index.number_of_shards: 3</span><br><span class="line">  index.number_of_replicas: 0</span><br></pre></td></tr></table></figure>
+<h3 id="通过日志筛选某个字段"><a class="markdownIt-Anchor" href="#通过日志筛选某个字段">#</a> 通过日志筛选某个字段</h3>
+<p>1.accesslog 直接变为 json 格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">    log_format log_json &#x27;&#123; &quot;@timestamp&quot;: &quot;$time_local&quot;, &#x27;</span><br><span class="line">                        &#x27;&quot;remote_addr&quot;: &quot;$remote_addr&quot;, &#x27;</span><br><span class="line">                        &#x27;&quot;referer&quot;: &quot;$http_referer&quot;, &#x27;</span><br><span class="line">                        &#x27;&quot;request&quot;: &quot;$request&quot;, &#x27;</span><br><span class="line">                        &#x27;&quot;status&quot;: $status, &#x27;</span><br><span class="line">                        &#x27;&quot;bytes&quot;: $body_bytes_sent, &#x27;</span><br><span class="line">                        &#x27;&quot;agent&quot;: &quot;$http_user_agent&quot;, &#x27;</span><br><span class="line">                        &#x27;&quot;x_forwarded&quot;: &quot;$http_x_forwarded_for&quot;, &#x27;</span><br><span class="line">                       # &#x27;&quot;up_addr&quot;: &quot;$upstream_addr&quot;,&#x27;</span><br><span class="line">                       # &#x27;&quot;up_host&quot;: &quot;$upstream_http_host&quot;,&#x27;</span><br><span class="line">                       # &#x27;&quot;up_resp_time&quot;: &quot;$upstream_response_time&quot;,&#x27;</span><br><span class="line">                        &#x27;&quot;request_time&quot;: &quot;$request_time&quot;&#x27;</span><br><span class="line">                        &#x27; &#125;&#x27;;</span><br><span class="line">    access_log  /var/log/nginx/access.log  log_json;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#123; &quot;@timestamp&quot;: &quot;13/Feb/2024:15:23:23 +0800&quot;, &quot;remote_addr&quot;: &quot;192.168.13.1&quot;, &quot;referer&quot;: &quot;-&quot;, &quot;request&quot;: &quot;GET / HTTP/1.1&quot;, &quot;status&quot;: 304, &quot;bytes&quot;: 0, &quot;agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0&quot;, &quot;x_forwarded&quot;: &quot;-&quot;, &quot;request_time&quot;: &quot;0.000&quot; &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  tags: [&quot;access&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/nginx/access.log*</span><br><span class="line">  json.keys_under_root: true</span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;http://elk101:9200&quot;, &quot;http://elk102:9200&quot;, &quot;http://elk103:9200&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  index: &quot;hahaha-xixi-nginx-access-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line"></span><br><span class="line"># 设置索引模板的名称      </span><br><span class="line">setup.template.name: &quot;hahaha&quot;</span><br><span class="line"># 设置索引模板的匹配模式</span><br><span class="line">setup.template.pattern: &quot;hahaha-xixi*&quot;</span><br><span class="line"># 禁用索引生命周期管理</span><br><span class="line">setup.ilm.enabled: false</span><br><span class="line"># 覆盖已有的索引模板</span><br><span class="line">setup.template.overwrite: true</span><br><span class="line">setup.template.settings:</span><br><span class="line">  index.number_of_shards: 3</span><br><span class="line">  index.number_of_replicas: 0</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240213153307334.png" alt="image-20240213153307334"></p>
+<p>2. 借助 module 处理 (filebeat)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">filebeat.config.modules:</span><br><span class="line">  path: $&#123;path.config&#125;/modules.d/*.yml</span><br><span class="line">  reload.enabled: false</span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;http://elk101:9200&quot;, &quot;http://elk102:9200&quot;, &quot;http://elk103:9200&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  index: &quot;hahaha-xixi-nginx-access-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line"></span><br><span class="line"># 设置索引模板的名称      </span><br><span class="line">setup.template.name: &quot;hahaha&quot;</span><br><span class="line"># 设置索引模板的匹配模式</span><br><span class="line">setup.template.pattern: &quot;hahaha-xixi*&quot;</span><br><span class="line"># 禁用索引生命周期管理</span><br><span class="line">setup.ilm.enabled: false</span><br><span class="line"># 覆盖已有的索引模板</span><br><span class="line">setup.template.overwrite: true</span><br><span class="line">setup.template.settings:</span><br><span class="line">  index.number_of_shards: 3</span><br><span class="line">  index.number_of_replicas: 0</span><br><span class="line">  </span><br><span class="line">[root@elk101 ~/es-filebeat]$ filebeat -e -c /root/es-filebeat/nginx-module.yaml modules list </span><br><span class="line">2024-02-13T15:58:56.904+0800    INFO    instance/beat.go:685    Home path: [/usr/share/filebeat] Config path: [/etc/filebeat] Data path: [/var/lib/filebeat] Logs path: [/var/log/filebeat] Hostfs Path: [/]</span><br><span class="line">2024-02-13T15:58:56.904+0800    INFO    instance/beat.go:693    Beat ID: 86cb8587-cdc1-47a0-8ed8-82b95547ea30</span><br><span class="line">Enabled:</span><br><span class="line"></span><br><span class="line">Disabled:</span><br><span class="line">activemq</span><br><span class="line">apache</span><br><span class="line">auditd</span><br><span class="line">aws</span><br><span class="line">awsfargate</span><br><span class="line">azure</span><br><span class="line">barracuda</span><br><span class="line">bluecoat</span><br><span class="line">cef</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@elk101 ~/es-filebeat]$ filebeat -e -c /root/es-filebeat/nginx-module.yaml modules enable nginx tomcat </span><br><span class="line">2024-02-13T16:04:33.044+0800    INFO    instance/beat.go:685    Home path: [/usr/share/filebeat] Config path: [/etc/filebeat] Data path: [/var/lib/filebeat] Logs path: [/var/log/filebeat] Hostfs Path: [/]</span><br><span class="line">2024-02-13T16:04:33.044+0800    INFO    instance/beat.go:693    Beat ID: 86cb8587-cdc1-47a0-8ed8-82b95547ea30</span><br><span class="line">Enabled nginx</span><br><span class="line">Enabled tomcat</span><br><span class="line"></span><br><span class="line">启用和禁用只取决于后缀是否是.yml 或者后面是disable</span><br><span class="line"></span><br><span class="line">[root@elk101 ~/es-filebeat]$ cat /etc/filebeat/modules.d/nginx.yml </span><br><span class="line"># Module: nginx</span><br><span class="line"># Docs: https://www.elastic.co/guide/en/beats/filebeat/7.17/filebeat-module-nginx.html</span><br><span class="line"></span><br><span class="line">- module: nginx</span><br><span class="line">  # Access logs</span><br><span class="line">  access:</span><br><span class="line">    enabled: true</span><br><span class="line"></span><br><span class="line">    # Set custom paths for the log files. If left empty,</span><br><span class="line">    # Filebeat will choose the paths depending on your OS.</span><br><span class="line">    var.paths: [&quot;/var/log/nginx/access.log*&quot;]</span><br><span class="line"></span><br><span class="line">  # Error logs</span><br><span class="line">  error:</span><br><span class="line">    enabled: true</span><br><span class="line"></span><br><span class="line">    # Set custom paths for the log files. If left empty,</span><br><span class="line">    # Filebeat will choose the paths depending on your OS.</span><br><span class="line">    var.paths: [&quot;/var/log/nginx/error.log*&quot;]</span><br><span class="line"></span><br><span class="line">  # Ingress-nginx controller logs. This is disabled by default. It could be used in Kubernetes environments to parse ingress-nginx logs</span><br><span class="line">  ingress_controller:</span><br><span class="line">    enabled: false</span><br><span class="line"></span><br><span class="line">    # Set custom paths for the log files. If left empty,</span><br><span class="line">    # Filebeat will choose the paths depending on your OS.</span><br><span class="line">    #var.paths:</span><br><span class="line">    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240213162820195.png" alt="image-20240213162820195"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240213164251436.png" alt="image-20240213164251436"></p>
+<p>3. 引入 logstash</p>
+<h3 id="收集tomcat日志"><a class="markdownIt-Anchor" href="#收集tomcat日志">#</a> 收集 tomcat 日志</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"> filebeat -e -c /root/es-filebeat/nginx-module.yaml modules enable tomcat </span><br><span class="line"> </span><br><span class="line"> vim tomcat-module.yaml</span><br><span class="line"> filebeat.config.modules:</span><br><span class="line">  path: $&#123;path.config&#125;/modules.d/*.yml</span><br><span class="line">  reload.enabled: false</span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;http://elk101:9200&quot;, &quot;http://elk102:9200&quot;, &quot;http://elk103:9200&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  index: &quot;hahaha-xixi-tomcat-access-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line"></span><br><span class="line"># 设置索引模板的名称      </span><br><span class="line">setup.template.name: &quot;hahaha&quot;</span><br><span class="line"># 设置索引模板的匹配模式</span><br><span class="line">setup.template.pattern: &quot;hahaha-xixi*&quot;</span><br><span class="line"># 禁用索引生命周期管理</span><br><span class="line">setup.ilm.enabled: false</span><br><span class="line"># 覆盖已有的索引模板</span><br><span class="line">setup.template.overwrite: true</span><br><span class="line">setup.template.settings:</span><br><span class="line">  index.number_of_shards: 3</span><br><span class="line">  index.number_of_replicas: 0</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  vim /etc/filebeat/modules.d/tomcat.yml</span><br><span class="line"># Module: tomcat</span><br><span class="line"># Docs: https://www.elastic.co/guide/en/beats/filebeat/7.17/filebeat-module-tomcat.html</span><br><span class="line"></span><br><span class="line">- module: tomcat</span><br><span class="line">  log:</span><br><span class="line">    enabled: true</span><br><span class="line"></span><br><span class="line">    # Set which input to use between udp (default), tcp or file.</span><br><span class="line">    var.input: file</span><br><span class="line">    # var.syslog_host: localhost</span><br><span class="line">    # var.syslog_port: 9501</span><br><span class="line"></span><br><span class="line">    # Set paths for the log files when file input is used.</span><br><span class="line">    var.paths:</span><br><span class="line">      - /usr/local/tomcat/logs/*.txt</span><br><span class="line"></span><br><span class="line">    # Toggle output of non-ECS fields (default true).</span><br><span class="line">    # var.rsa_fields: true</span><br><span class="line"></span><br><span class="line">    # Set custom timezone offset.</span><br><span class="line">    # &quot;local&quot; (default) for system timezone.</span><br><span class="line">    # &quot;+02:00&quot; for GMT+02:00</span><br><span class="line">    # var.tz_offset: local</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">var.input 有tcp udp file 三种形式</span><br><span class="line">前两种对接syslog</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+ <img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240214150406383.png" alt="image-20240214150406383" style="zoom:50%;" />
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  tags: [&quot;access&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /usr/local/tomcat/logs/tomcat.haha.com_access_log.2024-02-14.txt</span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;http://elk101:9200&quot;, &quot;http://elk102:9200&quot;, &quot;http://elk103:9200&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  index: &quot;hahaha-xixi-tomcat-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line"></span><br><span class="line"># 设置索引模板的名称      </span><br><span class="line">setup.template.name: &quot;hahaha&quot;</span><br><span class="line"># 设置索引模板的匹配模式</span><br><span class="line">setup.template.pattern: &quot;hahaha-xixi*&quot;</span><br><span class="line"># 禁用索引生命周期管理</span><br><span class="line">setup.ilm.enabled: false</span><br><span class="line"># 覆盖已有的索引模板</span><br><span class="line">setup.template.overwrite: true</span><br><span class="line">setup.template.settings:</span><br><span class="line">  index.number_of_shards: 3</span><br><span class="line">  index.number_of_replicas: 0</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">vim /usr/local/tomcat/conf/server.xml</span><br><span class="line">161       &lt;Host name=&quot;tomcat.haha.com&quot;  appBase=&quot;webapps&quot;</span><br><span class="line">162             unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;</span><br><span class="line">163 </span><br><span class="line">164         &lt;!-- SingleSignOn valve, share authentication between web applications</span><br><span class="line">165              Documentation at: /docs/config/valve.html --&gt;</span><br><span class="line">166         &lt;!--</span><br><span class="line">167         &lt;Valve className=&quot;org.apache.catalina.authenticator.SingleSignOn&quot; /&gt;</span><br><span class="line">168         --&gt;</span><br><span class="line">169 </span><br><span class="line">170         &lt;!-- Access log processes all example.</span><br><span class="line">171              Documentation at: /docs/config/valve.html</span><br><span class="line">172              Note: The pattern used is equivalent to using pattern=&quot;common&quot; --&gt;</span><br><span class="line">173         &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;</span><br><span class="line">174                prefix=&quot;tomcat.haha.com_access_log&quot; suffix=&quot;.txt&quot;</span><br><span class="line">175                pattern=&quot;&#123;&amp;quot;client&amp;quot;:&amp;quot;%h&amp;quot;,  &amp;quot;client user&amp;quot;:&amp;quot;%l&amp;quot;,   &amp;quot;authenticated&amp;quot;:&amp;quo    t;%u&amp;quot;,   &amp;quot;access time&amp;quot;:&amp;quot;%t&amp;quot;,     &amp;quot;method&amp;quot;:&amp;quot;%r&amp;quot;,   &amp;quot;status&amp;quot;:&amp;quot;%s&amp;quot;,  &amp;q    uot;send bytes&amp;quot;:&amp;quot;%b&amp;quot;,  &amp;quot;Query?string&amp;quot;:&amp;quot;%q&amp;quot;,  &amp;quot;partner&amp;quot;:&amp;quot;%&#123;Referer&#125;i&amp;quot;,  &amp;quot;A    gent version&amp;quot;:&amp;quot;%&#123;User-Agent&#125;i&amp;quot;&#125;&quot;/&gt;</span><br><span class="line">176 </span><br><span class="line">177       &lt;/Host&gt;</span><br><span class="line">178     &lt;/Engine&gt;</span><br><span class="line">179   &lt;/Service&gt;</span><br><span class="line">180 &lt;/Server&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@elk101 /usr/local/tomcat/logs]$ cat tomcat.haha.com_access_log.2024-02-14.txt </span><br><span class="line">&#123;&quot;client&quot;:&quot;192.168.13.101&quot;,  &quot;client user&quot;:&quot;-&quot;,   &quot;authenticated&quot;:&quot;-&quot;,   &quot;access time&quot;:&quot;[14/Feb/2024:15:55:51 +0800]&quot;,     &quot;method&quot;:&quot;GET / HTTP/1.1&quot;,   &quot;status&quot;:&quot;200&quot;,  &quot;send bytes&quot;:&quot;11230&quot;,  &quot;Query?string&quot;:&quot;&quot;,  &quot;partner&quot;:&quot;-&quot;,  &quot;Agent version&quot;:&quot;curl/7.29.0&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240214161223343.png" alt="image-20240214161223343"></p>
+<p>kql - kibana query language</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240214161753177.png" alt="image-20240214161753177"></p>
+<h3 id="收集tomcat错误日志"><a class="markdownIt-Anchor" href="#收集tomcat错误日志">#</a> 收集 tomcat 错误日志</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  tags: [&quot;error&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /usr/local/tomcat/logs/catalina.out</span><br><span class="line">  # json.key_under_root: true</span><br><span class="line">  multiline.type: pattern</span><br><span class="line">  multiline.pattern: &#x27;^\d&#123;2&#125;&#x27;</span><br><span class="line">  multiline.negate: true</span><br><span class="line">  multiline.match: after</span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;http://elk101:9200&quot;, &quot;http://elk102:9200&quot;, &quot;http://elk103:9200&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  index: &quot;hahaha-xixi-tomcat-error-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line"></span><br><span class="line"># 设置索引模板的名称      </span><br><span class="line">setup.template.name: &quot;hahaha&quot;</span><br><span class="line"># 设置索引模板的匹配模式</span><br><span class="line">setup.template.pattern: &quot;hahaha-xixi*&quot;</span><br><span class="line"># 禁用索引生命周期管理</span><br><span class="line">setup.ilm.enabled: false</span><br><span class="line"># 覆盖已有的索引模板</span><br><span class="line">setup.template.overwrite: true</span><br><span class="line">setup.template.settings:</span><br><span class="line">  index.number_of_shards: 3</span><br><span class="line">  index.number_of_replicas: 0</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240215140411494.png" alt="image-20240215140411494"></p>
+<h3 id="收集es错误日志"><a class="markdownIt-Anchor" href="#收集es错误日志">#</a> 收集 es 错误日志</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  tags: [&quot;error&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/elasticsearch/elk-100.log</span><br><span class="line">  # json.key_under_root: true</span><br><span class="line">  multiline.type: pattern</span><br><span class="line">  multiline.pattern: &#x27;^\[&#x27;</span><br><span class="line">  multiline.negate: true</span><br><span class="line">  multiline.match: after</span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;http://elk101:9200&quot;, &quot;http://elk102:9200&quot;, &quot;http://elk103:9200&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  index: &quot;hahaha-xixi-tomcat-error-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line"></span><br><span class="line"># 设置索引模板的名称      </span><br><span class="line">setup.template.name: &quot;hahaha&quot;</span><br><span class="line"># 设置索引模板的匹配模式</span><br><span class="line">setup.template.pattern: &quot;hahaha-xixi*&quot;</span><br><span class="line"># 禁用索引生命周期管理</span><br><span class="line">setup.ilm.enabled: false</span><br><span class="line"># 覆盖已有的索引模板</span><br><span class="line">setup.template.overwrite: true</span><br><span class="line">setup.template.settings:</span><br><span class="line">  index.number_of_shards: 3</span><br><span class="line">  index.number_of_replicas: 0</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240215141620731.png" alt="image-20240215141620731"></p>
+<h3 id="日志过滤"><a class="markdownIt-Anchor" href="#日志过滤">#</a> 日志过滤</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  tags: [&quot;error&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/elasticsearch/elk-100.log</span><br><span class="line">  # json.key_under_root: true</span><br><span class="line">  multiline.type: pattern</span><br><span class="line">  multiline.pattern: &#x27;^\[&#x27;</span><br><span class="line">  multiline.negate: true</span><br><span class="line">  multiline.match: after</span><br><span class="line">  // 包含指定的内容才会采集</span><br><span class="line">  include_lines: [&quot;^ERR&quot;, &quot;^WARN&quot;]</span><br><span class="line">  exclude_lines: [&quot;^ERR&quot;, &quot;^WARN&quot;]</span><br></pre></td></tr></table></figure>
+<p>不包含的结果是 offset 已经过了这行，但是 output 没有这行</p>
+<p>黑名单优先级更高</p>
+<h3 id="收集nginx所有日志"><a class="markdownIt-Anchor" href="#收集nginx所有日志">#</a> 收集 nginx 所有日志</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  tags: [&quot;access&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/nginx/access.log*</span><br><span class="line">- type: log</span><br><span class="line">  tags: [&quot;error&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/nginx/error.log*</span><br><span class="line">  include_lines: [&#x27;\[error\]&#x27;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;http://elk101:9200&quot;, &quot;http://elk102:9200&quot;, &quot;http://elk103:9200&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  indices:</span><br><span class="line">    - index: &quot;hahaha-xixi-nginx-access-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line">      when.contains:</span><br><span class="line">        tags: &quot;access&quot;</span><br><span class="line">    - index: &quot;hahaha-xixi-nginx-error-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line">      when.contains:</span><br><span class="line">        tags: &quot;error&quot;</span><br><span class="line"></span><br><span class="line">setup.template.name: &quot;hahaha&quot;</span><br><span class="line">setup.template.pattern: &quot;hahaha-xixi*&quot;</span><br><span class="line">setup.ilm.enabled: false				// 禁用索引生命周期管理</span><br></pre></td></tr></table></figure>
+<h3 id="filestream-收集日志"><a class="markdownIt-Anchor" href="#filestream-收集日志">#</a> filestream 收集日志</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[root@elk101 ~/es-filebeat]$ cat /var/log/nginx/access.log</span><br><span class="line">&#123; &quot;@timestamp&quot;: &quot;15/Feb/2024:16:28:00 +0800&quot;, &quot;remote_addr&quot;: &quot;127.0.0.1&quot;, &quot;referer&quot;: &quot;-&quot;, &quot;request&quot;: &quot;GET / HTTP/1.1&quot;, &quot;status&quot;: 200, &quot;bytes&quot;: 615, &quot;agent&quot;: &quot;curl/7.29.0&quot;, &quot;x_forwarded&quot;: &quot;-&quot;, &quot;request_time&quot;: &quot;0.000&quot; &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">filebeat.inputs:</span><br><span class="line">- type: filestream</span><br><span class="line">  id: haxi</span><br><span class="line">  tags: [&quot;access&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/nginx/access.log*</span><br><span class="line">  parsers:</span><br><span class="line">    - ndjson:</span><br><span class="line">        keys_under_root: true</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;http://elk101:9200&quot;, &quot;http://elk102:9200&quot;, &quot;http://elk103:9200&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  indices:</span><br><span class="line">    - index: &quot;hahaha-xixi-nginx-access-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line">      when.contains:</span><br><span class="line">        tags: &quot;access&quot;</span><br><span class="line">    - index: &quot;hahaha-xixi-nginx-error-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line">      when.contains:</span><br><span class="line">        tags: &quot;error&quot;</span><br><span class="line"></span><br><span class="line">setup.template.name: &quot;hahaha&quot;</span><br><span class="line">setup.template.pattern: &quot;hahaha-xixi*&quot;</span><br><span class="line">setup.ilm.enabled: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">filebeat.inputs:</span><br><span class="line">- type: filestream</span><br><span class="line">  id: haxi</span><br><span class="line">  tags: [&quot;access&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /usr/local/tomcat/logs/tomcat.haha.com_access_log.*.txt</span><br><span class="line">  parsers:</span><br><span class="line">    - ndjson:</span><br><span class="line">        keys_under_root: true</span><br><span class="line"></span><br><span class="line">- type: filestream</span><br><span class="line">  id: haxixi</span><br><span class="line">  tags: [&quot;error&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  paths:</span><br><span class="line">    - /usr/local/tomcat/logs/*.out</span><br><span class="line">  parsers:</span><br><span class="line">    - multiline:</span><br><span class="line">        type: pattern</span><br><span class="line">        pattern: &#x27;^\d&#123;2&#125;&#x27;</span><br><span class="line">        negate: true</span><br><span class="line">        match: after</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;http://elk101:9200&quot;, &quot;http://elk102:9200&quot;, &quot;http://elk103:9200&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  indices:</span><br><span class="line">    - index: &quot;hahaha-xixi-nginx-access-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line">      when.contains:</span><br><span class="line">        tags: &quot;access&quot;</span><br><span class="line">    - index: &quot;hahaha-xixi-nginx-error-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line">      when.contains:</span><br><span class="line">        tags: &quot;error&quot;</span><br><span class="line"></span><br><span class="line">setup.template.name: &quot;hahaha&quot;</span><br><span class="line">setup.template.pattern: &quot;hahaha-xixi*&quot;</span><br><span class="line">setup.ilm.enabled: false</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240216143534847.png" alt="image-20240216143534847"></p>
+<p>input 源最好 少于 4 个</p>
+<p>实例太多可以采用：拆分实例 / 日志聚合</p>
+<p>运行多个实例的 filebeat 需要手工指定数据路径 --path.data=/tmp/filebeat 。运行实例后，会在文件夹生成一个 lock 文件，阻止其他 fileabeat 实例使用</p>
+<h3 id="日志聚合"><a class="markdownIt-Anchor" href="#日志聚合">#</a> 日志聚合</h3>
+<p>rsyslog 收集系统日志</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">yum install rsyslog -y</span><br><span class="line"></span><br><span class="line">vim /etc/rsyslog.conf</span><br><span class="line">$ModLoad imtcp</span><br><span class="line">$InputTCPServerRun 514</span><br><span class="line">*.*                                                     /var/log/kkkkk.log		# @10.0.0.1:514</span><br><span class="line"></span><br><span class="line">systemctl restart rsyslog.service</span><br><span class="line"></span><br><span class="line">logger &quot;xixix&quot;										# logger命令测试日志文件</span><br><span class="line"></span><br><span class="line">Feb 16 15:21:46 elk101 root: xixix</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 之后filesream中只需要收集kkkkk.log即可</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="inputtcp"><a class="markdownIt-Anchor" href="#inputtcp">#</a> input.tcp</h3>
+<p>用于路由器 / 交换机等无法安装 linux 程序场景</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">filebeat.inputs:</span><br><span class="line">- type: tcp</span><br><span class="line">  host: &quot;0.0.0.0:8888&quot;</span><br><span class="line">  tags: &quot;access&quot; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">output.elasticsearch:</span><br><span class="line">  hosts: [&quot;http://elk101:9200&quot;, &quot;http://elk102:9200&quot;, &quot;http://elk103:9200&quot;]</span><br><span class="line">  enabled: true</span><br><span class="line">  indices:</span><br><span class="line">    - index: &quot;hahaha-xixi-nginx-access-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line">      when.contains:</span><br><span class="line">        tags: &quot;access&quot;</span><br><span class="line"></span><br><span class="line">setup.template.name: &quot;hahaha&quot;</span><br><span class="line">setup.template.pattern: &quot;hahaha-xixi*&quot;</span><br><span class="line">setup.ilm.enabled: false</span><br></pre></td></tr></table></figure>
+<p>telnet 1.1.1.1 8888</p>
+<p>nc 1.1.1.1 8888</p>
+<h3 id="outputfile"><a class="markdownIt-Anchor" href="#outputfile">#</a> output.file</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">output.file:</span><br><span class="line">  path: &quot;/tmp/haha&quot;</span><br><span class="line">  filename: sss.txt</span><br></pre></td></tr></table></figure>
+<h3 id="outputredis"><a class="markdownIt-Anchor" href="#outputredis">#</a> output.redis</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">yum install epel* -y </span><br><span class="line">yum install redis -y </span><br><span class="line"></span><br><span class="line">vim /etc/redis.conf </span><br><span class="line">bind 0.0.0.0</span><br><span class="line">requirepass hahahaha</span><br><span class="line"></span><br><span class="line">systemctl enable redis --now </span><br><span class="line"></span><br><span class="line">redis-cli -a hahahaha -h 192.168.13.101 -p 6379 --raw -n 5</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">filebeat.inputs:</span><br><span class="line">- type: tcp</span><br><span class="line">  host: &quot;192.168.13.101:9000&quot;</span><br><span class="line">  tags: &quot;access&quot; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">output.redis:</span><br><span class="line">  hosts: [&quot;192.168.13.101:6379&quot;]</span><br><span class="line">  password: &quot;hahahaha&quot;</span><br><span class="line">  key: &quot;xixixixi&quot;</span><br><span class="line">  db: 5</span><br><span class="line">  timeout: 3</span><br><span class="line">  enabled: true</span><br><span class="line">  indices:</span><br><span class="line">    - index: &quot;hahaha-xixi-nginx-access-%&#123;+yyyy.MM.dd&#125;&quot;</span><br><span class="line">      when.contains:</span><br><span class="line">        tags: &quot;access&quot;</span><br><span class="line"></span><br><span class="line">setup.template.name: &quot;hahaha&quot;</span><br><span class="line">setup.template.pattern: &quot;hahaha-xixi*&quot;</span><br><span class="line">setup.ilm.enabled: false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@elk101 ~]$ telnet 192.168.13.101 9000</span><br><span class="line">Trying 192.168.13.101...</span><br><span class="line">Connected to 192.168.13.101.</span><br><span class="line">Escape character is &#x27;^]&#x27;.</span><br><span class="line">aaaa</span><br><span class="line">dddd</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@elk102 ~]# redis-cli -a hahahaha -h 192.168.13.101 -p 6379 --raw -n 5</span><br><span class="line">192.168.13.101:6379[5]&gt; KEYS *</span><br><span class="line">xixixixi</span><br><span class="line">192.168.13.101:6379[5]&gt; LRANGE xixixixi 0 -1</span><br><span class="line">&#123;&quot;@timestamp&quot;:&quot;2024-02-16T08:34:52.573Z&quot;,&quot;@metadata&quot;:&#123;&quot;beat&quot;:&quot;filebeat&quot;,&quot;type&quot;:&quot;_doc&quot;,&quot;version&quot;:&quot;7.17.3&quot;&#125;,&quot;log&quot;:&#123;&quot;source&quot;:&#123;&quot;address&quot;:&quot;192.168.13.101:58184&quot;&#125;&#125;,&quot;tags&quot;:[&quot;access&quot;],&quot;input&quot;:&#123;&quot;type&quot;:&quot;tcp&quot;&#125;,&quot;ecs&quot;:&#123;&quot;version&quot;:&quot;1.12.0&quot;&#125;,&quot;host&quot;:&#123;&quot;name&quot;:&quot;elk101&quot;&#125;,&quot;agent&quot;:&#123;&quot;version&quot;:&quot;7.17.3&quot;,&quot;hostname&quot;:&quot;elk101&quot;,&quot;ephemeral_id&quot;:&quot;0ff0daea-3a89-47bb-84c2-e76108f22046&quot;,&quot;id&quot;:&quot;6531f582-c541-42cb-97f2-6a8ff960316b&quot;,&quot;name&quot;:&quot;elk101&quot;,&quot;type&quot;:&quot;filebeat&quot;&#125;,&quot;message&quot;:&quot;aaaa&quot;&#125;</span><br><span class="line">&#123;&quot;@timestamp&quot;:&quot;2024-02-16T08:34:53.371Z&quot;,&quot;@metadata&quot;:&#123;&quot;beat&quot;:&quot;filebeat&quot;,&quot;type&quot;:&quot;_doc&quot;,&quot;version&quot;:&quot;7.17.3&quot;&#125;,&quot;log&quot;:&#123;&quot;source&quot;:&#123;&quot;address&quot;:&quot;192.168.13.101:58184&quot;&#125;&#125;,&quot;tags&quot;:[&quot;access&quot;],&quot;input&quot;:&#123;&quot;type&quot;:&quot;tcp&quot;&#125;,&quot;ecs&quot;:&#123;&quot;version&quot;:&quot;1.12.0&quot;&#125;,&quot;host&quot;:&#123;&quot;name&quot;:&quot;elk101&quot;&#125;,&quot;agent&quot;:&#123;&quot;id&quot;:&quot;6531f582-c541-42cb-97f2-6a8ff960316b&quot;,&quot;name&quot;:&quot;elk101&quot;,&quot;type&quot;:&quot;filebeat&quot;,&quot;version&quot;:&quot;7.17.3&quot;,&quot;hostname&quot;:&quot;elk101&quot;,&quot;ephemeral_id&quot;:&quot;0ff0daea-3a89-47bb-84c2-e76108f22046&quot;&#125;,&quot;message&quot;:&quot;dddd&quot;&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 11111 | nc 192.168.13.101 9000</span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag"><i class="ic i-tag"></i> 运维</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-02-16 18:55:22" itemprop="dateModified" datetime="2024-02-16T18:55:22+08:00">2024-02-16</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2024/02/15/Elastic%20Stack/" title="Elastic stack">http://example.com/2024/02/15/Elastic Stack/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/02/01/%E7%9B%91%E6%8E%A7/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;ef1cb9e134515173776afdeb20f35051.jpg" title="监控">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> 运维</span>
+  <h3>监控</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#elastic-stack"><span class="toc-number">1.</span> <span class="toc-text"> Elastic Stack</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#elasticsearch-%E5%92%8C-solr%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-number">1.1.</span> <span class="toc-text"> ElasticSearch 和 solr 的选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2"><span class="toc-number">1.2.</span> <span class="toc-text"> 部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E7%82%B9%E9%83%A8%E7%BD%B2es"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 单点部署 es</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2es"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 集群部署 es</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85kibana"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 安装 kibana</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85filebeat"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 安装 filebeat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%97%A5%E5%BF%97%E7%AD%9B%E9%80%89%E6%9F%90%E4%B8%AA%E5%AD%97%E6%AE%B5"><span class="toc-number">1.2.5.</span> <span class="toc-text"> 通过日志筛选某个字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B6%E9%9B%86tomcat%E6%97%A5%E5%BF%97"><span class="toc-number">1.2.6.</span> <span class="toc-text"> 收集 tomcat 日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B6%E9%9B%86tomcat%E9%94%99%E8%AF%AF%E6%97%A5%E5%BF%97"><span class="toc-number">1.2.7.</span> <span class="toc-text"> 收集 tomcat 错误日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B6%E9%9B%86es%E9%94%99%E8%AF%AF%E6%97%A5%E5%BF%97"><span class="toc-number">1.2.8.</span> <span class="toc-text"> 收集 es 错误日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E8%BF%87%E6%BB%A4"><span class="toc-number">1.2.9.</span> <span class="toc-text"> 日志过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B6%E9%9B%86nginx%E6%89%80%E6%9C%89%E6%97%A5%E5%BF%97"><span class="toc-number">1.2.10.</span> <span class="toc-text"> 收集 nginx 所有日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filestream-%E6%94%B6%E9%9B%86%E6%97%A5%E5%BF%97"><span class="toc-number">1.2.11.</span> <span class="toc-text"> filestream 收集日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E8%81%9A%E5%90%88"><span class="toc-number">1.2.12.</span> <span class="toc-text"> 日志聚合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inputtcp"><span class="toc-number">1.2.13.</span> <span class="toc-text"> input.tcp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#outputfile"><span class="toc-number">1.2.14.</span> <span class="toc-text"> output.file</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#outputredis"><span class="toc-number">1.2.15.</span> <span class="toc-text"> output.redis</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2022/11/27/CDN/" rel="bookmark" title="CDN&DNS">CDN&DNS</a></li><li><a href="/2023/04/03/iptables2/" rel="bookmark" title="iptables">iptables</a></li><li><a href="/2023/04/05/Docker/" rel="bookmark" title="docker">docker</a></li><li><a href="/2023/04/15/Nginx_new/" rel="bookmark" title="Nginx">Nginx</a></li><li><a href="/2023/05/20/Kubernetes/" rel="bookmark" title="Kubernetes">Kubernetes</a></li><li><a href="/2023/05/30/jenkins/" rel="bookmark" title="Jenkins">Jenkins</a></li><li><a href="/2023/06/02/k8s%E9%AB%98%E7%BA%A7/" rel="bookmark" title="k8s高级">k8s高级</a></li><li><a href="/2024/01/01/istio/" rel="bookmark" title="istio">istio</a></li><li><a href="/2024/01/10/%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%AD%98%E5%82%A8/" rel="bookmark" title="集群与存储">集群与存储</a></li><li><a href="/2024/01/25/%E8%99%9A%E6%8B%9F%E5%8C%96/" rel="bookmark" title="虚拟化">虚拟化</a></li><li><a href="/2024/02/01/%E7%9B%91%E6%8E%A7/" rel="bookmark" title="监控">监控</a></li><li class="active"><a href="/2024/02/15/Elastic%20Stack/" rel="bookmark" title="Elastic stack">Elastic stack</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">46</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">6</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">6</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/01/01/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
+</div>
+
+    <span><a href="/2022/12/25/%E5%86%85%E7%BD%91/" title="内网渗透">内网渗透</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/12/27/SSTI/" title="SSTI">SSTI</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" title="docker逃逸&amp;capabilities">docker逃逸&capabilities</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/12/28/mysql/" title="Mysql">Mysql</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%BD%91%E7%BB%9C/" title="In 网络">网络</a>
+</div>
+
+    <span><a href="/2023/09/01/border%20leaf/" title="从三层架构到spine leaf">从三层架构到spine leaf</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" title="JWT">JWT</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2024/01/25/%E8%99%9A%E6%8B%9F%E5%8C%96/" title="虚拟化">虚拟化</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2023/08/15/%E7%A0%B4%E8%A7%A3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B9%8B%E8%AE%A4%E8%AF%86%E5%A3%B3%E4%B8%8E%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%89%B9%E5%BE%81/" title="破解基础知识之认识壳与程序的特征">破解基础知识之认识壳与程序的特征</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%BD%91%E7%BB%9C/" title="In 网络">网络</a>
+</div>
+
+    <span><a href="/2023/01/20/VXLAN/" title="VXLAN">VXLAN</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/02/15/Elastic Stack/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
