@@ -102,12 +102,12 @@ Yume Shoka = Hexo</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/0a30d7eca259366c104d2fbfe515dc0e.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/ecce74bba1d6312552d0156083825749.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/a3893b60653fe5923434b1eef4de7c7b.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/d39fac026faa9551f5138968af027183.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/c341350a62c22109f3b283ce0aa83871.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/e4b3ac43a8014fcfa62690bfbb906743.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/b2eeb9bbef8e10749f97b0182647a32c.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/4c481240fd5e6e7b076ca8fe50da6e52.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/5ec5e6a577b47f3d9b70654073f8b881.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/e1077c43120f41fdab6a5b79cc10a94b.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/fb083e70a3b8e24a3ce23b2c8e2fbc50.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/6c7f469735b99a6a04773240429dc7e0.jpg"></li>
         </ul>
       </div>
     </header>
@@ -303,6 +303,134 @@ Yume Shoka = Hexo</title>
 <p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240207160703676.png" alt="image-20240207160703676"></p>
 <p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240207160724695.png" alt="image-20240207160724695"></p>
 <p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240207160835752.png" alt="image-20240207160835752"></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0RpS0xfWS9hcnRpY2xlL2RldGFpbHMvMTMxNTU0MzU5">https://blog.csdn.net/DiKL_Y/article/details/131554359</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NTQ2NzE3L2FydGljbGUvZGV0YWlscy8xMTc4MDgxNDg=">https://blog.csdn.net/qq_27546717/article/details/117808148</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82Nzc3NDUzMDA=">https://zhuanlan.zhihu.com/p/677745300</span></p>
+<h2 id="prometheus"><a class="markdownIt-Anchor" href="#prometheus">#</a> prometheus</h2>
+<h3 id="组件"><a class="markdownIt-Anchor" href="#组件">#</a> 组件</h3>
+<blockquote>
+<h3 id="components"><a class="markdownIt-Anchor" href="#components">#</a> Components</h3>
+<p>The Prometheus ecosystem consists of multiple components, many of which are optional:</p>
+<ul>
+<li>the main <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Byb21ldGhldXMvcHJvbWV0aGV1cw==">Prometheus server</span> which scrapes and stores time series data</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9wcm9tZXRoZXVzLmlvL2RvY3MvaW5zdHJ1bWVudGluZy9jbGllbnRsaWJzLw==">client libraries</span> for instrumenting application code</li>
+<li>a <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Byb21ldGhldXMvcHVzaGdhdGV3YXk=">push gateway</span> for supporting short-lived jobs</li>
+<li>special-purpose <span class="exturl" data-url="aHR0cHM6Ly9wcm9tZXRoZXVzLmlvL2RvY3MvaW5zdHJ1bWVudGluZy9leHBvcnRlcnMv">exporters</span> for services like HAProxy, StatsD, Graphite, etc.</li>
+<li>an <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Byb21ldGhldXMvYWxlcnRtYW5hZ2Vy">alertmanager</span> to handle alerts</li>
+<li>various support tools</li>
+</ul>
+<p>Most Prometheus components are written in <span class="exturl" data-url="aHR0cHM6Ly9nb2xhbmcub3JnLw==">Go</span>, making them easy to build and deploy as static binaries.</p>
+</blockquote>
+<p>prometheus 本身是一个以进程方式后动，之后以多进程和多线程实现监控数据收集 计算 查询 更新 存储 的这样一个 C/S 横型运行模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/prometheus/prometheus/releases/download/v2.52.0/prometheus-2.52.0.linux-amd64.tar.gz</span><br><span class="line"></span><br><span class="line">tar xzvf prometheus-2.52.0.linux-amd64.tar.gz</span><br><span class="line">cd prometheus-2.52.0.linux-amd64/</span><br><span class="line">nohup ./prometheus &amp;</span><br></pre></td></tr></table></figure>
+<p>默认监听 9090 端口</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240522233436135.png" alt="image-20240522233436135"></p>
+<p>prometheus 平时是将采集过来的数据 先都存放在内存之中 (prometheus 对内存的消耗，还是不小的) 以类似缓存的方式，用于加快搜索和访问<br>
+当出现宕机时，prometheus 有一种保护机制 叫做 WAL 可以讲数据定期存入硬盘中 以 chunk 来表示，并在重新后动时 用以恢复进入内</p>
+<h3 id="采集方式"><a class="markdownIt-Anchor" href="#采集方式">#</a> 采集方式：</h3>
+<p>pull: 指的是 客户端 (被监控机器) 先安装各类已有 exporters 之后，exporters 以守护进程的模式 运行 并 开始采集数据</p>
+<p>prometheus 用 pull 这种主动拉的方式 (HTTP get) 去访问每个节点上 exporter 并采样回需要的数据</p>
+<p>push：指的是 在客户端 (或者服务端) 安装这个官方提供的 pushgatewvay 插件<br>
+然后，使用我们运维自行开发的各种脚本 把监控数据组织成 kv 的形式 metrics 形式 发送给 pushgateway<br>
+ 之后 pushgateway 会再推送给 prometheus<br>
+ 这种是一种被动的数据采集模式</p>
+<h3 id="metrics"><a class="markdownIt-Anchor" href="#metrics">#</a> metrics</h3>
+<p>promethes 监控中 对于采集过来的数据 统一称为 metrics 数据</p>
+<p>Gauges：最简单的度量指标，只有一个简单的返回值，或者叫瞬时状态，例如，我们想衡量一个待处理队列中任务的个数</p>
+<p>Counters：Counter 就是计数器，从数据量 0 开始累积计算 在理想状态下 只能是永远的增长 不会降低</p>
+<p>Histograms</p>
+<p>Histogram 统计数据的分布情况。比如最小值，最大值，中间值，还有中位数，75 百分位，90 百分位，95 百分位，98 百分位，99 百分位，和 99.9 百分位的值 (percentiles)。</p>
+<p>近似百分比估算数值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">root@k8s-master:~<span class="comment"># curl http://127.0.0.1:9090/metrics</span></span><br><span class="line"><span class="comment"># HELP go_gc_duration_seconds A summary of the pause duration of garbage collection cycles.</span></span><br><span class="line"><span class="comment"># TYPE go_gc_duration_seconds summary</span></span><br><span class="line">go_gc_duration_seconds&#123;quantile=<span class="string">&quot;0&quot;</span>&#125; 1.298e-05</span><br><span class="line">go_gc_duration_seconds&#123;quantile=<span class="string">&quot;0.25&quot;</span>&#125; 4.7067e-05</span><br><span class="line">go_gc_duration_seconds&#123;quantile=<span class="string">&quot;0.5&quot;</span>&#125; 5.6978e-05</span><br><span class="line">go_gc_duration_seconds&#123;quantile=<span class="string">&quot;0.75&quot;</span>&#125; 9.3503e-05</span><br><span class="line">go_gc_duration_seconds&#123;quantile=<span class="string">&quot;1&quot;</span>&#125; 0.01176682</span><br><span class="line">go_gc_duration_seconds_sum 0.030605689</span><br><span class="line">go_gc_duration_seconds_count 49</span><br><span class="line"><span class="comment"># HELP go_goroutines Number of goroutines that currently exist.</span></span><br><span class="line"><span class="comment"># TYPE go_goroutines gauge</span></span><br><span class="line">go_goroutines 31</span><br><span class="line"><span class="comment"># HELP go_info Information about the Go environment.</span></span><br><span class="line"><span class="comment"># TYPE go_info gauge</span></span><br><span class="line">go_info&#123;version=<span class="string">&quot;go1.22.3&quot;</span>&#125; 1</span><br><span class="line"><span class="comment"># HELP go_memstats_alloc_bytes Number of bytes allocated and still in use.</span></span><br><span class="line"><span class="comment"># TYPE go_memstats_alloc_bytes gauge</span></span><br><span class="line">go_memstats_alloc_bytes 5.096408e+07</span><br><span class="line"><span class="comment"># HELP go_memstats_alloc_bytes_total Total number of bytes allocated, even if freed.</span></span><br><span class="line"><span class="comment"># TYPE go_memstats_alloc_bytes_total counter</span></span><br><span class="line">go_memstats_alloc_bytes_total 3.27338656e+08</span><br></pre></td></tr></table></figure>
+<p><span class="exturl" data-url="aHR0cHM6Ly9wcm9tZXRoZXVzLmlvL2Rvd25sb2FkLw==">https://prometheus.io/download/</span></p>
+<p>提供了大量的 expoert，最常用 node_exporter 可以列出 linux 系统中自身相关的监控数据</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240525141247472.png" alt="image-20240525141247472"></p>
+<p>pushgateway 本事也是一个 http 服务器</p>
+<p>通过自己写脚本搞监控数据，推送到 pgw，再由 pgw 推送到 pro</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># my global config</span></span><br><span class="line">global:</span><br><span class="line">  scrape_interval: 15s <span class="comment"># Set the scrape interval to every 15 seconds. Default is every 1 minute.</span></span><br><span class="line">  evaluation_interval: 15s <span class="comment"># Evaluate rules every 15 seconds. The default is every 1 minute.</span></span><br><span class="line">  <span class="comment"># scrape_timeout is set to the global default (10s).</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Alertmanager configuration</span></span><br><span class="line">alerting:</span><br><span class="line">  alertmanagers:</span><br><span class="line">    - static_configs:</span><br><span class="line">        - targets:</span><br><span class="line">          <span class="comment"># - alertmanager:9093</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Load rules once and periodically evaluate them according to the global &#x27;evaluation_interval&#x27;.</span></span><br><span class="line">rule_files:</span><br><span class="line">  <span class="comment"># - &quot;first_rules.yml&quot;</span></span><br><span class="line">  <span class="comment"># - &quot;second_rules.yml&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># A scrape configuration containing exactly one endpoint to scrape:</span></span><br><span class="line"><span class="comment"># Here it&#x27;s Prometheus itself.</span></span><br><span class="line">scrape_configs:</span><br><span class="line">  <span class="comment"># The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.</span></span><br><span class="line">  - job_name: <span class="string">&quot;prometheus&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># metrics_path defaults to &#x27;/metrics&#x27;</span></span><br><span class="line">    <span class="comment"># scheme defaults to &#x27;http&#x27;.</span></span><br><span class="line"></span><br><span class="line">    static_configs:</span><br><span class="line">      - targets: [<span class="string">&quot;localhost:9090&quot;</span>,<span class="string">&quot;localhost:9100&quot;</span>]</span><br></pre></td></tr></table></figure>
+<p>安装 node_exported 之后还需要去 target 中添加</p>
+<p>prometheus server 9090。node_exporter 9100</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240525141318166.png" alt="image-20240525141318166"></p>
+<p>CPU 时间：从操作系统开启算起 CPU 就开始工作了并记录自己在工作中总共使用的 &quot;时间&quot; 的累积量把它保存在系统中</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240525141335248.png" alt="image-20240525141335248"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240525141346298.png" alt="image-20240525141346298"></p>
+<p>CPU 使用率 最准确的定义其实是 CPU 各种状态中除了 idle (空闲) 这个状态外，其他所有的 CPU 状态的加合 / 总 CPU 时间</p>
+<p>increase()</p>
+<p>针对 Counter 这种持续增长的数值，截取其中一段时间的增量</p>
+<p>increase(node_cpu_seconds_total[1m])</p>
+<p>sum(increase(node_cpu_seconds_total[1m]))</p>
+<p>把 cpu 所有核累加，把结果集累加</p>
+<p>1 分钟以内，所有 cpu 核 mode 为 idle 状态</p>
+<p>sum(increase(node_cpu_seconds_total{mode=“idle”}[1m]))</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240525141408035.png" alt="image-20240525141408035"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240525141414337.png" alt="image-20240525141414337"></p>
+<p>(1-(sum(increase(node_cpu_seconds_total{mode=“idle”}[1m])) by(instance)/sum(increase(node_cpu_seconds_total[1m])) by(instance)))*100</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240525141442248.png" alt="image-20240525141442248"></p>
+<p>用户态</p>
+<p>(sum(increase(node_cpu_seconds_total{mode=“user”}[1m])) by(instance)/sum(increase(node_cpu_seconds_total[1m])) by(instance))</p>
+<p>=～ 模糊匹配</p>
+<p instance="~&quot;192.168.13.*:9100&quot;," job="prometheus">node_netstat_TcpExt_TCPTimeouts</p>
+<p>过滤数值</p>
+<p>node_netstat_TcpExt_TCPTimeouts{instance=~“192.168.13.*:9100”, job=“prometheus”} &gt; 50</p>
+<p>rate</p>
+<p>用于搭配 counter 类型数据，根据时间段，取平均每秒增量</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240525141510940.png" alt="image-20240525141510940" style="zoom:150%;" /> 
+<p>increase 取一段时间增量的总量</p>
+<p>rate 数值 * 60s = increase 数值。  在 1 分钟范围时</p>
+<p>sum() by (instance)</p>
+<p>sum () by (cluster_name)    cluster_name 需要自定义标签</p>
+<p>topk (2,wait_connect)   取前 n 数值，gauge 数值</p>
+<p>topk (2,rate (wait_connect))   取前 n 数值，counter 类型</p>
+<p>Topk 因为对于每一个时间点 都只取前三高的数值<br>
+那么必然会造成 单个机器的采集数据不连贯</p>
+<p>topk 一般用作瞬时告警</p>
+<p>count 数值条件匹配的进行累加</p>
+<p>count(iowait&gt;1)</p>
+<p>后台运行 screen</p>
+<p>screen</p>
+<p>screen -r 111</p>
+<p>screen -ls</p>
+<p>ctrl + a + d</p>
+<p>daemonize</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/bmc/daemonize/archive/refs/tags/release-1.7.8.tar.gz</span><br><span class="line">tar xzvf release-1.7.8.tar.gz</span><br><span class="line">cd daemonize-release-1.7.8/</span><br><span class="line">apt install gcc zlib* pcre* make  -y</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">daemonize -c /root/prometheus-2.52.0.linux-amd64/ /root/prometheus-2.52.0.linux-amd64/prometheus</span><br><span class="line"></span><br><span class="line"># 防止空闲等待链接太多</span><br><span class="line">--web.read-timeout=5m</span><br><span class="line"></span><br><span class="line"># 最大连接数</span><br><span class="line">--web.max-connections=512</span><br><span class="line"></span><br><span class="line">#数据保留期限</span><br><span class="line">--storage.tsdb.retention=15d</span><br><span class="line"></span><br><span class="line"># 存储路径</span><br><span class="line">--storage.tsdb.path=&quot;data/&quot;</span><br><span class="line"></span><br><span class="line"># 优化查询</span><br><span class="line">--query.timeout=2m</span><br><span class="line">--query.max-concurency=20</span><br><span class="line"></span><br><span class="line">文件夹中字母目录是历史数据保留</span><br><span class="line">近期数据在内存中，并且按照一定间隔放在wal中</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>pushgateway</p>
+<p>它是可以单独运行在 任何节点上的插件 (并不一定要在被监控客户端)</p>
+<p>通过用户自定义开发脚本 把需要监控的数据发送给 pushgateway</p>
+<p>pushgateway 再把数据推送给 prometheus server</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/prometheus/pushgateway/releases/download/v1.8.0/pushgateway-1.8.0.linux-amd64.tar.gz</span><br><span class="line">tar xzvf pushgateway-1.8.0.linux-amd64.tar.gz</span><br><span class="line">nohup ./pushgateway &amp;</span><br><span class="line"></span><br><span class="line">vim prometheus.yml</span><br><span class="line">scrape_configs:</span><br><span class="line">  # The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.</span><br><span class="line">  - job_name: &quot;prometheus&quot;</span><br><span class="line"></span><br><span class="line">    # metrics_path defaults to &#x27;/metrics&#x27;</span><br><span class="line">    # scheme defaults to &#x27;http&#x27;.</span><br><span class="line"></span><br><span class="line">    static_configs:</span><br><span class="line">      - targets: [&quot;localhost:9090&quot;,&quot;localhost:9100&quot;,&quot;192.168.13.232:9100&quot;,&quot;192.168.13.231:9100&quot;]</span><br><span class="line">  - job_name: &quot;pushgateway123&quot;</span><br><span class="line">    static_configs:</span><br><span class="line">      - targets: [&quot;localhost:9091&quot;,&quot;localhost:9092&quot;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">定义push内容</span><br><span class="line">label=&quot;count_wait_connection&quot;</span><br><span class="line">count_wait_connection=`netstat -lntupa|grep -i wait| wc -l`</span><br><span class="line">echo &quot;$label:$count_wait_connection&quot; | curl --data-binary @- http://192.168.13.230:9091/metrics/job/pushgateway123/instance/$instance_name</span><br></pre></td></tr></table></figure>
+<p>将 HTTP POST 请求中的数据发送给 HTTP 服务器 (pushgateway)，与用户提交 HTML 表单时浏览器的行为完全一样。<br>
+HTTP POST 请求中的数据为纯二进制数据</p>
+<ol>
+<li>
+<p>pushgateway 会形成一个单点瓶颈，假如好多个 脚本同时发送给一个 pushgateway 的进程如果这个进程没了，那么监控数据也就没了</p>
+</li>
+<li>
+<p>pushgateway 并不能对发送过来的 脚本采集数据 进行更智能的判断 假如脚本中间采集出问题了那么有问题的数据 pushgateway 一样照单全收 发送给 prometheus</p>
+</li>
+</ol>
+<p>不同于 pushgateway,exporter 是一个独立运行 的采集程序<br>
+其中的功能需要有这三个部分</p>
+<ol>
+<li>自身是 HTTP 服务器，可以响应 从外发过来的 HTTP GET 请求</li>
+<li>自身需要运行在后台，并可以定期触发 抓取本地的监控数据</li>
+<li>返回给 prometheus_server 的内容 是需要符合 prometheus 规定的 metrics 类型 (Key-Value)</li>
+</ol>
+<p>(1-(sum(increase(node_cpu_seconds_total{mode=“idle”}[1m])) by(instance)/sum(increase(node_cpu_seconds_total[1m])) by(instance)))*100</p>
+<p>(1-((node_memory_Buffers_bytes+node_memory_Cached_bytes+node_memory_MemFree_bytes)/node_memory_MemTotal_bytes))*100</p>
+<p>(rate(node_disk_read_bytes_total[1m])+rate(node_disk_written_bytes_total[1m]))/1024/1024</p>
+<p>(node_filefd_allocated/node_filefd_maximum)*100</p>
+<p>root@k8s-node2:~# timeout 5  ping -q -A -s 500 -W 1000 -c 100 192.168.13.230<br>
+PING 192.168.13.230 (192.168.13.230) 500(528) bytes of data.</p>
+<p>— 192.168.13.230 ping statistics —<br>
+100 packets transmitted, 100 received, 0% packet loss, time 8ms<br>
+rtt min/avg/max/mdev = 0.057/0.071/0.240/0.026 ms, ipg/ewma 0.079/0.063 ms</p>
+<p>root@k8s-node2:~# timeout 5  ping -q -A -W 1000 -c 100 192.168.13.230<br>
+PING 192.168.13.230 (192.168.13.230) 56(84) bytes of data.</p>
+<p>— 192.168.13.230 ping statistics —<br>
+100 packets transmitted, 100 received, 0% packet loss, time 10ms<br>
+rtt min/avg/max/mdev = 0.056/0.089/1.303/0.129 ms, ipg/ewma 0.102/0.068 ms</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@k8s-node2:~# timeout 5  ping -q -A -s 500 -W 1000 -c 100 192.168.13.230 | grep transmitted | awk &#x27;&#123;print $6&#125;&#x27;</span><br><span class="line">0%</span><br><span class="line">root@k8s-node2:~# timeout 5  ping -q -A -s 500 -W 1000 -c 100 192.168.13.230 | grep transmitted | awk &#x27;&#123;print $10&#125;&#x27;</span><br><span class="line">10ms</span><br></pre></td></tr></table></figure>
 
       <div class="tags">
           <a href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag"><i class="ic i-tag"></i> 运维</a>
@@ -317,7 +445,7 @@ Yume Shoka = Hexo</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">Edited on</span>
-    <time title="Modified: 2024-02-07 16:08:37" itemprop="dateModified" datetime="2024-02-07T16:08:37+08:00">2024-02-07</time>
+    <time title="Modified: 2024-05-26 17:37:04" itemprop="dateModified" datetime="2024-05-26T17:37:04+08:00">2024-05-26</time>
   </span>
 </div>
 
@@ -372,7 +500,7 @@ Yume Shoka = Hexo</title>
     <div class="item left">
       
 
-  <a href="/2024/01/31/%E5%8F%B0%E7%90%83/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;dcb8f9f223a5db821d797261469b6a17.jpg" title="台球入门教程">
+  <a href="/2024/01/31/%E5%8F%B0%E7%90%83/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;515ee3ef8e5138cb721c6d28a9755a74.jpg" title="台球入门教程">
   <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>台球入门教程</h3>
@@ -382,7 +510,7 @@ Yume Shoka = Hexo</title>
     <div class="item right">
       
 
-  <a href="/2024/02/15/Elastic%20Stack/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;9bb9e2a4cf749eb38bd38c97835e3366.jpg" title="Elastic stack">
+  <a href="/2024/02/15/Elastic%20Stack/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;18a32c514eae0d32a8b4b2a75853a08b.jpg" title="Elastic stack">
   <span class="type">Next Post</span>
   <span class="category"><i class="ic i-flag"></i> 运维</span>
   <h3>Elastic stack</h3>
@@ -404,7 +532,7 @@ Yume Shoka = Hexo</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="Contents">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%91%E6%8E%A7"><span class="toc-number">1.</span> <span class="toc-text"> 监控</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#zabbix"><span class="toc-number">1.1.</span> <span class="toc-text"> zabbix</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%8E%A7%E9%A1%B9"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 自定义监控项</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">1.1.2.1.</span> <span class="toc-text"> 配置客户端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.1.2.2.</span> <span class="toc-text"> 配置服务器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E8%AD%A6%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 报警机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 自动发现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E5%8A%A8%E7%9B%91%E6%8E%A7"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 主动监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%93%E6%89%91%E5%9B%BE"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 拓扑图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E5%9B%BE%E5%BD%A2"><span class="toc-number">1.1.7.</span> <span class="toc-text"> 聚合图形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%91%E6%8E%A7nginx"><span class="toc-number">1.1.8.</span> <span class="toc-text"> 监控 nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%8A%B6%E6%80%81%E7%9B%91%E6%8E%A7"><span class="toc-number">1.1.9.</span> <span class="toc-text"> 网络连接状态监控</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%91%E6%8E%A7"><span class="toc-number">1.</span> <span class="toc-text"> 监控</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#zabbix"><span class="toc-number">1.1.</span> <span class="toc-text"> zabbix</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%8E%A7%E9%A1%B9"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 自定义监控项</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">1.1.2.1.</span> <span class="toc-text"> 配置客户端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.1.2.2.</span> <span class="toc-text"> 配置服务器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E8%AD%A6%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 报警机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 自动发现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E5%8A%A8%E7%9B%91%E6%8E%A7"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 主动监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%93%E6%89%91%E5%9B%BE"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 拓扑图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E5%9B%BE%E5%BD%A2"><span class="toc-number">1.1.7.</span> <span class="toc-text"> 聚合图形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%91%E6%8E%A7nginx"><span class="toc-number">1.1.8.</span> <span class="toc-text"> 监控 nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%8A%B6%E6%80%81%E7%9B%91%E6%8E%A7"><span class="toc-number">1.1.9.</span> <span class="toc-text"> 网络连接状态监控</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#prometheus"><span class="toc-number">1.2.</span> <span class="toc-text"> prometheus</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#components"><span class="toc-number">1.2.2.</span> <span class="toc-text"> Components</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%87%E9%9B%86%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 采集方式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#metrics"><span class="toc-number">1.2.4.</span> <span class="toc-text"> metrics</span></a></li></ol></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="Related">
         <ul>
@@ -488,85 +616,7 @@ Yume Shoka = Hexo</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2023/07/15/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E/" title="中间件漏洞">中间件漏洞</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/05/27/CSRF/" title="CSRF">CSRF</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
-</div>
-
-    <span><a href="/2023/08/22/%E5%8E%BB%E5%BC%B9%E7%AA%97%E7%BB%BF%E5%8C%96/" title="破解相关">破解相关</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" title="JWT">JWT</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/01/01/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
     <span><a href="/2023/02/21/https%E5%8E%9F%E7%90%86/" title="https+TLS">https+TLS</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/08/16/Unserialize/" title="unserialize">unserialize</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
-</div>
-
-    <span><a href="/2023/05/30/jenkins/" title="Jenkins">Jenkins</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
-</div>
-
-    <span><a href="/2022/11/11/reverse/" title="逆向">逆向</a></span>
   </li>
 
       
@@ -577,6 +627,85 @@ Yume Shoka = Hexo</title>
 </div>
 
     <span><a href="/2022/11/01/%E6%B1%87%E7%BC%96/" title="汇编">汇编</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2023/01/03/%E6%BB%B4%E6%B0%B4reverse/" title="水滴rev">水滴rev</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
+</div>
+
+    <span><a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" title="秋招总结">秋招总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/12/27/SSTI/" title="SSTI">SSTI</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/05/17/include/" title="file include">file include</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/08/02/Capabilities/" title="docker底层原理+capability">docker底层原理+capability</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2023/04/03/iptables2/" title="iptables">iptables</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2023/04/05/Docker/" title="docker">docker</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
+</div>
+
+    <span><a href="/2022/12/25/%E5%86%85%E7%BD%91/" title="内网渗透">内网渗透</a></span>
   </li>
 
   </ul>
