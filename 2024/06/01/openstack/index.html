@@ -1,0 +1,725 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="运维" />
+
+
+<link rel="canonical" href="http://example.com/2024/06/01/openstack/">
+
+
+
+  <title>
+OpenStack+openvswitch - 运维 |
+Yume Shoka = Hexo</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">OpenStack+openvswitch
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-06-01 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-06-01T13:38:45+08:00">2024-06-01</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/67694352e9c5cbbcf5c1bb98312aab55.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/3f20154a69ec2ac89963a3c94445fdd7.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/24012099cbcef21e4a8b250374efe959.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/2b0a8c81d91579602eee343aff82c4c9.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/d424b2656229a0e3718abfd0a05bbff7.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/d39fac026faa9551f5138968af027183.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E8%BF%90%E7%BB%B4/" itemprop="item" rel="index" title="In 运维"><span itemprop="name">运维</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2024/06/01/openstack/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="openstack"><a class="markdownIt-Anchor" href="#openstack">#</a> openstack</h2>
+<h4 id="nova"><a class="markdownIt-Anchor" href="#nova">#</a> nova</h4>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804225801612.png" alt="image-20240804225801612"></p>
+<p>主机发放完之后可以把镜像删掉，因为系统盘是通过镜像复制的</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804225814617.png" alt="image-20240804225814617"></p>
+<p>openstack 中实例快照是作为镜像使用的，可以直接作为云主机镜像，不能直接还原</p>
+<p>硬盘快照是用于创建相同的云硬盘，可以挂载给主机，不能直接还原快照。也可以放做启动盘使用</p>
+<h4 id="glance"><a class="markdownIt-Anchor" href="#glance">#</a> glance</h4>
+<p>所有服务的 API endpoint 地址均存放在 keystone 数据库中</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804225828237.png" alt="image-20240804225828237"></p>
+<p>写操作会通过 glance-registry，读操作可以直接去数据库中查</p>
+<p>glance 使用 swift</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">default_store = swift</span><br><span class="line">stores = file,http,swift</span><br><span class="line">swift_store_auth_version = 2</span><br><span class="line">swift_store_auth_address = &lt;None&gt;             <span class="comment"># keystone address + port + version</span></span><br><span class="line">swift_store_user = edu:user1                        <span class="comment"># 用户需要有上传swift权限</span></span><br><span class="line">swift_store_key = redhat</span><br><span class="line">swift_store_container = glance</span><br><span class="line">swift_store_create_container_on_put = True</span><br><span class="line">swift_store_large_object_size = 5120</span><br><span class="line"></span><br><span class="line">swift list</span><br><span class="line">swift list hahah</span><br><span class="line">swift download </span><br><span class="line">swift upload</span><br><span class="line">swift post</span><br></pre></td></tr></table></figure>
+<h4 id="neutron"><a class="markdownIt-Anchor" href="#neutron">#</a> neutron</h4>
+<h5 id="组件"><a class="markdownIt-Anchor" href="#组件">#</a> 组件</h5>
+<p>neutron-server：分为 core api 和 extent api，实现不同的功能， 比如 extent 实现 elb，fw，vpn,core 实现基本网络功能</p>
+<p>plugin：类似 driver，可以理解为插件</p>
+<p>agent：功能实现，比如 l2 l3</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804225840863.png" alt="image-20240804225840863"></p>
+<p>L3 agent 部署在哪个节点，那个节点就是网络节点。可以和 controller 复用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@controller ~]<span class="comment"># openstack network agent list </span></span><br><span class="line">+--------------------------------------+--------------------+------------+-------------------+-------+-------+---------------------------+</span><br><span class="line">| ID                                   | Agent Type         | Host       | Availability Zone | Alive | State | Binary                    |</span><br><span class="line">+--------------------------------------+--------------------+------------+-------------------+-------+-------+---------------------------+</span><br><span class="line">| 1e20baf7-e125-4172-bee9-4e97a1d4bc21 | Metadata agent     | controller | None              | :-)   | UP    | neutron-metadata-agent    |</span><br><span class="line">| 21ba2da5-cefa-42e4-82cf-ee5483750b7b | DHCP agent         | controller | nova              | :-)   | UP    | neutron-dhcp-agent        |</span><br><span class="line">| 341c3190-6ec3-48e4-860b-4df5e7c56d72 | Open vSwitch agent | compute01  | None              | :-)   | UP    | neutron-openvswitch-agent |</span><br><span class="line">| dbd6f772-1f93-463a-83c3-c5c65ed16dc4 | Open vSwitch agent | controller | None              | :-)   | UP    | neutron-openvswitch-agent |</span><br><span class="line">| f0a9a873-1173-4d0f-8753-8b58341442ed | L3 agent           | controller | nova              | :-)   | UP    | neutron-l3-agent          |</span><br><span class="line">+--------------------------------------+--------------------+------------+-------------------+-------+-------+---------------------------+</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804225907860.png" alt="image-20240804225907860"></p>
+<p>ml2: 支持多种 plugin</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ml2]</span><br><span class="line">type_drivers = flat,vlan,vxlan</span><br><span class="line">tenant_network_types = vxlan</span><br><span class="line">mechanism_drivers = openvswitch,l2population</span><br><span class="line">extension_drivers = port_security</span><br></pre></td></tr></table></figure>
+<p>qbr</p>
+<p>linux bridge，用于实现安全组，每个 vm 都有自己的 qbr</p>
+<p>br-ex</p>
+<p>连接外部 (external) 网络的网桥。在配置文件中指定的名字，可以修改</p>
+<p>br-int</p>
+<p>集成 (integration) 网桥，所有 instance 的虚拟网卡和其他虚拟网络设备都将连接到该网桥。没有上行链路的虚拟交换机</p>
+<p>br-tun</p>
+<p>隧道 (tunnel) 网桥，基于隧道技术的 VxLAN 和 GRE 网络将使用该网桥进行通信。</p>
+<p>br-eth1</p>
+<p>有上行链路虚拟交换机，不同节点之间通信，包括云主机之间通信</p>
+<p>vlan 场景：</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804225920320.png" alt="image-20240804225920320"></p>
+<p>集中式路由场景，不同 vpc 互访需要到 network 节点。分布式路由，会把 l3 agent 部署在 compute 上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-br br111</span><br><span class="line">ovs-vsctl add-port br111 ens36</span><br></pre></td></tr></table></figure>
+<h5 id="openstack-网络类型"><a class="markdownIt-Anchor" href="#openstack-网络类型">#</a> openstack 网络类型</h5>
+<p>flat，vlan，vxlan，local，gre</p>
+<p><strong>local</strong>：本地网络，经过 br-int 实现内部通信，不能出去</p>
+<p><strong>flat</strong>：不带 vlan tag 的网络</p>
+<p>配置参考 vlan 网络，在 ml2.ini 中，配置支持 flat 网络类型，租户网络类型</p>
+<p>在 [flat] 中定义标识</p>
+<p>flat_networks = provider1111</p>
+<p>vim  /etc/neutron/plugins/ml2/openvswitch_agent.ini  [ovs] bridge_mappings = provider1111:br-eth1</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/neutron/plugins/ml2/ml2_conf.ini</span><br><span class="line">[ml2]</span><br><span class="line">type_drivers = flat,vlan,vxlan</span><br><span class="line">tenant_network_types = flat</span><br><span class="line">mechanism_drivers = openvswitch,l2population</span><br><span class="line">extension_drivers = port_security</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[ml2_type_flat]</span><br><span class="line">flat_networks = provider111</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">vim  /etc/neutron/plugins/ml2/openvswitch_agent.ini </span><br><span class="line">[ovs]</span><br><span class="line">bridge_mappings = provider111:br-eth1</span><br><span class="line"></span><br><span class="line">openstack-service restart neutron</span><br></pre></td></tr></table></figure>
+<p>br-int 只有一个，br-eth1 可以有多个</p>
+<p>vnet0 只有在 kvm 中可以看到</p>
+<p>flat 网络在 br-int 中有内部 tag，同一租户，内部 tag 一样</p>
+<p><strong>vlan</strong>：</p>
+<p>tenant_network_types 决定了网络类型，对应配置是下面的 ml2_type_vlan</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/neutron/plugins/ml2/ml2_conf.ini</span><br><span class="line">[ml2]</span><br><span class="line">type_drivers = flat,vlan,vxlan</span><br><span class="line">tenant_network_types = vlan</span><br><span class="line">mechanism_drivers = openvswitch,l2population</span><br><span class="line">extension_drivers = port_security</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[ml2_type_flat]</span><br><span class="line">flat_networks = provider</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># From neutron.ml2</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># List of physical_network names with which flat networks can be created. Use</span></span><br><span class="line"><span class="comment"># default &#x27;*&#x27; to allow flat networks with arbitrary physical_network names. Use</span></span><br><span class="line"><span class="comment"># an empty list to disable flat networks. (list value)</span></span><br><span class="line"><span class="comment">#flat_networks = *</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[ml2_type_geneve]</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># From neutron.ml2</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Comma-separated list of &lt;vni_min&gt;:&lt;vni_max&gt; tuples enumerating ranges of</span></span><br><span class="line"><span class="comment"># Geneve VNI IDs that are available for tenant network allocation. Note OVN</span></span><br><span class="line"><span class="comment"># does not use the actual values. (list value)</span></span><br><span class="line"><span class="comment">#vni_ranges =</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The maximum allowed Geneve encapsulation header size (in bytes). Geneve</span></span><br><span class="line"><span class="comment"># header is extensible, this value is used to calculate the maximum MTU for</span></span><br><span class="line"><span class="comment"># Geneve-based networks. The default is 30, which is the size of the Geneve</span></span><br><span class="line"><span class="comment"># header without any additional option headers. Note the default is not enough</span></span><br><span class="line"><span class="comment"># for OVN which requires at least 38. (integer value)</span></span><br><span class="line"><span class="comment">#max_header_size = 30</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[ml2_type_gre]</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># From neutron.ml2</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Comma-separated list of &lt;tun_min&gt;:&lt;tun_max&gt; tuples enumerating ranges of GRE</span></span><br><span class="line"><span class="comment"># tunnel IDs that are available for tenant network allocation (list value)</span></span><br><span class="line"><span class="comment">#tunnel_id_ranges =</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[ml2_type_vlan]</span><br><span class="line">network_vlan_ranges = huawei:10:1000</span><br><span class="line"><span class="comment"># 标识，vlan range，标识可以有多个</span></span><br><span class="line"><span class="comment"># From neutron.ml2</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># List of &lt;physical_network&gt;:&lt;vlan_min&gt;:&lt;vlan_max&gt; or &lt;physical_network&gt;</span></span><br><span class="line"><span class="comment"># specifying physical_network names usable for VLAN provider and tenant</span></span><br><span class="line"><span class="comment"># networks, as well as ranges of VLAN tags on each available for allocation to</span></span><br><span class="line"><span class="comment"># tenant networks. If no range is defined, the whole valid VLAN ID set [1,</span></span><br><span class="line"><span class="comment"># 4094] will be assigned. (list value)</span></span><br><span class="line"><span class="comment">#network_vlan_ranges =</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[ml2_type_vxlan]</span><br><span class="line"><span class="comment"># vni_ranges = 1:1000</span></span><br><span class="line">vim  /etc/neutron/plugins/ml2/openvswitch_agent.ini </span><br><span class="line"><span class="comment"># 计算和网络都需要改</span></span><br><span class="line">[ovs]</span><br><span class="line">bridge_mappings = huawei:eth1</span><br><span class="line">local_ip = OVERLAY_INTERFACE_IP_ADDRESS</span><br></pre></td></tr></table></figure>
+<p>段 id 就是 vlan id，vlanid 只是限制租户的 vlanid，admin vlanid 不受限</p>
+<p>ovs 流标，优先级数值大优先级越高</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl dump-flows br-int </span><br><span class="line"> cookie=0x10c394b632250c4c, duration=81941.780s, table=0, n_packets=0, n_bytes=0, priority=65535,dl_vlan=4095 actions=drop</span><br><span class="line"> cookie=0x10c394b632250c4c, duration=81941.769s, table=0, n_packets=0, n_bytes=0, priority=2,in_port=<span class="string">&quot;int-br-provider&quot;</span> actions=drop</span><br><span class="line"> cookie=0x10c394b632250c4c, duration=81941.784s, table=0, n_packets=8, n_bytes=792, priority=0 actions=resubmit(,58)</span><br><span class="line"> cookie=0x10c394b632250c4c, duration=81941.785s, table=23, n_packets=0, n_bytes=0, priority=0 actions=drop</span><br><span class="line"> cookie=0x10c394b632250c4c, duration=81941.781s, table=24, n_packets=0, n_bytes=0, priority=0 actions=drop</span><br><span class="line"> cookie=0x10c394b632250c4c, duration=81941.779s, table=30, n_packets=0, n_bytes=0, priority=0 actions=resubmit(,58)</span><br><span class="line"> cookie=0x10c394b632250c4c, duration=81941.779s, table=31, n_packets=0, n_bytes=0, priority=0 actions=resubmit(,58)</span><br><span class="line"> cookie=0x10c394b632250c4c, duration=81941.783s, table=58, n_packets=8, n_bytes=792, priority=0 actions=resubmit(,60)</span><br><span class="line"> cookie=0x10c394b632250c4c, duration=3522.763s, table=60, n_packets=4, n_bytes=392, priority=100,in_port=<span class="string">&quot;tapbb45b827-28&quot;</span> actions=load:0x3-&gt;NXM_NX_REG5[],load:0x1-&gt;NXM_NX_REG6[],resubmit(,73)</span><br><span class="line">ovs-ofctl show br-int </span><br><span class="line">OFPT_FEATURES_REPLY (xid=0x2): dpid:00006aad96360649</span><br><span class="line">n_tables:254, n_buffers:0</span><br><span class="line">capabilities: FLOW_STATS TABLE_STATS PORT_STATS QUEUE_STATS ARP_MATCH_IP</span><br><span class="line">actions: output enqueue set_vlan_vid set_vlan_pcp strip_vlan mod_dl_src mod_dl_dst mod_nw_src mod_nw_dst mod_nw_tos mod_tp_src mod_tp_dst</span><br><span class="line"> 1(int-br-provider): addr:6e:ee:f9:c2:36:2f</span><br><span class="line">     config:     0</span><br><span class="line">     state:      0</span><br><span class="line">     speed: 0 Mbps now, 0 Mbps max</span><br><span class="line"> 2(patch-tun): addr:9a:<span class="built_in">cd</span>:9f:d6:ad:fb</span><br><span class="line">     config:     0</span><br><span class="line">     state:      0</span><br><span class="line">     speed: 0 Mbps now, 0 Mbps max</span><br><span class="line"> 3(tapbb45b827-28): addr:fa:16:3e:fa:16:a6</span><br><span class="line">     config:     0</span><br><span class="line">     state:      0</span><br><span class="line">     speed: 0 Mbps now, 0 Mbps max</span><br><span class="line"> LOCAL(br-int): addr:6a:ad:96:36:06:49</span><br><span class="line">     config:     PORT_DOWN</span><br><span class="line">     state:      LINK_DOWN</span><br><span class="line">     speed: 0 Mbps now, 0 Mbps max</span><br><span class="line">OFPT_GET_CONFIG_REPLY (xid=0x4): frags=normal miss_send_len=0</span><br></pre></td></tr></table></figure>
+<p>在 vlan 模式下，vlan tag 的转换需要在 br-int 和 br-ethx 两个网桥上进行相互配合。即 br-int 负责从 int-br-ethX 过来的包（带外部 vlan）转换为内部 vlan，而 br-ethx 负责从 phy-br-ethx 过来的包（带内部 vlan）转化为外部的 vlan。</p>
+<p>同节点上 vm 相同 vlan，只需要走内部 vlan 即可</p>
+<p>vmware 中外层交换机是 vment，vmnet 不能放行带 vlan 的。导致 dhcp 到不了其他节点，获取不到 IP</p>
+<p><strong>vxlan</strong>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@controller ml2]<span class="comment">#  ovs-ofctl dump-flows br-tun </span></span><br><span class="line"> cookie=0x3dcfb0afa749164c, duration=84884.402s, table=0, n_packets=4, n_bytes=392, priority=1,in_port=<span class="string">&quot;patch-int&quot;</span> actions=resubmit(,2)</span><br><span class="line"> cookie=0x3dcfb0afa749164c, duration=84884.402s, table=0, n_packets=0, n_bytes=0, priority=0 actions=drop</span><br><span class="line"> cookie=0x3dcfb0afa749164c, duration=84884.400s, table=2, n_packets=0, n_bytes=0, priority=0,dl_dst=00:00:00:00:00:00/01:00:00:00:00:00 actions=resubmit(,20)</span><br><span class="line"> cookie=0x3dcfb0afa749164c, duration=84884.399s, table=2, n_packets=4, n_bytes=392, priority=0,dl_dst=01:00:00:00:00:00/01:00:00:00:00:00 actions=resubmit(,22)</span><br><span class="line"> cookie=0x3dcfb0afa749164c, duration=84884.398s, table=3, n_packets=0, n_bytes=0, priority=0 actions=drop</span><br><span class="line"> cookie=0x3dcfb0afa749164c, duration=6467.440s, table=4, n_packets=0, n_bytes=0, priority=1,tun_id=0xf9 actions=mod_vlan_vid:1,resubmit(,10)</span><br><span class="line"> cookie=0x3dcfb0afa749164c, duration=84884.398s, table=4, n_packets=0, n_bytes=0, priority=0 actions=drop</span><br><span class="line"> cookie=0x3dcfb0afa749164c, duration=84884.397s, table=6, n_packets=0, n_bytes=0, priority=0 actions=drop</span><br><span class="line"> cookie=0x3dcfb0afa749164c, duration=84884.395s, table=10, n_packets=0, n_bytes=0, priority=1 actions=learn(table=20,hard_timeout=300,priority=1,cookie=0x3dcfb0afa749164c,NXM_OF_VLAN_TCI[0..11],NXM_OF_ETH_DST[]=NXM_OF_ETH_SRC[],load:0-&gt;NXM_OF_VLAN_TCI[],load:NXM_NX_TUN_ID[]-&gt;NXM_NX_TUN_ID[],output:OXM_OF_IN_PORT[]),output:<span class="string">&quot;patch-int&quot;</span></span><br><span class="line"> cookie=0x3dcfb0afa749164c, duration=84884.394s, table=20, n_packets=0, n_bytes=0, priority=0 actions=resubmit(,22)</span><br><span class="line"> cookie=0x3dcfb0afa749164c, duration=84884.393s, table=22, n_packets=4, n_bytes=392, priority=0 actions=drop </span><br></pre></td></tr></table></figure>
+<h4 id="router"><a class="markdownIt-Anchor" href="#router">#</a> router</h4>
+<p>添加 public subnet 的时候不需要网关，公网 IP 不需要网关，也不需要 dhcp</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">ip netns <span class="built_in">exec</span> qrouter-a51268a3-68a6-47f0-a51d-03b98216b2f8 ip -c a s </span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    <span class="built_in">link</span>/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">11: qg-3faec10c-ad: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    <span class="built_in">link</span>/ether fa:16:3e:93:bb:1e brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 192.168.0.203/24 brd 192.168.0.255 scope global qg-3faec10c-ad</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet 192.168.0.27/32 brd 192.168.0.27 scope global qg-3faec10c-ad</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::f816:3eff:fe93:bb1e/64 scope <span class="built_in">link</span> </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">13: qr-bab87452-44: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1450 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    <span class="built_in">link</span>/ether fa:16:3e:43:b9:2f brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 192.168.100.254/24 brd 192.168.100.255 scope global qr-bab87452-44</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::f816:3eff:fe43:b92f/64 scope <span class="built_in">link</span> </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">ip netns <span class="built_in">exec</span> qrouter-a51268a3-68a6-47f0-a51d-03b98216b2f8 iptables -t nat -nvxL</span><br><span class="line"></span><br><span class="line">Chain neutron-l3-agent-OUTPUT (1 references)</span><br><span class="line">    pkts      bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">       0        0 DNAT       0    --  *      *       0.0.0.0/0            192.168.0.27         to:192.168.100.97</span><br><span class="line"></span><br><span class="line">Chain neutron-l3-agent-POSTROUTING (1 references)</span><br><span class="line">    pkts      bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">       0        0 ACCEPT     0    --  *      !qg-3faec10c-ad  0.0.0.0/0            0.0.0.0/0            ! ctstate DNAT</span><br><span class="line"></span><br><span class="line">Chain neutron-l3-agent-PREROUTING (1 references)</span><br><span class="line">    pkts      bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">       0        0 REDIRECT   6    --  qr-+   *       0.0.0.0/0            169.254.169.254      tcp dpt:80 redir ports 9697</span><br><span class="line">       4      272 DNAT       0    --  *      *       0.0.0.0/0            192.168.0.27         to:192.168.100.97</span><br><span class="line"></span><br><span class="line">Chain neutron-l3-agent-float-snat (1 references)</span><br><span class="line">    pkts      bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">      16     1196 SNAT       0    --  *      *       192.168.100.97       0.0.0.0/0            to:192.168.0.27 random-fully</span><br><span class="line"></span><br><span class="line">Chain neutron-l3-agent-snat (1 references)</span><br><span class="line">    pkts      bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">      31     2230 neutron-l3-agent-float-snat  0    --  *      *       0.0.0.0/0            0.0.0.0/0           </span><br><span class="line">      11      762 SNAT       0    --  *      qg-3faec10c-ad  0.0.0.0/0            0.0.0.0/0            to:192.168.0.203 random-fully</span><br><span class="line">       0        0 SNAT       0    --  *      *       0.0.0.0/0            0.0.0.0/0            mark match ! 0x2/0xffff ctstate DNAT to:192.168.0.203 random-fully</span><br></pre></td></tr></table></figure>
+<p>float ip 比 snat 优先级更高，按照 iptables 匹配规则</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804225939315.png" alt="image-20240804225939315"></p>
+<h4 id="metadata"><a class="markdownIt-Anchor" href="#metadata">#</a> metadata</h4>
+<p>获取客户自己定义，但无法传送给虚拟机的数据</p>
+<blockquote>
+<p>为了满足公有云虚拟机的差异化定制，虚拟机（overlay 网络）需要从控制面（underlay 网络）获取一些信息，但是虚拟机是不能够直接与控制面进行通信的，所以增加 metadata 来传递虚拟机和控制面的数据交换。目前实现数据类型有初始化（第一次创建密码，公钥，hostname 等注入），AssumeRole，重置密码 / 公钥。</p>
+</blockquote>
+<p>metatdata 分为 neutron metadata 和 nova metadata</p>
+<p>为了保证使用私有镜像创建的新云服务器可以通过 &quot;用户数据注入&quot; 功能注入初始化自定义信息 (例如为云服务器设置登录密码), 请在创建私有镜像前安装 Cloud-Init 工具。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@controller ~]<span class="comment"># file cirros-0.4.0-x86_64-disk.img </span></span><br><span class="line">cirros-0.4.0-x86_64-disk.img: QEMU QCOW2 Image (v3), 46137344 bytes</span><br></pre></td></tr></table></figure>
+<p>cloud-init 是 Linux 的一个工具，当系统启动时，cloud-init 可从 novametadata 服务或者 config drive 中获取 metadata</p>
+<p>windows 安装 cloudbase-init</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804225950222.png" alt="image-20240804225950222"></p>
+<h5 id="通过路由器获取"><a class="markdownIt-Anchor" href="#通过路由器获取">#</a> 通过路由器获取</h5>
+<p>instance 通过默认网关到网络节点，网络节点通过管理网络到 nova 上获取 metadata</p>
+<p>必须要有 router，不然没有办法到 gw</p>
+<p>用户在发放云主机时，自定义主机名，密码等信息，发送给 novaapi-metadata</p>
+<p>获取计算机名和密码流程</p>
+<p>1. 云主机启动后，通过 DHCP 获得 IP 地址</p>
+<p>2. 运行 cloud-init,cloud-init 开始去访问 http://169.254.169.254:80，meta-data 最后更新日期就是文件夹名字</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230000098.png" alt="image-20240804230000098"></p>
+<p>3. 这个请求将丢给网关 (Router)</p>
+<p>4.iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --t 9697</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ip netns <span class="built_in">exec</span> qrouter-a51268a3-68a6-47f0-a51d-03b98216b2f8 iptables -t nat -nvxL</span><br><span class="line">Chain neutron-l3-agent-PREROUTING (1 references)</span><br><span class="line">    pkts      bytes target     prot opt <span class="keyword">in</span>     out     <span class="built_in">source</span>               destination         </span><br><span class="line">       0        0 REDIRECT   6    --  qr-+   *       0.0.0.0/0            169.254.169.254      tcp dpt:80 redir ports 9697</span><br><span class="line">       4      272 DNAT       0    --  *      *       0.0.0.0/0            192.168.0.27         to:192.168.100.97</span><br><span class="line">       </span><br><span class="line">       </span><br><span class="line">ip netns <span class="built_in">exec</span> qrouter-a51268a3-68a6-47f0-a51d-03b98216b2f8 netstat -lntup</span><br><span class="line">Active Internet connections (only servers)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    </span><br><span class="line">tcp6       0      0 :::9697                 :::*                    LISTEN      5673/haproxy</span><br></pre></td></tr></table></figure>
+<p>#ps aux |grep 9697</p>
+<p>5. 请求会转发给 neutron-metadata</p>
+<p>6.neutron-metadata 会通过管理网络访问 nova-api-metadata, 从而得到计算机名和密码</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230016525.png" alt="image-20240804230016525"></p>
+<ol>
+<li>instance 通过 neutron network (Project 网络) 将 metadata 请求发送到 neutron-ns-metadata-proxy。</li>
+<li>neutron-ns-metadata-proxy 通过 unixdomain socket 将请求发给 neutron-metadata-agento</li>
+</ol>
+<p>3.neutron-metadata-agent 通过内部管理网络将请求发送给 nova-api-metadata。</p>
+<p>各家云厂商会更改这个地址，比如 volc 的地址就是 http://100.96.0.96，在 ecs 中 curl</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl http://100.96.0.96/2021-07-01/hostname</span><br><span class="line">iv-yd5c3xliwwcva4f4b9cl</span><br></pre></td></tr></table></figure>
+<h5 id="通过dhcp获取"><a class="markdownIt-Anchor" href="#通过dhcp获取">#</a> 通过 dhcp 获取</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/neutron/dhcp_agent.ini </span><br><span class="line">enable_isolated_metadata = True</span><br><span class="line"></span><br><span class="line">systemctl restart neutron-dhcp-agent</span><br></pre></td></tr></table></figure>
+<p>dhcp 生成一条去往 network node 的路由 169.254.169.254  gw dhcp ，到网络节点后，通过管理网络发给 nova</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230031446.png" alt="image-20240804230031446"></p>
+<h4 id="mq"><a class="markdownIt-Anchor" href="#mq">#</a> MQ</h4>
+<p>MQ 全称为 MessageQueue, 应用程序通过读写出入队列的消息 (针对应用程序的数据) 来通信，而无需专用连接来连接它们。</p>
+<p>MQ 会处理服务内组件之间的消息，包括控制，查询，监控</p>
+<p>不同服务之间不过消息队列</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230045070.png" alt="image-20240804230045070"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230101851.png" alt="image-20240804230101851"></p>
+<p>rabbitmqctl list_queues</p>
+<p>华为云管理节点数目与规模</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230119838.png" alt="image-20240804230119838"></p>
+<p>小型场景下，rabbitmq 部署在 controller 上作为一个进程</p>
+<h4 id="cinder"><a class="markdownIt-Anchor" href="#cinder">#</a> cinder</h4>
+<p>提供持久化块存储服务</p>
+<p>swift 提供对象存储</p>
+<p>没有指定磁盘类型，由 scheduler 调度创建</p>
+<p>分布式存储：兼容性好 低 TCO 可扩展性强</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230139344.png" alt="image-20240804230139344"></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230153658.png" alt="image-20240804230153658"></p>
+<p>cinder 只用于做存储管理，数据写盘的时候不会经过 cinder</p>
+<p>硬盘挂载给云主机的时候是 nova 操作</p>
+<p>硬盘附加给云主机的时候，会挂载到云主机所在的宿主机，通过 kvm 映射给云主机</p>
+<p>nova 挂载的时候向 cinder-api 请求卷信息</p>
+<p>阵列侧添加主机和 lun 的映射</p>
+<p>主机侧扫描 scsi 总线</p>
+<p>多路径生成虚拟磁盘</p>
+<p>Nova 调用 libvirt 接口将磁盘添加到 xml</p>
+<p>experiment： use glusterfs</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自己的ip不用probe，自己的ip是192.168.9.77</span></span><br><span class="line">gluster peer probe 192.168.9.88</span><br><span class="line"></span><br><span class="line">gluster peer status </span><br><span class="line"></span><br><span class="line">gluster volume create aaa replica 2 192.168.9.77:/volume/node1 192.168.9.88:/volume/node2</span><br><span class="line"></span><br><span class="line">gluster volume start aaa</span><br><span class="line"></span><br><span class="line">gluster volume info aaa</span><br><span class="line"></span><br><span class="line"><span class="comment"># controller node测试。 fuse 用户空间提供 ，不在内核空间</span></span><br><span class="line">yum install gluster-fuse</span><br><span class="line"></span><br><span class="line">vim /etcd/cinder/cinder.conf</span><br><span class="line">[DEFAULT]</span><br><span class="line">enabled_backends = glusterfs123</span><br><span class="line">[glusterfs123]</span><br><span class="line">volume_driver = cinder.volume.drivers.glusterfs.GlusterfsDriver</span><br><span class="line">gluster_shares_config = /etc/cinder/haha</span><br><span class="line">volume_backend_name = rhs</span><br><span class="line"></span><br><span class="line">vim /etc/cinder/haha</span><br><span class="line">192.168.9.77:/firstvol</span><br><span class="line"></span><br><span class="line">systemctl restart openstack-cinder-api.service </span><br><span class="line"></span><br><span class="line">. admin-openrc</span><br><span class="line">cinder tpye-create glusterfs</span><br><span class="line">cinder tpye-key glusterfs <span class="built_in">set</span> volume_backend_name=rhs</span><br><span class="line"></span><br><span class="line"><span class="comment"># compute </span></span><br><span class="line">yum install gluster-fuse -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># horizon 上创建glustefs存储，attach 到云主机上</span></span><br><span class="line">cinder create --display-name aaa</span><br><span class="line">nova volume-attache server1 volume disk1 </span><br><span class="line">如果执行bootstrap-servers 报错 xxxping 一般是ansible版本问题 ，换ansible或者aisible-core版本即可解决</span><br><span class="line">执行完后可能会因为openssh版本升级导致ssh无法连接</span><br><span class="line">yum remove openssh -y</span><br><span class="line">yum install openssh* -y</span><br><span class="line">重装旧的ssh即可</span><br><span class="line"></span><br><span class="line">在pre-check时，会有dbus报错， pip install dbus-python</span><br><span class="line"></span><br><span class="line">如果在bootstrap-servers 提示docker 超时，可以自己先装docker，在跑这个</span><br></pre></td></tr></table></figure>
+<h4 id="keystone"><a class="markdownIt-Anchor" href="#keystone">#</a> keystone</h4>
+<blockquote>
+<p>Domain: 域，keystone 中资源 (project、user、group) 的持有：者</p>
+<p>Project: 租户，其他组件中资源 (虚拟机、镜像等) 的持有者</p>
+<p>User: 用户，云系统的使用者</p>
+<p>Group: 用户组，可以把多个用户作为一个整体进行角色管理</p>
+<p>Role: 角色，基于角色进行访问控制</p>
+<p>Trust: 委托，把自己拥有的角色临时授权给别人</p>
+<p>Service: 服务，一组相关功能的集合，比如计算服务、网络服务、镜像服务、存储服务等</p>
+<p>Endpoint: 必须和一个服务关联，代表这个服务的访问地址，一般一个服务需要提供三种类型的访问地址:public、internal、adrmin</p>
+<p>Region: 区域，在 keystone 里基本代表一个数据中心</p>
+<p>Policy: 访问控制策略，定义接口访问控制规则</p>
+<p>Assignment: 一个 (actor, target, role) 三元组叫一个 assignment,actor 包括 user、group,target 包括 domain、project。每个 assignment 代表一次赋权操作</p>
+<p>Token: 令牌，用户访问服务的凭证，代表着用户的账户信息，一般需要包含 user 信息、scope 信息 (project、domain 或者 trust)、1role 信息。分为 PKI,UUID,PKIZ,Fernet 几种类型。</p>
+</blockquote>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230207398.png" alt="image-20240804230207398"></p>
+<p>用户从 keystone 申请 token</p>
+<p>用户使用 token 访问服务</p>
+<p>被访问组件验证 token</p>
+<p>用户得到返回消息</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230220039.png" alt="image-20240804230220039"></p>
+<p>权限不是由 ksysone 决定的，而是服务本身决定的（policy.json）。keystone 只做身份验证</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@controller openstack-dashboard]<span class="comment"># ll /etc/openstack-dashboard/</span></span><br><span class="line">total 432</span><br><span class="line">-rw-r----- 1 root apache  77821 Mar 18 15:47 cinder_policy.yaml</span><br><span class="line">drwxr-xr-x 2 root root     4096 May 16 16:38 default_policies</span><br><span class="line">-rw-r----- 1 root apache  21507 Mar 18 15:47 glance_policy.yaml</span><br><span class="line">-rw-r----- 1 root apache  95071 Mar 18 15:47 keystone_policy.yaml</span><br><span class="line">-rw-r----- 1 root apache  12009 May 16 16:38 local_settings</span><br><span class="line">-rw-r----- 1 root apache 111993 Mar 18 15:47 neutron_policy.yaml</span><br><span class="line">drwxr-xr-x 2 root root     4096 May 16 16:38 nova_policy.d</span><br><span class="line">-rw-r----- 1 root apache 104596 Mar 18 15:47 nova_policy.yaml</span><br></pre></td></tr></table></figure>
+<p>角色本身没有意义，需要授权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim policy.json</span><br><span class="line"><span class="comment"># Publicize given image</span></span><br><span class="line"><span class="comment"># PATCH  /v2/images/&#123;image_id&#125;</span></span><br><span class="line"><span class="comment"># Intended scope(s): project</span></span><br><span class="line"><span class="comment">#&quot;publicize_image&quot;: &quot;rule:context_is_admin&quot;</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230230451.png" alt="image-20240804230230451"></p>
+<h2 id="openvswitch"><a class="markdownIt-Anchor" href="#openvswitch">#</a> openvswitch</h2>
+<p>​        对于一个 Linux 系统来说，可以分为用户空间（user space）和内核空间（kernel space），网络设备接入到内核空间。如果需要将数据传输到用户程序则需要通过内核空间将数据上送到用户空间，如果需要在网络设备之间转发数据，直接在内核空间就可以完成。</p>
+<p>​        作为运行在 x86 服务器中的软件交换机，直观上来看，应该在内核空间来实现转发。因此，Open vSwitch 在最早期的时候，是在 Linux 内核模块实现了所有的 OpenFlow 的处理。当时的 OpenvSwitch 内核模块处理流程是接收网络数据包，根据 OpenFlow 规则一步步的 Match，并根据 Action 修改网络数据包，最后从某个网络设备送出。</p>
+<p>​        但是这种方式很快就被认为是不能实际应用的。首先，虽然在内核实现可以缩短网络数据包在操作系统的路径，但是在内核进行程序开发和更新也更加困难，以 OpenvSwitch 的更新速度，完全在内核实现将变得不切实际。其次，完全按照 OpenFlow pipeline 去处理网络包，势必要消耗大量 CPU，进而降低网络性能。</p>
+<p>​        因此，最新版本（2.x 版本）的 OpenVSwitch 采用了一种很不一样的方式来避免这些问题。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install @<span class="string">&#x27;Development Tools&#x27;</span> rpm-build yum-utils</span><br><span class="line"><span class="comment"># yum install -y epel-release</span></span><br><span class="line">yum install -y centos-release-openstack-train</span><br><span class="line">yum install openvswitch libibverbs -y</span><br><span class="line">systemctl <span class="built_in">enable</span> --now openvswitch</span><br></pre></td></tr></table></figure>
+<h5 id="bridge"><a class="markdownIt-Anchor" href="#bridge">#</a> bridge</h5>
+<p>Bridge 代表一个以太网交换机 (Switch)，一个主机中可以创建一个或者多个 Bridge。Bridge 的功能是根据一定规则，把从端口收到的数据包转发到另一个或多个端口，上面例子中有三个 Bridge，br-tun，br-int，br-ext</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-br br0</span><br></pre></td></tr></table></figure>
+<h5 id="port"><a class="markdownIt-Anchor" href="#port">#</a> <strong>Port</strong></h5>
+<p>​        端口 Port 与物理交换机的端口概念类似，Port 是 OVS Bridge 上创建的一个虚拟端口，每个 Port 都隶属于一个 Bridge。Port 有以下几种类型：</p>
+<h6 id="normal"><a class="markdownIt-Anchor" href="#normal">#</a> Normal</h6>
+<p>​        可以把操作系统中已有的网卡 (物理网卡 em1/eth0, 或虚拟机的虚拟网卡 tapxxx) 挂载到 ovs 上，ovs 会生成一个同名 Port 处理这块网卡进出的数据包。此时端口类型为 Normal。</p>
+<p>​        如下，主机中有一块物理网卡 eth1，把其挂载到 OVS 网桥 br-ext 上，OVS 会自动创建同名 Port eth1</p>
+<p>​        有一点要注意的是，挂载到 OVS 上的网卡设备不支持分配 IP 地址，因此若之前 eth1 配置有 IP 地址，挂载到 OVS 之后 IP 地址将不可访问。这里的网卡设备不只包括物理网卡，也包括主机上创建的虚拟网卡。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-port br0 eth1</span><br><span class="line"><span class="comment"># 这里eth1就是port</span></span><br><span class="line"></span><br><span class="line">    Bridge <span class="string">&quot;br0&quot;</span></span><br><span class="line">        Port <span class="string">&quot;eth1&quot;</span></span><br><span class="line">            Interface <span class="string">&quot;eth1&quot;</span></span><br><span class="line">        Port <span class="string">&quot;br0&quot;</span></span><br><span class="line">            Interface <span class="string">&quot;br0&quot;</span></span><br><span class="line">                <span class="built_in">type</span>: internal</span><br></pre></td></tr></table></figure>
+<h6 id="internal"><a class="markdownIt-Anchor" href="#internal">#</a> Internal</h6>
+<p>​        Internal 类型是 OVS 内部创建的虚拟网卡接口，每创建一个 Port，OVS 会自动创建一个同名接口 (Interface) 挂载到新创建的 Port 上。接口的概念下面会提到。</p>
+<p>​        下面创建一个网桥 br0，并创建一个 Internal 类型的 Port p0。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-br br1</span><br><span class="line">ovs-vsctl add-port br1 p0 -- <span class="built_in">set</span> Interface p0 <span class="built_in">type</span>=internal</span><br><span class="line"></span><br><span class="line">[root@iv-yd5uco04qo5i3z39s0gj /]<span class="comment"># ovs-vsctl show </span></span><br><span class="line">24558780-9b54-41d2-8b8e-1a1dd7c5127e</span><br><span class="line">    Bridge br-ext</span><br><span class="line">        Port <span class="string">&quot;p0&quot;</span></span><br><span class="line">            Interface <span class="string">&quot;p0&quot;</span></span><br><span class="line">                <span class="built_in">type</span>: internal</span><br><span class="line">        Port br-ext</span><br><span class="line">            Interface br-ext</span><br><span class="line">                <span class="built_in">type</span>: internal</span><br></pre></td></tr></table></figure>
+<p>可以看到有两个 Port。当 ovs 创建一个新网桥时，默认会创建一个与网桥同名的 Internal Port。在 OVS 中，只有”internal” 类型的设备才支持配置 IP 地址信息，因此我们可以为 br0 接口配置一个 IP 地址，当然 p0 也可以配置 IP 地址。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ip addr add 192.168.10.11/24 dev br0</span><br><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> br0 up</span><br><span class="line"><span class="comment">#添加默认路由</span></span><br><span class="line">ip route add default via 192.168.10.1 dev br0</span><br></pre></td></tr></table></figure>
+<p>上面两种 Port 类型区别在于，Internal 类型会自动创建接口 (Interface)，而 Normal 类型是把主机中已有的网卡接口添加到 OVS 中。</p>
+<h6 id="patch"><a class="markdownIt-Anchor" href="#patch">#</a> Patch</h6>
+<p>​        当主机中有多个 ovs 网桥时，可以使用 Patch Port 把两个网桥连起来。Patch Port 总是成对出现，分别连接在两个网桥上，从一个 Patch Port 收到的数据包会被转发到另一个 Patch Port，类似于 Linux 系统中的 veth。使用 Patch 连接的两个网桥跟一个网桥没什么区别，OpenStack Neutron 中使用到了 Patch Port。上面网桥 br-ext 中的 Port phy-br-ext 与 br-int 中的 Port int-br-ext 是一对 Patch Port。</p>
+<p>​        可以使用 ovs-vsctl 创建 patch 设备，如下创建两个网桥 br0,br1，然后使用一对 Patch Port 连接它们。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-br br10</span><br><span class="line">ovs-vsctl add-br br20</span><br><span class="line">ovs-vsctl -- add-port br10 patch0 -- <span class="built_in">set</span> Interface patch0 <span class="built_in">type</span>=patch options:peer=patch1 \</span><br><span class="line">-- add-port br20 patch1 -- <span class="built_in">set</span> Interface patch1 <span class="built_in">type</span>=patch options:peer=patch0</span><br><span class="line">    Bridge <span class="string">&quot;br20&quot;</span></span><br><span class="line">        Port <span class="string">&quot;br20&quot;</span></span><br><span class="line">            Interface <span class="string">&quot;br20&quot;</span></span><br><span class="line">                <span class="built_in">type</span>: internal</span><br><span class="line">        Port <span class="string">&quot;patch1&quot;</span></span><br><span class="line">            Interface <span class="string">&quot;patch1&quot;</span></span><br><span class="line">                <span class="built_in">type</span>: patch</span><br><span class="line">                options: &#123;peer=<span class="string">&quot;patch0&quot;</span>&#125;</span><br><span class="line">                </span><br><span class="line">    Bridge <span class="string">&quot;br10&quot;</span></span><br><span class="line">        Port <span class="string">&quot;br10&quot;</span></span><br><span class="line">            Interface <span class="string">&quot;br10&quot;</span></span><br><span class="line">                <span class="built_in">type</span>: internal</span><br><span class="line">        Port <span class="string">&quot;patch0&quot;</span></span><br><span class="line">            Interface <span class="string">&quot;patch0&quot;</span></span><br><span class="line">                <span class="built_in">type</span>: patch</span><br><span class="line">                options: &#123;peer=<span class="string">&quot;patch1&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>连接两个网桥不止上面一种方法，linux 中支持创建 Veth 设备对，我们可以首先创建一对 Veth 设备对，然后把这两个 Veth 分别添加到两个网桥上，其效果跟 OVS 中创建 Patch Port 一样</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建veth设备对veth-a,veth-b</span></span><br><span class="line">ip <span class="built_in">link</span> add veth-a <span class="built_in">type</span> veth peer name veth-b</span><br><span class="line"><span class="comment">#使用Veth连接两个网桥</span></span><br><span class="line">ovs-vsctl add-port br0 veth-a</span><br><span class="line">ovs-vsctl add-port br1 veth-b</span><br></pre></td></tr></table></figure>
+<h6 id="tunnel"><a class="markdownIt-Anchor" href="#tunnel">#</a> Tunnel</h6>
+<p>​        OVS 中支持添加隧道 (Tunnel) 端口，常见隧道技术有两种 gre 或 vxlan。隧道技术是在现有的物理网络之上构建一层虚拟网络，上层应用只与虚拟网络相关，以此实现的虚拟网络比物理网络配置更加灵活，并能够实现跨主机的 L2 通信以及必要的租户隔离。不同隧道技术其大体思路均是将以太网报文使用隧道协议封装，然后使用底层 IP 网络转发封装后的数据包，其差异性在于选择和构造隧道的协议不同。Tunnel 在 OpenStack 中用作实现大二层网络以及租户隔离，以应对公有云大规模，多租户的复杂网络环境。</p>
+<p>​        OpenStack 是多节点结构，同一子网的虚拟机可能被调度到不同计算节点上，因此需要有隧道技术来保证这些同子网不同节点上的虚拟机能够二层互通，就像他们连接在同一个交换机上，同时也要保证能与其它子网隔离。</p>
+<p>​        OVS 在计算和网络节点上建立隧道 Port 来连接各节点上的网桥 br-int，这样所有网络和计算节点上的 br-int 互联形成了一个大的虚拟的跨所有节点的逻辑网桥 (内部靠 tunnel id 或 VNI 隔离不同子网)，这个逻辑网桥对虚拟机和 qrouter 是透明的，它们觉得自己连接到了一个大的 br-int 上。从某个计算节点虚拟机发出的数据包会被封装进隧道通过底层网络传输到目的主机然后解封装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#主机192.168.7.21上</span></span><br><span class="line">ovs-vsctl add-br br-vxlan</span><br><span class="line"><span class="comment">#主机192.168.7.23上</span></span><br><span class="line">ovs-vsctl add-br br-vxlan</span><br><span class="line"><span class="comment">#主机192.168.7.21上添加连接到7.23的Tunnel Port</span></span><br><span class="line">ovs-vsctl add-port br-vxlan tun0 -- <span class="built_in">set</span> Interfacetun0 <span class="built_in">type</span>=vxlan options:remote_ip=192.168.7.23</span><br><span class="line"><span class="comment">#主机192.168.7.23上添加连接到7.21的Tunnel Port</span></span><br><span class="line">ovs-vsctl add-port br-vxlan tun0 -- <span class="built_in">set</span> Interfacetun0 <span class="built_in">type</span>=vxlan options:remote_ip=192.168.7.21</span><br></pre></td></tr></table></figure>
+<p>两个主机上桥接到 br-vxlan 的虚拟机就像连接到同一个交换机一样，可以实现跨主机的 L2 连接，同时又完全与物理网络隔离。</p>
+<h5 id="interface"><a class="markdownIt-Anchor" href="#interface">#</a> <strong>Interface</strong></h5>
+<p>​        Interface 是连接到 Port 的网络接口设备，是 OVS 与外部交换数据包的组件，在通常情况下，Port 和 Interface 是一对一的关系，只有在配置 Port 为 bond 模式后，Port 和 Interface 是一对多的关系。这个网络接口设备可能是创建 Internal 类型 Port 时 OVS 自动生成的虚拟网卡，也可能是系统的物理网卡或虚拟网卡 (TUN/TAP) 挂载在 ovs 上。 OVS 中只有”Internal” 类型的网卡接口才支持配置 IP 地址。</p>
+<p>​        Interface 是一块网络接口设备，负责接收或发送数据包，Port 是 OVS 网桥上建立的一个虚拟端口，Interface 挂载在 Port 上。</p>
+<h5 id="命令行工具"><a class="markdownIt-Anchor" href="#命令行工具">#</a> 命令行工具</h5>
+<p>我们可以修改和配置的是 OpenFlow flows。datapath flow 和”hidden” flows 由 OVS 自身管理，我们不必去修改它。当然，调试场景下还是可以使用工具修改的。</p>
+<p>​        介绍下上面三种 flows 管理工具，不具体说明，具体使用可以查看相关 man 手册。</p>
+<ul>
+<li>ovs-ofctl dump-flows 打印指定网桥内的所有 OpenFlow flows，可以存在多个流表 (flow tables)，按表顺序显示。不包括”hidden” flows。这是最常用的查看 flows 命令，当然这条命令对所有 OpenFlow 交换机都有效，不单单是 OVS；</li>
+<li>ovs-appctl bridge/dump-flows 打印指定网桥内所有 OpenFlow flows，包括”hidden” flows，in-band control 模式下排错可以用到；</li>
+<li>ovs-dpctl dump-flows dp 打印内核模块中 datapath flows，dp 可以省略，默认主机中只有一个 datapath system@ovs-systemman 手册可以找到非常详细的用法说明，注意 ovs-ofctl 管理的是 OpenFlow flows；</li>
+</ul>
+<h4 id="241-ovs-vsctl"><a class="markdownIt-Anchor" href="#241-ovs-vsctl">#</a> <strong>2.4.1 ovs-vsctl</strong></h4>
+<p>​        ovs-vsctl 是一个管理或配置 ovs-vswitchd 的高级命令行工具，高级是说其操作对用户友好，封装了对数据库的操作细节。它是管理 OVS 最常用的命令，除了配置 flows 之外，其它大部分操作比如 Bridge/Port/Interface/Controller/Database/Vlan 等都可以完成。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230257830.png" alt="image-20240804230257830"></p>
+<h4 id="242-ovsdb-tool"><a class="markdownIt-Anchor" href="#242-ovsdb-tool">#</a> <strong>2.4.2 ovsdb-tool</strong></h4>
+<p>​        ovsdb-tool 是一个专门管理 OVS 数据库文件的工具，不常用，它不直接与 ovsdb-server 进程通信。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230308517.png" alt="image-20240804230308517"></p>
+<h4 id="243-ovsdb-client"><a class="markdownIt-Anchor" href="#243-ovsdb-client">#</a> <strong>2.4.3 ovsdb-client</strong></h4>
+<p>​        ovsdb-client 是 ovsdb-server 进程的命令行工具，主要是从正在运行的 ovsdb-server 中查询信息，操作的是数据库相关。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230318271.png" alt="image-20240804230318271"></p>
+<h4 id="244-ovs-ofctl"><a class="markdownIt-Anchor" href="#244-ovs-ofctl">#</a> <strong>2.4.4 ovs-ofctl</strong></h4>
+<p>​        ovs-ofctl 是专门管理配置 OpenFlow 交换机的命令行工具，我们可以用它手动配置 OVS 中的 OpenFlow flows，注意其不能操作 datapath flows 和”hidden” flows。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230327538.png" alt="image-20240804230327538"></p>
+<p>​         ovs-vsctl 是一个综合的配置管理工具，ovsdb-client 倾向于从数据库中查询某些信息，而 ovsdb-tool 是维护数据库文件工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep ovs </span><br><span class="line">openvsw+ 28481     1  0 15:58 ?        00:00:00 ovsdb-server /etc/openvswitch/conf.db -vconsole:emer -vsyslog:err -vfile:info --remote=punix:/var/run/openvswitch/db.sock --private-key=db:Open_vSwitch,SSL,private_key --certificate=db:Open_vSwitch,SSL,certificate --bootstrap-ca-cert=db:Open_vSwitch,SSL,ca_cert --user openvswitch:hugetlbfs --no-chdir --log-file=/var/log/openvswitch/ovsdb-server.log --pidfile=/var/run/openvswitch/ovsdb-server.pid --detach</span><br><span class="line">openvsw+ 28553     1  0 15:58 ?        00:00:03 ovs-vswitchd unix:/var/run/openvswitch/db.sock -vconsole:emer -vsyslog:err -vfile:info --mlockall --user openvswitch:hugetlbfs --no-chdir --log-file=/var/log/openvswitch/ovs-vswitchd.log --pidfile=/var/run/openvswitch/ovs-vswitchd.pid --detach</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20240804230339043.png" alt="image-20240804230339043"></p>
+<ul>
+<li>ovs-vswitchd：守护程序，实现交换功能，和 Linux 内核兼容模块一起，实现基于流的交换 flow-based switching。</li>
+<li>ovsdb-server：轻量级的数据库服务，主要保存了整个 OVS 的配置信息，包括接口，交换内容，VLAN 啊等等。ovs-vswitchd 会根据数据库中的配置信息工作。</li>
+<li>ovs-dpctl：一个工具，用来配置交换机内核模块，可以控制转发规则。</li>
+<li>ovs-vsctl：主要是获取或者更改 ovs-vswitchd 的配置信息，此工具操作的时候会更新 ovsdb-server 中的数据库。</li>
+<li>ovs-appctl：主要是向 OVS 守护进程发送命令的，一般用不上。</li>
+<li>ovsdbmonitor：GUI 工具来显示 ovsdb-server 中数据信息。</li>
+<li>ovs-controller：一个简单的 OpenFlow 控制器.</li>
+<li>ovs-ofctl：用来控制 OVS 作为 OpenFlow 交换机工作时候的流表内容。</li>
+</ul>
+<p><span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8yMDQ2Njk1">https://cloud.tencent.com/developer/article/2046695</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8yMDQ2Njk4">https://cloud.tencent.com/developer/article/2046698</span></p>
+<p>使用 kolla-ansible 搭建 openstack 2023.1 中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">(openvswitch-vswitchd)[root@localhost /]<span class="comment"># ovs-vsctl show </span></span><br><span class="line">d80e30f5-1368-4afa-905c-09ae9b71412c</span><br><span class="line">    Manager <span class="string">&quot;ptcp:6640:127.0.0.1&quot;</span></span><br><span class="line">        is_connected: <span class="literal">true</span></span><br><span class="line">    Bridge br-tun</span><br><span class="line">        Controller <span class="string">&quot;tcp:127.0.0.1:6633&quot;</span></span><br><span class="line">            is_connected: <span class="literal">true</span></span><br><span class="line">        fail_mode: secure</span><br><span class="line">        datapath_type: system</span><br><span class="line">        Port patch-int</span><br><span class="line">            Interface patch-int</span><br><span class="line">                <span class="built_in">type</span>: patch</span><br><span class="line">                options: &#123;peer=patch-tun&#125;</span><br><span class="line">        Port br-tun</span><br><span class="line">            Interface br-tun</span><br><span class="line">                <span class="built_in">type</span>: internal</span><br><span class="line">    Bridge br-ex</span><br><span class="line">        Controller <span class="string">&quot;tcp:127.0.0.1:6633&quot;</span></span><br><span class="line">            is_connected: <span class="literal">true</span></span><br><span class="line">        fail_mode: secure</span><br><span class="line">        datapath_type: system</span><br><span class="line">        Port phy-br-ex</span><br><span class="line">            Interface phy-br-ex</span><br><span class="line">                <span class="built_in">type</span>: patch</span><br><span class="line">                options: &#123;peer=int-br-ex&#125;</span><br><span class="line">        Port ens36</span><br><span class="line">            Interface ens36</span><br><span class="line">        Port br-ex</span><br><span class="line">            Interface br-ex</span><br><span class="line">                <span class="built_in">type</span>: internal</span><br><span class="line">    Bridge br-int</span><br><span class="line">        Controller <span class="string">&quot;tcp:127.0.0.1:6633&quot;</span></span><br><span class="line">            is_connected: <span class="literal">true</span></span><br><span class="line">        fail_mode: secure</span><br><span class="line">        datapath_type: system</span><br><span class="line">        Port patch-tun</span><br><span class="line">            Interface patch-tun</span><br><span class="line">                <span class="built_in">type</span>: patch</span><br><span class="line">                options: &#123;peer=patch-int&#125;</span><br><span class="line">        Port br-int</span><br><span class="line">            Interface br-int</span><br><span class="line">                <span class="built_in">type</span>: internal</span><br><span class="line">        Port qg-3faec10c-ad</span><br><span class="line">            tag: 1</span><br><span class="line">            Interface qg-3faec10c-ad</span><br><span class="line">                <span class="built_in">type</span>: internal</span><br><span class="line">        Port qvof113dcab-b7</span><br><span class="line">            tag: 2</span><br><span class="line">            Interface qvof113dcab-b7</span><br><span class="line">        Port tap7bbd044b-ec</span><br><span class="line">            tag: 2</span><br><span class="line">            Interface tap7bbd044b-ec</span><br><span class="line">                <span class="built_in">type</span>: internal</span><br><span class="line">        Port int-br-ex</span><br><span class="line">            Interface int-br-ex</span><br><span class="line">                <span class="built_in">type</span>: patch</span><br><span class="line">                options: &#123;peer=phy-br-ex&#125;</span><br><span class="line">        Port qvo7033fcef-a5</span><br><span class="line">            tag: 2</span><br><span class="line">            Interface qvo7033fcef-a5</span><br><span class="line">        Port qr-bab87452-44</span><br><span class="line">            tag: 2</span><br><span class="line">            Interface qr-bab87452-44</span><br><span class="line">                <span class="built_in">type</span>: internal</span><br><span class="line">(openvswitch-vswitchd)[root@localhost /]<span class="comment"># </span></span><br></pre></td></tr></table></figure>
+      <div class="tags">
+          <a href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag"><i class="ic i-tag"></i> 运维</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-08-04 23:30:28" itemprop="dateModified" datetime="2024-08-04T23:30:28+08:00">2024-08-04</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2024/06/01/openstack/" title="OpenStack+openvswitch">http://example.com/2024/06/01/openstack/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/05/01/hive_flink/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;f93f124fd90670f86b81841581c3698c.jpg" title="hive_flink">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> 大数据</span>
+  <h3>hive_flink</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/07/01/GPU%E5%85%A5%E9%97%A8%E6%A6%82%E8%AE%BA/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;626f157a4ff74c7984f4110e38031524.jpg" title="GPU入门概论">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> 运维</span>
+  <h3>GPU入门概论</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#openstack"><span class="toc-number">1.</span> <span class="toc-text"> openstack</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#nova"><span class="toc-number">1.0.1.</span> <span class="toc-text"> nova</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#glance"><span class="toc-number">1.0.2.</span> <span class="toc-text"> glance</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#neutron"><span class="toc-number">1.0.3.</span> <span class="toc-text"> neutron</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6"><span class="toc-number">1.0.3.1.</span> <span class="toc-text"> 组件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#openstack-%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.0.3.2.</span> <span class="toc-text"> openstack 网络类型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#router"><span class="toc-number">1.0.4.</span> <span class="toc-text"> router</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#metadata"><span class="toc-number">1.0.5.</span> <span class="toc-text"> metadata</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E8%B7%AF%E7%94%B1%E5%99%A8%E8%8E%B7%E5%8F%96"><span class="toc-number">1.0.5.1.</span> <span class="toc-text"> 通过路由器获取</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87dhcp%E8%8E%B7%E5%8F%96"><span class="toc-number">1.0.5.2.</span> <span class="toc-text"> 通过 dhcp 获取</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mq"><span class="toc-number">1.0.6.</span> <span class="toc-text"> MQ</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cinder"><span class="toc-number">1.0.7.</span> <span class="toc-text"> cinder</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#keystone"><span class="toc-number">1.0.8.</span> <span class="toc-text"> keystone</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#openvswitch"><span class="toc-number">2.</span> <span class="toc-text"> openvswitch</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#bridge"><span class="toc-number">2.0.0.1.</span> <span class="toc-text"> bridge</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#port"><span class="toc-number">2.0.0.2.</span> <span class="toc-text"> Port</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#normal"><span class="toc-number">2.0.0.2.1.</span> <span class="toc-text"> Normal</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#internal"><span class="toc-number">2.0.0.2.2.</span> <span class="toc-text"> Internal</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#patch"><span class="toc-number">2.0.0.2.3.</span> <span class="toc-text"> Patch</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#tunnel"><span class="toc-number">2.0.0.2.4.</span> <span class="toc-text"> Tunnel</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#interface"><span class="toc-number">2.0.0.3.</span> <span class="toc-text"> Interface</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7"><span class="toc-number">2.0.0.4.</span> <span class="toc-text"> 命令行工具</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#241-ovs-vsctl"><span class="toc-number">2.0.1.</span> <span class="toc-text"> 2.4.1 ovs-vsctl</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#242-ovsdb-tool"><span class="toc-number">2.0.2.</span> <span class="toc-text"> 2.4.2 ovsdb-tool</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#243-ovsdb-client"><span class="toc-number">2.0.3.</span> <span class="toc-text"> 2.4.3 ovsdb-client</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#244-ovs-ofctl"><span class="toc-number">2.0.4.</span> <span class="toc-text"> 2.4.4 ovs-ofctl</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2022/11/27/CDN/" rel="bookmark" title="CDN&DNS">CDN&DNS</a></li><li><a href="/2023/04/03/iptables2/" rel="bookmark" title="iptables">iptables</a></li><li><a href="/2023/04/05/Docker/" rel="bookmark" title="docker">docker</a></li><li><a href="/2023/04/15/Nginx_new/" rel="bookmark" title="Nginx">Nginx</a></li><li><a href="/2023/05/20/Kubernetes/" rel="bookmark" title="Kubernetes">Kubernetes</a></li><li><a href="/2023/05/30/jenkins/" rel="bookmark" title="Jenkins">Jenkins</a></li><li><a href="/2023/06/02/k8s%E9%AB%98%E7%BA%A7/" rel="bookmark" title="k8s高级">k8s高级</a></li><li><a href="/2024/01/01/istio/" rel="bookmark" title="istio">istio</a></li><li><a href="/2024/01/10/%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%AD%98%E5%82%A8/" rel="bookmark" title="集群与存储">集群与存储</a></li><li><a href="/2024/01/25/%E8%99%9A%E6%8B%9F%E5%8C%96/" rel="bookmark" title="虚拟化">虚拟化</a></li><li><a href="/2024/02/01/%E7%9B%91%E6%8E%A7/" rel="bookmark" title="监控">监控</a></li><li><a href="/2024/02/15/Elastic%20Stack/" rel="bookmark" title="Elastic stack">Elastic stack</a></li><li class="active"><a href="/2024/06/01/openstack/" rel="bookmark" title="OpenStack+openvswitch">OpenStack+openvswitch</a></li><li><a href="/2024/07/01/GPU%E5%85%A5%E9%97%A8%E6%A6%82%E8%AE%BA/" rel="bookmark" title="GPU入门概论">GPU入门概论</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">51</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">7</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">7</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/05/01/hive_flink/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/07/01/GPU%E5%85%A5%E9%97%A8%E6%A6%82%E8%AE%BA/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2022/11/27/CDN/" title="CDN&amp;DNS">CDN&DNS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="In 大数据">大数据</a>
+</div>
+
+    <span><a href="/2024/05/01/hive_flink/" title="hive_flink">hive_flink</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2023/01/03/%E6%BB%B4%E6%B0%B4reverse/" title="水滴rev">水滴rev</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2023/04/15/Nginx_new/" title="Nginx">Nginx</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/12/31/webshell/" title="webshell">webshell</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2024/01/25/%E8%99%9A%E6%8B%9F%E5%8C%96/" title="虚拟化">虚拟化</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2024/01/01/istio/" title="istio">istio</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/04/07/TCPIP_new/" title="TCP&#x2F;IP">TCP/IP</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2023/06/02/k8s%E9%AB%98%E7%BA%A7/" title="k8s高级">k8s高级</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2024/07/01/GPU%E5%85%A5%E9%97%A8%E6%A6%82%E8%AE%BA/" title="GPU入门概论">GPU入门概论</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/06/01/openstack/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
