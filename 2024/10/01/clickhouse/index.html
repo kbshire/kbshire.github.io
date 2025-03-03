@@ -1,0 +1,858 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="大数据" />
+
+
+<link rel="canonical" href="http://example.com/2024/10/01/clickhouse/">
+
+
+
+  <title>
+Clickhouse - 大数据 |
+Yume Shoka = Hexo</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Clickhouse
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-10-01 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-10-01T13:38:45+08:00">2024-10-01</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/6e7c7d241bbd3f8bacac3372cbe3c6ba.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/2f015bf5c14d8b24eba440ef80422b8d.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/2642d17296be87c670c540b75c0562b3.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/662d37b8a580b466da309ec795b7ae55.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/c370ed4ee6c8ac92941a49e11209fc78.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/18a32c514eae0d32a8b4b2a75853a08b.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="item" rel="index" title="In 大数据"><span itemprop="name">大数据</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/01/clickhouse/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="clickhouse"><a class="markdownIt-Anchor" href="#clickhouse">#</a> clickhouse</h2>
+<p>Yandex 于 2016 年开源的<strong>列式存储数据库</strong>（DBMS），使用 C++ 语言编写，主要用于在线分析处理查询（OLAP），能够使用 SQL 查询实时生成分析数据报告</p>
+<p><strong>列式储存的好处：</strong></p>
+<p>➢ 对于列的聚合，计数，求和等统计操作原因优于行式存储。</p>
+<p>➢由于某一列的数据类型都是相同的，针对于数据存储更容易进行数据压缩，每一列选择更优的数据压缩算法，大大提高了数据的压缩比重。</p>
+<p>➢ 由于数据压缩比更好，一方面节省了磁盘空间，另一方面对于 cache 也有了更大的发挥空间。</p>
+<p><strong>DBMS</strong> <strong>的功能</strong></p>
+<p>几乎覆盖了标准 SQL 的大部分语法，包括 DDL 和 DML，以及配套的各种函数，用户管 理及权限管理，数据的备份与恢复。</p>
+<p><strong>多样化引擎</strong></p>
+<p>ClickHouse 和 MySQL 类似，把表级的存储引擎插件化，根据表的不同需求可以设定不同的存储引擎。目前包括合并树、日志、接口和其他四大类 20 多种引擎。</p>
+<p><strong>高吞吐写入能力</strong></p>
+<p>ClickHouse 采用类 LSMTree 的结构，数据写入后定期在后台 Compadction。通过类 LSM tree 的结构，ClickHouse 在数据导入时全部是顺序 append 写，写入后数据段不可更改，在后台 compaction 时也是多个段 mergesort 后顺序写回磁盘。顺序写的特性，充分利用了磁盘的吞吐能力，即便在 HDD 上也有着优异的写入性能。</p>
+<p><strong>数据分区与线程级并行</strong></p>
+<p>ClickHouse 将数据划分为多个 partition, 每个 partition 再进一步划分为多个 index granularity (索引粒度), 然后通过多个 CPU 核心分别处理其中的一部分来实现并行数据处理。在这种设计下，单条 Query 就能利用整机所有 CPU。极致的并行处理能力，极大的降低了查询延时。</p>
+<p>所以，ClickHouse 即使对于大量数据的查询也能够化整为零平行处理。但是有一个弊端就是对于单条查询使用多 cpu, 就不利于同时并发多条直询。所以对于高 qps 的查询业务，ClickHouse 并不是强项。</p>
+<h3 id="安装单机clickhouse"><a class="markdownIt-Anchor" href="#安装单机clickhouse">#</a> 安装单机 clickhouse</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">前置准备</span><br><span class="line">vim /etc/security/limits.conf</span><br><span class="line">* soft nofile <span class="number">65536</span></span><br><span class="line">* hard nofile <span class="number">65536</span></span><br><span class="line">* soft nproc <span class="number">131072</span></span><br><span class="line">* hard nproc <span class="number">131072</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/etc/security/limits.d/nproc.conf</span><br><span class="line">* soft nofile <span class="number">65536</span></span><br><span class="line">* hard nofile <span class="number">65536</span></span><br><span class="line">* soft nproc <span class="number">131072</span></span><br><span class="line">* hard nproc <span class="number">131072</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">apt install libtool *unixODBC* -y</span><br><span class="line"></span><br><span class="line">jps -ml # 备份进程</span><br><span class="line"><span class="number">123633</span> org.apache.hadoop.hdfs.server.namenode.NameNode</span><br><span class="line"><span class="number">124131</span> org.apache.hadoop.yarn.server.nodemanager.NodeManager</span><br><span class="line"><span class="number">124804</span> org.apache.hadoop.util.RunJar /root/apache-hive-<span class="number">3.1</span><span class="number">.3</span>-bin/lib/hive-service-<span class="number">3.1</span><span class="number">.3</span>.jar org.apache.hive.service.server.HiveServer2</span><br><span class="line"><span class="number">131204</span> org.apache.hadoop.util.RunJar /root/apache-hive-<span class="number">3.1</span><span class="number">.3</span>-bin/lib/hive-metastore-<span class="number">3.1</span><span class="number">.3</span>.jar org.apache.hadoop.hive.metastore.HiveMetaStore</span><br><span class="line"><span class="number">123831</span> org.apache.hadoop.hdfs.server.datanode.DataNode</span><br><span class="line"><span class="number">152133</span> org.apache.flink.runtime.webmonitor.history.HistoryServer --configDir /root/flink-<span class="number">1.17</span><span class="number">.2</span>/conf</span><br><span class="line"><span class="number">191481</span> sun.tools.jps.Jps -ml</span><br><span class="line"><span class="number">44508</span> org.apache.spark.deploy.history.HistoryServer</span><br><span class="line"><span class="number">124335</span> org.apache.hadoop.mapreduce.v2.hs.JobHistoryServer</span><br><span class="line"></span><br><span class="line">https:<span class="comment">//packages.clickhouse.com/deb/pool/main/c/</span></span><br><span class="line">https:<span class="comment">//clickhouse.com/docs/en/install#available-installation-options</span></span><br><span class="line"></span><br><span class="line"># 执行后返回</span><br><span class="line">ClickHouse has been successfully installed.</span><br><span class="line"></span><br><span class="line">Start clickhouse-server with:</span><br><span class="line"> sudo clickhouse start/status/restart</span><br><span class="line"></span><br><span class="line">Start clickhouse-client with:</span><br><span class="line"> clickhouse-client --password</span><br><span class="line"></span><br><span class="line"># clickhouse备份文件，默认在/etc/clickhouse-server </span><br><span class="line">config.xml  服务端配置</span><br><span class="line">users.xml   参数配置</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 修改配置文件</span><br><span class="line">vim config.xml </span><br><span class="line">    &lt;listen_host&gt;::&lt;/listen_host&gt;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"># 执行查询操作</span><br><span class="line">  clickhouse-client --query <span class="string">&quot;&quot;</span></span><br><span class="line">  clickhouse-client -m</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+<h3 id="数据类型"><a class="markdownIt-Anchor" href="#数据类型">#</a> 数据类型</h3>
+<p>整形</p>
+<p>Uint 8/16/32/64</p>
+<p>int 8/16/32/64</p>
+<p>浮点型</p>
+<p>Float32/64</p>
+<p>布尔型</p>
+<p>可以用 uint8，取值限制 0 1</p>
+<p>Decimal</p>
+<p>Decimal32 (s), 相当于 Decimal (9-s,s), 有效位数为 1~9</p>
+<p>Decimal64 (s), 相当于 Decimal (18-s,s), 有效位数为 1~18</p>
+<p>Decimal128 (s), 相当于 Decimal (38-s,s), 有效位数为 1~38</p>
+<p>字符串</p>
+<p>String</p>
+<p>FixedString (N)   固定长度，不够添加空字节，超过返回错误</p>
+<p>枚举类型</p>
+<p>Enum8/16  用 String = intx 描述</p>
+<p>时间类型</p>
+<p>Date 接受年 - 月 - 日的字符串比如 2019-12-16’</p>
+<p>Datetime 接受年 - 月 - 日时：分: 秒的字符串比如 2019-12-16 20:50:10’</p>
+<p>Datetime64 接受年 - 月 - 日 时：分: 秒。亚秒的字符串比如 '20199-12-16 20:50:10.66</p>
+<p>数组</p>
+<p>Array (T)   T 类型数组</p>
+<p>Array (1,2)     [2,1]   一个数组中类型必须相同</p>
+<p>不能在 mergetree 表中使用多维数组</p>
+<p>Nullable</p>
+<p>引擎分为表引擎和库引擎</p>
+<h3 id="表引擎"><a class="markdownIt-Anchor" href="#表引擎">#</a> 表引擎</h3>
+<p>表引擎决定了如何存储数据，大小写敏感</p>
+<p>表引擎的使用方式就是必须显式在创建表时定义该表使用的引擎，以及引擎使用的相关参数。</p>
+<h4 id="tinylog"><a class="markdownIt-Anchor" href="#tinylog">#</a> TinyLog</h4>
+<p>以列文件的形式保存在磁盘上，不支持索引，没有并发控制。一般保存少量数据的小表</p>
+<p>生产环境上作用有限。可以用于平时练习测试用。</p>
+<p>create table haha(id String, name String) ENGINE=TinyLog;</p>
+<h4 id="memory"><a class="markdownIt-Anchor" href="#memory">#</a> Memory</h4>
+<p>内存引擎，数据以未压缩的原始形式直接保存在内存当中，服务器重启数据就会消失。读写操作不会相互阻塞，不支持索引。简单查询下有非常非常高的的性能表现 (超过 10G/s)。</p>
+<p>一般用到它的地方不多，除了用来测试，就是在需要非常高的性能，同时数据量又不太大 (上限大概 1 亿行) 的场景。</p>
+<h4 id="mergetree"><a class="markdownIt-Anchor" href="#mergetree">#</a> MergeTree</h4>
+<p>ClickHouse 中最强大的表引擎当属 MergeTree (合并树) 引擎及该系列 (*MergeTree) 中的其他引擎，支持索引和分区，地位可以相当于 innodb 之于 Mysql。而且基于 MergeTree, 还衍生出了，也是非常有特色的引擎。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 建表显示指定表引擎</span><br><span class="line">create table <span class="title function_">t_sn</span> <span class="params">(id Uint32, id String,amount Decimal(<span class="number">16</span>,<span class="number">2</span>)</span>)engine=MergeTree partition by <span class="title function_">toYYYYMMDD</span><span class="params">(create_time)</span> primary <span class="title function_">key</span><span class="params">(id)</span> order <span class="title function_">by</span><span class="params">(id)</span>;</span><br><span class="line"></span><br><span class="line"># primary key</span><br><span class="line">主键可以重复。提供数据一级索引，但不是唯一约束</span><br><span class="line"></span><br><span class="line"># order by是必须的字段</span><br><span class="line"># primary key，partition by不是必须的字段</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># partition by </span><br><span class="line">分区目录</span><br><span class="line">降低扫描范围，优化查询速度</span><br><span class="line">MergeTree是以列文件+索引文件+表定义文件组成的,但是如果定了分区那么这些文件就会保存到不同的分区目录中。如果不指定，只会使用一个分区</span><br><span class="line">分区后，面对涉及跨分区的查询统计，ClickHouse 会以分区为单位并行处理。 </span><br><span class="line"></span><br><span class="line">数据写入与分区合并 </span><br><span class="line">任何一个批次的数据写入都会产生一个临时分区，不会纳入任何一个已有的分区。写入 后的某个时刻（大概 <span class="number">10</span>-<span class="number">15</span> 分钟后），ClickHouse 会自动执行合并操作（等不及也可以手动 通过 optimize 执行），把临时分区的数据，合并到已有分区中。 </span><br><span class="line">optimize table xxxx <span class="keyword">final</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="clickhouse文件结构"><a class="markdownIt-Anchor" href="#clickhouse文件结构">#</a> clickhouse 文件结构</h5>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">create table t_order_mt(  </span><br><span class="line">    id UInt32,  </span><br><span class="line">    sku_id String,  </span><br><span class="line">    total_amount Decimal(16,2),  </span><br><span class="line">    create_time Datetime </span><br><span class="line">) engine =MergeTree  </span><br><span class="line">    partition by toYYYYMMDD(create_time)  </span><br><span class="line">    primary key (id)  </span><br><span class="line">    order by (id,sku_id);</span><br><span class="line">    </span><br><span class="line">insert into t_order_mt values </span><br><span class="line">(101,&#x27;sku_001&#x27;,1000.00,&#x27;2020-06-01 12:00:00&#x27;) , (102,&#x27;sku_002&#x27;,2000.00,&#x27;2020-06-01 11:00:00&#x27;), (102,&#x27;sku_004&#x27;,2500.00,&#x27;2020-06-01 12:00:00&#x27;), (102,&#x27;sku_002&#x27;,2000.00,&#x27;2020-06-01 13:00:00&#x27;), (102,&#x27;sku_002&#x27;,12000.00,&#x27;2020-06-01 13:00:00&#x27;), (102,&#x27;sku_002&#x27;,600.00,&#x27;2020-06-02 12:00:00&#x27;);</span><br><span class="line"></span><br><span class="line">root@hadoop100:/var/lib/clickhouse/data/default/t_order_mt# ll</span><br><span class="line">drwxr-x--- 2 clickhouse clickhouse 4096 Aug 20 18:19 20200601_1_1_0/</span><br><span class="line">drwxr-x--- 2 clickhouse clickhouse 4096 Aug 20 18:19 20200601_1_1_1/</span><br><span class="line">drwxr-x--- 2 clickhouse clickhouse 4096 Aug 20 18:19 20200602_2_2_0/</span><br><span class="line">drwxr-x--- 2 clickhouse clickhouse 4096 Aug 20 18:19 20200602_2_2_1/</span><br><span class="line">drwxr-x--- 2 clickhouse clickhouse 4096 Aug 20 18:18 detached/</span><br><span class="line">-rw-r----- 1 clickhouse clickhouse    1 Aug 20 18:18 format_version.txt</span><br><span class="line"></span><br><span class="line">root@hadoop100:/var/lib/clickhouse/data/default/t_order_mt/20200602_2_2_1# ll</span><br><span class="line">-rw-r----- 1 clickhouse clickhouse  333 Aug 20 18:19 checksums.txt</span><br><span class="line">-rw-r----- 1 clickhouse clickhouse  118 Aug 20 18:19 columns.txt</span><br><span class="line">-rw-r----- 1 clickhouse clickhouse    1 Aug 20 18:19 count.txt</span><br><span class="line">-rw-r----- 1 clickhouse clickhouse  128 Aug 20 18:19 data.bin</span><br><span class="line">-rw-r----- 1 clickhouse clickhouse   66 Aug 20 18:19 data.cmrk3</span><br><span class="line">-rw-r----- 1 clickhouse clickhouse   10 Aug 20 18:19 default_compression_codec.txt</span><br><span class="line">-rw-r----- 1 clickhouse clickhouse    1 Aug 20 18:19 metadata_version.txt</span><br><span class="line">-rw-r----- 1 clickhouse clickhouse    8 Aug 20 18:19 minmax_create_time.idx</span><br><span class="line">-rw-r----- 1 clickhouse clickhouse    4 Aug 20 18:19 partition.dat</span><br><span class="line">-rw-r----- 1 clickhouse clickhouse   42 Aug 20 18:19 primary.cidx</span><br><span class="line">-rw-r----- 1 clickhouse clickhouse  292 Aug 20 18:19 serialization.json</span><br></pre></td></tr></table></figure>
+<p>bin 文件：数据文件</p>
+<p>mrk 文件：标记文件</p>
+<p>标记文件在 idx 索引文件和 bin 数据文件之间起到了桥梁作用</p>
+<p>以 mrk2 结尾的文件，表示该表启用了自适应索引间隔。</p>
+<p>primary.idx 文件：主键索引文件，用于加快查询效率</p>
+<p>minmax_create_time.idx; 分区键的最大最小值</p>
+<p>checksums.txt: 校验文件，用于校验各个文件的正确性。右屏放各个文件的 size 以及 hash 值。</p>
+<p>20200602_2_2_1</p>
+<p>PartitionId     MinBlockNum    MaxBlockNum_Level</p>
+<p>分区值最小   分区块编号最大  分区块编号合并层级</p>
+<h5 id="primary-key"><a class="markdownIt-Anchor" href="#primary-key">#</a> primary key</h5>
+<p>ClickHouse 中的主键，和其他数据库不太一样，** 它只提供了数据的一级<strong><strong>索引</strong></strong>，但是却不是唯一约束。** 这就意味着是可以存在相同 primary key 的数据的。</p>
+<p>主键的设定主要依据是查询语句中的 where 条件。 根据条件通过对主键进行某种形式的二分查找，能够定位到对应的 index granularity, 避</p>
+<p>免了全表扫描。</p>
+<p>index granularity： 索引粒度，指在稀疏索引中两个相邻索引对应数据的间隔。ClickHouse 中的 MergeTree 默认是 8192。官方不建议修改这个值，除非该列存在大量重复值，比如在一个分区中几万行才有一个不同数据</p>
+<p>稀疏索引</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250226013615511.png" alt="image-20250226013615511"></p>
+<p>稀疏索引的好处就是可以用很少的索引数据，定位更多的数据，代价就是只能定位到索 引粒度的第一行，然后再进行进行一点扫描。</p>
+<h5 id="order-by"><a class="markdownIt-Anchor" href="#order-by">#</a> order by</h5>
+<p>order by 设定了分区内的数据按照哪些字段顺序进行有序保存，MergeTree 中唯一必选项。因为当用户不 设置主键的情况，很多处理会依照 order by 的字段进行处理</p>
+<p>要求：主键必须是 order by 字段的前缀字段。</p>
+<p>比如 orderby 字段是 (id,sku_id) 那么主键必须是 id 或者 (id,sku_id)</p>
+<h5 id="二级索引"><a class="markdownIt-Anchor" href="#二级索引">#</a> 二级索引</h5>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create table t_order_mt2(  </span><br><span class="line">    id UInt32,  </span><br><span class="line">    sku_id String,  </span><br><span class="line">    total_amount Decimal(16,2),  </span><br><span class="line">    create_time Datetime, </span><br><span class="line">    INDEX a total_amount TYPE minmax GRANULARITY 5 </span><br><span class="line">) engine =MergeTree  </span><br><span class="line">    partition by toYYYYMMDD(create_time)</span><br><span class="line">    primary key (id)  </span><br><span class="line">    order by (id, sku_id);</span><br></pre></td></tr></table></figure>
+<p>index a total_amount TYPE minmax GRAANULARITY 5</p>
+<p>GRANULARITY N 是设定二级索引对于一级索引粒度的粒度。</p>
+<p>a 别名</p>
+<p>total_amount 字段名</p>
+<p>minmax 索引类型</p>
+<p>GRABULARIRT 索引粒度</p>
+<p>二级索引能够为非主键字段的查询发挥作用</p>
+<h5 id="ttl"><a class="markdownIt-Anchor" href="#ttl">#</a> TTL</h5>
+<p>TTL 即 Time To Live,MergeTree 提供了可以管理数据表或者列的生命周期的功能。</p>
+<p>列级别 ttl</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create table <span class="title function_">t_order_mt3</span><span class="params">( </span></span><br><span class="line"><span class="params"> id UInt32, </span></span><br><span class="line"><span class="params"> sku_id String, </span></span><br><span class="line"><span class="params"> total_amount Decimal(<span class="number">16</span>,<span class="number">2</span>)</span> TTL create_time+interval <span class="number">10</span> SECOND, </span><br><span class="line"> create_time Datetime  </span><br><span class="line">) engine =MergeTree </span><br><span class="line">partition by <span class="title function_">toYYYYMMDD</span><span class="params">(create_time)</span> </span><br><span class="line"> primary <span class="title function_">key</span> <span class="params">(id)</span> </span><br><span class="line"> order <span class="title function_">by</span> <span class="params">(id, sku_id)</span>;</span><br></pre></td></tr></table></figure>
+<p>类型必须是日期类型，不能是主键</p>
+<p>时间到期之后自动启动合并任务</p>
+<p>表级别 ttl</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table t_order_mt3 MODIFY TTL create_time + INTERVAL <span class="number">10</span> SECOND;</span><br></pre></td></tr></table></figure>
+<p>涉及判断的字段必须是 Date 或者 Datetime 类型，推荐使用分区的日期字段。</p>
+<p>能够使用的时间周期：</p>
+<ul>
+<li>SECOND</li>
+<li>MINUTE</li>
+<li>HOUR</li>
+<li>DAY</li>
+<li>WEEK</li>
+<li>MONTH</li>
+<li>QUARTER</li>
+<li>YEAR</li>
+</ul>
+<h5 id="ttl执行行为"><a class="markdownIt-Anchor" href="#ttl执行行为">#</a> TTL 执行行为</h5>
+<p>Type of TTL rule may follow each TTL expression. It affects an action which is to be done once the expression is satisfied (reaches current time):</p>
+<ul>
+<li><strong> <code>DELETE</code> </strong> delete expired rows (default action);</li>
+<li><strong> <code>RECOMPRESS codec_name</code> </strong> recompress data part with the <strong> <code>codec_name</code> </strong>;</li>
+<li><strong> <code>TO DISK 'aaa'</code> </strong> move part to the disk <strong> <code>aaa</code> </strong>;</li>
+<li><strong> <code>TO VOLUME 'bbb'</code> </strong> move part to the disk <strong> <code>bbb</code> </strong>;</li>
+<li><strong> <code>GROUP BY</code> </strong> aggregate expired rows.</li>
+</ul>
+<h4 id="replacingmergetree"><a class="markdownIt-Anchor" href="#replacingmergetree">#</a> ReplacingMergeTree</h4>
+<p>ReplacingMergeTree 是 MergeTree 的一个变种，它存储特性完全继承 MergeTree，只是多了一个去重的功能。 尽管 MergeTree 可以设置主键，但是 primary key 其实没有唯一约束的功能。</p>
+<p><strong>1）去重时机</strong></p>
+<p><strong>数据的去重只会在合并的过程中出现</strong>。合并会在未知的时间在后台进行，所以你无法预先作出计划。有一些数据可能仍未被处理。也可以手动 OPTIMIZE TABLE</p>
+<p><strong>2）去重范围</strong></p>
+<p><strong>如果表经过了分区，去重只会在分区内部进行去重，不能执行跨分区的去重。</strong></p>
+<p>所以 ReplacingMergeTree 能力有限， ReplacingMergeTree 适用于在后台清除重复的数据以节省空间，但是它<strong>不保证没有重复的数据出现</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create table <span class="title function_">t_order_rmt</span><span class="params">( </span></span><br><span class="line"><span class="params">     id UInt32, </span></span><br><span class="line"><span class="params">     sku_id String, </span></span><br><span class="line"><span class="params">     total_amount Decimal(<span class="number">16</span>,<span class="number">2</span>)</span> , </span><br><span class="line">     create_time Datetime  </span><br><span class="line">) engine =ReplacingMergeTree(create_time) </span><br><span class="line">     partition by <span class="title function_">toYYYYMMDD</span><span class="params">(create_time)</span> </span><br><span class="line">     primary <span class="title function_">key</span> <span class="params">(id)</span> </span><br><span class="line">     order <span class="title function_">by</span> <span class="params">(id, sku_id)</span>; </span><br></pre></td></tr></table></figure>
+<p>ReplacingMergeTree () 填入的参数为版本字段，重复数据保留版本字段值最大的。</p>
+<p>如果不填版本字段，默认按照插入顺序保留最后一条。</p>
+<p><strong>通过测试得到结论</strong></p>
+<p>➢ 实际上是使用 order by 字段作为唯一键</p>
+<p>➢ 去重不能跨分区</p>
+<p>➢ 只有同一批插入（新版本）或合并分区时才会进行去重</p>
+<p>➢ 认定重复的数据保留，版本字段值最大的</p>
+<p>➢ 如果版本字段相同则按插入顺序保留最后一条</p>
+<h4 id="summingmergetree"><a class="markdownIt-Anchor" href="#summingmergetree">#</a> SummingMergeTree</h4>
+<p>对于不查询明细，只关心以维度进行汇总聚合结果的场景。如果只使用普通的 MergeTree 的话，无论是存储空间的开销，还是查询时临时聚合的开销都比较大。</p>
+<p>ClickHouse 为了这种场景，提供了一种能够 “预聚合” 的引擎 SummingMergeTree</p>
+<p>（1）创建表</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create table <span class="title function_">t_order_smt</span><span class="params">(</span></span><br><span class="line"><span class="params">     id UInt32,</span></span><br><span class="line"><span class="params">     sku_id String,</span></span><br><span class="line"><span class="params">     total_amount Decimal(<span class="number">16</span>,<span class="number">2</span>)</span> ,</span><br><span class="line">     create_time Datetime  </span><br><span class="line">) engine =SummingMergeTree(total_amount)</span><br><span class="line">     partition by <span class="title function_">toYYYYMMDD</span><span class="params">(create_time)</span></span><br><span class="line">     primary <span class="title function_">key</span> <span class="params">(id)</span></span><br><span class="line">     order <span class="title function_">by</span> <span class="params">(id,sku_id )</span>;</span><br></pre></td></tr></table></figure>
+<p>根据 order by 进行预聚合，聚合时保留最早的一条</p>
+<p>➢ 以 SummingMergeTree（）中指定的列作为汇总数据列</p>
+<p>➢ 可以填写多列必须数字列，如果不填，以所有非维度列且为数字列的字段为汇总数据列</p>
+<p>➢ 以 order by 的列为准，作为维度列</p>
+<p>➢ 其他的列按插入顺序保留第一行</p>
+<p>➢ 不在一个分区的数据不会被聚合</p>
+<p>➢ 只有在同一批次插入 (新版本) 或分片合并时才会进行聚合</p>
+<p>如果要是获取汇总值，还是需要使用 sum 进行聚合，这样效率会有一定的提高，但本身 ClickHouse 是列式存储的，效率提升有限，不会特别明显。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sum(total_amount) from province_name=’’ and create_date=‘xxx’</span><br></pre></td></tr></table></figure>
+<h3 id="sql操作"><a class="markdownIt-Anchor" href="#sql操作">#</a> SQL 操作</h3>
+<h4 id="insert"><a class="markdownIt-Anchor" href="#insert">#</a> insert</h4>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">（1）标准 </span><br><span class="line">insert into [table_name] values(…),(….) </span><br><span class="line">（2）从表到表的插入 </span><br><span class="line">insert into [table_name] select a,b,c from [table_name_2]</span><br></pre></td></tr></table></figure>
+<h4 id="update-delete"><a class="markdownIt-Anchor" href="#update-delete">#</a> update &amp; delete</h4>
+<p>ClickHouse 提供了 Delete 和 Update 的能力，这类操作被称为 Mutation 查询，它可以看做 Alter 的一种。 虽然可以实现修改和删除，但是和一般的 OLTP 数据库不一样，<strong>Mutation 语句是一种很 “重” 的操作，而且不支持<strong><strong>事务</strong></strong>。</strong></p>
+<p>“重” 的原因主要是 ** 每次修改或者删除都会导致放弃目标数据的原有分区，重建新分区。** 所以尽量做批量的变更，不要进行频繁小数据的操作。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">（1）删除操作 </span><br><span class="line">alter table t_order_smt delete where sku_id =&#x27;sku_001&#x27;; </span><br><span class="line">（2）修改操作 </span><br><span class="line">alter table t_order_smt update total_amount=toDecimal32(2000.00,2) where id =102;</span><br></pre></td></tr></table></figure>
+<p>Mutation 语句分两步执行，同步执行的部分其实只是进行 新增数据新增分区和并把旧分区打上逻辑上的失效标记。直到触发分区合并的时候，才会删 除旧数据释放磁盘空间</p>
+<blockquote>
+<p>更新:</p>
+<p>插入一条新的数据，_version + 1</p>
+<p>查询的时候加上一个过滤条件  where version 最大</p>
+<p>删除:</p>
+<p>sign,0 表示未删除，1 表示已删除</p>
+<p>查询的时候加上一个过滤条件，where_sign=0 and version = 最大</p>
+</blockquote>
+<h4 id="查询"><a class="markdownIt-Anchor" href="#查询">#</a> 查询</h4>
+<ul>
+<li>支持子查询</li>
+<li>支持 CTE (Common Table Expression 公用表表达式 with 子句)</li>
+<li>支持各种 JOIN, 但是 JOIN 操作无法使用缓存，所以即使是两次相同的 JOIN 语句，ClickHouse 也会视为两条新 SQL</li>
+<li>窗口函数  <span class="exturl" data-url="aHR0cHM6Ly9jbGlja2hvdXNlLmNvbS9kb2NzL2VuL3NxbC1yZWZlcmVuY2Uvd2luZG93LWZ1bmN0aW9ucw==">https://clickhouse.com/docs/en/sql-reference/window-functions</span></li>
+<li>不支持自定义函数</li>
+<li>GROUP BY 操作增加了 with rollup\with cube\with total 用来计算小计和总计。</li>
+</ul>
+<p>with rollup/with cube / with total</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a, b from t_order_mt group by x  with rollup;</span><br></pre></td></tr></table></figure>
+<p>纬度是 a,b</p>
+<p>rollup: 上卷</p>
+<p>group by a</p>
+<p>group by a,b</p>
+<p>group by</p>
+<p>cube: 多维分析</p>
+<p>group by a</p>
+<p>group by b</p>
+<p>group by a,b</p>
+<p>group by</p>
+<p>total: 总计</p>
+<p>group by a,b</p>
+<p>group by</p>
+<h4 id="alert"><a class="markdownIt-Anchor" href="#alert">#</a> alert</h4>
+<p><strong>1）新增字段</strong></p>
+<p>alter table <strong>tableName</strong> add column <strong>newcolname</strong> String after col1;</p>
+<p><strong>2）修改字段类型</strong></p>
+<p>alter table tableName modify column newcolname String;</p>
+<p><strong>3）删除字段</strong></p>
+<p>alter table tableName drop column newcolname;</p>
+<h4 id="导出"><a class="markdownIt-Anchor" href="#导出">#</a> 导出</h4>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clickhouse-client --query &quot;select * from t_order_mt where  create_time=&#x27;2020-06-01 12:00:00&#x27;&quot; --format CSVWithNames&gt;  /opt/module/data/rs1.csv</span><br></pre></td></tr></table></figure>
+<h3 id="副本"><a class="markdownIt-Anchor" href="#副本">#</a> 副本</h3>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250226013630641.png" alt="image-20250226013630641"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># 配置zk</span><br><span class="line">vim /etc/clickhouse-server/config.d/metrika.xml</span><br><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span>?&gt;</span><br><span class="line">&lt;yandex&gt;</span><br><span class="line">    &lt;zookeeper-servers&gt;</span><br><span class="line">        &lt;node index=<span class="string">&quot;1&quot;</span>&gt;</span><br><span class="line">            &lt;host&gt;hadoop102&lt;/host&gt;</span><br><span class="line">            &lt;port&gt;<span class="number">2181</span>&lt;/port&gt;</span><br><span class="line">        &lt;/node&gt;</span><br><span class="line">        &lt;node index=<span class="string">&quot;2&quot;</span>&gt;</span><br><span class="line">            &lt;host&gt;hadoop103&lt;/host&gt;</span><br><span class="line">            &lt;port&gt;<span class="number">2181</span>&lt;/port&gt;</span><br><span class="line">        &lt;/node&gt;</span><br><span class="line">        &lt;node index=<span class="string">&quot;3&quot;</span>&gt;</span><br><span class="line">            &lt;host&gt;hadoop104&lt;/host&gt;</span><br><span class="line">            &lt;port&gt;<span class="number">2181</span>&lt;/port&gt;</span><br><span class="line">        &lt;/node&gt;</span><br><span class="line">    &lt;/zookeeper-servers&gt;</span><br><span class="line">&lt;/yandex&gt;</span><br><span class="line"></span><br><span class="line">chown clickhouse:clickhouse /etc/clickhouse-server/config.d/metrika.xml</span><br><span class="line"></span><br><span class="line">vim config.xml</span><br><span class="line">&lt;zookeeper incl=<span class="string">&quot;zookeeper-servers&quot;</span> optional=<span class="string">&quot;true&quot;</span> /&gt; </span><br><span class="line">&lt;include_from&gt;/etc/clickhouse-server/config.d/metrika.xml&lt;/include_from&gt; </span><br><span class="line"></span><br><span class="line">clickhouse restart</span><br></pre></td></tr></table></figure>
+<p>副本只能同步数据，不能同步表结构。需要手工建表</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">Hadoop100</span><br><span class="line">create table t_order_rep2 (  </span><br><span class="line">    id UInt32,  </span><br><span class="line">    sku_id String,  </span><br><span class="line">    total_amount Decimal(16,2),  </span><br><span class="line">    create_time Datetime </span><br><span class="line">) engine =ReplicatedMergeTree(&#x27;/clickhouse/table/01/t_order_rep&#x27;,&#x27;rep_100&#x27;)  </span><br><span class="line">    partition by toYYYYMMDD(create_time)  </span><br><span class="line">    primary key (id)  </span><br><span class="line">    order by (id,sku_id);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">Hadoop101：</span><br><span class="line">create table t_order_rep2 (  </span><br><span class="line">    id UInt32,  </span><br><span class="line">    sku_id String,  </span><br><span class="line">    total_amount Decimal(16,2),  </span><br><span class="line">    create_time Datetime </span><br><span class="line">) engine =ReplicatedMergeTree(&#x27;/clickhouse/table/01/t_order_rep&#x27;,&#x27;rep_101&#x27;)  </span><br><span class="line">    partition by toYYYYMMDD(create_time)  </span><br><span class="line">    primary key (id)  </span><br><span class="line">    order by (id,sku_id);</span><br><span class="line">    </span><br><span class="line">   </span><br><span class="line">第一个参数是分片的 zk_path 一般按照：/clickhouse/table/&#123;shard&#125;/&#123;table_name&#125; 的格式,如果只有一个分片写01即可</span><br><span class="line">第二个参数数副本名称，相同的分片副本名称不能相同。</span><br></pre></td></tr></table></figure>
+<h3 id="分片集群"><a class="markdownIt-Anchor" href="#分片集群">#</a> 分片集群</h3>
+<p>副本虽然能够提高数据的可用性，降低丢失风险，但是每台服务器实际上必须容纳全量数据，对数据的横向扩容没有解决。</p>
+<p>要解决数据水平切分的问题，需要引入分片的概念。通过分片把一份完整的数据进行切分，不同的分片分布到不同的节点上，再通过 Distributed 表引擎把数据拼接起来一同使用。</p>
+<p>Distributed 表引擎本身不存储数据，有点类似于 MyCat 之于 MySql，成为一种中间件， 通过分布式逻辑表来写入、分发、路由来操作多台节点不同分片的分布式数据。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250226013643694.png" alt="image-20250226013643694"></p>
+<p>一般开启 internal_replication ，即使用分片同步副本数据。</p>
+<p>ClickHouse 的集群是表级别的，实际企业中，大部分做了高可用，但是没有用分片，避免降低查询性能以及操作集群的复杂性。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250226013652131.png" alt="image-20250226013652131"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">vim metrika-shard.<span class="property">xml</span></span><br><span class="line">&lt;yandex&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">remote_servers</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">gmall_cluster</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="comment">&lt;!-- 集群名称--&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="comment">&lt;!--集群的第一个分片--&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">internal_replication</span>&gt;</span>true<span class="tag">&lt;/<span class="name">internal_replication</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="comment">&lt;!--该分片的第一个副本--&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">host</span>&gt;</span>hadoop101<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="comment">&lt;!--该分片的第二个副本--&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">host</span>&gt;</span>hadoop102<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="comment">&lt;!--集群的第二个分片--&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">internal_replication</span>&gt;</span>true<span class="tag">&lt;/<span class="name">internal_replication</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="comment">&lt;!--该分片的第一个副本--&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">host</span>&gt;</span>hadoop103<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="comment">&lt;!--该分片的第二个副本--&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">host</span>&gt;</span>hadoop104<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="comment">&lt;!--集群的第三个分片--&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">internal_replication</span>&gt;</span>true<span class="tag">&lt;/<span class="name">internal_replication</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="comment">&lt;!--该分片的第一个副本--&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">host</span>&gt;</span>hadoop105<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="comment">&lt;!--该分片的第二个副本--&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">host</span>&gt;</span>hadoop106<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">gmall_cluster</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">remote_servers</span>&gt;</span></span></span><br><span class="line">&lt;/yandex&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">macros</span>&gt;</span> </span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">shard</span>&gt;</span>01<span class="tag">&lt;/<span class="name">shard</span>&gt;</span> <span class="comment">&lt;!--不同机器放的分片数不一样--&gt;</span> </span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">replica</span>&gt;</span>rep_1_1<span class="tag">&lt;/<span class="name">replica</span>&gt;</span> <span class="comment">&lt;!--不同机器放的副本数不一样--&gt;</span> </span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">macros</span>&gt;</span></span> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;include_from&gt; <span class="regexp">/xxxx/m</span>etrika-shard.<span class="property">xml</span></span><br><span class="line"># 建表</span><br><span class="line">create table st_order_mt on cluster gmall_cluster ( </span><br><span class="line">     id <span class="title class_">UInt32</span>, </span><br><span class="line">     sku_id <span class="title class_">String</span>, </span><br><span class="line">     total_amount <span class="title class_">Decimal</span>(<span class="number">16</span>,<span class="number">2</span>), </span><br><span class="line">     create_time <span class="title class_">Datetime</span> </span><br><span class="line">) engine=<span class="title class_">ReplicatedMergeTree</span>(<span class="string">&#x27;/clickhouse/tables/&#123;shard&#125;/st_order_mt&#x27;</span>,<span class="string">&#x27;&#123;replica&#125;&#x27;</span>) </span><br><span class="line">     partition by <span class="title function_">toYYYYMMDD</span>(create_time) </span><br><span class="line">     primary key (id) </span><br><span class="line">     order by (id,sku_id);</span><br><span class="line"> </span><br><span class="line"> # 创建分布式表</span><br><span class="line"> create table st_order_mt_all2 on cluster gmall_cluster </span><br><span class="line">( </span><br><span class="line"> sku_id <span class="title class_">String</span>, </span><br><span class="line"> total_amount <span class="title class_">Decimal</span>(<span class="number">16</span>,<span class="number">2</span>), </span><br><span class="line"> create_time <span class="title class_">Datetime</span> </span><br><span class="line">)engine = <span class="title class_">Distributed</span>(gmall_cluster,<span class="keyword">default</span>, st_order_mt,<span class="title function_">hiveHash</span>(sku_id)); </span><br><span class="line"></span><br><span class="line"><span class="title class_">Distributed</span>（集群名称，库名，本地表名，分片键） </span><br><span class="line">分片键必须是整型数字，所以用 hiveHash 函数转换，也可以 <span class="title function_">rand</span>()</span><br><span class="line"></span><br><span class="line"># 往分布式表插入和查询数据</span><br><span class="line">insert into st_order_mt_all2 values (<span class="number">201</span>,<span class="string">&#x27;sku_001&#x27;</span>,<span class="number">1000.00</span>,<span class="string">&#x27;2020-06-01 12:00:00&#x27;</span>) , (<span class="number">202</span>,<span class="string">&#x27;sku_002&#x27;</span>,<span class="number">2000.00</span>,<span class="string">&#x27;2020-06-01 12:00:00&#x27;</span>), (<span class="number">203</span>,<span class="string">&#x27;sku_004&#x27;</span>,<span class="number">2500.00</span>,<span class="string">&#x27;2020-06-01 12:00:00&#x27;</span>), (<span class="number">204</span>,<span class="string">&#x27;sku_002&#x27;</span>,<span class="number">2000.00</span>,<span class="string">&#x27;2020-06-01 12:00:00&#x27;</span>), (<span class="number">205</span>,<span class="string">&#x27;sku_003&#x27;</span>,<span class="number">600.00</span>,<span class="string">&#x27;2020-06-02 12:00:00&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="explain"><a class="markdownIt-Anchor" href="#explain">#</a> explain</h3>
+<p>查看 sql 语句执行计划</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN [AST | SYNTAX | PLAN | PIPELINE] [setting = value, ...] SELECT ... [FORMAT ...]</span><br><span class="line">PLAN：用于查看执行计划，默认值。</span><br><span class="line">AST ：用于查看语法树; </span><br><span class="line">SYNTAX：用于优化语法; </span><br><span class="line">PIPELINE：用于查看 PIPELINE 计划</span><br><span class="line">EXPLAIN plan select arrayJoin([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,null,null]);</span><br><span class="line"></span><br><span class="line">EXPLAIN</span><br><span class="line">SELECT arrayJoin([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, NULL, NULL])</span><br><span class="line"></span><br><span class="line">Query <span class="built_in">id</span>: 4d263f99-155f-<span class="number">4158</span>-b611-115a64acc2eb</span><br><span class="line"></span><br><span class="line">   ┌─explain─────────────────────────────────────────────────────────────────────────────────┐</span><br><span class="line"><span class="number">1.</span> │ Expression ((Project names + (Projection + Change column names to column identifiers))) │</span><br><span class="line"><span class="number">2.</span> │   ReadFromStorage (SystemOne)                                                           │</span><br><span class="line">   └─────────────────────────────────────────────────────────────────────────────────────────┘</span><br><span class="line"></span><br><span class="line"><span class="number">2</span> rows <span class="keyword">in</span> <span class="built_in">set</span>. Elapsed: <span class="number">0.001</span> sec. </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">explain select database,table,count(<span class="number">1</span>) cnt <span class="keyword">from</span> system.parts where database <span class="keyword">in</span> (<span class="string">&#x27;datasets&#x27;</span>,<span class="string">&#x27;system&#x27;</span>) group by database,table order by</span><br><span class="line">database,cnt desc limit <span class="number">2</span> by database;</span><br><span class="line"></span><br><span class="line">EXPLAIN</span><br><span class="line">SELECT</span><br><span class="line">    database,</span><br><span class="line">    `table`,</span><br><span class="line">    count(<span class="number">1</span>) AS cnt</span><br><span class="line">FROM system.parts</span><br><span class="line">WHERE database IN (<span class="string">&#x27;datasets&#x27;</span>, <span class="string">&#x27;system&#x27;</span>)</span><br><span class="line">GROUP BY</span><br><span class="line">    database,</span><br><span class="line">    `table`</span><br><span class="line">ORDER BY</span><br><span class="line">    database ASC,</span><br><span class="line">    cnt DESC</span><br><span class="line">LIMIT <span class="number">2</span> BY database</span><br><span class="line"></span><br><span class="line">Query <span class="built_in">id</span>: 4f3d43d3-4f79-<span class="number">4748</span>-a774-4cf6fd44adce</span><br><span class="line"></span><br><span class="line">   ┌─explain────────────────────────────────────────────────────────────────────┐</span><br><span class="line"><span class="number">1.</span> │ Expression (Project names)                                                 │</span><br><span class="line"><span class="number">2.</span> │   LimitBy                                                                  │</span><br><span class="line"><span class="number">3.</span> │     Expression (Before LIMIT BY)                                           │</span><br><span class="line"><span class="number">4.</span> │       Sorting (Sorting <span class="keyword">for</span> ORDER BY)                                       │</span><br><span class="line"><span class="number">5.</span> │         Expression ((Before ORDER BY + Projection))                        │</span><br><span class="line"><span class="number">6.</span> │           Aggregating                                                      │</span><br><span class="line"><span class="number">7.</span> │             Expression (Before GROUP BY)                                   │</span><br><span class="line"><span class="number">8.</span> │               Filter ((WHERE + Change column names to column identifiers)) │</span><br><span class="line"><span class="number">9.</span> │                 ReadFromSystemPartsBase                                    │</span><br><span class="line">   └────────────────────────────────────────────────────────────────────────────┘</span><br><span class="line"></span><br><span class="line"><span class="number">9</span> rows <span class="keyword">in</span> <span class="built_in">set</span>. Elapsed: <span class="number">0.002</span> sec. </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">EXPLAIN AST SELECT number <span class="keyword">from</span> system.numbers limit <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">EXPLAIN AST</span><br><span class="line">SELECT number</span><br><span class="line">FROM system.numbers</span><br><span class="line">LIMIT <span class="number">10</span></span><br><span class="line"></span><br><span class="line">Query <span class="built_in">id</span>: ef9768e7-41ab-437d-<span class="number">9707</span>-2e85703e46ef</span><br><span class="line"></span><br><span class="line">    ┌─explain─────────────────────────────────────┐</span><br><span class="line"> <span class="number">1.</span> │ SelectWithUnionQuery (children <span class="number">1</span>)           │</span><br><span class="line"> <span class="number">2.</span> │  ExpressionList (children <span class="number">1</span>)                │</span><br><span class="line"> <span class="number">3.</span> │   SelectQuery (children <span class="number">3</span>)                  │</span><br><span class="line"> <span class="number">4.</span> │    ExpressionList (children <span class="number">1</span>)              │</span><br><span class="line"> <span class="number">5.</span> │     Identifier number                       │</span><br><span class="line"> <span class="number">6.</span> │    TablesInSelectQuery (children <span class="number">1</span>)         │</span><br><span class="line"> <span class="number">7.</span> │     TablesInSelectQueryElement (children <span class="number">1</span>) │</span><br><span class="line"> <span class="number">8.</span> │      TableExpression (children <span class="number">1</span>)           │</span><br><span class="line"> <span class="number">9.</span> │       TableIdentifier system.numbers        │</span><br><span class="line"><span class="number">10.</span> │    <span class="type">Literal</span> UInt64_10                        │</span><br><span class="line">    └─────────────────────────────────────────────┘</span><br><span class="line"></span><br><span class="line"><span class="number">10</span> rows <span class="keyword">in</span> <span class="built_in">set</span>. Elapsed: <span class="number">0.001</span> sec. </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">打开全部参数</span><br><span class="line">EXPLAIN header=<span class="number">1</span>, actions=<span class="number">1</span>,description=<span class="number">1</span> SELECT number <span class="keyword">from</span> system.numbers limit <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//开启三元运算符优化 </span><br><span class="line">SET optimize_if_chain_to_multiif = <span class="number">1</span>; </span><br><span class="line">//再次查看语法优化 </span><br><span class="line">EXPLAIN SYNTAX SELECT number = <span class="number">1</span> ? <span class="string">&#x27;hello&#x27;</span> : (number = <span class="number">2</span> ? <span class="string">&#x27;world&#x27;</span> : <span class="string">&#x27;atguigu&#x27;</span>) FROM numbers(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">EXPLAIN PIPELINE</span><br><span class="line">SELECT</span><br><span class="line">    database,</span><br><span class="line">    `table`,</span><br><span class="line">    count(<span class="number">1</span>) AS cnt</span><br><span class="line">FROM system.parts</span><br><span class="line">WHERE database IN (<span class="string">&#x27;datasets&#x27;</span>, <span class="string">&#x27;system&#x27;</span>)</span><br><span class="line">GROUP BY</span><br><span class="line">    database,</span><br><span class="line">    `table`</span><br><span class="line">ORDER BY</span><br><span class="line">    database ASC,</span><br><span class="line">    cnt DESC</span><br><span class="line">LIMIT <span class="number">2</span> BY database</span><br><span class="line"></span><br><span class="line">Query <span class="built_in">id</span>: 58b9bb5b-0abc-47de-<span class="number">8322</span>-c1af458e3e54</span><br><span class="line"></span><br><span class="line">    ┌─explain───────────────────────────────────────────┐</span><br><span class="line"> <span class="number">1.</span> │ (Expression)                                      │</span><br><span class="line"> <span class="number">2.</span> │ ExpressionTransform                               │</span><br><span class="line"> <span class="number">3.</span> │   (LimitBy)                                       │</span><br><span class="line"> <span class="number">4.</span> │   LimitByTransform                                │</span><br><span class="line"> <span class="number">5.</span> │     (Expression)                                  │</span><br><span class="line"> <span class="number">6.</span> │     ExpressionTransform                           │</span><br><span class="line"> <span class="number">7.</span> │       (Sorting)                                   │</span><br><span class="line"> <span class="number">8.</span> │       MergingSortedTransform <span class="number">4</span> → <span class="number">1</span>                │</span><br><span class="line"> <span class="number">9.</span> │         MergeSortingTransform × <span class="number">4</span>                 │</span><br><span class="line"><span class="number">10.</span> │           LimitsCheckingTransform × <span class="number">4</span>             │</span><br><span class="line"><span class="number">11.</span> │             PartialSortingTransform × <span class="number">4</span>           │</span><br><span class="line"><span class="number">12.</span> │               (Expression)                        │</span><br><span class="line"><span class="number">13.</span> │               ExpressionTransform × <span class="number">4</span>             │</span><br><span class="line"><span class="number">14.</span> │                 (Aggregating)                     │</span><br><span class="line"><span class="number">15.</span> │                 Resize <span class="number">1</span> → <span class="number">4</span>                      │</span><br><span class="line"><span class="number">16.</span> │                   AggregatingTransform            │</span><br><span class="line"><span class="number">17.</span> │                     (Expression)                  │</span><br><span class="line"><span class="number">18.</span> │                     ExpressionTransform           │</span><br><span class="line"><span class="number">19.</span> │                       (Filter)                    │</span><br><span class="line"><span class="number">20.</span> │                       FilterTransform             │</span><br><span class="line"><span class="number">21.</span> │                         (ReadFromSystemPartsBase) │</span><br><span class="line">    └───────────────────────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+<h3 id="建表优化"><a class="markdownIt-Anchor" href="#建表优化">#</a> 建表优化</h3>
+<h4 id="数据类型-2"><a class="markdownIt-Anchor" href="#数据类型-2">#</a> 数据类型</h4>
+<p>建表时能用数值型或日期时间型表示的字段就不要用字符串，全 String 类型在以 Hive 为中心的数仓建设中常见，但 ClickHouse 环境不应受此影响。 虽然 ClickHouse 底层将 DateTime 存储为时间戳 Long 类型，但不建议存储 Long 类型， 因为 DateTime 不需要经过函数转换处理，执行效率高、可读性好。</p>
+<p>官方已经指出 Nullable 类型几乎总是会拖累性能，因为存储 Nullable 列时需要创建一个 额外的文件来存储 NULL 的标记，并且 Nullable 列无法被索引。因此除非极特殊情况，应直 接使用字段默认值表示空，或者自行指定一个在业务中无意义的值（例如用 - 1 表示没有商品 ID）。</p>
+<p>存在 null 的时候会多存一列 null.bin</p>
+<p>null 无法被索引，效率</p>
+<h4 id="分区和索引"><a class="markdownIt-Anchor" href="#分区和索引">#</a> 分区和索引</h4>
+<p>分区粒度根据业务特点决定，不宜过粗或过细。一般选择按天分区，也可以指定为 Tuple ()， 以单表一亿数据为例，分区大小控制在 10-30 个为最佳。</p>
+<p>必须指定索引列，ClickHouse 中的索引列即排序列，通过 order by 指定，一般在查询条件中经常被用来充当筛选条件的属性被纳入进来；可以是单一维度，也可以是组合维度的索 引；通常需要满足高级列在前、查询频率大的在前原则；还有基数特别大的不适合做索引列， 如用户表的 userid 字段；通常筛选后的数据满足在百万以内为最佳。</p>
+<h4 id="表参数"><a class="markdownIt-Anchor" href="#表参数">#</a> 表参数</h4>
+<p>Index_granularity 是用来控制索引粒度的，默认是 8192，如非必须不建议调整。</p>
+<p>如果表中不是必须保留全量历史数据，建议指定 TTL（生存时间值），可以免去手动过期历史数据的麻烦，TTL 也可以通过 alter table 语句随时修改。</p>
+<h4 id="写入和删除优化"><a class="markdownIt-Anchor" href="#写入和删除优化">#</a> 写入和删除优化</h4>
+<p>（1）尽量不要执行单条或小批量删除和插入操作，这样会产生小分区文件，给后台 Merge 任务带来巨大压力</p>
+<p>（2）不要一次写入太多分区，或数据写入太快，数据写入太快会导致 Merge 速度跟不上而报错，一般建议每秒钟发起 2-3 次写入操作，每次操作写入 2w~5w 条数据（依服务器 性能而定）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">“ Too many parts 处理 ” ：使用 WAL 预写日志，提高写入性能。 </span><br><span class="line">in_memory_parts_enable_wal 默认为 true</span><br><span class="line"></span><br><span class="line">在服务器内存充裕的情况下增加内存配额，一般通过 max_memory_usage 来实现 </span><br><span class="line">在服务器内存不充裕的情况下，建议将超出部分内容分配到系统硬盘上，但会降低执行 速度，一般通过max_bytes_before_external_group_by、max_bytes_before_external_sort 参数来实现。</span><br></pre></td></tr></table></figure>
+<h4 id="配置优化"><a class="markdownIt-Anchor" href="#配置优化">#</a> 配置优化</h4>
+<p>配置项主要在 config.xml 或 users.xml 中， 基本上都在 users.xml 里</p>
+<p>config.xml 的配置项</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9jbGlja2hvdXNlLnRlY2gvZG9jcy9lbi9vcGVyYXRpb25zL3NlcnZlci1jb25maWd1cmF0aW9uLXBhcmFtZXRlcnMvc2V0dGluZ3Mv">https://clickhouse.tech/docs/en/operations/server-configuration-parameters/settings/</span></p>
+<p>users.xml 的配置项</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9jbGlja2hvdXNlLnRlY2gvZG9jcy9lbi9vcGVyYXRpb25zL3NldHRpbmdzL3NldHRpbmdzLw==">https://clickhouse.tech/docs/en/operations/settings/settings/</span></p>
+<h3 id="语法优化"><a class="markdownIt-Anchor" href="#语法优化">#</a> 语法优化</h3>
+<p>ClickHouse 的 SQL 优化规则是基于 RBO (Rule Based Optimization)</p>
+<h4 id="count-优化"><a class="markdownIt-Anchor" href="#count-优化">#</a> count 优化</h4>
+<p>在调用 count 函数时，如果使用的是 count () 或者 count (*)，且没有 where 条件，则 会直接使用 system.tables 的 total_rows</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN SELECT count()FROM datasets.hits_v1; </span><br><span class="line"></span><br><span class="line">Union  Expression (Projection)  Expression (Before ORDER BY and SELECT)  MergingAggregated  ReadNothing (Optimized trivial count)</span><br></pre></td></tr></table></figure>
+<p>Optimized trivial count ，这是对 count 的优化。 如果 count 具体的列字段，则不会使用此项优化：</p>
+<h4 id="消除子查询重复字段"><a class="markdownIt-Anchor" href="#消除子查询重复字段">#</a> 消除子查询重复字段</h4>
+<p>子查询中有两个重复的 id 字段，会被去重</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN SYNTAX SELECT  a.UserID,  b.VisitID,  a.URL,  b.UserID  FROM  hits_v1 AS a  LEFT JOIN (  SELECT  UserID,  UserID as HaHa,  VisitID  FROM visits_v1) AS b  USING (UserID)  limit 3; </span><br><span class="line"></span><br><span class="line">//返回优化语句： SELECT  UserID,  VisitID,  URL,  b.UserID FROM hits_v1 AS a ALL LEFT JOIN (  SELECT  UserID,  VisitID  FROM visits_v1 ) AS b USING (UserID) LIMIT 3</span><br></pre></td></tr></table></figure>
+<h4 id="谓词下推"><a class="markdownIt-Anchor" href="#谓词下推">#</a> 谓词下推</h4>
+<p>当 group by 有 having 子句，但是没有 with cube、with rollup 或者 with totals 修饰的时 候，having 过滤会下推到 where 提前过滤。例如下面的查询，HAVING name 变成了 WHERE name，在 group by 之前过滤：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN SYNTAX SELECT UserID FROM hits_v1 GROUP BY UserID HAVING UserID = <span class="string">&#x27;8585742290196126178&#x27;</span>; </span><br><span class="line"></span><br><span class="line">//返回优化语句 SELECT UserID FROM hits_v1 WHERE UserID = \<span class="string">&#x27;8585742290196126178\&#x27; GROUP BY UserID</span></span><br><span class="line"><span class="string">EXPLAIN SYNTAX SELECT * FROM (  SELECT UserID  FROM visits_v1 ) WHERE UserID = &#x27;</span><span class="number">8585742290196126178</span><span class="string">&#x27; </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//返回优化后的语句 </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">SELECT UserID FROM (  SELECT UserID  FROM visits_v1  WHERE UserID = \&#x27;8585742290196126178\&#x27; ) WHERE UserID = \&#x27;8585742290196126178\&#x27;</span></span><br></pre></td></tr></table></figure>
+<h4 id="聚合计算外推"><a class="markdownIt-Anchor" href="#聚合计算外推">#</a> 聚合计算外推</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">聚合函数内的计算，会外推，例如： </span><br><span class="line"></span><br><span class="line">EXPLAIN SYNTAX SELECT <span class="built_in">sum</span>(UserID * <span class="number">2</span>) FROM visits_v1 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//返回优化后的语句 </span><br><span class="line">SELECT <span class="built_in">sum</span>(UserID) * <span class="number">2</span> FROM visits_v1</span><br></pre></td></tr></table></figure>
+<h4 id="聚合函数消除"><a class="markdownIt-Anchor" href="#聚合函数消除">#</a> 聚合函数消除</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">如果对聚合键，也就是 group by key 使用 <span class="built_in">min</span>、<span class="built_in">max</span>、<span class="built_in">any</span> 聚合函数，则将函数消除， 例如： </span><br><span class="line">EXPLAIN SYNTAX SELECT  <span class="built_in">sum</span>(UserID * <span class="number">2</span>),  <span class="built_in">max</span>(VisitID),  <span class="built_in">max</span>(UserID) FROM visits_v1 GROUP BY UserID</span><br><span class="line"></span><br><span class="line">SELECT  <span class="built_in">sum</span>(UserID) * <span class="number">2</span>,  <span class="built_in">max</span>(VisitID),  UserID FROM visits_v1 GROUP BY UserID</span><br></pre></td></tr></table></figure>
+<h4 id="删除重复order-by-key"><a class="markdownIt-Anchor" href="#删除重复order-by-key">#</a> 删除重复 order by key</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN SYNTAX SELECT * FROM visits_v1 ORDER BY  UserID ASC,  UserID ASC,  VisitID ASC, VisitID ASC </span><br><span class="line"></span><br><span class="line">//返回优化后的语句： </span><br><span class="line"></span><br><span class="line">select …… FROM visits_v1 ORDER BY  UserID ASC, VisitID ASC</span><br></pre></td></tr></table></figure>
+<h4 id="删除重复limit-by-key"><a class="markdownIt-Anchor" href="#删除重复limit-by-key">#</a> 删除重复 limit by key</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN SYNTAX SELECT * FROM visits_v1 LIMIT <span class="number">3</span> BY  VisitID,  VisitID LIMIT <span class="number">10</span> </span><br><span class="line">//返回优化后的语句： </span><br><span class="line">select …… FROM visits_v1 LIMIT <span class="number">3</span> BY VisitID LIMIT <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<h4 id="删除重复using-key"><a class="markdownIt-Anchor" href="#删除重复using-key">#</a> 删除重复 using key</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN SYNTAX SELECT  a.UserID,  a.UserID,  b.VisitID,  a.URL,  b.UserID  FROM hits_v1 AS a LEFT JOIN visits_v1 AS b USING (UserID, UserID) </span><br><span class="line"></span><br><span class="line">//返回优化后的语句：</span><br><span class="line"></span><br><span class="line"> SELECT  UserID,  UserID,  VisitID,  URL,  b.UserID FROM hits_v1 AS a ALL LEFT JOIN visits_v1 AS b USING (UserID)</span><br></pre></td></tr></table></figure>
+<h4 id="标量替换"><a class="markdownIt-Anchor" href="#标量替换">#</a> 标量替换</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">如果子查询只返回一行数据，在被引用的时候用标量替换，例如下面语句中的 total_disk_usage 字段： </span><br><span class="line"></span><br><span class="line">EXPLAIN SYNTAX WITH  (  SELECT <span class="built_in">sum</span>(<span class="built_in">bytes</span>)  FROM system.parts  WHERE active  ) AS total_disk_usage SELECT  (<span class="built_in">sum</span>(<span class="built_in">bytes</span>) / total_disk_usage) * <span class="number">100</span> AS table_disk_usage,  table FROM system.parts GROUP BY table ORDER BY table_disk_usage DESC LIMIT <span class="number">10</span>; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//返回优化后的语句： </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">WITH CAST(<span class="number">0</span>, \<span class="string">&#x27;UInt64\&#x27;) AS total_disk_usage SELECT  (sum(bytes) / total_disk_usage) * 100 AS table_disk_usage,  table FROM system.parts GROUP BY table ORDER BY table_disk_usage DESC LIMIT 10</span></span><br></pre></td></tr></table></figure>
+<h4 id="三元运算符优化"><a class="markdownIt-Anchor" href="#三元运算符优化">#</a> 三元运算符优化</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">如果开启了 optimize_if_chain_to_multiif 参数，三元运算符会被替换成 multiIf 函数， 例如： </span><br><span class="line"></span><br><span class="line">EXPLAIN SYNTAX SELECT number = <span class="number">1</span> ? <span class="string">&#x27;hello&#x27;</span> : (number = <span class="number">2</span> ? <span class="string">&#x27;world&#x27;</span> : <span class="string">&#x27;atguigu&#x27;</span>) FROM numbers(<span class="number">10</span>) settings optimize_if_chain_to_multiif = <span class="number">1</span>; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//返回优化后的语句： </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SELECT multiIf(number = <span class="number">1</span>, \<span class="string">&#x27;hello\&#x27;, number = 2, \&#x27;world\&#x27;, \&#x27;atguigu\&#x27;) FROM numbers(10) SETTINGS optimize_if_chain_to_multiif = 1</span></span><br></pre></td></tr></table></figure>
+<h3 id="单表查询优化"><a class="markdownIt-Anchor" href="#单表查询优化">#</a> 单表查询优化</h3>
+<h4 id="prewhere替代where"><a class="markdownIt-Anchor" href="#prewhere替代where">#</a> prewhere 替代 where</h4>
+<p>where 过滤行，选出列</p>
+<p>Prewhere 和 where 语句的作用相同，用来过滤数据。不同之处在于 prewhere 只支持 *MergeTree 族系列引擎的表，首先会读取指定的列数据，来判断数据过滤，等待数据过滤 之后再读取 select 声明的列字段来补全其余属性。</p>
+<p>当查询列明显多于筛选列时使用 Prewhere 可十倍提升查询性能，Prewhere 会自动优化 执行过滤阶段的数据读取方式，降低 io 操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关闭where自动优化为prewhere</span></span><br><span class="line"><span class="built_in">set</span> optimize_move_to_prewhere=<span class="number">0</span>; </span><br></pre></td></tr></table></figure>
+<p>默认情况，我们肯定不会关闭 where 自动优化成 prewhere，但是某些场景即使开启优 化，也不会自动转换成 prewhere，需要手动指定 prewhere：</p>
+<ul>
+<li>使用常量表达式</li>
+<li>使用默认值为 alias 类型的字段</li>
+<li>包含了 arrayJOIN，globalIn，globalNotIn 或者 indexHint 的查询</li>
+<li>select 查询的列字段和 where 的谓词相同</li>
+<li>使用了主键字段</li>
+</ul>
+<h4 id="数据采样"><a class="markdownIt-Anchor" href="#数据采样">#</a> 数据采样</h4>
+<p>通过采样运算可极大提升数据分析的性能</p>
+<p>SELECT Title,count (*) AS PageViews FROM hits_v1 SAMPLE 0.1  WHERE CounterID =57 GROUP BY Title ORDER BY PageViews DESC LIMIT 1000   #代表采样 10% 的数据，也可以是具体的条数</p>
+<p>采样修饰符只有在 MergeTree engine 表中才有效，且在创建表时需要指定采样策略。</p>
+<h4 id="列裁剪-分区裁剪"><a class="markdownIt-Anchor" href="#列裁剪-分区裁剪">#</a> 列裁剪、分区裁剪</h4>
+<p>数据量太大时应避免使用 select * 操作，查询的性能会与查询的字段大小和数量成线性 表换，字段越少，消耗的 io 资源越少，性能就会越高。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">分区裁剪就是只读取需要的分区，在过滤条件中指定。 </span><br><span class="line"></span><br><span class="line">select WatchID,  JavaEnable,  Title,  GoodEvent,  EventTime,  EventDate,  CounterID,  ClientIP,  ClientIP6,  RegionID,  UserID <span class="keyword">from</span> datasets.hits_v1 where EventDate=<span class="string">&#x27;2014-03-23&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="order-by结合limitwhere"><a class="markdownIt-Anchor" href="#order-by结合limitwhere">#</a> order by 结合 limit，where</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">千万以上数据集进行 order by 查询时需要搭配 where 条件和 limit 语句一起使用。 </span><br><span class="line"><span class="comment">#正例： </span></span><br><span class="line">SELECT UserID,Age FROM hits_v1 WHERE CounterID=<span class="number">57</span> ORDER BY Age DESC LIMIT <span class="number">1000</span></span><br></pre></td></tr></table></figure>
+<h4 id="避免构建虚拟列"><a class="markdownIt-Anchor" href="#避免构建虚拟列">#</a> 避免构建虚拟列</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">如非必须，不要在结果集上构建虚拟列，虚拟列非常消耗资源浪费性能，可以考虑在前 端进行处理，或者在表中构造实际字段进行额外存储。</span><br><span class="line"></span><br><span class="line">SELECT Income,Age,Income/Age <span class="keyword">as</span> IncRate FROM datasets.hits_v1; </span><br><span class="line"></span><br><span class="line">正例：拿到 Income 和 Age 后，考虑在前端进行处理，或者在表中构造实际字段进行额外存储</span><br><span class="line"></span><br><span class="line">SELECT Income,Age FROM datasets.hits_v1;</span><br></pre></td></tr></table></figure>
+<h4 id="uniqcombined-替代distinct"><a class="markdownIt-Anchor" href="#uniqcombined-替代distinct">#</a> uniqcombined 替代 distinct</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">性能可提升 <span class="number">10</span> 倍以上，uniqCombined 底层采用类似 HyperLogLog 算法实现，能接收 <span class="number">2</span>% 左右的数据误差，可直接使用这种去重方式提升查询性能。Count(distinct )会使用 uniqExact 精确去重</span><br><span class="line"></span><br><span class="line">反例： select count(distinct rand()) <span class="keyword">from</span> hits_v1; </span><br><span class="line">正例： SELECT uniqCombined(rand()) <span class="keyword">from</span> datasets.hits_v1</span><br></pre></td></tr></table></figure>
+<p>使用物化视图</p>
+<h4 id="其他注意事项"><a class="markdownIt-Anchor" href="#其他注意事项">#</a> 其他注意事项</h4>
+<p>（1）查询熔断 为了避免因个别慢查询引起的服务雪崩的问题，除了可以为单个查询设置超时以外，还 可以配置周期熔断，在一个查询周期内，如果用户频繁进行慢查询操作超出规定阈值后将无 法继续进行查询操作。</p>
+<p>（2）关闭虚拟内存 物理内存和虚拟内存的数据交换，会导致查询变慢，资源允许的情况下关闭虚拟内存。</p>
+<p>（3）配置 join_use_nulls 为每一个账户添加 join_use_nulls 配置，左表中的一条记录在右表中不存在，右表的相应字段会返回该字段相应数据类型的默认值，而不是标准 SQL 中的 Null 值。</p>
+<p>（4）批量写入时先排序 批量写入数据时，必须控制每个批次的数据中涉及到的分区的数量，在写入之前最好对 需要导入的数据进行排序。无序的数据或者涉及的分区太多，会导致 ClickHouse 无法及时对 新导入的数据进行合并，从而影响查询性能。</p>
+<p>（5）关注 CPU cpu 一般在 50% 左右会出现查询波动，达到 70% 会出现大范围的查询超时，cpu 是最关 键的指标，要非常关注。</p>
+<h3 id="多表查询优化"><a class="markdownIt-Anchor" href="#多表查询优化">#</a> 多表查询优化</h3>
+<p>A join  B   B 加载到内存，A 的每条数据去内存查</p>
+<h4 id="用in代替join"><a class="markdownIt-Anchor" href="#用in代替join">#</a> 用 in 代替 join</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">当多表联查时，查询的数据仅从其中一张表出时，可考虑用 IN 操作而不是 JOIN </span><br><span class="line"></span><br><span class="line">insert into hits_v2 select a.* <span class="keyword">from</span> hits_v1 a where a. CounterID <span class="keyword">in</span> (select CounterID <span class="keyword">from</span> visits_v1);</span><br></pre></td></tr></table></figure>
+<h4 id="大小表join"><a class="markdownIt-Anchor" href="#大小表join">#</a> 大小表 join</h4>
+<p>小表在右，右表加载入内存</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">多表 join 时要满足小表在右的原则，右表关联时被加载到内存中与左表进行比较， ClickHouse 中无论是 Left join 、Right join 还是 Inner join 永远都是拿着右表中的每一条记录 到左表中查找该记录是否存在，所以右表必须是小表。 </span><br><span class="line"></span><br><span class="line">（<span class="number">1</span>）小表在右 </span><br><span class="line">insert into table hits_v2 select a.* <span class="keyword">from</span> hits_v1 a left join visits_v2 b on a. CounterID=b. CounterID;</span><br></pre></td></tr></table></figure>
+<h4 id="谓词下推-2"><a class="markdownIt-Anchor" href="#谓词下推-2">#</a> 谓词下推</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ClickHouse 在 join 查询时不会主动发起谓词下推的操作，需要每个子查询提前完成过滤操作，需要注意的是，是否执行谓词下推，对性能影响差别很大（新版本中已经不存在此问 题，但是需要注意谓词的位置的不同依然有性能的差异）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">insert into hits_v2 select a.* <span class="keyword">from</span> hits_v1 a left join visits_v2 b on a. CounterID=b. CounterID where a.EventDate = <span class="string">&#x27;2014-03-17&#x27;</span>; </span><br><span class="line"></span><br><span class="line">insert into hits_v2 select a.* <span class="keyword">from</span> (  select * <span class="keyword">from</span>  hits_v1  where EventDate = <span class="string">&#x27;2014-03-17&#x27;</span> ) a left join visits_v2 b on a. CounterID=b. CounterID;</span><br></pre></td></tr></table></figure>
+<h4 id="分布式表使用global"><a class="markdownIt-Anchor" href="#分布式表使用global">#</a> 分布式表使用 global</h4>
+<p>两张分布式表上的 IN 和 JOIN 之前必须加上 GLOBAL 关键字，右表只会在接收查询请求的那个节点查询一次，并将其分发到其他节点上。如果不加 GLOBAL 关键字的话，每个节点 都会单独发起一次对右表的查询，而右表又是分布式表，就导致右表一共会被查询 N² 次（N 是该分布式表的分片数量），这就是查询放大，会带来很大开销。</p>
+<h4 id="使用字典表"><a class="markdownIt-Anchor" href="#使用字典表">#</a> 使用字典表</h4>
+<p>将一些需要关联分析的业务创建成字典表进行 join 操作，前提是字典表不宜太大，因为字典表会常驻内存</p>
+<h4 id="提前过滤"><a class="markdownIt-Anchor" href="#提前过滤">#</a> 提前过滤</h4>
+<p>通过增加逻辑过滤可以减少数据扫描，达到提高执行速度及降低内存消耗的目的</p>
+<p>ck 的 join:</p>
+<p>1、原理:</p>
+<p>右表加载到内存，再去匹配</p>
+<p>2、为什么 join 不行：因为 1</p>
+<p>3、非要使用，怎么用比较好:</p>
+<p>能过滤先过滤，特别是右表</p>
+<p>右边放小表</p>
+<p>特殊场景可以考虑使用字典表</p>
+<p>可以替换的话，尽量不要用 join, 比如用 in 实现</p>
+<h3 id="数据一致性"><a class="markdownIt-Anchor" href="#数据一致性">#</a> 数据一致性</h3>
+<p>我们在使用 ReplacingMergeTree、SummingMergeTree 这类表引擎的时候，会出现短暂 数据不一致的情况。</p>
+<h4 id="手动optimize"><a class="markdownIt-Anchor" href="#手动optimize">#</a> 手动 OPTIMIZE</h4>
+<p>在写入数据后，立刻执行 OPTIMIZE 强制触发新写入分区的合并动作。</p>
+<p>OPTIMIZE TABLE test_a FINAL;</p>
+<h4 id="通过group-by去重"><a class="markdownIt-Anchor" href="#通过group-by去重">#</a> 通过 Group by 去重</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">执行去重的查询 </span><br><span class="line"></span><br><span class="line">SELECT  user_id ,  argMax(score, create_time) AS score,  argMax(deleted, create_time) AS deleted,  <span class="built_in">max</span>(create_time) AS ctime FROM test_a GROUP BY user_id HAVING deleted = <span class="number">0</span>; </span><br><span class="line"></span><br><span class="line">函数说明：  argMax(field1，field2):按照 field2 的最大值取 field1 的值。 当我们更新数据时，会写入一行新的数据，例如上面语句中，通过查询最大的 create_time 得到修改后的 score 字段值。</span><br><span class="line"></span><br><span class="line">加标记字段实现</span><br></pre></td></tr></table></figure>
+<h4 id="final查询去重"><a class="markdownIt-Anchor" href="#final查询去重">#</a> final 查询去重</h4>
+<p>在查询语句后增加 FINAL 修饰符，这样在查询的过程中将会执行 Merge 的特殊逻辑（例 如数据去重，预聚合等）。</p>
+<p>20.5 之后版本，final 是多线程，但是读取分区是串行的。</p>
+<h3 id="物化视图"><a class="markdownIt-Anchor" href="#物化视图">#</a> 物化视图</h3>
+<p>普通视图不保存数据，保存的仅仅是查询语句，查询的时候还是从原表读取数据，可以将普通视图理解为是个子查询。物化视图则是把查询的结果根据相应的引擎存入到了磁盘或内存中，对数据重新进行了组织，你可以理解物化视图是完全的一张新表。ClickHouse 的物化视图是一种查询结果的持久化</p>
+<p>优点：查询速度快，要是把物化视图这些规则全部写好，它比原数据查询快了很多，总的行数少了，因为都预计算好了。</p>
+<p>缺点：它的本质是一个流式数据的使用场景，是累加式的技术，所以要用历史数据做去重、去核这样的分析，在物化视图里面是不太好用的。在某些场景的使用也是有限的。而且 如果一张表加了好多物化视图，在写这张表的时候，就会消耗很多机器的资源，比如数据带 宽占满、存储一下子增加了很多。</p>
+<p>也是 create 语法，会创建一个隐藏的目标表来保存视图数据。也可以 TO 表名，保存到 一张显式的表。没有加 TO 表名，表名默认就是 .inner. 物化视图名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> CREATE [MATERIALIZED] VIEW [IF NOT EXISTS] [db.]table_name [TO[db.]name] [ENGINE = engine] [POPULATE] AS SELECT ...</span><br><span class="line">物化视图限制</span><br><span class="line"><span class="number">1.</span>必须指定物化视图的 engine 用于数据存储 </span><br><span class="line"><span class="number">2.</span>TO [db].[table]语法的时候，不得使用 POPULATE。 </span><br><span class="line"><span class="number">3.</span>查询语句(select）可以包含下面的子句： DISTINCT, GROUP BY, ORDER BY, LIMIT… </span><br><span class="line"><span class="number">4.</span>物化视图的 alter 操作有些限制，操作起来不大方便。 </span><br><span class="line"><span class="number">5.</span>若物化视图的定义使用了 TO [db.]name 子语句，则可以将目标表的视图 卸载 DETACH 再装载 ATTACH</span><br><span class="line"></span><br><span class="line">clickhouse 官方并不推荐使用 POPULATE，因为在创建物化视图的过程中同时写入 的数据不能被插入物化视图。</span><br><span class="line">CREATE MATERIALIZED VIEW hits_mv ENGINE=SummingMergeTree PARTITION BY toYYYYMM(EventDate) ORDER BY (EventDate, intHash32(UserID)) AS SELECT UserID, EventDate, count(URL) <span class="keyword">as</span> ClickCount, <span class="built_in">sum</span>(Income) AS IncomeSum FROM hits_test WHERE EventDate &gt;= <span class="string">&#x27;2014-03-20&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>如果需要历史数据，手动 insert 到 view 里</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入增量数据 </span></span><br><span class="line">INSERT INTO hits_test SELECT  EventDate,  CounterID,  UserID,  URL,  Income FROM hits_v1 WHERE EventDate &gt;= <span class="string">&#x27;2014-03-23&#x27;</span> limit <span class="number">10</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">#查询物化视图 </span></span><br><span class="line"></span><br><span class="line">SELECT * FROM hits_mv;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询物化视图</span></span><br><span class="line">`.innner.hits_mv`</span><br></pre></td></tr></table></figure>
+<h3 id="materializemysql"><a class="markdownIt-Anchor" href="#materializemysql">#</a> MaterializeMysql</h3>
+<p>ClickHouse 20.8.2.3 版本新增加了 MaterializeMySQL 的 database 引擎，该 database 能 映 射 到 MySQL 中 的 某 个 database ， 并 自 动 在 ClickHouse 中 创 建 对 应 的 ReplacingMergeTree。ClickHouse 服务做为 MySQL 副本，读取 Binlog 并执行 DDL 和 DML 请 求，实现了基于 MySQL Binlog 机制的业务数据库实时同步功能。</p>
+<p>（1）MaterializeMySQL 同时支持全量和增量同步，在 database 创建之初会全量同步 MySQL 中的表和数据，之后则会通过 binlog 进行增量同步。</p>
+<p>（2）MaterializeMySQL database 为其所创建的每张 ReplacingMergeTree 自动增加了 _sign 和 _version 字段。 其中，_version 用作 ReplacingMergeTree 的 ver 版本参数，每当监听到 insert、update 和 delete 事件时，在 databse 内全局自增。而 _sign 则用于标记是否被删除，取值 1 或 者 -1。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">（<span class="number">1</span>）确保 MySQL 开启了 binlog 功能，且格式为 ROW 打开/etc/my.cnf,在[mysqld]下添加：</span><br><span class="line">server-<span class="built_in">id</span>=<span class="number">1</span> </span><br><span class="line">log-<span class="built_in">bin</span>=mysql-<span class="built_in">bin</span> </span><br><span class="line">binlog_format=ROW </span><br><span class="line"></span><br><span class="line">（<span class="number">2</span>）开启 GTID 模式 如果如果 clickhouse 使用的是 <span class="number">20.8</span> prestable 之后发布的版本，那么 MySQL 还需要配置 开启 GTID 模式, 这种方式在 mysql 主从模式下可以确保数据同步的一致性(主从切换时)。 </span><br><span class="line">gtid-mode=on </span><br><span class="line">enforce-gtid-consistency=<span class="number">1</span> <span class="comment"># 设置为主从强一致性 </span></span><br><span class="line">log-slave-updates=<span class="number">1</span> <span class="comment"># 记录日志</span></span><br></pre></td></tr></table></figure>
+<h3 id="监控clickhouse"><a class="markdownIt-Anchor" href="#监控clickhouse">#</a> 监控 clickhouse</h3>
+<p>ClickHouse 运行时会将一些个自身的运行状态记录到众多系统表中 (system.*)。所以我们对于 CH 自身的一些运行指标的监控数据，也主要来自这些系统表</p>
+<p>ClickHouse 从 v20.1.2.4 开始，内置了对接 Prometheus 的功能，配置的方式也很简单，可以将其作为 Prometheus 的 Endpoint 服务，从而自动的将 metrics 、 events 和 asynchronous_metrics 三张系统的表的数据发送给 Prometheus。</p>
+<p>安装 Prometheus，修改配置文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">scrape_configs:</span></span><br><span class="line">  <span class="comment"># The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">&quot;prometheus&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># metrics_path defaults to &#x27;/metrics&#x27;</span></span><br><span class="line">    <span class="comment"># scheme defaults to &#x27;http&#x27;.</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&quot;localhost:9090&quot;</span>]</span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">&quot;clickhouse&quot;</span></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&quot;hadoop100:9363&quot;</span>]</span><br></pre></td></tr></table></figure>
+<p>启动 Prometheus 和 grafana</p>
+<p>修改 clickhouse 配置文件 config.xml，重启服务</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">prometheus</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">endpoint</span>&gt;</span>/metrics<span class="tag">&lt;/<span class="name">endpoint</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">port</span>&gt;</span>9363<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">metrics</span>&gt;</span>true<span class="tag">&lt;/<span class="name">metrics</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">events</span>&gt;</span>true<span class="tag">&lt;/<span class="name">events</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">asynchronous_metrics</span>&gt;</span>true<span class="tag">&lt;/<span class="name">asynchronous_metrics</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">prometheus</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>访问 web：<span class="exturl" data-url="aHR0cDovL3gueC54Lng6OTM2My9tZXRyaWNz">http://x.x.x.x:9363/metrics</span>  确认开启</p>
+<p>配置 grafana</p>
+<p>配置 datasource</p>
+<p>添加 dashboard</p>
+<h3 id="数据备份"><a class="markdownIt-Anchor" href="#数据备份">#</a> 数据备份</h3>
+<p><span class="exturl" data-url="aHR0cHM6Ly9jbGlja2hvdXNlLnRlY2gvZG9jcy9lbi9vcGVyYXRpb25zL2JhY2t1cC8=">https://clickhouse.tech/docs/en/operations/backup/</span></p>
+<h4 id="手动备份"><a class="markdownIt-Anchor" href="#手动备份">#</a> 手动备份</h4>
+<p>ClickHouse 允许使用 ALTER TABLE … FREEZE PARTITION … 查询创建表分区的本地副本。 这是利用硬链接 (hardlink) 到 /var/lib/clickhouse/shadow/ 文件夹中实现的，所以它通常不会因为旧数据而占用额外的磁盘空间。 创建的文件副本不由 ClickHouse 服务器处理，所以不需要任何额外的外部系统就有一个简单的备份。防止硬件问题，最好将它们远程复制到另一个位置，然后删除本地副本。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">5.1.1 创建备份路径 </span><br><span class="line">（1）创建用于存放备份数据的目录 shadow </span><br><span class="line">sudo mkdir -p /var/lib/clickhouse/shadow/ </span><br><span class="line">如果目录存在，先清空目录下的数据 </span><br><span class="line">5.1.2 执行备份命令 </span><br><span class="line">echo -n &#x27;alter table t_order_mt freeze&#x27; | clickhouse-client </span><br><span class="line">5.1.3 将备份数据保存到其他路径 </span><br><span class="line">#创建备份存储路径 </span><br><span class="line">sudo mkdir -p /var/lib/clickhouse/backup/ </span><br><span class="line">#拷贝数据到备份路径 </span><br><span class="line">sudo cp -r /var/lib/clickhouse/shadow/  </span><br><span class="line">/var/lib/clickhouse/backup/my-backup-name </span><br><span class="line">#为下次备份准备，删除 shadow 下的数据 </span><br><span class="line">sudo rm -rf /var/lib/clickhouse/shadow/* </span><br><span class="line">5.1.4 恢复数据 </span><br><span class="line">（1）模拟删除备份过的表 </span><br><span class="line">echo &#x27; drop table t_order_mt &#x27; | clickhouse-client </span><br><span class="line">（2）重新创建表 </span><br><span class="line">cat events.sql | clickhouse-client </span><br><span class="line">（3）将备份复制到 detached 目录 </span><br><span class="line">sudo cp -rl </span><br><span class="line">backup/my-backup-name/1/store/cb1/cb176503-cd88-4ea8-8b17-6503cd888ea8/* data/default/t_order_mt/detached/ </span><br><span class="line">ClickHouse 使用文件系统硬链接来实现即时备份，而不会导致 ClickHouse 服务停机（或锁定）。这些硬链接可以进一步用于有效的备份存储。在支持硬链接的文件系统（例如本地文件系统或 NFS）上，将 cp 与-l 标志一起使用（或将 rsync 与–hard-links 和–numeric-ids 标志一起使用）以避免复制数据。</span><br><span class="line"></span><br><span class="line">注意：仅拷贝分区目录，注意目录所属的用户要是 clickhouse </span><br><span class="line">（4）执行 attach </span><br><span class="line">echo &#x27;alter table t_order_mt attach partition 20200601&#x27; | clickhouse-client </span><br><span class="line">（5）查看数据 </span><br><span class="line">echo &#x27;select count() from t_order_mt&#x27; | clickhouse-client </span><br></pre></td></tr></table></figure>
+<h4 id="clickhouse-backup"><a class="markdownIt-Anchor" href="#clickhouse-backup">#</a> clickhouse-backup</h4>
+<p>我们可以使用 Clickhouse 的备份工具 clickhouse-backup 帮我们自动化实现</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0FsZXhBa3Vsb3YvY2xpY2tob3VzZS1iYWNrdXAv">https://github.com/AlexAkulov/clickhouse-backup/</span></p>
+
+      <div class="tags">
+          <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag"><i class="ic i-tag"></i> 大数据</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2025-03-03 22:46:14" itemprop="dateModified" datetime="2025-03-03T22:46:14+08:00">2025-03-03</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2024/10/01/clickhouse/" title="Clickhouse">http://example.com/2024/10/01/clickhouse/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/07/01/GPU%E5%85%A5%E9%97%A8%E6%A6%82%E8%AE%BA/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;ecce74bba1d6312552d0156083825749.jpg" title="GPU入门概论">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> 运维</span>
+  <h3>GPU入门概论</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/11/01/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%94%9F%E6%80%81%E6%A6%82%E8%AE%BA/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;1fca97d4bee5434e2dec3c0a4a75bc64.jpg" title="大数据生态概论">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> 大数据</span>
+  <h3>大数据生态概论</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#clickhouse"><span class="toc-number">1.</span> <span class="toc-text"> clickhouse</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%8D%95%E6%9C%BAclickhouse"><span class="toc-number">1.1.</span> <span class="toc-text"> 安装单机 clickhouse</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text"> 数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E5%BC%95%E6%93%8E"><span class="toc-number">1.3.</span> <span class="toc-text"> 表引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tinylog"><span class="toc-number">1.3.1.</span> <span class="toc-text"> TinyLog</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#memory"><span class="toc-number">1.3.2.</span> <span class="toc-text"> Memory</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mergetree"><span class="toc-number">1.3.3.</span> <span class="toc-text"> MergeTree</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#clickhouse%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-number">1.3.3.1.</span> <span class="toc-text"> clickhouse 文件结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#primary-key"><span class="toc-number">1.3.3.2.</span> <span class="toc-text"> primary key</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#order-by"><span class="toc-number">1.3.3.3.</span> <span class="toc-text"> order by</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E7%BA%A7%E7%B4%A2%E5%BC%95"><span class="toc-number">1.3.3.4.</span> <span class="toc-text"> 二级索引</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ttl"><span class="toc-number">1.3.3.5.</span> <span class="toc-text"> TTL</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ttl%E6%89%A7%E8%A1%8C%E8%A1%8C%E4%B8%BA"><span class="toc-number">1.3.3.6.</span> <span class="toc-text"> TTL 执行行为</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#replacingmergetree"><span class="toc-number">1.3.4.</span> <span class="toc-text"> ReplacingMergeTree</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#summingmergetree"><span class="toc-number">1.3.5.</span> <span class="toc-text"> SummingMergeTree</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%93%8D%E4%BD%9C"><span class="toc-number">1.4.</span> <span class="toc-text"> SQL 操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#insert"><span class="toc-number">1.4.1.</span> <span class="toc-text"> insert</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#update-delete"><span class="toc-number">1.4.2.</span> <span class="toc-text"> update &amp; delete</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#alert"><span class="toc-number">1.4.4.</span> <span class="toc-text"> alert</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA"><span class="toc-number">1.4.5.</span> <span class="toc-text"> 导出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%AF%E6%9C%AC"><span class="toc-number">1.5.</span> <span class="toc-text"> 副本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%89%87%E9%9B%86%E7%BE%A4"><span class="toc-number">1.6.</span> <span class="toc-text"> 分片集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#explain"><span class="toc-number">1.7.</span> <span class="toc-text"> explain</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E8%A1%A8%E4%BC%98%E5%8C%96"><span class="toc-number">1.8.</span> <span class="toc-text"> 建表优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-2"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E5%92%8C%E7%B4%A2%E5%BC%95"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 分区和索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8%E5%8F%82%E6%95%B0"><span class="toc-number">1.8.3.</span> <span class="toc-text"> 表参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4%E4%BC%98%E5%8C%96"><span class="toc-number">1.8.4.</span> <span class="toc-text"> 写入和删除优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96"><span class="toc-number">1.8.5.</span> <span class="toc-text"> 配置优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E4%BC%98%E5%8C%96"><span class="toc-number">1.9.</span> <span class="toc-text"> 语法优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#count-%E4%BC%98%E5%8C%96"><span class="toc-number">1.9.1.</span> <span class="toc-text"> count 优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E5%AD%90%E6%9F%A5%E8%AF%A2%E9%87%8D%E5%A4%8D%E5%AD%97%E6%AE%B5"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 消除子查询重复字段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%93%E8%AF%8D%E4%B8%8B%E6%8E%A8"><span class="toc-number">1.9.3.</span> <span class="toc-text"> 谓词下推</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E8%AE%A1%E7%AE%97%E5%A4%96%E6%8E%A8"><span class="toc-number">1.9.4.</span> <span class="toc-text"> 聚合计算外推</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0%E6%B6%88%E9%99%A4"><span class="toc-number">1.9.5.</span> <span class="toc-text"> 聚合函数消除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8Dorder-by-key"><span class="toc-number">1.9.6.</span> <span class="toc-text"> 删除重复 order by key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8Dlimit-by-key"><span class="toc-number">1.9.7.</span> <span class="toc-text"> 删除重复 limit by key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8Dusing-key"><span class="toc-number">1.9.8.</span> <span class="toc-text"> 删除重复 using key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E9%87%8F%E6%9B%BF%E6%8D%A2"><span class="toc-number">1.9.9.</span> <span class="toc-text"> 标量替换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%8C%96"><span class="toc-number">1.9.10.</span> <span class="toc-text"> 三元运算符优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96"><span class="toc-number">1.10.</span> <span class="toc-text"> 单表查询优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#prewhere%E6%9B%BF%E4%BB%A3where"><span class="toc-number">1.10.1.</span> <span class="toc-text"> prewhere 替代 where</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%87%87%E6%A0%B7"><span class="toc-number">1.10.2.</span> <span class="toc-text"> 数据采样</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%97%E8%A3%81%E5%89%AA-%E5%88%86%E5%8C%BA%E8%A3%81%E5%89%AA"><span class="toc-number">1.10.3.</span> <span class="toc-text"> 列裁剪、分区裁剪</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#order-by%E7%BB%93%E5%90%88limitwhere"><span class="toc-number">1.10.4.</span> <span class="toc-text"> order by 结合 limit，where</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%BF%E5%85%8D%E6%9E%84%E5%BB%BA%E8%99%9A%E6%8B%9F%E5%88%97"><span class="toc-number">1.10.5.</span> <span class="toc-text"> 避免构建虚拟列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#uniqcombined-%E6%9B%BF%E4%BB%A3distinct"><span class="toc-number">1.10.6.</span> <span class="toc-text"> uniqcombined 替代 distinct</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.10.7.</span> <span class="toc-text"> 其他注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96"><span class="toc-number">1.11.</span> <span class="toc-text"> 多表查询优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8in%E4%BB%A3%E6%9B%BFjoin"><span class="toc-number">1.11.1.</span> <span class="toc-text"> 用 in 代替 join</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A7%E5%B0%8F%E8%A1%A8join"><span class="toc-number">1.11.2.</span> <span class="toc-text"> 大小表 join</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%93%E8%AF%8D%E4%B8%8B%E6%8E%A8-2"><span class="toc-number">1.11.3.</span> <span class="toc-text"> 谓词下推</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%A1%A8%E4%BD%BF%E7%94%A8global"><span class="toc-number">1.11.4.</span> <span class="toc-text"> 分布式表使用 global</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%AD%97%E5%85%B8%E8%A1%A8"><span class="toc-number">1.11.5.</span> <span class="toc-text"> 使用字典表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E5%89%8D%E8%BF%87%E6%BB%A4"><span class="toc-number">1.11.6.</span> <span class="toc-text"> 提前过滤</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-number">1.12.</span> <span class="toc-text"> 数据一致性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8optimize"><span class="toc-number">1.12.1.</span> <span class="toc-text"> 手动 OPTIMIZE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E8%BF%87group-by%E5%8E%BB%E9%87%8D"><span class="toc-number">1.12.2.</span> <span class="toc-text"> 通过 Group by 去重</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#final%E6%9F%A5%E8%AF%A2%E5%8E%BB%E9%87%8D"><span class="toc-number">1.12.3.</span> <span class="toc-text"> final 查询去重</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E5%8C%96%E8%A7%86%E5%9B%BE"><span class="toc-number">1.13.</span> <span class="toc-text"> 物化视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#materializemysql"><span class="toc-number">1.14.</span> <span class="toc-text"> MaterializeMysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%91%E6%8E%A7clickhouse"><span class="toc-number">1.15.</span> <span class="toc-text"> 监控 clickhouse</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD"><span class="toc-number">1.16.</span> <span class="toc-text"> 数据备份</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%A4%87%E4%BB%BD"><span class="toc-number">1.16.1.</span> <span class="toc-text"> 手动备份</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#clickhouse-backup"><span class="toc-number">1.16.2.</span> <span class="toc-text"> clickhouse-backup</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2024/03/01/hadoop_new/" rel="bookmark" title="Hadoop">Hadoop</a></li><li><a href="/2024/04/01/spark/" rel="bookmark" title="spark">spark</a></li><li><a href="/2024/05/01/hive_flink/" rel="bookmark" title="hive_flink">hive_flink</a></li><li class="active"><a href="/2024/10/01/clickhouse/" rel="bookmark" title="Clickhouse">Clickhouse</a></li><li><a href="/2024/11/01/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%94%9F%E6%80%81%E6%A6%82%E8%AE%BA/" rel="bookmark" title="大数据生态概论">大数据生态概论</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">54</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">7</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">7</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/07/01/GPU%E5%85%A5%E9%97%A8%E6%A6%82%E8%AE%BA/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/11/01/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%94%9F%E6%80%81%E6%A6%82%E8%AE%BA/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2023/04/05/Docker/" title="docker">docker</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/06/27/SSRF/" title="SSRF">SSRF</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/05/27/CSRF/" title="CSRF">CSRF</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" title="SQL injection">SQL injection</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2023/08/22/%E5%8E%BB%E5%BC%B9%E7%AA%97%E7%BB%BF%E5%8C%96/" title="破解相关">破解相关</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/03/27/http/" title="http">http</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="In 大数据">大数据</a>
+</div>
+
+    <span><a href="/2024/03/01/hadoop_new/" title="Hadoop">Hadoop</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/04/07/TCPIP_new/" title="TCP&#x2F;IP">TCP/IP</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2023/05/20/Kubernetes/" title="Kubernetes">Kubernetes</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/08/16/Unserialize/" title="unserialize">unserialize</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/10/01/clickhouse/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/f93f124fd90670f86b81841581c3698c.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/5ec5e6a577b47f3d9b70654073f8b881.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/b7dd27ac7273dd91b0085c941520d6f5.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/560306a4274d1fc26eb475dd52237387.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/6a834199cae04e75c335d444704c2060.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/df90fbe0bf0d8c96355b06f9318f97e6.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/74f81cade89fd386a6972382481bd355.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/9e00cb8944af8ad12fd6b7fd7eb24ebc.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/ccb0052481047ba79b4121da73ca7e5e.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/ef045383a43332483ca476d6851cf9b8.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/4368c702fcf1129cac003f7c2f181875.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/07c8c664e3753d83c410cd2c54f8f185.jpg"></li>
         </ul>
       </div>
     </header>
@@ -119,7 +119,129 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/01/%E6%B1%87%E7%BC%96/" itemprop="url" title="汇编"><img data-src="https://img.timelessq.com/images/2022/07/26/252916b13cdf9428f497f9c3da8b2aa7.jpg"></a>
+    <a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" itemprop="url" title="docker逃逸&amp;capabilities"><img data-src="https://img.timelessq.com/images/2022/07/26/0b981f44812f71ac23d1826975a3d499.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2022-11-27 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2022-11-27T13:38:45+08:00">2022-11-27</time>
+  </span>
+</div>
+
+    <h3><a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" itemprop="url" title="docker逃逸&amp;capabilities">docker逃逸&capabilities</a></h3>
+    <div class="excerpt">
+        # Docker 逃逸、反弹 shell，capabilities
+# 前置知识
+# 1.Linux NameSpace
+Linux Namespace 是 Linux 提供的一种内核级别环境隔离的方法。从 Unix 开始，有一个 chroot 命令，
+chroot
+
+change root directory (更改 root 目录)。在 linux 系统中，系统默认的目录结构都是以 / ，即是以根 (root) 开始的。而在使用 chroot 之后，系统的目录结构将以指定的位置作为 / 位置。
+
+也就是说，原先我们的 root 目录在 /，那么我们在 tmp 目录使用 chroot...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="url" title="web安全"><i class="ic i-flag"></i>web安全</a>
+      </span>
+    </div>
+    <a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" itemprop="url" title="docker逃逸&amp;capabilities" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" itemprop="url" title="JWT"><img data-src="https://img.timelessq.com/images/2022/07/26/140009170121c1a23f1a969d29c46fee.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2022-11-17 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2022-11-17T13:38:45+08:00">2022-11-17</time>
+  </span>
+</div>
+
+    <h3><a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" itemprop="url" title="JWT">JWT</a></h3>
+    <div class="excerpt">
+        # JWT 基础
+JWT （JSON Web Token） 是目前最流行的跨域认证解决方案，是一种基于 Token 的认证授权机制。 从 JWT 的全称可以看出，JWT 本身也是 Token，一种规范化之后的 JSON 结构的 Token。
+JWT 自身包含了身份验证所需要的所有信息，因此，我们的服务器不需要存储 Session 信息。这显然增加了系统的可用性和伸缩性，大大减轻了服务端的压力。
+可以看出，JWT 更符合设计 RESTful API 时的「Stateless（无状态）」原则 。
+并且， 使用 JWT 认证可以有效避免 CSRF 攻击，因为 JWT 一般是存在在...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="url" title="web安全"><i class="ic i-flag"></i>web安全</a>
+      </span>
+    </div>
+    <a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" itemprop="url" title="JWT" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2022/11/11/reverse/" itemprop="url" title="逆向"><img data-src="https://img.timelessq.com/images/2022/07/26/c998c9d93c62dc926bb9a011c9a1780a.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2022-11-11 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2022-11-11T13:38:45+08:00">2022-11-11</time>
+  </span>
+</div>
+
+    <h3><a href="/2022/11/11/reverse/" itemprop="url" title="逆向">逆向</a></h3>
+    <div class="excerpt">
+        # C 与汇编的关系
+# 应用层技术栈：
+
+加密与解密（四）看雪论坛
+X86/X64/arm 汇编语言
+windows 核心编程
+c 语言从入门到精通 (第三版) （清华）
+
+# 学习逆向环境配置
+工具类：
+
+吾爱破解工具类
+Hxd (十六进制编辑工具)
+
+开发类：
+
+VS2008 IDE
+VC6.0 SP6 IDE
+
+# 进制转换
+
+十进制的定义：由十个符号组成，分别是 0 1 2 3 4 5 6 7 8 9 逢十进一
+九进制的定义：由九个符号组成，分别是 0 1 2 3 4 5 6 7 8 逢九进一
+十六进制的定义：由十六个符号组成，分别是 0 1 2 3 4 5 6 7 8 9 A B...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/%E9%80%86%E5%90%91/" itemprop="url" title="逆向"><i class="ic i-flag"></i>逆向</a>
+      </span>
+    </div>
+    <a href="/2022/11/11/reverse/" itemprop="url" title="逆向" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2022/11/01/%E6%B1%87%E7%BC%96/" itemprop="url" title="汇编"><img data-src="https://img.timelessq.com/images/2022/07/26/7a9a95e33c226d979abfd43d471f610d.jpg"></a>
   </div>
   <div class="info">
     
@@ -161,7 +283,7 @@ AX,BX,CX,DX 为通用结存器，最大可以存储 2^16-1
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" title="秋招面试题"><img data-src="https://img.timelessq.com/images/2022/07/26/e5221f7d85b0900837a45fb933fa34ec.jpg"></a>
+    <a href="/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" title="秋招面试题"><img data-src="https://img.timelessq.com/images/2022/07/26/560306a4274d1fc26eb475dd52237387.jpg"></a>
   </div>
   <div class="info">
     
@@ -211,7 +333,7 @@ AX,BX,CX,DX 为通用结存器，最大可以存储 2^16-1
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" itemprop="url" title="秋招总结"><img data-src="https://img.timelessq.com/images/2022/07/26/2aabaeb8aca379b991071d1c41632741.jpg"></a>
+    <a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" itemprop="url" title="秋招总结"><img data-src="https://img.timelessq.com/images/2022/07/26/38f4d53604cb5ca98a47fea8d62cde72.jpg"></a>
   </div>
   <div class="info">
     
@@ -246,7 +368,7 @@ AX,BX,CX,DX 为通用结存器，最大可以存储 2^16-1
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/08/16/Unserialize/" itemprop="url" title="unserialize"><img data-src="https://img.timelessq.com/images/2022/07/26/2e0802e6e5cfd05c700bc3f911f9351c.jpg"></a>
+    <a href="/2022/08/16/Unserialize/" itemprop="url" title="unserialize"><img data-src="https://img.timelessq.com/images/2022/07/26/dcd5178b4c81cd15d7465af2a33c0d6d.jpg"></a>
   </div>
   <div class="info">
     
@@ -279,7 +401,7 @@ AX,BX,CX,DX 为通用结存器，最大可以存储 2^16-1
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/06/27/SSRF/" itemprop="url" title="SSRF"><img data-src="https://img.timelessq.com/images/2022/07/26/1e0e51b2eb4c4caf1702ce9c575fbb4d.jpg"></a>
+    <a href="/2022/06/27/SSRF/" itemprop="url" title="SSRF"><img data-src="https://img.timelessq.com/images/2022/07/26/d757e4c9c546cd7dba16ee5e23dc2d9d.jpg"></a>
   </div>
   <div class="info">
     
@@ -320,7 +442,7 @@ dict 协议是一个在线网络字典协议，这个协议是用来架设一个
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/05/27/CSRF/" itemprop="url" title="CSRF"><img data-src="https://img.timelessq.com/images/2022/07/26/6a834199cae04e75c335d444704c2060.jpg"></a>
+    <a href="/2022/05/27/CSRF/" itemprop="url" title="CSRF"><img data-src="https://img.timelessq.com/images/2022/07/26/e44fe20f43f92d83732bf40e7d675808.jpg"></a>
   </div>
   <div class="info">
     
@@ -353,7 +475,7 @@ Cross-site request forgery 简称为 “CSRF”，在 CSRF 的攻击场景中攻
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/05/27/emergency%20response/" itemprop="url" title="应急响应"><img data-src="https://img.timelessq.com/images/2022/07/26/1fca97d4bee5434e2dec3c0a4a75bc64.jpg"></a>
+    <a href="/2022/05/27/emergency%20response/" itemprop="url" title="应急响应"><img data-src="https://img.timelessq.com/images/2022/07/26/17cfb1570685a3f62652e085962fe2a9.jpg"></a>
   </div>
   <div class="info">
     
@@ -384,120 +506,6 @@ msf 中可以在网络链接中找到，但任务管理器找不到
       </span>
     </div>
     <a href="/2022/05/27/emergency%20response/" itemprop="url" title="应急响应" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2022/05/17/include/" itemprop="url" title="file include"><img data-src="https://img.timelessq.com/images/2022/07/26/d4df076eb51491f02d9c9754567256fb.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2022-05-17 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2022-05-17T13:38:45+08:00">2022-05-17</time>
-  </span>
-</div>
-
-    <h3><a href="/2022/05/17/include/" itemprop="url" title="file include">file include</a></h3>
-    <div class="excerpt">
-        # file include
-
-来自 pikachu 的介绍：
-文件包含，是一个功能。在各种开发语言中都提供了内置的文件包含函数，其可以使开发人员在一个代码文件中直接包含（引入）另外一个代码文件。 比如 在 PHP 中，提供了：
-include(),include_once()
-require(),require_once()
-这些文件包含函数，这些函数在代码设计中被经常使用到。
-大多数情况下，文件包含函数中包含的代码文件是固定的，因此也不会出现安全问题。...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="url" title="web安全"><i class="ic i-flag"></i>web安全</a>
-      </span>
-    </div>
-    <a href="/2022/05/17/include/" itemprop="url" title="file include" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2022/04/16/Upload/" itemprop="url" title="File upload"><img data-src="https://img.timelessq.com/images/2022/07/26/471188138f7f9597f65d16889f1ade0e.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2022-04-16 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2022-04-16T13:38:45+08:00">2022-04-16</time>
-  </span>
-</div>
-
-    <h3><a href="/2022/04/16/Upload/" itemprop="url" title="File upload">File upload</a></h3>
-    <div class="excerpt">
-        # Upload
-
-当用户点击上传按钮后，后台会对上传的文件进行判断 比如是否是指定的类型、后缀名、大小等等，然后将其按照设计的格式进行重命名后存储在指定的目录。 如果说后台对上传的文件没有进行任何的安全判断或者判断条件不够严谨，则攻击着可能会上传一些恶意的文件，比如一句话木马，从而导致后台服务器被 webshell。
-所以，在设计文件上传功能时，一定要对传进来的文件进行严格的安全考虑。比如：
-–验证文件类型、后缀名、大小；
-–验证文件的上传方式；
-–对文件进行一定复杂的重命名；
-–不要暴露文件上传后的路径；
-–等等…
-
-#...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="url" title="web安全"><i class="ic i-flag"></i>web安全</a>
-      </span>
-    </div>
-    <a href="/2022/04/16/Upload/" itemprop="url" title="File upload" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" itemprop="url" title="SQL injection"><img data-src="https://img.timelessq.com/images/2022/07/26/1135e8eb0ca0a462aa1c2f6ecb6a5ae2.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2022-03-16 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2022-03-16T13:38:45+08:00">2022-03-16</time>
-  </span>
-</div>
-
-    <h3><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" itemprop="url" title="SQL injection">SQL injection</a></h3>
-    <div class="excerpt">
-        # SQL 注入
-# 1.sqli-labs-master 安装
-下面在 linux 中安装，虚拟机地址为 192.168.1.155，端口号为 18888，使用宝塔面板
-# 1. 将 sqli-labs-master 移动到网站根目录下，解压
-unzip sqli-labs-master
-
-# 2. 修改配置文件，配合文件为： sqli/sql-connections/db-creds.inc
-vim sqli/sql-connections/db-creds.inc
-数据库用户名和密码在宝塔面板中可以修改
-
-# 3....
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="url" title="web安全"><i class="ic i-flag"></i>web安全</a>
-      </span>
-    </div>
-    <a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" itemprop="url" title="SQL injection" class="btn">more...</a>
   </div>
 </article>
 
@@ -536,7 +544,7 @@ vim sqli/sql-connections/db-creds.inc
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">51</span>
+        <span class="count">54</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -599,18 +607,20 @@ vim sqli/sql-connections/db-creds.inc
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
 </div>
 
-    <span><a href="/2023/08/02/Capabilities/" title="docker底层原理+capability">docker底层原理+capability</a></span>
+    <span><a href="/2023/08/22/%E5%8E%BB%E5%BC%B9%E7%AA%97%E7%BB%BF%E5%8C%96/" title="破解相关">破解相关</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
 </div>
 
-    <span><a href="/2023/01/01/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
+    <span><a href="/2023/06/02/k8s%E9%AB%98%E7%BA%A7/" title="k8s高级">k8s高级</a></span>
   </li>
 
       
@@ -620,7 +630,27 @@ vim sqli/sql-connections/db-creds.inc
 <a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
 </div>
 
-    <span><a href="/2022/11/11/reverse/" title="逆向">逆向</a></span>
+    <span><a href="/2023/10/01/1234567/" title="windows逆向进阶">windows逆向进阶</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2023/01/03/%E6%BB%B4%E6%B0%B4reverse/" title="水滴rev">水滴rev</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="In 大数据">大数据</a>
+</div>
+
+    <span><a href="/2024/11/01/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%94%9F%E6%80%81%E6%A6%82%E8%AE%BA/" title="大数据生态概论">大数据生态概论</a></span>
   </li>
 
       
@@ -637,10 +667,9 @@ vim sqli/sql-connections/db-creds.inc
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" title="SQL injection">SQL injection</a></span>
+    <span><a href="/2023/09/15/%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93/" title="缓存污染&#x2F;请求走私">缓存污染/请求走私</a></span>
   </li>
 
       
@@ -650,44 +679,27 @@ vim sqli/sql-connections/db-creds.inc
 <a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
 </div>
 
-    <span><a href="/2024/06/01/openstack/" title="OpenStack+openvswitch">OpenStack+openvswitch</a></span>
+    <span><a href="/2024/01/25/%E8%99%9A%E6%8B%9F%E5%8C%96/" title="虚拟化">虚拟化</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
 </div>
 
-    <span><a href="/2023/02/21/https%E5%8E%9F%E7%90%86/" title="https+TLS">https+TLS</a></span>
+    <span><a href="/2022/12/25/%E5%86%85%E7%BD%91/" title="内网渗透">内网渗透</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
 </div>
 
-    <span><a href="/2023/07/15/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E/" title="中间件漏洞">中间件漏洞</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
-</div>
-
-    <span><a href="/2023/05/30/jenkins/" title="Jenkins">Jenkins</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2022/12/28/mysql/" title="Mysql">Mysql</a></span>
+    <span><a href="/2023/10/03/hg%20ker/" title="hg内核">hg内核</a></span>
   </li>
 
   </ul>
@@ -702,7 +714,7 @@ vim sqli/sql-connections/db-creds.inc
   <div class="copyright">
     
     &copy; 2010 – 
-    <span itemprop="copyrightYear">2024</span>
+    <span itemprop="copyrightYear">2025</span>
     <span class="with-love">
       <i class="ic i-sakura rotate"></i>
     </span>

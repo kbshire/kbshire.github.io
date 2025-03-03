@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/6481fffb5173a5621c7af0848ed50fa7.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/23/6928788f3d68c2e7e3b92222301a30c2.png"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/2e0802e6e5cfd05c700bc3f911f9351c.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/dd21608b40c2387068c472909a82b3e0.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/132a88e4e5cfe7e3847ed93deae688d2.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/8a8076ea9cbc7d677dd42ad84d4e3ebd.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/b46094cb1b7015955b10a42dc949c5d9.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/6edf0eae0c5c58dadd09198c6c3c9f6d.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/ef045383a43332483ca476d6851cf9b8.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/560306a4274d1fc26eb475dd52237387.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/1818747d7085ab0d1d6f610f61a7296b.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/626f157a4ff74c7984f4110e38031524.jpg"></li>
         </ul>
       </div>
     </header>
@@ -119,7 +119,119 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/01/03/%E6%BB%B4%E6%B0%B4reverse/" itemprop="url" title="水滴rev"><img data-src="https://img.timelessq.com/images/2022/07/26/c42b981631c2a7ddaed6e13bd5847ebb.jpg"></a>
+    <a href="/2023/02/21/https%E5%8E%9F%E7%90%86/" itemprop="url" title="https+TLS"><img data-src="https://img.timelessq.com/images/2022/07/26/cc1a734b8a0734243d5071644d60f360.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2023-02-21 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-02-21T13:38:45+08:00">2023-02-21</time>
+  </span>
+</div>
+
+    <h3><a href="/2023/02/21/https%E5%8E%9F%E7%90%86/" itemprop="url" title="https+TLS">https+TLS</a></h3>
+    <div class="excerpt">
+        # https 原理
+# 0x00 前置知识
+# 1. 对称加密
+加锁和解锁用的是同一把钥匙
+
+由于中间人没有钥匙，无法偷窥和篡改
+但密钥在传输的过程中可能泄露，并没有完全解决问题
+# 2. 非对称加密
+** 用钥匙 A 加锁，必须用钥匙 B 才能解锁。反过来用钥匙 B 加锁，必须用钥匙 A 才能解锁。** 自己保留其中一把，将另一把给对方
+
+中间人不能篡改消息，因为没有加密密钥，如果篡改接收方不再能使用原来的密钥解锁
+但无法解决内容被偷窥即内容泄露，因为解锁的密钥大家都有
+# 3. 对称加密 +...
+    </div>
+    <a href="/2023/02/21/https%E5%8E%9F%E7%90%86/" itemprop="url" title="https+TLS" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/01/20/VXLAN/" itemprop="url" title="VXLAN"><img data-src="https://img.timelessq.com/images/2022/07/26/479813b22cea266a12445d3c8d5ce5cf.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2023-01-20 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-01-20T13:38:45+08:00">2023-01-20</time>
+  </span>
+</div>
+
+    <h3><a href="/2023/01/20/VXLAN/" itemprop="url" title="VXLAN">VXLAN</a></h3>
+    <div class="excerpt">
+        # VXLAN
+# ensp&amp;amp;virtualbox 设置
+1. 导入 CE 镜像
+拖一台 CE12800，启动设备，系统会让自动选择镜像，选择 CE 镜像，正确的镜像为 1.3G 的
+
+导入后 virtualbox 中会显示
+
+更改 CE 设置，设置内存，每台 CE12800 大概需要 1G 内存
+
+# VXLAN
+VXLAN 是由 IETF 定义的 NVO3 (Network Virtualization over Layer 3) 标准技术之一，采用 L2 over L4 ( MAC-in-UDP)...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/%E7%BD%91%E7%BB%9C/" itemprop="url" title="网络"><i class="ic i-flag"></i>网络</a>
+      </span>
+    </div>
+    <a href="/2023/01/20/VXLAN/" itemprop="url" title="VXLAN" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/01/17/Segment%20Routing/" itemprop="url" title="Segment Routing"><img data-src="https://img.timelessq.com/images/2022/07/26/11a6a57662360e218ec542ca527b4a53.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2023-01-17 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2023-01-17T13:38:45+08:00">2023-01-17</time>
+  </span>
+</div>
+
+    <h3><a href="/2023/01/17/Segment%20Routing/" itemprop="url" title="Segment Routing">Segment Routing</a></h3>
+    <div class="excerpt">
+        # 0. 为什么需要 SR
+1、简化底层控制平面，以 MPLS VPN 举例，需要部署 IGP、BGP、MPLS LDP 协议
+2、网络发展诉求，SDN 化
+1、简化控制平面，不存在 LDP 与 IGP 同步问题
+2、IP 骨干网可能有流量工程需求，需要部署 MPLS-TE，通过 RSVP 在端到端设备之间维护大量状态信息
+# 1.IGP 与 LDP 同步
+正常情况通过主 LSP 转发，如果主链路故障通过备 LSP 转发
+ospf timer lsp-sync hold-max-cost ldp 不同步时发布最大开销的 LSA
+SR 将 OSPF，ISIS，BGP...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/%E7%BD%91%E7%BB%9C/" itemprop="url" title="网络"><i class="ic i-flag"></i>网络</a>
+      </span>
+    </div>
+    <a href="/2023/01/17/Segment%20Routing/" itemprop="url" title="Segment Routing" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2023/01/03/%E6%BB%B4%E6%B0%B4reverse/" itemprop="url" title="水滴rev"><img data-src="https://img.timelessq.com/images/2022/07/26/4c0b0c164bd2511ebcbfec05cd2a7b58.jpg"></a>
   </div>
   <div class="info">
     
@@ -152,7 +264,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2023/01/01/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" itemprop="url" title="about me"><img data-src="https://img.timelessq.com/images/2022/07/26/f584675dfc4ef47fcf19442f0e2ea18b.jpg"></a>
+    <a href="/2023/01/01/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" itemprop="url" title="about me"><img data-src="https://img.timelessq.com/images/2022/07/26/d10b26588ca1fe939f0146bb24578eaa.jpg"></a>
   </div>
   <div class="info">
     
@@ -182,7 +294,7 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/12/31/webshell/" itemprop="url" title="webshell"><img data-src="https://img.timelessq.com/images/2022/07/26/a956521148df0241038d6f6838a9806f.jpg"></a>
+    <a href="/2022/12/31/webshell/" itemprop="url" title="webshell"><img data-src="https://img.timelessq.com/images/2022/07/26/15ab06b7fe711067fca78ee15eb32391.jpg"></a>
   </div>
   <div class="info">
     
@@ -220,7 +332,7 @@ eval () 函数把字符串按照 PHP 代码来计算（计算 = 执行）。
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/12/28/mysql/" itemprop="url" title="Mysql"><img data-src="https://img.timelessq.com/images/2022/07/26/ab0127aa2427fa655db33a097d7e215e.jpg"></a>
+    <a href="/2022/12/28/mysql/" itemprop="url" title="Mysql"><img data-src="https://img.timelessq.com/images/2022/07/26/24012099cbcef21e4a8b250374efe959.jpg"></a>
   </div>
   <div class="info">
     
@@ -264,7 +376,7 @@ utf8 三子节 可能导致截断产生 xss
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/12/27/SSTI/" itemprop="url" title="SSTI"><img data-src="https://img.timelessq.com/images/2022/07/26/a1f3404a5032323ea4857ac5a6354d2f.jpg"></a>
+    <a href="/2022/12/27/SSTI/" itemprop="url" title="SSTI"><img data-src="https://img.timelessq.com/images/2022/07/26/e9387f53393624bd88390036d7943fad.jpg"></a>
   </div>
   <div class="info">
     
@@ -297,7 +409,7 @@ SSTI 是 CTF 的常客，在 PHP，java，python，甚至 go 中都存在 ssti�
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/12/25/%E5%86%85%E7%BD%91/" itemprop="url" title="内网渗透"><img data-src="https://img.timelessq.com/images/2022/07/26/4c481240fd5e6e7b076ca8fe50da6e52.jpg"></a>
+    <a href="/2022/12/25/%E5%86%85%E7%BD%91/" itemprop="url" title="内网渗透"><img data-src="https://img.timelessq.com/images/2022/07/26/07c8c664e3753d83c410cd2c54f8f185.jpg"></a>
   </div>
   <div class="info">
     
@@ -332,7 +444,7 @@ SSTI 是 CTF 的常客，在 PHP，java，python，甚至 go 中都存在 ssti�
         
 <article class="item">
   <div class="cover">
-    <a href="/2022/11/27/CDN/" itemprop="url" title="CDN&amp;DNS"><img data-src="https://img.timelessq.com/images/2022/07/26/2aaa20665dd5e5704a35cf4f6de766db.jpg"></a>
+    <a href="/2022/11/27/CDN/" itemprop="url" title="CDN&amp;DNS"><img data-src="https://img.timelessq.com/images/2022/07/26/0a8c679b59d7b4a6f86d891282323a50.jpg"></a>
   </div>
   <div class="info">
     
@@ -361,128 +473,6 @@ CDN =...
       </span>
     </div>
     <a href="/2022/11/27/CDN/" itemprop="url" title="CDN&amp;DNS" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" itemprop="url" title="docker逃逸&amp;capabilities"><img data-src="https://img.timelessq.com/images/2022/07/26/50d682207f8e6513884d523e2e0895f7.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2022-11-27 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2022-11-27T13:38:45+08:00">2022-11-27</time>
-  </span>
-</div>
-
-    <h3><a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" itemprop="url" title="docker逃逸&amp;capabilities">docker逃逸&capabilities</a></h3>
-    <div class="excerpt">
-        # Docker 逃逸、反弹 shell，capabilities
-# 前置知识
-# 1.Linux NameSpace
-Linux Namespace 是 Linux 提供的一种内核级别环境隔离的方法。从 Unix 开始，有一个 chroot 命令，
-chroot
-
-change root directory (更改 root 目录)。在 linux 系统中，系统默认的目录结构都是以 / ，即是以根 (root) 开始的。而在使用 chroot 之后，系统的目录结构将以指定的位置作为 / 位置。
-
-也就是说，原先我们的 root 目录在 /，那么我们在 tmp 目录使用 chroot...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="url" title="web安全"><i class="ic i-flag"></i>web安全</a>
-      </span>
-    </div>
-    <a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" itemprop="url" title="docker逃逸&amp;capabilities" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" itemprop="url" title="JWT"><img data-src="https://img.timelessq.com/images/2022/07/26/b4993dcc18b931060093920da621db79.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2022-11-17 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2022-11-17T13:38:45+08:00">2022-11-17</time>
-  </span>
-</div>
-
-    <h3><a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" itemprop="url" title="JWT">JWT</a></h3>
-    <div class="excerpt">
-        # JWT 基础
-JWT （JSON Web Token） 是目前最流行的跨域认证解决方案，是一种基于 Token 的认证授权机制。 从 JWT 的全称可以看出，JWT 本身也是 Token，一种规范化之后的 JSON 结构的 Token。
-JWT 自身包含了身份验证所需要的所有信息，因此，我们的服务器不需要存储 Session 信息。这显然增加了系统的可用性和伸缩性，大大减轻了服务端的压力。
-可以看出，JWT 更符合设计 RESTful API 时的「Stateless（无状态）」原则 。
-并且， 使用 JWT 认证可以有效避免 CSRF 攻击，因为 JWT 一般是存在在...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/web%E5%AE%89%E5%85%A8/" itemprop="url" title="web安全"><i class="ic i-flag"></i>web安全</a>
-      </span>
-    </div>
-    <a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" itemprop="url" title="JWT" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2022/11/11/reverse/" itemprop="url" title="逆向"><img data-src="https://img.timelessq.com/images/2022/07/26/1adb61c48863ce35a391d69c0a64f274.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2022-11-11 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2022-11-11T13:38:45+08:00">2022-11-11</time>
-  </span>
-</div>
-
-    <h3><a href="/2022/11/11/reverse/" itemprop="url" title="逆向">逆向</a></h3>
-    <div class="excerpt">
-        # C 与汇编的关系
-# 应用层技术栈：
-
-加密与解密（四）看雪论坛
-X86/X64/arm 汇编语言
-windows 核心编程
-c 语言从入门到精通 (第三版) （清华）
-
-# 学习逆向环境配置
-工具类：
-
-吾爱破解工具类
-Hxd (十六进制编辑工具)
-
-开发类：
-
-VS2008 IDE
-VC6.0 SP6 IDE
-
-# 进制转换
-
-十进制的定义：由十个符号组成，分别是 0 1 2 3 4 5 6 7 8 9 逢十进一
-九进制的定义：由九个符号组成，分别是 0 1 2 3 4 5 6 7 8 逢九进一
-十六进制的定义：由十六个符号组成，分别是 0 1 2 3 4 5 6 7 8 9 A B...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/%E9%80%86%E5%90%91/" itemprop="url" title="逆向"><i class="ic i-flag"></i>逆向</a>
-      </span>
-    </div>
-    <a href="/2022/11/11/reverse/" itemprop="url" title="逆向" class="btn">more...</a>
   </div>
 </article>
 
@@ -521,7 +511,7 @@ VC6.0 SP6 IDE
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">51</span>
+        <span class="count">54</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -584,68 +574,20 @@ VC6.0 SP6 IDE
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
-</div>
-
-    <span><a href="/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" title="秋招面试题">秋招面试题</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/09/15/%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93/" title="缓存污染&#x2F;请求走私">缓存污染/请求走私</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="In 大数据">大数据</a>
-</div>
-
-    <span><a href="/2024/03/01/hadoop_new/" title="Hadoop">Hadoop</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
 </div>
 
-    <span><a href="/2022/12/31/webshell/" title="webshell">webshell</a></span>
+    <span><a href="/2022/05/27/CSRF/" title="CSRF">CSRF</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+<a href="/categories/%E7%BD%91%E7%BB%9C/" title="In 网络">网络</a>
 </div>
 
-    <span><a href="/2023/10/01/1234567/" title="windows逆向进阶">windows逆向进阶</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/03/27/http/" title="http">http</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/04/16/Upload/" title="File upload">File upload</a></span>
+    <span><a href="/2023/01/20/VXLAN/" title="VXLAN">VXLAN</a></span>
   </li>
 
       
@@ -662,9 +604,49 @@ VC6.0 SP6 IDE
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
 </div>
 
-    <span><a href="/2023/08/02/Capabilities/" title="docker底层原理+capability">docker底层原理+capability</a></span>
+    <span><a href="/2023/06/02/k8s%E9%AB%98%E7%BA%A7/" title="k8s高级">k8s高级</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="In 大数据">大数据</a>
+</div>
+
+    <span><a href="/2024/11/01/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%94%9F%E6%80%81%E6%A6%82%E8%AE%BA/" title="大数据生态概论">大数据生态概论</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/11/27/Docker%E9%80%83%E9%80%B8/" title="docker逃逸&amp;capabilities">docker逃逸&capabilities</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
+</div>
+
+    <span><a href="/2022/10/27/%E7%A7%8B%E6%8B%9B%E6%80%BB%E7%BB%93/" title="秋招总结">秋招总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/12/28/mysql/" title="Mysql">Mysql</a></span>
   </li>
 
       
@@ -674,7 +656,17 @@ VC6.0 SP6 IDE
 <a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
 </div>
 
-    <span><a href="/2022/11/01/%E6%B1%87%E7%BC%96/" title="汇编">汇编</a></span>
+    <span><a href="/2023/08/15/%E7%A0%B4%E8%A7%A3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B9%8B%E8%AE%A4%E8%AF%86%E5%A3%B3%E4%B8%8E%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%89%B9%E5%BE%81/" title="破解基础知识之认识壳与程序的特征">破解基础知识之认识壳与程序的特征</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2023/10/01/1234567/" title="windows逆向进阶">windows逆向进阶</a></span>
   </li>
 
   </ul>
@@ -689,7 +681,7 @@ VC6.0 SP6 IDE
   <div class="copyright">
     
     &copy; 2010 – 
-    <span itemprop="copyrightYear">2024</span>
+    <span itemprop="copyrightYear">2025</span>
     <span class="with-love">
       <i class="ic i-sakura rotate"></i>
     </span>

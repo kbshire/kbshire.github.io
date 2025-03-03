@@ -1,0 +1,924 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="运维" />
+
+
+<link rel="canonical" href="http://example.com/2024/12/01/redis/">
+
+
+
+  <title>
+Redis - 运维 |
+Yume Shoka = Hexo</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Redis
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-12-01 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-12-01T13:38:45+08:00">2024-12-01</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/5bf6cc840c1eee492a78927590510321.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/24a908a7da2e9330ac5558cea0276d97.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/767d892afd9db5bda9fd978ea0a7cb0b.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/666b3077b407f3c0ce9c10c00b861abe.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/2b0a8c81d91579602eee343aff82c4c9.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/8fe50780c15461b629c9aeab5a7f2acd.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E8%BF%90%E7%BB%B4/" itemprop="item" rel="index" title="In 运维"><span itemprop="name">运维</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/01/redis/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="redis"><a class="markdownIt-Anchor" href="#redis">#</a> redis</h2>
+<p>Redis 是一种基于 key-value 的 NoSQL 数据库</p>
+<p>Redis 的全称是 REmote Dictionary Server，是一个开源（BSD 许可）的内存数据存储系统，它可以用作数据库、缓存和消息中间件。它支持多种类型的数据结构，如字符串（string）、哈希（hash）、列表（list）、集合（set）、有序集合（sorted set），同时在这些基础数据结构的基础之上演变出了位图（bitmap）、HyperLogLog、GEO 等数据结构。Redis 内置了复制（replication），LUA 脚本（Lua scripting），LRU 淘汰策略（LRU eviction），事务（transactions） 和不同级别的 磁盘持久化（persistence），并通过 Redis 哨兵（Sentinel）和自动分区（Cluster）提供高可用性。</p>
+<h3 id="redis作用"><a class="markdownIt-Anchor" href="#redis作用">#</a> redis 作用</h3>
+<p>1、内存存储、持久化 (RDB,AOF)。</p>
+<p>2、效率高，用于高速缓存</p>
+<p>3、发布订阅系统</p>
+<p>4、地图信息分析</p>
+<p>5、计时器，计数器</p>
+<ol>
+<li>提供了键过期功能，可以用来实现缓存。</li>
+<li>提供了发布订阅功能，可以用来实现基本消息队列。</li>
+<li>提供了简单的事务功能（不支持回滚），能在一定程度上保证事务特性。</li>
+<li>支持 Lua 脚本功能，可以利用 Lua 创造出新的<span class="exturl" data-url="aHR0cHM6Ly9yZWRpcy5pby9jb21tYW5kcy9ldmFs">原子命令</span>，可以处理一些复杂的业务逻辑。</li>
+<li>提供了流水线 (Pipeline) 功能，能将一批命令一次性传到 Redis，减少了网络的开销。</li>
+</ol>
+<h3 id="redis特性"><a class="markdownIt-Anchor" href="#redis特性">#</a> redis 特性</h3>
+<p>多样的数据类型</p>
+<p>持久化</p>
+<p>事务</p>
+<p>集群</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ieXRlZGFuY2UubGFya29mZmljZS5jb20vd2lraS93aWtjblR4bFhFRE41dnY0bnNyR1JxSmNmWWI=">Redis 高可用篇</span></p>
+<h3 id="redis速度快"><a class="markdownIt-Anchor" href="#redis速度快">#</a> redis 速度快</h3>
+<p>正常情况下，Redis 执行命令的速度非常快，官方给出的数字是读写性能可以达到 10 万 / 秒，造就了 Redis 如此之快的原因可大致归纳为以下三点</p>
+<ol>
+<li>Redis 为内存数据库，相较于传统的硬盘存储的数据库具有更高的读写性能。</li>
+<li>底层实现为 C 语言，针对不同的数据结构做了专门的设计和优化。</li>
+<li>使用单线程结构 + I/O 多路复用的形式（Redis6.0 后使用不同的线程分别处理网络 I/O 和命令执行），不需要频繁地执行线程间的切换。且无需考虑加锁的问题，不存在死锁导致的性能消耗。</li>
+</ol>
+<h3 id="安装redis"><a class="markdownIt-Anchor" href="#安装redis">#</a> 安装 redis</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">wget https:<span class="operator">/</span><span class="operator">/</span>github.com<span class="operator">/</span>redis<span class="operator">/</span>redis<span class="operator">/</span>archive<span class="operator">/</span>refs<span class="operator">/</span>tags<span class="operator">/</span><span class="number">7.4</span><span class="number">.1</span>.tar.gz</span><br><span class="line">tar xzvf <span class="number">7.4</span><span class="number">.1</span>.tar.gz </span><br><span class="line">cd redis<span class="number">-7.4</span><span class="number">.1</span><span class="operator">/</span></span><br><span class="line">make </span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line"># 默认路径 <span class="operator">/</span>usr<span class="operator">/</span><span class="keyword">local</span><span class="operator">/</span>bin</span><br><span class="line"></span><br><span class="line"># 修改配置文件</span><br><span class="line">daemonize yes</span><br><span class="line"></span><br><span class="line"><span class="keyword">add</span> <span class="string">&#x27;vm.overcommit_memory = 1&#x27;</span> <span class="keyword">to</span> <span class="operator">/</span>etc<span class="operator">/</span>sysctl.conf <span class="keyword">and</span> <span class="keyword">then</span> reboot <span class="keyword">or</span> run the command <span class="string">&#x27;sysctl vm.overcommit_memory=1&#x27;</span> <span class="keyword">for</span> this <span class="keyword">to</span> take effect.</span><br><span class="line"></span><br><span class="line">redis<span class="operator">-</span>server <span class="operator">/</span>root<span class="operator">/</span>redis<span class="number">-7.4</span><span class="number">.1</span><span class="operator">/</span>redis.conf </span><br><span class="line"></span><br><span class="line">redis<span class="operator">-</span>cli <span class="operator">-</span>h <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="operator">-</span>p <span class="number">6379</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SHUTDOWN</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">redis<span class="operator">-</span>benchmark <span class="operator">-</span>c <span class="number">100</span> <span class="operator">-</span>n <span class="number">100000</span></span><br></pre></td></tr></table></figure>
+<p>redis 默认 16 个数据库，默认使用第 0 个数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">SELECT</span> <span class="number">3</span></span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>[<span class="number">3</span>]<span class="operator">&gt;</span> DBSIZE</span><br><span class="line">(<span class="type">integer</span>) <span class="number">0</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> KEYS <span class="operator">*</span></span><br><span class="line"><span class="number">1</span>) &quot;mylist&quot;</span><br><span class="line"><span class="number">2</span>) &quot;myhash&quot;</span><br><span class="line"><span class="number">3</span>) &quot;haha&quot;</span><br><span class="line"><span class="number">4</span>) &quot;key:__rand_int__&quot;</span><br><span class="line"><span class="number">5</span>) &quot;counter:__rand_int__&quot;</span><br><span class="line"><span class="number">6</span>) &quot;mystream&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>[<span class="number">3</span>]<span class="operator">&gt;</span> FLUSHALL</span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>[<span class="number">3</span>]<span class="operator">&gt;</span> FLUSHDB</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<p>redis 是单线程的，6 开始支持多线程</p>
+<p>redis 的瓶颈是机器的内存和网络带宽</p>
+<h3 id="数据类型"><a class="markdownIt-Anchor" href="#数据类型">#</a> 数据类型</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">set</span> name ssss</span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">EXISTS</span> name</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> MOVE name <span class="number">1</span> </span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">set</span> name haha</span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> EXPIRE name <span class="number">10</span></span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> TTL name</span><br><span class="line">(<span class="type">integer</span>) <span class="number">-2</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> DEL name</span><br><span class="line">(<span class="type">integer</span>) <span class="number">0</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">set</span> name haha</span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> TYPE name </span><br><span class="line">string</span><br></pre></td></tr></table></figure>
+<h4 id="string"><a class="markdownIt-Anchor" href="#string">#</a> string</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> APPEND name wwww            # 存在追加，不存在创建</span><br><span class="line">(<span class="type">integer</span>) <span class="number">8</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">get</span> name </span><br><span class="line">&quot;hahawwww&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> STRLEN name</span><br><span class="line">(<span class="type">integer</span>) <span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">set</span> num <span class="number">100</span></span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> INCR num</span><br><span class="line">(<span class="type">integer</span>) <span class="number">101</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> DECR num</span><br><span class="line">(<span class="type">integer</span>) <span class="number">100</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> INCRBY num <span class="number">10</span></span><br><span class="line">(<span class="type">integer</span>) <span class="number">110</span></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">get</span> name</span><br><span class="line">&quot;hahawwww&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GETRANGE name <span class="number">0</span> <span class="number">3</span></span><br><span class="line">&quot;haha&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GETRANGE name <span class="number">0</span> <span class="number">-1</span></span><br><span class="line">&quot;hahawwww&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SETRANGE name <span class="number">4</span> xxxx</span><br><span class="line">(<span class="type">integer</span>) <span class="number">8</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">get</span> name</span><br><span class="line">&quot;hahaxxxx&quot;</span><br><span class="line"></span><br><span class="line"># 设置name2<span class="operator">=</span>hello，ttl<span class="operator">=</span><span class="number">60</span></span><br><span class="line">SETEX name2 <span class="number">60</span> hello</span><br><span class="line"></span><br><span class="line"># 如果不存在再set.在分布式锁中经常使用</span><br><span class="line">SETNX name xixi</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SETNX name xixi</span><br><span class="line">(<span class="type">integer</span>) <span class="number">0</span>    # 设置失败返回<span class="number">0</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">get</span> name </span><br><span class="line">&quot;hahaxxxx&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> MSET key1 v1 key2 v2 key3 v3</span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> KEYS <span class="operator">*</span></span><br><span class="line"><span class="number">2</span>) &quot;key2&quot;</span><br><span class="line"><span class="number">3</span>) &quot;key1&quot;</span><br><span class="line"><span class="number">5</span>) &quot;key3&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> MGET key1 key2</span><br><span class="line"><span class="number">1</span>) &quot;v1&quot;</span><br><span class="line"><span class="number">2</span>) &quot;v2&quot;</span><br><span class="line"></span><br><span class="line"># 只会一起成功，或者一起失败</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> MSETNX key1 v1 key2 v2</span><br><span class="line">(<span class="type">integer</span>) <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> MSET <span class="keyword">user</span>:<span class="number">1</span>:name zhangsan  <span class="keyword">user</span>:<span class="number">1</span>:age <span class="number">11</span> </span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> MGET <span class="keyword">user</span>:<span class="number">1</span>:name</span><br><span class="line"><span class="number">1</span>) &quot;zhangsan&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> MGET <span class="keyword">user</span>:<span class="number">1</span>:age</span><br><span class="line"><span class="number">1</span>) &quot;11&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GETSET db mysql </span><br><span class="line">(nil)</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">get</span> db</span><br><span class="line">&quot;mysql&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GETSET db mongodb</span><br><span class="line">&quot;mysql&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">uid:<span class="number">1111</span>:follow <span class="number">0</span> incr</span><br></pre></td></tr></table></figure>
+<h4 id="list"><a class="markdownIt-Anchor" href="#list">#</a> list</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"># list 可以做栈，队列,阻塞队列</span><br><span class="line"># 左插</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LPUSH list <span class="keyword">one</span> two</span><br><span class="line">(<span class="type">integer</span>) <span class="number">2</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LRANGE list <span class="number">0</span> <span class="number">-1</span></span><br><span class="line"><span class="number">1</span>) &quot;two&quot;</span><br><span class="line"><span class="number">2</span>) &quot;one&quot;</span><br><span class="line">#右插</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LPUSH list three </span><br><span class="line">(<span class="type">integer</span>) <span class="number">3</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LRANGE list <span class="number">0</span> <span class="number">1</span></span><br><span class="line"><span class="number">1</span>) &quot;three&quot;</span><br><span class="line"><span class="number">2</span>) &quot;two&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LRANGE list <span class="number">0</span> <span class="number">-1</span> </span><br><span class="line"><span class="number">1</span>) &quot;three&quot;</span><br><span class="line"><span class="number">2</span>) &quot;two&quot;</span><br><span class="line"><span class="number">3</span>) &quot;one&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LPOP list <span class="number">1</span></span><br><span class="line"><span class="number">1</span>) &quot;three&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LRANGE list2 <span class="number">0</span> <span class="number">-1</span> </span><br><span class="line"><span class="number">1</span>) &quot;1&quot;</span><br><span class="line"><span class="number">2</span>) &quot;2&quot;</span><br><span class="line"><span class="number">3</span>) &quot;3&quot;</span><br><span class="line"><span class="number">4</span>) &quot;4&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> RPOP list2 <span class="number">1</span></span><br><span class="line"><span class="number">1</span>) &quot;4&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LRANGE list2 <span class="number">0</span> <span class="number">-1</span> </span><br><span class="line"><span class="number">1</span>) &quot;1&quot;</span><br><span class="line"><span class="number">2</span>) &quot;2&quot;</span><br><span class="line"><span class="number">3</span>) &quot;3&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LINDEX list2 <span class="number">1</span> </span><br><span class="line">&quot;2&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LINDEX list2 <span class="number">0</span></span><br><span class="line">&quot;1&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LLEN list2 </span><br><span class="line">(<span class="type">integer</span>) <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LPUSH list3 <span class="keyword">one</span> two two three four </span><br><span class="line">(<span class="type">integer</span>) <span class="number">5</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LRANGE list3 <span class="number">0</span> <span class="number">-1</span> </span><br><span class="line"><span class="number">1</span>) &quot;four&quot;</span><br><span class="line"><span class="number">2</span>) &quot;three&quot;</span><br><span class="line"><span class="number">3</span>) &quot;two&quot;</span><br><span class="line"><span class="number">4</span>) &quot;two&quot;</span><br><span class="line"><span class="number">5</span>) &quot;one&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LREM list3 <span class="number">2</span> three </span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LRANGE list3 <span class="number">0</span> <span class="number">-1</span> </span><br><span class="line"><span class="number">1</span>) &quot;four&quot;</span><br><span class="line"><span class="number">2</span>) &quot;two&quot;</span><br><span class="line"><span class="number">3</span>) &quot;two&quot;</span><br><span class="line"><span class="number">4</span>) &quot;one&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LREM list3 <span class="number">2</span> two</span><br><span class="line">(<span class="type">integer</span>) <span class="number">2</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LRANGE list3 <span class="number">0</span> <span class="number">-1</span> </span><br><span class="line"><span class="number">1</span>) &quot;four&quot;</span><br><span class="line"><span class="number">2</span>) &quot;one&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LRANGE list3 <span class="number">0</span> <span class="number">-1</span></span><br><span class="line"><span class="number">1</span>) &quot;hahahaxixixi&quot;</span><br><span class="line"><span class="number">2</span>) &quot;two&quot;</span><br><span class="line"><span class="number">3</span>) &quot;one&quot;</span><br><span class="line"><span class="number">4</span>) &quot;four&quot;</span><br><span class="line"><span class="number">5</span>) &quot;one&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LTRIM list3 <span class="number">0</span> <span class="number">1</span> </span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LRANGE list3 <span class="number">0</span> <span class="number">-1</span> </span><br><span class="line"><span class="number">1</span>) &quot;hahahaxixixi&quot;</span><br><span class="line"><span class="number">2</span>) &quot;two&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LRANGE list3 <span class="number">0</span> <span class="number">-1</span> </span><br><span class="line"><span class="number">1</span>) &quot;hahahaxixixi&quot;</span><br><span class="line"><span class="number">2</span>) &quot;two&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> RPOPLPUSH list3 list2 </span><br><span class="line">&quot;two&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LRANGE list2 <span class="number">0</span> <span class="number">-1</span> </span><br><span class="line"><span class="number">1</span>) &quot;two&quot;</span><br><span class="line"><span class="number">2</span>) &quot;4&quot;</span><br><span class="line"><span class="number">3</span>) &quot;3&quot;</span><br><span class="line"><span class="number">4</span>) &quot;1&quot;</span><br><span class="line"><span class="number">5</span>) &quot;2&quot;</span><br><span class="line"><span class="number">6</span>) &quot;3&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span>  LRANGE list3 <span class="number">0</span> <span class="number">-1</span> </span><br><span class="line"><span class="number">1</span>) &quot;hahahaxixixi&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">EXISTS</span> list2 </span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LSET list2 <span class="number">0</span> item </span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LRANGE list2 <span class="number">0</span> <span class="number">-1</span> </span><br><span class="line"><span class="number">1</span>) &quot;item&quot;</span><br><span class="line"><span class="number">2</span>) &quot;4&quot;</span><br><span class="line"><span class="number">3</span>) &quot;3&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LINSERT list2 before item haha</span><br><span class="line">(<span class="type">integer</span>) <span class="number">7</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> LRANGE list2 <span class="number">0</span> <span class="number">-1</span> </span><br><span class="line"><span class="number">1</span>) &quot;haha&quot;</span><br><span class="line"><span class="number">2</span>) &quot;item&quot;</span><br><span class="line"><span class="number">3</span>) &quot;4&quot;</span><br><span class="line"><span class="number">4</span>) &quot;3&quot;</span><br></pre></td></tr></table></figure>
+<p>实际是一个链表。移除了所有值的聊表，也代表不存在</p>
+<p>在链表两端改动或插入，效率最高。中间效率较低</p>
+<p>也可以用作消息队列</p>
+<h4 id="set"><a class="markdownIt-Anchor" href="#set">#</a> set</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>中值不能重复</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SADD myset hello </span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SADD myset haha</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SADD myset sbb</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SMEMBERS myset </span><br><span class="line"><span class="number">1</span>) &quot;hello&quot;</span><br><span class="line"><span class="number">2</span>) &quot;haha&quot;</span><br><span class="line"><span class="number">3</span>) &quot;sbb&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SISMEMBER myset hello</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SISMEMBER myset world</span><br><span class="line">(<span class="type">integer</span>) <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SADD myset hello</span><br><span class="line">(<span class="type">integer</span>) <span class="number">0</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SCARD myset</span><br><span class="line">(<span class="type">integer</span>) <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SREM myset hello </span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SCARD myset</span><br><span class="line">(<span class="type">integer</span>) <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SRANDMEMBER myset</span><br><span class="line">&quot;haha&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SRANDMEMBER myset</span><br><span class="line">&quot;sbb&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SMEMBERS myset</span><br><span class="line"><span class="number">1</span>) &quot;haha&quot;</span><br><span class="line"><span class="number">2</span>) &quot;sbb&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> spop myset</span><br><span class="line">&quot;sbb&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SMEMBERS myset2</span><br><span class="line"><span class="number">1</span>) &quot;xxiixi&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SMOVE myset2 myset xxiixi</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SMEMBERS myset</span><br><span class="line"><span class="number">1</span>) &quot;haha&quot;</span><br><span class="line"><span class="number">2</span>) &quot;hello&quot;</span><br><span class="line"><span class="number">3</span>) &quot;hahahaa&quot;</span><br><span class="line"><span class="number">4</span>) &quot;xxiixi&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SMEMBERS myset2</span><br><span class="line"><span class="number">1</span>) &quot;hello&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SDIFF myset myset2</span><br><span class="line"><span class="number">1</span>) &quot;haha&quot;</span><br><span class="line"><span class="number">2</span>) &quot;hahahaa&quot;</span><br><span class="line"><span class="number">3</span>) &quot;xxiixi&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SINTER myset myset2</span><br><span class="line"><span class="number">1</span>) &quot;hello&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SUNION myset myset2</span><br><span class="line"><span class="number">1</span>) &quot;haha&quot;</span><br><span class="line"><span class="number">2</span>) &quot;hello&quot;</span><br><span class="line"><span class="number">3</span>) &quot;hahahaa&quot;</span><br><span class="line"><span class="number">4</span>) &quot;xxiixi&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="hash"><a class="markdownIt-Anchor" href="#hash">#</a> hash</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> HSET myhash haha xixi</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> hget myhash haha</span><br><span class="line">&quot;xixi&quot;</span><br><span class="line"></span><br><span class="line">hmget</span><br><span class="line">hmset</span><br><span class="line"></span><br><span class="line">hgetall</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> HGETALL myhash</span><br><span class="line"><span class="number">1</span>) &quot;fideld1&quot;</span><br><span class="line"><span class="number">2</span>) &quot;haha&quot;</span><br><span class="line"><span class="number">3</span>) &quot;haha&quot;</span><br><span class="line"><span class="number">4</span>) &quot;xixi&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> HDEL myhash haha</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> HGETALL myhash</span><br><span class="line"><span class="number">1</span>) &quot;fideld1&quot;</span><br><span class="line"><span class="number">2</span>) &quot;haha&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> HLEN myhash</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> HEXISTS myhash haha</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> HEXISTS myhash haxi</span><br><span class="line">(<span class="type">integer</span>) <span class="number">0</span></span><br><span class="line"></span><br><span class="line"># 只获取hash中field</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> HGETALL myhash</span><br><span class="line"><span class="number">1</span>) &quot;fideld1&quot;</span><br><span class="line"><span class="number">2</span>) &quot;haha&quot;</span><br><span class="line"><span class="number">3</span>) &quot;haha&quot;</span><br><span class="line"><span class="number">4</span>) &quot;xixi&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> HKEYS myhash</span><br><span class="line"><span class="number">1</span>) &quot;fideld1&quot;</span><br><span class="line"><span class="number">2</span>) &quot;haha&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> HVALS myhash</span><br><span class="line"><span class="number">1</span>) &quot;haha&quot;</span><br><span class="line"><span class="number">2</span>) &quot;xixi&quot;</span><br><span class="line"># 只获取<span class="keyword">value</span></span><br><span class="line"></span><br><span class="line">HINCRBY myhash haha <span class="number">1</span> </span><br><span class="line"></span><br><span class="line"># 插入时先判断是否存在，存在返回<span class="number">0</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> HSETNX myhash field4 ooo</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>hash 存变更的数据。hash 更适合对象存储，string 更适合字符串</p>
+<h4 id="zset"><a class="markdownIt-Anchor" href="#zset">#</a> zset</h4>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>基础上增加一个值，有序集合</span><br><span class="line">zset k1 score1 v1 </span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZADD myzset <span class="number">1</span> <span class="keyword">one</span> </span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZADD myzset <span class="number">2</span> two </span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZRANGE myzset <span class="number">0</span> <span class="number">-1</span></span><br><span class="line"><span class="number">1</span>) &quot;one&quot;</span><br><span class="line"><span class="number">2</span>) &quot;two&quot;</span><br><span class="line"></span><br><span class="line"># 根据score列做排序</span><br><span class="line">ZRANGEBYSCORE num <span class="operator">-</span>inf <span class="operator">+</span>inf </span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZADD sa <span class="number">2500</span> xiaoming</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZADD sa <span class="number">3000</span> xiaozhang</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZADD sa <span class="number">500</span> xiaoqiang</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> </span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZRANGEBYSCORE sa <span class="operator">-</span>inf <span class="operator">+</span>inf</span><br><span class="line"><span class="number">1</span>) &quot;xiaoqiang&quot;</span><br><span class="line"><span class="number">2</span>) &quot;xiaoming&quot;</span><br><span class="line"><span class="number">3</span>) &quot;xiaozhang&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZRANGEBYSCORE sa <span class="operator">-</span>inf <span class="operator">+</span>inf withscores</span><br><span class="line"><span class="number">1</span>) &quot;xiaoqiang&quot;</span><br><span class="line"><span class="number">2</span>) &quot;500&quot;</span><br><span class="line"><span class="number">3</span>) &quot;xiaoming&quot;</span><br><span class="line"><span class="number">4</span>) &quot;2500&quot;</span><br><span class="line"><span class="number">5</span>) &quot;xiaozhang&quot;</span><br><span class="line"><span class="number">6</span>) &quot;3000&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZRANGEBYSCORE sa <span class="number">2000</span> <span class="number">3000</span>  withscores</span><br><span class="line"><span class="number">1</span>) &quot;xiaoming&quot;</span><br><span class="line"><span class="number">2</span>) &quot;2500&quot;</span><br><span class="line"><span class="number">3</span>) &quot;xiaozhang&quot;</span><br><span class="line"><span class="number">4</span>) &quot;3000&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZREVRANGEBYSCORE sa <span class="operator">+</span>inf <span class="operator">-</span>inf</span><br><span class="line"><span class="number">1</span>) &quot;xiaozhang&quot;</span><br><span class="line"><span class="number">2</span>) &quot;xiaoming&quot;</span><br><span class="line"><span class="number">3</span>) &quot;xiaoqiang&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZREM sa xiaozhang</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZRANGE sa <span class="number">0</span> <span class="number">-1</span> </span><br><span class="line"><span class="number">1</span>) &quot;xiaoqiang&quot;</span><br><span class="line"><span class="number">2</span>) &quot;xiaoming&quot;</span><br><span class="line"></span><br><span class="line"># 获取有序集合中个数</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZCARD sa</span><br><span class="line">(<span class="type">integer</span>) <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZRANGE sa <span class="number">0</span> <span class="number">-1</span> withscores</span><br><span class="line"><span class="number">1</span>) &quot;xiaoqiang&quot;</span><br><span class="line"><span class="number">2</span>) &quot;500&quot;</span><br><span class="line"><span class="number">3</span>) &quot;xiaoming&quot;</span><br><span class="line"><span class="number">4</span>) &quot;2500&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZCOUNT sa <span class="number">0</span> <span class="number">2900</span></span><br><span class="line">(<span class="type">integer</span>) <span class="number">2</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZCOUNT sa <span class="number">2000</span> <span class="number">2900</span></span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="geospatial"><a class="markdownIt-Anchor" href="#geospatial">#</a> geospatial</h3>
+<p>用于推算地理位置信息，两地距离，方圆的人</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GEOADD city:china <span class="number">116.4</span>  <span class="number">39.9</span> bj</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GEOADD city:china <span class="number">121.4</span> <span class="number">31.2</span> sh</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GEOADD city:china <span class="number">106.5</span> <span class="number">29.5</span> cq</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"># 两级无法直接添加</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GEOPOS city:china bj cq</span><br><span class="line"><span class="number">1</span>) <span class="number">1</span>) &quot;116.39999896287918091&quot;</span><br><span class="line">   <span class="number">2</span>) &quot;39.90000009167091832&quot;</span><br><span class="line"><span class="number">2</span>) <span class="number">1</span>) &quot;106.49999767541885376&quot;</span><br><span class="line">   <span class="number">2</span>) &quot;29.50000115408581536&quot;</span><br><span class="line">   </span><br><span class="line"># 两个城市之间距离</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GEODIST city:china cq bj km</span><br><span class="line">&quot;1466.7920&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 找出某一半径内的元素</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GEORADIUS city:china <span class="number">115</span> <span class="number">40</span> <span class="number">200</span> km </span><br><span class="line"><span class="number">1</span>) &quot;bj&quot;</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GEORADIUS city:china <span class="number">115</span> <span class="number">40</span> <span class="number">200</span> km  withcoord</span><br><span class="line"><span class="number">1</span>) <span class="number">1</span>) &quot;bj&quot;</span><br><span class="line">   <span class="number">2</span>) <span class="number">1</span>) &quot;116.39999896287918091&quot;</span><br><span class="line">      <span class="number">2</span>) &quot;39.90000009167091832&quot;</span><br><span class="line">      </span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GEORADIUS city:china <span class="number">115</span> <span class="number">40</span> <span class="number">200</span> km  withdist  withcoord count <span class="number">2</span></span><br><span class="line"><span class="number">1</span>) <span class="number">1</span>) &quot;bj&quot;</span><br><span class="line">   <span class="number">2</span>) &quot;119.8890&quot;</span><br><span class="line">   <span class="number">3</span>) <span class="number">1</span>) &quot;116.39999896287918091&quot;</span><br><span class="line">      <span class="number">2</span>) &quot;39.90000009167091832&quot;</span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GEORADIUSBYMEMBER city:china bj <span class="number">1500</span> km </span><br><span class="line"><span class="number">1</span>) &quot;cq&quot;</span><br><span class="line"><span class="number">2</span>) &quot;sh&quot;</span><br><span class="line"><span class="number">3</span>) &quot;bj&quot;</span><br><span class="line"></span><br><span class="line"># 当前程序经纬度字符串，两个字符串越接近，距离越近</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GEOHASH city:china bj cq </span><br><span class="line"><span class="number">1</span>) &quot;wx4fbxxfke0&quot;</span><br><span class="line"><span class="number">2</span>) &quot;wm5xz6qcvy0&quot;</span><br></pre></td></tr></table></figure>
+<p>geo 底层实现原理是 zset，可以使用 zset 命令操作 geo</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZRANGE city:china <span class="number">0</span> <span class="number">-1</span>  withscores</span><br><span class="line"><span class="number">1</span>) &quot;cq&quot;</span><br><span class="line"><span class="number">2</span>) &quot;4026041840220649&quot;</span><br><span class="line"><span class="number">3</span>) &quot;sh&quot;</span><br><span class="line"><span class="number">4</span>) &quot;4054755999786388&quot;</span><br><span class="line"><span class="number">5</span>) &quot;bj&quot;</span><br><span class="line"><span class="number">6</span>) &quot;4069885360207904&quot;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZREM city:china bj </span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> ZRANGE city:china <span class="number">0</span> <span class="number">-1</span>  withscores</span><br><span class="line"><span class="number">1</span>) &quot;cq&quot;</span><br><span class="line"><span class="number">2</span>) &quot;4026041840220649&quot;</span><br><span class="line"><span class="number">3</span>) &quot;sh&quot;</span><br><span class="line"><span class="number">4</span>) &quot;4054755999786388&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="hyperloglog"><a class="markdownIt-Anchor" href="#hyperloglog">#</a> hyperloglog</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 基数，不重复的元素，可以有误差</span><br><span class="line">hyperloglog基数统计算法</span><br><span class="line">占用内存固定，<span class="number">2</span><span class="operator">^</span><span class="number">64</span> 不同元素的计数，只需要<span class="number">12</span>kb</span><br><span class="line">大约有<span class="number">0.81</span><span class="operator">%</span>的错误率</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> PFADD mylog a b c d e f e e i</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> PFCOUNT mylog</span><br><span class="line">(<span class="type">integer</span>) <span class="number">7</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> PFADD mylog2 a b c d e f g h i j k</span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> PFMERGE mylog3 mylog mylog2 </span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> PFCOUNT mylog3</span><br><span class="line">(<span class="type">integer</span>) <span class="number">11</span></span><br></pre></td></tr></table></figure>
+<h3 id="bitmap"><a class="markdownIt-Anchor" href="#bitmap">#</a> bitmap</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">bitmaps位图，都是操作二进制位来记录，只有<span class="number">1</span>和<span class="number">0</span>两个状态</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SETBIT sign <span class="number">0</span> <span class="number">1</span></span><br><span class="line">(<span class="type">integer</span>) <span class="number">0</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SETBIT sign <span class="number">1</span> <span class="number">0</span></span><br><span class="line">(<span class="type">integer</span>) <span class="number">0</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SETBIT sign <span class="number">2</span> <span class="number">0</span></span><br><span class="line">(<span class="type">integer</span>) <span class="number">0</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SETBIT sign <span class="number">3</span> <span class="number">0</span></span><br><span class="line">(<span class="type">integer</span>) <span class="number">0</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SETBIT sign <span class="number">4</span> <span class="number">1</span> </span><br><span class="line">(<span class="type">integer</span>) <span class="number">0</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> SETBIT sign <span class="number">5</span> <span class="number">0</span> </span><br><span class="line">(<span class="type">integer</span>) <span class="number">0</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GETBIT sign <span class="number">4</span></span><br><span class="line">(<span class="type">integer</span>) <span class="number">1</span></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> GETBIT sign <span class="number">5</span></span><br><span class="line">(<span class="type">integer</span>) <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> BITCOUNT sign # 统计为<span class="number">1</span> 的打卡记录</span><br><span class="line">(<span class="type">integer</span>) <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h3 id="事务"><a class="markdownIt-Anchor" href="#事务">#</a> 事务</h3>
+<p>redis 单条命令保证原子性。但是事务不保证原子性</p>
+<p>一次性，顺序性，排他性</p>
+<p>redis 事务没有隔离级别的概念。命令在事务中没有被直接执行，只有发起执行命令的时候才执行</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> MULTI </span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>(TX)<span class="operator">&gt;</span> <span class="keyword">set</span> v1 v1 </span><br><span class="line">QUEUED</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>(TX)<span class="operator">&gt;</span> <span class="keyword">EXEC</span></span><br><span class="line"><span class="number">1</span>) OK</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> MULTI</span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>(TX)<span class="operator">&gt;</span> <span class="keyword">set</span> haha xixi </span><br><span class="line">QUEUED</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>(TX)<span class="operator">&gt;</span> DISCARD</span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">get</span> haha</span><br><span class="line">(nil)</span><br></pre></td></tr></table></figure>
+<p>编译型异常，所有事务都不会执行</p>
+<p>运行时异常，只有错误命令不会被执行</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">set</span> ooo ppp</span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> MULTI</span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>(TX)<span class="operator">&gt;</span> INCR ooo</span><br><span class="line">QUEUED</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>(TX)<span class="operator">&gt;</span> <span class="keyword">set</span> ppp aaa </span><br><span class="line">QUEUED</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>(TX)<span class="operator">&gt;</span> <span class="keyword">set</span> uuu iii </span><br><span class="line">QUEUED</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>(TX)<span class="operator">&gt;</span> <span class="keyword">get</span> uuu</span><br><span class="line">QUEUED</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>(TX)<span class="operator">&gt;</span> <span class="keyword">EXEC</span></span><br><span class="line"><span class="number">1</span>) (error) ERR <span class="keyword">value</span> <span class="keyword">is</span> <span class="keyword">not</span> an <span class="type">integer</span> <span class="keyword">or</span> <span class="keyword">out</span> <span class="keyword">of</span> <span class="keyword">range</span></span><br><span class="line"><span class="number">2</span>) OK</span><br><span class="line"><span class="number">3</span>) OK</span><br><span class="line"><span class="number">4</span>) &quot;iii&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="乐观锁"><a class="markdownIt-Anchor" href="#乐观锁">#</a> 乐观锁</h3>
+<p>悲观锁：什么时候都会出问题，做什么都会加锁，影响性能</p>
+<p>乐观锁：认为什么时候都不会出现问题，更新数据的时候去判断下在此期间是否有人修改过这个数据。mysql 中用 version 字段。获取 version，更新的时候比较 version。redis 中使用 watch</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"># redis监视测试</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">set</span> money <span class="number">0</span></span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">set</span> <span class="keyword">out</span> <span class="number">0</span> </span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> WATCH money</span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> MULTI        # 事务正常结束，数据没有发生变动</span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>(TX)<span class="operator">&gt;</span> DECRBY money <span class="number">20</span></span><br><span class="line">QUEUED</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>(TX)<span class="operator">&gt;</span> INCRBY <span class="keyword">out</span> <span class="number">20</span></span><br><span class="line">QUEUED</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>(TX)<span class="operator">&gt;</span> <span class="keyword">EXEC</span></span><br><span class="line"><span class="number">1</span>) (<span class="type">integer</span>) <span class="number">-20</span></span><br><span class="line"><span class="number">2</span>) (<span class="type">integer</span>) <span class="number">20</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 线程<span class="number">1</span>获取money</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> watch money </span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> multi</span><br><span class="line">OK</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>(TX)<span class="operator">&gt;</span> DECRBY money <span class="number">10</span></span><br><span class="line">QUEUED</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>(TX)<span class="operator">&gt;</span> INCRBY <span class="keyword">out</span> <span class="number">10</span></span><br><span class="line">QUEUED</span><br><span class="line"># 开一个新线程，线程<span class="number">2</span>，修改money。当前事务提交失败</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">get</span> momey</span><br><span class="line"></span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span><span class="operator">&gt;</span> <span class="keyword">set</span> money <span class="number">1000</span></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line"># 线程<span class="number">1</span> 执行事务</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>(TX)<span class="operator">&gt;</span> <span class="keyword">exec</span></span><br><span class="line">(nil)</span><br><span class="line"></span><br><span class="line"># 线程<span class="number">1</span> 事务执行失败需要先unwatch，重新监视</span><br><span class="line">watch可以当做redis 乐观锁</span><br><span class="line"></span><br><span class="line">unwatch</span><br><span class="line">watch money </span><br></pre></td></tr></table></figure>
+<h3 id="redisconf"><a class="markdownIt-Anchor" href="#redisconf">#</a> redis.conf</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">include /path/to/local.conf</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">include /path/to/other.conf</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">include /path/to/fragments/*.conf</span></span><br><span class="line"></span><br><span class="line">bind 127.0.0.1 -::1</span><br><span class="line"></span><br><span class="line">protected-mode yes</span><br><span class="line"></span><br><span class="line">daemonize yes</span><br><span class="line">pidfile /var/run/redis_6379.pid</span><br><span class="line"></span><br><span class="line">save 900 1 # 如果900秒内至少有一个key进行修改，旧进行持久化操作。持久化到文件rdb  aof</span><br><span class="line">save 300 10</span><br><span class="line">save 60 10000</span><br><span class="line"></span><br><span class="line">stop-writes-on-bgsave-error yes 持久化出错是否还继续工作</span><br><span class="line"></span><br><span class="line">rdbcompression Yes 是否压缩rdb，需要消耗cpu资源</span><br><span class="line"></span><br><span class="line">rdbchecksum yes  保存RDB文件时进行错误校验检查</span><br><span class="line"></span><br><span class="line">dir ./             rdb 文件保存的目录</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">replication 主从复制</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置登录密码</span></span><br><span class="line">requirepass foobared</span><br><span class="line">也可以通过命令行设置密码</span><br><span class="line">127.0.0.1:6379&gt; CONFIG SET requirepass 123456 </span><br><span class="line">127.0.0.1:6379&gt; auth 123456       登录</span><br><span class="line"></span><br><span class="line">连接redis最大客户端数量</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">maxclients 10000</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">redis最大内存容量</span></span><br><span class="line">maxmemory &lt;bytes&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">内存到达上线处理策略</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">maxmemory-policy noeviction</span></span><br><span class="line"></span><br><span class="line">默认不开启AOF</span><br><span class="line">appendonly no</span><br><span class="line">appendfilename &quot;appendonly.aof&quot;</span><br><span class="line">每秒同步，可能丢失一秒数据</span><br><span class="line">appendfsync everysec</span><br><span class="line">每次修改都同步</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">appendfsync always</span></span><br></pre></td></tr></table></figure>
+<h3 id="redis持久化"><a class="markdownIt-Anchor" href="#redis持久化">#</a> redis 持久化</h3>
+<p>Redis 是内存数据库，如果不将内存中的数据库状态保存到磁盘，那么一旦服务器进程退出，服务器中的数据库状态也会消失。所以 Redis 提供了持久化功能</p>
+<blockquote>
+<p>Redis4.0 版本之后还提供了 RDB-AOF 混合持久化格式，这种持久化方式混合了两者的优点。</p>
+</blockquote>
+<h4 id="rdbredis-database"><a class="markdownIt-Anchor" href="#rdbredis-database">#</a> RDB(redis database)</h4>
+<p>在指定的时间间隔内将内存中的数据集快照写入磁盘，也就是 Snapshot 快照，它恢复时是将快照文件直接读到内存里。</p>
+<p>Redis 会单独创建 (fork) 一个子进程来进行持久化，会先将数据写入到一个临时文件中，待持久化过程都结束了，再用这个临时文 件替换上次持久化好的文件。整个过程中，主进程是不进行任何 lD 操作的。这就确保了极高的性能。如果需要进行大规模数据的恢复，且对于数据恢复的完整性不是非常敏感，那 RDB 方式要比 AOF 方式更加的高效。RDB 的缺点是最后一次持久化后的数据可能丢失。我们默认的就是 RDB, 一般情况下不需要修改这个配置！</p>
+<p>主从复制中，rdb 是在从机上面备用</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222210930923.png" alt="image-20250222210930923"></p>
+<p>rdb 保存文件名 dump.rdb</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">save 900 1   # 900秒内修改1次key，触发rdb操作</span><br></pre></td></tr></table></figure>
+<p><strong>触发机制</strong></p>
+<p>手动触发</p>
+<blockquote>
+<ul>
+<li>save：阻塞当前 redis 服务器进程，直至持久化完成，对于内存数据较大的情况，会造成长时间的阻塞，严重影响线上其它客户端获取数据。</li>
+<li>bgsave：Redis 进程执行 fork 操作创建子进程，RDB 持久化过程由子进程负责，完成后自动结束。阻塞只发生在 fork 阶段，一般时间很短。</li>
+</ul>
+</blockquote>
+<p>自动触发</p>
+<blockquote>
+<ul>
+<li>使用 save 相关配置，如 “save m n”。表示 m 秒内数据集存在 n 次修改时，自动触发 bgsave。（save 规则满足，自动触发 rdb）</li>
+<li>如果从节点执行全量复制操作，主节点自动执行 bgsave 生成 RDB 文件并发送给从节点。</li>
+<li>执行 debug reload 命令重新加载 Redis 时，也会自动触发 save 操作。</li>
+<li>默认情况下执行 shutdown 命令时，如果没有开启 AOF 持久化功能则自动执行 bgsave。</li>
+<li><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222210947834.png" alt="image-20250222210947834"></li>
+</ul>
+</blockquote>
+<p>执行 flushall，手动触发 rdb</p>
+<p>退出 redis，也会产生 RDB</p>
+<p><strong>恢复 RDB 文件</strong></p>
+<p>放到 redis 配置目录，redis 启动时会自动检查 dump.rdb ，恢复其中数据</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; CONFIG get dir</span><br><span class="line">1) &quot;dir&quot;</span><br><span class="line">2) &quot;/root&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>优点：</strong></p>
+<p>1、适合大规模数据恢复</p>
+<p>2、对数据完整性高俅不高</p>
+<p>3、RDB 是一个紧凑压缩的二进制文件，占用体积小。</p>
+<ol>
+<li>4、Redis 加载 RDB 进行数据恢复远快于 AOF 的方式。</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<p>需要一定时间间隔。redis 宕机后最后一次修改丢失</p>
+<p>fork 进程占用一定资源</p>
+<p>RDB 文件使用特定二进制格式保存，Redis 版本演进过程中有多个格式的 RDB 版本，存在老版本 Redis 服务无法兼容新版 RDB 格式的问题。</p>
+<h4 id="aof"><a class="markdownIt-Anchor" href="#aof">#</a> AOF</h4>
+<p>将所有命令都记录下来，恢复的时候把这个文件全量执行一遍</p>
+<p>以日志的形式来记录每个写操作，将 Redis 执行过的所有指令记录下来 (读操作不记录), 只许追加文件但不可以改写文件，redis 启动之初会读取该文件重新构建数据，换言之，redis 重启的活就根据日志文件的内容将写指令从前到后执行一次以完成数据的恢复工作</p>
+<p>aof 保存文件名 append.aof</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211023584.png" alt="image-20250222211023584"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">appendonly yes   # 默认不开启</span><br><span class="line"></span><br><span class="line">appendfsync everysec/always/no</span><br><span class="line">1、每一次修改都同步，文件完整性会更好</span><br><span class="line">2、每秒同步一次，可能丢失一秒数据</span><br><span class="line">3、从不同步，效率最高</span><br><span class="line"></span><br><span class="line">no-appendfsync-on-rewrite no</span><br><span class="line"></span><br><span class="line">rewrite ，如果AOF文件大于64mb，会fork一个新的进程来讲文件进行重写</span><br><span class="line">no-appendfsync-on-rewrite no</span><br><span class="line">auto-aof-rewrite-percentage 100</span><br><span class="line">auto-aof-rewrite-min-size 64mb</span><br></pre></td></tr></table></figure>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211041565.png" alt="image-20250222211041565" style="zoom:50%;" />
+<p>aof 文件如果有问题，redis-server 无法启动。可以使用 redis-check-aof 修复 aof 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-check-aof --fix appendonly.aof</span><br></pre></td></tr></table></figure>
+<h5 id="文件重写"><a class="markdownIt-Anchor" href="#文件重写">#</a> 文件重写</h5>
+<p>当 AOF 文件过大的时候，会触发自动重写机制。除此之外，也可以手动执行 bgrewriteaof 进行重写。</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211103430.png" alt="image-20250222211103430" style="zoom:50%;" />
+<p>AOF 的重写机制基本与 RDB 的持久化操作相同，通过 fork 一个进程来执行相应的操作。不同之处在于，在重写过程中，后续到来的命令可以添加到 AOF 重写缓冲区（aof_rewrite_buf）中，当新的 AOF 文件重写完成后，可以将这部分命令添加到新的 AOF 文件中，见图中操作 5.2。</p>
+<p>1、相对于数据文件来说，aof 文件远远大于 rbd，修复速度也比 rdb 慢</p>
+<p>2、AOF 运行效率也比 rdb 慢，所以 redis 默认持久化是用的 rbd</p>
+<h3 id="redis发布订阅"><a class="markdownIt-Anchor" href="#redis发布订阅">#</a> redis 发布订阅</h3>
+<p>redis 发布订阅是一种消息通信模式，发送者发送消息 (pub)，订阅者接受消息 (sub)</p>
+<p>redis 可以订阅任何数量频道</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">订阅段</span></span><br><span class="line">127.0.0.1:6379&gt; SUBSCRIBE hahahahaha</span><br><span class="line">1) &quot;subscribe&quot;</span><br><span class="line">2) &quot;hahahahaha&quot;</span><br><span class="line">3) (integer) 1</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">等待读取信息</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">发送端</span></span><br><span class="line">127.0.0.1:6379&gt; PUBLISH hahahahaha xixixi</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
+<p>通过 SUBSCRIBE 命令订阅某频道后，redis-server 里维护了 - 一个字典，字典的键就是一个个频道，而字典的值则是一个链表，链表中保存了所有订阅这个 channel 的客户端。SUBSCRIBE 命令的关键，就是将客户端添加到给定 channel 的订阅链表中 2。</p>
+<p>Pub/Sub 从字面上理解就是发布 (Publish) 与订阅 (Subscribe), 在 Redis 中，你可以设定对某一个 key 值进行消息发布及消息订阅，当一个 key 值上进行了消息发布后，所有订阅它的客户端都会收到相应的消息。这一功能最明显的用法就是用作实时消息系统，比如普通的即时聊天，群聊等功能。</p>
+<p>使用场景：</p>
+<p>1、实时消息系统</p>
+<p>2、实时聊天，频道当做聊天室</p>
+<p>3、订阅，关注系统</p>
+<p>或者使用消息队列</p>
+<h3 id="redis主从复制"><a class="markdownIt-Anchor" href="#redis主从复制">#</a> redis 主从复制</h3>
+<p>将 Redis 服务器的数据，复制到其他的 redis 服务器。复制是单向的，只能主复制到从。主从复制可以进行读写分离，减轻服务器压力。</p>
+<p>最低配 1 主 + 2 从。</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211118310.png" alt="image-20250222211118310" style="zoom:50%;" />
+<p>1、数据冗余：主从复制实现了数据的热备份，是持久化之外的一种数据冗余方式。</p>
+<p>2、故障恢复：当主节点出现问题时，可以由从节点提供服务，实现快速的故障恢复；实际上是一种服务的冗余。</p>
+<p>3、负载均衡：在主从复制的基础上，配合读写分离，可以由主节点提供写服务，由从节点提供读服务 (即写 Redis 数据时应用连接主节点，读 Redis 数据时应用连接从节点), 分担服务器负载；尤其是在写少读多的场景下，通过多个从节点分担读负载，可以大大提高 Redis 服务器的并发量。</p>
+<p>4、高可用基石：除了上述作用以外，主从复制还是哨兵和集群能够实施的基础，因此说主从复制是 Redis 高可用的基础。</p>
+<p>单台 redis 内存利用不应该超过 20G。默认情况下每台 redis 都是主节点，一个从节点只能有一个主节点</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">info replication</span><br><span class="line">role:master</span><br><span class="line">connected_slaves:0</span><br><span class="line">master_failover_state:no-failover</span><br><span class="line">master_replid:8c9b6efa6ec2fba109e99125e40a56a11a43334f</span><br><span class="line">master_replid2:0000000000000000000000000000000000000000</span><br><span class="line">master_repl_offset:0</span><br><span class="line">second_repl_offset:-1</span><br><span class="line">repl_backlog_active:0</span><br><span class="line">repl_backlog_size:1048576</span><br><span class="line">repl_backlog_first_byte_offset:0</span><br><span class="line">repl_backlog_histlen:0</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">默认每台都是主机。从机上配置主机信息，命令行指定主机</span></span><br><span class="line">slaveof 192.168.191.131 6379</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置文件中指定主机</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">replicaof &lt;masterip&gt; &lt;masterport&gt;</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash"><span class="comment"># masterauth &lt;master-password&gt;</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash"><span class="comment"># masteruser &lt;username&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>从机只读，主机读写。没有配置哨兵的情况下，从机不会自动成为主机</p>
+<p>主机断开连接，但是没有写操作时。主机恢复，从机仍然可以读写信息。</p>
+<p>从机断开连接，如果没有写入到配置文件，再次连接会变为主机。又变回从机时，数据会从主机中获取。</p>
+<p>Slave 启动成功连接到 master 后会发送一个 sync 命令</p>
+<p>Master 接到命令，启动后台的存盘进程，同时收集所有接收到的用于修改数据集命令，在后台进程执行完毕之后，master 将传送整个数据文件到 slave, 并完成一次完全同步。</p>
+<p>全量复制：而 slave 服务在接收到数据库文件数据后，将其存盘并加载到内存中。</p>
+<p>增量复制：Master 继续将新的所有收集到的修改命令依次传给 slave, 完成同步</p>
+<p>但是只要是重新连接 master, 一次完全同步 (全量复制) 将被自动执行</p>
+<p>主从复制可以</p>
+<p>M-&gt;(M/S)-&gt;S，此时中间的主机是 slave，是只读的，但是对于最后的 slave，他是 master。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slaveof no one  # 没有master的时候，自己变成master</span><br><span class="line"></span><br><span class="line">如果以前的master修复了，需要重新配置</span><br></pre></td></tr></table></figure>
+<h3 id="哨兵模式"><a class="markdownIt-Anchor" href="#哨兵模式">#</a> 哨兵模式</h3>
+<p>哨兵模式是一种特殊的模式，首先 Redis 提供了哨兵的命令，哨兵是一个独立的进程，作为进程，它会独立运行。其原理是哨兵通过发送命令，等待 Redis 服务器响应，从而监控运行的多个 Reedis 实例</p>
+<p>主机故障后，根据投票数自动将从库转为主库</p>
+<p>Redis sentinel 仅仅是在普通的 redis 主从复制模式增加了一系列的 sentinel 节点，用于监控主从模式中的 redis 数据节点，并没有对 redis 的数据节点进行额外的处理。</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211139948.png" alt="image-20250222211139948" style="zoom:67%;" />
+<p>这里的哨兵有两个作用</p>
+<p>通过发送命令，让 Redis 服务器返回监控其运行状态，包括主服务器和从服务器</p>
+<p>当哨兵监测到 master 宕机，会自动将 slave 切换成 master, 然后通过发布订阅模式通知其他的从服务器，修改配置文件，让它们切换主机。</p>
+<p>然而一个哨兵进程对 Redis 服务器进行监控，可能会出现问题，为此，我们可以使用多个哨兵进行监控。各个哨兵之间还会进行监控，这样就形成了多哨兵模式。</p>
+<h4 id="主观客观下线"><a class="markdownIt-Anchor" href="#主观客观下线">#</a> 主观 / 客观下线</h4>
+<p>假设主服务器宕机，哨兵 1 先检测到这个结果，系统并不会马上进行 failover 过程，仅仅是哨兵 1 主观的认为主服务器不可用，这个现象成为主观下线。当后面的哨兵也检测到主服务器不可用，并且数量达到一定值时，那么哨兵之间就会进行一次投票，每票的结果由一个哨兵发起，进行 failover [故障转移] 操作。切换成功后，就就会通过发布订阅模式，让各个哨兵把自己监控的从服务器实现切换主机，这个过程称为客观下线。</p>
+<blockquote>
+<ol>
+<li><strong>主观下线</strong>：利用第三个定时任务，可以对所有节点进行故障检测。当 sentinel 向其它节点发送 ping 后，超过参数 down-after-millliseconds 配置的时间后仍没有收到有效的回复，就会判定这个节点为故障的，并标记这个节点下线，这个行为就叫做主观下线。主观下线是某一个 sentinel 节点对另外的节点的主观方面的故障判断，存在误判的可能性，因此不能作为节点实际下线的判断依据。</li>
+<li>客观下线：正如之前所说，主观下线存在误判的可能性，所有需要多个 sentinel 节点共同参与商讨对某个节点的下线判断，从而确定该节点是否真的处于不可达的状态。具体操作是：sentinel 节点会向其它 sentinel 节点发送命令 is-master-down-by-addr 询问其他节点对主节点的故障判断，只有当达到 quorum 个 sentinel 节点对主节点做出故障判断时，才会执行对主节点的客观下线。</li>
+</ol>
+<ul>
+<li>down-after-millisecondes：该参数可以在 redis sentinel 节点启动配置文件中设置。这个参数设置得越大，则误判节点故障的概率就越小，但这也意味着故障转移的操作延后了，降低了对故障节点的反应速度。反之，该参数设置得越小，虽然提高了对故障节点的反应速度，但是对故障判断的错误率也随之升高。</li>
+<li>quorum：该参数也是在 sentinel 节点启动配置文件中设置的，可用于客观下线的判断和 sentinel 领导者的选举。如果该参数设置得太小，则客观下线的条件就越宽松，反之越严格。</li>
+<li>is-master-down-by-addr：这个命令除了可以用于交换 sentinel 节点之间对主节点的主观下线判断，还可以用于 sentinel 领导者的选举，不同的行为由不同的参数决定。</li>
+</ul>
+</blockquote>
+<h4 id="三个定时任务"><a class="markdownIt-Anchor" href="#三个定时任务">#</a> <strong>三个定时任务</strong></h4>
+<ol>
+<li><strong>每隔 10s</strong>，sentinel 会向主节点和从节点发送 info 命令来获取最新的数据节点拓扑结构，用于及时感知节点之间的变化。就是因为有了这个定时任务，在配置 redis sentinel 节点的时候就只需要配置主节点的信息，从节点的信息可以由这个定时任务获取到。</li>
+<li><strong>每隔 2s</strong>，sentinel 节点会向__sentinel__:hello 频道发送自身的 sentinel 信息以及对主节点的故障判断，sentinel 节点集合中的所有节点都会订阅这个频道。当有新的 sentinel 节点加入进来时，通过订阅这个频道，各个 sentinel 节点可以及时的获取到新加入的 sentinel 节点信息。此外，通过这个频道 sentinel 节点之间可以相互交换对主节点的状态信息，也就是与其它 sentinel 节点交换对主节点的客观下线判断，作为后续主节点客观下线以及领导者选举的依据。</li>
+<li><strong>每隔 1s</strong>，每个 sentinel 节点会向主节点、从节点和其它的 sentinel 节点发送 ping 命令做心跳检测，来确认这些节点是否可达，如果节点不可达，则标记节点下线。这个定时任务是判断节点故障的重要依据。</li>
+</ol>
+<h4 id="领导者选举"><a class="markdownIt-Anchor" href="#领导者选举">#</a> <strong>领导者选举</strong></h4>
+<p>当 sentienl 节点对主节点做出了客观下线的判断后，不会立即执行故障转移的操作，此时 sentinel 节点结合会选举出一个领导者，由该领导者 sentinel 节点来执行后续的故障转移。Redis 使用了 Raft 算法来选举领导者，这里见到介绍整个选举的流程。</p>
+<ol>
+<li>只有没有标记为主观下线的 sentinel 节点才有资格成为候选人。sentinel 节点通过向其它 sentinel 节点发送 is-master-down-by-addr 命令寻求对方将选票投个自己。</li>
+<li>收到命令的 sentinel 节点会判断自身在本轮 (epoch) 的投票中自己的选票是否还存在，如果选票还在，就同意对方成为领导者，反之拒绝。</li>
+<li>此时如果 sentinel 节点发现自己获得的选票达到 max (quorum, num (sentinels)/2)，那么它将成为领导，由于每轮选举每个 sentinel 节点都只有一张票，因此只有人拿到半数以上的票数，其它人就不可能拿到半数以上的票。</li>
+<li>如果本轮投票没有选出领导者，开启下一轮选举。</li>
+</ol>
+<p>暂时无法在飞书文档外展示此内容</p>
+<h4 id="failover故障转移"><a class="markdownIt-Anchor" href="#failover故障转移">#</a> failover (故障转移)</h4>
+<ol>
+<li>sentinel 会从过滤掉不健康的候选从节点，包括主观下线、5s 没有回复 sentinel 节点 ping 响应、与主节点失联超过 down-after-milliseconds*10 秒的节点</li>
+<li>选择从节点优先级最高的从节点，如果存在直接返回</li>
+<li>选择复制偏移量最大的从节点，复制偏移量代表了主从同步的完整度</li>
+<li>选择 run id 最小的从节点</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vim sentinel.conf</span><br><span class="line">port 26379                    # 端口号</span><br><span class="line">daemonize yes                 # 守护进程运行</span><br><span class="line">logfile &quot;26379.log&quot;           # 日志名</span><br><span class="line">dir &quot;/opt/redis/data&quot;         # 工作目录，存放rdb文件</span><br><span class="line">sentinel monitor master 127.0.0.1 6379 2      # 监控127.0.0.1:6379的主节点，名字为master，quorum为2</span><br><span class="line">sentinel down-after-milliseconds master 30000 # 设置下线时间为30s</span><br><span class="line">sentinel parallel-syncs master 1              # 设置故障转移后同时进行复制新主节点的从节点的个数</span><br><span class="line">sentinel failover-timeout master 180000       # 设置故障转移超时时间为180s</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动</span></span><br><span class="line">redis-sentinel sentinel.conf</span><br></pre></td></tr></table></figure>
+<p>主机回来后，只能在新的 master 下当 slave</p>
+<p>优点：</p>
+<p>哨兵集群一般基于主从复制模式，所有主从配置的优点，他都有</p>
+<p>主从可以切换，故障可以转移</p>
+<p>哨兵模式是主从模式的升级</p>
+<p>缺点：</p>
+<p>redis 不好在线扩容，集群容量到达上限，扩容很麻烦</p>
+<p>哨兵模式配置很麻烦</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211153998.png" alt="image-20250222211153998"></p>
+<h3 id="redis缓存穿透和雪崩"><a class="markdownIt-Anchor" href="#redis缓存穿透和雪崩">#</a> redis 缓存穿透和雪崩</h3>
+<h4 id="redis缓存"><a class="markdownIt-Anchor" href="#redis缓存">#</a> <strong>redis 缓存</strong></h4>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211220110.png" alt="image-20250222211220110"></p>
+<p>收益：数据存在内存中，加速读，同时降低了后端访问的负担。</p>
+<p>成本：数据不一致，缓存层和数据层会存在数据不一致的问题，为了提高数据一致性需要付出一定的代价，并且代码逻辑也会变得更复杂</p>
+<h4 id="缓存更新策略"><a class="markdownIt-Anchor" href="#缓存更新策略">#</a> 缓存更新策略</h4>
+<ol>
+<li><strong>依赖淘汰策略剔除数据</strong></li>
+</ol>
+<p>当内存超过预先设定 maxmemroy 配置的值时，Redis 会使用自身的 LRU/LFU 算法来删除数据。无法控制数据什么时候删除。</p>
+<ol>
+<li><strong>依赖过期策略剔除数据</strong></li>
+</ol>
+<p>对每个数据都设置超时时间，到期后 Redis 会自动删除数据，虽然在一定的时间窗口内会存在数据不一致的问题，但可以保证最终一致性。如果业务不要求非常强的一致性，就可以采用这种策略。</p>
+<ol>
+<li>
+<p><strong>主动更新</strong></p>
+<ol>
+<li>
+<p><strong>先写缓存，再写数据库</strong>（绝对不能使用这种方式）</p>
+<ul>
+<li>写缓存成功，写数据库失败，客户端会读到脏数据。</li>
+</ul>
+</li>
+<li>
+<p><strong>先写数据库，再写缓存</strong>（也不能使用这种方式）</p>
+</li>
+<li>
+<p><strong>先删缓存，再写数据库</strong></p>
+</li>
+<li>
+<p><strong>先写数据库，再删缓存</strong></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211253162.png" alt="image-20250222211253162"></p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="缓存穿透"><a class="markdownIt-Anchor" href="#缓存穿透">#</a> <strong>缓存穿透</strong></h4>
+<p>缓存穿透的概念很简单，用户想要查询一个数据，发现 redisp 为存数据库没有，也就是缓存没有命中，于是向持久层数据库查询。发现也没有，于是本次查询失败。当用户很多的时候，缓存都没有命命中 (秒杀！), 于是都去请求了持久层数据库。这会给持久层数据库造成很大的压力，这时候就相当于出现了缓存穿透。</p>
+<p>布隆过滤器</p>
+<p>布隆过滤器是一种数据结构，对所有可能查询的参数以 hash 形式存储，在控制层先进行校验，不符合则丢弃，从而避免了对底层有储系统的查询压力；</p>
+<img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211321787.png" alt="image-20250222211321787" style="zoom:67%;" />
+<p>缓存空对象</p>
+<p>但是这种方法会存在两个问题:</p>
+<p>1、如果空值能够被缓存起来，这就意味着缓存需要更多的空间存储更多的键，因为这当中可能会有很多的空值的键；</p>
+<p>2、即使对空值设置了过期时间，还是会存在缓存层和存储层的数据会有一段时间窗口的不一致，这对于需要保持一致性的业务会有影响。</p>
+<h4 id="缓存击穿"><a class="markdownIt-Anchor" href="#缓存击穿">#</a> <strong>缓存击穿</strong></h4>
+<p>这里需要注意和缓存击穿的区别，缓存击穿，是指一个 key 非常热点，在不停的扛着大并发，大并发集中对这一个点进行访问，当这个 key 在失效的瞬间，持续的大并发就穿破缓存，直接请求数据库，就像在一个屏障上凿开了一个洞</p>
+<p>当某个 key 在过期的瞬间，有大量的请求并发访问，这类数据一般是热点数据，由于缓存过期，会同时访问数据库来查询最新数据，并且回写缓存，会导使数据库瞬间压力过大。</p>
+<p>设置热点数据永不过期</p>
+<p>从缓存层面来看，没有设置过期时间，所以不会出现热点 key 过期后产生的问题。</p>
+<p>加互斥锁</p>
+<p>分布式锁：使用分布式锁，保证对于每个 key 同时只有一个线程去查询后端服务，其他线程没有获得分布式锁的权限，因此只需要等待即可。这种方式将高并发的压力转移到了分布式锁，因此对分布式锁的考验很大。</p>
+<h4 id="缓存雪崩"><a class="markdownIt-Anchor" href="#缓存雪崩">#</a> <strong>缓存雪崩</strong></h4>
+<p>缓存雪崩，是指在某一个时间段，缓存集中过期失效。</p>
+<p>redis 高可用</p>
+<p>这个思想的含义是，既然 redis 有可能挂掉，那我多增设几台 redis, 这样一台挂掉之后其他的还可以继续工作，其实就是搭建的集群。</p>
+<p>限流降级</p>
+<p>这个解决方案的思想是，在缓存失效后，通过加锁或者队列来控制读数据库写缓存的线程数量。比如对某个 key 只允许一个线程查询数据和写缓存，其他线程等待。</p>
+<p>数据预热</p>
+<p>数据加热的含义就是在正式部署之前，我先把可能的数据先预先访问一遍，这样部分可能大量访问的数据就会加载到缓存中。在即将发生大并发访问前手动触发加载缓存不同的 key, 设置不同的过期时间，让缓存失效的时间点尽量均匀。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMVM1NHkxUjdTQj9zcG1faWRfZnJvbT0zMzMuNzg4LnBsYXllci5zd2l0Y2gmYW1wO3ZkX3NvdXJjZT1jMmU5MTdhNjcwMGNhZDM0OWJlOTE2MGU5NzNjMThhNiZhbXA7cD0zNg==">https://www.bilibili.com/video/BV1S54y1R7SB?spm_id_from=333.788.player.switch&amp;vd_source=c2e917a6700cad349be9160e973c18a6&amp;p=36</span></p>
+<h3 id="redis线程模型"><a class="markdownIt-Anchor" href="#redis线程模型">#</a> redis 线程模型</h3>
+<ul>
+<li><strong>Redis 6.0 之前</strong></li>
+</ul>
+<p>6.0 之前的版本 Reids 使用的是单线程架构，这里的单线程是指处理用户发过来的命令是在单个线程内完成的，包括网络 I/O、命令解析和命令执行。</p>
+<p>暂时无法在飞书文档外展示此内容</p>
+<ul>
+<li><strong>Redis 6.0</strong></li>
+</ul>
+<p>在高并发情况下，Redis 的主线程很多时候都在进行 socket 的读写操作，这块儿其实消耗了很多的 CPU 等待时间。特别是写操作，如果客户端要求返回的数据量特别大，会严重阻塞主线。现代处理器一般都采用了多核架构，但 Redis 单线程模型只使用单一核心，这限制了其性能的释放。</p>
+<p>所以在 6.0 版本之后，Redis 采用了多线程（1 个主线程 + IO 线程组）架构，网络 I/O 以及命令的解析都放在了多个线程当中，主线程则主要负责命令的执行。这种架构在高并发场景下极大提高网络 I/O 带来的性能。</p>
+<p>暂时无法在飞书文档外展示此内容</p>
+<h3 id="redis-cluster"><a class="markdownIt-Anchor" href="#redis-cluster">#</a> redis cluster</h3>
+<p>Redis Cluster 是 Redis 官方的分布式解决方案，在 redis3.0 之后生产环境正式可用。在实现了高可用的同时，分布式的架构极大扩展了 redis 的存储、读写能力。</p>
+<p>每个<strong>节点在 cluster 中有一个唯一的名字</strong>。这个名字由 160bit 随机十六进制数字表示，并在节点启动时第一次获得 (通常通过 /dev/urandom)。节点在配置文件中保留它的 ID，并永远地使用这个 ID，直到被管理员使用 CLUSTER RESET HARD 命令 hard reset 这个节点。</p>
+<p>节点 ID 被用来在整个 cluster 中标识每个节点。一个节点可以修改自己的 IP 地址而不需要修改自己的 ID。Cluster 可以检测到 IP /port 的改动并通过运行在 cluster bus 上的 gossip 协议重新配置该节点。</p>
+<h4 id="解决问题"><a class="markdownIt-Anchor" href="#解决问题">#</a> <strong>解决问题</strong></h4>
+<ol>
+<li>单集群主节点的写能力受到限制，传统主从模式和 redis sentinel 无法提升写性能。</li>
+<li>单集群主节点的存储能力受到限制。</li>
+</ol>
+<h4 id="cluster总线"><a class="markdownIt-Anchor" href="#cluster总线">#</a> cluster 总线</h4>
+<p>每个 Redis Cluster 节点有一个额外的 TCP 端口用来接受其他节点的连接。这个端口与用来接收 client 命令的普通 TCP 端口有一个固定的 offset。该端口等于普通命令端口加上 10000. 例如，一个 Redis 在端口 6379 监听客户端连接，那么它的集群总线端口 16379 也会被打开。</p>
+<p>节点到节点的通讯只使用集群总线，同时使用集群总线协议：有不同的类型和大小的帧组成的二进制协议</p>
+<h4 id="redis-cluster的拓扑结构"><a class="markdownIt-Anchor" href="#redis-cluster的拓扑结构">#</a> <strong>Redis cluster 的拓扑结构</strong></h4>
+<p>暂时无法在飞书文档外展示此内容</p>
+<p>redis cluster 采用的是去中心化的分布式架构，它们之间通过不断的交换信息来获取集群整体的状态（图中集群的从节点也参与信息交换，为简化结构，忽略它们之间的连线）。其中 redis cluster 中的节点也区分主从，从节点负责处理当主节点出现故障时的自动故障转移，默认情况下从节点不支持任何的读写操作，仅作为主节点的一个 “热备” 存在。在 Redis cluster 模式下，成为从节点的 salveof 命令将会失效，应使用 cluster replication 命令</p>
+<h4 id="数据分区"><a class="markdownIt-Anchor" href="#数据分区">#</a> 数据分区</h4>
+<p>分布式数据库首先要解决把整个数据集按照分区规则映射到多个节点的问题，即把数据集划分到多个节点上，每个节点负责整体数据的一个子集。</p>
+<p>Redis cluster 采用哈希分区规则，这里介绍三种常用的哈希分区规则</p>
+<ol>
+<li>哈希取余分区</li>
+<li>一致性哈希算法</li>
+<li>虚拟槽分区</li>
+</ol>
+<p>一致性哈希算法也存在一些问题：</p>
+<ul>
+<li>当使用少量节点时，若节点哈希在环上分布不均匀，节点变化有可能将大范围影响哈希环中数据映射，因此这种方式不适合少量数据节点的分布式方案。</li>
+<li>普通的一致性哈希分区无法保证数据和负载的均衡，需要增加虚拟节点。</li>
+</ul>
+<p>在此基础之上，redis 使用虚拟槽的分区规则。其主要思想就是每个节点负责一部分虚拟槽，而数据经过哈希计算后直接映射到对应的槽上，每个槽又维护着一定量的数据，如图 3-3 所示。</p>
+<p>暂时无法在飞书文档外展示此内容</p>
+<p>Redis cluster 使用的槽范围为 0～16383，共计 16384 个槽。数据到槽的映射可以通过 hash (key)&amp;16383 的方式进行计算。使用虚拟槽的方式，可以很好的解决一致性哈希的问题：通过均匀分配给每个节点虚拟槽，当节点较少时，至少可以保证只有 16384/num (node) 个槽中的数据需要进行迁移。此外，均匀分配的槽可以比较好的保证负载均衡。</p>
+<h4 id="节点间通信"><a class="markdownIt-Anchor" href="#节点间通信">#</a> 节点间通信</h4>
+<p>在分布式存储中需要提供维护节点元数据信息的机制，所谓元数据是指：节点负责哪些数据，是否出现故障等状态信息。常见的元数据维护方式分为：集中式和 P2P 方式。Redis 集群采用 P2P 的 Gossip 协议，Gossip 协议工作原理就是节点彼此不断通信交换信息，一段时间后所有的节点都会知道集群完整的信息，这种方式类似流言传播。</p>
+<p>Gossip 协议的主要职责就是信息交换。信息交换的载体就是节点彼此发送的 Gossip 消息。常用的 Gossip 消息可分为：ping 消息、pong 消息、meet 消息、fail 消息等。</p>
+<ul>
+<li><strong>ping 消息</strong>：集群内交换最频繁的消息，集群内每个节点每秒向多个其他节点发送 ping 消息，用于检测节点是否在线和交换彼此状态信息，ping 消息中封装了自身节点和部分其他节点的状态数据。</li>
+<li><strong>meet 消息</strong>：用于通知新节点加入。发送该消息的节点通知接收节点自己要加入到当前集群，meet 消息通信正常完成后，接收节点会加入到集群中并进行周期性的 ping、pong 消息交换，从而把自己的加入到集群的信息传播到整个集群。</li>
+<li><strong>pong 消息</strong>：当接收到 ping、meet 消息时，作为响应消息回复给发送方确认消息正常通信。pong 消息内部也封装了自身状态数据。节点也可以向集群内广播自身的 pong 消息来通知整个集群对自身状态进行更新。</li>
+<li><strong>fail 消息</strong>：当节点判定集群内另一个节点客观下线时，会向集群内广播一个 fail 消息，其他节点接收到 fail 消息之后把对应节点更新为客观下线状态，从节点收到 fail 消息会执行自动故障转移。</li>
+</ul>
+<p>虽然 Gossip 协议的信息交换机制具有天然的分布式特性，但它是有成本的。由于内部需要频繁地进行节点信息交换，而 ping/pong 消息会携带当前节点和部分其他节点的状态数据，势必会加重带宽和计算的负担。Redis 集群内节点通信采用固定频率（定时任务每秒执行 10 次）。因此节点每次选择需要通信的节点列表变得非常重要。通信节点选择过多虽然可以做到信息及时交换但成本过高。节点选择过少会降低集群内所有节点彼此信息交换频率，从而影响故障判定、新节点发现等需求的速度。因此 Redis 集群的 Gossip 协议需要兼顾信息交换实时性和成本开销，通信节点选择的规则如图 3-5 所示。</p>
+<p>暂时无法在飞书文档外展示此内容</p>
+<p>每个节点每秒会向 1+10*num (最后通信时间&gt; node_timeout/2) 个节点发送 ping 消息来告知自身和其它部分节点的信息。</p>
+<h4 id="集群扩缩容"><a class="markdownIt-Anchor" href="#集群扩缩容">#</a> 集群扩缩容</h4>
+<p>Redis cluster 提供了灵活的集群扩缩容方案，主要得益于 redis 抽象了虚拟槽这一存储单元，集群的扩缩容的底层操作实际上就是虚拟槽在各个 redis 节点之间的移动</p>
+<p>暂时无法在飞书文档外展示此内容</p>
+<ol>
+<li>扩容集群</li>
+</ol>
+<p>扩容集群分为一下三步：</p>
+<ol>
+<li>
+<p>准备新节点，为了高可用，至少准备两个节点，启动这两个 redis-server，新启动的节点作为孤儿节点运行，没有与任何节点通信。</p>
+</li>
+<li>
+<p>加入集群，新节点向集群中任意节点发送 meet 消息，请求加入到节点，集群中节点收到消息后回复 pong 消息，并在与集群中其它节点正常的 ping/pong 通信时将新节点的信息传播到整个集群。</p>
+</li>
+<li>
+<p>执行槽迁移，给其中一个节点分配槽，并开始执行节点与节点之间的槽中数据的迁移。</p>
+</li>
+<li>
+<p>执行 cluster replication 命令，使新节点中的其中一个成为另一个具有槽的节点的从节点。</p>
+</li>
+<li>
+<p>收缩集群</p>
+</li>
+</ol>
+<p>收缩集群的操作与扩容集群相反：</p>
+<ol>
+<li>如果需要将主从节点一起下线，需要先下线从节点，否则主节点下线后从节点会被分配给从节点最少的主节点并执行复制操作，增加了额外的带宽压力。</li>
+<li>下线主节点，将槽迁移至集群中的其它的节点。</li>
+<li>对集群中其它的节点执行 cluster forget 命令来忘记下线节点，忘记节点后，节点就不会向下线节点发送 gossip 消息。</li>
+<li>停止下线节点进程。</li>
+</ol>
+<h4 id="故障发现"><a class="markdownIt-Anchor" href="#故障发现">#</a> 故障发现</h4>
+<p>Redis Cluster 通过 ping/pong 消息实现故障发现：不需要 sentinel</p>
+<p>ping/pong 不仅能传递节点与槽的对应消息，也能传递其他状态，比如：节点主从状态，节点故障等</p>
+<p>节点之间相互进行 PING - PONG 消息通信来检测对方状态。如果一个主节点发现某个节点在一定时间内没有响应 PING 消息，就会将其标记为疑似下线（PFAIL）；当集群中超过半数的主节点都将某个节点标记为疑似下线时，该节点会被标记为已下线（FAIL）。</p>
+<p>集群中的每个节点都会参与故障检测，节点之间相互监控，一旦发现某个节点故障，会共同协作完成故障转移。</p>
+<h4 id="故障恢复"><a class="markdownIt-Anchor" href="#故障恢复">#</a> 故障恢复</h4>
+<p>故障节点被标志为客观下线后，为了保证系统的高可用，必须从从节点中选出一个成为新的主节点。从节点的内部定时任务发现其主节点被标志为客观下线后，将会触发故障恢复流程：</p>
+<ol>
+<li><strong>资格检查</strong>：每个从节点都要检查最后与主节点断线时间，判断是否有资格替换故障的主节点。如果短线时间过长，不会发起投票选举。</li>
+<li><strong>准备选举延迟时间</strong>：当从节点符合故障转移资格后，更新触发故障选举的时间，只有到达该时间后才能执行后续流程。从节点根据自身复制偏移量设置延迟选举时间，保证复制延迟低的从节点优先发起选举。</li>
+<li><strong>发起选举</strong>：递增全局配置 epoch，并赋值给从节点本地 epoch，并广播选举消息。</li>
+<li><strong>选举投票</strong>：每个具有槽的主节点在每个 epoch 内有一张选票，在收到从节点的选举消息后，如果选票还在，就会投出这一票。当从节点收到的票数达到 N/2+1，从节点就可以执行替换主节点的操作，其中 N 为具有槽的主节点个数。为了能够达到选举票数，必须保证 N 大于等于 3。如果在一个 epoch 内从节点没有获取到足够的选票，会更新 epoch，并发起下一轮投票。</li>
+<li><strong>替换主节点</strong>：取消复制主节点，接管主节点的槽并广播 pong 消息通知集群当前节点以晋升为主节点并接管了原主节点的槽。</li>
+</ol>
+<h4 id="客户端路由"><a class="markdownIt-Anchor" href="#客户端路由">#</a> 客户端路由</h4>
+<h5 id="moved重定向"><a class="markdownIt-Anchor" href="#moved重定向">#</a> <strong>moved 重定向</strong></h5>
+<p>1. 每个节点通过通信都会共享 Redis Cluster 中槽和集群中对应节点的关系</p>
+<p>2. 客户端向 Redis Cluster 的任意节点发送命令，接收命令的节点会根据 CRC16 规则进行 hash 运算与 16383 取余，计算自己的槽和对应节点</p>
+<p>3. 如果保存数据的槽被分配给当前节点，则去槽中执行命令，并把命令执行结果返回给客户端</p>
+<p>4. 如果保存数据的槽不在当前节点的管理范围内，则向客户端返回 moved 重定向异常</p>
+<p>5. 客户端接收到节点返回的结果，如果是 moved 异常，则从 moved 异常中获取目标节点的信息</p>
+<p>6. 客户端向目标节点发送命令，获取命令执行结果</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211345947.png" alt="image-20250222211345947"></p>
+<p>槽命中：直接返回</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211355609.png" alt="image-20250222211355609"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 计算slot</span></span><br><span class="line">[root@ ~]<span class="comment"># redis-cli -p 9002 cluster keyslot hello</span></span><br><span class="line">(integer) <span class="number">866</span></span><br></pre></td></tr></table></figure>
+<h5 id="ask重定向"><a class="markdownIt-Anchor" href="#ask重定向">#</a> <strong>ask 重定向</strong></h5>
+<p>在对集群进行扩容和缩容时，需要对槽及槽中数据进行迁移</p>
+<p>当客户端向某个节点发送命令，节点向客户端返回 moved 异常，告诉客户端数据对应的槽的节点信息</p>
+<p>如果此时正在进行集群扩展或者缩空操作，当客户端向正确的节点发送命令时，槽及槽中数据已经被迁移到别的节点了，就会返回 ask，这就是 ask 重定向机制</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211405581.png" alt="image-20250222211405581"></p>
+<p>步骤：</p>
+<p>1. 客户端向目标节点发送命令，目标节点中的槽已经迁移支别的节点上了，此时目标节点会返回 ask 转向给客户端</p>
+<p>2. 客户端向新的节点发送 Asking 命令给新的节点，然后再次向新节点发送命令</p>
+<p>3. 新节点执行命令，把命令执行结果返回给客户端</p>
+<p>moved 异常与 ask 异常的相同点和不同点</p>
+<p>两者都是客户端重定向</p>
+<p>moved 异常：槽已经确定迁移，即槽已经不在当前节点</p>
+<p>ask 异常：槽还在迁移中</p>
+<h5 id="smart智能客户端"><a class="markdownIt-Anchor" href="#smart智能客户端">#</a> <strong>smart 智能客户端</strong></h5>
+<p>将 Cluster slots 的结果映射在本地，为每个节点创建 JedisPool，相当于为每个 redis 节点都设置一个 JedisPool，然后就可以进行数据读写操作</p>
+<p>读写数据时的注意事项：</p>
+<ul>
+<li>每个 JedisPool 中缓存了 slot 和节点 node 的关系</li>
+<li>key 和 slot 的关系：对 key 进行 CRC16 规则进行 hash 后与 16383 取余得到的结果就是槽</li>
+<li>JedisCluster 启动时，已经知道 key,slot 和 node 之间的关系，可以找到目标节点</li>
+<li>JedisCluster 对目标节点发送命令，目标节点直接响应给 JedisCluster</li>
+<li>如果 JedisCluster 与目标节点连接出错，则 JedisCluster 会知道连接的节点是一个错误的节点</li>
+<li>此时 JedisCluster 会随机节点发送命令，随机节点返回 moved 异常给 JedisCluster</li>
+<li>JedisCluster 会重新初始化 slot 与 node 节点的缓存关系，然后向新的目标节点发送命令，目标命令执行命令并向 JedisCluster 响应</li>
+<li>如果命令发送次数超过 5 次，则抛出异常 &quot;Too many cluster redirection!&quot;</li>
+</ul>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211416096.png" alt="image-20250222211416096"></p>
+<h4 id="多节点命令实现"><a class="markdownIt-Anchor" href="#多节点命令实现">#</a> 多节点命令实现</h4>
+<p>Redis Cluster 不支持使用 scan 命令扫描所有节点 多节点命令就是在在所有节点上都执行一条命令 批量操作优化</p>
+<h5 id="串行mget"><a class="markdownIt-Anchor" href="#串行mget">#</a> <strong>串行 mget</strong></h5>
+<p>定义 for 循环，遍历所有的 key，分别去所有的 Redis 节点中获取值并进行汇总，简单，但是效率不高，需要 n 次网络时间</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211424378.png" alt="image-20250222211424378"></p>
+<h5 id="串行io"><a class="markdownIt-Anchor" href="#串行io">#</a> <strong>串行 IO</strong></h5>
+<p>对串行 mget 进行优化，在客户端本地做内聚，对每个 key 进行 CRC16hash，然后与 16383 取余，就可以知道哪个 key 对应的是哪个槽</p>
+<p>本地已经缓存了槽与节点的对应关系，然后对 key 按节点进行分组，成立子集，然后使用 pipeline 把命令发送到对应的 node，需要 nodes 次网络时间，大大减少了网络时间开销</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211457355.png" alt="image-20250222211457355"></p>
+<h5 id="并行io"><a class="markdownIt-Anchor" href="#并行io">#</a> <strong>并行 IO</strong></h5>
+<p>并行 IO 是对串行 IO 的一个优化，把 key 分组之后，根据节点数量启动对应的线程数，根据多线程模式并行向 node 节点请求数据，只需要 1 次网络时间</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211516191.png" alt="image-20250222211516191"></p>
+<h5 id="hash_tag"><a class="markdownIt-Anchor" href="#hash_tag">#</a> <strong>hash_tag</strong></h5>
+<p>将 key 进行 hash_tag 的包装，然后把 tag 用大括号括起来，保证所有的 key 只向一个 node 请求数据，这样执行类似 mget 命令只需要去一个节点获取数据即可，效率更高</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211524654.png" alt="image-20250222211524654"></p>
+<h5 id="四种优化方案优缺点分析"><a class="markdownIt-Anchor" href="#四种优化方案优缺点分析">#</a> <strong>四种优化方案优缺点分析</strong></h5>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250222211534155.png" alt="image-20250222211534155"></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvYXJ0aWNsZS8yMjI2ODQ3">https://cloud.tencent.com/developer/article/2226847</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9wZGFpLnRlY2gvbWQvZGIvbm9zcWwtcmVkaXMvZGItcmVkaXMteC1jbHVzdGVyLmh0bWw=">https://pdai.tech/md/db/nosql-redis/db-redis-x-cluster.html</span></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">   <span class="number">1</span>  wget http:<span class="operator">/</span><span class="operator">/</span>mirrors.aliyun.com<span class="operator">/</span>repo<span class="operator">/</span>Centos<span class="operator">-</span>altarch<span class="number">-7.</span>repo <span class="operator">-</span>O <span class="operator">/</span>etc<span class="operator">/</span>yum.repos.d<span class="operator">/</span>CentOS<span class="operator">-</span>Base.repo</span><br><span class="line">    </span><br><span class="line">    <span class="number">7</span>  cd <span class="operator">/</span>etc<span class="operator">/</span>yum.repos.d<span class="operator">/</span></span><br><span class="line">    <span class="number">9</span>  mv <span class="operator">/</span>etc<span class="operator">/</span>yum.repos.d<span class="operator">/</span> <span class="operator">/</span>etc<span class="operator">/</span>yum.repos.d.bak<span class="operator">/</span></span><br><span class="line">   <span class="number">10</span>  mkdir <span class="operator">/</span>etc<span class="operator">/</span>yum.repos.d</span><br><span class="line">   <span class="number">12</span>  mv Centos<span class="operator">-</span>altarch<span class="number">-7.</span>repo  <span class="operator">/</span>etc<span class="operator">/</span>yum.repos.d</span><br><span class="line">   <span class="number">13</span>  cd <span class="operator">/</span>etc<span class="operator">/</span>yum.repos.d</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">yum install epel<span class="operator">*</span> wget   bash<span class="operator">-</span>com<span class="operator">*</span> vim wget  glibc<span class="operator">-</span>common locales crash  yum<span class="operator">-</span>utils numactl iotop gdb gcc glibc perf atop nethogs iftop net<span class="operator">-</span>tools sysstat strace lsof mtr lvm2 device<span class="operator">-</span>mapper<span class="operator">-</span>persistent<span class="operator">-</span>data lrzsz telnet <span class="operator">-</span>y</span><br><span class="line">  </span><br><span class="line">   <span class="number">97</span>  yum install numactl </span><br><span class="line">  <span class="number">104</span>  yum install iotop <span class="operator">-</span>y</span><br><span class="line">  <span class="number">109</span>  yum install gdb </span><br><span class="line">  <span class="number">113</span>  yum install gcc <span class="operator">-</span>y</span><br><span class="line">  <span class="number">119</span>  yum install glibc </span><br><span class="line">  <span class="number">121</span>  yum install gcc gdb <span class="operator">-</span>y </span><br><span class="line">  <span class="number">123</span>  yum install perf <span class="operator">-</span>y</span><br><span class="line">  <span class="number">127</span>  yum install nginx <span class="operator">-</span>y </span><br><span class="line">  <span class="number">135</span>  yum install atop </span><br><span class="line">  <span class="number">137</span>  yum <span class="operator">-</span>y install nethogs</span><br><span class="line">  <span class="number">138</span>  yum install iftop </span><br><span class="line">  <span class="number">141</span>  yum install net<span class="operator">-</span>tools.aarch64 </span><br><span class="line">  <span class="number">147</span>  yum install sysstat <span class="operator">-</span>y</span><br><span class="line">  <span class="number">155</span>  yum install strace </span><br><span class="line">  <span class="number">192</span>  yum install lsof </span><br><span class="line">  <span class="number">210</span>  yum install mtr <span class="operator">-</span>y</span><br><span class="line">  <span class="number">214</span>  history <span class="operator">|</span> grep yum </span><br><span class="line">在 CentOS 上安装 Docker，在 ARM 架构的机器上，你可以通过以下几个步骤来实现：</span><br><span class="line"><span class="number">1.</span> 安装 Docker 的依赖</span><br><span class="line">首先，确保你的系统已经安装了必要的依赖。在 CentOS 上，你可以使用 yum 来安装这些依赖。</span><br><span class="line">sudo yum install <span class="operator">-</span>y yum<span class="operator">-</span>utils device<span class="operator">-</span>mapper<span class="operator">-</span>persistent<span class="operator">-</span>data lvm2</span><br><span class="line"><span class="number">2.</span> 添加 Docker 的官方仓库</span><br><span class="line">由于 Docker 官方不直接提供 ARM 架构的包，你需要添加一个第三方仓库。一个常用的仓库是 docker<span class="operator">-</span>ce 的 ARM 版本，你可以通过添加 Docker 的官方仓库来完成。</span><br><span class="line">首先，你需要设置稳定的仓库：</span><br><span class="line">sudo yum<span class="operator">-</span>config<span class="operator">-</span>manager <span class="comment">--add-repo https://download.docker.com/linux/centos/docker-ce.repo</span></span><br><span class="line"><span class="number">3.</span> 安装 Docker CE（社区版）</span><br><span class="line">安装 Docker CE：</span><br><span class="line">sudo yum install <span class="operator">-</span>y docker<span class="operator">-</span>ce docker<span class="operator">-</span>ce<span class="operator">-</span>cli containerd.io</span><br><span class="line"><span class="number">4.</span> 启动 Docker 服务</span><br><span class="line">安装完成后，启动 Docker 服务：</span><br><span class="line">sudo systemctl <span class="keyword">start</span> docker</span><br><span class="line">并设置为开机启动：</span><br><span class="line">sudo systemctl enable docker</span><br><span class="line"><span class="number">5.</span> 验证安装</span><br><span class="line">验证 Docker 是否正确安装并运行：</span><br><span class="line">docker <span class="comment">--version</span></span><br><span class="line">docker info</span><br></pre></td></tr></table></figure>
+      <div class="tags">
+          <a href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag"><i class="ic i-tag"></i> 运维</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2025-03-03 22:47:11" itemprop="dateModified" datetime="2025-03-03T22:47:11+08:00">2025-03-03</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2024/12/01/redis/" title="Redis">http://example.com/2024/12/01/redis/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/11/01/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%94%9F%E6%80%81%E6%A6%82%E8%AE%BA/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;20b12b4caa4ebf8870b7f34a1b442cb6.jpg" title="大数据生态概论">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> 大数据</span>
+  <h3>大数据生态概论</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#redis"><span class="toc-number">1.</span> <span class="toc-text"> redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#redis%E4%BD%9C%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text"> redis 作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis%E7%89%B9%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text"> redis 特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis%E9%80%9F%E5%BA%A6%E5%BF%AB"><span class="toc-number">1.3.</span> <span class="toc-text"> redis 速度快</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85redis"><span class="toc-number">1.4.</span> <span class="toc-text"> 安装 redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.5.</span> <span class="toc-text"> 数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#string"><span class="toc-number">1.5.1.</span> <span class="toc-text"> string</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#list"><span class="toc-number">1.5.2.</span> <span class="toc-text"> list</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#set"><span class="toc-number">1.5.3.</span> <span class="toc-text"> set</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hash"><span class="toc-number">1.5.4.</span> <span class="toc-text"> hash</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#zset"><span class="toc-number">1.5.5.</span> <span class="toc-text"> zset</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#geospatial"><span class="toc-number">1.6.</span> <span class="toc-text"> geospatial</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hyperloglog"><span class="toc-number">1.7.</span> <span class="toc-text"> hyperloglog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bitmap"><span class="toc-number">1.8.</span> <span class="toc-text"> bitmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.9.</span> <span class="toc-text"> 事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%90%E8%A7%82%E9%94%81"><span class="toc-number">1.10.</span> <span class="toc-text"> 乐观锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redisconf"><span class="toc-number">1.11.</span> <span class="toc-text"> redis.conf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis%E6%8C%81%E4%B9%85%E5%8C%96"><span class="toc-number">1.12.</span> <span class="toc-text"> redis 持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#rdbredis-database"><span class="toc-number">1.12.1.</span> <span class="toc-text"> RDB(redis database)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#aof"><span class="toc-number">1.12.2.</span> <span class="toc-text"> AOF</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E9%87%8D%E5%86%99"><span class="toc-number">1.12.2.1.</span> <span class="toc-text"> 文件重写</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85"><span class="toc-number">1.13.</span> <span class="toc-text"> redis 发布订阅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6"><span class="toc-number">1.14.</span> <span class="toc-text"> redis 主从复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.15.</span> <span class="toc-text"> 哨兵模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A7%82%E5%AE%A2%E8%A7%82%E4%B8%8B%E7%BA%BF"><span class="toc-number">1.15.1.</span> <span class="toc-text"> 主观 &#x2F; 客观下线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.15.2.</span> <span class="toc-text"> 三个定时任务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%86%E5%AF%BC%E8%80%85%E9%80%89%E4%B8%BE"><span class="toc-number">1.15.3.</span> <span class="toc-text"> 领导者选举</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#failover%E6%95%85%E9%9A%9C%E8%BD%AC%E7%A7%BB"><span class="toc-number">1.15.4.</span> <span class="toc-text"> failover (故障转移)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E5%92%8C%E9%9B%AA%E5%B4%A9"><span class="toc-number">1.16.</span> <span class="toc-text"> redis 缓存穿透和雪崩</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#redis%E7%BC%93%E5%AD%98"><span class="toc-number">1.16.1.</span> <span class="toc-text"> redis 缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E6%9B%B4%E6%96%B0%E7%AD%96%E7%95%A5"><span class="toc-number">1.16.2.</span> <span class="toc-text"> 缓存更新策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F"><span class="toc-number">1.16.3.</span> <span class="toc-text"> 缓存穿透</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF"><span class="toc-number">1.16.4.</span> <span class="toc-text"> 缓存击穿</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9"><span class="toc-number">1.16.5.</span> <span class="toc-text"> 缓存雪崩</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.17.</span> <span class="toc-text"> redis 线程模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis-cluster"><span class="toc-number">1.18.</span> <span class="toc-text"> redis cluster</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98"><span class="toc-number">1.18.1.</span> <span class="toc-text"> 解决问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cluster%E6%80%BB%E7%BA%BF"><span class="toc-number">1.18.2.</span> <span class="toc-text"> cluster 总线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#redis-cluster%E7%9A%84%E6%8B%93%E6%89%91%E7%BB%93%E6%9E%84"><span class="toc-number">1.18.3.</span> <span class="toc-text"> Redis cluster 的拓扑结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E5%8C%BA"><span class="toc-number">1.18.4.</span> <span class="toc-text"> 数据分区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-number">1.18.5.</span> <span class="toc-text"> 节点间通信</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E6%89%A9%E7%BC%A9%E5%AE%B9"><span class="toc-number">1.18.6.</span> <span class="toc-text"> 集群扩缩容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E5%8F%91%E7%8E%B0"><span class="toc-number">1.18.7.</span> <span class="toc-text"> 故障发现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D"><span class="toc-number">1.18.8.</span> <span class="toc-text"> 故障恢复</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B7%AF%E7%94%B1"><span class="toc-number">1.18.9.</span> <span class="toc-text"> 客户端路由</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#moved%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.18.9.1.</span> <span class="toc-text"> moved 重定向</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ask%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.18.9.2.</span> <span class="toc-text"> ask 重定向</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#smart%E6%99%BA%E8%83%BD%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">1.18.9.3.</span> <span class="toc-text"> smart 智能客户端</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E8%8A%82%E7%82%B9%E5%91%BD%E4%BB%A4%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.18.10.</span> <span class="toc-text"> 多节点命令实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%B2%E8%A1%8Cmget"><span class="toc-number">1.18.10.1.</span> <span class="toc-text"> 串行 mget</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%B2%E8%A1%8Cio"><span class="toc-number">1.18.10.2.</span> <span class="toc-text"> 串行 IO</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8Cio"><span class="toc-number">1.18.10.3.</span> <span class="toc-text"> 并行 IO</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#hash_tag"><span class="toc-number">1.18.10.4.</span> <span class="toc-text"> hash_tag</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%9B%E7%A7%8D%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88%E4%BC%98%E7%BC%BA%E7%82%B9%E5%88%86%E6%9E%90"><span class="toc-number">1.18.10.5.</span> <span class="toc-text"> 四种优化方案优缺点分析</span></a></li></ol></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2022/11/27/CDN/" rel="bookmark" title="CDN&DNS">CDN&DNS</a></li><li><a href="/2023/04/03/iptables2/" rel="bookmark" title="iptables">iptables</a></li><li><a href="/2023/04/05/Docker/" rel="bookmark" title="docker">docker</a></li><li><a href="/2023/04/15/Nginx_new/" rel="bookmark" title="Nginx">Nginx</a></li><li><a href="/2023/05/20/Kubernetes/" rel="bookmark" title="Kubernetes">Kubernetes</a></li><li><a href="/2023/05/30/jenkins/" rel="bookmark" title="Jenkins">Jenkins</a></li><li><a href="/2023/06/02/k8s%E9%AB%98%E7%BA%A7/" rel="bookmark" title="k8s高级">k8s高级</a></li><li><a href="/2024/01/01/istio/" rel="bookmark" title="istio">istio</a></li><li><a href="/2024/01/10/%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%AD%98%E5%82%A8/" rel="bookmark" title="集群与存储">集群与存储</a></li><li><a href="/2024/01/25/%E8%99%9A%E6%8B%9F%E5%8C%96/" rel="bookmark" title="虚拟化">虚拟化</a></li><li><a href="/2024/02/01/%E7%9B%91%E6%8E%A7/" rel="bookmark" title="监控">监控</a></li><li><a href="/2024/02/15/Elastic%20Stack/" rel="bookmark" title="Elastic stack">Elastic stack</a></li><li><a href="/2024/06/01/openstack/" rel="bookmark" title="OpenStack+openvswitch">OpenStack+openvswitch</a></li><li><a href="/2024/07/01/GPU%E5%85%A5%E9%97%A8%E6%A6%82%E8%AE%BA/" rel="bookmark" title="GPU入门概论">GPU入门概论</a></li><li class="active"><a href="/2024/12/01/redis/" rel="bookmark" title="Redis">Redis</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">54</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">7</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">7</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/01/01/%E5%8F%91%E7%8E%B0%E5%B0%8F%E5%8F%AF%E7%88%B1%EF%BC%81/" title="about me">about me</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2023/01/03/%E6%BB%B4%E6%B0%B4reverse/" title="水滴rev">水滴rev</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/06/27/SSRF/" title="SSRF">SSRF</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/02/21/https%E5%8E%9F%E7%90%86/" title="https+TLS">https+TLS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2023/04/03/iptables2/" title="iptables">iptables</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" title="In 大数据">大数据</a>
+</div>
+
+    <span><a href="/2024/10/01/clickhouse/" title="Clickhouse">Clickhouse</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/11/17/JWT%20%E5%9F%BA%E7%A1%80/" title="JWT">JWT</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2023/08/15/%E7%A0%B4%E8%A7%A3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B9%8B%E8%AE%A4%E8%AF%86%E5%A3%B3%E4%B8%8E%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%89%B9%E5%BE%81/" title="破解基础知识之认识壳与程序的特征">破解基础知识之认识壳与程序的特征</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2022/11/11/reverse/" title="逆向">逆向</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/12/28/mysql/" title="Mysql">Mysql</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/12/01/redis/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
