@@ -1,0 +1,1443 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="大模型" />
+
+
+<link rel="canonical" href="http://example.com/2025/03/01/%E5%BE%AE%E8%B0%83/">
+
+
+
+  <title>
+微调 - 大模型 |
+Yume Shoka = Hexo</title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">微调
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2025-03-01 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2025-03-01T13:38:45+08:00">2025-03-01</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/3cff3fc776e129c36936b1cf83a34b68.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/4ae00b1d55fc55227c12fbe35843514e.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/24012099cbcef21e4a8b250374efe959.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/540c862ad26922795ab222fbcb926ef9.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/63f04b44d043e1dce3e9a2afb559260d.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/536315e4defca264dab1b39dc99bb2dc.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" itemprop="item" rel="index" title="In 大模型"><span itemprop="name">大模型</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/01/%E5%BE%AE%E8%B0%83/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="John Doe">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h3 id="微调"><a class="markdownIt-Anchor" href="#微调">#</a> 微调</h3>
+<h4 id="开源基础大模型"><a class="markdownIt-Anchor" href="#开源基础大模型">#</a> 开源基础大模型</h4>
+<p><strong>闭源 **** 模型局限性</strong></p>
+<ul>
+<li><strong>缺乏灵活性</strong>：无法定制，限制业务创新与优化。</li>
+<li><strong>依赖供应商</strong>：受制于第三方，存在价格波动和服务中断风险。</li>
+<li><strong>隐私风险</strong>：数据需上传外部，可能不符合法规要求。</li>
+<li><strong>成本高昂</strong>：按量计费，长期使用成本较高。</li>
+</ul>
+<p><strong>开源大模型的优势</strong></p>
+<ul>
+<li><strong>可定制</strong>：灵活调整，满足业务需求。</li>
+<li><strong>低成本</strong>：减少对高费用 API 的依赖。</li>
+<li><strong>数据安全</strong>：私有部署防止数据泄露，符合合规要求。</li>
+</ul>
+<p>国外开源大模型：Llama，Mistral</p>
+<p>国内开源大模型：Qwen，ChatGLM，Deepseek</p>
+<p>微调最好在通用模型是做微调，不在行业 / 垂直大模型上做微调</p>
+<p>大模型微调</p>
+<p>目的：使大模型能够理解并遵循人类的指令，具备对话的能力。</p>
+<p>数据格式：指令 (instruction)、输入 (input, 可选) 和输出 (ouitput )。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;input(instruction)&quot;</span>:<span class="string">&quot;根据给定的描述,生成一个创意的营销文案旨在吸引年轻人购买最新款智能手机。描述:这款手机拥有超强的摄像头和全天候的电池续航,适合喜欢拍照和玩游戏的年轻人。&quot;</span>,</span><br><span class="line">    <span class="string">&quot;output&quot;</span>:<span class="string">&quot;探索无限可能!这款全新智能手机,不仅拥有顶级摄像头记录每个瞬间,还有持久电力陪伴你畅玩每一刻。立即拥有,让生活更精彩!&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>数据收集  -》 模型选择  -》 模型微调  -》 模型评估</p>
+<h4 id="数据收集"><a class="markdownIt-Anchor" href="#数据收集">#</a> 数据收集</h4>
+<p>通用微调数据：提供基础的通用问答能力。</p>
+<p>领域微调数据：帮助模型更精确地理解和生成领域相关的内容。</p>
+<table>
+<thead>
+<tr>
+<th>通用数据：领域数据</th>
+<th>微调效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 : 0</td>
+<td>模型仅具备通用问答能力，无法处理领域任务。</td>
+</tr>
+<tr>
+<td>1 : 1</td>
+<td>模型在保持一定通用能力的同时，能够完成领域相关任务。</td>
+</tr>
+<tr>
+<td>0 : 1</td>
+<td>模型发生灾难性遗忘，仅能完成领域任务，丧失通用能力。</td>
+</tr>
+</tbody>
+</table>
+<p>通用数据</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>语言</th>
+<th>数据量</th>
+<th>数据内容</th>
+<th>质量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alpaca_dataset</td>
+<td>中 / 英文</td>
+<td>52K</td>
+<td>常规问答数据集</td>
+<td>高</td>
+</tr>
+<tr>
+<td>COIG</td>
+<td>中文</td>
+<td>191k</td>
+<td>通用翻译指令、考试指令、代码指令数据集等</td>
+<td>高</td>
+</tr>
+<tr>
+<td>ShareGPT</td>
+<td>中 / 英文</td>
+<td>90K</td>
+<td>中英文平行双语优质人机问答数据集</td>
+<td>中</td>
+</tr>
+<tr>
+<td>HC3</td>
+<td>中 / 英文</td>
+<td>40K/8.4K</td>
+<td>人类真实回复结果与 ChatGPT 回复结果的 QA 数据集</td>
+<td>中</td>
+</tr>
+<tr>
+<td>firefly</td>
+<td>中文</td>
+<td>1.1M</td>
+<td>23 种常见的中文 NLP 任务</td>
+<td>高</td>
+</tr>
+<tr>
+<td>ultrachat</td>
+<td>英文</td>
+<td>1.4M</td>
+<td>英文多轮对话数据</td>
+<td>中</td>
+</tr>
+</tbody>
+</table>
+<p>大模型推理能力来源于代码数据和数学数据</p>
+<p>领域数据收集</p>
+<ul>
+<li>网页爬取
+<ul>
+<li>1、提取网页数据：确定领域相关的网页。提取网页中的标题、段落、评论等文本数据。</li>
+<li>2、数据清洗：清理特殊字符、空格、和人名等不需要的信息，处理过长的文本。采用正则匹配、关键词过滤、人名识别模型等技术处理不需要的信息。采用语义分割小模型、自动截断等</li>
+<li>技术处理过长的文本。</li>
+<li>3、构建数据：提取网页中用户的问题和相关回复，填充到指令微调模板，整理成微调数据，进行人工审查和校验，确保数据质量。 将提取出来的问题填充到 instruction, 相关回复填充到 output 字段。</li>
+</ul>
+</li>
+<li>大模型蒸馏
+<ul>
+<li>1、指令设计：设计合适的指令，需要明确表达任务目标。</li>
+<li>2、问题收集：收集领域内常用且具有代表性的问题。</li>
+<li>3、生成回答：将指令和问题拼接在一起，作为输入，调用其它大模型生成答案。</li>
+<li>4、构建数据：将指令、问题和答案配对，整理成微调数据集，确保数据格式规范并进行人工审查。</li>
+</ul>
+</li>
+<li>基于下游任务数据集构造
+<ul>
+<li>1、指令设计：人工编写 instruction, 需要介绍任务的具体内容 (即任务描述)</li>
+<li>2、构造数据：将已有输入和输出的下游任务数据集，分别来匹配微调数据格式中的 input 和 output 字段。</li>
+</ul>
+</li>
+</ul>
+<h4 id="基座模型选择"><a class="markdownIt-Anchor" href="#基座模型选择">#</a> 基座模型选择</h4>
+<p>基于领域选择：假设需要微调一个医疗领域模型。</p>
+<p>流程:</p>
+<ul>
+<li>应用场景确定：临床医疗问答，术语标准化。</li>
+<li>确定备选模型:chatglm3-6B、qwen-7B。</li>
+<li>测试题收集：收集 10 道临床医疗、术语标准化问题。</li>
+<li>模型评估：收集备选模型对测试题的回复，根据回复进行打分选择得分较高的模型做基模型。</li>
+</ul>
+<p>需要根据模型参数和人工打分进行均衡，参数多需要的算力也多，但是分数提升不明显的情况下效果不大。</p>
+<h4 id="模型微调"><a class="markdownIt-Anchor" href="#模型微调">#</a> 模型微调</h4>
+<p><strong>全参数微调：更新模型全部参数</strong></p>
+<p>成本较高:nB 的模型全参微调所需显存～8nGB (包括模型参数、梯度、优化器参数等), 硬件要求苛刻</p>
+<p>效率较低：全参数微调训练耗时较长，导致效率低下</p>
+<p>过拟合：在数据量相对较少时，容易导致模型在训练集上表现得非常好，但在测试集或新数据上的泛化能力较差</p>
+<p><strong>PEFT：仅训练少量参数，大部分参数冻结</strong></p>
+<p><strong>添加型方法 - 适配器 (Adapters)</strong>: 在常规 Transformer 块中插入小型、可训练的模块 (即 Adapter 层), 而不改变原模型的大部分参数</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250701005953603.png" alt="image-20250701005953603"></p>
+<p>代表性方法：BNAdapter</p>
+<p>插入位置：两个前馈层 (Feed-forward layer) 后</p>
+<p>Adapter 架构：先通过 &quot;down-project&quot; 进行降维，应用激活函数，最后通过 &quot;up-project&quot; 投影回原始维度</p>
+<p>添加型方法 - 软提示：在模型输入嵌入中添加可训练的张量 (软提示), 改变输入数据的表示方式，从而实现特定任务微调</p>
+<p>代表性方法：Prefix-Tuning</p>
+<p>Soft Prompts 做法 (u1-u5 为特殊单词):[u1][u2][u3][u4][u5] 这部电影令人振奋。</p>
+<p>选择型方法 - 冻结 (Freeze): 冻结部分模型参数，冻结的参数部分不参与梯度计算，只训练模型的其他部分</p>
+<p>代表性方法：Freeze</p>
+<p>做法：模型通常由多个 Transformer 层组成，冻结前几层 Transformer 层，仅训练最后几层</p>
+<p>科学依据：实验表明，Transformer 的浅层倾向于提取出通用特征，深层倾向于提取语义特征</p>
+<p>重参数化方法 - 低秩适配微调：对模型参数进行特定的变换或替换，将原始的模型参数以某种形式重新表示或调整，以减少训练成本、提高训练效率</p>
+<p>代表性方法：LoRA (目前最受欢迎的 PEFT 方法</p>
+<p>做法：对指定参数增加额外的低秩矩阵，也就是在原始 PLM 旁边增加一个旁路，做一个降维再升维的操作</p>
+<p>LoRA 训练参数优化效果:</p>
+<p>数学表达:h=Wox+AWx=Wox+BAx</p>
+<p>设置值：设原始模型参数矩阵大小 d=768, 降维的大小 r=16</p>
+<p>参数规模：全参数 = d<em>d=589824,Lora=768</em>16 (降维)+16*768 (升维)=24576</p>
+<p>优化效果：训练参数降低为原始的 4.2%</p>
+<p>LoRA 优势:</p>
+<p>更长输入：不用在输入上加额外的 prompts, 能支持更长的输入 (vsSoft prompts)</p>
+<p>无延迟：增加的参数和基座模型计算是并行的，推理时没有增加额外的延迟 (vsAdapters)</p>
+<p>高适用性：训练完成后，可以与模型原始参数合并，合并后模模型使用代码与原始模型相同</p>
+<p>全参数微调：适合 GPU 算力充足，大规模训练数据场景</p>
+<p>PEFT 微调：适合 GPU 算力不足，小规模训练数据场景</p>
+<h4 id="模型评测"><a class="markdownIt-Anchor" href="#模型评测">#</a> 模型评测</h4>
+<p>大语言模型评估是对模型的语言理解、生成能力、逻辑推理等多维度性能进行量化分析的过程。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250701010000491.png" alt="image-20250701010000491"></p>
+<p><strong>通用评估</strong></p>
+<table>
+<thead>
+<tr>
+<th>基准名称</th>
+<th>评测目标</th>
+<th>国家</th>
+<th>时间</th>
+<th>题目类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MMLU</td>
+<td>理解、知识</td>
+<td>美国</td>
+<td>2021</td>
+<td>客观</td>
+</tr>
+<tr>
+<td>C-Eval</td>
+<td>理解、知识</td>
+<td>中国</td>
+<td>2023</td>
+<td>客观</td>
+</tr>
+<tr>
+<td>SOCKET</td>
+<td>知识能力</td>
+<td>美国</td>
+<td>2023</td>
+<td>主观</td>
+</tr>
+<tr>
+<td>GAOKAO</td>
+<td>学科能力</td>
+<td>中国</td>
+<td>2023</td>
+<td>主观 / 客观</td>
+</tr>
+<tr>
+<td>LongBench</td>
+<td>长文本</td>
+<td>中国</td>
+<td>2023</td>
+<td>主观</td>
+</tr>
+<tr>
+<td>ToolQA</td>
+<td>工具使用能力</td>
+<td>中国</td>
+<td>2023</td>
+<td>主观</td>
+</tr>
+</tbody>
+</table>
+<p>代表性通用基准</p>
+<p>SuperCLUE</p>
+<p>侧重点：知识技能、语言理解、安全、智能体</p>
+<p>评测任务：文本分类、阅读理解、意图识别</p>
+<p>题目数量：20,000+</p>
+<p>C-Eval</p>
+<p>侧重点：学科知识</p>
+<p>评测任务：涵盖人文、社科、理工等 52 个</p>
+<p>学科的官方试题</p>
+<p>题目数量：14,000+</p>
+<p><strong>领域模型评测</strong></p>
+<table>
+<thead>
+<tr>
+<th>基准名称</th>
+<th>行业</th>
+<th>国家</th>
+<th>时间</th>
+<th>题目类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FinEval</td>
+<td>金融</td>
+<td>中国</td>
+<td>2023</td>
+<td>主观 / 客观</td>
+</tr>
+<tr>
+<td>FINANCEBENCH</td>
+<td>金融</td>
+<td>美国</td>
+<td>2023</td>
+<td>主观</td>
+</tr>
+<tr>
+<td>PubMedQA</td>
+<td>医疗</td>
+<td>美国</td>
+<td>2019</td>
+<td>主观 / 客观</td>
+</tr>
+<tr>
+<td>MedBench</td>
+<td>医疗</td>
+<td>中国</td>
+<td>2023</td>
+<td>主观 / 客观</td>
+</tr>
+<tr>
+<td>SCIBENCH</td>
+<td>科研</td>
+<td>美国</td>
+<td>2023</td>
+<td>客观</td>
+</tr>
+<tr>
+<td>CGAEval</td>
+<td>政务</td>
+<td>中国</td>
+<td>2023</td>
+<td>主观 / 客观</td>
+</tr>
+</tbody>
+</table>
+<p><strong>开源模型评估方式</strong></p>
+<p>大模型生成内容的评估方式分为自动化评估、人工评估、大模型评估 。</p>
+<table>
+<thead>
+<tr>
+<th>评估方式</th>
+<th>描述</th>
+<th>关键指标 / 方法</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自动化评估</td>
+<td>使用数学公式计算的自动化指标，用于量化模型输出和标准答案之间的一致性</td>
+<td>Accuracy：分类任务准确率 BLEU：机器翻译质量 ROUGE：摘要生成质量 METEOR：翻译质量 F1 Score：文本分类 Perplexity：困惑度</td>
+<td>单选题、文本分类、机器翻译、摘要生成</td>
+</tr>
+<tr>
+<td>人工 / 大模型评估</td>
+<td>使用人工或大模型对生成结果的质量进行多维度评估，更适用于主观题任务</td>
+<td>流畅度：语言流畅性相关性：与上下文的相关性一致性：文本一致性创造性：文本创新性信息完整性：答案全面性</td>
+<td>对话系统、创意生成任务、文本生成</td>
+</tr>
+</tbody>
+</table>
+<p>场景</p>
+<ul>
+<li>分类任务（如情感分析、新闻分类、垃圾邮件识别 ）</li>
+<li>信息抽取（如实体抽取、关系抽取、事件抽取 ）</li>
+<li>推荐系统（如商品推荐、电影推荐 ）</li>
+</ul>
+<p>常用指标</p>
+<ul>
+<li>精确度 (Precision)：表示分类预测是正例的结果中，确实是正例的比例</li>
+<li>召回率 (Recall)：表示所有正例样本被正确找出的比例</li>
+<li>F1 值（F1-Score）：表示精确度和召回率的调和均值</li>
+<li>准确率（Accuracy）：表示分类正确的样本占全部样本的比例</li>
+</ul>
+<p>使用指南</p>
+<ul>
+<li>对于单选题，通常使用准确率评估，因其反映整体分类效果。</li>
+<li>对于异常检测，召回率更为重要，以确保尽可能多的正类被识别。</li>
+<li>对于垃圾邮件识别，精确度更为关键，确保预测为正类的结果确实为正。</li>
+<li>对于类别不均衡任务，F1 值更加适用，综合衡量精确度和召回率的平衡，避免偏向某一指标。</li>
+</ul>
+<p><strong>自动化评估</strong></p>
+<p>场景:</p>
+<p>生成任务 (如机器翻译、文本摘要、对话系统)</p>
+<p>常用指标:</p>
+<p>BLEU: 计算生成文本与参考文本之间的 n-gram 重叠程度</p>
+<p>ROUGE: 计算参考文本的 n-gram 在生成文本中的召回率</p>
+<p>Bertscore: 基于 BERT 语言模型，计算生成文本与参考文本在嵌入空间中的相似度</p>
+<p>使用指南:</p>
+<p>BLEU 和 ROUGE 侧重于文本层面的相似度，常用于机器翻译和文本摘要等任务</p>
+<p>Bertscore 更侧重于语义层面的相似度，常用于对话系统的评估</p>
+<p><strong>大模型评估</strong></p>
+<p>基于大模型的逐点评估:</p>
+<p>定义：逐点评估是指利用大模型对生成内容逐个进行评估的过程。</p>
+<p>流程：和人工评估类似，需要将任务说明、评估维度、评估指南、单个待评估样本一起作为 prompt 输入到大模型中，之后解析大模型的回复以获取双评分。</p>
+<p>基于大模型的对比评估:</p>
+<p>定义：对比评估是指对多个模型进行两两之间的多轮比较，通过评判它们的相对性能最终确定综合排名。</p>
+<p>流程：使用大模型对比两个生成内容，评估并选择更优内容，根据评估结果为每个模型赋予相应分值。</p>
+<h4 id="模型量化"><a class="markdownIt-Anchor" href="#模型量化">#</a> 模型量化</h4>
+<p>总显存需求 = 模型参数显存 + 激活显存 + 优化器显存</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9hcHhtbC5jb20vdG9vbHMvdnJhbS1jYWxjdWxhdG9y">https://apxml.com/tools/vram-calculator</span></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250701010009685.png" alt="image-20250701010009685"></p>
+<table>
+<thead>
+<tr>
+<th>精度</th>
+<th>数据类型大小</th>
+<th>总显存占用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全精度（FP32）</td>
+<td>4 字节 / 参数</td>
+<td>97GB</td>
+</tr>
+<tr>
+<td>FP16</td>
+<td>2 字节 / 参数</td>
+<td>49GB</td>
+</tr>
+<tr>
+<td>FP8</td>
+<td>1 字节 / 参数</td>
+<td>25GB</td>
+</tr>
+<tr>
+<td>INT8</td>
+<td>1 字节 / 参数</td>
+<td>16GB</td>
+</tr>
+<tr>
+<td>INT4</td>
+<td>0.5 字节 / 参数</td>
+<td>13GB</td>
+</tr>
+</tbody>
+</table>
+<p>精度越低的数据占用的空间越小，但对模型效果影响会越大</p>
+<p>目的:</p>
+<p>参数压缩：减少模型所需的存储空间，降低模型加载时间。</p>
+<p>计算加速：降低计算复杂度，提高模型的推理速度。</p>
+<p>减少显存：减少显存占用，使大模型能在更小的设备上运行。</p>
+<p>核心思想:</p>
+<p>在尽可能不影响模型性能的前提下，将参数从高精度数值 (如 FP16,16 位浮点数) 转化为比特数更低的格式 (如 FP8,8 位浮点数), 减少存储占用和计算时间。</p>
+<p>主要分类:</p>
+<p>训练时量化：在训练模型时进行量化操作。通常量化效果软校好。</p>
+<p>训练后量化：对训练后的模型进行量化操作。通常量化资源需求较小。</p>
+<p><strong>训练时量化：QAT</strong></p>
+<p>定义：在训练过程中就引入低精度运算，以确保量化后的模型性能不会下降太多。</p>
+<p>原理：在每一轮训练中，先将权重和计算结果量化成低精度格式然后根据量化后的计算结果更新模型的参数，使得模型学会如何在低精度条件下依然保持良好的性能。</p>
+<p><strong>训练后量化：PTQ</strong></p>
+<p>定义：训练好模型后，再把参数从高精度转换成低精度，来让模型更小、计算更快。</p>
+<p>原理：用一些示例参数来确定模型的数值范围，然后把原来的参数 &quot;压缩&quot; 到更小的范围。</p>
+<p>举例：假设示例参数的输入范围在 float 型的 - 3.0 到 3.0, 我们要把它缩放到 int 型的 - 128 到 127 (对于 INT8), 可以计算出缩放比例 scale=3.0/127, 将所有参数按这个比例压缩即可。</p>
+<p><strong>训练后量化</strong></p>
+<p>定义：专用于大语言模型的量化技术。通过分析并选择性地优化数据，来减少关键部分的损失。</p>
+<p>原理：逐层量化，在模型的每一层中找到对结果影响不太大的权重，并对其量化。然后，对该层因量化产生的误差进行补偿，来防止误差积累，保持模型的计算精度。</p>
+<p>QAT: 在高精度场景下表现最佳，但训练成本高。</p>
+<p>PTQ: 适合快速部署和低计算资源，但可能会影响精度。</p>
+<p>GPTQ (最常用): 适合大规模模型，精度较高，且也比较适合快速部署和低计算资源环境，但是仅适用于语言模型。</p>
+<p><strong>量化效果优化</strong>：smoothquant</p>
+<p>引入：波动较大的参数在量化时可能会溢出导致影响量化效果。因此我们可以在量化前使用 SmoothQuant 方法来对参数作初步调整。</p>
+<p>定义：在用 PTQ、QAT 等方法量化之前，先对参数范围做调整，让模型更容易被量化。</p>
+<p>原理：重新分配参数的范围，使其在量化时更加均衡，从而减少少信息损失。加入 SmoothQuant 的量化推理流程：输入→平滑处理→量化处理并计算 输出</p>
+<h4 id="大模型量化推理框架"><a class="markdownIt-Anchor" href="#大模型量化推理框架">#</a> 大模型量化推理框架</h4>
+<p><strong>BitsAndBytes</strong></p>
+<p>主要用于减少大模型的显存占用，并在低资源设备 (如消费级 GPU) 上进行推理或微调</p>
+<p>如果你是新手，或在以下场景下，推荐使用 Bitsandbytes:</p>
+<p>想在消费级显卡 (如 RTX4080/4090) 上加载大模型。</p>
+<p>进行模型微调 (如 LoRA 微调)。</p>
+<p>想要快速测试和研究 LLMS。</p>
+<p><strong>TensorRT-LLM :</strong></p>
+<p>NVIDIA 提供的深度学习推理优化工具，专门用于极致优化哇理性能</p>
+<p>如果你希望在以下场景下优化部署，推荐使用 TensorRT:</p>
+<p>生产环境，要求极低延迟和高吞吐量。</p>
+<p>在云服务器或边缘设备上高效运行模型。</p>
+<p>需要对模型进行深度优化，减少推理时间。</p>
+<h4 id="多模态大模型"><a class="markdownIt-Anchor" href="#多模态大模型">#</a> 多模态大模型</h4>
+<h5 id="多模态大模型架构"><a class="markdownIt-Anchor" href="#多模态大模型架构">#</a> 多模态大模型架构：</h5>
+<p>核心差异：各结构之间不同的主要体现在融合的时间点以及具体的融合方法上。</p>
+<table>
+<thead>
+<tr>
+<th>模态融合时期</th>
+<th>融合方式</th>
+<th>案例模型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>早期融合（输入阶段进行融合）</td>
+<td>非标记化</td>
+<td>BLIP2</td>
+</tr>
+<tr>
+<td>早期融合（输入阶段进行融合）</td>
+<td>非标记化</td>
+<td>Qwen2-VL</td>
+</tr>
+<tr>
+<td>早期融合（输入阶段进行融合）</td>
+<td>标记化（原生）</td>
+<td>Chameleon</td>
+</tr>
+<tr>
+<td>深度融合（模型内部进行融合）</td>
+<td>标准交叉注意力</td>
+<td>Flamingo</td>
+</tr>
+<tr>
+<td>深度融合（模型内部进行融合）</td>
+<td>专门设计融合层</td>
+<td>CogVLM</td>
+</tr>
+</tbody>
+</table>
+<h5 id="早期融合"><a class="markdownIt-Anchor" href="#早期融合">#</a> 早期融合</h5>
+<p>模态转换：将图片、声音等信息通过模态编码器转换为特征向量。</p>
+<p>特征融合：经过连接层将图像特征向量转换为文本空间向量后和文本向量拼接，一起输入模型。</p>
+<p>结果生成：模型处理后生成文本结果。</p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250701010035422.png" alt="image-20250701010035422"></p>
+<p>预训练阶段：训练 Qformer。有以下两种任务:</p>
+<ul>
+<li>图像 - 文本匹配 (图文匹配和特征匹配)</li>
+<li>图像 - 文本描述生成</li>
+</ul>
+<p>微调阶段：训练 Qformer 和全连接层。利用自回归生成完成以下三三个任务</p>
+<ul>
+<li>图像描述任务</li>
+<li>视觉问答任务</li>
+<li>图像 - 文本检索任务</li>
+</ul>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250701010041888.png" alt="image-20250701010041888"></p>
+<p>早期融合使用比较多，其中非标记，比如 qwen2 就是</p>
+<p>领域多模态大模型</p>
+<p>1、先多模态再领域</p>
+<p>训练策略：先用大量的多模态数据训练通用文本大模型，然后用少量领域图文数据训练多模态大模型</p>
+<p>典型案例：LLaVA-Med;Med-Flamingo</p>
+<p>2、先领域再多模态:</p>
+<p>训练策略：文本大模型 + 领域文本数据 = 领域大模型 + 领域图文数据 = 领域多模态</p>
+<p>典型案例：RadFM</p>
+<p>总结：先领域再多模态训练需要大量领域数据，适合处理领域内多任务的场景；先多模态再领域训练对领域数据需求较少，更适合解决特定领域内的单一任务。</p>
+<h3 id="finetune"><a class="markdownIt-Anchor" href="#finetune">#</a> finetune</h3>
+<p>微调作为一种技术手段，是在已具备广泛知识基础的大型预训练语言模型上，利用针对性的数据集实施额外的训练过程，旨在使模型更精准地契合特定任务需求或深入某一专业领域。<strong>微调的核心目标在于实现知识的精细化灌输与指令系统的精确匹配</strong>。</p>
+<p>SFT 的理论基础之一是迁移学习（Transfer Learning）。迁移学习是指将一个领域（源领域）中学到的知识应用到另一个领域（目标领域）中。在 SFT 中，预训练模型在源领域（通常是大规模无标签数据）上进行了训练，而微调过程则是在目标领域（特定任务的有标签数据）上进行的。通过迁移学习，模型可以将源领域的知识迁移到目标领域，从而提高目标任务的性能。</p>
+<p>在 SFT 过程中，损失函数的选择和优化算法的使用对模型的性能有着重要影响。常用的损失函数包括交叉熵损失、均方误差损失等，具体选择取决于任务类型。优化算法则通常采用随机梯度下降（SGD）或其变种（如 Adam、RMSprop 等），通过迭代更新模型参数，最小化损失函数。</p>
+<p>微调策略包括学习率设置、批量大小选择、训练轮数等。学习率是微调过程中最重要的超参数之一，过高的学习率可能导致模型无法收敛，过低的学习率则可能导致训练速度过慢。批量大小和训练轮数的选择也需要根据具体任务进行调整，以达到最佳的训练效果。</p>
+<p>为了防止模型过拟合，SFT 过程中通常采用正则化技术，如 L2 正则化、Dropout 等。此外，早停（Early Stopping）也是一种常用的防止过拟合的方法，通过在验证集上监控模型性能，当性能不再提升时提前停止训练。</p>
+<p>监督式微调包括以下几个步骤：</p>
+<ul>
+<li><strong>预训练：</strong> 首先在一个大规模的数据集上训练一个深度学习模型，例如使用自监督学习或者无监督学习算法进行预训练；</li>
+<li><strong>微调：</strong> 使用目标任务的训练集对预训练模型进行微调。通常，只有预训练模型中的一部分层被微调，例如只微调模型的最后几层或者某些中间层。在微调过程中，通过反向传播算法对模型进行优化，使得模型在目标任务上表现更好；</li>
+<li><strong>评估：</strong> 使用目标任务的测试集对微调后的模型进行评估，得到模型在目标任务上的性能指标。</li>
+</ul>
+<p><strong>大模型的 SFT（Supervised Fine-Tuning）方式主要包括以下几种：</strong></p>
+<p><strong>全参数微调（Full Parameter Fine Tuning）</strong>：全参数微调涉及对模型的所有权重进行调整，以使其完全适应特定领域或任务。这种方法适用于拥有大量与任务高度相关的高质量训练数据的情况，通过更新所有参数来最大程度地优化模型对新任务的理解和表现。</p>
+<ul>
+<li>原理：更新预训练模型的所有参数（包括 Transformer 的所有层、注意力机制等）。</li>
+<li>优点：理论上能最大化模型对特定任务的适配能力，尤其适合数据量大、任务差异显著的场景。</li>
+<li>缺点：计算资源消耗极大（需存储所有参数的梯度），易过拟合，需大量训练数据。</li>
+</ul>
+<p><strong>部分参数微调</strong>（Sparse Fine Tuning / Selective Fine Tuning）：部分参数微调策略仅选择性地更新模型中的某些权重，尤其是在需要保留大部分预训练知识的情况下。这包括：</p>
+<ul>
+<li>LoRA（Low-Rank Adaptation）：通过向模型权重矩阵添加低秩矩阵来进行微调，既允许模型学习新的任务特定模式，又能够保留大部分预训练知识，从而降低过拟合风险并提高训练效率。
+<ul>
+<li>原理：通过低秩矩阵分解近似参数更新，仅训练分解后的矩阵。</li>
+<li>优点：参数量少（如 7B 模型仅需约 4MB 可训练参数），支持快速部署。</li>
+</ul>
+</li>
+<li>P-tuning v2：这是一种基于 prompt tuning 的方法，仅微调模型中与 [prompt] 相关的部分参数（例如，额外添加的可学习 prompt 嵌入），而不是直接修改模型主体的权重。</li>
+<li>QLoRA：可能是指 Quantized Low-Rank Adaptation 或其他类似技术，它可能结合了低秩调整与量化技术，以实现高效且资源友好的微调。</li>
+</ul>
+<p><strong>冻结（Freeze）监督微调</strong>：在这种微调方式中，部分或全部预训练模型的权重被冻结（即保持不变不再训练），仅对模型的部分层（如最后一层或某些中间层）或新增的附加组件（如任务特定的输出层或注意力机制）进行训练。这样可以防止预训练知识被过度覆盖，同时允许模型学习针对新任务的特定决策边界。</p>
+<ul>
+<li>优点：减少训练参数，降低计算成本，缓解过拟合。</li>
+<li>缺点：可能限制模型对复杂任务的适应能力，需人工选择冻结层。</li>
+<li>原理：冻结预训练模型的底层（通常是前几层，负责基础语言理解），只训练顶层或特定模块。</li>
+</ul>
+<p>原文链接：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MDk0NjUxL2FydGljbGUvZGV0YWlscy8xNDI0NTcxMzk=">https://blog.csdn.net/qq_46094651/article/details/142457139</span></p>
+<p>在进行领域任务的 SFT 的时候我们通常会有以下训练模式进行选择，根据领域任务、领域样本情况、业务的需求我们可以选择合适的训练模式。</p>
+<p>模式一：基于 base 模型 + 领域任务的 SFT；</p>
+<p>模式二：基于 base 模型 + 领域数据 continue pre-train + 领域任务 SFT；</p>
+<p>模式三：基于 base 模型 + 领域数据 continue pre-train + 通用任务 SFT + 领域任务 SFT；</p>
+<p>模式四：基于 base 模型 + 领域数据 continue pre-train + 通用任务与领域任务混合 SFT；</p>
+<p>模式五：基于 base 模型 + 领域数据 continue pre-train（混入 SFT 数据） + 通用任务与领域任务混合 SFT；</p>
+<p>模式六：基于 chat 模型 + 领域任务 SFT；</p>
+<p>模式六：基于 chat 模型 + 领域数据 continue pre-train + 领域任务 SFT</p>
+<p>会采用直接使用 python 的 transformer 包和 LLama-Factory 进行微调</p>
+<h4 id="环境准备"><a class="markdownIt-Anchor" href="#环境准备">#</a> 环境准备</h4>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># <span class="number">3.10</span>.x</span><br><span class="line">python --version</span><br><span class="line"></span><br><span class="line">pip install torch==<span class="number">2.4</span><span class="number">.1</span> torchvision==<span class="number">0.19</span><span class="number">.1</span> torchaudio==<span class="number">2.4</span><span class="number">.1</span> -f https<span class="punctuation">:</span><span class="comment">//mirrors.aliyun.com/pytorch-wheels/cu121/</span></span><br><span class="line">pip install transformers jsonlines openpyxl modelscope pandas tqdm bert-score datasets</span><br><span class="line">git clone --depth <span class="number">1</span> https<span class="punctuation">:</span><span class="comment">//github.com/hiyouga/LLaMA-Factory.git</span></span><br><span class="line">cd LLaMA-Factory</span><br><span class="line">pip install -e <span class="string">&quot;.[metrics]&quot;</span> -i https<span class="punctuation">:</span><span class="comment">//pypi.tuna.tsinghua.edu.cn/simple</span></span><br><span class="line"></span><br><span class="line"># 使用jupyter时需要注册内核</span><br><span class="line">pip install ipykernel</span><br><span class="line">python -m ipykernel install --name llamafactory  --display-name <span class="string">&quot;llamafactory&quot;</span></span><br><span class="line"></span><br><span class="line"># 模型下载<span class="punctuation">,</span>Qwen2<span class="number">.5</span>用于微调，bert用于微调后评测</span><br><span class="line">modelscope download --model Qwen/Qwen2<span class="number">.5</span><span class="number">-0.5</span>B-Instruct --local_dir ../model/Qwen2<span class="number">.5</span><span class="number">-0.5</span>B-Instruct</span><br><span class="line">modelscope download --model tiansz/bert-base-chinese --local_dir ../model/bert-base-chinese</span><br></pre></td></tr></table></figure>
+<h4 id="指令微调格式"><a class="markdownIt-Anchor" href="#指令微调格式">#</a> 指令微调格式</h4>
+<p>指令微调数据通常采用 JSON 或 JSONL 格式，每个样本 (item) 的基本格式为包含以下字段</p>
+<ul>
+<li>instruction: 描述任务要求或问题，明确指令的目的。</li>
+<li>input: 具体输入内容，可选 (例如给定文本，给定标题)。</li>
+<li>output: 期望的回复或答案。</li>
+</ul>
+<p>注意：现在为了保持灵活性，通常将任务描述与输入内容一起放在 instruction 中，设置 input 字段为空</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;instruction&quot;</span><span class="punctuation">:</span><span class="string">&quot;将以下英文翻译成中文。\nHillo,how are yyou?&quot;</span></span><br><span class="line">    <span class="attr">&quot;input&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;output&quot;</span><span class="punctuation">:</span><span class="string">&quot;你好,你好吗?&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>“将以下英文翻译成中文。\nHello, how are you?”（输入在后）</p>
+<p>“Hello, how are you?\n 将以下英文翻译成中文。”（输入在前）</p>
+<p>“翻译任务 \n 原文本：Hello, how are you?\n 目标语言：中文。”（输入在中间）</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 多轮对话</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;instruction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你觉得今天的天气怎么样？&quot;</span><span class="punctuation">,</span> <span class="comment">// 当前是用户的第二次提问</span></span><br><span class="line">  <span class="attr">&quot;input&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;output&quot;</span><span class="punctuation">:</span> <span class="string">&quot;我觉得今天天气很好。&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;history&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span><span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你好！&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="comment">// 用户的第一次提问</span></span><br><span class="line">    <span class="punctuation">&#123;</span><span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你好！有什么可以帮你的吗？&quot;</span><span class="punctuation">&#125;</span> <span class="comment">// 模型的第一次回答</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>数据在转换为指令形式时，通常会加入一些特殊符号，其目的主要有三个方面</p>
+<p>1. 任务标记：表示当前是问答任务，而非预训练的续写任务。</p>
+<p>2. 划分每一轮对话的边界：方便模型理解对话的结构与上下文切换</p>
+<p>3. 表明每一轮的说话主体：指示某一句是用户发问还是模型回复</p>
+<p>在实际应用中，很多环境已经内置了大量模型的指令模板，可以直接调用，例如使用 tokenizer.apply_chat_template 来转换原始数据为目标格式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型路径</span></span><br><span class="line">model_path = <span class="string">&#x27;./model/Qwen2.5-0.5B-Instruct&#x27;</span></span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(model_path)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;tokenizer加载完成&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;一个单轮对话样例测试&#x27;</span>)</span><br><span class="line"></span><br><span class="line">data = &#123;</span><br><span class="line">  <span class="string">&quot;instruction&quot;</span>: <span class="string">&quot;将以下英文翻译成中文。\nHello, how are you?&quot;</span>,</span><br><span class="line">  <span class="string">&quot;input&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;output&quot;</span>: <span class="string">&quot;你好，你好吗？&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">messages = [</span><br><span class="line">    &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: data[<span class="string">&#x27;instruction&#x27;</span>]&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;assistant&quot;</span>, <span class="string">&quot;content&quot;</span>: data[<span class="string">&#x27;output&#x27;</span>]&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">chat_template = tokenizer.apply_chat_template(</span><br><span class="line">    messages, </span><br><span class="line">    add_generation_prompt= <span class="literal">False</span>, <span class="comment"># 加上当前模型的对话模板</span></span><br><span class="line">    tokenize=<span class="literal">False</span> <span class="comment"># 是否要转成token id</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;转换后的数据：\n&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(chat_template))</span><br><span class="line">转换后的数据：</span><br><span class="line">&lt;|im_start|&gt;system</span><br><span class="line">You are Qwen, created by Alibaba Cloud. You are a helpful assistant.&lt;|im_end|&gt;</span><br><span class="line">&lt;|im_start|&gt;user</span><br><span class="line">将以下英文翻译成中文。</span><br><span class="line">Hello, how are you?&lt;|im_end|&gt;</span><br><span class="line">&lt;|im_start|&gt;assistant</span><br><span class="line">你好，你好吗？&lt;|im_end|&gt;</span><br></pre></td></tr></table></figure>
+<p>1.&lt;|im_start|&gt;/&lt;|im_end|&gt; 标记对话边界</p>
+<p>2.user/assistant 区分对话角色</p>
+<p>测试是否使用 <code>apply_chat_template</code>  的效果</p>
+<p>- 不转换成模板：模型通常进行续写任务，尝试基于当前的内容进行<strong>续写</strong>或<strong>补充</strong></p>
+<p>- 转换成模板：模型通常进行问答任务，尝试<strong>回答问题</strong></p>
+<h4 id="数据处理"><a class="markdownIt-Anchor" href="#数据处理">#</a> 数据处理</h4>
+<p>一共下载三份数据集，用于微调医疗领域大模型</p>
+<ol>
+<li>Chinese-medical-dialogue：医疗对话数据集</li>
+<li>norm：临床术语标准化数据集</li>
+<li>IMCS-V2-MRG：报告生成</li>
+</ol>
+<p>数据下载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">modelscope download --dataset xiaofengalg/Chinese-medical-dialogue --local_dir ../dataset/Chinese-medical-dialogue</span><br><span class="line">modelscope download --dataset xueqiao111/IMCS-V2-MRG --local_dir ../dataset/IMCS-V2-MRG</span><br><span class="line">unzip ../dataset/IMCS-V2-MRG/IMCS-V2-MRG.zip -d ../dataset/IMCS-V2-MRG</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">cd</span> dataset</span><br><span class="line">wget http://data.openkg.cn/dataset/99e3fa10-c5f3-4af8-b147-fe689e67e260/resource/01424eb2-b5e6-441e-9c90-216079343d8d/download/yidu-n7k.zip</span><br><span class="line">unzip ./yidu-n7k.zip -d ./yidu-n7k</span><br><span class="line"><span class="built_in">mv</span> yidu-n7k.zip ./yidu-n7k/</span><br><span class="line"></span><br><span class="line"><span class="built_in">mkdir</span> output_dir = <span class="string">&#x27;./dataset/sft_dataset&#x27;</span></span><br></pre></td></tr></table></figure>
+<h5 id="处理医疗对话数据"><a class="markdownIt-Anchor" href="#处理医疗对话数据">#</a> 处理医疗对话数据</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line">random.seed(<span class="number">42</span>)</span><br><span class="line"><span class="comment"># 处理医疗诊断数据集</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出的数据集名称</span></span><br><span class="line">dataset_name = <span class="string">&#x27;dialog&#x27;</span></span><br><span class="line"><span class="comment"># 在下载后的文件夹内</span></span><br><span class="line">read_file = <span class="string">&#x27;./dataset/Chinese-medical-dialogue/data/train_0001_of_0001.json&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(read_file, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    datas = json.load(f)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 原始的数据格式为json</span></span><br><span class="line"><span class="comment"># instruction：主题</span></span><br><span class="line"><span class="comment"># input：内容</span></span><br><span class="line"><span class="comment"># output：医生的回复</span></span><br><span class="line"><span class="comment"># history：都为空</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&#123;&#x27;instruction&#x27;: &#x27;孕妇感冒发烧38度应该怎么办呢&#x27;,</span></span><br><span class="line"><span class="string"> &#x27;input&#x27;: &#x27;我怀孕了我的身体最近变得很差，现在我总是感冒发烧非常的严重。最近一次发烧38度，我感觉头非常的疼痛又不敢打针吃药，现在非常得难受痛苦.想得到怎样的帮助：孕妇感冒发烧38度应该怎办的呢？&#x27;,</span></span><br><span class="line"><span class="string"> &#x27;output&#x27;: &#x27;孕妇发烧时，要寻出发烧的病因，对症下药，若是一般由感冒引来的发烧，不论对妈妈或胎儿而言，预后应该是很好的。孕妇若必须动用药物，必须考量药物对胎儿健康的干扰，因此必须与妇产科医师充分谈论后再动用。可以物理降温，把毛巾放到装温水的盆中，然后把水拧出，全身擦试，特别是额头、手臂弯，大腿根部，手脚心处擦试，这样效果会很好的，要多喝生姜和大枣熬的热水，然后消肿。以上是对“孕妇感冒发烧38度应当怎办的呢？”这个问题的建议，期望对您有协助，祝您健康！&#x27;,</span></span><br><span class="line"><span class="string"> &#x27;history&#x27;: None</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 只选取5100条</span></span><br><span class="line"><span class="comment"># 5000条训练</span></span><br><span class="line"><span class="comment"># 100条测试</span></span><br><span class="line">random.shuffle(datas) <span class="comment"># 全部数据打乱一下，要不然取到的数据症状都是类似的</span></span><br><span class="line">datas = datas[:<span class="number">5000</span>] <span class="comment"># 共选取5000条</span></span><br><span class="line">processed_datas = []</span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> datas:</span><br><span class="line">    <span class="comment"># 将主题和内容拼接起来</span></span><br><span class="line">    inp = <span class="string">&#x27;主题：&#123;&#125;\n内容：&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(data[<span class="string">&#x27;instruction&#x27;</span>], data[<span class="string">&#x27;input&#x27;</span>])</span><br><span class="line">    <span class="comment"># 组成指令数据</span></span><br><span class="line">    processed_data = &#123;</span><br><span class="line">        <span class="string">&#x27;instruction&#x27;</span>: inp,</span><br><span class="line">        <span class="string">&#x27;input&#x27;</span>:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;output&#x27;</span>: data[<span class="string">&#x27;output&#x27;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    processed_datas.append(processed_data)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;全部数据量:&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">len</span>(processed_datas)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出指令数据</span></span><br><span class="line"><span class="keyword">with</span> jsonlines.<span class="built_in">open</span>(os.path.join(output_dir, <span class="string">&#x27;&#123;&#125;_train.jsonl&#x27;</span>.<span class="built_in">format</span>(dataset_name)), <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> processed_datas:</span><br><span class="line">        f.write(data)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># 求一下最大长度（后面微调的时候设置参数需要用到）</span></span><br><span class="line">max_len = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> processed_datas:</span><br><span class="line">    now_len = <span class="built_in">len</span>(tokenizer(data[<span class="string">&#x27;instruction&#x27;</span>]+<span class="string">&#x27;\n&#x27;</span>+data[<span class="string">&#x27;output&#x27;</span>])[<span class="string">&#x27;input_ids&#x27;</span>])</span><br><span class="line">    <span class="keyword">if</span> now_len &gt; max_len:</span><br><span class="line">        max_len = now_len</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;最大长度为:&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(max_len))</span><br></pre></td></tr></table></figure>
+<h5 id="临床术语标准处理"><a class="markdownIt-Anchor" href="#临床术语标准处理">#</a> 临床术语标准处理</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">read_files = [</span><br><span class="line"><span class="string">&#x27;./dataset/yidu-n7k/train.xlsx&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;./dataset/yidu-n7k/val.xlsx&#x27;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">out_types = [</span><br><span class="line">    <span class="string">&#x27;train&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;test&#x27;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 原始的数据格式为excel</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">|原始词|标准词|</span></span><br><span class="line"><span class="string">|---|---|</span></span><br><span class="line"><span class="string">|右侧甲状腺叶切除术|单侧甲状腺叶切除术|</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 第1列为原始词</span></span><br><span class="line"><span class="comment"># 第2列为标准化词</span></span><br><span class="line"></span><br><span class="line">pd.read_excel(<span class="string">&#x27;./dataset/yidu-n7k/train.xlsx&#x27;</span>)</span><br><span class="line"></span><br><span class="line">dataset_name = <span class="string">&#x27;norm&#x27;</span></span><br><span class="line"><span class="comment"># 由于没有任务说明，我们需要自己来为这个任务写一个任务描述的prompt</span></span><br><span class="line">prompt = <span class="string">&#x27;&#x27;&#x27;你是一个医疗专家，你的任务是临床术语标准化。</span></span><br><span class="line"><span class="string">具体来说，针对给出的通用语，转换为相应的标准化医学术语，确保转换后的内容符合医学专业标准，直接输出转换后的临床标准术语。</span></span><br><span class="line"><span class="string">原始词：&#123;word&#125;</span></span><br><span class="line"><span class="string">该词的标准术语为：&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> read_file, out_type <span class="keyword">in</span> <span class="built_in">zip</span>(read_files, out_types):</span><br><span class="line">    processed_datas = []</span><br><span class="line">    <span class="comment"># 使用pandas加载数据</span></span><br><span class="line">    datas = pd.read_excel(read_file)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(datas.shape[<span class="number">0</span>]):</span><br><span class="line">        before_word = datas.iloc[i,<span class="number">0</span>]</span><br><span class="line">        after_word = datas.iloc[i,<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        instruction = prompt.<span class="built_in">format</span>(word = before_word)</span><br><span class="line">        output = after_word</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 构造指令数据</span></span><br><span class="line">        processed_data = &#123;</span><br><span class="line">            <span class="string">&#x27;instruction&#x27;</span>: instruction,</span><br><span class="line">            <span class="string">&#x27;input&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;output&#x27;</span>: output</span><br><span class="line">        &#125;</span><br><span class="line">        processed_datas.append(processed_data)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 训练集选取5000条</span></span><br><span class="line">    <span class="keyword">if</span> out_type == <span class="string">&#x27;train&#x27;</span>:</span><br><span class="line">        processed_datas = processed_datas[:<span class="number">5000</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 测试集选取100条</span></span><br><span class="line">        processed_datas = processed_datas[:<span class="number">100</span>]</span><br><span class="line">    <span class="keyword">with</span> jsonlines.<span class="built_in">open</span>(os.path.join(output_dir, <span class="string">&#x27;&#123;&#125;_&#123;&#125;.jsonl&#x27;</span>.<span class="built_in">format</span>(dataset_name, out_type)), <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">for</span> data <span class="keyword">in</span> processed_datas:</span><br><span class="line">            f.write(data)</span><br><span class="line">            </span><br><span class="line">max_len = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> read_file, out_type <span class="keyword">in</span> <span class="built_in">zip</span>(read_files, out_types):</span><br><span class="line">    <span class="keyword">with</span> jsonlines.<span class="built_in">open</span>(os.path.join(output_dir, <span class="string">&#x27;&#123;&#125;_&#123;&#125;.jsonl&#x27;</span>.<span class="built_in">format</span>(dataset_name, out_type)), <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        processed_datas = [data <span class="keyword">for</span> data <span class="keyword">in</span> f]</span><br><span class="line">        <span class="comment"># 求一下最大长度</span></span><br><span class="line">        <span class="keyword">for</span> data <span class="keyword">in</span> processed_datas:</span><br><span class="line">            now_len = <span class="built_in">len</span>(tokenizer(data[<span class="string">&#x27;instruction&#x27;</span>]+<span class="string">&#x27;\n&#x27;</span>+data[<span class="string">&#x27;output&#x27;</span>])[<span class="string">&#x27;input_ids&#x27;</span>])</span><br><span class="line">            <span class="keyword">if</span> now_len &gt; max_len:</span><br><span class="line">                max_len = now_len</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;最大长度为:&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(max_len))</span><br></pre></td></tr></table></figure>
+<h5 id="病例报告生成"><a class="markdownIt-Anchor" href="#病例报告生成">#</a> 病例报告生成</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">read_files = [</span><br><span class="line"><span class="string">&#x27;./dataset/IMCS-V2-MRG/IMCS-V2-MRG/IMCS-V2_train.json&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;./dataset/IMCS-V2-MRG/IMCS-V2-MRG/IMCS-V2_dev.json&#x27;</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">out_types = [</span><br><span class="line">    <span class="string">&#x27;train&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;test&#x27;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 原始的数据格式为excel</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string"> &#x27;</span>dialogue<span class="string">&#x27;: [&#123;&#x27;</span>sentence_id<span class="string">&#x27;: &#x27;</span>1<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>speaker<span class="string">&#x27;: &#x27;</span>医生<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>sentence<span class="string">&#x27;: &#x27;</span>你好，咳嗽是连声咳吗？有痰吗？有没流鼻涕，鼻塞？<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>dialogue_act<span class="string">&#x27;: &#x27;</span>Request-Symptom<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>BIO_label<span class="string">&#x27;: &#x27;</span>O O O B-Symptom I-Symptom O O O B-Symptom O O O B-Symptom O O O O B-Symptom I-Symptom I-Symptom O B-Symptom I-Symptom O<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>symptom_norm<span class="string">&#x27;: [&#x27;</span>咳嗽<span class="string">&#x27;, &#x27;</span>咳嗽<span class="string">&#x27;, &#x27;</span>痰<span class="string">&#x27;, &#x27;</span>鼻流涕<span class="string">&#x27;, &#x27;</span>鼻塞<span class="string">&#x27;],</span></span><br><span class="line"><span class="string">   &#x27;</span>symptom_type<span class="string">&#x27;: [&#x27;</span>1<span class="string">&#x27;, &#x27;</span>1<span class="string">&#x27;, &#x27;</span>0<span class="string">&#x27;, &#x27;</span>2<span class="string">&#x27;, &#x27;</span>0<span class="string">&#x27;],</span></span><br><span class="line"><span class="string">   &#x27;</span>local_implicit_info<span class="string">&#x27;: &#123;&#x27;</span>咳嗽<span class="string">&#x27;: &#x27;</span>1<span class="string">&#x27;, &#x27;</span>痰<span class="string">&#x27;: &#x27;</span>0<span class="string">&#x27;, &#x27;</span>鼻流涕<span class="string">&#x27;: &#x27;</span>2<span class="string">&#x27;, &#x27;</span>鼻塞<span class="string">&#x27;: &#x27;</span>0<span class="string">&#x27;&#125;&#125;,</span></span><br><span class="line"><span class="string">  &#123;&#x27;</span>sentence_id<span class="string">&#x27;: &#x27;</span>2<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>speaker<span class="string">&#x27;: &#x27;</span>医生<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>sentence<span class="string">&#x27;: &#x27;</span>咳嗽有几天了？<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>dialogue_act<span class="string">&#x27;: &#x27;</span>Request-Symptom<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>BIO_label<span class="string">&#x27;: &#x27;</span>B-Symptom I-Symptom O O O O O<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>symptom_norm<span class="string">&#x27;: [&#x27;</span>咳嗽<span class="string">&#x27;],</span></span><br><span class="line"><span class="string">   &#x27;</span>symptom_type<span class="string">&#x27;: [&#x27;</span>1<span class="string">&#x27;],</span></span><br><span class="line"><span class="string">   &#x27;</span>local_implicit_info<span class="string">&#x27;: &#123;&#x27;</span>咳嗽<span class="string">&#x27;: &#x27;</span>1<span class="string">&#x27;&#125;&#125;,</span></span><br><span class="line"><span class="string">......</span></span><br><span class="line"><span class="string">],</span></span><br><span class="line"><span class="string"> &#x27;</span>report<span class="string">&#x27;: [&#123;&#x27;</span>主诉<span class="string">&#x27;: &#x27;</span>晚上咳嗽，磨牙。<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>现病史<span class="string">&#x27;: &#x27;</span>患儿夜间咳嗽三天，磨牙，大便干。未服用药物。<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>辅助检查<span class="string">&#x27;: &#x27;</span>暂缺。<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>既往史<span class="string">&#x27;: &#x27;</span>不详。<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>诊断<span class="string">&#x27;: &#x27;</span>消化不良。<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>建议<span class="string">&#x27;: &#x27;</span>小儿消积止咳口服液，益生菌，到医院化验血常规。<span class="string">&#x27;&#125;,</span></span><br><span class="line"><span class="string">  &#123;&#x27;</span>主诉<span class="string">&#x27;: &#x27;</span>咳嗽、磨牙3天。<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>现病史<span class="string">&#x27;: &#x27;</span>患儿3天前出现夜间咳嗽、磨牙，无发热、咳痰、流涕等症状，未诊治。<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>辅助检查<span class="string">&#x27;: &#x27;</span>暂缺。<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>既往史<span class="string">&#x27;: &#x27;</span>否认过敏史。<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>诊断<span class="string">&#x27;: &#x27;</span>考虑消化不良。<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">   &#x27;</span>建议<span class="string">&#x27;: &#x27;</span>口服消积止咳药物3天，若无好转需查血常规。<span class="string">&#x27;&#125;]</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">dataset_name = <span class="string">&#x27;mrg&#x27;</span></span><br><span class="line"><span class="comment"># 由于没有任务说明，依旧需要我们自己来写一个关于任务描述的prompt</span></span><br><span class="line">prompt = <span class="string">&#x27;&#x27;</span><span class="string">&#x27;问诊对话历史：</span></span><br><span class="line"><span class="string">&#123;dialog&#125;</span></span><br><span class="line"><span class="string">根据上述对话，给出诊疗报告</span></span><br><span class="line"><span class="string">说明：诊疗报告分为主诉, 现病史, 辅助检查, 既往史, 诊断, 建议这六个章节，以标准的json格式输出。</span></span><br><span class="line"><span class="string">答：&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> read_file, out_type <span class="keyword">in</span> zip(read_files, out_types):</span><br><span class="line">    processed_datas = []</span><br><span class="line">    <span class="comment"># 使用pandas加载数据</span></span><br><span class="line">    with open(read_file, <span class="string">&#x27;r&#x27;</span>) as f:</span><br><span class="line">        datas = json.load(f)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> datas.values():</span><br><span class="line">        dialog = data[<span class="string">&#x27;dialogue&#x27;</span>]</span><br><span class="line">        dialog = [<span class="string">&#x27;&#123;&#125;：&#123;&#125;&#x27;</span>.format(item[<span class="string">&#x27;speaker&#x27;</span>],item[<span class="string">&#x27;sentence&#x27;</span>]) <span class="keyword">for</span> item <span class="keyword">in</span> dialog]</span><br><span class="line"></span><br><span class="line">        instruction = prompt.format(dialog = <span class="string">&#x27;\n&#x27;</span>.<span class="built_in">join</span>(dialog))</span><br><span class="line">        output = json.dumps(data[<span class="string">&#x27;report&#x27;</span>][0], ensure_ascii = False,indent=2)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 构造指令数据</span></span><br><span class="line">        processed_data = &#123;</span><br><span class="line">            <span class="string">&#x27;instruction&#x27;</span>: instruction,</span><br><span class="line">            <span class="string">&#x27;input&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;output&#x27;</span>: output</span><br><span class="line">        &#125;</span><br><span class="line">        processed_datas.append(processed_data)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 训练集选取5000条</span></span><br><span class="line">    <span class="keyword">if</span> out_type == <span class="string">&#x27;train&#x27;</span>:</span><br><span class="line">        processed_datas = processed_datas[:5000]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 测试集选取100条</span></span><br><span class="line">        processed_datas = processed_datas[:100]</span><br><span class="line">    with jsonlines.open(os.path.join(output_dir, <span class="string">&#x27;&#123;&#125;_&#123;&#125;.jsonl&#x27;</span>.format(dataset_name, out_type)), <span class="string">&#x27;w&#x27;</span>) as f:</span><br><span class="line">        <span class="keyword">for</span> data <span class="keyword">in</span> processed_datas:</span><br><span class="line">            f.write(data)</span><br><span class="line">            </span><br><span class="line">max_len = 0</span><br><span class="line"><span class="keyword">for</span> read_file, out_type <span class="keyword">in</span> zip(read_files, out_types):</span><br><span class="line">    with jsonlines.open(os.path.join(output_dir, <span class="string">&#x27;&#123;&#125;_&#123;&#125;.jsonl&#x27;</span>.format(dataset_name, out_type)), <span class="string">&#x27;r&#x27;</span>) as f:</span><br><span class="line">        processed_datas = [data <span class="keyword">for</span> data <span class="keyword">in</span> f]</span><br><span class="line">        <span class="comment"># 求一下最大长度</span></span><br><span class="line">        <span class="keyword">for</span> data <span class="keyword">in</span> processed_datas:</span><br><span class="line">            now_len = len(tokenizer(data[<span class="string">&#x27;instruction&#x27;</span>]+<span class="string">&#x27;\n&#x27;</span>+data[<span class="string">&#x27;output&#x27;</span>])[<span class="string">&#x27;input_ids&#x27;</span>])</span><br><span class="line">            <span class="keyword">if</span> now_len &gt; max_len:</span><br><span class="line">                max_len = now_len</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;最大长度为:&#123;&#125;&#x27;</span>.format(max_len))            </span><br></pre></td></tr></table></figure>
+<p>将数据集格式化，并分为 train set 和 test set</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;instruction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;问诊对话历史：\n医生：你好\n医生：在吗\n患者：这个粑粑正常吗？\n医生：从你发的图片看，这个孩子的大便有点稀，大便当中有粘液\n患者：不正常的话和吃的奶粉有关吗\n医生：最主要的问题就是大便当中有粘液，需要进行大便常规的检查\n医生：跟奶粉关系不是特别的大\n医生：这个孩子使用这种奶粉多长时间了\n患者：那是怎么回事啊\n医生：现在这个孩子的年龄多大了\n医生：需要考虑消化功能不良所引起的\n患者：刚开始没多久四十天\n医生：每天大便几次啊\n患者：四五次吧\n医生：这个年龄段的孩子出现这种大便，首先应该考虑的就是吃奶过多，另外还需要注意妈妈的饮食\n医生：有没有进行大便常规的检查\n医生：需要进行大便常规的检查，主要是看一下大便当中有没有炎症\n医生：如果大便当中没有炎症，那就应该考虑单纯的消化功能不良\n患者：我这两天吃了海鲜还有辣的\n患者：他每次都要吃不给就哭\n医生：可能与这个有关系的\n患者：我还听到肚子咕咕的\n医生：这就是肠蠕动更快的声音呢\n医生：妈妈尽可能避免吃海鲜辛辣刺激的食物\n患者：那这个情况我该怎么办要去医院吗\n医生：吃这些食物就会影响奶的质量，就会导致这个孩子出现拉肚子\n医生：这个孩子需要到医院进行大便常规的检查\n医生：如果大便当中没有炎症，那就应该问题不大的\n医生：可以给孩子口服思密达保护肠粘膜，妈咪爱改善肠道微生态环境\n患者：好的谢谢你医生要对宝宝做什么吗\n医生：应该给孩子采用少量多次的喂养方式，适当的按摩腹部，改善胃肠功能\n患者：好的知道了谢谢\n根据上述对话，给出诊疗报告\n说明：诊疗报告分为主诉, 现病史, 辅助检查, 既往史, 诊断, 建议这六个章节，以标准的json格式输出。\n答：&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;input&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;output&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;\n  \&quot;主诉\&quot;: \&quot;稀便，便中有粘液。\&quot;,\n  \&quot;现病史\&quot;: \&quot;患儿出现稀便，每天大便次数为四五次。\&quot;,\n  \&quot;辅助检查\&quot;: \&quot;暂缺。\&quot;,\n  \&quot;既往史\&quot;: \&quot;不详。\&quot;,\n  \&quot;诊断\&quot;: \&quot;消化不良。\&quot;,\n  \&quot;建议\&quot;: \&quot;思密达，妈咪爱，粪便常规检查。\&quot;\n&#125;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;instruction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;问诊对话历史：\n医生：您好，宝宝现在体温正常了吗？\n医生：宝宝嗓子哑吗？有没有气喘？什么时候咳嗽频繁？\n患者：现在正常了\n医生：好的\n患者：有气揣\n医生：睡眠怎么样？\n患者：睡不好\n医生：夜间咳嗽吗？有没有呼吸困难？\n患者：输了液之后晚上到是不太咳嗽了\n医生：宝宝精神怎么样？身上有没有皮疹？\n患者：精神不太好，身上没有皮疹\n医生：宝宝最近有没有呛到？起过湿疹吗？\n患者：没有\n医生：医生给宝贝诊断的什么疾病？\n患者：支气管炎\n医生：是毛细支气管炎，还是支气管炎？\n医生：现在是住院治疗吗？\n患者：看了两个医生一个说是毛细支气管炎，一个说是支气管炎到支气管肺炎之间\n患者：没有住院\n医生：嗯嗯，现在还输液吗？\n患者：明天还要输一次\n患者：但我觉得没效果，要怎么办\n医生：宝宝咳嗽比之前是减轻了吧？\n患者：恩\n患者：减轻了\n患者：但痰还是严重\n医生：嗯呢，一般输液三天看效果\n医生：宝宝支气管炎是一星期左右疗程，治疗是控制感染，解痉平喘止咳化痰治疗。\n患者：他这个是不是细菌感染了呢\n医生：宝宝白细胞增多，中性粒细胞增高提示有细菌感染\n患者：那他这个大概要多久才能好\n医生：现在宝宝用的都是什么药呢？\n患者：盐酸氨溴索\n医生：这个是化痰药\n医生：还有吗？\n患者：还有桔贝合剂\n医生：这个是中成药止咳化痰\n患者：氨茶碱片\n医生：这个是平喘药物\n患者：那还需要用什么药呢\n医生：输液是什么?_?\n医生：克林霉素就是控制感染的哦，喜炎平是止咳化痰的\n患者：谢谢了\n医生：积极配合医生治疗，跟医生多沟通孩子病情。\n医生：注意清淡饮食，给宝贝多喝水，避免呛咳\n根据上述对话，给出诊疗报告\n说明：诊疗报告分为主诉, 现病史, 辅助检查, 既往史, 诊断, 建议这六个章节，以标准的json格式输出。\n答：&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;input&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;output&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;\n  \&quot;主诉\&quot;: \&quot;喉咙有痰，咳嗽，发烧。\&quot;,\n  \&quot;现病史\&quot;: \&quot;患儿十天前出现喉咙有痰，后出现咳嗽，发烧。 现服用桔贝合剂，盐酸氨溴索、氨茶碱片，输液克林霉素和喜炎平。\&quot;,\n  \&quot;辅助检查\&quot;: \&quot;血常规。\&quot;,\n  \&quot;既往史\&quot;: \&quot;不详。\&quot;,\n  \&quot;诊断\&quot;: \&quot;小儿支气管炎。\&quot;,\n  \&quot;建议\&quot;: \&quot;继续输液，配合医生治疗，注意饮食。\&quot;\n&#125;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;instruction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;问诊对话历史：\n医生：你好，发热不，小便量多不\n患者：不发热，小便量也不多\n医生：恩，用布拉氏酵母菌片和思密达\n医生：思密达严格按说明服用\n医生：和其他药间隔2小时\n患者：我用思密达了但是没用呀\n患者：一天一袋分三次服用\n医生：思密达这是肠粘膜保护剂，还需要布拉氏改善肠道菌群\n医生：一次一袋，50ml水冲服，喝多少是多少\n患者：用了两天没用，今天给用了鞣酸蛋白酵母散和双歧杆菌四联活菌片\n医生：建议查大便常规，看是否有感染，再考虑怎么用抗生素\n医生：用布拉氏酵母菌和思密达\n患者：两个配合吃？先吃思密达两小时后吃酵母菌？\n医生：对\n患者：那今天先吃上，一天能有改善吗？\n医生：没有那么快，疾病前3到5天是发展期\n患者：还是得观察多长时间？\n患者：今天吃上，明天如果还不行再去查大便常规？\n医生：最多2天\n医生：还需要查大便常规，看有没有感染\n医生：如果没有感染，就这么处理就可以\n医生：如果有感染，还需要抗感染\n患者：好的，谢谢\n根据上述对话，给出诊疗报告\n说明：诊疗报告分为主诉, 现病史, 辅助检查, 既往史, 诊断, 建议这六个章节，以标准的json格式输出。\n答：&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;input&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;output&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;\n  \&quot;主诉\&quot;: \&quot;腹泻3天。\&quot;,\n  \&quot;现病史\&quot;: \&quot;患儿腹泻3天，大便次数多，黄便偶伴有奶瓣。现服用丁桂儿脐贴和思密达蒙脱石散。\&quot;,\n  \&quot;辅助检查\&quot;: \&quot;暂缺。\&quot;,\n  \&quot;既往史\&quot;: \&quot;不详。\&quot;,\n  \&quot;诊断\&quot;: \&quot;腹泻待查。\&quot;,\n  \&quot;建议\&quot;: \&quot;布拉氏酵母菌片，思密达，大便常规。\&quot;\n&#125;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;instruction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;问诊对话历史：\n医生：你好，家长宝宝的咳嗽情况怎么样？多大的孩子\n患者：3岁了，不怎么咳了，有痰\n医生：白天咳还是晚上咳啊\n医生：没有鼻塞流鼻涕打喷嚏呀\n患者：没有，白天晚上都会\n医生：雾化不是公用的呀，都有消毒的，这个不要担心。\n患者：咳的不算厉害\n患者：能消毒干净啊，镇上的卫生院\n医生：咳嗽有痰没有鼻塞流鼻涕打喷嚏的情况考虑是支气管炎，痰是炎症的分泌物。\n患者：现在一般不都是一次性管子了吗，怎么还有这种公用的\n医生：医院应该消毒就是干净的呀。\n医生：现在一般的都是自己买一个，如果没有的话，公用的，也会进行消毒。\n患者：卫生院也算是医院吧\n医生：嗯嗯\n患者：那里没有自己买的\n医生：那就没有关系啊，他们肯定会消毒的，只要是看病的地方消毒都会做到的。\n医生：不要担心。\n患者：所以我听到心里都难受的不行，就怕不干净，得什么传染病\n医生：理解\n医生：还没有听说雾化有过传染，那确实嘛，以前是集体消毒，现在都是每人买一个。\n患者：好的，谢谢医生\n医生：那现在咳嗽有痰，加强保暖，多喝水，勤拍背。\n医生：可以口服一点消炎药和化痰止咳药。\n根据上述对话，给出诊疗报告\n说明：诊疗报告分为主诉, 现病史, 辅助检查, 既往史, 诊断, 建议这六个章节，以标准的json格式输出。\n答：&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;input&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;output&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&#123;\n  \&quot;主诉\&quot;: \&quot;咳嗽两天。\&quot;,\n  \&quot;现病史\&quot;: \&quot;患儿咳嗽两天，做过雾化。\&quot;,\n  \&quot;辅助检查\&quot;: \&quot;暂缺。\&quot;,\n  \&quot;既往史\&quot;: \&quot;不详。\&quot;,\n  \&quot;诊断\&quot;: \&quot;咳嗽待查。\&quot;,\n  \&quot;建议\&quot;: \&quot;消炎药，化痰止咳药，保暖，多喝水，勤拍背。\&quot;\n&#125;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;instruction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你是一个医疗专家，你的任务是临床术语标准化。\n具体来说，针对给出的通用语，转换为相应的标准化医学术语，确保转换后的内容符合医学专业标准，直接输出转换后的临床标准术语。\n原始词：横结肠造口还纳术\n该词的标准术语为：&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;input&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;output&quot;</span><span class="punctuation">:</span> <span class="string">&quot;横结肠造口闭合术&quot;</span><span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;instruction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你是一个医疗专家，你的任务是临床术语标准化。\n具体来说，针对给出的通用语，转换为相应的标准化医学术语，确保转换后的内容符合医学专业标准，直接输出转换后的临床标准术语。\n原始词：右肾上腺巨大肿瘤切除术\n该词的标准术语为：&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;input&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;output&quot;</span><span class="punctuation">:</span> <span class="string">&quot;肾上腺病损切除术&quot;</span><span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;instruction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你是一个医疗专家，你的任务是临床术语标准化。\n具体来说，针对给出的通用语，转换为相应的标准化医学术语，确保转换后的内容符合医学专业标准，直接输出转换后的临床标准术语。\n原始词：左侧单侧乳房根治性切除术\n该词的标准术语为：&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;input&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;output&quot;</span><span class="punctuation">:</span> <span class="string">&quot;单侧根治性乳房切除术&quot;</span><span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;instruction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;主题：孕妇感冒发烧38度应该怎么办呢\n内容：我怀孕了我的身体最近变得很差，现在我总是感冒发烧非常的严重。最近一次发烧38度，我感觉头非常的疼痛又不敢打针吃药，现在非常得难受痛苦.想得到怎样的帮助：孕妇感冒发烧38度应该怎办的呢？&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;input&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;output&quot;</span><span class="punctuation">:</span> <span class="string">&quot;孕妇发烧时，要寻出发烧的病因，对症下药，若是一般由感冒引来的发烧，不论对妈妈或胎儿而言，预后应该是很好的。孕妇若必须动用药物，必须考量药物对胎儿健康的干扰，因此必须与妇产科医师充分谈论后再动用。可以物理降温，把毛巾放到装温水的盆中，然后把水拧出，全身擦试，特别是额头、手臂弯，大腿根部，手脚心处擦试，这样效果会很好的，要多喝生姜和大枣熬的热水，然后消肿。以上是对“孕妇感冒发烧38度应当怎办的呢？”这个问题的建议，期望对您有协助，祝您健康！&quot;</span><span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;instruction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;主题：女性患上输卵管性不孕不育症怎么办？\n内容：女性患上输卵管性不孕不育症怎么办？去北京燕竹医院治疗怎么样？&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;input&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;output&quot;</span><span class="punctuation">:</span> <span class="string">&quot;您好：这可以明确了病情后及时有针对性治疗即可，祝您健康！E&quot;</span><span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;instruction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;主题：怎么用排卵纸测孕\n内容：本人下体特别痒，而且内衣上总是黄黄的，怎么回事？请问怎么用排卵纸测孕&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;input&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;output&quot;</span><span class="punctuation">:</span> <span class="string">&quot;用排卵试纸测不能测怀孕的，建议月经推迟一周后查一下血HCG看看，确定是否怀孕，或者在月经推迟一周后用早孕试纸试一下，一般能确定是否怀孕，你好，胎动一般会在怀孕4个月到5个月之间出现。胎儿这个时间会在母体内出现蹬腿、伸臂、转身、眨眼、吞咽等动作&quot;</span><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="使用transformer库实现"><a class="markdownIt-Anchor" href="#使用transformer库实现">#</a> 使用 transformer 库实现</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载微调所需要的包</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">&#x27;CUDA_VISIBLE_DEVICES&#x27;</span>] = <span class="string">&#x27;0&#x27;</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> (</span><br><span class="line">    AutoTokenizer, </span><br><span class="line">    AutoModelForCausalLM, </span><br><span class="line">    Seq2SeqTrainer, </span><br><span class="line">    Seq2SeqTrainingArguments, </span><br><span class="line">    DataCollatorForSeq2Seq</span><br><span class="line">)</span><br><span class="line"><span class="keyword">from</span> datasets <span class="keyword">import</span> Dataset</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> jsonlines</span><br><span class="line"></span><br><span class="line"><span class="comment"># 先加载模型和分词器</span></span><br><span class="line">model_path = <span class="string">&#x27;./model/Qwen2.5-0.5B-Instruct&#x27;</span></span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(model_path, padding_side = <span class="string">&#x27;left&#x27;</span>)</span><br><span class="line">model = AutoModelForCausalLM.from_pretrained(model_path, torch_dtype = torch.bfloat16, device_map = <span class="string">&#x27;auto&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载所有处理后的数据集</span></span><br><span class="line">data_files = [</span><br><span class="line">    <span class="string">&#x27;./dataset/sft_dataset/dialog_train.jsonl&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;./dataset/sft_dataset/norm_train.jsonl&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;./dataset/sft_dataset/mrg_train.jsonl&#x27;</span>,</span><br><span class="line">]</span><br><span class="line">all_datas = []</span><br><span class="line"><span class="keyword">for</span> data_file <span class="keyword">in</span> data_files:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;加载数据集:&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(data_file))</span><br><span class="line">    <span class="keyword">with</span> jsonlines.<span class="built_in">open</span>(data_file, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        datas = [data <span class="keyword">for</span> data <span class="keyword">in</span> f]</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">len</span>(datas))</span><br><span class="line">    all_datas.extend(datas)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;全部数据数量:&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">len</span>(all_datas)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">preprocess_example</span>(<span class="params">example</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    利用 tokenizer.apply_chat_template 构造 prompt_text 和 full_text：</span></span><br><span class="line"><span class="string">    整条数据为 instruction + output，</span></span><br><span class="line"><span class="string">    然后将 prompt 部分的 label 置为 -100，这样只用剩余的output部分计算损失。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 先计算prompt部分的长度</span></span><br><span class="line">    messages = [</span><br><span class="line">        &#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;content&#x27;</span>: example[<span class="string">&#x27;instruction&#x27;</span>]&#125;</span><br><span class="line">    ]</span><br><span class="line">    prompt_ids = tokenizer.apply_chat_template(</span><br><span class="line">        messages,</span><br><span class="line">        add_generation_prompt=<span class="literal">True</span>,</span><br><span class="line">        tokenize = <span class="literal">True</span></span><br><span class="line">    )</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 求出全部数据</span></span><br><span class="line">    messages = [</span><br><span class="line">        &#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;content&#x27;</span>: example[<span class="string">&#x27;instruction&#x27;</span>]&#125;,</span><br><span class="line">        &#123;<span class="string">&#x27;role&#x27;</span>:<span class="string">&#x27;assistant&#x27;</span>, <span class="string">&#x27;content&#x27;</span>: example[<span class="string">&#x27;output&#x27;</span>]&#125;,</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    label_ids = tokenizer.apply_chat_template(</span><br><span class="line">        messages,</span><br><span class="line">        add_generation_prompt=<span class="literal">False</span>,</span><br><span class="line">        tokenize = <span class="literal">True</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    prompt_length = <span class="built_in">len</span>(prompt_ids)</span><br><span class="line">    input_ids = label_ids.copy()</span><br><span class="line">    label_ids[:prompt_length] = [-<span class="number">100</span>] * prompt_length <span class="comment"># 即， 告诉模型：&quot;这部分不用学习&quot;</span></span><br><span class="line">    tokenized = &#123;&#125;</span><br><span class="line">    tokenized[<span class="string">&quot;input_ids&quot;</span>] = input_ids</span><br><span class="line">    tokenized[<span class="string">&quot;labels&quot;</span>] = label_ids</span><br><span class="line">    <span class="keyword">return</span> tokenized</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将数据转换为 HuggingFace datasets 格式</span></span><br><span class="line">dataset = Dataset.from_list(all_datas)</span><br><span class="line"><span class="comment"># 调用上面定义的预处理函数，移除原始字段</span></span><br><span class="line">processed_dataset = dataset.<span class="built_in">map</span>(preprocess_example, remove_columns=<span class="built_in">list</span>(dataset[<span class="number">0</span>].keys()))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;处理完成。&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据整理器（Data Collator）（自动处理不同长度的文本）</span></span><br><span class="line">data_collator = DataCollatorForSeq2Seq(tokenizer, model=model)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置训练参数(重点讲)</span></span><br><span class="line">training_args = Seq2SeqTrainingArguments(</span><br><span class="line">    output_dir=<span class="literal">None</span>,                       </span><br><span class="line">    save_strategy = <span class="string">&#x27;no&#x27;</span>,                 <span class="comment"># 不保存中间结果</span></span><br><span class="line">    num_train_epochs=<span class="number">2.0</span>,                 <span class="comment"># 学习数据的遍数，根据实际情况调整</span></span><br><span class="line">    per_device_train_batch_size=<span class="number">1</span>,        <span class="comment"># 每个设备每次处理的数据量</span></span><br><span class="line">    gradient_accumulation_steps=<span class="number">8</span>,        <span class="comment"># 累计8次再更新</span></span><br><span class="line">    learning_rate = <span class="number">1e-4</span>, <span class="comment">#5e-5~1e-4      # 学习速度</span></span><br><span class="line">    logging_steps=<span class="number">100</span>,                    <span class="comment"># 每 100 步记录一次日志</span></span><br><span class="line">    <span class="comment"># warmup_steps=50,                    # 预热 warmup</span></span><br><span class="line">    <span class="comment"># save_steps=500,                     # 每 500 步保存模型</span></span><br><span class="line">    bf16=<span class="literal">True</span>,                            <span class="comment"># 使用省内存的浮点数格式，若使用支持fp16的GPU，可启用</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构建一个训练器 Seq2SeqTrainer</span></span><br><span class="line">trainer = Seq2SeqTrainer(</span><br><span class="line">    model=model,                        <span class="comment"># 接受训练的学生</span></span><br><span class="line">    args=training_args,                 <span class="comment"># 训练时的参数</span></span><br><span class="line">    train_dataset=processed_dataset,    <span class="comment"># 课本</span></span><br><span class="line">    data_collator=data_collator,        <span class="comment"># 活页夹</span></span><br><span class="line">    tokenizer=tokenizer,                <span class="comment"># 字典</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开始训练</span></span><br><span class="line">trainer.train()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练结束后保存最终模型</span></span><br><span class="line">trainer.save_model(<span class="string">&quot;./model/finetune/Qwen2.5-0.5B_med_2&quot;</span>)</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Swift 工具</th>
+<th>LLaMA-Factory 工具</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>适合人群</td>
+<td>有一定模型训练相关经验</td>
+<td>没有模型训练相关经验，需要快速上手对模型进行微调，提供可视化操作页面</td>
+</tr>
+<tr>
+<td>微调效率</td>
+<td>追求极致的微调速度和内存使用效率，需要快速微调可选择此工具。</td>
+<td>微调速度较慢，内存使用较高</td>
+</tr>
+<tr>
+<td>适用模型</td>
+<td>针对 LLaMA 优化，效果更佳</td>
+<td>适用于大部分模型，若有微调多个模型需求，可选择此工具</td>
+</tr>
+<tr>
+<td>部署与测试</td>
+<td>未提供快速部署测试工具</td>
+<td>提供一键式部署测试工具，若有快速测试需求，可选择此工具</td>
+</tr>
+<tr>
+<td>维护效率</td>
+<td>工具更新较慢</td>
+<td>工具更新较快，若要微调最新大模型，一般选择此工具</td>
+</tr>
+</tbody>
+</table>
+<p><span class="exturl" data-url="aHR0cHM6Ly9zd2lmdC5yZWFkdGhlZG9jcy5pby96aC1jbi9sYXRlc3QvSW5zdHJ1Y3Rpb24vJUU2JThFJUE4JUU3JTkwJTg2JUU1JTkyJThDJUU5JTgzJUE4JUU3JUJEJUIyLmh0bWw=">https://swift.readthedocs.io/zh-cn/latest/Instruction/ 推理和部署.html</span></p>
+<h4 id="使用llama-factory实现"><a class="markdownIt-Anchor" href="#使用llama-factory实现">#</a> 使用 LLama-factory 实现</h4>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hpeW91Z2EvTExhTUEtRmFjdG9yeS9ibG9iL21haW4vUkVBRE1FX3poLm1k">https://github.com/hiyouga/LLaMA-Factory/blob/main/README_zh.md</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9sbGFtYWZhY3RvcnkucmVhZHRoZWRvY3MuaW8vemgtY24vbGF0ZXN0L2FkdmFuY2VkL3RyYWluZXJzLmh0bWw=">https://llamafactory.readthedocs.io/zh-cn/latest/advanced/trainers.html</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9sbGFtYWZhY3RvcnkuY24vdnNjb2RlLWRlYnVnLWxsbS5odG1s">https://llamafactory.cn/vscode-debug-llm.html</span></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">在`LLaMA-Factory`的`data`目录下，修改`dataset_info.json`文件，将处理后的数据集加入</span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"><span class="comment">// ... 之前的原始文件内容</span></span><br><span class="line"><span class="punctuation">,</span><span class="attr">&quot;med_dialog&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;file_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/ai/deployment/20250417/dataset/sft_dataset/dialog_train.jsonl&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;med_norm&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;file_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/ai/deployment/20250417/dataset/sft_dataset/norm_train.jsonl&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;med_mrg&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;file_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/ai/deployment/20250417/dataset/sft_dataset/mrg_train.jsonl&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>创建.sh 文件</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/sh</span><br><span class="line">export NCCL_P2P_DISABLE=<span class="number">1</span></span><br><span class="line">export NCCL_IB_DISABLE=<span class="number">1</span></span><br><span class="line">CUDA_VISIBLE_DEVICES=<span class="number">0</span> llamafactory-cli train \</span><br><span class="line">    --stage sft \</span><br><span class="line">    --do_train \</span><br><span class="line">    --model_name_or_path /ai/deployment/<span class="number">20250417</span>/model/Qwen2<span class="number">.5</span><span class="number">-0.5</span>B-Instruct \</span><br><span class="line">    --dataset med_dialog<span class="punctuation">,</span>med_norm<span class="punctuation">,</span>med_mrg \</span><br><span class="line">    --template qwen \</span><br><span class="line">    --finetuning_type full \</span><br><span class="line">    --output_dir /ai/deployment/<span class="number">20250417</span>/model/finetune/Qwen2<span class="number">.5</span><span class="number">-0.5</span>B_med_sft_2 \</span><br><span class="line">    --overwrite_cache \</span><br><span class="line">    --per_device_train_batch_size <span class="number">2</span> \</span><br><span class="line">    --gradient_accumulation_steps <span class="number">4</span> \</span><br><span class="line">    --lr_scheduler_type cosine \</span><br><span class="line">    --logging_steps <span class="number">10</span> \</span><br><span class="line">    --save_strategy no \</span><br><span class="line">    --learning_rate <span class="number">1e-4</span> \</span><br><span class="line">    --num_train_epochs <span class="number">0.1</span> \</span><br><span class="line">    --plot_loss \</span><br><span class="line">    --preprocessing_num_workers  <span class="number">16</span> \</span><br><span class="line">    --bf16 \</span><br><span class="line">    --cutoff_len <span class="number">4000</span></span><br></pre></td></tr></table></figure>
+<p>训练结束后，可以在 <code>/ai/deployment/20250417/model/finetune/Qwen2.5-0.5B_med_sft/training_loss.png</code>  看到整个训练的 loss 情况</p>
+<p>优点：</p>
+<ol>
+<li>简单易用</li>
+<li>扩展性强，该框架适配多种训练方法以及工具</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>灵活性受限，比如数据集的处理与读取</li>
+</ol>
+<h4 id="微调后评估"><a class="markdownIt-Anchor" href="#微调后评估">#</a> 微调后评估</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">&#x27;CUDA_VISIBLE_DEVICES&#x27;</span>] = <span class="string">&#x27;0&#x27;</span></span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoModelForCausalLM,AutoTokenizer</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> jsonlines</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm</span><br><span class="line">model_path_1 = <span class="string">&#x27;/ai/deployment/20250417/model/Qwen2.5-0.5B-Instruct&#x27;</span></span><br><span class="line">model_path_2 = <span class="string">&#x27;/ai/deployment/20250417/model/finetune/Qwen2.5-0.5B_med_1&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 每个模型的tokenizer都是一样的</span></span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(model_path_1, padding_side = <span class="string">&#x27;left&#x27;</span>)</span><br><span class="line">model_1 = AutoModelForCausalLM.from_pretrained(model_path_1, torch_dtype = torch.bfloat16, device_map = <span class="string">&#x27;auto&#x27;</span>)</span><br><span class="line">model_2 = AutoModelForCausalLM.from_pretrained(model_path_2, torch_dtype = torch.bfloat16, device_map = <span class="string">&#x27;auto&#x27;</span>)</span><br><span class="line"><span class="keyword">assert</span> tokenizer.padding_side == <span class="string">&#x27;left&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;模型加载完成&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_output</span>(<span class="params">datas, tokenizer, model, batch_size=<span class="number">16</span>,max_new_tokens=<span class="number">2000</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    对输入数据分批处理，生成输出文本</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    参数:</span></span><br><span class="line"><span class="string">    - datas: 一个字符串列表，每个字符串为一个输入句子或文本。</span></span><br><span class="line"><span class="string">    - tokenizer: 使用的分词器，用于将文本转换为模型输入。</span></span><br><span class="line"><span class="string">    - model: 用于生成文本的模型。</span></span><br><span class="line"><span class="string">    - batch_size: 每个批次处理的样本数，默认为4。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    返回:</span></span><br><span class="line"><span class="string">    - outputs: 包含生成文本的列表。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    outputs = []</span><br><span class="line">    <span class="comment"># 按批次处理数据</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> tqdm(<span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(datas), batch_size)):</span><br><span class="line">        batch_data = datas[i:i + batch_size]</span><br><span class="line">        <span class="comment"># 将批次数据编码成模型输入，并移动到模型设备上</span></span><br><span class="line">        inputs = tokenizer(batch_data, return_tensors=<span class="string">&quot;pt&quot;</span>, padding=<span class="literal">True</span>, truncation=<span class="literal">True</span>).to(model.device)</span><br><span class="line">        <span class="comment"># 使用模型生成新的文本，限制生成的 token 数量</span></span><br><span class="line">        output_sequences = model.generate(**inputs, max_new_tokens=max_new_tokens)</span><br><span class="line">        processed_output_sequences = [output_sequences[j][<span class="built_in">len</span>(inputs[j]):] <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(output_sequences))]</span><br><span class="line">        <span class="comment"># 解码生成的 token，去掉特殊符号</span></span><br><span class="line">        batch_outputs = tokenizer.batch_decode(processed_output_sequences, skip_special_tokens=<span class="literal">True</span>)</span><br><span class="line">        outputs.extend(batch_outputs)</span><br><span class="line">    <span class="keyword">return</span> outputs</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 术语标准化评估</span></span><br><span class="line">test_file = <span class="string">&#x27;/ai/deployment/20250417/dataset/sft_dataset/norm_test.jsonl&#x27;</span></span><br><span class="line"><span class="keyword">with</span> jsonlines.<span class="built_in">open</span>(test_file, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    test_datas = [data <span class="keyword">for</span> data <span class="keyword">in</span> f]</span><br><span class="line">    </span><br><span class="line">inputs = []</span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> test_datas:</span><br><span class="line">    messages = [&#123;<span class="string">&#x27;role&#x27;</span>: <span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;content&#x27;</span>: data[<span class="string">&#x27;instruction&#x27;</span>]&#125;]</span><br><span class="line">    processed_input_text = tokenizer.apply_chat_template(</span><br><span class="line">        messages, </span><br><span class="line">        add_generation_prompt= <span class="literal">True</span>, <span class="comment"># 加上当前模型的对话模板</span></span><br><span class="line">        tokenize=<span class="literal">False</span> <span class="comment"># 是否要转成token id</span></span><br><span class="line">    )</span><br><span class="line">    inputs.append(processed_input_text)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">outputs_model_1 = get_output(inputs, tokenizer, model_1, batch_size=<span class="number">16</span>, max_new_tokens = <span class="number">100</span>)</span><br><span class="line">outputs_model_2 = get_output(inputs, tokenizer, model_2, batch_size=<span class="number">16</span>, max_new_tokens = <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">corr_1 = <span class="number">0</span></span><br><span class="line">corr_2 = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> output_model_1,test_data <span class="keyword">in</span> <span class="built_in">zip</span>(outputs_model_1, test_datas):</span><br><span class="line">    <span class="keyword">if</span> output_model_1 == test_data[<span class="string">&#x27;output&#x27;</span>]:</span><br><span class="line">        corr_1 += <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> output_model_2,test_data <span class="keyword">in</span> <span class="built_in">zip</span>(outputs_model_2, test_datas):</span><br><span class="line">    <span class="keyword">if</span> output_model_2 == test_data[<span class="string">&#x27;output&#x27;</span>]:</span><br><span class="line">        corr_2 += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;微调前:&#123;&#125;%&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(corr_1/<span class="built_in">len</span>(test_datas)*<span class="number">100</span>,<span class="number">2</span>)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;微调后:&#123;&#125;%&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(corr_2/<span class="built_in">len</span>(test_datas)*<span class="number">100</span>,<span class="number">2</span>)))</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="comment"># 病例报告生成评估</span></span><br><span class="line">test_file = <span class="string">&#x27;/ai/deployment/20250417/dataset/sft_dataset/mrg_test.jsonl&#x27;</span></span><br><span class="line"><span class="keyword">with</span> jsonlines.<span class="built_in">open</span>(test_file, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    test_datas = [data <span class="keyword">for</span> data <span class="keyword">in</span> f]</span><br><span class="line">inputs = []</span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> test_datas:</span><br><span class="line">    messages = [&#123;<span class="string">&#x27;role&#x27;</span>: <span class="string">&#x27;user&#x27;</span>, <span class="string">&#x27;content&#x27;</span>: data[<span class="string">&#x27;instruction&#x27;</span>]&#125;]</span><br><span class="line">    processed_input_text = tokenizer.apply_chat_template(</span><br><span class="line">        messages, </span><br><span class="line">        add_generation_prompt= <span class="literal">True</span>, <span class="comment"># 加上当前模型的对话模板</span></span><br><span class="line">        tokenize=<span class="literal">False</span> <span class="comment"># 是否要转成token id</span></span><br><span class="line">    )</span><br><span class="line">    inputs.append(processed_input_text)</span><br><span class="line">outputs_model_1 = get_output(inputs, tokenizer, model_1, batch_size=<span class="number">16</span>, max_new_tokens = <span class="number">2000</span>)</span><br><span class="line">outputs_model_2 = get_output(inputs, tokenizer, model_2, batch_size=<span class="number">16</span>, max_new_tokens = <span class="number">2000</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> index,(data, model_1_result, model_2_result) <span class="keyword">in</span> <span class="built_in">enumerate</span>(<span class="built_in">zip</span>(test_datas, outputs_model_1, outputs_model_2)):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;||输入:||&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(data[<span class="string">&#x27;instruction&#x27;</span>]))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;||原始模型输出:||\n&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(model_1_result))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;||微调后模型输出:||\n&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(model_2_result))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;----------------------------------------------------&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> index==<span class="number">2</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">        </span><br><span class="line">pred_extract = re.<span class="built_in">compile</span>(<span class="string">r&#x27;```json(.*?)```&#x27;</span>, flags=re.DOTALL)</span><br><span class="line"></span><br><span class="line">keys = [</span><br><span class="line"><span class="string">&#x27;主诉&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;现病史&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;辅助检查&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;既往史&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;诊断&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;建议&#x27;</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">all_golds_1 = []</span><br><span class="line">all_preds_1 = []</span><br><span class="line"></span><br><span class="line">all_golds_2 = []</span><br><span class="line">all_preds_2 = []</span><br><span class="line"><span class="keyword">for</span> output_model_1,test_data <span class="keyword">in</span> <span class="built_in">zip</span>(outputs_model_1, test_datas):</span><br><span class="line">    gold_json = json.loads(test_data[<span class="string">&#x27;output&#x27;</span>])  <span class="comment"># 标准答案</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;```&#x27;</span> <span class="keyword">in</span> output_model_1:</span><br><span class="line">            output_model_1 = pred_extract.findall(output_model_1)[<span class="number">0</span>]</span><br><span class="line">            pred_json = json.loads(output_model_1)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            pred_json = json.loads(output_model_1)   <span class="comment"># 模型1的答案</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        pred_json = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> keys:  <span class="comment"># 保存一下</span></span><br><span class="line">        all_golds_1.append(gold_json[key])</span><br><span class="line">        all_preds_1.append(<span class="built_in">str</span>(pred_json.get(key, <span class="string">&quot;&quot;</span>)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> output_model_2,test_data <span class="keyword">in</span> <span class="built_in">zip</span>(outputs_model_2, test_datas):</span><br><span class="line">    gold_json = json.loads(test_data[<span class="string">&#x27;output&#x27;</span>])</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        pred_json = json.loads(output_model_2)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        pred_json = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> keys:</span><br><span class="line">        all_golds_2.append(gold_json[key])</span><br><span class="line">        all_preds_2.append(<span class="built_in">str</span>(pred_json.get(key, <span class="string">&quot;&quot;</span>)))</span><br><span class="line"></span><br><span class="line">corr_1 = <span class="number">0</span></span><br><span class="line">corr_2 = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> pred,gold <span class="keyword">in</span> <span class="built_in">zip</span>(all_preds_1, all_golds_1):</span><br><span class="line">    <span class="keyword">if</span> pred.strip() == gold.strip():</span><br><span class="line">        corr_1 += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line"><span class="keyword">for</span> pred,gold <span class="keyword">in</span> <span class="built_in">zip</span>(all_preds_2, all_golds_2):</span><br><span class="line">    <span class="keyword">if</span> pred.strip() == gold.strip():</span><br><span class="line">        corr_2 += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Accuracy&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;微调前:&#123;&#125;%&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(corr_1/<span class="built_in">len</span>(all_golds_1)*<span class="number">100</span>,<span class="number">2</span>)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;微调后:&#123;&#125;%&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(corr_2/<span class="built_in">len</span>(all_golds_2)*<span class="number">100</span>,<span class="number">2</span>)))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 语义相似度评估</span></span><br><span class="line">P, R, F1 = score(all_preds_1, all_golds_1, model_type=<span class="string">&#x27;bert-base-chinese&#x27;</span>,lang=<span class="string">&quot;zh&quot;</span>, verbose=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;微调前&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;BERTScore Precision: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(P.mean().item()*<span class="number">100</span>,<span class="number">2</span>)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;BERTScore Recall: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(R.mean().item()*<span class="number">100</span>,<span class="number">2</span>)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;BERTScore F1: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(F1.mean().item()*<span class="number">100</span>,<span class="number">2</span>)))</span><br><span class="line"></span><br><span class="line">P, R, F1 = score(all_preds_2, all_golds_2, model_type=<span class="string">&#x27;bert-base-chinese&#x27;</span>,lang=<span class="string">&quot;zh&quot;</span>, verbose=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;微调后&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;BERTScore Precision: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(P.mean().item()*<span class="number">100</span>,<span class="number">2</span>)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;BERTScore Recall: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(R.mean().item()*<span class="number">100</span>,<span class="number">2</span>)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;BERTScore F1: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(F1.mean().item()*<span class="number">100</span>,<span class="number">2</span>)))</span><br></pre></td></tr></table></figure>
+<h4 id="ragsftprompt对比"><a class="markdownIt-Anchor" href="#ragsftprompt对比">#</a> RAG，SFT，Prompt 对比</h4>
+<p>好的，若将 <strong>PE</strong> 理解为 <strong>Prompt Engineering（提示工程）</strong>，它与 <strong>微调（Fine-tuning）</strong>、<strong>RAG（检索增强生成）</strong> 在大模型理解特殊领域时的区别如下：</p>
+<h5 id="核心区别对比表"><a class="markdownIt-Anchor" href="#核心区别对比表">#</a> <strong>核心区别对比表</strong></h5>
+<table>
+<thead>
+<tr>
+<th>技术维度</th>
+<th>微调（Fine-tuning）</th>
+<th>RAG（检索增强生成）</th>
+<th>提示工程（Prompt Engineering）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>技术本质</strong></td>
+<td>修改模型参数</td>
+<td>外部知识注入</td>
+<td>优化输入提示设计</td>
+</tr>
+<tr>
+<td><strong>知识来源</strong></td>
+<td>训练数据中的隐含知识</td>
+<td>实时检索外部知识库</td>
+<td>预训练模型的已有知识</td>
+</tr>
+<tr>
+<td><strong>是否修改模型</strong></td>
+<td>是</td>
+<td>否（仅增强输入）</td>
+<td>否</td>
+</tr>
+<tr>
+<td><strong>领域适配成本</strong></td>
+<td>高（需标注数据、算力）</td>
+<td>中（需构建知识库、优化检索）</td>
+<td>低（仅需设计提示模板）</td>
+</tr>
+<tr>
+<td><strong>推理成本</strong></td>
+<td>高（模型体积可能增大）</td>
+<td>中（需额外检索开销）</td>
+<td>低（与基础模型一致）</td>
+</tr>
+<tr>
+<td><strong>知识时效性</strong></td>
+<td>受限于训练数据截止时间</td>
+<td>可实时更新（取决于知识库）</td>
+<td>受限于预训练知识（除非动态提示）</td>
+</tr>
+<tr>
+<td><strong>可解释性</strong></td>
+<td>低（知识嵌入模型权重中）</td>
+<td>高（可追溯检索源）</td>
+<td>中（提示设计可解释，但模型黑箱）</td>
+</tr>
+<tr>
+<td><strong>典型应用</strong></td>
+<td>医疗诊断、金融预测</td>
+<td>法律文书生成、实时问答</td>
+<td>快速领域适配、零样本学习</td>
+</tr>
+</tbody>
+</table>
+<h5 id="1-微调fine-tuning"><a class="markdownIt-Anchor" href="#1-微调fine-tuning">#</a> <strong>1. 微调（Fine-tuning）</strong></h5>
+<ul>
+<li><strong>核心逻辑</strong>：使用领域内的标注数据（如医疗报告、金融财报）更新模型参数，使模型显式学习领域特定的语言模式和知识。</li>
+<li><strong>优势</strong>：
+<ul>
+<li>深度整合领域知识，适合复杂任务（如医疗诊断、代码生成）。</li>
+<li>模型自主推理能力强，无需外部依赖。</li>
+</ul>
+</li>
+<li><strong>局限性</strong>：
+<ul>
+<li>需大量标注数据和计算资源。</li>
+<li>知识更新需重新训练，周期长。</li>
+<li>可能过拟合特定领域，泛化能力下降。</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-rag检索增强生成"><a class="markdownIt-Anchor" href="#2-rag检索增强生成">#</a> <strong>2. RAG（检索增强生成）</strong></h5>
+<ul>
+<li><strong>核心逻辑</strong>：将模型生成与外部知识库检索结合：先通过检索器获取相关知识片段，再将其作为上下文输入给模型生成回答。</li>
+<li><strong>优势</strong>：
+<ul>
+<li>知识实时性强，支持动态更新（如插入 202x 年最新政策）。</li>
+<li>无需修改模型，部署灵活。</li>
+<li>可解释性高（用户可查看引用的知识来源）。</li>
+</ul>
+</li>
+<li><strong>局限性</strong>：
+<ul>
+<li>依赖高质量知识库和检索算法，存在检索偏差风险。</li>
+<li>架构复杂度增加，需维护额外检索系统。</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-提示工程prompt-engineering"><a class="markdownIt-Anchor" href="#3-提示工程prompt-engineering">#</a> <strong>3. 提示工程（Prompt Engineering）</strong></h5>
+<ul>
+<li><strong>核心逻辑</strong>：通过精心设计输入提示（如指令、示例、格式要求），引导模型利用已有知识生成符合领域需求的回答，无需修改模型参数。</li>
+<li><strong>优势</strong>：
+<ul>
+<li>零样本 / 少样本学习，无需训练数据。</li>
+<li>快速迭代（修改提示比重新训练模型快得多）。</li>
+<li>支持多任务切换（通过不同提示适配不同场景）。</li>
+</ul>
+</li>
+<li><strong>局限性</strong>：
+<ul>
+<li>效果依赖提示设计技巧，需反复调优。</li>
+<li>受限于预训练模型的知识范围（无法注入新知识）。</li>
+<li>复杂任务可能需要超长提示，增加推理成本。</li>
+</ul>
+</li>
+</ul>
+<h5 id="适用场景对比"><a class="markdownIt-Anchor" href="#适用场景对比">#</a> <strong>适用场景对比</strong></h5>
+<table>
+<thead>
+<tr>
+<th>场景特征</th>
+<th>微调（Fine-tuning）</th>
+<th>RAG（检索增强生成）</th>
+<th>提示工程（Prompt Engineering）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>领域数据丰富且标注充足</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>需实时知识更新</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌（除非结合动态检索）</td>
+</tr>
+<tr>
+<td>快速验证领域可行性</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>资源受限（算力 / 时间）</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>知识需深度整合</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌（依赖模型已有知识）</td>
+</tr>
+<tr>
+<td>多领域灵活切换</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h5 id="典型应用案例"><a class="markdownIt-Anchor" href="#典型应用案例">#</a> <strong>典型应用案例</strong></h5>
+<ol>
+<li><strong>医疗领域</strong>：
+<ol>
+<li><strong>微调</strong>：用数万份病例微调 BioGPT，构建诊断助手。</li>
+<li><strong>RAG</strong>：检索最新医学指南作为上下文，生成治疗建议。</li>
+<li><strong>提示工程</strong>：设计 “医生视角” 提示，让 GPT-4 解释检查结果。</li>
+</ol>
+</li>
+<li><strong>金融领域</strong>：
+<ol>
+<li><strong>微调</strong>：用历史财报数据微调 T5，预测股价走势。</li>
+<li><strong>RAG</strong>：实时检索新闻和政策，分析市场影响。</li>
+<li><strong>提示工程</strong>：通过 Few-Shot 示例，让模型生成投资报告摘要。</li>
+</ol>
+</li>
+<li><strong>法律领域</strong>：
+<ol>
+<li><strong>微调</strong>：用法律文书微调 LLM，自动生成合同。</li>
+<li><strong>RAG</strong>：检索相关法条和判例作为生成依据。</li>
+<li><strong>提示工程</strong>：设计 “法律专家” 角色提示，提高回答专业性。</li>
+</ol>
+</li>
+</ol>
+<h5 id="组合策略"><a class="markdownIt-Anchor" href="#组合策略">#</a> <strong>组合策略</strong></h5>
+<p>实际应用中，三种技术常结合使用：</p>
+<ol>
+<li><strong>提示工程 + RAG</strong>：用提示工程优化模型对检索结果的利用（如指示模型 “基于以下法条，分析…）。</li>
+<li><strong>微调 + 提示工程</strong>：先用领域数据微调模型，再用提示工程进一步引导输出风格（如医疗问答的人文关怀）。</li>
+<li><strong>分层方案</strong>：简单问题用提示工程直接解决，复杂问题触发微调模型或 RAG（如法律系统）。</li>
+</ol>
+<h5 id="总结"><a class="markdownIt-Anchor" href="#总结">#</a> <strong>总结</strong></h5>
+<ul>
+<li><strong>微调</strong>：通过重训练模型 “记忆” 领域知识，适合数据充足、长期使用的场景；</li>
+<li><strong>RAG</strong>：通过外部检索 “注入” 实时知识，适合知识更新快、需可解释性的场景；</li>
+<li><strong>提示工程</strong>：通过优化输入 “唤醒” 模型已有知识，适合快速验证、资源受限的场景。</li>
+</ul>
+<p>选择时需权衡：数据量、时效性要求、计算资源、可解释性需求等因素。在特殊领域落地大模型时，往往需要混合使用多种技术以达到最佳效果。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ieXRlZGFuY2UubGFya29mZmljZS5jb20vZG9jeC9PNVZaZHhIMGxvU2JhdHhaQVVVY3hRUWFuM2I=">大语言模型微调技术全解析</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cubm93Y29kZXIuY29tL2Rpc2N1c3MvNTEwMjIxMDk0MjA1MjcyMDY0P3NvdXJjZVNTUj1keW5hbWlj">https://www.nowcoder.com/discuss/510221094205272064?sourceSSR=dynamic</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC83MTUyNTAyOTQ=">https://zhuanlan.zhihu.com/p/715250294</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ2MDk0NjUxL2FydGljbGUvZGV0YWlscy8xNDI0NTcxMzk=">https://blog.csdn.net/qq_46094651/article/details/142457139</span></p>
+<h4 id="lora"><a class="markdownIt-Anchor" href="#lora">#</a> Lora</h4>
+<p>LoRA（Low-Rank Adaptation）是一种参数高效的微调方法，它的核心思想是：<strong>在保持预训练模型原始权重不变的情况下，通过引入少量可训练的低秩矩阵来调整模型行为</strong>。</p>
+<p>传统的微调方法（全量微调）需要更新模型的所有参数，这对于现代大型语言模型（如 GPT-3、LLaMA 等）来说，计算资源需求极高。例如，对一个拥有 175B 参数的模型进行全量微调，需要数百 GB 的 GPU 内存，这超出了大多数商用硬件的能力范围。</p>
+<h5 id="lora数学实现"><a class="markdownIt-Anchor" href="#lora数学实现">#</a> Lora 数学实现</h5>
+<p>Lora 涉及线性代数中很多内容，比如矩阵的秩</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NzU1MjI2Ni9hcnRpY2xlL2RldGFpbHMvMTQwOTk2MzU3">https://blog.csdn.net/weixin_47552266/article/details/140996357</span></p>
+<p>在深度神经网络中，线性变换（如全连接层或注意力层中的权重矩阵）可以表示为：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo>=</mo><mi>W</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">y = Wx
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal">x</span></span></span></span></span></p>
+<p>其中：</p>
+<ul>
+<li>
+W \in \mathbb{R}^{d \times k}$$ 是权重矩阵
+
+</li>
+<li>
+y \in \mathbb{R}^d$$ 是输出向量
+
+
+</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>W</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo>=</mo><mi>W</mi><mo>+</mo><mi mathvariant="normal">Δ</mi><mi>W</mi><mo>=</mo><mi>W</mi><mo>+</mo><mi>B</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">W&#x27; = W + \Delta W = W + BA
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.801892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Δ</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">A</span></span></span></span></span></p>
+<p>其中：</p>
+<ul>
+<li>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>B</mi><mo>∈</mo><msup><mi mathvariant="double-struck">R</mi><mrow><mi>d</mi><mo>×</mo><mi>r</mi></mrow></msup></mrow><annotation encoding="application/x-tex">B \in \mathbb{R}^{d \times r}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8991079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord"><span class="mord mathbb">R</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mbin mtight">×</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+</li>
+<li>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>A</mi><mo>∈</mo><msup><mi mathvariant="double-struck">R</mi><mrow><mi>r</mi><mo>×</mo><mi>k</mi></mrow></msup></mrow><annotation encoding="application/x-tex">A \in \mathbb{R}^{r \times k}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8991079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord"><span class="mord mathbb">R</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mbin mtight">×</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+</li>
+<li>
+r \ll \min(d, k)$$ 是一个远小于 d 和 k 的秩（rank）
+
+
+</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo>=</mo><msup><mi>W</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mi>x</mi><mo>=</mo><mi>W</mi><mi>x</mi><mo>+</mo><mi>B</mi><mi>A</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">y = W&#x27;x = Wx + BAx
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.801892em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">A</span><span class="mord mathnormal">x</span></span></span></span></span></p>
+<p><strong>这里的 W 是预训练模型中的原始权重矩阵，△W 是权重的更新，B 和 A 是在训练过程中学习的低秩矩阵，x 是输入向量，y 是经过修改后的层的输出向量。</strong></p>
+<p><img data-src="https://kbshire-1308981697.cos.ap-shanghai.myqcloud.com/img/image-20250701010202440.png" alt="image-20250701010202440"></p>
+<p>通过这种低秩分解方法，需要训练的参数量从原来的 $$d \times $$ 减少到 $$r \times (d + k)$$。</p>
+<p>例如，对于一个典型的权重矩阵 $$W \in \mathbb<ruby>R}<rp>【</rp><rt>{4096 \times 4096</rt><rp>】</rp></ruby>$$：</p>
+<ul>
+<li>全量微调需要训练 $$4096 \times 4096 = 16,777,216$$ 个参数</li>
+<li>当使用 LoRA 且 $$r = $$ 时，仅需训练 $$8 \times (4096 + 4096) = 65,536$$ 个参数</li>
+</ul>
+<p>这意味着参数量减少了约 256 倍，同时内存需求也大幅降低。</p>
+<p>在实际实现中，LoRA 通常引入一个缩放因子 $$\alpha$$，修改前向传播为：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo>=</mo><mi>W</mi><mi>x</mi><mo>+</mo><mfrac><mi>α</mi><mi>r</mi></mfrac><mi>B</mi><mi>A</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">y = Wx + \frac{\alpha}{r}BAx
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.7935600000000003em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.10756em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">A</span><span class="mord mathnormal">x</span></span></span></span></span></p>
+<p>其中 $$\alpha$$ 是一个可调超参数。这个缩放因子使得我们可以在不改变初始化方差的情况下控制 LoRA 更新的强度。通常 $$\alpha$$ 设置为 $$r$$ 的倍数（如 $$2r$$ 或 $$4r$$）。</p>
+<p>LoRA 的初始化策略对训练稳定性有重要影响：</p>
+<ol>
+<li>矩阵 $$A$$ 通常使用高斯分布初始化：$$A \sim \mathcal {N}(0, \sigma^2)$$</li>
+<li>矩阵 $$B$$ 通常初始化为零矩阵：B = 0</li>
+</ol>
+<p>这种初始化确保了训练开始时 $$\Delta W = BA = 0$$，即模型的初始行为与原始预训练模型完全相同，避免了训练初期的剧烈变化。</p>
+<p><strong>在训练过程中，我们只更新 A 和 B，而不是整个 W 矩阵</strong>。这样，我们通过优化这两个小矩阵来间接地调整 W 的行为，使其更好地适应特定的下游任务。这种方法显著减少了模型参数的数量，从而降低了训练和部署所需的计算资源。</p>
+<p><strong>在部署阶段，我们可以将 A 和 B 与 W 合并，得到一个新的权重矩阵 W + AB</strong>，这个新矩阵可以直接用于推理过程，而不会引入任何额外的推理延迟。这种方法允许我们快速地在不同任务之间切换，只需简单地替换 A 和 B 矩阵即可。</p>
+<h5 id="lora关键参数"><a class="markdownIt-Anchor" href="#lora关键参数">#</a> Lora 关键参数</h5>
+<p><strong>秩 r 决定了 LoRA 矩阵的维度</strong>，直接影响模型容量和参数量：</p>
+<ul>
+<li><strong>较小的 r（如 4 或 8）</strong>：参数量少，训练速度快，但模型容量有限</li>
+<li><strong>较大的 r（如 32 或 64）</strong>：模型容量增加，性能可能提升，但训练更慢，过拟合风险增加</li>
+</ul>
+<p><strong>α 控制 LoRA 更新的强度</strong>：通常设置为 r 的 2-4 倍</p>
+<ul>
+<li>较大的 α 会增强 LoRA 的影响，加速适应但可能导致不稳定</li>
+<li>较小的 α 会减弱 LoRA 的影响，训练更稳定但可能收敛较慢</li>
+</ul>
+<p>LoRA 微调通常使用比全量微调更高的<strong>学习率</strong>：</p>
+<ul>
+<li>全量微调：1e-5 ~ 2e-5</li>
+<li>LoRA 微调：1e-4 ~ 2e-4</li>
+</ul>
+<p><strong>选择应用 LoRA 的模块</strong>会影响性能和训练参数量：</p>
+<ul>
+<li>只应用于注意力层（查询、键、值矩阵）：参数量最少，但可能限制性能</li>
+<li>同时应用于注意力层和前馈网络层：参数量增加，通常性能更好</li>
+<li>应用于所有线性层：参数量最大，接近全量微调的性能</li>
+</ul>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ieXRlZGFuY2UubGFya29mZmljZS5jb20vZG9jeC9JMjY0ZE41WFZvNDJURXhSYnNHY0Q2VHduSGc=">LoRA 微调技术原理与数学实现</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2x2YW9sYW4xNjgvYXJ0aWNsZS9kZXRhaWxzLzE0MjIxOTQwMA==">https://blog.csdn.net/lvaolan168/article/details/142219400</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8yNzA3MDcxNzA1NA==">https://zhuanlan.zhihu.com/p/27070717054</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9hcjVpdi5sYWJzLmFyeGl2Lm9yZy9odG1sLzIxMDYuMDk2ODU/X2ltbWVyc2l2ZV90cmFuc2xhdGVfYXV0b190cmFuc2xhdGU9MSNTMS5GMQ==">https://ar5iv.labs.arxiv.org/html/2106.09685?_immersive_translate_auto_translate=1#S1.F1</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9uZXhsYS5jb20vZW50ZXJwcmlzZS1haS9sb3ctcmFuay1hZGFwdGF0aW9uLW9mLWxhcmdlLWxhbmd1YWdlLW1vZGVscy8=">https://nexla.com/enterprise-ai/low-rank-adaptation-of-large-language-models/</span></p>
+<h4 id="量化"><a class="markdownIt-Anchor" href="#量化">#</a> 量化</h4>
+<p>pip install bitsandbytes</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> BitsAndBytesConfig</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">bnb_config = BitsAndBytesConfig(</span><br><span class="line">    load_in_4bit=use_4bit,</span><br><span class="line">    bnb_4bit_quant_type=bnb_4bit_quant_type,</span><br><span class="line">    bnb_4bit_compute_dtype=compute_dtype,</span><br><span class="line">    bnb_4bit_use_double_quant=use_nested_quant,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">model = AutoModelForCausalLM.from_pretrained(</span><br><span class="line">    model_name,</span><br><span class="line">    torch_dtype=<span class="string">&quot;auto&quot;</span>,</span><br><span class="line">    device_map=<span class="string">&quot;auto&quot;</span>,</span><br><span class="line">    quantization_config=bnb_config</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#################################</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">model_name = <span class="string">&quot;/ai/data/DeepSeek-R1-Distill-Qwen-1.5B&quot;</span></span><br><span class="line"></span><br><span class="line">use_4bit = <span class="literal">True</span></span><br><span class="line">bnb_4bit_compute_dtype = <span class="string">&quot;float16&quot;</span></span><br><span class="line">bnb_4bit_quant_type = <span class="string">&quot;nf4&quot;</span></span><br><span class="line">use_nested_quant = <span class="literal">False</span></span><br><span class="line">compute_dtype = <span class="built_in">getattr</span>(torch, bnb_4bit_compute_dtype)</span><br><span class="line"></span><br><span class="line">bnb_config = BitsAndBytesConfig(</span><br><span class="line">    load_in_4bit=use_4bit,</span><br><span class="line">    bnb_4bit_quant_type=bnb_4bit_quant_type,</span><br><span class="line">    bnb_4bit_compute_dtype=compute_dtype,</span><br><span class="line">    bnb_4bit_use_double_quant=use_nested_quant,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">model = AutoModelForCausalLM.from_pretrained(</span><br><span class="line">    model_name,</span><br><span class="line">    torch_dtype=<span class="string">&quot;auto&quot;</span>,</span><br><span class="line">    device_map=<span class="string">&quot;auto&quot;</span>,</span><br><span class="line">    quantization_config=bnb_config</span><br><span class="line">)</span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(model_name)</span><br><span class="line"></span><br><span class="line">history, response = [], <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">query = <span class="built_in">input</span>(<span class="string">&quot;请输入内容：&quot;</span>)</span><br><span class="line">messages = [&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;你是一个智能助手，擅长用中文回答用户的提问。&quot;</span>&#125;]</span><br><span class="line"><span class="keyword">while</span> query:</span><br><span class="line">    <span class="keyword">for</span> query_h, response_h <span class="keyword">in</span> history:</span><br><span class="line">        messages.append(&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: query_h&#125;)</span><br><span class="line">        messages.append(&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;assistant&quot;</span>, <span class="string">&quot;content&quot;</span>: response_h&#125;)</span><br><span class="line">    messages.append(&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: query&#125;)</span><br><span class="line"></span><br><span class="line">    text = tokenizer.apply_chat_template(</span><br><span class="line">        messages,</span><br><span class="line">        tokenize=<span class="literal">False</span>,</span><br><span class="line">        add_generation_prompt=<span class="literal">True</span></span><br><span class="line">    )</span><br><span class="line">    model_inputs = tokenizer([text], return_tensors=<span class="string">&quot;pt&quot;</span>).to(model.device)</span><br><span class="line"></span><br><span class="line">    generated_ids = model.generate(</span><br><span class="line">        **model_inputs,</span><br><span class="line">        max_new_tokens=<span class="number">1024</span>,</span><br><span class="line">        temperature = <span class="number">0.7</span>,</span><br><span class="line">        top_p = <span class="number">0.8</span>,</span><br><span class="line">        repetition_penalty=<span class="number">1.1</span></span><br><span class="line">    )</span><br><span class="line">    generated_ids = [</span><br><span class="line">        output_ids[<span class="built_in">len</span>(input_ids):] <span class="keyword">for</span> input_ids, output_ids <span class="keyword">in</span> <span class="built_in">zip</span>(model_inputs.input_ids, generated_ids)</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    response = tokenizer.batch_decode(generated_ids, skip_special_tokens=<span class="literal">True</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="built_in">print</span>(response)</span><br><span class="line">    history.append([query, response])</span><br><span class="line">    query = <span class="built_in">input</span>(<span class="string">&quot;请输入内容：&quot;</span>)</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+      <div class="tags">
+          <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" rel="tag"><i class="ic i-tag"></i> 大模型</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2025-07-02 01:12:44" itemprop="dateModified" datetime="2025-07-02T01:12:44+08:00">2025-07-02</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="John Doe WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="John Doe Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="John Doe PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>John Doe <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2025/03/01/%E5%BE%AE%E8%B0%83/" title="微调">http://example.com/2025/03/01/微调/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2025/02/01/Deepseek%E6%B1%87%E6%80%BB/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;8cf4932745804d12b330608b12a53aca.jpg" title="Deepseek汇总">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> 大模型</span>
+  <h3>Deepseek汇总</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2025/03/02/MCP/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;img.timelessq.com&#x2F;images&#x2F;2022&#x2F;07&#x2F;26&#x2F;5e31374bf28e62a34775694f9acb06a9.jpg" title="MCP">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> 大模型</span>
+  <h3>MCP</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E8%B0%83"><span class="toc-number">1.</span> <span class="toc-text"> 微调</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E6%BA%90%E5%9F%BA%E7%A1%80%E5%A4%A7%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text"> 开源基础大模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86"><span class="toc-number">1.2.</span> <span class="toc-text"> 数据收集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E5%BA%A7%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9"><span class="toc-number">1.3.</span> <span class="toc-text"> 基座模型选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83"><span class="toc-number">1.4.</span> <span class="toc-text"> 模型微调</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%84%E6%B5%8B"><span class="toc-number">1.5.</span> <span class="toc-text"> 模型评测</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96"><span class="toc-number">1.6.</span> <span class="toc-text"> 模型量化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%87%8F%E5%8C%96%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6"><span class="toc-number">1.7.</span> <span class="toc-text"> 大模型量化推理框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E6%A8%A1%E6%80%81%E5%A4%A7%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.8.</span> <span class="toc-text"> 多模态大模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%9A%E6%A8%A1%E6%80%81%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 多模态大模型架构：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%A9%E6%9C%9F%E8%9E%8D%E5%90%88"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 早期融合</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#finetune"><span class="toc-number">2.</span> <span class="toc-text"> finetune</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">2.1.</span> <span class="toc-text"> 环境准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E5%BE%AE%E8%B0%83%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text"> 指令微调格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-number">2.3.</span> <span class="toc-text"> 数据处理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%8C%BB%E7%96%97%E5%AF%B9%E8%AF%9D%E6%95%B0%E6%8D%AE"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 处理医疗对话数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%B4%E5%BA%8A%E6%9C%AF%E8%AF%AD%E6%A0%87%E5%87%86%E5%A4%84%E7%90%86"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 临床术语标准处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%97%85%E4%BE%8B%E6%8A%A5%E5%91%8A%E7%94%9F%E6%88%90"><span class="toc-number">2.3.3.</span> <span class="toc-text"> 病例报告生成</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8transformer%E5%BA%93%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.4.</span> <span class="toc-text"> 使用 transformer 库实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8llama-factory%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.5.</span> <span class="toc-text"> 使用 LLama-factory 实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AE%E8%B0%83%E5%90%8E%E8%AF%84%E4%BC%B0"><span class="toc-number">2.6.</span> <span class="toc-text"> 微调后评估</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ragsftprompt%E5%AF%B9%E6%AF%94"><span class="toc-number">2.7.</span> <span class="toc-text"> RAG，SFT，Prompt 对比</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%8C%BA%E5%88%AB%E5%AF%B9%E6%AF%94%E8%A1%A8"><span class="toc-number">2.7.1.</span> <span class="toc-text"> 核心区别对比表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%BE%AE%E8%B0%83fine-tuning"><span class="toc-number">2.7.2.</span> <span class="toc-text"> 1. 微调（Fine-tuning）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-rag%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA%E7%94%9F%E6%88%90"><span class="toc-number">2.7.3.</span> <span class="toc-text"> 2. RAG（检索增强生成）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8Bprompt-engineering"><span class="toc-number">2.7.4.</span> <span class="toc-text"> 3. 提示工程（Prompt Engineering）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF%E5%AF%B9%E6%AF%94"><span class="toc-number">2.7.5.</span> <span class="toc-text"> 适用场景对比</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">2.7.6.</span> <span class="toc-text"> 典型应用案例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E7%AD%96%E7%95%A5"><span class="toc-number">2.7.7.</span> <span class="toc-text"> 组合策略</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">2.7.8.</span> <span class="toc-text"> 总结</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lora"><span class="toc-number">2.8.</span> <span class="toc-text"> Lora</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#lora%E6%95%B0%E5%AD%A6%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.8.1.</span> <span class="toc-text"> Lora 数学实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#lora%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0"><span class="toc-number">2.8.2.</span> <span class="toc-text"> Lora 关键参数</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8F%E5%8C%96"><span class="toc-number">2.9.</span> <span class="toc-text"> 量化</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2025/01/01/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80/" rel="bookmark" title="大模型基础">大模型基础</a></li><li><a href="/2025/02/01/Deepseek%E6%B1%87%E6%80%BB/" rel="bookmark" title="Deepseek汇总">Deepseek汇总</a></li><li class="active"><a href="/2025/03/01/%E5%BE%AE%E8%B0%83/" rel="bookmark" title="微调">微调</a></li><li><a href="/2025/03/02/MCP/" rel="bookmark" title="MCP">MCP</a></li><li><a href="/2025/04/01/ML/" rel="bookmark" title="Machine learning">Machine learning</a></li><li><a href="/2025/05/01/Deep%20learning/" rel="bookmark" title="Deep learning">Deep learning</a></li><li><a href="/2025/06/01/transformer/" rel="bookmark" title="transformer">transformer</a></li><li><a href="/2025/07/01/RL/" rel="bookmark" title="Machine learning">Machine learning</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="John Doe"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">John Doe</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">62</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">8</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">8</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2025/02/01/Deepseek%E6%B1%87%E6%80%BB/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2025/03/02/MCP/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2022/11/27/CDN/" title="CDN&amp;DNS">CDN&DNS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+</div>
+
+    <span><a href="/2022/12/31/webshell/" title="webshell">webshell</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%86%85%E7%BD%91/" title="In 内网">内网</a>
+</div>
+
+    <span><a href="/2022/12/25/%E5%86%85%E7%BD%91/" title="内网渗透">内网渗透</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" title="In 大模型">大模型</a>
+</div>
+
+    <span><a href="/2025/06/01/transformer/" title="transformer">transformer</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" title="In 大模型">大模型</a>
+</div>
+
+    <span><a href="/2025/05/01/Deep%20learning/" title="Deep learning">Deep learning</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2022/11/01/%E6%B1%87%E7%BC%96/" title="汇编">汇编</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
+</div>
+
+    <span><a href="/2024/01/01/istio/" title="istio">istio</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/07/15/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E/" title="中间件漏洞">中间件漏洞</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/02/21/https%E5%8E%9F%E7%90%86/" title="https+TLS">https+TLS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" title="In 大模型">大模型</a>
+</div>
+
+    <span><a href="/2025/04/01/ML/" title="Machine learning">Machine learning</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2025/03/01/微调/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

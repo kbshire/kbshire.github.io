@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/560306a4274d1fc26eb475dd52237387.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/d424b2656229a0e3718abfd0a05bbff7.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/a05ebdd3b7f197e626fa1253c6521ef5.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/601b4c1b1f50f3ceb9e8080e1957a890.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/2a42af8906eaa0a898ee31569cbd2661.jpg"></li>
-          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/dcb8f9f223a5db821d797261469b6a17.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/d4df076eb51491f02d9c9754567256fb.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/7074b57c75454b3ab1aba920a32a5d97.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/cc1a734b8a0734243d5071644d60f360.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/3cff3fc776e129c36936b1cf83a34b68.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/17cfb1570685a3f62652e085962fe2a9.jpg"></li>
+          <li class="item" data-background-image="https://img.timelessq.com/images/2022/07/26/bb198758f050283f6a89670ee083687a.jpg"></li>
         </ul>
       </div>
     </header>
@@ -119,7 +119,332 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/01/31/%E5%8F%B0%E7%90%83/" itemprop="url" title="台球入门教程"><img data-src="https://img.timelessq.com/images/2022/07/26/f53974c854a887e80e9f72685a99854c.jpg"></a>
+    <a href="/2024/10/01/clickhouse/" itemprop="url" title="Clickhouse"><img data-src="https://img.timelessq.com/images/2022/07/26/45f3e5855eee8430aabb492836518779.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2024-10-01 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-10-01T13:38:45+08:00">2024-10-01</time>
+  </span>
+</div>
+
+    <h3><a href="/2024/10/01/clickhouse/" itemprop="url" title="Clickhouse">Clickhouse</a></h3>
+    <div class="excerpt">
+        # clickhouse
+Yandex 于 2016 年开源的列式存储数据库（DBMS），使用 C++ 语言编写，主要用于在线分析处理查询（OLAP），能够使用 SQL 查询实时生成分析数据报告
+列式储存的好处：
+➢ 对于列的聚合，计数，求和等统计操作原因优于行式存储。
+➢由于某一列的数据类型都是相同的，针对于数据存储更容易进行数据压缩，每一列选择更优的数据压缩算法，大大提高了数据的压缩比重。
+➢ 由于数据压缩比更好，一方面节省了磁盘空间，另一方面对于 cache 也有了更大的发挥空间。
+DBMS 的功能
+几乎覆盖了标准 SQL 的大部分语法，包括 DDL 和...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" title="大数据"><i class="ic i-flag"></i>大数据</a>
+      </span>
+    </div>
+    <a href="/2024/10/01/clickhouse/" itemprop="url" title="Clickhouse" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/07/01/GPU%E5%85%A5%E9%97%A8%E6%A6%82%E8%AE%BA/" itemprop="url" title="GPU入门概论"><img data-src="https://img.timelessq.com/images/2022/07/26/08e73cd8998a540ab698836447eeea91.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2024-07-01 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-07-01T13:38:45+08:00">2024-07-01</time>
+  </span>
+</div>
+
+    <h3><a href="/2024/07/01/GPU%E5%85%A5%E9%97%A8%E6%A6%82%E8%AE%BA/" itemprop="url" title="GPU入门概论">GPU入门概论</a></h3>
+    <div class="excerpt">
+        # GPU 入门概论
+摘要：本篇文章旨在为后续 LLM 文章做铺垫，通过本篇文章，我们可以理解：
+
+1、GPU 核心架构及参数
+2、2024 主流 GPU 规格及对比
+3、NVIDIA 搞的一些奇妙技术
+4、云厂商售卖的 GPU 都有啥
+5、hands-on lab 自己安装驱动，实现跑开源模型！
+PS: 本文中如果没有特值，GPU 均指 NVIDIA 的 GPU，本文不讨论华为昇腾 GPU 或 AMD 的 GPU
+
+# 前置芝士
+# PCIe 交换芯片
+CPU、内存、存储（NVME）、GPU、网卡等支持 PCIe 的设备，都可以连接到 PCIe 总线或专门的 PCIe...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" title="运维"><i class="ic i-flag"></i>运维</a>
+      </span>
+    </div>
+    <a href="/2024/07/01/GPU%E5%85%A5%E9%97%A8%E6%A6%82%E8%AE%BA/" itemprop="url" title="GPU入门概论" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/06/01/openstack/" itemprop="url" title="OpenStack+openvswitch"><img data-src="https://img.timelessq.com/images/2022/07/26/bb198758f050283f6a89670ee083687a.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2024-06-01 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-06-01T13:38:45+08:00">2024-06-01</time>
+  </span>
+</div>
+
+    <h3><a href="/2024/06/01/openstack/" itemprop="url" title="OpenStack+openvswitch">OpenStack+openvswitch</a></h3>
+    <div class="excerpt">
+        # openstack
+# nova
+
+主机发放完之后可以把镜像删掉，因为系统盘是通过镜像复制的
+
+openstack 中实例快照是作为镜像使用的，可以直接作为云主机镜像，不能直接还原
+硬盘快照是用于创建相同的云硬盘，可以挂载给主机，不能直接还原快照。也可以放做启动盘使用
+# glance
+所有服务的 API endpoint 地址均存放在 keystone 数据库中
+
+写操作会通过 glance-registry，读操作可以直接去数据库中查
+glance 使用 swift
+123456789101112131415default_store = swiftstores =...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" title="运维"><i class="ic i-flag"></i>运维</a>
+      </span>
+    </div>
+    <a href="/2024/06/01/openstack/" itemprop="url" title="OpenStack+openvswitch" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/05/01/hive_flink/" itemprop="url" title="hive_flink"><img data-src="https://img.timelessq.com/images/2022/07/26/515ee3ef8e5138cb721c6d28a9755a74.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2024-05-01 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-05-01T13:38:45+08:00">2024-05-01</time>
+  </span>
+</div>
+
+    <h3><a href="/2024/05/01/hive_flink/" itemprop="url" title="hive_flink">hive_flink</a></h3>
+    <div class="excerpt">
+        # hive
+Hive 是由 Facebook 开源，基于 Hadoop 的一个数据仓库工具，可以将结构化的数据文件映射为一张表，并提供类 SQL 查询功能。
+Hive 是一个 Hadoop 客户端，用于将 HQL (HiveSQL) 转化成 MapfReduce 程序。
+(1) Hive 中每张表的数据存储在 HDFS
+(2) Hive 分析数据底层的实现是 MapReduce (也可配置为 Sparl 或者 Tez)
+(3) 执行程序运行在 Yarn 上
+
+# 最小化安装
+123456789101112wget...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" title="大数据"><i class="ic i-flag"></i>大数据</a>
+      </span>
+    </div>
+    <a href="/2024/05/01/hive_flink/" itemprop="url" title="hive_flink" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/04/01/spark/" itemprop="url" title="spark"><img data-src="https://img.timelessq.com/images/2022/07/26/2b0a8c81d91579602eee343aff82c4c9.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2024-04-01 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-04-01T13:38:45+08:00">2024-04-01</time>
+  </span>
+</div>
+
+    <h3><a href="/2024/04/01/spark/" itemprop="url" title="spark">spark</a></h3>
+    <div class="excerpt">
+        # spark
+分布式计算引擎框架，基于 mapreduce 开发
+单机：单进程，单节点
+伪分布式：多进程，单节点
+分布式：多进程，多节点
+分布式计算核心：切分数据，减少数据规模
+
+spark 分布式集群采用集群中心化
+
+框架：不完整的计算机程序 (核心功能已经开发完毕，但是是和业务相关的代码未开发)(MR，spark)
+系统：完整的计算机程序 (HDFS,Kafka)
+
+引擎：核心功能
+spark 基于 mr 开发，两者区别
+1. 开发语言：mr：java，不适合进行大量数据处理。spark：scala，适合大量数据处理，封装大量功能
+2. 处理方式：hadoop...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" title="大数据"><i class="ic i-flag"></i>大数据</a>
+      </span>
+    </div>
+    <a href="/2024/04/01/spark/" itemprop="url" title="spark" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/03/01/hadoop_new/" itemprop="url" title="Hadoop"><img data-src="https://img.timelessq.com/images/2022/07/26/e10fa1dac1ea1b1bf06ccdd62eb0f9f0.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2024-03-01 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-03-01T13:38:45+08:00">2024-03-01</time>
+  </span>
+</div>
+
+    <h3><a href="/2024/03/01/hadoop_new/" itemprop="url" title="Hadoop">Hadoop</a></h3>
+    <div class="excerpt">
+        # hadoop
+Hadoop 是 Apache 软件基金会旗下的一个开源分布式计算平台，为用户提供了系统底层细节透明的分布式基础架构。
+
+Hadoop 是基于 Java 语言开发的，具有很好的跨平台特性，并且可以部署在廉价的计算机集群中；
+Hadoop 的核心是分布式文件系统 HDFS（Hadoop Distributed File System）和 MapReduce；
+Hadoop 被公认为行业大数据标准开源软件，在分布式环境下提供了海量数据的处理能力；
+
+解决海量数据存储和分析计算问题
+优势： 维护多副本
+在集群间分配任务数据，方便扩展
+并行工作
+自动将失败任务重新分配
+#...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" title="大数据"><i class="ic i-flag"></i>大数据</a>
+      </span>
+    </div>
+    <a href="/2024/03/01/hadoop_new/" itemprop="url" title="Hadoop" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/02/15/Elastic%20Stack/" itemprop="url" title="Elastic stack"><img data-src="https://img.timelessq.com/images/2022/07/26/38f4d53604cb5ca98a47fea8d62cde72.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2024-02-15 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-02-15T13:38:45+08:00">2024-02-15</time>
+  </span>
+</div>
+
+    <h3><a href="/2024/02/15/Elastic%20Stack/" itemprop="url" title="Elastic stack">Elastic stack</a></h3>
+    <div class="excerpt">
+        # Elastic Stack
+
+The Elastic stack, 包括 Elasticsearch、Kibana、Beats 和 Logstash (也称为 ELK Stack)。
+Elaticsearch:
+简称为 ES， ES 是一个开源的高扩展的分布式全文搜索引擎，是整个 E1astic stack 技术栈的核心。它可以近乎实时的存储、检索数据；本身扩展性很好，可以扩展到上百台服务器，处理 PB 级别的数据
+Kibana:
+是一个免费且开放的用户界面，能够让您对 Elasticsearch 数据进行可视化，并让您在 elastic stack...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" title="运维"><i class="ic i-flag"></i>运维</a>
+      </span>
+    </div>
+    <a href="/2024/02/15/Elastic%20Stack/" itemprop="url" title="Elastic stack" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/02/01/%E7%9B%91%E6%8E%A7/" itemprop="url" title="监控"><img data-src="https://img.timelessq.com/images/2022/07/26/d10b26588ca1fe939f0146bb24578eaa.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2024-02-01 13:38:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-02-01T13:38:45+08:00">2024-02-01</time>
+  </span>
+</div>
+
+    <h3><a href="/2024/02/01/%E7%9B%91%E6%8E%A7/" itemprop="url" title="监控">监控</a></h3>
+    <div class="excerpt">
+        # 监控
+报告系统运行状况
+每一部分必须同时监控
+内容包括吞吐量 、反应时间、使用率等
+提前发现问题
+进行服务器性能调整前，知道调整什么
+找出系统的瓶颈在什么地方
+监控资源类别
+公开数据
+Web、FTP、SSH、数据库等应用服务
+TCP 或 UDP 端口
+私有数据
+CPU、内存、磁盘、网卡流量等使用信息
+用户、进程等运行信息
+Cacti
+基于 SNMP 协议的监控软件，强大的绘图能力
+Nagios
+基于 Agent 监控，强大的状态检查与报警机制插件极多，自己写监控脚本潜入到 Nagios 非常方便
+Zabbix
+基于多种监控机制，支持分布式监控
+# zabbix
+Zabbix...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" title="运维"><i class="ic i-flag"></i>运维</a>
+      </span>
+    </div>
+    <a href="/2024/02/01/%E7%9B%91%E6%8E%A7/" itemprop="url" title="监控" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2024/01/31/%E5%8F%B0%E7%90%83/" itemprop="url" title="台球入门教程"><img data-src="https://img.timelessq.com/images/2022/07/26/d39fac026faa9551f5138968af027183.jpg"></a>
   </div>
   <div class="info">
     
@@ -174,7 +499,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2024/01/25/%E8%99%9A%E6%8B%9F%E5%8C%96/" itemprop="url" title="虚拟化"><img data-src="https://img.timelessq.com/images/2022/07/26/8a8076ea9cbc7d677dd42ad84d4e3ebd.jpg"></a>
+    <a href="/2024/01/25/%E8%99%9A%E6%8B%9F%E5%8C%96/" itemprop="url" title="虚拟化"><img data-src="https://img.timelessq.com/images/2022/07/26/dcd5178b4c81cd15d7465af2a33c0d6d.jpg"></a>
   </div>
   <div class="info">
     
@@ -202,283 +527,6 @@
   </div>
 </article>
 
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2024/01/10/%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%AD%98%E5%82%A8/" itemprop="url" title="集群与存储"><img data-src="https://img.timelessq.com/images/2022/07/26/f584675dfc4ef47fcf19442f0e2ea18b.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2024-01-10 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-01-10T13:38:45+08:00">2024-01-10</time>
-  </span>
-</div>
-
-    <h3><a href="/2024/01/10/%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%AD%98%E5%82%A8/" itemprop="url" title="集群与存储">集群与存储</a></h3>
-    <div class="excerpt">
-        # 集群与存储
-集群
-提高性能
-降低成本
-提高可扩展性
-增加可靠性
-集群分类
-高性能计算集群
-负载均衡集群 (LB) 平均分配请求
-高可用集群 (HA) 避免单点故障，在整个集群里不能有单点故障
-# LVS
-# lvs 集群组成
-前端：负载均衡层
-​	- 由一台或多台负载调度器构成
-中间：服务器群组层
-​	- 由一组实际运行应用服务的服务器组成
-底端：数据共享存储层
-​	- 提供共享存储空间的存储区域
-# lvs 名词解释
-Director Server : 调度服务器 — 将负载分发到 Real Server 的服务器 （nginx lvs）
-Real Server: 真实服务器 -...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" title="运维"><i class="ic i-flag"></i>运维</a>
-      </span>
-    </div>
-    <a href="/2024/01/10/%E9%9B%86%E7%BE%A4%E4%B8%8E%E5%AD%98%E5%82%A8/" itemprop="url" title="集群与存储" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2024/01/01/istio/" itemprop="url" title="istio"><img data-src="https://img.timelessq.com/images/2022/07/26/31105e606c74614c7f8f7b1d08e1619a.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2024-01-01 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-01-01T13:38:45+08:00">2024-01-01</time>
-  </span>
-</div>
-
-    <h3><a href="/2024/01/01/istio/" itemprop="url" title="istio">istio</a></h3>
-    <div class="excerpt">
-        # istio
-# 安装
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677// 安装istio命令行工具curl -L https://istio.io/downloadIstio | sh -vim /etc/profilePATH=$PATH:/root/istio/binsource...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/%E8%BF%90%E7%BB%B4/" itemprop="url" title="运维"><i class="ic i-flag"></i>运维</a>
-      </span>
-    </div>
-    <a href="/2024/01/01/istio/" itemprop="url" title="istio" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2023/10/03/hg%20ker/" itemprop="url" title="hg内核"><img data-src="https://img.timelessq.com/images/2022/07/26/c341350a62c22109f3b283ce0aa83871.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2023-10-03 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-10-03T13:38:45+08:00">2023-10-03</time>
-  </span>
-</div>
-
-    <h3><a href="/2023/10/03/hg%20ker/" itemprop="url" title="hg内核">hg内核</a></h3>
-    <div class="excerpt">
-        更新中
-# hg 内核
-# 环境配置
-12345678910111213141516171819msconfigC:\Windows\system32&amp;gt;bcdedit /copy &amp;#123;current&amp;#125; /d debug已将该项成功复制到 &amp;#123;9f1759e1-dbea-11ec-93bf-c2eeac6128aa&amp;#125;。C:\Windows\system32&amp;gt;bcdedit.exe /displayorder...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/%E9%80%86%E5%90%91/" itemprop="url" title="逆向"><i class="ic i-flag"></i>逆向</a>
-      </span>
-    </div>
-    <a href="/2023/10/03/hg%20ker/" itemprop="url" title="hg内核" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2023/10/01/1234567/" itemprop="url" title="windows逆向进阶"><img data-src="https://img.timelessq.com/images/2022/07/26/263cec5f94b8b4f7e818b8b7103a1a84.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2023-10-01 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-10-01T13:38:45+08:00">2023-10-01</time>
-  </span>
-</div>
-
-    <h3><a href="/2023/10/01/1234567/" itemprop="url" title="windows逆向进阶">windows逆向进阶</a></h3>
-    <div class="excerpt">
-        暂停更新，未完结
-# Windows 逆向
-# WinApi 速查表
-# GetModuleFileName
-获取当前进程已加载模块的文件的完整路径，该模块必须由当前进程加载。
-1234567891011121314151617181920212223242526DWORD GetModuleFileName( HMODULE hModule, // handle to module LPTSTR lpFilename, // file name of module DWORD nSize // size of buffer);00402016 |. 68 08020000 push...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/%E9%80%86%E5%90%91/" itemprop="url" title="逆向"><i class="ic i-flag"></i>逆向</a>
-      </span>
-    </div>
-    <a href="/2023/10/01/1234567/" itemprop="url" title="windows逆向进阶" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2023/09/15/%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93/" itemprop="url" title="缓存污染&#x2F;请求走私"><img data-src="https://img.timelessq.com/images/2022/07/26/67694352e9c5cbbcf5c1bb98312aab55.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2023-09-15 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-09-15T13:38:45+08:00">2023-09-15</time>
-  </span>
-</div>
-
-    <h3><a href="/2023/09/15/%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93/" itemprop="url" title="缓存污染&#x2F;请求走私">缓存污染/请求走私</a></h3>
-    <div class="excerpt">
-        缓存伪造 缓存投毒 请求伪造
-攻击者无需直接接触服务端即可攻击和影响用户行为的安全漏洞 —— Web 缓存污染与请求走私。Web 缓存污染旨在通过攻击者向缓存服务器投递恶意缓存内容，使得用户返回响应结果而触发安全风险。HTTP 请求走私旨在基于前置服务器（CDN、反向代理等）与后置服务器对用户请求体的长度判断标准不一致的特性，构造能够被同一 TCP 连接中其它用户夹带部分恶意内容的攻击请求，从而篡改了受害者的请求与响应行为。两种漏洞均需要通过针对中间件的合理配置与业务接口的合理设计进行排查和防御。
-# 缓存污染
-简单的来说，就是利用缓存将有害的 HTTP 响应提供给用户
-由 CDN...
-    </div>
-    <a href="/2023/09/15/%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93/" itemprop="url" title="缓存污染&#x2F;请求走私" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2023/09/01/border%20leaf/" itemprop="url" title="从三层架构到spine leaf"><img data-src="https://img.timelessq.com/images/2022/07/26/86a28095f8e05aa07544b454ec6f01f6.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2023-09-01 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-09-01T13:38:45+08:00">2023-09-01</time>
-  </span>
-</div>
-
-    <h3><a href="/2023/09/01/border%20leaf/" itemprop="url" title="从三层架构到spine leaf">从三层架构到spine leaf</a></h3>
-    <div class="excerpt">
-        # 从三层架构到 spine leaf
-为了应付一些数据中心客户购买 waf 的需求，因此在这里记录一下一种数据中心组网。
-客户采用的组网图如下：两台 waf 是准备放在 fw 所在的 service leaf 中，但是存在问题，后续会更新组网图
-
-# 传统三层架构
-
-这种架构由核心路由器、聚合路由器（有时叫分发路由器，distribution routers ）和接入交换机组成。在接入交换机和聚合路由器之间运行生成树协议（Spanning Tree Protocol，STP），以保证网络的二层部分（L2）没有环路。STP 有许多好处：简单，...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/%E7%BD%91%E7%BB%9C/" itemprop="url" title="网络"><i class="ic i-flag"></i>网络</a>
-      </span>
-    </div>
-    <a href="/2023/09/01/border%20leaf/" itemprop="url" title="从三层架构到spine leaf" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2023/08/22/%E5%8E%BB%E5%BC%B9%E7%AA%97%E7%BB%BF%E5%8C%96/" itemprop="url" title="破解相关"><img data-src="https://img.timelessq.com/images/2022/07/26/3b386ae3affb92bf1cd0542648e24fc5.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2023-08-22 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-08-22T13:38:45+08:00">2023-08-22</time>
-  </span>
-</div>
-
-    <h3><a href="/2023/08/22/%E5%8E%BB%E5%BC%B9%E7%AA%97%E7%BB%BF%E5%8C%96/" itemprop="url" title="破解相关">破解相关</a></h3>
-    <div class="excerpt">
-        # 破解
-
-PUSHFD 指令把 32 位 EFLAGS 寄存器内容压入堆栈，而 POPFD 指令则把栈顶单元内容弹出到 EFLAGS 寄存器：
-PUSHAD 指令按照 EAX、ECX、EDX、EBX、ESP（执行 PUSHAD 之前的值）、EBP、ESI 和 EDI 的顺序，将所有 32 位通用寄存器压入堆栈
-
-脱壳之后记得 fix res
-# 常用函数
-12345678910111213141516171819了解Windows...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/%E9%80%86%E5%90%91/" itemprop="url" title="逆向"><i class="ic i-flag"></i>逆向</a>
-      </span>
-    </div>
-    <a href="/2023/08/22/%E5%8E%BB%E5%BC%B9%E7%AA%97%E7%BB%BF%E5%8C%96/" itemprop="url" title="破解相关" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2023/08/15/%E7%A0%B4%E8%A7%A3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B9%8B%E8%AE%A4%E8%AF%86%E5%A3%B3%E4%B8%8E%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%89%B9%E5%BE%81/" itemprop="url" title="破解基础知识之认识壳与程序的特征"><img data-src="https://img.timelessq.com/images/2022/07/26/fb083e70a3b8e24a3ce23b2c8e2fbc50.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2023-08-15 13:38:45">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2023-08-15T13:38:45+08:00">2023-08-15</time>
-  </span>
-</div>
-
-    <h3><a href="/2023/08/15/%E7%A0%B4%E8%A7%A3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B9%8B%E8%AE%A4%E8%AF%86%E5%A3%B3%E4%B8%8E%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%89%B9%E5%BE%81/" itemprop="url" title="破解基础知识之认识壳与程序的特征">破解基础知识之认识壳与程序的特征</a></h3>
-    <div class="excerpt">
-        # 破解基础知识之认识壳与程序的特征
-一个程序从编译出来的时候一般都是没有壳的，不同编译器编译出的无壳程序也是不相同的，认识了不同编译器编译出来的无壳的程序，再去看无壳程序被加壳程序加壳后的样子就轻松很多，经过对比从而了解不同语言无壳程序和加壳后程序的特征是什么，特征主要从 “入口点代码”、“程序区段” 和 “加载模块” 等信息来确定。
-一：程序是什么语言编译的
-从目前国内接触到程序看，比较流行的编译器有：VC 系列、易语言、.NET、Delphi，一些曾经用的很多但渐渐少了有：VB、ASM、BC++，还有一些用的比较少的有：AutoIt、PB、QT 等，结合实例来看看...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/categories/%E9%80%86%E5%90%91/" itemprop="url" title="逆向"><i class="ic i-flag"></i>逆向</a>
-      </span>
-    </div>
-    <a href="/2023/08/15/%E7%A0%B4%E8%A7%A3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B9%8B%E8%AE%A4%E8%AF%86%E5%A3%B3%E4%B8%8E%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%89%B9%E5%BE%81/" itemprop="url" title="破解基础知识之认识壳与程序的特征" class="btn">more...</a>
-  </div>
-</article>
-
     </div>
 
   </div>
@@ -486,7 +534,7 @@ PUSHAD 指令按照 EAX、ECX、EDX、EBX、ESP（执行 PUSHAD 之前的值）�
   
   <nav class="pagination">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/"><i class="ic i-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="ic i-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="ic i-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="ic i-angle-right" aria-label="Next page"></i></a>
     </div>
   </nav>
 
@@ -514,19 +562,19 @@ PUSHAD 指令按照 EAX、ECX、EDX、EBX、ESP（执行 PUSHAD 之前的值）�
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">54</span>
+        <span class="count">62</span>
         <span class="name">posts</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">7</span>
+        <span class="count">8</span>
         <span class="name">categories</span>
       </a>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">7</span>
+        <span class="count">8</span>
         <span class="name">tags</span>
       </a>
     </div>
@@ -576,10 +624,20 @@ PUSHAD 指令按照 EAX、ECX、EDX、EBX、ESP（执行 PUSHAD 之前的值）�
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
 </div>
 
-    <span><a href="/2022/05/27/CSRF/" title="CSRF">CSRF</a></span>
+    <span><a href="/2024/01/25/%E8%99%9A%E6%8B%9F%E5%8C%96/" title="虚拟化">虚拟化</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2023/08/15/%E7%A0%B4%E8%A7%A3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%B9%8B%E8%AE%A4%E8%AF%86%E5%A3%B3%E4%B8%8E%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%89%B9%E5%BE%81/" title="破解基础知识之认识壳与程序的特征">破解基础知识之认识壳与程序的特征</a></span>
   </li>
 
       
@@ -596,10 +654,10 @@ PUSHAD 指令按照 EAX、ECX、EDX、EBX、ESP（执行 PUSHAD 之前的值）�
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
 </div>
 
-    <span><a href="/2022/03/16/SQL%E6%B3%A8%E5%85%A5/" title="SQL injection">SQL injection</a></span>
+    <span><a href="/2023/08/22/%E5%8E%BB%E5%BC%B9%E7%AA%97%E7%BB%BF%E5%8C%96/" title="破解相关">破解相关</a></span>
   </li>
 
       
@@ -616,49 +674,10 @@ PUSHAD 指令按照 EAX、ECX、EDX、EBX、ESP（执行 PUSHAD 之前的值）�
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/web%E5%AE%89%E5%85%A8/" title="In web安全">web安全</a>
-</div>
-
-    <span><a href="/2022/06/27/SSRF/" title="SSRF">SSRF</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2023/07/15/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E/" title="中间件漏洞">中间件漏洞</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E7%A7%8B%E6%8B%9B/" title="In 秋招">秋招</a>
-</div>
-
-    <span><a href="/2022/10/28/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" title="秋招面试题">秋招面试题</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
 </div>
 
-    <span><a href="/2024/01/01/istio/" title="istio">istio</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/%E8%BF%90%E7%BB%B4/" title="In 运维">运维</a>
-</div>
-
-    <span><a href="/2024/12/01/redis/" title="Redis">Redis</a></span>
+    <span><a href="/2022/11/27/CDN/" title="CDN&amp;DNS">CDN&DNS</a></span>
   </li>
 
       
@@ -669,6 +688,34 @@ PUSHAD 指令按照 EAX、ECX、EDX、EBX、ESP（执行 PUSHAD 之前的值）�
 </div>
 
     <span><a href="/2024/05/01/hive_flink/" title="hive_flink">hive_flink</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" title="In 大模型">大模型</a>
+</div>
+
+    <span><a href="/2025/03/01/%E5%BE%AE%E8%B0%83/" title="微调">微调</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/02/28/XSS/" title="XSS">XSS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/08/02/Capabilities/" title="docker底层原理+capability">docker底层原理+capability</a></span>
   </li>
 
   </ul>
